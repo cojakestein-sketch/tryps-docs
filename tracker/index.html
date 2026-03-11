@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Management — Flow Tracker</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    padding: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  h1 { font-size: 24px; font-weight: 700; }
+  .date { font-size: 14px; color: #888; }
+
+  .summary-bar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .summary-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px 24px;
+    flex: 1;
+    min-width: 120px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    text-align: center;
+  }
+  .summary-card .number {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .summary-card .label {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .summary-card.done .number { color: #22c55e; }
+  .summary-card.progress .number { color: #f59e0b; }
+  .summary-card.blocked .number { color: #ef4444; }
+  .summary-card.not-started .number { color: #94a3b8; }
+
+  .pipeline-legend {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #666;
+    flex-wrap: wrap;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot {
+    width: 12px; height: 12px; border-radius: 3px;
+  }
+  .legend-dot.done { background: #22c55e; }
+  .legend-dot.in-progress { background: #f59e0b; }
+  .legend-dot.broken { background: #ef4444; }
+  .legend-dot.not-started { background: #e2e8f0; }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  thead th {
+    background: #1a1a2e;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+    text-align: left;
+  }
+  thead th:first-child { padding-left: 20px; }
+  tbody td {
+    padding: 14px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f5;
+    vertical-align: middle;
+  }
+  tbody td:first-child {
+    padding-left: 20px;
+    font-weight: 600;
+    color: #555;
+    width: 30px;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #fafbfd; }
+  tbody tr.new-flow { background: #fefce8; }
+  tbody tr.new-flow:hover { background: #fef9c3; }
+
+  .flow-name { font-weight: 600; }
+
+  .pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .pill.done { background: #dcfce7; color: #166534; }
+  .pill.in-progress { background: #fef3c7; color: #92400e; }
+  .pill.broken { background: #fee2e2; color: #991b1b; }
+  .pill.not-started { background: #f1f5f9; color: #94a3b8; }
+  .pill.no-design { background: #fef3c7; color: #92400e; border: 1px dashed #f59e0b; }
+
+  .new-tag {
+    display: inline-block;
+    background: #fbbf24;
+    color: #78350f;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .screens-count {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #64748b;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+
+  .notes {
+    font-size: 12px;
+    color: #888;
+    max-width: 260px;
+  }
+
+  .target-tag {
+    display: inline-block;
+    background: #ede9fe;
+    color: #7c3aed;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+
+  .progress-bar-container {
+    margin-bottom: 24px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .progress-bar-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  .progress-bar {
+    display: flex;
+    height: 28px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f1f5f9;
+  }
+  .progress-bar .segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    transition: width 0.3s ease;
+  }
+  .progress-bar .segment.done { background: #22c55e; }
+  .progress-bar .segment.in-progress { background: #f59e0b; }
+  .progress-bar .segment.broken { background: #ef4444; }
+  .progress-bar .segment.not-started { background: #e2e8f0; color: #94a3b8; }
+
+  .eod-section {
+    margin-top: 24px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .eod-section h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .eod-item {
+    display: flex;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 14px;
+    align-items: baseline;
+  }
+  .eod-item .num {
+    font-weight: 700;
+    color: #7c3aed;
+    min-width: 24px;
+  }
+
+  .update-log {
+    margin-top: 24px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .update-log h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .log-entry {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f5;
+    font-size: 13px;
+  }
+  .log-entry:last-child { border-bottom: none; }
+  .log-time {
+    font-weight: 600;
+    color: #7c3aed;
+  }
+  .log-source {
+    color: #94a3b8;
+    font-size: 12px;
+  }
+
+  .footer {
+    margin-top: 24px;
+    font-size: 12px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    body { padding: 16px; }
+    .summary-card { min-width: 80px; padding: 12px 16px; }
+    .summary-card .number { font-size: 24px; }
+    table { font-size: 13px; }
+    thead th, tbody td { padding: 10px 8px; }
+    .notes { max-width: 160px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Trip Management — Flow Tracker</h1>
+  <span class="date">Updated: Mar 11, 2026 — 11:36 AM</span>
+</div>
+
+<!-- Summary Cards -->
+<div class="summary-bar">
+  <div class="summary-card done">
+    <div class="number">3</div>
+    <div class="label">Fully Engineered</div>
+  </div>
+  <div class="summary-card progress">
+    <div class="number">4</div>
+    <div class="label">Dev In Progress</div>
+  </div>
+  <div class="summary-card blocked">
+    <div class="number">3</div>
+    <div class="label">Built but Broken</div>
+  </div>
+  <div class="summary-card not-started">
+    <div class="number">5</div>
+    <div class="label">Not Started</div>
+  </div>
+</div>
+
+<!-- Overall Progress Bar -->
+<div class="progress-bar-container">
+  <div class="progress-bar-label">Overall Pipeline — 15 flows, ~195 screens (FRD v1)</div>
+  <div class="progress-bar">
+    <div class="segment done" style="width: 20%;">3</div>
+    <div class="segment in-progress" style="width: 26.7%;">4</div>
+    <div class="segment broken" style="width: 20%;">3</div>
+    <div class="segment not-started" style="width: 33.3%;">5</div>
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="pipeline-legend">
+  <div class="legend-item"><div class="legend-dot done"></div> Done</div>
+  <div class="legend-item"><div class="legend-dot in-progress"></div> In Progress</div>
+  <div class="legend-item"><div class="legend-dot broken"></div> Built but Broken</div>
+  <div class="legend-item"><div class="legend-dot not-started"></div> Not Started</div>
+  <div class="legend-item"><span class="new-tag">NEW</span> New in FRD v1</div>
+</div>
+
+<!-- Main Tracker Table -->
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Flow</th>
+      <th>Screens</th>
+      <th>Design</th>
+      <th>Dev</th>
+      <th>Tested</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td class="flow-name">Onboarding / Auth</td>
+      <td><span class="screens-count">12</span></td>
+      <td><span class="pill done">Done</span></td>
+      <td><span class="pill done">Done</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">Functional end-to-end</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td class="flow-name">Invite &gt; Join (new user)</td>
+      <td><span class="screens-count">12</span></td>
+      <td><span class="pill no-design">Partial</span></td>
+      <td><span class="pill broken">Built — broken</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">5 in Figma, 5 need design. Not working per FRD</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td class="flow-name">Invite &gt; Join (existing)</td>
+      <td><span class="screens-count">9</span></td>
+      <td><span class="pill no-design">Partial</span></td>
+      <td><span class="pill broken">Built — broken</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">4 need design. Not working per FRD</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td class="flow-name">Trip Creation / Trip Menu</td>
+      <td><span class="screens-count">21</span></td>
+      <td><span class="pill done">Done</span></td>
+      <td><span class="pill done">Done</span></td>
+      <td><span class="pill in-progress">Informal</span></td>
+      <td class="notes">Working, needs deeper testing</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td class="flow-name">Invite & Share</td>
+      <td><span class="screens-count">11</span></td>
+      <td><span class="pill no-design">Partial</span></td>
+      <td><span class="pill broken">Built — broken</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">5 need design. Not working per FRD</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td class="flow-name">Itinerary Tab</td>
+      <td><span class="screens-count">~12</span></td>
+      <td><span class="pill done">Done</span></td>
+      <td><span class="pill in-progress">In progress</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">Target: complete today <span class="target-tag">TODAY</span></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td class="flow-name">Activities Tab</td>
+      <td><span class="screens-count">~11</span></td>
+      <td><span class="pill done">Done</span></td>
+      <td><span class="pill in-progress">In progress</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">Will be finished soon</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td class="flow-name">People Tab</td>
+      <td><span class="screens-count">14</span></td>
+      <td><span class="pill done">Done</span></td>
+      <td><span class="pill done">Done</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">Designed + engineered (confirmed by Asif)</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td class="flow-name">Stay Tab</td>
+      <td><span class="screens-count">24</span></td>
+      <td><span class="pill not-started">Needs design</span></td>
+      <td><span class="pill not-started">Not started</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">24 screens need design. Dev tomorrow <span class="target-tag">TOMORROW</span></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td class="flow-name">Vibe Tab</td>
+      <td><span class="screens-count">15</span></td>
+      <td><span class="pill in-progress">In progress</span></td>
+      <td><span class="pill in-progress">Starting today</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">Design almost done, dev starting <span class="target-tag">TODAY</span></td>
+    </tr>
+    <tr class="new-flow">
+      <td>11</td>
+      <td class="flow-name">Packing List <span class="new-tag">NEW</span></td>
+      <td><span class="screens-count">9</span></td>
+      <td><span class="pill not-started">Not started</span></td>
+      <td><span class="pill not-started">Not started</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">6 need design, 3 dev handles. Pending both</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td class="flow-name">Expenses Tab</td>
+      <td><span class="screens-count">32</span></td>
+      <td><span class="pill in-progress">In progress</span></td>
+      <td><span class="pill not-started">Not started</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">23 in Pencil &rarr; Figma, dev tomorrow <span class="target-tag">TOMORROW</span></td>
+    </tr>
+    <tr class="new-flow">
+      <td>13</td>
+      <td class="flow-name">Post-Trip State <span class="new-tag">NEW</span></td>
+      <td><span class="screens-count">6</span></td>
+      <td><span class="pill not-started">Not started</span></td>
+      <td><span class="pill not-started">Not started</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">6 screens all need design</td>
+    </tr>
+    <tr class="new-flow">
+      <td>14</td>
+      <td class="flow-name">Travel DNA <span class="new-tag">NEW</span></td>
+      <td><span class="screens-count">6</span></td>
+      <td><span class="pill not-started">Not started</span></td>
+      <td><span class="pill not-started">Not started</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">6 screens all need design</td>
+    </tr>
+    <tr class="new-flow">
+      <td>X</td>
+      <td class="flow-name">Cross-Flow (Home/Profile) <span class="new-tag">NEW</span></td>
+      <td><span class="screens-count">9</span></td>
+      <td><span class="pill not-started">Not started</span></td>
+      <td><span class="pill not-started">Not started</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">4 need design, 5 dev handles</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- EOD Expectations -->
+<div class="eod-section">
+  <h2>Expected Movement by EOD (Mar 11)</h2>
+  <div class="eod-item"><span class="num">#6</span> Itinerary Tab — Dev complete (Asif targeting today)</div>
+  <div class="eod-item"><span class="num">#7</span> Activities Tab — Dev progresses further ("soon")</div>
+  <div class="eod-item"><span class="num">#10</span> Vibe Tab — Design finalizes, dev starts</div>
+</div>
+
+<!-- Open Questions -->
+<div class="eod-section">
+  <h2>Open Questions for Next Check-In</h2>
+  <div class="eod-item"><span class="num">?</span> Flows 2, 3, 5 — broken invite flows need designs. Who picks this up?</div>
+  <div class="eod-item"><span class="num">?</span> Flow 9 (Stay) — 24 screens need design. Designer assigned?</div>
+  <div class="eod-item"><span class="num">?</span> Flows 11, 13, 14, X — 4 NEW flows, all need design from scratch</div>
+  <div class="eod-item"><span class="num">?</span> Flow 12 (Expenses) — 23 Pencil screens need Figma conversion</div>
+</div>
+
+<!-- Update Log -->
+<div class="update-log">
+  <h2>Update Log</h2>
+  <div class="log-entry">
+    <span class="log-time">Mar 11 — 11:36 AM</span> <span class="log-source">(check-in, from Asif via Slack)</span><br>
+    Initial tracker built. Asif corrected: #8 People confirmed designed+engineered. #9 Stay not engineered, dev tomorrow. #10 Vibe design almost done, dev starting today. #11 Packing pending both. #14 Travel DNA not started. #15 Cross-Flow not started. Invite flows (2,3,5) built but broken per FRD.
+  </div>
+</div>
+
+<div class="footer">
+  Check-in cadence: Morning + EOD with Asif &middot; 15 flows from FRD v1 (Mar 9, 2026)
+</div>
+
+</body>
+</html>
