@@ -598,6 +598,103 @@ Includes: empty state, Ideas Pool (add/import), activity cards with voting icons
 
 ---
 
+### Flow 15: Calendar Tab (bottom nav)
+
+> Month-view calendar with trip bars, countdowns, and holiday discovery. **Screens exist in code — need design polish, not net-new builds.**
+
+| # | Screen | What the user sees | Exists in Code? | Figma? |
+|---|--------|--------------------|-----------------|--------|
+| 15.1 | Calendar Main | Year nav + horizontal month pills + calendar grid with trip bars + countdown card + year stats + timeline view | Yes (`calendar.tsx`) | Needs Design |
+| 15.2 | Trip Bar Overlay | Colored bars spanning trip date ranges on calendar grid. Max 2 visible per row. | Yes (`TripBar.tsx`) | Needs Design |
+| 15.3 | Overflow Sheet | "+N more" chip on days with 3+ trips → bottom sheet listing all trips for that day | Yes (BottomSheet in `calendar.tsx`) | Needs Design |
+| 15.4 | Trip Countdown Card | Large countdown to next trip ("3 days!", "Tomorrow", "Today!") with trip name | Yes (`TripCountdown.tsx`) | Needs Design |
+| 15.5 | Year Stats | Trips count, total days traveling, destinations visited for selected year | Yes (inline in `calendar.tsx`) | Needs Design |
+| 15.6 | Timeline View | Vertical timeline with dot-and-line chronological trip cards (title, location, dates, avatars) | Yes (`TimelineView.tsx`) | Needs Design |
+| 15.7 | Month Trip List | Sticky header "N trips in [Month]" + scrollable trip cards for selected month | Yes (`MonthTripList.tsx`) | Needs Design |
+| 15.8 | Holiday Suggestion Panel | Tap holiday emoji → slide-up panel with holiday info + horizontal destination cards + "Curate your own" | Yes (`HolidaySuggestionPanel.tsx`) | Needs Design |
+| 15.9 | Empty State | No trips yet. Prompt to create first trip or explore holidays. | TBD | Needs Design |
+| 15.10 | Tap Trip → Navigate | Tap any trip bar/card/timeline item → navigate to trip detail | Yes (handlers exist) | Dev handles |
+
+**What designers need to know:** All 8 visible screens exist and function. This is a **reskin/polish** job, not a build-from-scratch. Designers should screenshot the current app, then redesign with consistent visual language.
+
+**Open questions for Jake:** *(to be filled via interview)*
+
+---
+
+### Flow 16: Explore Tab (bottom nav)
+
+> Interactive 3D globe with country tracking, wishlists, friend overlays, and place discovery. **Screens exist in code — need design polish, not net-new builds.**
+
+| # | Screen | What the user sees | Exists in Code? | Figma? |
+|---|--------|--------------------|-----------------|--------|
+| 16.1 | Explore Main (Globe) | 3D globe with visited (green), wishlist (gold) countries, pulsing pins, stats overlay (country count, %, continents) | Yes (`explore.tsx` + `GlobeView.tsx`) | Needs Design |
+| 16.2 | Search Bar + Results | Top overlay search. Type → dropdown of matching countries (4) + places/hot spots (4). Tap → globe focuses + card opens. | Yes (`GlobeSearchBar.tsx`) | Needs Design |
+| 16.3 | Country Info Card | Slide-up card: hero image, flag, title, capital, social proof (friends), CTA ("Plan trip" / "Plan with friends"), status toggles (Wishlist/Visited), info chips (language, currency, region), cuisine, hot spots with wishlist hearts, friends' activities, trip history | Yes (`CountryInfoCard.tsx`) | Needs Design |
+| 16.4 | Friends Toggle | Frosted pill button toggling friend-visited heat map overlay on globe | Yes (`FriendsToggle.tsx`) | Needs Design |
+| 16.5 | Globe Legend | Color key: Visited (green dot), Wishlist (orange dot) | Yes (`GlobeLegend.tsx`) | Needs Design |
+| 16.6 | Wishlist Swap Sheet | "Swap into Top 5" modal showing current 5 ranked wishlist countries. Tap to replace. | Yes (`WishlistSwapSheet.tsx`) | Needs Design |
+| 16.7 | Suggest Place Sheet | Form modal: country (read-only) + place name input + submit. Adds to hot spots. | Yes (`SuggestPlaceSheet.tsx`) | Needs Design |
+| 16.8 | AI Chat Sheet | Sliding chat interface for AI-powered explore conversations. Message history + text input. | Yes (`ExploreChatSheet.tsx`) | Needs Design |
+| 16.9 | Chat FAB | Floating action button to open AI chat | Yes (`ChatFAB.tsx`) | Needs Design |
+| 16.10 | Confetti Animation | Celebratory confetti burst when marking a country as visited | Yes (`ConfettiAnimation.tsx`) | Dev handles |
+| 16.11 | Discovery Prompt | First-time user intro to Explore tab features | Yes (`TravelMapDiscoveryPrompt.tsx`) | Needs Design |
+| 16.12 | Empty State | 0 countries visited, 0 wishlist. Prompt to mark first country or explore. | TBD | Needs Design |
+
+**What designers need to know:** All 11 visible screens exist and function. This is a **reskin/polish** job. The globe is WebView-powered (globe.gl) so globe styling is code-side, but all overlays, cards, and sheets need Figma treatment.
+
+**Open questions for Jake:** *(to be filled via interview)*
+
+---
+
+### Flow 17: People Tab — Social (bottom nav)
+
+> Friends list, activity feed, shared wishlists, and social discovery. **Screens exist in code — need design polish, not net-new builds.**
+
+| # | Screen | What the user sees | Exists in Code? | Figma? |
+|---|--------|--------------------|-----------------|--------|
+| 17.1 | People Main | Own profile card (photo, stats: countries/trips/tripmates/furthest) + Bucket List Top 5 + Travel DNA widget + QR row + activity feed + filter chips (All/Tripmates/Contacts) + search + friend list | Yes (`people.tsx`) | Needs Design |
+| 17.2 | Friend Requests Banner | Expandable pill showing pending request count. Expand → request cards with Accept/Decline. | Yes (`FriendRequestsBanner.tsx`) | Needs Design |
+| 17.3 | Friend Activity Feed | Collapsible feed: new trips, bucket list adds, DNA completions, new joins, activity cards. Avatars + timestamps. | Yes (`FriendActivityFeed.tsx`) | Needs Design |
+| 17.4 | Shared Wishes Section | Countries where friends share bucket list items. Flag + friend avatars + "Plan" CTA (→ create trip with destination + friends pre-filled) | Yes (`SharedWishesSection.tsx`) | Needs Design |
+| 17.5 | Person Row | Single friend row: avatar, name, subtitle, follow/chevron button. Tap → profile. | Yes (`PersonRow.tsx`) | Needs Design |
+| 17.6 | Contact Sync Card | "Find friends from contacts" CTA card injected at position 5 in list (if no contacts imported) | Yes (`ContactSyncCard.tsx`) | Needs Design |
+| 17.7 | Bucket List Edit Modal | Manage Top 5 wishlist ranking | Yes (`BucketListSearchModal.tsx`) | Needs Design |
+| 17.8 | Profile Share Card | Bottom sheet: avatar, name, QR code, profile URL, Copy Link + Share buttons | Yes (`ProfileShareCard.tsx`) | Needs Design |
+| 17.9 | User Profile (other) | Tap friend → full profile: header, follow button, trips together, mutual friends, travel stats, countries visited | Yes (`profile/[userId].tsx`) | Needs Design |
+| 17.10 | Mutual Friends Modal | Slide-up list of mutual friends with avatars | Yes (`MutualFriendsModal.tsx`) | Needs Design |
+| 17.11 | Friends List (alt tab) | Dedicated friends list with search + requests + suggestions (UnifiedPeopleList) | Yes (`friends.tsx`) | Needs Design |
+| 17.12 | Empty State | 0 friends. Prompt to sync contacts or share invite link. | TBD | Needs Design |
+
+**What designers need to know:** All 11 visible screens exist and function. This is a **reskin/polish** job. The People tab is the most socially rich tab — designers should pay attention to the activity feed and shared wishes patterns as these drive viral loops.
+
+**Open questions for Jake:** *(to be filled via interview)*
+
+---
+
+### Flow 18: Profile & Settings
+
+> Account management, preferences, payment handles, and public profile. **Screens exist in code — need design polish, not net-new builds.**
+
+| # | Screen | What the user sees | Exists in Code? | Figma? |
+|---|--------|--------------------|-----------------|--------|
+| 18.1 | Settings Main | Scrollable settings hub: profile banner (editable name + avatar), quick action grid, DNA progress, home airport, appearance toggle, notification prefs (7 types), payment accounts, privacy toggle, legal links, beta feedback, sign out, delete account | Yes (`settings.tsx`) | Needs Design |
+| 18.2 | Quick Action Grid | 3-column tiles: Edit Profile, Countries, Travel DNA | Yes (`SettingsQuickActionGrid.tsx`) | Needs Design |
+| 18.3 | DNA Progress Card | Horizontal card with animated progress ring + question count + arrow to DNA flow | Yes (`DnaProgressCard.tsx`) | Needs Design |
+| 18.4 | Payment Accounts Section | View/edit mode for Venmo, PayPal, Cash App usernames + preferred method selector | Yes (inline in `settings.tsx`) | Needs Design |
+| 18.5 | Countries Visited | Full screen: header with count + CountryPicker (toggle countries on/off) | Yes (`settings/countries.tsx`) | Needs Design |
+| 18.6 | Notification Preferences | 7 toggle switches: expense added, settlement, dinner RSVP, new vote, trip invite, participant joined, bestie updates | Yes (inline in `settings.tsx`) | Needs Design |
+| 18.7 | Appearance / Theme | Dark mode toggle + Light/Dark mode picker | Yes (inline in `settings.tsx`) | Needs Design |
+| 18.8 | Delete Account | Confirmation dialog → account deletion flow | Yes (inline in `settings.tsx`) | Needs Design |
+| 18.9 | Beta Feedback Modal | Report Bug button + feedback text input modal | Yes (inline in `settings.tsx`) | Needs Design |
+| 18.10 | Profile Completeness Ring | SVG ring around avatar showing 4 segments: photo, home city, DNA, bucket list | Yes (`ProfileCompletenessRing.tsx`) | Needs Design |
+| 18.11 | Own Profile View | Self-view of profile: header + My Trips list + travel stats + countries | Yes (`profile/[userId].tsx` self-mode) | Needs Design |
+
+**What designers need to know:** Settings is ONE long scrollable screen with sections — not separate screens per setting. Designers should treat each section as a card/module within the scroll. The Countries screen (18.5) is the only separate full screen.
+
+**Open questions for Jake:** *(to be filled via interview)*
+
+---
+
 ### Cross-Flow Screens (NEW)
 
 > Screens that don't belong to a single flow — app-level navigation, profile, and system states.
@@ -636,8 +733,12 @@ Includes: empty state, Ideas Pool (add/import), activity cards with voting icons
 | 12. Expenses Tab | 32 | 23 Pencil → Figma, **9 dev handles** |
 | 13. Post-Trip State (NEW) | 6 | **6 need design** |
 | 14. Travel DNA Standalone (NEW) | 6 | **6 need design** |
+| 15. Calendar Tab (NEW) | 10 | 8 exist in code — **reskin**, 1 net-new, **1 dev handles** |
+| 16. Explore Tab (NEW) | 12 | 11 exist in code — **reskin**, 1 net-new, **1 dev handles** |
+| 17. People Tab — Social (NEW) | 12 | 11 exist in code — **reskin**, 1 net-new |
+| 18. Profile & Settings (NEW) | 11 | All exist in code — **reskin** |
 | Cross-Flow (NEW) | 9 | 4 need design, **5 dev handles** |
-| **TOTAL** | **~195** | **~86 need design, ~47 dev handles** |
+| **TOTAL** | **~240** | **~86 need design, ~45 reskin, ~47 dev handles** |
 
 ---
 
