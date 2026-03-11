@@ -28,26 +28,26 @@
 
   .summary-bar {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     margin-bottom: 24px;
     flex-wrap: wrap;
   }
   .summary-card {
     background: #fff;
     border-radius: 12px;
-    padding: 16px 24px;
+    padding: 14px 20px;
     flex: 1;
-    min-width: 120px;
+    min-width: 100px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     text-align: center;
   }
   .summary-card .number {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     line-height: 1;
   }
   .summary-card .label {
-    font-size: 12px;
+    font-size: 11px;
     color: #888;
     margin-top: 4px;
     text-transform: uppercase;
@@ -56,11 +56,12 @@
   .summary-card.done .number { color: #22c55e; }
   .summary-card.progress .number { color: #f59e0b; }
   .summary-card.blocked .number { color: #ef4444; }
+  .summary-card.reskin .number { color: #3b82f6; }
   .summary-card.not-started .number { color: #94a3b8; }
 
   .pipeline-legend {
     display: flex;
-    gap: 24px;
+    gap: 20px;
     margin-bottom: 20px;
     font-size: 13px;
     color: #666;
@@ -73,6 +74,7 @@
   .legend-dot.done { background: #22c55e; }
   .legend-dot.in-progress { background: #f59e0b; }
   .legend-dot.broken { background: #ef4444; }
+  .legend-dot.reskin { background: #3b82f6; }
   .legend-dot.not-started { background: #e2e8f0; }
 
   table {
@@ -87,44 +89,55 @@
   thead th {
     background: #1a1a2e;
     color: #fff;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 12px 16px;
+    padding: 10px 12px;
     text-align: left;
   }
-  thead th:first-child { padding-left: 20px; }
+  thead th:first-child { padding-left: 16px; }
   tbody td {
-    padding: 14px 16px;
-    font-size: 14px;
+    padding: 12px 12px;
+    font-size: 13px;
     border-bottom: 1px solid #f0f0f5;
     vertical-align: middle;
   }
   tbody td:first-child {
-    padding-left: 20px;
+    padding-left: 16px;
     font-weight: 600;
     color: #555;
-    width: 30px;
+    width: 28px;
   }
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:hover { background: #fafbfd; }
   tbody tr.new-flow { background: #fefce8; }
   tbody tr.new-flow:hover { background: #fef9c3; }
+  tbody tr.section-divider td {
+    background: #f8fafc;
+    padding: 6px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #94a3b8;
+    border-bottom: 2px solid #e2e8f0;
+  }
 
   .flow-name { font-weight: 600; }
 
   .pill {
     display: inline-block;
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 999px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     white-space: nowrap;
   }
   .pill.done { background: #dcfce7; color: #166534; }
   .pill.in-progress { background: #fef3c7; color: #92400e; }
   .pill.broken { background: #fee2e2; color: #991b1b; }
+  .pill.reskin { background: #dbeafe; color: #1e40af; }
   .pill.not-started { background: #f1f5f9; color: #94a3b8; }
   .pill.no-design { background: #fef3c7; color: #92400e; border: 1px dashed #f59e0b; }
 
@@ -132,6 +145,18 @@
     display: inline-block;
     background: #fbbf24;
     color: #78350f;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .reskin-tag {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1e40af;
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 10px;
@@ -148,13 +173,12 @@
     border-radius: 4px;
     font-size: 10px;
     font-weight: 600;
-    margin-left: 4px;
   }
 
   .notes {
     font-size: 12px;
     color: #888;
-    max-width: 260px;
+    max-width: 240px;
   }
 
   .target-tag {
@@ -200,6 +224,7 @@
   .progress-bar .segment.done { background: #22c55e; }
   .progress-bar .segment.in-progress { background: #f59e0b; }
   .progress-bar .segment.broken { background: #ef4444; }
+  .progress-bar .segment.reskin { background: #3b82f6; }
   .progress-bar .segment.not-started { background: #e2e8f0; color: #94a3b8; }
 
   .eod-section {
@@ -224,7 +249,7 @@
   .eod-item .num {
     font-weight: 700;
     color: #7c3aed;
-    min-width: 24px;
+    min-width: 28px;
   }
 
   .update-log {
@@ -263,11 +288,12 @@
 
   @media (max-width: 768px) {
     body { padding: 16px; }
-    .summary-card { min-width: 80px; padding: 12px 16px; }
-    .summary-card .number { font-size: 24px; }
-    table { font-size: 13px; }
-    thead th, tbody td { padding: 10px 8px; }
-    .notes { max-width: 160px; }
+    .summary-card { min-width: 70px; padding: 10px 12px; }
+    .summary-card .number { font-size: 22px; }
+    table { font-size: 12px; }
+    thead th, tbody td { padding: 8px 6px; }
+    .notes { max-width: 140px; }
+    .pill { font-size: 10px; padding: 2px 8px; }
   }
 </style>
 </head>
@@ -282,7 +308,7 @@
 <div class="summary-bar">
   <div class="summary-card done">
     <div class="number">3</div>
-    <div class="label">Fully Engineered</div>
+    <div class="label">Engineered</div>
   </div>
   <div class="summary-card progress">
     <div class="number">4</div>
@@ -290,7 +316,11 @@
   </div>
   <div class="summary-card blocked">
     <div class="number">3</div>
-    <div class="label">Built but Broken</div>
+    <div class="label">Built / Broken</div>
+  </div>
+  <div class="summary-card reskin">
+    <div class="number">4</div>
+    <div class="label">Needs Reskin</div>
   </div>
   <div class="summary-card not-started">
     <div class="number">5</div>
@@ -300,12 +330,13 @@
 
 <!-- Overall Progress Bar -->
 <div class="progress-bar-container">
-  <div class="progress-bar-label">Overall Pipeline — 15 flows, ~195 screens (FRD v1)</div>
+  <div class="progress-bar-label">Overall Pipeline — 19 flows, ~237 screens (FRD v1, Mar 10)</div>
   <div class="progress-bar">
-    <div class="segment done" style="width: 20%;">3</div>
-    <div class="segment in-progress" style="width: 26.7%;">4</div>
-    <div class="segment broken" style="width: 20%;">3</div>
-    <div class="segment not-started" style="width: 33.3%;">5</div>
+    <div class="segment done" style="width: 15.8%;">3</div>
+    <div class="segment in-progress" style="width: 21.1%;">4</div>
+    <div class="segment broken" style="width: 15.8%;">3</div>
+    <div class="segment reskin" style="width: 21.1%;">4</div>
+    <div class="segment not-started" style="width: 26.3%;">5</div>
   </div>
 </div>
 
@@ -314,8 +345,10 @@
   <div class="legend-item"><div class="legend-dot done"></div> Done</div>
   <div class="legend-item"><div class="legend-dot in-progress"></div> In Progress</div>
   <div class="legend-item"><div class="legend-dot broken"></div> Built but Broken</div>
+  <div class="legend-item"><div class="legend-dot reskin"></div> Needs Reskin</div>
   <div class="legend-item"><div class="legend-dot not-started"></div> Not Started</div>
-  <div class="legend-item"><span class="new-tag">NEW</span> New in FRD v1</div>
+  <div class="legend-item"><span class="new-tag">NEW</span> New in FRD</div>
+  <div class="legend-item"><span class="reskin-tag">RESKIN</span> Code exists, needs design</div>
 </div>
 
 <!-- Main Tracker Table -->
@@ -332,9 +365,11 @@
     </tr>
   </thead>
   <tbody>
+    <!-- SECTION: Core Flows (1-5) -->
+    <tr class="section-divider"><td colspan="7">Core Flows — Onboarding & Invites</td></tr>
     <tr>
       <td>1</td>
-      <td class="flow-name">Onboarding / Auth</td>
+      <td class="flow-name">New User Onboarding</td>
       <td><span class="screens-count">12</span></td>
       <td><span class="pill done">Done</span></td>
       <td><span class="pill done">Done</span></td>
@@ -377,6 +412,9 @@
       <td><span class="pill not-started">Not tested</span></td>
       <td class="notes">5 need design. Not working per FRD</td>
     </tr>
+
+    <!-- SECTION: Trip Detail Tabs (6-12) -->
+    <tr class="section-divider"><td colspan="7">Trip Detail Tabs</td></tr>
     <tr>
       <td>6</td>
       <td class="flow-name">Itinerary Tab</td>
@@ -397,7 +435,7 @@
     </tr>
     <tr>
       <td>8</td>
-      <td class="flow-name">People Tab</td>
+      <td class="flow-name">People Tab (trip)</td>
       <td><span class="screens-count">14</span></td>
       <td><span class="pill done">Done</span></td>
       <td><span class="pill done">Done</span></td>
@@ -424,12 +462,12 @@
     </tr>
     <tr class="new-flow">
       <td>11</td>
-      <td class="flow-name">Packing List <span class="new-tag">NEW</span></td>
+      <td class="flow-name">Packing List Tab <span class="new-tag">NEW</span></td>
       <td><span class="screens-count">9</span></td>
       <td><span class="pill not-started">Not started</span></td>
       <td><span class="pill not-started">Not started</span></td>
       <td><span class="pill not-started">Not tested</span></td>
-      <td class="notes">6 need design, 3 dev handles. Pending both</td>
+      <td class="notes">6 need design, 3 dev handles</td>
     </tr>
     <tr>
       <td>12</td>
@@ -440,6 +478,9 @@
       <td><span class="pill not-started">Not tested</span></td>
       <td class="notes">23 in Pencil &rarr; Figma, dev tomorrow <span class="target-tag">TOMORROW</span></td>
     </tr>
+
+    <!-- SECTION: Standalone Flows (13-14) -->
+    <tr class="section-divider"><td colspan="7">Standalone Flows</td></tr>
     <tr class="new-flow">
       <td>13</td>
       <td class="flow-name">Post-Trip State <span class="new-tag">NEW</span></td>
@@ -451,16 +492,58 @@
     </tr>
     <tr class="new-flow">
       <td>14</td>
-      <td class="flow-name">Travel DNA <span class="new-tag">NEW</span></td>
+      <td class="flow-name">Travel DNA Standalone <span class="new-tag">NEW</span></td>
       <td><span class="screens-count">6</span></td>
       <td><span class="pill not-started">Not started</span></td>
       <td><span class="pill not-started">Not started</span></td>
       <td><span class="pill not-started">Not tested</span></td>
       <td class="notes">6 screens all need design</td>
     </tr>
+
+    <!-- SECTION: Bottom Nav Tabs — Reskin (15-18) -->
+    <tr class="section-divider"><td colspan="7">Bottom Nav Tabs — Code Exists, Needs Reskin</td></tr>
+    <tr class="new-flow">
+      <td>15</td>
+      <td class="flow-name">Calendar Tab <span class="reskin-tag">RESKIN</span></td>
+      <td><span class="screens-count">10</span></td>
+      <td><span class="pill reskin">Needs reskin</span></td>
+      <td><span class="pill reskin">Code exists</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">8 screens in code, 1 net-new (empty state)</td>
+    </tr>
+    <tr class="new-flow">
+      <td>16</td>
+      <td class="flow-name">Explore Tab <span class="reskin-tag">RESKIN</span></td>
+      <td><span class="screens-count">10</span></td>
+      <td><span class="pill reskin">Needs reskin</span></td>
+      <td><span class="pill reskin">Code exists</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">9 in code, AI Chat cut. 1 net-new (empty state)</td>
+    </tr>
+    <tr class="new-flow">
+      <td>17</td>
+      <td class="flow-name">People Tab — Social <span class="reskin-tag">RESKIN</span></td>
+      <td><span class="screens-count">11</span></td>
+      <td><span class="pill reskin">Needs reskin</span></td>
+      <td><span class="pill reskin">Code exists</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">10 in code, Friends merged into People Main</td>
+    </tr>
+    <tr class="new-flow">
+      <td>18</td>
+      <td class="flow-name">Profile & Settings <span class="reskin-tag">RESKIN</span></td>
+      <td><span class="screens-count">11</span></td>
+      <td><span class="pill reskin">Needs reskin</span></td>
+      <td><span class="pill reskin">Code exists</span></td>
+      <td><span class="pill not-started">Not tested</span></td>
+      <td class="notes">All exist in code, reskin only</td>
+    </tr>
+
+    <!-- SECTION: Cross-Flow -->
+    <tr class="section-divider"><td colspan="7">Cross-Flow — App-Level Screens</td></tr>
     <tr class="new-flow">
       <td>X</td>
-      <td class="flow-name">Cross-Flow (Home/Profile) <span class="new-tag">NEW</span></td>
+      <td class="flow-name">Cross-Flow Screens <span class="new-tag">NEW</span></td>
       <td><span class="screens-count">9</span></td>
       <td><span class="pill not-started">Not started</span></td>
       <td><span class="pill not-started">Not started</span></td>
@@ -483,7 +566,8 @@
   <h2>Open Questions for Next Check-In</h2>
   <div class="eod-item"><span class="num">?</span> Flows 2, 3, 5 — broken invite flows need designs. Who picks this up?</div>
   <div class="eod-item"><span class="num">?</span> Flow 9 (Stay) — 24 screens need design. Designer assigned?</div>
-  <div class="eod-item"><span class="num">?</span> Flows 11, 13, 14, X — 4 NEW flows, all need design from scratch</div>
+  <div class="eod-item"><span class="num">?</span> Flows 11, 13, 14, X — need design from scratch</div>
+  <div class="eod-item"><span class="num">?</span> Flows 15-18 — reskin jobs. Designer assigned?</div>
   <div class="eod-item"><span class="num">?</span> Flow 12 (Expenses) — 23 Pencil screens need Figma conversion</div>
 </div>
 
@@ -491,13 +575,17 @@
 <div class="update-log">
   <h2>Update Log</h2>
   <div class="log-entry">
+    <span class="log-time">Mar 11 — 12:00 PM</span> <span class="log-source">(tracker v2 — aligned to published FRD)</span><br>
+    Added Flows 15-18 (Calendar, Explore, People Social, Profile &amp; Settings) as reskin jobs. Total: 19 flows, ~237 screens.
+  </div>
+  <div class="log-entry">
     <span class="log-time">Mar 11 — 11:36 AM</span> <span class="log-source">(check-in, from Asif via Slack)</span><br>
-    Initial tracker built. Asif corrected: #8 People confirmed designed+engineered. #9 Stay not engineered, dev tomorrow. #10 Vibe design almost done, dev starting today. #11 Packing pending both. #14 Travel DNA not started. #15 Cross-Flow not started. Invite flows (2,3,5) built but broken per FRD.
+    Initial tracker. Asif corrected: #8 People confirmed designed+engineered. #9 Stay not engineered, dev tomorrow. #10 Vibe design almost done, dev starting today. #11 Packing pending both. #14 Travel DNA not started. Cross-Flow not started. Invite flows (2,3,5) built but broken per FRD.
   </div>
 </div>
 
 <div class="footer">
-  Check-in cadence: Morning + EOD with Asif &middot; 15 flows from FRD v1 (Mar 9, 2026)
+  Check-in cadence: Morning + EOD with Asif &middot; 19 flows from FRD v1 (Mar 10, 2026) &middot; <a href="https://github.com/cojakestein-sketch/tryps-docs/blob/main/specs/frd-mar10.md" style="color:#7c3aed;">View FRD</a>
 </div>
 
 </body>
