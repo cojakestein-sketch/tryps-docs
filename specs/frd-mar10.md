@@ -615,9 +615,12 @@ Includes: empty state, Ideas Pool (add/import), activity cards with voting icons
 | 15.9 | Empty State | No trips yet. Prompt to create first trip or explore holidays. | TBD | Needs Design |
 | 15.10 | Tap Trip → Navigate | Tap any trip bar/card/timeline item → navigate to trip detail | Yes (handlers exist) | Dev handles |
 
-**What designers need to know:** All 8 visible screens exist and function. This is a **reskin/polish** job, not a build-from-scratch. Designers should screenshot the current app, then redesign with consistent visual language.
+**What designers need to know:** All 8 visible screens exist and function. This is a **reskin + propose improvements** job — match current functionality at minimum, but designers have latitude to propose layout/behavior changes if they see a better approach.
 
-**Open questions for Jake:** *(to be filled via interview)*
+**Decisions (Jake, Mar 11):**
+- Holiday Suggestion Panel (15.8): **stays** — design it
+- Empty state (15.9): **design it** — propose what a 0-trip user sees
+- All other screens: reskin, improvements welcome
 
 ---
 
@@ -634,15 +637,18 @@ Includes: empty state, Ideas Pool (add/import), activity cards with voting icons
 | 16.5 | Globe Legend | Color key: Visited (green dot), Wishlist (orange dot) | Yes (`GlobeLegend.tsx`) | Needs Design |
 | 16.6 | Wishlist Swap Sheet | "Swap into Top 5" modal showing current 5 ranked wishlist countries. Tap to replace. | Yes (`WishlistSwapSheet.tsx`) | Needs Design |
 | 16.7 | Suggest Place Sheet | Form modal: country (read-only) + place name input + submit. Adds to hot spots. | Yes (`SuggestPlaceSheet.tsx`) | Needs Design |
-| 16.8 | AI Chat Sheet | Sliding chat interface for AI-powered explore conversations. Message history + text input. | Yes (`ExploreChatSheet.tsx`) | Needs Design |
-| 16.9 | Chat FAB | Floating action button to open AI chat | Yes (`ChatFAB.tsx`) | Needs Design |
+| ~~16.8~~ | ~~AI Chat Sheet~~ | ~~Sliding chat interface for AI-powered explore conversations~~ | ~~Yes~~ | **CUT** — Phase 2+ |
+| ~~16.9~~ | ~~Chat FAB~~ | ~~Floating action button to open AI chat~~ | ~~Yes~~ | **CUT** — Phase 2+ |
 | 16.10 | Confetti Animation | Celebratory confetti burst when marking a country as visited | Yes (`ConfettiAnimation.tsx`) | Dev handles |
 | 16.11 | Discovery Prompt | First-time user intro to Explore tab features | Yes (`TravelMapDiscoveryPrompt.tsx`) | Needs Design |
 | 16.12 | Empty State | 0 countries visited, 0 wishlist. Prompt to mark first country or explore. | TBD | Needs Design |
 
-**What designers need to know:** All 11 visible screens exist and function. This is a **reskin/polish** job. The globe is WebView-powered (globe.gl) so globe styling is code-side, but all overlays, cards, and sheets need Figma treatment.
+**What designers need to know:** 9 visible screens exist and function (AI Chat + FAB cut). This is a **reskin + propose improvements** job. The globe is WebView-powered (globe.gl) so globe styling is code-side, but all overlays, cards, and sheets need Figma treatment.
 
-**Open questions for Jake:** *(to be filled via interview)*
+**Decisions (Jake, Mar 11):**
+- AI Chat Sheet (16.8) + Chat FAB (16.9): **CUT** — Phase 2+ agent work
+- Empty state (16.12): **design it** — propose what a first-time explorer sees
+- All other screens: reskin, improvements welcome
 
 ---
 
@@ -662,12 +668,15 @@ Includes: empty state, Ideas Pool (add/import), activity cards with voting icons
 | 17.8 | Profile Share Card | Bottom sheet: avatar, name, QR code, profile URL, Copy Link + Share buttons | Yes (`ProfileShareCard.tsx`) | Needs Design |
 | 17.9 | User Profile (other) | Tap friend → full profile: header, follow button, trips together, mutual friends, travel stats, countries visited | Yes (`profile/[userId].tsx`) | Needs Design |
 | 17.10 | Mutual Friends Modal | Slide-up list of mutual friends with avatars | Yes (`MutualFriendsModal.tsx`) | Needs Design |
-| 17.11 | Friends List (alt tab) | Dedicated friends list with search + requests + suggestions (UnifiedPeopleList) | Yes (`friends.tsx`) | Needs Design |
+| ~~17.11~~ | ~~Friends List (alt tab)~~ | ~~Dedicated friends list~~ — **MERGED into 17.1 People Main** | ~~Yes (`friends.tsx`)~~ | N/A |
 | 17.12 | Empty State | 0 friends. Prompt to sync contacts or share invite link. | TBD | Needs Design |
 
-**What designers need to know:** All 11 visible screens exist and function. This is a **reskin/polish** job. The People tab is the most socially rich tab — designers should pay attention to the activity feed and shared wishes patterns as these drive viral loops.
+**What designers need to know:** 10 visible screens exist (Friends List merged into People Main — treat as one screen). This is a **reskin + propose improvements** job. The People tab is the most socially rich tab — designers should pay attention to the activity feed and shared wishes patterns as these drive viral loops.
 
-**Open questions for Jake:** *(to be filled via interview)*
+**Decisions (Jake, Mar 11):**
+- `people.tsx` + `friends.tsx`: **merged into one screen** — designers should treat People Main as a single unified view
+- Empty state (17.12): **design it** — propose what a 0-friends user sees
+- All other screens: reskin, improvements welcome
 
 ---
 
@@ -689,9 +698,10 @@ Includes: empty state, Ideas Pool (add/import), activity cards with voting icons
 | 18.10 | Profile Completeness Ring | SVG ring around avatar showing 4 segments: photo, home city, DNA, bucket list | Yes (`ProfileCompletenessRing.tsx`) | Needs Design |
 | 18.11 | Own Profile View | Self-view of profile: header + My Trips list + travel stats + countries | Yes (`profile/[userId].tsx` self-mode) | Needs Design |
 
-**What designers need to know:** Settings is ONE long scrollable screen with sections — not separate screens per setting. Designers should treat each section as a card/module within the scroll. The Countries screen (18.5) is the only separate full screen.
+**What designers need to know:** Settings is ONE long scrollable screen with sections — not separate screens per setting. Designers should treat each section as a card/module within the scroll. The Countries screen (18.5) is the only separate full screen. This is a **reskin + propose improvements** job.
 
-**Open questions for Jake:** *(to be filled via interview)*
+**Decisions (Jake, Mar 11):**
+- All screens: reskin, improvements welcome — designers can propose restructuring the settings layout if they see a better approach
 
 ---
 
@@ -734,11 +744,11 @@ Includes: empty state, Ideas Pool (add/import), activity cards with voting icons
 | 13. Post-Trip State (NEW) | 6 | **6 need design** |
 | 14. Travel DNA Standalone (NEW) | 6 | **6 need design** |
 | 15. Calendar Tab (NEW) | 10 | 8 exist in code — **reskin**, 1 net-new, **1 dev handles** |
-| 16. Explore Tab (NEW) | 12 | 11 exist in code — **reskin**, 1 net-new, **1 dev handles** |
-| 17. People Tab — Social (NEW) | 12 | 11 exist in code — **reskin**, 1 net-new |
+| 16. Explore Tab (NEW) | 10 | 9 exist in code — **reskin**, 1 net-new, **2 cut (AI Chat)** |
+| 17. People Tab — Social (NEW) | 11 | 10 exist in code — **reskin**, 1 net-new, **1 merged** |
 | 18. Profile & Settings (NEW) | 11 | All exist in code — **reskin** |
 | Cross-Flow (NEW) | 9 | 4 need design, **5 dev handles** |
-| **TOTAL** | **~240** | **~86 need design, ~45 reskin, ~47 dev handles** |
+| **TOTAL** | **~237** | **~86 need design, ~42 reskin, ~47 dev handles** |
 
 ---
 
