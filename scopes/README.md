@@ -6,15 +6,23 @@ Each phase contains scopes. Each scope gets its own spec, FRD, and plan — gene
 
 ```
 scopes/
-├── p1/                          # Phase 1: Core App
+├── p1/                          # Phase 1: Core App (6 scopes)
 │   ├── core-flows/              # 1. 19 user flows from flow tracker
 │   ├── tooltips-teaching/       # 2. Tooltips & teaching the user
 │   ├── notifications-voting/    # 3. Notifications & voting (48hr rules)
 │   ├── post-trip-review/        # 4. Post-trip review & montage
 │   ├── travel-dna/              # 5. Travel DNA algorithm & NL
 │   └── recommendations/         # 6. Recommendation algorithm (5 sub-scopes)
-├── p2/                          # Phase 2: Stripe + Linq (future)
-└── p3/                          # Phase 3: Agent Layer (future)
+├── p2/                          # Phase 2: Stripe + Linq (4 scopes)
+│   ├── linq-imessage/           # 1. iMessage via Linq [HAS FRD]
+│   ├── stripe-payments/         # 2. Stripe payments + Vercel billing
+│   ├── booking-links/           # 3. Booking links embedded in system
+│   └── connectors/              # 4. Travel life connectors (airlines, hotels, ChatGPT)
+└── p3/                          # Phase 3: Agent Layer (4 scopes)
+    ├── vote-on-behalf/          # 1. Agent votes for you (48hr fallback)
+    ├── pay-on-behalf/           # 2. X-402 micropayment layer
+    ├── duffel-apis/             # 3. Duffel + external API dependencies
+    └── logistics-agent/         # 4. Logistics agent [HAS SPEC]
 ```
 
 ## Per-Scope Files
