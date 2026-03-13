@@ -18,11 +18,19 @@ scopes/
 │   ├── stripe-payments/         # 2. Stripe payments + Vercel billing
 │   ├── booking-links/           # 3. Booking links embedded in system
 │   └── connectors/              # 4. Travel life connectors (airlines, hotels, ChatGPT)
-└── p3/                          # Phase 3: Agent Layer (4 scopes)
-    ├── vote-on-behalf/          # 1. Agent votes for you (48hr fallback)
-    ├── pay-on-behalf/           # 2. X-402 micropayment layer
-    ├── duffel-apis/             # 3. Duffel + external API dependencies
-    └── logistics-agent/         # 4. Logistics agent [HAS SPEC]
+├── p3/                          # Phase 3: Agent Layer (4 scopes)
+│   ├── vote-on-behalf/          # 1. Agent votes for you (48hr fallback)
+│   ├── pay-on-behalf/           # 2. X-402 micropayment layer
+│   ├── duffel-apis/             # 3. Duffel + external API dependencies
+│   └── logistics-agent/         # 4. Logistics agent [HAS SPEC]
+├── p4/                          # Phase 4: Brand & Go-to-Market (4 scopes)
+│   ├── socials-presence/        # 1. Socials & presence (IG, TikTok, Twitter)
+│   ├── wispr-playbook/          # 2. Wispr Flow playbook for UGC creators
+│   ├── referral-incentives/     # 3. Referral incentives (999/369, gatekeeping)
+│   └── giveaways/               # 4. Giveaways (Cabo, Paris, Napa, dream trip)
+└── p5/                          # Phase 5: V2 Beta (2 scopes)
+    ├── friends-family/          # 1. Family & friends testing (prompts, feedback)
+    └── strangers-review/        # 2. MIT + stranger reviews (Reddit, forums)
 ```
 
 ## Per-Scope Files
@@ -34,6 +42,7 @@ Each scope folder contains:
 | `spec.md` | Acceptance criteria & intent | `/vision /spec` |
 | `frd.md` | Functional requirements | `/vision /frd` |
 | `plan.md` | Implementation plan | `/vision /plan` |
+| `references.md` | Existing related files from `t4` private repo | Auto-generated |
 | `status.md` | Current status & notes | Manual / Marty |
 
 ## Workflow
