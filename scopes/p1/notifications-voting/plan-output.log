@@ -1,0 +1,17 @@
+Here's a summary of the plan:
+
+**6 phases, 37 tasks** across 17 new files and 9 modified files.
+
+**Key findings from codebase scan:**
+- Push infrastructure is ~60% built — `push_tokens`, `notification_preferences`, `send-push-notification` edge fn, `registerForPushNotifications()`, and notification listeners all exist but need schema upgrades and feature additions
+- All voting tables + UI exist — this scope only adds notification triggers on top
+- The FRD references `invite_trips` but the actual table is `trip_invites` — flagged in risk areas
+- `expo-calendar` is installed but unused — ready for calendar sync
+
+**Critical gaps to fill:**
+1. **Schema:** 6 migrations (notification_log, pending_notifications queue, preference upgrades, trip_members badge tracking, trips timezone/deadline)
+2. **Edge functions:** 3 new (group-chat stub, batch processor, scheduled cron)
+3. **Central dispatch:** New `notificationTriggers.ts` routes all 22 notifications to the right channel
+4. **Client UI:** Expense badge, push nudge bottom sheet, trip + global notification settings, calendar sync
+
+**After Phase 2, three streams can run in parallel** — event wiring, client UI, and calendar/deep links — making this a good candidate for agent teams.

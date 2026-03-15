@@ -1,0 +1,30 @@
+---
+SCOPE PIPELINE — Step 3: Plan
+Scope: p1/notifications-voting
+Docs: /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/
+
+Read these files before starting:
+- /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/spec.md
+- /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/frd.md
+- /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/codebase-scan.md (if exists)
+
+Also read for codebase context:
+- docs/CODEBASE_MAP.md
+- docs/conventions.md
+
+Task:
+Read the spec, FRD, and codebase scan for the Notifications & Voting scope. Create a detailed
+implementation plan with phased task breakdown, file list, migration plan, and risk areas.
+The FRD has 4 database tables, 4 edge functions, 22 notification types, client-side components,
+and settings screens. Organize into phases: Foundation (migrations, types), Core (edge functions,
+components), Polish (settings, edge cases).
+
+When complete:
+1. Save plan to /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/plan.md
+2. Update Mission Control: PATCH /api/workstreams/p1-notifications-voting/pipeline/plan with status "complete"
+   (use API key from ~/.mission-control-api-key)
+3. Save the Step 4 (Work) handoff prompt to /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/next-prompt.txt
+4. Display the Step 4 prompt in terminal
+
+⛔ Then EXIT this session. Open a new terminal for Step 4 (Work).
+---

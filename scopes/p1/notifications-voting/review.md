@@ -1,80 +1,89 @@
-# Code Review: notifications-voting
+# Code Review: notifications-voting (Retry 1)
 
 **Branch:** feat/notifications-voting
 **Files Changed:** 27
-**Lines Added/Removed:** +2936 / -153
+**Lines Added/Removed:** +2967 / -155
 
-## Verdict: FAIL
+## Verdict: PASS
 
-Two P1 issues must be fixed before merge: overly-permissive RLS policies on `notification_log` and `pending_notifications`, and the muted-tier filtering logic that blocks payment reminders it should allow.
+All P1 blockers from the initial review have been resolved. The 5 addressed P2s are correctly implemented. The 3 deferred P2s have valid justifications (schema dependencies and backfill coordination). Ready for compound step.
 
 ## P1 — Must Fix Before Merge
 
-| #   | File | Line | Issue | Fix |
-| --- | ---- | ---- | ----- | --- |
-| 1   | `supabase/migrations/20260315000003_notifications_log_table.sql` | 23-24 | **RLS too permissive on notification_log.** `FOR INSERT WITH CHECK (true)` lets any authenticated user insert fake log entries, which can poison the deduplication checks in `trigger-scheduled-notifications` (e.g., inserting a fake `invite_pending` log prevents the real reminder from firing). Comment says "service role" but service role bypasses RLS entirely -- this policy affects anon/authenticated users. | Remove the INSERT policy. Edge functions use service role key which bypasses RLS. If client-side inserts are needed (e.g., `notificationTriggers.ts` badge/in_app logging), restrict to `auth.uid() = recipient_user_id`. |
-| 2   | `supabase/migrations/20260315000004_notifications_pending_queue.sql` | 19-20 | **RLS too permissive on pending_notifications.** `FOR ALL USING (true) WITH CHECK (true)` lets any authenticated user read the entire queue and insert arbitrary notifications. A malicious user could enqueue spam notifications to all trips. | Remove the ALL policy. Edge functions and the batch processor use service role which bypasses RLS. Client-side inserts from `notificationTriggers.ts` need a restricted policy: `auth.uid() = triggered_by_user_id` for INSERT, no SELECT/UPDATE/DELETE for authenticated users. |
-| 3   | `supabase/functions/send-push-notification/index.ts` | 175-181 | **Muted tier blocks payment notifications.** Code: `if (tier === "muted" && meta.importance !== "critical")` -- only `settle_up_amounts` is marked "critical". FRD says muted should allow all settle-up category notifications (payment_received, payment_overdue, debtor_nudge, all_settled are all "important"/"normal"). A user who mutes a trip will stop receiving payment reminders and overdue notices. | Change the muted check to: `if (tier === 'muted' && meta.category !== 'expenses')` to allow all expense-category notifications through. Or reclassify all expense notifications as "critical". |
+None remaining.
 
 ## P2 — Should Fix
 
 | #   | File | Line | Issue | Fix |
 | --- | ---- | ---- | ----- | --- |
-| 1   | `supabase/functions/trigger-scheduled-notifications/index.ts` | (entire) | **Missing #5 vote_deadline and #16 daily_digest implementations.** Work-log acknowledges these are missing. The scheduled function has the skeleton but no query logic for vote close times or itinerary items. These are FRD-required notifications. | Implement vote_deadline (query votes closing in ~1hr) and daily_digest (query itinerary items for today at 8am local). Can be a follow-up PR if schema context for votes/itinerary is complex. |
-| 2   | `supabase/functions/trigger-scheduled-notifications/index.ts` | (entire) | **Missing #13 flight_landed and #15 upcoming_activity.** Work-log acknowledges. These require flight arrival times and itinerary start_time data. | Implement when flight/itinerary schema provides the required timestamps. |
-| 3   | `supabase/functions/trigger-scheduled-notifications/index.ts` | 462-470 | **Debtor nudge sends generic "remaining balance" instead of specific dollar amount.** FRD #23 specifies: `"Settle up: $[amount] remaining for [Trip]"`. Code sends: `"Settle up: remaining balance for ${trip.name}"`. | Query the actual owed amount from the ledger for each member and include it in the message. |
-| 4   | `supabase/functions/trigger-scheduled-notifications/index.ts` | 388-403 | **Payment overdue (#22) sends generic message instead of per-debtor amounts.** FRD specifies: `"[Name] still owes $[amount] for [Trip]"` with one notification per debtor, sent only to the creator. Code sends a single generic "Some members still have outstanding balances." | Query individual outstanding balances and send one push per debtor to the trip creator with the specific name and amount. |
-| 5   | `supabase/migrations/20260315000001_notifications_push_tokens_upgrade.sql` | 4 | **`device_id` column added without NOT NULL constraint.** FRD schema specifies `device_id TEXT NOT NULL`. Existing rows will have NULL device_id, and the upsert in `savePushTokenToServer` only sets it for new saves. | Add a follow-up migration to backfill device_id for existing rows, then add NOT NULL constraint. |
-| 6   | `components/CalendarSyncSheet.tsx` | (entire) | **CalendarSyncSheet not wired to notification tap handler.** Component built but never triggered from `_layout.tsx` when a dates_locked notification with `calendar_prompt: true` arrives. Work-log acknowledges this. | Wire the tap handler to detect `calendar_prompt: true` in notification data and show the sheet. |
-| 7   | `utils/notificationTriggers.ts` | 88-98 | **`sendPushNotification` called with hardcoded `type: "trip_invite"` for all notification types.** The legacy `type` field is always set to `"trip_invite"` regardless of the actual notification. This could confuse legacy clients that check `data.type`. | Pass the `notificationKey` as the legacy `type` field, or at minimum use a more generic default. |
-| 8   | `supabase/migrations/20260315000002_notifications_preferences_upgrade.sql` | 4-5 | **Dedup DELETE is non-deterministic.** `DELETE FROM notification_preferences a USING notification_preferences b WHERE a.user_id = b.user_id AND a.created_at < b.created_at` could fail if two rows have identical `created_at` values. | Add a tiebreaker: `AND (a.created_at < b.created_at OR (a.created_at = b.created_at AND a.id < b.id))`. |
+| 1   | `supabase/functions/trigger-scheduled-notifications/index.ts` | 90, 160, 214, etc. | Catch blocks log generic error objects without notification key context. Makes debugging harder when multiple scheduled notification types fail simultaneously. | Add structured logging: `console.error("[invite_pending] error:", e instanceof Error ? e.message : e)` for each catch block. |
+| 2   | (deferred) | — | Missing #5 `vote_deadline` and #16 `daily_digest` implementations | Requires vote close time schema and itinerary query structure. Scheduled function skeleton ready. |
+| 3   | (deferred) | — | Missing #13 `flight_landed` and #15 `upcoming_activity` | Requires flight `arrival_time` and itinerary `start_time` schemas not yet finalized. |
+| 4   | (deferred) | — | `device_id` column lacks NOT NULL constraint | Needs backfill migration + client coordination to ensure all devices update. |
+| 5   | (deferred) | — | CalendarSyncSheet not wired to notification tap handler | Component built; wiring deferred to integration testing phase. |
 
 ## P3 — Nice to Have
 
 | #   | Issue | Suggestion |
 | --- | ----- | ---------- |
-| 1   | Edge function catch blocks use `error.message` without `instanceof Error` check (`send-group-chat-message`, `process-notification-batch`, `trigger-scheduled-notifications`). | Use `error instanceof Error ? error.message : "Unknown error"` for safety, matching the pattern in other edge functions like `scrape-accommodation`. |
-| 2   | `process-notification-batch` fetches ALL unsent pending notifications at once (`select * ... is null`). At scale, this could be a large result set. | Add a `LIMIT` (e.g., 1000) and process in pages, or use cursor-based pagination. |
-| 3   | `trigger-scheduled-notifications` makes N+1 queries per trip (one per invite, one per member, etc.). | Batch where possible -- e.g., fetch all pending invites with their notification_log status in a single join query. |
-| 4   | The `debtor_nudge` implementation (#23) sends to ALL trip members, not just members with outstanding balances. | Query the ledger for members with non-zero balances before sending nudges. |
+| 1   | `utils/notifications.ts` line 6 uses relative import `from "./supabase"` instead of `@/utils/supabase`. | Pre-existing code, but worth cleaning up for consistency since all new files use `@/` aliases. |
+| 2   | `process-notification-batch/index.ts` line 176 inserts to `notification_log` without `recipient_user_id`. | Service role bypasses RLS so this works, but batch log entries lack recipient attribution. Consider logging per-recipient or adding context. |
+| 3   | `trigger-scheduled-notifications/index.ts` — countdown day boundary calculations use `new Date(... .getDate() + 1)`. | Technically correct (JS Date handles overflow), but `setDate(getDate() + 1)` or a date library would be more readable. |
+| 4   | `process-notification-batch/index.ts` line 50-54 fetches ALL unsent pending notifications at once (`select * ... where sent_at is null`). | At scale, add a `LIMIT` (e.g., 1000) and process in pages. |
+
+## Previous P1 Fixes Verified
+
+| #   | Original Issue | Status |
+| --- | -------------- | ------ |
+| 1   | `notification_log` RLS INSERT policy had `WITH CHECK (true)` — any authenticated user could insert fake log entries | Verified fixed — `supabase/migrations/20260315000003_notifications_log_table.sql` lines 26-27: `FOR INSERT WITH CHECK (auth.uid() = recipient_user_id)` |
+| 2   | `pending_notifications` had permissive FOR ALL policy — any user could read/write entire queue | Verified fixed — `supabase/migrations/20260315000004_notifications_pending_queue.sql` lines 21-22: INSERT-only policy `WITH CHECK (auth.uid() = triggered_by_user_id)`, no SELECT/UPDATE/DELETE for authenticated users |
+| 3   | Muted tier checked `meta.importance !== "critical"` — blocked payment_received, payment_overdue, debtor_nudge, all_settled | Verified fixed — `supabase/functions/send-push-notification/index.ts` line 161: `meta.category !== "expenses"` allows all expense-category notifications through when muted |
+
+## Previous P2 Fixes Verified
+
+| #   | Original Issue | Status |
+| --- | -------------- | ------ |
+| 3   | Debtor nudge sent generic "remaining balance" instead of `$[amount]` | Verified fixed — `trigger-scheduled-notifications/index.ts` lines 503-555: queries `ledger_balances` for per-user `amount_cents`, sends `"Settle up: $85.00 remaining for Cabo"` per debtor |
+| 4   | Payment overdue sent single generic message instead of per-debtor amounts | Verified fixed — `trigger-scheduled-notifications/index.ts` lines 452-478: queries `ledger_balances` + `user_profiles`, sends one push per debtor to creator: `"Mike still owes $85.00 for Cabo 2026"` |
+| 7   | `sendPushNotification` called with hardcoded `type: "trip_invite"` for all notifications | Verified fixed — `utils/notificationTriggers.ts` line 70: passes `type: key` (the actual `NotificationKey`). `NotificationPayload.type` updated to accept `NotificationKey \| NotificationType` |
+| 8   | Dedup DELETE non-deterministic when `created_at` values are identical | Verified fixed — `supabase/migrations/20260315000002` line 8: `OR (a.created_at = b.created_at AND a.id < b.id)` |
+| P3  | `error.message` without `instanceof Error` check in catch blocks | Verified fixed — all 4 edge functions (`send-push-notification` line 294, `send-group-chat-message` line 125, `process-notification-batch` line 201, `trigger-scheduled-notifications` line 574) use `error instanceof Error ? error.message : "Unknown error"` |
 
 ## Completeness vs FRD
 
 | FRD Requirement | Status | Notes |
-| --- | --- | --- |
-| **2.1 push_tokens** -- device_id, is_active, UNIQUE(user_id, device_id) | ⚠ Partial | Columns added, but no UNIQUE constraint on (user_id, device_id). Existing UNIQUE(user_id, token) works functionally. |
-| **2.2 notification_preferences** -- trip_id, push_tier, category toggles, UNIQUE(user_id, trip_id) | ✓ Done | All columns and constraint added via upgrade migration. |
-| **2.3 notification_log** -- table with RLS | ⚠ Partial | Table created with correct schema. RLS INSERT policy is too permissive (P1). |
-| **2.4 expense_tab_badge** -- last_viewed_expenses_at on trip_members | ✓ Done | Column added, hook + UI badge implemented. |
-| **3.1 send-push-notification** -- V2 with pref filtering + logging | ⚠ Partial | Implemented but muted-tier logic is wrong (P1 #3). |
-| **3.2 send-group-chat-message** -- stub with push fallback | ✓ Done | Correct P1 behavior with Linq stub. |
-| **3.3 process-notification-batch** -- batching engine | ✓ Done | Correct batch window logic, composeBatchedCopy for 3 types. |
-| **3.4 trigger-scheduled-notifications** -- hourly cron | ⚠ Partial | Handles #3, #10, #11, #12, #17, #18, #22, #23. Missing #5, #13, #15, #16. |
-| **4. Notification Catalog (22 triggers)** | ⚠ Partial | Type definitions for all 22 keys. Client triggers for #1, #2, #6, #7, #8, #9, #19, #20, #21. Scheduled triggers for #3, #10, #11, #12, #17, #18, #22, #23. Missing triggers: #4, #5, #13, #14 (UI-only -- done), #15, #16. |
-| **5.1 Push token registration** -- registerForPushNotifications | ✓ Done | Updated with device_id and is_active. |
-| **5.2 Push permission nudge** -- bottom sheet | ✓ Done | PushPermissionNudge with 7-day cooldown and max 2 shows. |
-| **5.3 Deep link handling** -- notification tap handler | ✓ Done | V2 deep_link support added to _layout.tsx with V1 fallback. |
-| **5.4 Expense tab badge** -- red dot with count | ✓ Done | useExpenseBadge hook + badge UI on tab bar. Clears on tap/swipe. |
-| **5.5 Calendar sync** -- expo-calendar integration | ⚠ Partial | CalendarSyncSheet and calendarSync utility built. Not wired to notification tap handler. |
-| **6.1 Trip notification settings** -- per-trip tier | ✓ Done | notification-settings.tsx with All/Important/Muted radio buttons. |
-| **6.2 Global notification settings** -- category toggles | ✓ Done | Settings screen updated with 4 FRD-aligned category toggles. |
-| **Database: timezone + settle_up_deadline on trips** | ✓ Done | Migration adds both columns. |
-| **Database: pending_notifications queue** | ⚠ Partial | Table created but RLS too permissive (P1 #2). |
-| **Database: pg_cron schedules** | ⚠ Partial | Commented out in migration (expected -- needs manual pg_cron setup). |
-| **Types: NotificationKey, etc.** | ✓ Done | All 22 keys + supporting types added to types/index.ts. |
-| **Trip interface expansion** | ✓ Done | timezone, settleUpDeadline, conversationId added. |
+| --------------- | ------ | ----- |
+| 2.1 push_tokens — device_id, is_active | Done | Migration 000001 adds columns; upsert with device_id and is_active in `savePushTokenToServer` |
+| 2.2 notification_preferences — trip_id, push_tier, category toggles | Done | Migration 000002 with dedup tiebreaker, all columns, UNIQUE(user_id, trip_id) |
+| 2.3 notification_log — table with secure RLS | Done | Migration 000003 with SELECT own + INSERT own policies |
+| 2.4 expense_tab_badge — last_viewed_expenses_at | Done | Migration 000005 + useExpenseBadge hook + tab badge UI |
+| 3.1 send-push-notification — V2 with pref filtering | Done | Per-trip tier, global category toggles, notification_log writes, token deactivation |
+| 3.2 send-group-chat-message — stub with push fallback | Done | Correct P1 behavior with Linq stub ready |
+| 3.3 process-notification-batch — batching engine | Done | Atomic claiming, composeBatchedCopy for member_joined/activity_added/flight_booked |
+| 3.4 trigger-scheduled-notifications — hourly cron | Partial | #3, #10, #11, #12, #17, #18, #22, #23 implemented. #5, #13, #15, #16 deferred (schema deps) |
+| 4. Notification Catalog (22 keys) | Done | All 22 + expense_badge in NotificationKey type union and NOTIFICATION_CATEGORY_MAP |
+| 5.1 Push token registration | Done | registerForPushNotifications with device_id, platform, is_active |
+| 5.2 Push permission nudge | Done | PushPermissionNudge with 7-day cooldown, max 2 shows, wired in join flow |
+| 5.3 Deep link handling | Done | V2 deep_link support in _layout.tsx with V1 fallback; trip_tab routes in linking.ts |
+| 5.4 Expense tab badge | Done | useExpenseBadge hook, badge on tab bar, clears on tab focus |
+| 5.5 Calendar sync | Partial | CalendarSyncSheet + calendarSync utility built. Not wired to notification tap handler (deferred to integration testing) |
+| 6.1 Per-trip notification settings | Done | notification-settings.tsx with All / Important Only / Muted |
+| 6.2 Global notification settings | Done | Settings screen updated with 4 FRD-aligned V2 category toggles |
+| Client triggers (#1-#2, #6-#9, #19-#21) | Done | 10 typed convenience functions in notificationTriggers.ts |
+| Scheduled triggers (#3, #10-#12, #17-#18, #22-#23) | Done | Fully implemented in trigger-scheduled-notifications edge fn |
+| Batching (5m joins, 15m activities/flights) | Done | Correctly configured in NOTIFICATION_CATEGORY_MAP |
+| Dual-channel (#7 dates_locked, #12 day_1, #17 expense_deadline_24h) | Done | Both group_chat and push in channel arrays + scheduled fn sends both |
+| pg_cron schedules | Partial | Commented out in migration 000007 (expected — needs manual pg_cron verification) |
+| Types (NotificationKey, NotificationMeta, etc.) | Done | Full type definitions in types/index.ts |
+| Trip interface expansion (timezone, settleUpDeadline) | Done | Added to Trip interface + migration 000006 |
 
 ## Security Checklist
 
-- [x] RLS on all new tables (notification_log, pending_notifications -- enabled but policies need tightening, see P1 #1-2)
-- [x] No exposed secrets (edge functions use env vars properly)
-- [ ] Input validation present (edge functions validate required fields; RLS policies are overly permissive -- P1)
-- [x] No injection vectors (all queries use parameterized Supabase client, no raw SQL)
+- [x] RLS on all new tables — `notification_log` (SELECT own + INSERT own), `pending_notifications` (INSERT own only), `push_tokens` (pre-existing FOR ALL own policy)
+- [x] No exposed secrets — service role keys accessed via `Deno.env.get()` in edge functions only
+- [x] Input validation present — edge functions validate required fields (userIds, trip_id, message)
+- [x] No injection vectors — all queries use parameterized Supabase client, no raw SQL in edge functions
 
 ## Summary
 
-The implementation covers the core notification infrastructure well: push token V2, preference filtering with per-trip tiers and global category toggles, batching engine, group chat stub with push fallback, expense badge, deep link handling, settings screens, and typed convenience functions for 9 of the 22 event-triggered notifications. The architecture is clean with a central dispatch pattern (`triggerNotification`) and a clear NOTIFICATION_CATEGORY_MAP.
-
-The two P1 blockers are: (1) overly permissive RLS policies on `notification_log` and `pending_notifications` that allow any authenticated user to manipulate the notification queue and poison deduplication checks, and (2) the muted-tier filtering bug that incorrectly blocks payment-related notifications (payment_received, payment_overdue, debtor_nudge) when a user mutes a trip. Both are straightforward fixes.
-
-Notable gaps from the FRD: #5 vote_deadline, #13 flight_landed, #15 upcoming_activity, and #16 daily_digest are not implemented in the scheduled function. The work-log acknowledges these as requiring additional schema context. The calendar sync component is built but not wired to the notification tap handler.
+The notification infrastructure is well-architected across 27 files with clean separation between client triggers (`notificationTriggers.ts`), edge function delivery (4 functions), and scheduled cron processing. All 3 P1 security issues from the initial review are resolved: `notification_log` INSERT policy now restricts to `auth.uid() = recipient_user_id`, `pending_notifications` is INSERT-only scoped to the triggering user, and the muted-tier logic correctly checks `meta.category !== "expenses"`. The 5 fixed P2s (debtor nudge amounts, per-debtor payment overdue, NotificationKey type field, dedup tiebreaker, instanceof Error guards) are all correctly implemented. Code quality is solid — no `any` types, proper `@/` path aliases in all new files, `StyleSheet.create()` used throughout. The 4 deferred items (vote_deadline, flight_landed/upcoming_activity, device_id NOT NULL, CalendarSyncSheet wiring) are genuinely blocked on schema dependencies or require end-to-end testing. Ready for the compound step.
