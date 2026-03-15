@@ -1,7 +1,8 @@
 # Tryps × Linq Integration FRD
 
-**Version:** 0.2 (Draft — Pre-Kickoff, updated with contract + research)
-**Date:** March 11, 2026
+**Version:** 0.3 (Updated post-spec interview — March 15, 2026)
+**Date:** March 15, 2026
+**Spec:** `scopes/p2/linq-imessage/spec.md` (status: ready, 40 success criteria)
 **Author:** Jake Stein
 **Parent Doc:** [Master FRD v1.0](/Users/jakestein/tryps-docs/specs/frd-mar10.md) (922 lines, 18 flows, ~237 screens)
 **Meeting:** Architecture kickoff Friday March 14, 2026 — Jake + Asif (Tryps) + Linq (head of architecture, sales, dev team)
@@ -123,6 +124,63 @@ This is a **modular companion doc** to the master FRD. It covers the Phase 2 iMe
 - Phase summary → Master FRD Section 4
 
 **Core principle:** Linq adds a new entry point, not new app features. Every Linq flow maps to an existing Phase 1 flow. The iMessage thread is a remote control for the Tryps app.
+
+---
+
+## 1b. Spec-Driven Decisions (March 15, 2026)
+
+These decisions were made during the spec interview with Jake and override any conflicting assumptions in the original FRD draft.
+
+### Core Product Model
+
+**The group chat IS the product.** Adding the Tryps number to an iMessage group chat is the primary onboarding flow. No app download, no signup, no email required. The app is the rich layer on top — if you download it later, all your texted data is already there.
+
+**Group membership = trip membership.** If you're in the iMessage group, you're on the trip. If you leave, you're off. They always move together — a user cannot be in the app but not the group, or in the group but not the app. This is the source of truth.
+
+**Trip ownership transfers.** If the trip owner leaves the iMessage group, ownership transfers to another member automatically.
+
+### Agent Behavior Model
+
+**The agent listens quietly.** It does NOT respond to every message. Normal friend conversation gets zero response. The agent only speaks when it has something useful to add — confirming an action, answering a question, or surfacing timely info.
+
+**Message constraints:**
+- Every agent message: 6 lines or fewer
+- Max 3 messages in a row before waiting for user input
+- Average response: 3-4 lines
+- The agent works silently in the background and does NOT announce every action
+
+**Private info goes to DMs.** Balance queries and sensitive responses go to 1:1 DMs, not the group chat.
+
+**Proactive, not reactive.** Like [Poke](https://poke.com/) (iMessage AI assistant, also built on Linq), the agent surfaces information at the right moment — Airbnb address when you land, vote reminders before deadlines, activity suggestions when asked. But it's more restrained than Poke because it's in a group chat, not a 1:1.
+
+### New Capabilities (Not in FRD v0.2)
+
+1. **Vibe quiz in onboarding (SC-6):** Early in onboarding, the agent prompts each member to take the trip vibe quiz. Uses native Linq polling if available, otherwise asks questions as individual text prompts ("Beach or mountains?") or sends a deep link to the app.
+
+2. **Welcome message identifies who added the agent (SC-30):** First message says who added it and how to remove it. Any group member can text "remove" to kick the agent — not just the person who added it.
+
+3. **Duplicate expense detection (SC-31):** Two similar expenses within 5 minutes triggers "Is this one expense or two?" instead of double-logging.
+
+4. **Multi-poll disambiguation (SC-32):** When multiple polls are active, uses labeled prefixes (D1/D2/D3, H1/H2/H3). Bare number replies trigger "Which poll?" question.
+
+5. **1:1 DM mode (SC-34):** Texting the Tryps number directly (no group) works as a personal assistant — shows active trips, cross-trip balances, offers to create new trip.
+
+6. **Undo/correct via text (SC-35):** "Actually $35 not $45" updates the expense. "Delete last expense" removes it. "Change Nobu to Saturday" edits the activity.
+
+### Scope Boundaries (Confirmed)
+
+- **This scope: capture, organize, facilitate.** The agent writes back to the app, handles voting, answers questions, sends reminders.
+- **NOT this scope: agentic execution.** Booking flights, making reservations, processing payments = Phase 3 (x402 + agent layer). The agent says "coming soon" if asked. But architecture must be built so Phase 3 plugs in cleanly.
+- **Agent personality & conversational design** — separate scope. Needs dedicated research on routing architecture, voice/tone, common conversation patterns. Study teams who have built conversational text agents before. Log all conversations from day one to inform this.
+- **Android group chat behavior** — open question. iMessage-first for now.
+
+### Assumptions Resolved
+
+| # | Original Assumption | Resolution |
+|---|---------------------|------------|
+| A9 | Notifications go as 1:1, not group inject | **Revised:** Agent lives IN the group chat. Group messages go to the group. Balance/private info goes 1:1 via DM. |
+| A10 | TCPA opt-in is implicit in "Join Trip" | **Revised:** Being in the iMessage group IS the consent. You're in the chat = you're in. Leave = opt out. |
+| NEW | Users must have Tryps app to participate | **Overridden:** No app required. Group chat IS the onboarding. App is optional rich layer. |
 
 ---
 
@@ -485,9 +543,11 @@ CREATE TABLE linq_pending_users (
 
 1. **Phone matching:** Linq sends E.164 phone (`+14155551234`). We strip `+` prefix → query `auth.users.phone` → fallback to `user_profiles.phone_number` with variants. Reuses existing `normalizePhoneNumber()`.
 
-2. **Unknown users:** Don't auto-create accounts. Send onboarding prompt with deep link. Check phantom participants for personalized context ("Jake invited you to Miami Trip!").
+2. **No app required (SC-2).** Everyone in the iMessage group is automatically on the trip, linked by phone number. No signup, no download, no email. If they later download the app, all their data is already there (SC-3). This replaces the original "unknown users get onboarding prompt" model — they're already in.
 
-3. **Webhook verification:** HMAC-SHA256 with shared secret. Reject signatures >5 min old.
+3. **Group = trip membership (SC-40).** The iMessage group is the source of truth. Join group = join trip. Leave group = leave trip. They always move together. If the trip owner leaves, ownership transfers automatically (SC-33).
+
+4. **Webhook verification:** HMAC-SHA256 with shared secret. Reject signatures >5 min old.
 
 ### Transport Abstraction
 
@@ -552,10 +612,11 @@ Each flow maps to an existing Master FRD flow. Only the iMessage interaction del
 
 **Assumptions:**
 
-- [ASSUMPTION: Votes are plain text replies (no interactive buttons in iMessage)]
-- [ASSUMPTION: System disambiguates which poll a reply refers to via conversation threading or recency]
+- [CONFIRMED: Votes are plain text replies — numbered reply pattern ("Reply 1, 2, or 3") is baseline]
+- [CONFIRMED: When multiple polls overlap, use labeled prefixes (D1/D2/D3, H1/H2/H3). Bare numbers trigger "Which poll?" (SC-32)]
+- [CONFIRMED: Vote changes allowed — "switch me to Nobu" (SC-12)]
 - [ASSUMPTION: A general-purpose polls table needs to be created]
-- [ASSUMPTION: Vote changes are allowed ("switch me to Nobu")]
+- [NOTE: If Linq adds native polling support, architecture should plug it in — same data, better UX (SC-14)]
 
 **Phase:** P2b (write operations — needs polls table + NLP)
 
@@ -577,8 +638,12 @@ Each flow maps to an existing Master FRD flow. Only the iMessage interaction del
 
 **For text-initiated expenses:**
 
-- Backend confirms before writing: "Got it — $200 for Airbnb, split 4 ways. Sound right?"
-- User confirms or adjusts: "Split between me, Sarah, and Tom"
+- Agent confirms with one line: "Confirmed, added to expenses" (SC-7)
+- Agent asks clarifying questions if ambiguous — e.g., no amount given (SC-8)
+- Custom splits via text: "Split between me, Sarah, and Tom" (SC-9)
+- Receipt photo → OCR → expense (SC-10)
+- Duplicate detection: two similar expenses within 5 min → "Is this one expense or two?" (SC-31)
+- Undo/correct: "actually $35 not $45" → updates amount. "Delete last expense" → removes it. (SC-35)
 
 **Assumptions:**
 
