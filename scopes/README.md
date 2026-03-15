@@ -17,13 +17,14 @@ Each scope lives in `scopes/<phase>/<scope-name>/` and contains **10 pipeline do
 
 ## Phases
 
-### P1: Core App (6 scopes)
+### P1: Core App (7 scopes)
 1. [Core Flows](p1/core-flows/) — 19 user flows (47% complete)
 2. [Tooltips & Teaching](p1/tooltips-teaching/)
 3. [Notifications & Voting](p1/notifications-voting/)
 4. [Post-Trip Review](p1/post-trip-review/)
 5. [Travel DNA](p1/travel-dna/)
 6. [Recommendations](p1/recommendations/)
+7. [Claude Connector](p1/claude-connector/) — MCP server so Claude can read/write Tryps
 
 ### P2: Stripe + Linq (4 scopes)
 1. [iMessage via Linq](p2/linq-imessage/)
