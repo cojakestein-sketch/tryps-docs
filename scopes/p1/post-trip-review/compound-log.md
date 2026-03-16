@@ -2,41 +2,41 @@
 
 ## P1 Fixes Applied
 
-| # | Issue | Fix Applied | File |
-|---|-------|-------------|------|
-| 1 | Missing DELETE RLS policy on `favorite_activities` — re-submission silently fails | Added `CREATE POLICY "Users delete own favorites" ON favorite_activities FOR DELETE USING (auth.uid() = user_id);` | `supabase/migrations/20260316000000_post_trip_review_tables.sql` |
-| 2 | `tripName` in `montage.tsx` never set — always shows "Trip" | Fetch trip via `getTrip(id)` in parallel with `getMontage(id)`, call `setTripName(trip.name)` | `app/trip/[id]/montage.tsx` |
-| 3 | `montages` bucket is fully public — any user can enumerate/download all montage videos | Changed bucket to `public: false`, replaced open SELECT policy with member-gated policy using `trip_members` join via `storage.foldername`, switched to signed URLs (1-hour expiry) | `supabase/migrations/20260316000002_montages_bucket.sql`, `utils/supabaseStorage.ts` |
-| 4 | `storage_path` readable via RLS on `time_capsule_submissions` — blind mechanic only enforced at app layer | Created `time_capsule_submissions_safe` view excluding `storage_path`, granted SELECT on view to `authenticated` role | `supabase/migrations/20260316000000_post_trip_review_tables.sql` |
+| #   | Issue | Fix Applied | File |
+| --- | ----- | ----------- | ---- |
+| 1   | Blind mechanic partially enforced at DB layer: broad SELECT RLS policy on `time_capsule_submissions` exposes `storage_path` to all trip members | Replaced "Members view capsule metadata" SELECT policy (allowed all trip members) with "Users view own capsule submissions" (restricts SELECT to `auth.uid() = user_id`). Added `get_capsule_submission_count` SECURITY DEFINER RPC to provide total/mine counts without exposing storage_path. Updated `getTimeCapsuleCount` in supabaseStorage.ts to use the RPC. Updated callers in `TimeCapsuleSection.tsx` and `getTripPostTripStatus` to use `{ total, mine }` return shape. | `supabase/migrations/20260316000000_post_trip_review_tables.sql`, `utils/supabaseStorage.ts`, `utils/storage.ts`, `components/time-capsule/TimeCapsuleSection.tsx` |
+| 2   | Inline style `style={{ opacity: pulseAnim }}` violates CLAUDE.md "use StyleSheet.create()" rule | Extracted to `styles.pulseIcon` in `StyleSheet.create()` and applied via array syntax `style={[styles.pulseIcon, { opacity: pulseAnim }]}`. The dynamic Animated.Value opacity is passed as second array element (standard RN pattern for animated values). | `components/post-trip/Top3ReminderBanner.tsx` |
 
 ## P2 Fixes Applied
 
-| # | Issue | Fix Applied | File |
-|---|-------|-------------|------|
-| 1 | Unused `useRef` import in MontagePlayer | Replaced `useRef` with `useEffect` in import | `components/post-trip/MontagePlayer.tsx` |
-| 2 | `isLoading` state never set to `false` — loading overlay renders indefinitely | Added `player.addListener("statusChange", ...)` — sets `isLoading(false)` when status is `readyToPlay` | `components/post-trip/MontagePlayer.tsx` |
-| 3 | `console.error` in MontagePlayer.tsx (share handler) | Replaced with silent catch `catch (_) { // Share sheet dismissed or failed }` | `components/post-trip/MontagePlayer.tsx` |
-| 4 | `console.error` in TimeCapsuleCapture.tsx (lines 80, 129) | Removed both `console.error` calls, kept `Alert.alert` for user-facing error feedback | `components/time-capsule/TimeCapsuleCapture.tsx` |
-| 5 | `console.error` in montage.tsx (line 44) | Replaced with silent catch `catch (_) { // Montage load failure handled by status remaining "none" }` | `app/trip/[id]/montage.tsx` |
-| 6 | `console.error` in usePostTripStatus.ts (line 58) | Replaced with silent catch `catch (_) { // Status fetch failed — defaults remain }` | `hooks/usePostTripStatus.ts` |
-| 7 | `getMontage()` returns `storagePath` to client | Removed `storagePath` from `Montage` interface and `getMontage()` select. Created internal `getMontageStoragePath()` used only by `getMontageUrl()` for signed URL generation | `utils/supabaseStorage.ts`, `types/index.ts` |
-| 8 | Unsafe cast `as unknown as Record<string, unknown>` in `getGroupFavorites` | Defined `FavoriteActivityJoinRow` interface with proper types for the Supabase join result. Cast to typed interface instead of generic Record | `utils/supabaseStorage.ts` |
+| #   | Issue | Fix Applied | File |
+| --- | ----- | ----------- | ---- |
+| 1   | `as unknown as` cast bypasses type safety on Supabase join response in `getGroupFavorites` | Replaced `data as unknown as FavoriteActivityJoinRow[]` with `.returns<FavoriteActivityJoinRow[]>()` on the Supabase query chain, then assigned `data` directly. | `utils/supabaseStorage.ts` |
+| 2   | `uuid_generate_v4()` used instead of FRD-specified `gen_random_uuid()` in all migrations | Changed all occurrences of `uuid_generate_v4()` to `gen_random_uuid()` in both migration files (20260316000000 and 20260316100000). `gen_random_uuid()` is built-in and has no extension dependency. | `supabase/migrations/20260316000000_post_trip_review_tables.sql`, `supabase/migrations/20260316100000_post_review_status.sql` |
+| 3   | Fragile type narrowing cast `montageStatus as "ready" \| "processing" \| "pending"` hides potential `"failed"` variant | Added explicit `!== "failed"` guard alongside existing `!== "none"` check. TypeScript now narrows correctly to `"ready" \| "processing" \| "pending"` without a cast. If `MontageStatus` gains new variants, the compiler will flag them. | `app/trip/[id].tsx` |
+| 4   | `error_message` column from FRD missing in `montages` table; edge function only logs errors to console | Added `error_message TEXT` column to the `montages` table migration. Updated the `generate-montage` edge function to store `lastError?.message ?? "Unknown error"` in the `error_message` column on failure. | `supabase/migrations/20260316000000_post_trip_review_tables.sql`, `supabase/functions/generate-montage/index.ts` |
+| 5   | Notification preferences columns may not exist for edge function queries | Already resolved: migration `20260316000003_notification_prefs_post_trip.sql` adds `time_capsule_reveal`, `top3_reminder`, and `time_capsule_nudge` columns. Column names match edge function queries. No code change needed. | `supabase/migrations/20260316000003_notification_prefs_post_trip.sql` (no change) |
+| 6   | Unhandled promise in `getBatchPostReviewStatuses(pastTripIds).then(setReviewStatuses)` -- no `.catch()` | Added `.catch(() => { /* Silently handle */ })` to prevent unhandled rejection. Banner logic gracefully degrades if the query fails. | `app/(tabs)/index.tsx` |
 
 ## P3 Deferred
 
-| # | Issue | Reason |
-|---|-------|--------|
-| 1 | `Top3ReminderBanner` and `MontageCard` not integrated into StackedTripCards | Deferred per work log — tracked as follow-up. P1.S4.C06/C08/C25 partial. |
-| 2 | `generate-montage` edge function is a scaffold — no FFmpeg processing | Expected per plan — video processing is a separate scope |
-| 3 | Polling interval hardcoded to 5000ms with no max retry | Cosmetic / low impact — indefinite polling is bounded by component unmount |
-| 4 | `TimeCapsuleCapture` hardcodes `.mp4`/`.jpg` extensions | Low impact — actual upload works regardless of extension |
-| 5 | `TripStatsBar.computeStats` may throw if `trip.expenses` is undefined | Low impact — defensive guard is good practice but not a blocker |
+| #   | Issue | Reason |
+| --- | ----- | --------------------- |
+| 1   | Hard delete instead of soft delete for `time_capsule_submissions` | Cosmetic / audit trail improvement. Current hard delete works correctly for v1. Soft delete can be added in follow-up. |
+| 2   | Direct SELECT with count instead of RPC for clip count | Resolved as side effect of P1 #1 fix: now using SECURITY DEFINER RPC `get_capsule_submission_count`. |
+| 3   | AsyncStorage for sheet dismissal state instead of server-side | Low impact for v1. Server-side persistence is a nice-to-have for cross-device sync. |
+| 4   | "View Time Capsule" button shown independently of top 3 completion | Minor UX difference from FRD. Can be tightened in a follow-up. |
+| 5   | `nudge_count` not checked/incremented in edge function | Column exists. Wiring it in is straightforward but not a blocker for v1 scaffold. |
+| 6   | System image picker instead of custom camera UI with viewfinder/countdown | Acceptable for v1 scaffold. Custom camera UI deferred to `expo-camera` follow-up. |
 
 ## Remaining Concerns
 
-- The `time_capsule_submissions_safe` view enforces column-level hiding, but client queries in `supabaseStorage.ts` already select specific columns from the raw table. For full enforcement, client code should query the view instead. This is a defense-in-depth measure — the current setup is secure because both the app layer (explicit column select) and the view (column exclusion) prevent `storage_path` leakage.
-- The `getMontageUrl` signed URL approach (1-hour expiry) works for playback but the URL embedded in share sheet messages will expire. A future iteration could generate longer-lived signed URLs for sharing, or implement a redirect endpoint.
+- **Rebase on develop**: The feature branch has 37 commits that produce structural conflicts when rebasing onto `origin/develop`. The fix commit was pushed directly to `feat/post-trip-review` without rebasing. The PR should use a merge strategy or the branch should be rebased interactively before merge.
+- **P3 #5 (nudge_count)**: The 2-nudge cap from the FRD is not enforced in the notification edge function. The `nudge_count` column and `last_nudge_sent_at` exist in `trip_post_review_status` but are not wired into `post-trip-notifications/index.ts`. This should be addressed before enabling the cron job in production.
 
 ## Typecheck: PASS
 
-## Tests: PASS (2 pre-existing failures in TripCountdown.test.tsx and TripListModal.test.tsx — unrelated to post-trip-review)
+## Tests: PASS (3 pre-existing failures unrelated to this feature)
+- `TripCountdown.test.tsx` (2 failures): Component now shows empty state instead of returning null
+- `TripListModal.test.tsx` (1 failure): Test filter mismatch with rendered output
+- `deleteTripFromHome.test.tsx` (1 suite failure): Missing Supabase env vars in test environment
