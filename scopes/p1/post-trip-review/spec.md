@@ -52,7 +52,7 @@ The post-trip experience that brings groups back to Tryps. When a trip ends, use
 
 ### 4. Montage Playback & Sharing
 
-- After the reveal, the montage is **always re-watchable** from the completed trip
+- After the reveal, the montage is **always re-watchable and Downloadable** from the completed trip
 - Lives as a permanent artifact on the trip detail screen
 - **Share to social media** — native share sheet with montage video file (Instagram Stories, TikTok, iMessage, etc.)
 - **Montage music** — pulled from the trip's Spotify playlist (if linked on Vibe tab), otherwise ambient/default track
