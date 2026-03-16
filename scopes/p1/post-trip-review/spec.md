@@ -7,7 +7,7 @@
 
 ## Intent
 
-The post-trip experience that brings groups back to Tryps. When a trip ends, users complete two things: pick their top 3 favorite activities (critical data for the recommendation algorithm) and watch a one-time group reveal of their "time capsule" — a 60-second AI-cut montage from blind video clips submitted during the trip. The time capsule resurfaces annually as an "on this day" memory, creating a re-engagement loop that drives word-of-mouth and repeat trip creation.
+The post-trip experience that brings groups back to Tryps. When a trip ends, users complete two things: pick their top 3 favorite activities (critical data for the recommendation algorithm) and watch the group reveal of their "time capsule" — a 60-second AI-cut montage from blind video clips submitted during the trip. The montage is permanently re-watchable from the completed trip, creating a re-engagement loop that drives word-of-mouth and repeat trip creation.
 
 ## Key Areas
 
@@ -47,8 +47,7 @@ The post-trip experience that brings groups back to Tryps. When a trip ends, use
 - AI stitches all submitted clips into a single 60-second montage
 - Open-source AI video editing tools handle the cut (thesis: quality is good enough now)
 - **Simultaneous group reveal** — push notification sent to all group members at the same time
-- **One-time viewing** — each person gets exactly 1 chance to watch
-- After viewing + closing, the montage is gone until the 1-year anniversary
+- After the initial reveal, the montage is permanently re-watchable from the completed trip
 - No minimum submission threshold — make the best montage possible from whatever was submitted
 
 ### 4. Montage Playback & Sharing
