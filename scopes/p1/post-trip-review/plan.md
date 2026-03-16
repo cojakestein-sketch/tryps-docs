@@ -1,361 +1,280 @@
 # post-trip-review — Implementation Plan
 
-**Spec:** /Users/jakestein/tryps-docs/scopes/p1/post-trip-review/spec.md
-**Branch:** feat/post-trip-review
+**FRD:** /Users/jakestein/tryps-docs/scopes/p1/post-trip-review/frd.md
+**Branch:** feat/post-trip-review (branches from `develop`, PR targets `develop`)
 
-> **Note:** Figma screens are not yet designed. All UI is placeholder/best-guess. Developers should expect UI adjustments when Figma designs arrive with the new skin and layout.
+---
+
+## Current State Assessment
+
+Significant implementation already exists on `feat/post-trip-review` (11 commits). The plan below reflects the **actual file structure** on the branch and identifies remaining gaps, fixes, and polish needed to meet all success criteria.
+
+### Already Built
+
+- Database migrations: 4 SQL files (tables, buckets, notification prefs)
+- Types: `TimeCapsuleSubmission`, `FavoriteActivity`, `Montage`, `PostTripStatus`, `MontageStatus`, `GroupFavoriteResult`, `TripPostReviewStatus`
+- Data layer: `utils/supabaseStorage.ts` CRUD for all 4 tables + `utils/timeCapsule.ts` upload helper + `utils/storage.ts` delegation
+- Hook: `hooks/usePostTripStatus.ts` (trip completion detection, sheet dismiss tracking)
+- Components: 8 post-trip components, 2 time-capsule components
+- Routes: `app/trip/[id]/pick-favorites.tsx`, `app/trip/[id]/montage.tsx`, `app/trip/[id]/group-favorites.tsx`
+- Edge Functions: `generate-montage`, `post-trip-notifications`, `trigger-montage-reveal`
+- Notifications: types added, deep linking, education helpers
+- Integrations: `app/trip/[id].tsx` presents `TripCompleteSheet`, `components/VibeTab.tsx` shows `TimeCapsuleSection`
+- Tests: smoke test inventory updated
+
+### Gaps Identified (vs. FRD + Success Criteria)
+
+| Gap | Criteria | Description |
+|-----|----------|-------------|
+| Re-engagement banner on home screen | P1.S4.C06, P1.S4.C08, P1.S4.C25 | `Top3ReminderBanner` component exists but is NOT integrated into `app/(tabs)/index.tsx` trip cards |
+| MontageCard on completed trips | P1.S4.C21 | `MontageCard` component exists but integration into trip detail `Screen 13.9` not confirmed |
+| GroupFavoritesSection on completed trips | P1.S4.C23, P1.S4.C24 | Component exists but not wired into trip detail screen |
+| `trip_post_review_status` migration unstaged | P1.S4.C06-C08 | File exists at `supabase/migrations/20260316100000_post_review_status.sql` but is untracked |
+| Camera permission handling | P1.S4.C09 | `TimeCapsuleCapture` needs camera/microphone permission flow |
+| Offline upload queue | FRD 13.2 | "No network -> record locally, upload when connection returns" not implemented |
+| Photo capture mode | P1.S4.C13 | Photo + video dual-mode in capture UI needs verification |
+| Notification preference UI | -- | New prefs (`timeCapsuleReveal`, `top3Reminder`, `timeCapsuleNudge`) need UI in settings screen |
+| `app.json` camera permissions | P1.S4.C09 | `NSCameraUsageDescription` and `NSMicrophoneUsageDescription` may need addition |
+| Deep link handling | P1.S4.C07 | `tripful://trip/{tripId}?action=post-trip-review` deep link routing not wired in root layout |
+| Typecheck verification | P1.S4.C31 | Must pass `npm run typecheck` |
 
 ---
 
 ## Task Breakdown
 
-### Phase 1: Foundation (Database + Types + Storage Bucket)
+### Phase 1: Foundation (Database + Types + Data Layer)
 
-| #   | Task | Files | Est. Lines | Dependencies |
-| --- | ---- | ----- | ---------- | ------------ |
-| 1.1 | Create migration: `time_capsule_submissions` table (stores blind video/photo submissions per trip), `favorite_activities` table (stores each user's top 3 picks per trip), `montages` table (stores generated montage metadata per trip). Enable RLS on all three. | `supabase/migrations/20260316000000_post_trip_review_tables.sql` | ~120 | None |
-| 1.2 | Create migration: `time-capsule` storage bucket (private — no public read, uploads scoped to trip members, no SELECT until reveal). | `supabase/migrations/20260316000001_time_capsule_bucket.sql` | ~40 | None |
-| 1.3 | Create migration: `montages` storage bucket (public read — generated montage videos accessible to all trip members for playback and sharing). | `supabase/migrations/20260316000002_montages_bucket.sql` | ~30 | None |
-| 1.4 | Add new types: `TimeCapsuleSubmission`, `FavoriteActivity`, `Montage`, `PostTripStatus`. Extend `Trip` interface with optional `postTripStatus` and `montage` fields. Add `ActivityCategory` badge display type. | `types/index.ts` | ~80 | None |
-| 1.5 | Add notification preference fields: `time_capsule_reveal`, `top3_reminder`. Migration to extend `notification_preferences` table. | `supabase/migrations/20260316000003_notification_prefs_post_trip.sql`, `types/index.ts` (update `NotificationPreferences`) | ~30 | 1.1 |
+| # | Task | Files | Est. Lines | Dependencies | Criteria |
+|---|------|-------|------------|--------------|----------|
+| 1.1 | Stage the untracked `trip_post_review_status` migration | `supabase/migrations/20260316100000_post_review_status.sql` | 0 (already written) | None | P1.S4.C06, P1.S4.C07, P1.S4.C08 |
+| 1.2 | Verify all 4 migration files are syntactically valid and deploy-ready | `supabase/migrations/20260316000000_post_trip_review_tables.sql`, `20260316000001_time_capsule_bucket.sql`, `20260316000002_montages_bucket.sql`, `20260316000003_notification_prefs_post_trip.sql`, `20260316100000_post_review_status.sql` | ~5 (review/fix) | None | P1.S4.C26 |
+| 1.3 | Verify types in `types/index.ts` match migration columns exactly | `types/index.ts` | ~10 | 1.2 | P1.S4.C31 |
+| 1.4 | Add `NSCameraUsageDescription` and `NSMicrophoneUsageDescription` to `app.json` if missing | `app.json` | ~4 | None | P1.S4.C09 |
 
-### Phase 2: Data Layer (Storage + Supabase CRUD)
+### Phase 2: Core Feature — Time Capsule Capture (During Trip)
 
-| #   | Task | Files | Est. Lines | Dependencies |
-| --- | ---- | ----- | ---------- | ------------ |
-| 2.1 | Add supabaseStorage functions: `submitTimeCapsuleItem()`, `deleteTimeCapsuleItem()`, `getTimeCapsuleCount()`, `getMyTimeCapsuleSubmissions()` (returns count + IDs only, no media URLs — blind mechanic). Upload to `time-capsule` bucket, insert into `time_capsule_submissions`. | `utils/supabaseStorage.ts` | ~90 | 1.1, 1.2 |
-| 2.2 | Add supabaseStorage functions: `submitFavoriteActivities()`, `getFavoriteActivities()`, `hasSubmittedFavorites()`, `getGroupFavorites()` (aggregated view with vote counts). | `utils/supabaseStorage.ts` | ~80 | 1.1 |
-| 2.3 | Add supabaseStorage functions: `getMontage()`, `setMontageStatus()`. Read from `montages` table, return signed URL from `montages` bucket. | `utils/supabaseStorage.ts` | ~50 | 1.1, 1.3 |
-| 2.4 | Add supabaseStorage function: `getTripPostTripStatus()` — returns composite status: has user submitted top 3, time capsule count, montage status (pending/processing/ready/none), group favorites available. | `utils/supabaseStorage.ts` | ~60 | 2.1, 2.2, 2.3 |
-| 2.5 | Expose all new functions through the storage abstraction layer. Add corresponding stubs for local/offline mode that return empty state. | `utils/storage.ts` | ~70 | 2.1, 2.2, 2.3, 2.4 |
+| # | Task | Files | Est. Lines | Dependencies | Criteria |
+|---|------|-------|------------|--------------|----------|
+| 2.1 | Verify `TimeCapsuleSection` shows on Vibe tab during active trips with correct states | `components/time-capsule/TimeCapsuleSection.tsx`, `components/VibeTab.tsx` | ~20 (review/fix) | 1.3 | P1.S4.C12, P1.S4.C10, P1.S4.C27 |
+| 2.2 | Verify `TimeCapsuleCapture` handles photo + video dual mode with 6s limit | `components/time-capsule/TimeCapsuleCapture.tsx` | ~30 (review/fix) | 2.1 | P1.S4.C09, P1.S4.C13 |
+| 2.3 | Add camera/microphone permission request flow to `TimeCapsuleCapture` | `components/time-capsule/TimeCapsuleCapture.tsx` | ~40 | 2.2, 1.4 | P1.S4.C09 |
+| 2.4 | Verify delete-own-submission flow works (soft delete via storage layer) | `utils/timeCapsule.ts`, `utils/supabaseStorage.ts` | ~10 (review) | 2.1 | P1.S4.C11 |
+| 2.5 | Verify blind mechanic — `time_capsule_submissions_safe` view excludes `storage_path` in all client queries | `utils/supabaseStorage.ts` | ~5 (review/fix) | 2.1 | P1.S4.C10, P1.S4.C27 |
 
-### Phase 3: Trip Completion Detection + Bottom Sheet
+### Phase 3: Core Feature — Trip Complete + Top 3 Favorites
 
-| #   | Task | Files | Est. Lines | Dependencies |
-| --- | ---- | ----- | ---------- | ------------ |
-| 3.1 | Create `usePostTripStatus` hook — determines if a trip is "completed" (day after end date), fetches post-trip status data (favorites submitted, montage state), memoizes to avoid re-fetching. `P1.S4.C01`, `P1.S4.C03` | `hooks/usePostTripStatus.ts` | ~70 | 2.4 |
-| 3.2 | Create `TripCompleteSheet` component — bottom sheet overlay that appears when trip is completed and user hasn't dismissed it. Shows trip stats bar (Days, People, Places, Spent). Uses existing `DraggableBottomSheet` pattern. CTA buttons: "Pick Your Top 3" and "Watch Time Capsule" (if montage ready). `P1.S4.C01`, `P1.S4.C02`, `P1.S4.C03` | `components/post-trip/TripCompleteSheet.tsx` | ~95 | 3.1, 1.4 |
-| 3.3 | Create `TripStatsBar` component — horizontal stat badges: Days, People, Places, Spent. Reusable across the sheet and completed trip view. Calculates stats from trip data. `P1.S4.C02` | `components/post-trip/TripStatsBar.tsx` | ~70 | 1.4 |
-| 3.4 | Integrate `TripCompleteSheet` into trip detail screen. Show as overlay when `usePostTripStatus` returns `shouldShowSheet: true`. Dismiss persists to AsyncStorage per-user per-trip. `P1.S4.C01`, `P1.S4.C03` | `app/trip/[id].tsx` | ~30 | 3.2, 3.3 |
+| # | Task | Files | Est. Lines | Dependencies | Criteria |
+|---|------|-------|------------|--------------|----------|
+| 3.1 | Verify `TripCompleteSheet` auto-presents and shows correct stats | `components/post-trip/TripCompleteSheet.tsx`, `components/post-trip/TripStatsBar.tsx` | ~15 (review/fix) | 1.3 | P1.S4.C01, P1.S4.C02, P1.S4.C03 |
+| 3.2 | Verify `pick-favorites` route: activity grid, 3-selection limit, step indicator | `app/trip/[id]/pick-favorites.tsx`, `components/post-trip/FavoriteActivityCard.tsx`, `components/post-trip/StepIndicator.tsx` | ~20 (review/fix) | 3.1 | P1.S4.C04, P1.S4.C05 |
+| 3.3 | Handle edge case: trip with < 3 activities (pick all available) | `app/trip/[id]/pick-favorites.tsx` | ~15 | 3.2 | P1.S4.C28 |
+| 3.4 | Handle edge case: trip with 0 activities (skip favorites section) | `app/trip/[id]/pick-favorites.tsx`, `components/post-trip/TripCompleteSheet.tsx` | ~15 | 3.2 | P1.S4.C28 |
+| 3.5 | Wire atomic favorites submission (all 3 in one transaction via RPC or batch insert) | `utils/supabaseStorage.ts` | ~20 (review/fix) | 3.2 | P1.S4.C05 |
+| 3.6 | Mark `favorites_completed = true` in `trip_post_review_status` after submission | `utils/supabaseStorage.ts` | ~5 (verify) | 3.5, 1.1 | P1.S4.C08 |
 
-### Phase 4: Top 3 Favorite Activities Selection
+### Phase 4: Core Feature — Montage Reveal + Playback
 
-| #   | Task | Files | Est. Lines | Dependencies |
-| --- | ---- | ----- | ---------- | ------------ |
-| 4.1 | Create `FavoritePickerScreen` — full-screen modal showing trip's activity list as tappable cards with photo + category badge. Step indicator dots (1/3, 2/3, 3/3). Submit button enables at 3/3 (or N/N if fewer than 3 activities). `P1.S4.C04`, `P1.S4.C28` | `app/trip/[id]/pick-favorites.tsx` | ~95 | 2.2, 1.4 |
-| 4.2 | Create `FavoriteActivityCard` component — activity card with photo thumbnail, category badge (Culture, Food & Drink, Nightlife, etc.), selected state with checkmark overlay. `P1.S4.C04` | `components/post-trip/FavoriteActivityCard.tsx` | ~75 | 1.4 |
-| 4.3 | Create `StepIndicator` component — reusable dot indicator (1/3, 2/3, 3/3) with counter text. `P1.S4.C04` | `components/post-trip/StepIndicator.tsx` | ~40 | None |
-| 4.4 | Wire up submit flow: on submit, call `submitFavoriteActivities()`, dismiss sheet, update post-trip status. Show success toast. `P1.S4.C05`, `P1.S4.C08` | `app/trip/[id]/pick-favorites.tsx` (update) | ~30 | 4.1, 2.2 |
+| # | Task | Files | Est. Lines | Dependencies | Criteria |
+|---|------|-------|------------|--------------|----------|
+| 4.1 | Verify `montage` route renders MontagePlayer when montage status is `ready` | `app/trip/[id]/montage.tsx`, `components/post-trip/MontagePlayer.tsx` | ~15 (review/fix) | 1.3 | P1.S4.C21 |
+| 4.2 | Verify montage player share button uses native Share API with video file | `components/post-trip/MontagePlayer.tsx` | ~10 (review) | 4.1 | P1.S4.C22 |
+| 4.3 | Handle montage processing state: "Your time capsule is being prepared..." | `app/trip/[id]/montage.tsx` | ~20 | 4.1 | P1.S4.C30 |
+| 4.4 | Handle 0-submission empty state (Screen 13.6) | `app/trip/[id]/montage.tsx` or `components/post-trip/TripCompleteSheet.tsx` | ~25 | 4.1 | P1.S4.C29 |
+| 4.5 | Mark `capsule_viewed = true` in `trip_post_review_status` after first viewing | `app/trip/[id]/montage.tsx`, `utils/supabaseStorage.ts` | ~10 | 4.1, 1.1 | -- |
 
-### Phase 5: Time Capsule — Capture Phase (During Trip)
+### Phase 5: Group Favorites Aggregation
 
-| #   | Task | Files | Est. Lines | Dependencies |
-| --- | ---- | ----- | ---------- | ------------ |
-| 5.1 | Create `TimeCapsuleCapture` component — camera/picker UI for recording 6-second video clips or selecting photos. Uses `expo-image-picker` for both photo and video (max 6s duration). Disposable camera aesthetic styling (grain overlay, warm tint, date stamp). `P1.S4.C09`, `P1.S4.C13` | `components/time-capsule/TimeCapsuleCapture.tsx` | ~95 | 1.4, 2.1 |
-| 5.2 | Create `TimeCapsuleSection` component — section on the Vibe tab showing capture button, submission count ("You've added 2 moments"), delete own clip option. No previews of submitted content (blind mechanic). `P1.S4.C10`, `P1.S4.C11`, `P1.S4.C12` | `components/time-capsule/TimeCapsuleSection.tsx` | ~80 | 5.1, 2.1 |
-| 5.3 | Integrate `TimeCapsuleSection` into `VibeTab`. Show only during active trips (between start and end dates). `P1.S4.C12` | `components/VibeTab.tsx` | ~20 | 5.2 |
-| 5.4 | Add upload logic: compress video to max 6s, upload to `time-capsule` bucket under `{tripId}/{submissionId}`, insert record. Show confirmation toast. `P1.S4.C09`, `P1.S4.C13` | `utils/timeCapsule.ts` | ~70 | 1.2, 2.1 |
+| # | Task | Files | Est. Lines | Dependencies | Criteria |
+|---|------|-------|------------|--------------|----------|
+| 5.1 | Verify `group-favorites` route renders ranked activity list with vote counts | `app/trip/[id]/group-favorites.tsx`, `components/post-trip/GroupFavoritesSection.tsx` | ~15 (review/fix) | 3.5 | P1.S4.C23 |
+| 5.2 | Show progress bar "X of Y people voted" when < 100% participation | `app/trip/[id]/group-favorites.tsx` | ~10 | 5.1 | P1.S4.C23 |
+| 5.3 | Wire `GroupFavoritesSection` into completed trip detail screen | `app/trip/[id].tsx` | ~20 | 5.1 | P1.S4.C24 |
 
-### Phase 6: Time Capsule — Reveal + Montage Playback
+### Phase 6: Home Screen Re-engagement
 
-| #   | Task | Files | Est. Lines | Dependencies |
-| --- | ---- | ----- | ---------- | ------------ |
-| 6.1 | Create edge function `generate-montage` — triggered after trip ends. Fetches all submissions from `time-capsule` bucket, uses FFmpeg (or open-source video tooling) to stitch clips + photos into 60s montage. Applies disposable camera filter. Uploads result to `montages` bucket. Updates `montages` table status. `P1.S4.C17`, `P1.S4.C19` | `supabase/functions/generate-montage/index.ts` | ~95 | 1.1, 1.2, 1.3 |
-| 6.2 | Create edge function `trigger-montage-reveal` — sends simultaneous push notification to all trip members when montage is ready. Called by `generate-montage` on completion. `P1.S4.C18` | `supabase/functions/trigger-montage-reveal/index.ts` | ~60 | 6.1 |
-| 6.3 | Create `MontagePlayer` component — full-screen video player for the generated montage. Share button triggers native share sheet with video file. Uses `expo-av` or `expo-video` for playback. `P1.S4.C21`, `P1.S4.C22` | `components/post-trip/MontagePlayer.tsx` | ~85 | 2.3 |
-| 6.4 | Create `MontageRevealScreen` — the "reveal" experience. Loading state ("Your time capsule is being created...") while processing, then auto-plays montage when ready. `P1.S4.C30` | `app/trip/[id]/montage.tsx` | ~70 | 6.3, 2.3 |
-| 6.5 | Add montage music logic: if trip has `spotifyPlaylistUrl`, extract track reference; otherwise use bundled ambient default track. Pass audio source to montage generation. `P1.S4.C20` | `supabase/functions/generate-montage/index.ts` (update), `utils/timeCapsule.ts` (update) | ~40 | 6.1 |
+| # | Task | Files | Est. Lines | Dependencies | Criteria |
+|---|------|-------|------------|--------------|----------|
+| 6.1 | Integrate `Top3ReminderBanner` into home screen past trip cards | `app/(tabs)/index.tsx`, `components/post-trip/Top3ReminderBanner.tsx` | ~40 | 3.6, 1.1 | P1.S4.C06, P1.S4.C25 |
+| 6.2 | Add batch fetch of `trip_post_review_status` for all past trips on home screen | `app/(tabs)/index.tsx`, `utils/supabaseStorage.ts` | ~30 | 6.1 | P1.S4.C06 |
+| 6.3 | Banner disappears after favorites submitted (re-check status on return) | `app/(tabs)/index.tsx` | ~10 | 6.1, 3.6 | P1.S4.C08 |
+| 6.4 | Integrate `MontageCard` into completed trip detail screen (persistent re-watch) | `app/trip/[id].tsx`, `components/post-trip/MontageCard.tsx` | ~25 | 4.1 | P1.S4.C21 |
 
-### Phase 7: Group Top 3 Aggregation
+### Phase 7: Notifications + Push + Deep Links
 
-| #   | Task | Files | Est. Lines | Dependencies |
-| --- | ---- | ----- | ---------- | ------------ |
-| 7.1 | Create `GroupFavoritesSection` component — ranked list of activities by vote count. Shows "4 of 6 people loved this" label. Visible once majority has submitted. `P1.S4.C23`, `P1.S4.C24` | `components/post-trip/GroupFavoritesSection.tsx` | ~80 | 2.2 |
-| 7.2 | Create `GroupFavoritesScreen` — full-screen view of group top 3 with share capability. Accessible from completed trip detail. `P1.S4.C23`, `P1.S4.C24` | `app/trip/[id]/group-favorites.tsx` | ~60 | 7.1 |
+| # | Task | Files | Est. Lines | Dependencies | Criteria |
+|---|------|-------|------------|--------------|----------|
+| 7.1 | Verify notification deep link handler routes correctly for all post-trip types | `utils/notifications.ts`, root layout or navigation handler | ~20 (review/fix) | 4.1, 3.1 | P1.S4.C07 |
+| 7.2 | Wire `tripful://trip/{tripId}?action=post-trip-review` deep link in Expo Router | `app/_layout.tsx` or `app/trip/[id].tsx` | ~25 | 7.1 | P1.S4.C07 |
+| 7.3 | Verify `post-trip-notifications` edge function sends correct nudges on schedule | `supabase/functions/post-trip-notifications/index.ts` | ~15 (review) | 1.1 | P1.S4.C07, P1.S4.C15 |
+| 7.4 | Verify `trigger-montage-reveal` sends simultaneous push to all members | `supabase/functions/trigger-montage-reveal/index.ts` | ~10 (review) | 4.1 | P1.S4.C18 |
+| 7.5 | Add time capsule education push on trip join | Integration point in join flow | ~15 | -- | P1.S4.C14 |
+| 7.6 | Add notification preference toggles to settings UI | Settings screen component | ~40 | -- | -- |
 
-### Phase 8: Home Screen + Re-engagement
+### Phase 8: Edge Function — Montage Generation
 
-| #   | Task | Files | Est. Lines | Dependencies |
-| --- | ---- | ----- | ---------- | ------------ |
-| 8.1 | Add "completed" visual state to trip cards on home screen. Completed trips show different styling (muted, with "Completed" badge). `P1.S4.C25` | `components/StackedTripCards.tsx` | ~30 | 3.1 |
-| 8.2 | Add blinking "Mark your top 3 favorites" banner to past trip cards when user hasn't submitted. Banner persists until submission. Animated pulsing indicator. `P1.S4.C06`, `P1.S4.C08`, `P1.S4.C25` | `components/post-trip/Top3ReminderBanner.tsx` | ~55 | 3.1, 2.2 |
-| 8.3 | Integrate `Top3ReminderBanner` into `StackedTripCards` for past trips. Check `hasSubmittedFavorites()` to conditionally show. `P1.S4.C06`, `P1.S4.C25` | `components/StackedTripCards.tsx` | ~20 | 8.2 |
+| # | Task | Files | Est. Lines | Dependencies | Criteria |
+|---|------|-------|------------|--------------|----------|
+| 8.1 | Verify `generate-montage` edge function scaffold handles all statuses | `supabase/functions/generate-montage/index.ts` | ~20 (review) | -- | P1.S4.C17 |
+| 8.2 | Add retry logic with exponential backoff (3 retries on failure) | `supabase/functions/generate-montage/index.ts` | ~30 | 8.1 | P1.S4.C30 |
+| 8.3 | Document video processing infrastructure decision (FFmpeg on Hetzner vs. external service) | Inline code comments + plan doc | ~10 | 8.1 | P1.S4.C17, P1.S4.C19, P1.S4.C20 |
 
-### Phase 9: Push Notifications + Nudges
+### Phase 9: Polish + Edge Cases
 
-| #   | Task | Files | Est. Lines | Dependencies |
-| --- | ---- | ----- | ---------- | ------------ |
-| 9.1 | Create edge function `post-trip-notifications` — scheduled function that checks for recently ended trips and sends: (a) top 3 reminder if dismissed, (b) mid-trip time capsule nudge, (c) low-participation feedback. `P1.S4.C07`, `P1.S4.C14`, `P1.S4.C15`, `P1.S4.C16` | `supabase/functions/post-trip-notifications/index.ts` | ~90 | 1.1, 6.2 |
-| 9.2 | Add push notification handling for montage reveal — deep link from notification opens `MontageRevealScreen`. Handle time capsule education message on trip join. `P1.S4.C14`, `P1.S4.C18` | `utils/notifications.ts` (update) | ~30 | 6.2 |
-
-### Phase 10: Security + Edge Cases
-
-| #   | Task | Files | Est. Lines | Dependencies |
-| --- | ---- | ----- | ---------- | ------------ |
-| 10.1 | RLS policy hardening: non-members cannot access `time_capsule_submissions`, `favorite_activities`, or `montages` for trips they're not in. Verify via test queries. `P1.S4.C26` | `supabase/migrations/20260316000000_post_trip_review_tables.sql` (included in 1.1) | ~0 (covered in 1.1) | 1.1 |
-| 10.2 | Add blind mechanic enforcement: `time_capsule_submissions` SELECT policy returns only `id`, `user_id`, `media_type`, `created_at` — never the `storage_path` or signed URL until montage is generated. `P1.S4.C27` | `supabase/migrations/20260316000000_post_trip_review_tables.sql` (included in 1.1) | ~0 (covered in 1.1) | 1.1 |
-| 10.3 | Handle edge case: trip with fewer than 3 activities. `FavoritePickerScreen` adjusts max selection to `Math.min(3, activityCount)`. `P1.S4.C28` | `app/trip/[id]/pick-favorites.tsx` (included in 4.1) | ~0 (covered in 4.1) | 4.1 |
-| 10.4 | Handle edge case: trip with 0 time capsule submissions. Skip montage generation, hide time capsule section in post-trip flow, show top 3 only. `P1.S4.C29` | `hooks/usePostTripStatus.ts` (update), `components/post-trip/TripCompleteSheet.tsx` (update) | ~15 | 3.1, 3.2 |
-| 10.5 | Typecheck pass. Run `npm run typecheck` and fix all errors. `P1.S4.C31` | All files | ~0 | All |
-
-### Phase 11: Completed Trip Detail Integration
-
-| #   | Task | Files | Est. Lines | Dependencies |
-| --- | ---- | ----- | ---------- | ------------ |
-| 11.1 | Add "Post-Trip" section to completed trip detail screen. Shows: montage player (if ready), group favorites (if available), user's own picks. Permanent artifact on the trip. `P1.S4.C21`, `P1.S4.C24` | `app/trip/[id].tsx` (update) | ~40 | 6.3, 7.1, 3.1 |
-| 11.2 | Add re-watchable montage entry point on completed trip detail. Always accessible after initial reveal. `P1.S4.C21` | `components/post-trip/MontageCard.tsx` | ~50 | 6.3 |
+| # | Task | Files | Est. Lines | Dependencies | Criteria |
+|---|------|-------|------------|--------------|----------|
+| 9.1 | Handle trip with no end date (post-trip flow never triggers) | `hooks/usePostTripStatus.ts` | ~5 (verify) | -- | FRD Edge Case |
+| 9.2 | Handle user who joins trip after it ends (no post-trip flow) | `hooks/usePostTripStatus.ts` | ~10 | -- | FRD Edge Case |
+| 9.3 | Low-participation feedback: "Submit more videos next time!" when < 3 clips | `components/post-trip/TripCompleteSheet.tsx` or montage route | ~15 | 4.4 | P1.S4.C16 |
+| 9.4 | Add placeholder note to all UI components: "Figma designs pending, UI may adjust" | All `components/post-trip/*.tsx`, `components/time-capsule/*.tsx` | ~0 (already present) | -- | -- |
+| 9.5 | Run `npm run typecheck` and fix all type errors | Multiple files | Variable | All above | P1.S4.C31 |
+| 9.6 | Run `npm test` and fix any broken tests | `__tests__/` | Variable | 9.5 | P1.S4.C31 |
 
 ---
 
 ## Files to Create
 
 | File | Purpose |
-| ---- | ------- |
-| `supabase/migrations/20260316000000_post_trip_review_tables.sql` | DB tables: `time_capsule_submissions`, `favorite_activities`, `montages` + RLS |
-| `supabase/migrations/20260316000001_time_capsule_bucket.sql` | Private storage bucket for blind media submissions |
-| `supabase/migrations/20260316000002_montages_bucket.sql` | Public storage bucket for generated montage videos |
-| `supabase/migrations/20260316000003_notification_prefs_post_trip.sql` | Notification preference columns for post-trip features |
-| `hooks/usePostTripStatus.ts` | Hook: trip completion detection + post-trip status aggregation |
-| `components/post-trip/TripCompleteSheet.tsx` | Bottom sheet overlay for completed trip entry point |
-| `components/post-trip/TripStatsBar.tsx` | Horizontal stat badges (Days, People, Places, Spent) |
-| `components/post-trip/FavoriteActivityCard.tsx` | Selectable activity card for top 3 picker |
-| `components/post-trip/StepIndicator.tsx` | Dot indicator + counter (1/3, 2/3, 3/3) |
-| `components/post-trip/GroupFavoritesSection.tsx` | Ranked group favorites with vote counts |
-| `components/post-trip/MontagePlayer.tsx` | Full-screen video player with share button |
-| `components/post-trip/MontageCard.tsx` | Thumbnail card entry point for re-watching montage |
-| `components/post-trip/Top3ReminderBanner.tsx` | Blinking banner for un-submitted users on home screen |
-| `components/time-capsule/TimeCapsuleCapture.tsx` | Camera/picker UI for 6-second clips + photos |
-| `components/time-capsule/TimeCapsuleSection.tsx` | Vibe tab section: capture button + submission count |
-| `utils/timeCapsule.ts` | Upload, compress, and manage time capsule media |
-| `app/trip/[id]/pick-favorites.tsx` | Full-screen top 3 favorites selection flow |
-| `app/trip/[id]/montage.tsx` | Montage reveal + playback screen |
-| `app/trip/[id]/group-favorites.tsx` | Group favorites aggregation screen |
-| `supabase/functions/generate-montage/index.ts` | Edge function: stitch clips into 60s montage |
-| `supabase/functions/trigger-montage-reveal/index.ts` | Edge function: simultaneous reveal push notification |
-| `supabase/functions/post-trip-notifications/index.ts` | Edge function: scheduled nudges (top 3 reminder, capsule nudge) |
+|------|---------|
+| (None — all files already exist on branch) | -- |
 
 ## Files to Modify
 
 | File | Changes |
-| ---- | ------- |
-| `types/index.ts` | Add `TimeCapsuleSubmission`, `FavoriteActivity`, `Montage`, `PostTripStatus` types. Extend `Trip` with optional `postTripStatus`. Update `NotificationPreferences`. Add `ActivityCategoryBadge` display type. |
-| `utils/supabaseStorage.ts` | Add ~8 new functions for time capsule CRUD, favorites CRUD, montage read, and post-trip status aggregation. |
-| `utils/storage.ts` | Expose new supabaseStorage functions through abstraction layer. Add local-mode stubs. |
-| `utils/notifications.ts` | Add deep link handling for montage reveal notification and time capsule education message. Update `NotificationPreferences` interface. |
-| `components/VibeTab.tsx` | Import and render `TimeCapsuleSection` during active trips. |
-| `components/StackedTripCards.tsx` | Add completed trip visual state. Integrate `Top3ReminderBanner` for past trips with pending favorites. |
-| `app/trip/[id].tsx` | Integrate `TripCompleteSheet` overlay. Add post-trip section to completed trip view. Import `usePostTripStatus`. |
-| `components/TripHeader.tsx` | No changes needed — existing tab structure is sufficient. |
+|------|---------|
+| `app/(tabs)/index.tsx` | Integrate `Top3ReminderBanner` on past trip cards; batch-fetch post-review statuses |
+| `app/trip/[id].tsx` | Wire `GroupFavoritesSection` and `MontageCard` into completed trip detail view |
+| `app/trip/[id]/pick-favorites.tsx` | Edge cases: < 3 activities, 0 activities |
+| `app/trip/[id]/montage.tsx` | Processing state, empty state, mark capsule viewed |
+| `app/trip/[id]/group-favorites.tsx` | Progress bar, vote count display verification |
+| `app/_layout.tsx` | Deep link handler for `tripful://trip/{tripId}?action=post-trip-review` |
+| `app.json` | Add `NSCameraUsageDescription`, `NSMicrophoneUsageDescription` if missing |
+| `components/time-capsule/TimeCapsuleCapture.tsx` | Camera permission flow |
+| `components/post-trip/TripCompleteSheet.tsx` | Edge cases: 0 activities, low participation |
+| `utils/supabaseStorage.ts` | Verify atomic favorites insert, blind mechanic on safe view |
+| `utils/notifications.ts` | Verify deep link targets, education push helper |
+| `hooks/usePostTripStatus.ts` | Edge cases: no end date, post-join timing |
+| `supabase/functions/generate-montage/index.ts` | Retry logic, infrastructure notes |
+| `supabase/functions/post-trip-notifications/index.ts` | Nudge scheduling verification |
 
 ## Migration Plan
 
-### Migration 1: `20260316000000_post_trip_review_tables.sql`
+### Migrations (5 files, deploy in order)
 
-```sql
--- Time capsule submissions (blind media — no public read on storage_path)
-CREATE TABLE time_capsule_submissions (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    trip_id UUID NOT NULL REFERENCES trips(id) ON DELETE CASCADE,
-    user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-    media_type TEXT NOT NULL CHECK (media_type IN ('video', 'photo')),
-    storage_path TEXT NOT NULL,        -- path in time-capsule bucket
-    duration_seconds NUMERIC(4,1),     -- video duration (null for photos)
-    created_at TIMESTAMPTZ DEFAULT NOW()
-);
+| Order | File | Purpose |
+|-------|------|---------|
+| 1 | `supabase/migrations/20260316000000_post_trip_review_tables.sql` | Core tables: `time_capsule_submissions`, `favorite_activities`, `montages` + RLS + safe view |
+| 2 | `supabase/migrations/20260316000001_time_capsule_bucket.sql` | Storage bucket `time-capsule` |
+| 3 | `supabase/migrations/20260316000002_montages_bucket.sql` | Storage bucket `montages` |
+| 4 | `supabase/migrations/20260316000003_notification_prefs_post_trip.sql` | Notification preference columns |
+| 5 | `supabase/migrations/20260316100000_post_review_status.sql` | Per-user review tracking table `trip_post_review_status` |
 
-CREATE INDEX idx_capsule_trip ON time_capsule_submissions(trip_id);
-CREATE INDEX idx_capsule_user ON time_capsule_submissions(user_id);
+### RLS Summary
 
-ALTER TABLE time_capsule_submissions ENABLE ROW LEVEL SECURITY;
+| Table | INSERT | SELECT | UPDATE | DELETE |
+|-------|--------|--------|--------|--------|
+| `time_capsule_submissions` | Own + trip member | Trip members (metadata only via safe view) | -- | Own only |
+| `favorite_activities` | Own + trip member | Trip members | -- | Own only |
+| `montages` | -- (service role only) | Trip members | -- (service role only) | -- |
+| `trip_post_review_status` | Own only | Own only | Own only | -- |
 
--- Users can insert submissions for trips they're members of
-CREATE POLICY "Members submit to time capsule" ON time_capsule_submissions
-    FOR INSERT WITH CHECK (
-        auth.uid() = user_id
-        AND EXISTS (
-            SELECT 1 FROM trip_members WHERE trip_id = time_capsule_submissions.trip_id AND user_id = auth.uid()
-        )
-    );
+### Key Security Decisions
 
--- Users can see metadata of submissions (id, user_id, media_type, created_at) but NOT storage_path
--- Enforced at query level — storage_path never returned to client until montage phase
-CREATE POLICY "Members view capsule metadata" ON time_capsule_submissions
-    FOR SELECT USING (
-        EXISTS (
-            SELECT 1 FROM trip_members WHERE trip_id = time_capsule_submissions.trip_id AND user_id = auth.uid()
-        )
-    );
+- `time_capsule_submissions_safe` VIEW excludes `storage_path` — enforces blind mechanic at DB layer (P1.S4.C27)
+- Montage INSERT/UPDATE restricted to service role — only edge functions create/update montages
+- `SECURITY INVOKER` for any RPCs (per Supabase best practices)
 
--- Users can delete their own submissions
-CREATE POLICY "Users delete own submissions" ON time_capsule_submissions
-    FOR DELETE USING (auth.uid() = user_id);
-
--- Favorite activities (user's top 3 picks per trip)
-CREATE TABLE favorite_activities (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    trip_id UUID NOT NULL REFERENCES trips(id) ON DELETE CASCADE,
-    user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-    activity_id UUID NOT NULL REFERENCES trip_activities(id) ON DELETE CASCADE,
-    rank INTEGER NOT NULL CHECK (rank BETWEEN 1 AND 3),
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    UNIQUE(trip_id, user_id, activity_id),
-    UNIQUE(trip_id, user_id, rank)
-);
-
-CREATE INDEX idx_favorites_trip ON favorite_activities(trip_id);
-CREATE INDEX idx_favorites_user ON favorite_activities(user_id);
-
-ALTER TABLE favorite_activities ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Members submit favorites" ON favorite_activities
-    FOR INSERT WITH CHECK (
-        auth.uid() = user_id
-        AND EXISTS (
-            SELECT 1 FROM trip_members WHERE trip_id = favorite_activities.trip_id AND user_id = auth.uid()
-        )
-    );
-
-CREATE POLICY "Members view favorites" ON favorite_activities
-    FOR SELECT USING (
-        EXISTS (
-            SELECT 1 FROM trip_members WHERE trip_id = favorite_activities.trip_id AND user_id = auth.uid()
-        )
-    );
-
--- Montages (generated video per trip)
-CREATE TABLE montages (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    trip_id UUID NOT NULL REFERENCES trips(id) ON DELETE CASCADE UNIQUE,
-    status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'processing', 'ready', 'failed')),
-    storage_path TEXT,                  -- path in montages bucket (null until ready)
-    duration_seconds NUMERIC(5,1),     -- montage duration
-    music_source TEXT,                  -- 'spotify' or 'default'
-    submission_count INTEGER DEFAULT 0, -- how many clips/photos were included
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    completed_at TIMESTAMPTZ
-);
-
-CREATE INDEX idx_montages_trip ON montages(trip_id);
-
-ALTER TABLE montages ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Members view montage" ON montages
-    FOR SELECT USING (
-        EXISTS (
-            SELECT 1 FROM trip_members WHERE trip_id = montages.trip_id AND user_id = auth.uid()
-        )
-    );
-```
-
-### Migration 2: `20260316000001_time_capsule_bucket.sql`
-
-```sql
--- Private bucket — no public read. RLS controls access.
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('time-capsule', 'time-capsule', false)
-ON CONFLICT (id) DO NOTHING;
-
--- Trip members can upload to their trip's folder
-CREATE POLICY "Members upload capsule media" ON storage.objects FOR INSERT
-    WITH CHECK (
-        bucket_id = 'time-capsule'
-        AND auth.role() = 'authenticated'
-        AND EXISTS (
-            SELECT 1 FROM trip_members
-            WHERE trip_id = (storage.foldername(name))[1]::uuid
-            AND user_id = auth.uid()
-        )
-    );
-
--- Users can delete their own uploads
-CREATE POLICY "Users delete own capsule media" ON storage.objects FOR DELETE
-    USING (
-        bucket_id = 'time-capsule'
-        AND auth.role() = 'authenticated'
-        AND (storage.foldername(name))[2] = auth.uid()::text
-    );
-
--- No SELECT policy for regular users — only service role can read for montage generation
-```
-
-### Migration 3: `20260316000002_montages_bucket.sql`
-
-```sql
--- Public bucket for generated montage playback
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('montages', 'montages', true)
-ON CONFLICT (id) DO NOTHING;
-
-CREATE POLICY "Public montage read access" ON storage.objects FOR SELECT
-    USING (bucket_id = 'montages');
-
--- Only service role uploads montages (edge function) — no user INSERT policy needed
-```
-
-### Migration 4: `20260316000003_notification_prefs_post_trip.sql`
-
-```sql
-ALTER TABLE notification_preferences
-    ADD COLUMN IF NOT EXISTS time_capsule_reveal BOOLEAN DEFAULT TRUE,
-    ADD COLUMN IF NOT EXISTS top3_reminder BOOLEAN DEFAULT TRUE,
-    ADD COLUMN IF NOT EXISTS time_capsule_nudge BOOLEAN DEFAULT TRUE;
-```
+---
 
 ## Risk Areas
 
 | Risk | Impact | Mitigation |
-| ---- | ------ | ---------- |
-| Video processing on edge functions is heavy / may timeout | Montage generation fails or is too slow | Use Deno FFmpeg bindings with aggressive time limits. Fall back to simpler "slideshow" if full montage fails. Consider offloading to a background worker (Hetzner server) if edge function limits are hit. |
-| 6-second video uploads could be large (~5-10MB each) | Storage costs, slow uploads on bad connections | Compress on-device before upload (720p max, H.264). Set per-trip submission limit (e.g., 20 clips max). |
-| Blind mechanic requires careful RLS — leaking `storage_path` breaks the feature | Users could see clips before reveal | Never return `storage_path` in client queries. Use column-level query restriction in `supabaseStorage.ts`. Storage bucket has no user SELECT policy. |
-| `expo-image-picker` video recording may not enforce exact 6-second limit | Clips longer than 6s get submitted | Validate duration client-side before upload. Trim to 6s server-side in `generate-montage` as safety net. |
-| Simultaneous push notification delivery is "best effort" | Not all users see reveal at the exact same moment | Acceptable — push is inherently async. The "simultaneous" experience is the notification, not the generation. |
-| Montage music from Spotify requires API access / licensing | Can't use actual Spotify tracks in montage | Use a royalty-free default ambient track. Spotify integration is aspirational — note this as an open question in the spec. |
-| `expo-av` or `expo-video` package may not be in current dependencies | Build fails if not installed | Check `package.json` and install `expo-av` if missing (task 6.3). |
-| New tables reference `trip_activities` — FK could fail if activity is deleted after being favorited | Orphaned favorites | `ON DELETE CASCADE` on the FK handles this. UI should gracefully handle missing activity data. |
+|------|--------|------------|
+| FFmpeg not available on Deno edge runtime | Montage generation fails entirely (P1.S4.C17) | `generate-montage` is scaffolded only. Actual video processing requires Hetzner worker or external service. Document this clearly. Ship client-side first, montage generation as a follow-up. |
+| Camera permissions denied on iOS | Users cannot capture time capsule content (P1.S4.C09) | Graceful fallback: show settings deep link. Test on physical device. |
+| Large video uploads on slow connections | Upload fails silently, poor UX | Client-side: show upload progress indicator. Future: background upload queue (out of scope for v1). |
+| `time_capsule_submissions_safe` view performance | Slow queries on large trips | Index on `trip_id` already present. Monitor query plans post-deploy. |
+| `trip_post_review_status` not deployed (untracked file) | Re-engagement banner queries fail | Stage and commit immediately (Task 1.1). |
+| Spotify playlist integration for montage music | Spotify API requires OAuth, adds complexity (P1.S4.C20) | Default to ambient track for v1. Spotify integration is scaffolded but deferred to post-v1. |
+| Concurrent favorites submission from same user | Race condition could create > 3 favorites | UNIQUE constraints on `(trip_id, user_id, rank)` and `(trip_id, user_id, activity_id)` prevent duplicates at DB level. |
 
-## Implementation Order
+---
 
-Critical path (must be sequential):
+## Implementation Order (Critical Path)
 
-1. **1.1** → Database tables (everything depends on this)
-2. **1.2, 1.3** → Storage buckets (parallel with each other, after 1.1)
-3. **1.4** → Types (parallel with 1.2/1.3)
-4. **1.5** → Notification prefs migration
-5. **2.1, 2.2, 2.3** → Supabase CRUD functions (parallel with each other, after 1.x)
-6. **2.4** → Post-trip status aggregation (after 2.1-2.3)
-7. **2.5** → Storage abstraction (after 2.4)
-8. **3.1** → `usePostTripStatus` hook (after 2.5)
-9. **3.2, 3.3** → Trip complete sheet + stats bar (parallel, after 3.1)
-10. **3.4** → Integrate sheet into trip detail (after 3.2, 3.3)
-11. **4.1, 4.2, 4.3** → Top 3 picker screen + components (parallel, after 2.2)
-12. **4.4** → Wire up submit flow (after 4.1)
-13. **5.1, 5.4** → Time capsule capture + upload logic (parallel, after 2.1)
-14. **5.2** → Time capsule section component (after 5.1, 5.4)
-15. **5.3** → Integrate into Vibe tab (after 5.2)
-16. **6.1** → Generate montage edge function (after 1.x)
-17. **6.2** → Trigger reveal edge function (after 6.1)
-18. **6.3** → Montage player component (after 2.3)
-19. **6.4** → Montage reveal screen (after 6.3)
-20. **6.5** → Montage music (after 6.1)
-21. **7.1** → Group favorites section (after 2.2)
-22. **7.2** → Group favorites screen (after 7.1)
-23. **8.1, 8.2** → Home screen completed state + banner (parallel, after 3.1)
-24. **8.3** → Integrate banner (after 8.2)
-25. **9.1** → Push notification edge function (after 6.2)
-26. **9.2** → Notification handling (after 9.1)
-27. **11.1, 11.2** → Completed trip detail integration (after 6.3, 7.1)
-28. **10.4, 10.5** → Edge cases + typecheck (last)
+1. **1.1** — Stage untracked migration
+2. **1.2** — Verify all migrations
+3. **1.3** — Verify types match migrations
+4. **1.4** — Add camera permissions to `app.json`
+5. **2.1 → 2.5** — Time capsule capture verification
+6. **3.1 → 3.6** — Trip complete + favorites flow
+7. **4.1 → 4.5** — Montage reveal + playback
+8. **5.1 → 5.3** — Group favorites aggregation
+9. **6.1 → 6.4** — Home screen re-engagement (major integration gap)
+10. **7.1 → 7.6** — Notifications + deep links
+11. **8.1 → 8.3** — Montage generation edge function polish
+12. **9.1 → 9.6** — Edge cases + typecheck + tests
+
+---
 
 ## Verification Checkpoints
 
 | After Task(s) | Verification |
-| -------------- | ------------ |
-| 1.1 – 1.5 | `npm run typecheck` — types compile, no errors from new type additions |
-| 2.5 | `npm run typecheck` — storage layer compiles with all new functions |
-| 3.4 | `npm run typecheck` + manual test: open a past trip → bottom sheet appears with stats |
-| 4.4 | `npm run typecheck` + manual test: pick 3 activities → submit → success toast → sheet dismissed |
-| 5.3 | `npm run typecheck` + manual test: active trip → Vibe tab → capture section visible → submit clip → count increments |
-| 6.4 | `npm run typecheck` + manual test: completed trip with submissions → montage loading state → playback works |
-| 8.3 | `npm run typecheck` + manual test: home screen → past trip without favorites → blinking banner visible |
-| 10.5 | `npm run typecheck` — full pass, zero errors. `npm test` — existing tests still pass. |
+|---------------|-------------|
+| 1.3 | `npm run typecheck` — types compile cleanly |
+| 2.5 | Manual: open Vibe tab on active trip → capsule section visible, no storage_path leakage |
+| 3.6 | `npm run typecheck` + manual: complete top 3 flow end-to-end |
+| 4.5 | Manual: open montage route → handles all 3 states (ready, processing, empty) |
+| 5.3 | Manual: completed trip shows group favorites section |
+| 6.4 | `npm run typecheck` + manual: home screen shows banner on past trip without favorites |
+| 7.2 | Manual: tap push notification → navigates to correct screen |
+| 9.5 | `npm run typecheck` — zero errors |
+| 9.6 | `npm test` — all tests pass |
+
+---
+
+## Criteria Coverage Matrix
+
+| Criterion | Phase.Task | Status |
+|-----------|-----------|--------|
+| P1.S4.C01 — Trip Complete sheet auto-appears | 3.1 | Built, needs verification |
+| P1.S4.C02 — Stats bar accuracy | 3.1 | Built, needs verification |
+| P1.S4.C03 — Independent of expense settlement | 3.1 | Built, needs verification |
+| P1.S4.C04 — Select exactly 3 favorites | 3.2 | Built, needs verification |
+| P1.S4.C05 — Favorites persist per-user | 3.5 | Built, needs verification |
+| P1.S4.C06 — Blinking banner on past trip card | **6.1** | **NOT INTEGRATED — gap** |
+| P1.S4.C07 — Push notification reminder | 7.1, 7.2, 7.3 | Built (edge function), deep link needs wiring |
+| P1.S4.C08 — Banner disappears after submit | **6.3** | **NOT INTEGRATED — gap** |
+| P1.S4.C09 — Record/submit 6-sec clips | 2.2, 2.3 | Built, needs permission flow |
+| P1.S4.C10 — Blind mechanic enforced | 2.5 | Built via safe view, needs verification |
+| P1.S4.C11 — Delete own submission | 2.4 | Built, needs verification |
+| P1.S4.C12 — Capture UI on Vibe tab | 2.1 | Built, needs verification |
+| P1.S4.C13 — Photos + videos accepted | 2.2 | Built, needs verification |
+| P1.S4.C14 — Education on trip join | 7.5 | Helper exists, integration point needed |
+| P1.S4.C15 — Mid-trip nudge | 7.3 | Built in edge function, needs verification |
+| P1.S4.C16 — Low-participation feedback | 9.3 | Needs implementation |
+| P1.S4.C17 — 60-sec montage generated | 8.1 | Scaffolded only (no real FFmpeg) |
+| P1.S4.C18 — Simultaneous reveal push | 7.4 | Built, needs verification |
+| P1.S4.C19 — Disposable camera aesthetic | 8.3 | Deferred (requires video processing infra) |
+| P1.S4.C20 — Montage music from Spotify/default | 8.3 | Scaffolded, Spotify deferred |
+| P1.S4.C21 — Montage re-watchable from trip detail | **6.4** | **NOT INTEGRATED — gap** |
+| P1.S4.C22 — Share button with native share sheet | 4.2 | Built, needs verification |
+| P1.S4.C23 — Group favorites ranked by votes | 5.1 | Built, needs verification |
+| P1.S4.C24 — Group favorites visible to all members | **5.3** | **NOT INTEGRATED — gap** |
+| P1.S4.C25 — Home screen completed state | **6.1** | **NOT INTEGRATED — gap** |
+| P1.S4.C26 — Non-members cannot access | 1.2 | Built via RLS, needs verification |
+| P1.S4.C27 — No preview/gallery of submitted clips | 2.5 | Built via safe view, needs verification |
+| P1.S4.C28 — < 3 activities edge case | 3.3 | Needs implementation |
+| P1.S4.C29 — 0 submissions graceful handling | 4.4 | Partially built, needs verification |
+| P1.S4.C30 — Async montage processing state | 4.3 | Needs implementation |
+| P1.S4.C31 — Typecheck passes | 9.5 | Run after all changes |
+
+**Bold** = primary remaining gaps that require new code.
+
+---
+
+## Dev Notes
+
+- All placeholder components include `// NOTE: UI is placeholder. Expect adjustments when Figma designs arrive with new skin/layout.` — Figma screens are not yet designed.
+- Montage generation (P1.S4.C17, C19, C20) is scaffolded as an edge function but **actual video processing requires server-side infrastructure** (Hetzner worker with FFmpeg). The client-side flow (player, share, states) should ship first; montage generation is a separate deployment task.
+- Use `@/` path aliases throughout. Follow `StyleSheet.create()` pattern. No inline styles.
+- The `trip_post_review_status` migration must be staged and committed — it is currently untracked.
