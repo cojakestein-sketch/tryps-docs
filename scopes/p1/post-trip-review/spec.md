@@ -145,6 +145,13 @@ The post-trip experience that brings groups back to Tryps. When a trip ends, use
 - Push notification infrastructure required for simultaneous reveal and anniversary triggers
 - Montage generation is async — may take minutes after trip ends, not instant
 
+## Figma Screen
+- Screen with option to upload the memories of the trip. Option for user to uplaod the video or picture. 
+- Screen for users to see listing of uploaded memories and option to delete it. (Own the memory will have access to delete)
+- Once trip is completed a screen to select the top activities.
+- Screen to see the Montage with option to share, download and watch.
+
+
 ## Open Questions
 
 - [ ] Exact placement of time capsule capture UI on Vibe tab — dedicated section or floating action?
