@@ -1,13 +1,13 @@
 # Tryps Docs
 
-Shared documentation for the Tryps team — specs, FRDs, designs, and the 10-step scope pipeline.
+Shared documentation for the Tryps team — specs, designs, and the 9-step scope pipeline.
 
 ## Structure
 
 ```
 scopes/              ← Canonical source of truth (mirrors Gantt)
   p1/                ← Phase 1: Core App
-    core-flows/      ← Each scope has 10 pipeline docs
+    core-flows/      ← Each scope has 9 pipeline docs
     tooltips-teaching/
     notifications-voting/
     post-trip-review/
@@ -26,6 +26,6 @@ user-flows/          ← User flow diagrams + exec summary
 
 Every scope folder contains documents for each step of the [Gantt pipeline](https://marty.jointryps.com/gantt):
 
-1. **Spec** → 2. **FRD** → 3. **Plan** → 4. **Work** → 5. **Review** → 6. **Compound Learnings** → 7. **Agent Ready** → 8. **Dev Feedback** → 9. **Fixes & Learnings** → 10. **Merged?**
+1. **Spec** → 2. **Plan** → 3. **Work** → 4. **Review** → 5. **Compound Learnings** → 6. **Agent Ready** → 7. **Dev Feedback** → 8. **Fixes & Learnings** → 9. **Merged?**
 
 See [scopes/README.md](scopes/README.md) for full details.

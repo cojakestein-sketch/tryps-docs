@@ -1,19 +1,18 @@
 # Scopes — Tryps Product Pipeline
 
-Each scope lives in `scopes/<phase>/<scope-name>/` and contains **10 pipeline documents** matching the [Gantt pipeline](https://marty.jointryps.com/gantt):
+Each scope lives in `scopes/<phase>/<scope-name>/` and contains **9 pipeline documents** matching the [Gantt pipeline](https://marty.jointryps.com/gantt):
 
 | Step | File | Owner | Description |
 |------|------|-------|-------------|
 | 1 | `spec.md` | Jake | Product specification |
-| 2 | `frd.md` | Jake | Functional requirements document |
-| 3 | `plan.md` | Claude | Implementation plan |
-| 4 | `work.md` | Claude | Work execution output |
-| 5 | `review.md` | Claude | Code review findings |
-| 6 | `compound-learnings.md` | Claude | Aggregated learnings |
-| 7 | `agent-ready.md` | Claude | Agent work done — ready for developer review |
-| 8 | `dev-feedback.md` | Dev | Developer feedback on agent work |
-| 9 | `fixes-learnings.md` | Claude | Fixes applied + learnings from dev feedback |
-| 10 | `merged.md` | Dev | Final merge status |
+| 2 | `plan.md` | Claude | Implementation plan |
+| 3 | `work.md` | Claude | Work execution output |
+| 4 | `review.md` | Claude | Code review findings |
+| 5 | `compound-learnings.md` | Claude | Aggregated learnings |
+| 6 | `agent-ready.md` | Claude | Agent work done — ready for developer review |
+| 7 | `dev-feedback.md` | Dev | Developer feedback on agent work |
+| 8 | `fixes-learnings.md` | Claude | Fixes applied + learnings from dev feedback |
+| 9 | `merged.md` | Dev | Final merge status |
 
 ## Phases
 
