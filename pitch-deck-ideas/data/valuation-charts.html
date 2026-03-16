@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tryps — Users → Valuation Analysis</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #fafafa;
+    color: #1a1a1a;
+    line-height: 1.6;
+    padding: 0 20px 80px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 48px 0 32px;
+    border-bottom: 2px solid #D9071C;
+    margin-bottom: 48px;
+  }
+  header h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; }
+  header p { color: #666; margin-top: 8px; font-size: 15px; }
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 48px 0 16px;
+    color: #1a1a1a;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 24px 0 12px;
+    color: #444;
+  }
+  .subtitle { color: #666; font-size: 14px; margin: -8px 0 24px; }
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    padding: 28px;
+    margin: 20px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid #e0e0e0;
+    font-weight: 600;
+    color: #444;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  tr:hover td { background: #fafafa; }
+  .milestone-table th { text-align: center; }
+  .milestone-table td { text-align: center; font-weight: 500; }
+  .milestone-table td:first-child { text-align: left; font-weight: 700; }
+  .milestone-table .conservative { color: #666; }
+  .milestone-table .mid { color: #1a1a1a; font-weight: 700; }
+  .milestone-table .optimistic { color: #D9071C; font-weight: 700; }
+  .chart-wrap {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    padding: 24px;
+    margin: 20px 0;
+  }
+  canvas { max-height: 480px; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+  .tag-ai { background: #FFF3E0; color: #E65100; }
+  .tag-travel { background: #E3F2FD; color: #1565C0; }
+  .tag-social { background: #F3E5F5; color: #7B1FA2; }
+  .tag-fintech { background: #E8F5E9; color: #2E7D32; }
+  .tag-low { background: #FFF9C4; color: #F57F17; }
+  .tag-analyst { background: #ECEFF1; color: #546E7A; }
+  .range-note {
+    display: inline-block;
+    background: #f5f5f5;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #666;
+    margin: 4px 4px 4px 0;
+  }
+  .method-note {
+    background: #FFF8E1;
+    border-left: 3px solid #FFC107;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: #666;
+    margin: 16px 0;
+  }
+  .tryps-highlight {
+    background: linear-gradient(135deg, #FFF5F5, #FFF);
+    border: 1px solid #FFCDD2;
+  }
+  .calc-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 16px 0;
+  }
+  .calc-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .calc-input-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+  }
+  .calc-input-group input {
+    font-size: 16px;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    width: 100%;
+  }
+  .calc-input-group input:focus {
+    outline: none;
+    border-color: #D9071C;
+    box-shadow: 0 0 0 3px rgba(217,7,28,0.1);
+  }
+  .calc-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .calc-result-card {
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .calc-result-card.conservative { background: #f5f5f5; }
+  .calc-result-card.mid { background: #f0f0f0; }
+  .calc-result-card.optimistic { background: #FFF5F5; }
+  .calc-result-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #888; }
+  .calc-result-card .value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+  .calc-result-card.optimistic .value { color: #D9071C; }
+  .source-link { color: #888; font-size: 12px; }
+  .dpu-cell { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; }
+  .excluded-note { color: #999; font-style: italic; font-size: 13px; }
+  .sub-range-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  @media (max-width: 768px) {
+    .calc-section { grid-template-columns: 1fr; }
+    .calc-results { grid-template-columns: 1fr; }
+    .sub-range-grid { grid-template-columns: 1fr; }
+    table { font-size: 12px; }
+    th, td { padding: 8px 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Users &rarr; Valuation: What Is Tryps Worth?</h1>
+  <p>Comp-based valuation analysis using real funding rounds from 13 consumer companies</p>
+  <p style="margin-top: 4px; font-size: 13px; color: #999;">Generated March 15, 2026 &middot; Sources linked for every data point</p>
+</header>
+
+<!-- ========== SECTION 1: DOWNLOADS MILESTONES ========== -->
+<h2>Section 1: &ldquo;At X Downloads, Tryps Is Worth...&rdquo;</h2>
+<p class="subtitle">Based on $/download from 18 funding rounds across 9 companies</p>
+
+<div class="method-note">
+  <strong>Method:</strong> For each comp, we divide post-money valuation by cumulative downloads/registered users at that round.
+  The Conservative&ndash;Mid&ndash;Optimistic range represents P25&ndash;Median&ndash;P75 of all $/download values.
+</div>
+
+<div class="card tryps-highlight">
+<table class="milestone-table">
+  <thead>
+    <tr>
+      <th style="text-align:left">Downloads</th>
+      <th>Conservative (P25)</th>
+      <th>Mid-Range (Median)</th>
+      <th>Optimistic (P75)</th>
+    </tr>
+  </thead>
+  <tbody id="downloads-milestones"></tbody>
+</table>
+</div>
+
+<div style="margin-top: 12px;" id="download-range-notes"></div>
+
+<!-- ========== SECTION 2: MAU MILESTONES ========== -->
+<h2>Section 2: &ldquo;At X MAU, Tryps Is Worth...&rdquo;</h2>
+<p class="subtitle">Based on $/MAU from 14 funding rounds across 7 companies</p>
+
+<div class="method-note">
+  <strong>Method:</strong> Same approach using MAU (or DAU where noted). AI companies (Perplexity, Character.AI) significantly inflate the upper range. See sub-ranges below.
+</div>
+
+<div class="card tryps-highlight">
+<table class="milestone-table">
+  <thead>
+    <tr>
+      <th style="text-align:left">MAU</th>
+      <th>Conservative (P25)</th>
+      <th>Mid-Range (Median)</th>
+      <th>Optimistic (P75)</th>
+    </tr>
+  </thead>
+  <tbody id="mau-milestones"></tbody>
+</table>
+</div>
+
+<h3>Sub-Ranges: Consumer Social/Travel vs. AI-Native</h3>
+<div class="sub-range-grid">
+  <div class="card">
+    <h3 style="margin-top:0;">Consumer Social/Travel <span class="tag tag-social">8 rounds</span></h3>
+    <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Instagram, BeReal, Partiful, Venmo</p>
+    <table class="milestone-table">
+      <thead><tr><th style="text-align:left">MAU</th><th>P25</th><th>Median</th><th>P75</th></tr></thead>
+      <tbody id="mau-consumer-milestones"></tbody>
+    </table>
+    <p id="consumer-range-label" style="font-size: 12px; color: #999; margin-top: 8px;"></p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;">AI-Native <span class="tag tag-ai">6 rounds</span></h3>
+    <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Perplexity, Character.AI</p>
+    <table class="milestone-table">
+      <thead><tr><th style="text-align:left">MAU</th><th>P25</th><th>Median</th><th>P75</th></tr></thead>
+      <tbody id="mau-ai-milestones"></tbody>
+    </table>
+    <p id="ai-range-label" style="font-size: 12px; color: #999; margin-top: 8px;"></p>
+  </div>
+</div>
+
+<!-- ========== SECTION 3: COMP TABLE - $/DOWNLOAD ========== -->
+<h2>Section 3: Comp Table &mdash; $/Download</h2>
+<p class="subtitle">Every data point in Bucket A, sorted by $/download descending</p>
+
+<div class="card" style="overflow-x: auto;">
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Round</th>
+      <th style="text-align:right">Downloads / Reg. Users</th>
+      <th style="text-align:right">Valuation</th>
+      <th style="text-align:right">$/Download</th>
+      <th>Source</th>
+    </tr>
+  </thead>
+  <tbody id="bucket-a-table"></tbody>
+</table>
+</div>
+
+<!-- ========== SECTION 4: COMP TABLE - $/MAU ========== -->
+<h2>Section 4: Comp Table &mdash; $/MAU</h2>
+<p class="subtitle">Every data point in Bucket B, sorted by $/MAU descending</p>
+
+<div class="card" style="overflow-x: auto;">
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Round</th>
+      <th style="text-align:right">MAU / DAU</th>
+      <th style="text-align:right">Valuation</th>
+      <th style="text-align:right">$/MAU</th>
+      <th>Source</th>
+    </tr>
+  </thead>
+  <tbody id="bucket-b-table"></tbody>
+</table>
+</div>
+
+<!-- ========== SECTION 5: SCATTER - DOWNLOADS ========== -->
+<h2>Section 5: Downloads vs. Valuation (Log-Log)</h2>
+<p class="subtitle">Shaded band = P25&ndash;P75 range. Tryps star at 100K downloads.</p>
+<div class="chart-wrap">
+  <canvas id="scatter-downloads"></canvas>
+</div>
+
+<!-- ========== SECTION 6: SCATTER - MAU ========== -->
+<h2>Section 6: MAU vs. Valuation (Log-Log)</h2>
+<p class="subtitle">Shaded band = P25&ndash;P75 range. Tryps star at 30K MAU.</p>
+<div class="chart-wrap">
+  <canvas id="scatter-mau"></canvas>
+</div>
+
+<!-- ========== SECTION 7: CALCULATOR ========== -->
+<h2>Section 7: Valuation Calculator</h2>
+<p class="subtitle">Enter your own numbers to see estimated valuation ranges. Supports "K", "M", "B" suffixes.</p>
+
+<div class="card">
+  <div class="calc-section">
+    <div class="calc-input-group">
+      <label>App Downloads / Registered Users</label>
+      <input type="text" id="calc-downloads" placeholder="e.g. 100K" oninput="updateCalc()">
+    </div>
+    <div class="calc-input-group">
+      <label>Monthly Active Users (MAU)</label>
+      <input type="text" id="calc-mau" placeholder="e.g. 30K" oninput="updateCalc()">
+    </div>
+  </div>
+
+  <div id="calc-download-results" style="margin-top: 24px; display: none;">
+    <h3 style="margin-top: 0;">Based on Downloads</h3>
+    <div class="calc-results">
+      <div class="calc-result-card conservative">
+        <div class="label">Conservative (P25)</div>
+        <div class="value" id="calc-dl-conservative">&mdash;</div>
+      </div>
+      <div class="calc-result-card mid">
+        <div class="label">Mid-Range (Median)</div>
+        <div class="value" id="calc-dl-mid">&mdash;</div>
+      </div>
+      <div class="calc-result-card optimistic">
+        <div class="label">Optimistic (P75)</div>
+        <div class="value" id="calc-dl-optimistic">&mdash;</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="calc-mau-results" style="margin-top: 24px; display: none;">
+    <h3 style="margin-top: 0;">Based on MAU</h3>
+    <div class="calc-results">
+      <div class="calc-result-card conservative">
+        <div class="label">Conservative (P25)</div>
+        <div class="value" id="calc-mau-conservative">&mdash;</div>
+      </div>
+      <div class="calc-result-card mid">
+        <div class="label">Mid-Range (Median)</div>
+        <div class="value" id="calc-mau-mid">&mdash;</div>
+      </div>
+      <div class="calc-result-card optimistic">
+        <div class="label">Optimistic (P75)</div>
+        <div class="value" id="calc-mau-optimistic">&mdash;</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== EXCLUDED ========== -->
+<h2 style="color: #999; font-size: 16px; margin-top: 48px;">Excluded Data Points</h2>
+<p class="excluded-note">Dropped from analysis: Character.AI Series A (monthly visits, not MAU), Noplace (waitlist metric), Kayak (UMV/web visitors, not app users), Navan (B2B enterprise), Fizz (valuation unconfirmed — Dealroom algorithmic estimate only). Research returned no paired data for: Butterflies, Geneva, Locket, Headout, Layla, Mindtrip, Wanderlog, Beli (valuation or user count undisclosed at all rounds).</p>
+
+</div><!-- .container -->
+
+<script>
+// ===================================================================
+// DATA
+// ===================================================================
+const bucketA = [
+  { company: "Poke", date: "2025-09", round: "Seed ($15M)", users: 6000, valuation: 100000000, source: "TechStartups — General Catalyst led", reliability: "HIGH", category: "ai" },
+  { company: "Airbnb", date: "2009-04", round: "Seed (Sequoia)", users: 10000, valuation: 10000000, source: "Sequoia Capital", reliability: "HIGH", category: "travel" },
+  { company: "Airbnb", date: "2016-09", round: "Series F ($555M)", users: 100000000, valuation: 30000000000, source: "DemandSage / press", reliability: "HIGH", category: "travel" },
+  { company: "Airbnb", date: "2012", round: "Series B ($112M)", users: 6000000, valuation: 1300000000, source: "TechCrunch", reliability: "HIGH", category: "travel" },
+  { company: "Airbnb", date: "2009-01", round: "Seed (YC)", users: 10000, valuation: 2000000, source: "Y Combinator", reliability: "HIGH", category: "travel" },
+  { company: "Airbnb", date: "2014-04", round: "Series D ($450M)", users: 50000000, valuation: 10000000000, source: "Inc. Magazine — TPG led", reliability: "HIGH", category: "travel" },
+  { company: "Airbnb", date: "2019", round: "Pre-IPO", users: 200000000, valuation: 35000000000, source: "DemandSage / CNBC", reliability: "HIGH", category: "travel" },
+  { company: "Hopper", date: "2022-02", round: "Secondary ($35M)", users: 70000000, valuation: 5000000000, source: "TechCrunch", reliability: "HIGH", category: "travel" },
+  { company: "Hopper", date: "2021-08", round: "Series G ($175M)", users: 70000000, valuation: 3500000000, source: "TechCrunch", reliability: "HIGH", category: "travel" },
+  { company: "Instagram", date: "2012-04", round: "Acquisition (FB $1B)", users: 30000000, valuation: 1000000000, source: "TechCrunch — Facebook $1B", reliability: "HIGH", category: "social" },
+  { company: "AllTrails", date: "2021-11", round: "Permira ($150M)", users: 30000000, valuation: 875000000, source: "TechCrunch / PRNewswire", reliability: "HIGH", category: "travel" },
+  { company: "Strava", date: "2020-11", round: "Series F ($110M)", users: 70000000, valuation: 1500000000, source: "TechCrunch — TCV + Sequoia", reliability: "HIGH", category: "social" },
+  { company: "Strava", date: "2014-10", round: "Series D ($18.5M)", users: 10000000, valuation: 200000000, source: "Forge/Inc.com — Sequoia led", reliability: "HIGH", category: "social" },
+  { company: "Instagram", date: "2012-04", round: "Series B ($50M)", users: 30000000, valuation: 500000000, source: "TechCrunch — Sequoia", reliability: "HIGH", category: "social" },
+  { company: "Strava", date: "2025-05", round: "Series F ext ($50M)", users: 150000000, valuation: 2200000000, source: "Crunchbase News", reliability: "HIGH", category: "social" },
+  { company: "Hopper", date: "2020-05", round: "Series E ($70M)", users: 70000000, valuation: 1000000000, source: "Skift", reliability: "HIGH", category: "travel" },
+  { company: "AllTrails", date: "2018-10", round: "Spectrum Equity", users: 9000000, valuation: 75000000, source: "TechCrunch", reliability: "HIGH", category: "travel" },
+  { company: "Splitwise", date: "2021", round: "Series A ($20M)", users: 50000000, valuation: 200000000, source: "Sacra estimate (unconfirmed)", reliability: "LOW", category: "fintech" },
+];
+
+const bucketB = [
+  { company: "Partiful", date: "2022-11", round: "Series A1 ($20M)", users: 500000, valuation: 140000000, source: "TechCrunch / PitchBook — a16z led. Valuation confirmed; MAU from Q1 2025 (temporal gap)", reliability: "LOW", category: "social" },
+  { company: "Venmo", date: "2020-01", round: "Analyst (ARK Invest)", users: 40000000, valuation: 38000000000, source: "ARK Invest Big Ideas 2020 — 40M active accounts per PayPal 10-K", reliability: "ANALYST_ESTIMATE", category: "fintech" },
+  { company: "Venmo", date: "2021-06", round: "Analyst (Morgan Stanley)", users: 70000000, valuation: 45000000000, source: "Morgan Stanley research — 70M active accounts per PayPal 10-K", reliability: "ANALYST_ESTIMATE", category: "fintech" },
+  { company: "BeReal", date: "2021-06", round: "Series A ($30M)", users: 300000, valuation: 150000000, source: "TechCrunch — a16z + Accel", reliability: "HIGH", category: "social", metricNote: "DAU" },
+  { company: "Perplexity", date: "2025-06", round: "Series D ($500M)", users: 30000000, valuation: 14000000000, source: "CNBC — Accel led", reliability: "HIGH", category: "ai" },
+  { company: "Perplexity", date: "2024-12", round: "Series C ($500M)", users: 20000000, valuation: 9000000000, source: "TechCrunch", reliability: "HIGH", category: "ai" },
+  { company: "Perplexity", date: "2025-09", round: "Series D-2 ($200M)", users: 45000000, valuation: 20000000000, source: "TechCrunch", reliability: "HIGH", category: "ai" },
+  { company: "Perplexity", date: "2024-06", round: "Series B ext ($250M)", users: 15000000, valuation: 3000000000, source: "TechCrunch — SoftBank", reliability: "HIGH", category: "ai" },
+  { company: "Character.AI", date: "2024-08", round: "Google deal", users: 28000000, valuation: 2500000000, source: "The Information — Google $2.7B", reliability: "HIGH", category: "ai" },
+  { company: "BeReal", date: "2022-05", round: "Series B ($60M)", users: 7900000, valuation: 600000000, source: "TechCrunch — DST Global", reliability: "HIGH", category: "social", metricNote: "DAU" },
+  { company: "Venmo", date: "2025-01", round: "Analyst (Bernstein)", users: 64000000, valuation: 5000000000, source: "Sanford Bernstein research — 64M MAU per PayPal Investor Day Feb 2025", reliability: "ANALYST_ESTIMATE", category: "fintech" },
+  { company: "Perplexity", date: "2024-01", round: "Series B ($73.6M)", users: 10000000, valuation: 520000000, source: "Perplexity blog — IVP led", reliability: "HIGH", category: "ai" },
+  { company: "Instagram", date: "2011-02", round: "Series A ($7M)", users: 1750000, valuation: 25000000, source: "TechCrunch — Benchmark led", reliability: "HIGH", category: "social" },
+  { company: "BeReal", date: "2024-06", round: "Acquisition (Voodoo)", users: 40000000, valuation: 537000000, source: "TechCrunch — Voodoo EUR 500M", reliability: "HIGH", category: "social" },
+];
+
+// Add computed $/user
+bucketA.forEach(d => { d.dpu = d.valuation / d.users; });
+bucketB.forEach(d => { d.dpu = d.valuation / d.users; });
+
+// Sort by $/user descending
+bucketA.sort((a, b) => b.dpu - a.dpu);
+bucketB.sort((a, b) => b.dpu - a.dpu);
+
+// ===================================================================
+// PERCENTILE HELPER
+// ===================================================================
+function percentile(sortedArr, p) {
+  if (sortedArr.length === 0) return 0;
+  if (sortedArr.length === 1) return sortedArr[0];
+  const rank = p * (sortedArr.length + 1);
+  const lower = Math.floor(rank);
+  const upper = Math.ceil(rank);
+  if (lower < 1) return sortedArr[0];
+  if (upper > sortedArr.length) return sortedArr[sortedArr.length - 1];
+  if (lower === upper) return sortedArr[lower - 1];
+  const frac = rank - lower;
+  return sortedArr[lower - 1] + frac * (sortedArr[upper - 1] - sortedArr[lower - 1]);
+}
+
+// ===================================================================
+// COMPUTE RANGES
+// ===================================================================
+const dpuA = bucketA.map(d => d.dpu).sort((a, b) => a - b);
+const dpuB = bucketB.map(d => d.dpu).sort((a, b) => a - b);
+
+const rangeA = { p25: percentile(dpuA, 0.25), median: percentile(dpuA, 0.50), p75: percentile(dpuA, 0.75) };
+const rangeB = { p25: percentile(dpuB, 0.25), median: percentile(dpuB, 0.50), p75: percentile(dpuB, 0.75) };
+
+// Sub-ranges for MAU
+const dpuB_consumer = bucketB.filter(d => d.category !== 'ai').map(d => d.dpu).sort((a, b) => a - b);
+const dpuB_ai = bucketB.filter(d => d.category === 'ai').map(d => d.dpu).sort((a, b) => a - b);
+
+const rangeB_consumer = {
+  p25: percentile(dpuB_consumer, 0.25),
+  median: percentile(dpuB_consumer, 0.50),
+  p75: percentile(dpuB_consumer, 0.75)
+};
+const rangeB_ai = {
+  p25: percentile(dpuB_ai, 0.25),
+  median: percentile(dpuB_ai, 0.50),
+  p75: percentile(dpuB_ai, 0.75)
+};
+
+// ===================================================================
+// FORMAT HELPERS
+// ===================================================================
+function fmtDollars(n) {
+  if (n >= 1e12) return '$' + (n / 1e12).toFixed(1) + 'T';
+  if (n >= 1e9) return '$' + (n / 1e9).toFixed(1) + 'B';
+  if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return '$' + (n / 1e3).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+function fmtUsers(n) {
+  if (n >= 1e9) return (n / 1e9).toFixed(1) + 'B';
+  if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return (n / 1e3).toFixed(0) + 'K';
+  return n.toLocaleString();
+}
+
+function fmtDPU(n) {
+  if (n >= 10000) return '$' + (n / 1000).toFixed(0) + 'K';
+  if (n >= 1000) return '$' + n.toLocaleString(undefined, {maximumFractionDigits: 0});
+  if (n >= 100) return '$' + n.toFixed(0);
+  if (n >= 10) return '$' + n.toFixed(1);
+  return '$' + n.toFixed(2);
+}
+
+function categoryTag(cat) {
+  const tags = {
+    ai: '<span class="tag tag-ai">AI</span>',
+    travel: '<span class="tag tag-travel">Travel</span>',
+    social: '<span class="tag tag-social">Social</span>',
+    fintech: '<span class="tag tag-fintech">Fintech</span>'
+  };
+  return tags[cat] || '';
+}
+
+function reliabilityTag(r) {
+  if (r === 'LOW') return ' <span class="tag tag-low">LOW</span>';
+  if (r === 'ANALYST_ESTIMATE') return ' <span class="tag tag-analyst">Analyst Est.</span>';
+  if (r === 'MEDIUM') return ' <span class="tag tag-low">MEDIUM</span>';
+  return '';
+}
+
+// ===================================================================
+// MILESTONE TABLES
+// ===================================================================
+const milestones = [10000, 100000, 500000, 1000000, 10000000];
+const milestoneLabels = ['10K', '100K', '500K', '1M', '10M'];
+
+function buildMilestoneTable(tbodyId, range) {
+  const tbody = document.getElementById(tbodyId);
+  milestones.forEach((m, i) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td>' + milestoneLabels[i] + '</td>' +
+      '<td class="conservative">' + fmtDollars(m * range.p25) + '</td>' +
+      '<td class="mid">' + fmtDollars(m * range.median) + '</td>' +
+      '<td class="optimistic">' + fmtDollars(m * range.p75) + '</td>';
+    tbody.appendChild(tr);
+  });
+}
+
+buildMilestoneTable('downloads-milestones', rangeA);
+buildMilestoneTable('mau-milestones', rangeB);
+buildMilestoneTable('mau-consumer-milestones', rangeB_consumer);
+buildMilestoneTable('mau-ai-milestones', rangeB_ai);
+
+// Range note labels
+document.getElementById('download-range-notes').innerHTML =
+  '<span class="range-note">P25 = ' + fmtDPU(rangeA.p25) + '/download</span>' +
+  '<span class="range-note">Median = ' + fmtDPU(rangeA.median) + '/download</span>' +
+  '<span class="range-note">P75 = ' + fmtDPU(rangeA.p75) + '/download</span>';
+
+document.getElementById('consumer-range-label').textContent =
+  'P25=' + fmtDPU(rangeB_consumer.p25) + ' · Median=' + fmtDPU(rangeB_consumer.median) + ' · P75=' + fmtDPU(rangeB_consumer.p75) + '/MAU';
+document.getElementById('ai-range-label').textContent =
+  'P25=' + fmtDPU(rangeB_ai.p25) + ' · Median=' + fmtDPU(rangeB_ai.median) + ' · P75=' + fmtDPU(rangeB_ai.p75) + '/MAU';
+
+// ===================================================================
+// COMP TABLES
+// ===================================================================
+function buildCompTable(tbodyId, data) {
+  const tbody = document.getElementById(tbodyId);
+  data.forEach(d => {
+    const tr = document.createElement('tr');
+    const metricNote = d.metricNote ? ' <span style="color:#999;font-size:11px;">(' + d.metricNote + ')</span>' : '';
+    tr.innerHTML =
+      '<td><strong>' + d.company + '</strong> ' + categoryTag(d.category) + reliabilityTag(d.reliability) + '</td>' +
+      '<td>' + d.round + '<br><span style="color:#999;font-size:12px;">' + d.date + '</span></td>' +
+      '<td style="text-align:right">' + fmtUsers(d.users) + metricNote + '</td>' +
+      '<td style="text-align:right">' + fmtDollars(d.valuation) + '</td>' +
+      '<td style="text-align:right" class="dpu-cell">' + fmtDPU(d.dpu) + '</td>' +
+      '<td class="source-link">' + d.source + '</td>';
+    tbody.appendChild(tr);
+  });
+}
+
+buildCompTable('bucket-a-table', bucketA);
+buildCompTable('bucket-b-table', bucketB);
+
+// ===================================================================
+// SCATTER PLOTS
+// ===================================================================
+const categoryColors = {
+  travel: { bg: 'rgba(21,101,192,0.8)', border: '#1565C0' },
+  social: { bg: 'rgba(123,31,162,0.8)', border: '#7B1FA2' },
+  ai: { bg: 'rgba(230,81,0,0.8)', border: '#E65100' },
+  fintech: { bg: 'rgba(46,125,50,0.8)', border: '#2E7D32' }
+};
+
+function bandPoints(dpuLow, dpuHigh, xMin, xMax, steps) {
+  const pts = [];
+  for (let i = 0; i <= steps; i++) {
+    const logX = Math.log10(xMin) + (Math.log10(xMax) - Math.log10(xMin)) * (i / steps);
+    const x = Math.pow(10, logX);
+    pts.push({ low: { x: x, y: x * dpuLow }, high: { x: x, y: x * dpuHigh } });
+  }
+  return pts;
+}
+
+function createScatter(canvasId, data, range, trypsX, trypsLabel, xLabel) {
+  const ctx = document.getElementById(canvasId).getContext('2d');
+
+  const allUsers = data.map(d => d.users);
+  const xMin = Math.min(...allUsers) * 0.3;
+  const xMax = Math.max(...allUsers) * 3;
+  const band = bandPoints(range.p25, range.p75, xMin, xMax, 50);
+
+  // Build individual category datasets for legend
+  const categories = [...new Set(data.map(d => d.category))];
+  const catNames = { travel: 'Travel', social: 'Social', ai: 'AI-Native', fintech: 'Fintech' };
+
+  const scatterDatasets = categories.map(cat => {
+    const items = data.filter(d => d.category === cat);
+    return {
+      label: catNames[cat] || cat,
+      data: items.map(d => ({ x: d.users, y: d.valuation, _label: d.company + ' (' + d.round + ')' })),
+      pointBackgroundColor: categoryColors[cat]?.bg || 'rgba(100,100,100,0.7)',
+      pointBorderColor: categoryColors[cat]?.border || '#666',
+      pointRadius: 7,
+      pointHoverRadius: 10,
+      pointBorderWidth: 2,
+      order: 1,
+    };
+  });
+
+  new Chart(ctx, {
+    type: 'scatter',
+    data: {
+      datasets: [
+        // Band upper
+        {
+          label: '_bandUpper',
+          data: band.map(b => b.high),
+          showLine: true,
+          borderColor: 'rgba(217,7,28,0.12)',
+          backgroundColor: 'rgba(217,7,28,0.05)',
+          fill: '+1',
+          pointRadius: 0,
+          borderWidth: 1,
+          borderDash: [4, 4],
+          order: 10,
+        },
+        // Band lower
+        {
+          label: '_bandLower',
+          data: band.map(b => b.low),
+          showLine: true,
+          borderColor: 'rgba(217,7,28,0.12)',
+          backgroundColor: 'transparent',
+          fill: false,
+          pointRadius: 0,
+          borderWidth: 1,
+          borderDash: [4, 4],
+          order: 10,
+        },
+        // Median line
+        {
+          label: 'Median (' + fmtDPU(range.median) + '/user)',
+          data: band.map(b => ({ x: b.low.x, y: b.low.x * range.median })),
+          showLine: true,
+          borderColor: 'rgba(217,7,28,0.4)',
+          backgroundColor: 'transparent',
+          pointRadius: 0,
+          borderWidth: 2,
+          order: 5,
+        },
+        // Category scatter datasets
+        ...scatterDatasets,
+        // Tryps projections
+        {
+          label: 'Tryps (' + fmtUsers(trypsX) + ' ' + trypsLabel + ')',
+          data: [
+            { x: trypsX, y: trypsX * range.p25, _label: 'Conservative' },
+            { x: trypsX, y: trypsX * range.median, _label: 'Mid-Range' },
+            { x: trypsX, y: trypsX * range.p75, _label: 'Optimistic' },
+          ],
+          pointBackgroundColor: '#D9071C',
+          pointBorderColor: '#fff',
+          pointRadius: [8, 12, 8],
+          pointBorderWidth: 3,
+          pointStyle: 'star',
+          order: 0,
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 1.8,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            usePointStyle: true,
+            padding: 16,
+            font: { size: 12 },
+            filter: function(item) { return !item.text.startsWith('_'); }
+          }
+        },
+        tooltip: {
+          callbacks: {
+            title: function(items) {
+              var raw = items[0].raw;
+              return raw._label || '';
+            },
+            label: function(item) {
+              return fmtUsers(item.raw.x) + ' users \u2192 ' + fmtDollars(item.raw.y) + ' valuation';
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'logarithmic',
+          title: { display: true, text: xLabel, font: { size: 13, weight: 'bold' } },
+          ticks: {
+            callback: function(v) { return fmtUsers(v); },
+            font: { size: 11 },
+            maxTicksLimit: 8,
+          },
+          grid: { color: 'rgba(0,0,0,0.04)' }
+        },
+        y: {
+          type: 'logarithmic',
+          title: { display: true, text: 'Valuation (USD)', font: { size: 13, weight: 'bold' } },
+          ticks: {
+            callback: function(v) { return fmtDollars(v); },
+            font: { size: 11 },
+            maxTicksLimit: 8,
+          },
+          grid: { color: 'rgba(0,0,0,0.04)' }
+        }
+      }
+    }
+  });
+}
+
+createScatter('scatter-downloads', bucketA, rangeA, 100000, 'downloads', 'Downloads / Registered Users');
+createScatter('scatter-mau', bucketB, rangeB, 30000, 'MAU', 'Monthly Active Users');
+
+// ===================================================================
+// CALCULATOR
+// ===================================================================
+function parseNum(s) {
+  s = s.replace(/[,$\s]/g, '');
+  if (!s) return 0;
+  var lower = s.toLowerCase();
+  if (lower.endsWith('b')) return parseFloat(lower) * 1e9;
+  if (lower.endsWith('m')) return parseFloat(lower) * 1e6;
+  if (lower.endsWith('k')) return parseFloat(lower) * 1e3;
+  return parseFloat(s) || 0;
+}
+
+function updateCalc() {
+  var dl = parseNum(document.getElementById('calc-downloads').value);
+  var mau = parseNum(document.getElementById('calc-mau').value);
+
+  var dlSection = document.getElementById('calc-download-results');
+  var mauSection = document.getElementById('calc-mau-results');
+
+  if (dl > 0) {
+    dlSection.style.display = 'block';
+    document.getElementById('calc-dl-conservative').textContent = fmtDollars(dl * rangeA.p25);
+    document.getElementById('calc-dl-mid').textContent = fmtDollars(dl * rangeA.median);
+    document.getElementById('calc-dl-optimistic').textContent = fmtDollars(dl * rangeA.p75);
+  } else {
+    dlSection.style.display = 'none';
+  }
+
+  if (mau > 0) {
+    mauSection.style.display = 'block';
+    document.getElementById('calc-mau-conservative').textContent = fmtDollars(mau * rangeB.p25);
+    document.getElementById('calc-mau-mid').textContent = fmtDollars(mau * rangeB.median);
+    document.getElementById('calc-mau-optimistic').textContent = fmtDollars(mau * rangeB.p75);
+  } else {
+    mauSection.style.display = 'none';
+  }
+}
+</script>
+</body>
+</html>

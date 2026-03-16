@@ -1,0 +1,100 @@
+company,date,user_metric_type,user_count,valuation_usd,source
+Expedia,2013,monthly_unique_visitors,60000000,9960000000,SEC 10-K 2013; stockanalysis.com
+Expedia,2015-Q4,active_users,45000000,16140000000,electroiq.com; stockanalysis.com
+Expedia,2016-Q4,active_users,45000000,17000000000,electroiq.com; stockanalysis.com
+Expedia,2017-Q4,active_users,49000000,18260000000,electroiq.com; stockanalysis.com
+Expedia,2017,monthly_site_visits,675000000,18260000000,Expedia investor materials; stockanalysis.com
+Expedia,2018-Q4,active_users,53000000,16780000000,electroiq.com; stockanalysis.com
+Expedia,2019-Q4,active_users,60000000,15670000000,electroiq.com; stockanalysis.com
+Expedia,2020-Q1,active_users,22000000,7880000000,electroiq.com; stockanalysis.com - COVID trough
+Expedia,2020-Q4,active_users,22000000,18730000000,electroiq.com; stockanalysis.com
+Expedia,2021-Q4,active_users,38000000,27380000000,electroiq.com; stockanalysis.com
+Expedia,2022-Q4,active_users,48000000,13670000000,electroiq.com; stockanalysis.com
+Expedia,2023-Q4,active_users,50000000,21080000000,electroiq.com; stockanalysis.com
+Expedia,2024-Q4,active_users,46000000,23910000000,electroiq.com; stockanalysis.com
+Expedia,2025-Q4,monthly_unique_visitors,75000000,34710000000,SimilarWeb/industry reports; stockanalysis.com
+Expedia,2024-Q4,booked_room_nights_annual,383900000,23910000000,Expedia 10-K FY2024; stockanalysis.com
+Expedia,2025-Q4,booked_room_nights_annual,415400000,34710000000,Expedia 10-K FY2025; stockanalysis.com
+Booking,2014-Q4,room_nights_booked_annual,346000000,63470000000,SEC filings; companiesmarketcap.com
+Booking,2015-Q4,room_nights_booked_annual,432000000,63470000000,SEC filings; stockanalysis.com
+Booking,2016-Q4,room_nights_booked_annual,557000000,72340000000,SEC filings; stockanalysis.com
+Booking,2017-Q4,room_nights_booked_annual,673000000,84750000000,SEC filings; stockanalysis.com
+Booking,2018-Q4,room_nights_booked_annual,760000000,79800000000,SEC 10-K 2018; stockanalysis.com
+Booking,2019-Q4,room_nights_booked_annual,845000000,85960000000,SEC filing / PYMNTS.com; stockanalysis.com
+Booking,2020-Q4,room_nights_booked_annual,355000000,91220000000,Earnings reports; stockanalysis.com
+Booking,2021-Q4,room_nights_booked_annual,591000000,98520000000,PYMNTS.com / earnings; stockanalysis.com
+Booking,2022-Q4,room_nights_booked_annual,896000000,78170000000,Derived from earnings commentary - ESTIMATED; stockanalysis.com
+Booking,2023-Q4,room_nights_booked_annual,1049000000,123760000000,Booking Holdings earnings FY2023; stockanalysis.com
+Booking,2024-Q4,room_nights_booked_annual,1100000000,164440000000,Booking Holdings Q4 2024 earnings; stockanalysis.com
+Booking,2025-Q4,room_nights_booked_annual,1200000000,172620000000,Booking Holdings factsheet 2025; stockanalysis.com
+Booking,2022-Q4,mobile_app_users,100000000,78170000000,dreambigtravelfarblog.com; stockanalysis.com
+Booking,2024-Q4,active_mobile_users,135000000,164440000000,Business of Apps; stockanalysis.com
+TripAdvisor,2004-04,unique_monthly_visitors,5000000,210000000,IAC acquisition price $210M; Wikipedia/press
+TripAdvisor,2011-Q4,unique_monthly_visitors,50000000,3380000000,Press releases; stockanalysis.com (post spin-off)
+TripAdvisor,2012-Q4,unique_monthly_visitors,200000000,5970000000,TripAdvisor press releases; stockanalysis.com
+TripAdvisor,2013-Q4,unique_monthly_visitors,260000000,11770000000,TripAdvisor press releases; stockanalysis.com
+TripAdvisor,2014-Q4,unique_monthly_visitors,315000000,10670000000,TripAdvisor IR Dec 2014; stockanalysis.com
+TripAdvisor,2015-Q4,unique_monthly_visitors,350000000,12290000000,TripAdvisor 10-K FY2015; stockanalysis.com
+TripAdvisor,2016-Q4,unique_monthly_visitors,390000000,6760000000,TripAdvisor IR Q3 2016; stockanalysis.com
+TripAdvisor,2017-Q4,unique_monthly_visitors,455000000,4790000000,TripAdvisor IR; stockanalysis.com
+TripAdvisor,2018-Q4,unique_monthly_visitors,490000000,7430000000,TripAdvisor 10-K FY2018; stockanalysis.com
+TripAdvisor,2019-Q4,unique_monthly_visitors,463000000,4230000000,TripAdvisor IR Q3 2019; stockanalysis.com
+TripAdvisor,2021-Q4,unique_monthly_visitors,463000000,3770000000,Stats sources - UNRELIABLE may recycle 2019 figure; stockanalysis.com
+TripAdvisor,2022-Q4,unique_monthly_visitors,400000000,2530000000,Stats aggregators - APPROXIMATE; stockanalysis.com
+TripAdvisor,2023-Q4,unique_monthly_visitors,415000000,2980000000,Stats aggregators - APPROXIMATE; stockanalysis.com
+Kayak,2005-10,unique_monthly_visitors,3000000,17000000,Reuters Events; S-1 Series B pre-money
+Kayak,2007-12,unique_monthly_visitors,6000000,250000000,Product Growth Deep Dive; S-1 Series D pre-money
+Kayak,2012-06,queries_quarterly,304000000,1270000000,TechCrunch IPO day; market cap at close
+Kayak,2012-06,unique_monthly_visitors_us,8300000,1270000000,comScore; market cap at IPO close
+Kayak,2012-11,queries_annual,1200000000,1800000000,Priceline acquisition price $1.8B; est full-year queries
+Airbnb,2009-01,registered_users,10000,2000000,Y Combinator seed ($20K for 6%)
+Airbnb,2009-04,registered_users,10000,10000000,Sequoia $600K seed; est valuation ~$10M
+Airbnb,2010-11,cumulative_nights_booked,700000,70000000,Series A $7.2M; 700K nights booked
+Airbnb,2011-07,cumulative_nights_booked,2000000,1300000000,Series B $112M; TechCrunch
+Airbnb,2012,registered_users,6000000,1300000000,DemandSage; valuation at Series B
+Airbnb,2013,total_listings,300000,2900000000,Series C $200M Oct 2013; multiple sources
+Airbnb,2013,annual_guest_stays,6000000,2900000000,Inc. Magazine; 6M guest stays in 2013
+Airbnb,2014-04,total_listings,800000,10000000000,Series D $450M from TPG; Inc. Magazine
+Airbnb,2014,registered_users,50000000,10000000000,DemandSage; valuation at Series D
+Airbnb,2015-06,total_listings,1000000,25500000000,Series E $1.5B; multiple sources
+Airbnb,2015,annual_nights_booked,72400000,25500000000,Statista; valuation at Series E
+Airbnb,2016-09,registered_users,100000000,30000000000,Series F $555M; DemandSage
+Airbnb,2016-09,total_listings,2100000,30000000000,Series F; DemandSage
+Airbnb,2017,annual_nights_booked,185800000,31000000000,DemandSage/Business of Apps; valuation at ~$31B
+Airbnb,2017,total_listings,4000000,31000000000,DemandSage
+Airbnb,2018,registered_users,150000000,31000000000,DemandSage; no new round
+Airbnb,2018,annual_nights_booked,250300000,31000000000,DemandSage/Business of Apps
+Airbnb,2019,active_bookers,54000000,35000000000,Airbnb S-1/10-K; est internal valuation
+Airbnb,2019,annual_nights_booked,326900000,35000000000,DemandSage/Business of Apps
+Airbnb,2019,registered_users,200000000,35000000000,DemandSage; est pre-pandemic valuation
+Airbnb,2020-04,registered_users,200000000,18000000000,Silver Lake/Sixth Street $1B at $18B COVID valuation
+Airbnb,2020-12,registered_users,200000000,86500000000,IPO day 1 close at $144.71; CNBC
+Airbnb,2021,annual_nights_booked,300600000,105780000000,DemandSage; year-end mkt cap
+Airbnb,2021,total_listings,6000000,105780000000,DemandSage
+Airbnb,2022,annual_nights_booked,393700000,54130000000,DemandSage; year-end mkt cap
+Airbnb,2022,total_listings,6600000,54130000000,DemandSage
+Airbnb,2023,annual_nights_booked,448200000,87250000000,Sum of quarterly SEC earnings; CompaniesMarketCap
+Airbnb,2023,total_listings,7000000,87250000000,DemandSage
+Airbnb,2024,annual_nights_booked,491000000,83330000000,Airbnb Q4 2024 results; year-end mkt cap
+Airbnb,2024,registered_users,275000000,83330000000,DemandSage
+Airbnb,2024,total_listings,8000000,83330000000,DemandSage/iPropertyMgmt
+Airbnb,2025,annual_nights_booked,533000000,83760000000,Airbnb Q4 2025 results; year-end mkt cap
+Partiful,2022-11,MAU,,140000000,Series A $20M raised; $140M post-money valuation - Crunchbase/PitchBook
+Partiful,2024-12,MAU,,400000000,Reported at $400M valuation - Newcomer; DISPUTED by Partiful
+Partiful,2025-04,MAU,500000,,500K avg MAU Q1 2025 per Sensor Tower - CNBC
+Beli,2024-01,MAU,200000,,~200K MAU; Boston Globe/CB Insights
+Beli,2024-10,MAU,1100000,,1.1M MAU; Boston Globe/CB Insights
+Splitwise,2021-04,registered_users,tens_of_millions,,Series A $20M; valuation undisclosed - TechCrunch
+Strava,2014-10,registered_users,10000000,200000000,Series D $18.5M; ~$200M valuation est - Forge/Inc.com
+Strava,2016-Q4,registered_users,20000000,,Year-end; Business of Apps
+Strava,2018-Q4,registered_users,36000000,,Year-end; Business of Apps
+Strava,2019-Q4,registered_users,42000000,,Year-end; Business of Apps
+Strava,2020-11,registered_users,70000000,1500000000,Series F $110M; $1.5B post-money - TechCrunch
+Strava,2022-05,registered_users,100000000,,100M milestone; Strava press release
+Strava,2023-Q4,registered_users,120000000,,Year-end; Business of Apps
+Strava,2024-Q4,registered_users,135000000,,Year-end; Business of Apps
+Strava,2025-05,registered_users,150000000,2200000000,Series F extension $50M; Crunchbase News/PYMNTS
+Strava,2025-Q4,registered_users,180000000,,Year-end; Strava Year In Sport report
+Strava,2026-01,registered_users,180000000,3000000000,Confidential IPO filing; $3B+ est - ESTIMATE NOT CONFIRMED
+Wanderlog,2024-06,cumulative_downloads,1000000,,1M+ downloads; Wanderlog website. $1M ARR - Getlatka
+Wanderlog,2025-12,cumulative_downloads,2800000,,2.8M Google Play downloads; AppBrain. Minimal funding data

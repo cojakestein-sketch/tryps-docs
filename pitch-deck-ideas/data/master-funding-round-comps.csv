@@ -1,0 +1,39 @@
+company,date,round,metric_type,user_count,valuation_usd,dollars_per_user,bucket,source,reliability
+Poke,2025-09,Seed ($15M),beta_users,6000,100000000,16666.67,A,"TechStartups — General Catalyst led",HIGH
+Hopper,2020-05,Series E ($70M),cumulative_downloads,70000000,1000000000,14.29,A,Skift,HIGH
+Hopper,2021-08,Series G ($175M),cumulative_downloads,70000000,3500000000,50.00,A,TechCrunch,HIGH
+Hopper,2022-02,Secondary ($35M),cumulative_downloads,70000000,5000000000,71.43,A,TechCrunch,HIGH
+Strava,2014-10,Series D ($18.5M),registered_users,10000000,200000000,20.00,A,"Forge/Inc.com — Sequoia led",HIGH
+Strava,2020-11,Series F ($110M),registered_users,70000000,1500000000,21.43,A,"TechCrunch — TCV + Sequoia",HIGH
+Strava,2025-05,Series F ext ($50M),registered_users,150000000,2200000000,14.67,A,Crunchbase News,HIGH
+AllTrails,2018-10,Spectrum Equity,registered_users,9000000,75000000,8.33,A,TechCrunch,HIGH
+AllTrails,2021-11,Permira ($150M),registered_users,30000000,875000000,29.17,A,TechCrunch / PRNewswire,HIGH
+Instagram,2012-04,Series B ($50M),registered_users,30000000,500000000,16.67,A,"TechCrunch — Sequoia",HIGH
+Instagram,2012-04,Acquisition,registered_users,30000000,1000000000,33.33,A,"TechCrunch — Facebook $1B",HIGH
+Airbnb,2009-01,Seed (YC),registered_users,10000,2000000,200.00,A,Y Combinator,HIGH
+Airbnb,2009-04,Seed (Sequoia),registered_users,10000,10000000,1000.00,A,Sequoia Capital,HIGH
+Airbnb,2012,Series B ($112M),registered_users,6000000,1300000000,216.67,A,TechCrunch,HIGH
+Airbnb,2014-04,Series D ($450M),registered_users,50000000,10000000000,200.00,A,"Inc. Magazine — TPG led",HIGH
+Airbnb,2016-09,Series F ($555M),registered_users,100000000,30000000000,300.00,A,DemandSage / press,HIGH
+Airbnb,2019,Pre-IPO,registered_users,200000000,35000000000,175.00,A,DemandSage / CNBC,HIGH
+Splitwise,2021,Series A ($20M),registered_users,50000000,200000000,4.00,A,"Sacra estimate (unconfirmed)",LOW
+Instagram,2011-02,Series A ($7M),MAU,1750000,25000000,14.29,B,"TechCrunch — Benchmark led",HIGH
+BeReal,2021-06,Series A ($30M),DAU,300000,150000000,500.00,B,"TechCrunch — a16z + Accel",HIGH
+BeReal,2022-05,Series B ($60M),DAU,7900000,600000000,75.95,B,"TechCrunch — DST Global",HIGH
+BeReal,2024-06,Acquisition,MAU,40000000,537000000,13.43,B,"TechCrunch — Voodoo EUR 500M",HIGH
+Character.AI,2024-08,Google deal,MAU,28000000,2500000000,89.29,B,"The Information — Google confirmed $2.7B",HIGH
+Perplexity,2024-01,Series B ($73.6M),MAU,10000000,520000000,52.00,B,"Perplexity blog — IVP led",HIGH
+Perplexity,2024-06,Series B ext ($250M),MAU,15000000,3000000000,200.00,B,TechCrunch — SoftBank,HIGH
+Perplexity,2024-12,Series C ($500M),MAU,20000000,9000000000,450.00,B,TechCrunch,HIGH
+Perplexity,2025-06,Series D ($500M),MAU,30000000,14000000000,466.67,B,"CNBC — Accel led",HIGH
+Perplexity,2025-09,Series D-2 ($200M),MAU,45000000,20000000000,444.44,B,TechCrunch,HIGH
+Partiful,2022-11,Series A1 ($20M),MAU,500000,140000000,280.00,B,"TechCrunch / PitchBook — a16z led. Valuation confirmed; MAU from Q1 2025 (temporal gap)",LOW
+Venmo,2020-01,Analyst Estimate (ARK),MAU,40000000,38000000000,950.00,B,"ARK Invest Big Ideas 2020 — 40M active accounts per PayPal 10-K",ANALYST_ESTIMATE
+Venmo,2021-06,Analyst Estimate (Morgan Stanley),MAU,70000000,45000000000,642.86,B,"Morgan Stanley research — 70M active accounts per PayPal 10-K",ANALYST_ESTIMATE
+Venmo,2025-01,Analyst Estimate (Bernstein),MAU,64000000,5000000000,78.13,B,"Sanford Bernstein research — 64M MAU per PayPal Investor Day Feb 2025",ANALYST_ESTIMATE
+Character.AI,2023-03,Series A ($150M),monthly_visits,100000000,1000000000,,EXCLUDED,"CNBC — a16z led",HIGH
+Noplace,2024-07,Series A1 ($15M),waitlist,500000,90000000,,EXCLUDED,"TechCrunch — 776 + Forerunner",HIGH
+Fizz,2024,Series B ($25M),registered_users,2000000,250000000,,EXCLUDED,"Dealroom algorithmic estimate only — no confirmed valuation",LOW
+Kayak,2005-10,Series B,UMV,3000000,17000000,,EXCLUDED,S-1 filing,HIGH
+Kayak,2007-12,Series D,UMV,6000000,250000000,,EXCLUDED,S-1 filing,HIGH
+Kayak,2012-06,IPO,UMV,8300000,1270000000,,EXCLUDED,TechCrunch / comScore,HIGH
