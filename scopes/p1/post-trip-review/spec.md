@@ -98,7 +98,7 @@ The post-trip experience that brings groups back to Tryps. When a trip ends, use
 ### Time Capsule — Education & Nudges
 
 - [ ] `P1.S4.C14` — When joining a trip, user sees a message about the time capsule. Verified by: new member joins trip → notification or onboarding message includes "This trip has a time capsule — add moments!"
-- [ ] `P1.S4.C15` — Mid-trip nudge reminds users to add clips. Verified by: 3 days before trip end → push notification: "3 days left — add a moment to the time capsule."
+- [ ] `P1.S4.C15` — Mid-trip nudge reminds users to add clips. Verified by: 3 days before trip end → push notification: "3 days left — add a moment to the time capsule. Send a push notification on the very last day fo the trip to remind members to add their memories."
 - [ ] `P1.S4.C16` — Low-participation feedback shown post-trip. Verified by: trip with only 1 clip submitted by group → post-trip screen shows "Submit more videos next time!"
 
 ### Time Capsule — Reveal Phase (After Trip)
@@ -110,7 +110,7 @@ The post-trip experience that brings groups back to Tryps. When a trip ends, use
 
 ### Montage Playback & Sharing
 
-- [ ] `P1.S4.C21` — Montage is permanently re-watchable from the completed trip detail screen. Verified by: after initial reveal → navigate to completed trip → montage player is accessible → plays the full montage.
+- [ ] `P1.S4.C21` — Montage is permanently re-watchable and downloadable from the completed trip detail screen. Verified by: after initial reveal → navigate to completed trip → montage player is accessible → plays the full montage.
 - [ ] `P1.S4.C22` — Share button on montage player opens native share sheet with the video file. Verified by: open montage player → tap Share → iOS share sheet appears with video file → shareable to iMessage, Instagram Stories, TikTok.
 
 ### Group Top 3 Aggregation
