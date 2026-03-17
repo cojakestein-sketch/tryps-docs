@@ -45,3 +45,13 @@ No external feedback today.
 
 - [ ] **Audit Calendar tab against Figma.** Pull up Figma Calendar screens and do a pixel-level comparison to identify all discrepancies. Assigned to: design team review.
 - [ ] **Investigate dress code feature scope.** Determine what the reworked dress code should look like — needs a brainstorm or spec. Assigned to: Jake + design.
+
+---
+
+## Kickoff Prompt
+
+> Copy and paste this into any Claude Code terminal to run the autonomous pipeline for this report. It will plan, implement, review, and get fixes ready for dev review.
+
+```
+/lfg Fix all bugs and UX issues from Jake's morning report 2026-03-17. Read the spec at /Users/jakestein/tryps-docs/scopes/reports/2026-03-17/spec.md — each checked criterion under "Bugs Found" and "UX Issues" is a fix to implement. Skip "Ideas & Improvements" (those need separate specs) and "Follow-ups" (those are investigations, not code). After each fix, check off the criterion. Run typecheck and tests before finishing.
+```
