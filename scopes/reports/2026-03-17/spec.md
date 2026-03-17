@@ -50,8 +50,8 @@ No external feedback today.
 
 ## Kickoff Prompt
 
-> Copy and paste this into any Claude Code terminal to run the autonomous pipeline for this report. It will plan, implement, review, and get fixes ready for dev review.
+> Copy and paste this into any Claude Code terminal to work through this report. Fixes bugs, UX issues, and builds improvements sequentially. Follow-ups have been routed to ClickUp.
 
 ```
-/lfg Fix all bugs and UX issues from Jake's morning report 2026-03-17. Read the spec at /Users/jakestein/tryps-docs/scopes/reports/2026-03-17/spec.md — each checked criterion under "Bugs Found" and "UX Issues" is a fix to implement. Skip "Ideas & Improvements" (those need separate specs) and "Follow-ups" (those are investigations, not code). After each fix, check off the criterion. Run typecheck and tests before finishing.
+Read the spec at /Users/jakestein/tryps-docs/scopes/reports/2026-03-17/spec.md. Work through every unchecked criterion under "Bugs Found", "UX Issues", and "Ideas & Improvements" — fix or build each one, run `npm run typecheck` after each change, then check off the criterion in the spec. Commit after each fix with message format "fix(report-0317): short description". Skip items marked [NEEDS DESIGN] — those require Figma work first. When done, run `npm test` and push the branch.
 ```
