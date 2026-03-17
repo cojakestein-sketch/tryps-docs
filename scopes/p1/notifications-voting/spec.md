@@ -149,3 +149,77 @@ Groups need to stay informed without opening the app. The Tryps agent lives in t
 - Linq FRD (group chat architecture): `scopes/p2/linq-imessage/frd.md`
 
 - [ ] Typecheck passes
+
+---
+
+## Kickoff Prompt
+
+> Copy and paste this into any Claude Code terminal to run the autonomous scope pipeline for Notifications & Voting. Follow-ups have been routed to ClickUp.
+
+```
+Run the autonomous scope pipeline for "Notifications & Voting" (p1-notifications-voting), Steps 3→7.
+
+## Variables
+
+- FEATURE: notifications-voting
+- SCOPE_DIR: /Users/jakestein/tryps-docs/scopes/p1/notifications-voting
+- BRANCH: feat/notifications-voting
+- WORKSTREAM_ID: p1-notifications-voting
+
+## How It Works
+
+Use the **Agent tool** to run each step. Each agent is a full Opus session with its own context.
+
+For each step:
+1. **Check if output already exists** and passes verification — if yes, skip to the next step
+2. Construct the step prompt using the spec and variables above
+3. Spawn an Agent with: `model: "opus"`, `mode: "bypassPermissions"`, the prompt
+4. Wait for the agent to complete
+5. Verify the output file exists
+6. Update Mission Control, print status, move to next step
+
+## Steps
+
+| # | Name | Output | Skip If |
+|---|------|--------|---------|
+| 3 | Plan | /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/plan.md | Exists and >300 bytes |
+| 4 | Work | /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/work-log.md | Exists and branch `feat/notifications-voting` exists |
+| 5 | Review | /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/review.md | Exists and not a placeholder |
+| 6 | Compound | /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/compound-log.md | Exists and not a placeholder |
+| 7 | Agent Ready | /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/agent-ready.md | Contains a PR URL |
+
+### Step 3 (Plan) Context
+Read the spec at SCOPE_DIR/spec.md. Every unchecked success criterion (SC-1 through SC-40) is a task. Skip items marked [NEEDS DESIGN]. Group related criteria by subsystem (push infrastructure, group chat delivery, notification triggers by phase, expense badge, settings, permissions). Write the plan to SCOPE_DIR/plan.md.
+
+### Step 4 (Work) Context
+Implement every task from the plan. Run `npm run typecheck` after each change. Commit after each fix with format "feat(notifications): short description". Check off each criterion in the spec as it's completed. Write progress to SCOPE_DIR/work-log.md.
+
+### Step 5 (Review) Context
+Review all changes on BRANCH against the spec criteria. Flag anything that doesn't match the "Verified by:" test. Write SCOPE_DIR/review.md. If review says FAIL, re-run Steps 4→5. Max 2 retries.
+
+### Step 6 (Compound) Context
+Document any patterns, gotchas, or reusable solutions discovered during work. Write SCOPE_DIR/compound-log.md.
+
+### Step 7 (Agent Ready) Context
+Create PR targeting `develop` with title "[P1] Notifications & Voting — push infrastructure, triggers, and settings". Request review from `asifraza1013` and `Nadimkhan120`. Write SCOPE_DIR/agent-ready.md with PR URL and summary.
+
+## After Each Step
+
+```bash
+curl -s -X PATCH -H "x-api-key: $(cat ~/.mission-control-api-key)" -H "Content-Type: application/json" "https://marty.jointryps.com/api/workstreams/p1-notifications-voting/pipeline/{step_key}" -d '{"status": "complete"}'
+```
+
+Print: `[pipeline] ✓ Step N: {name} complete` or `[pipeline] ✗ Step N: {name} FAILED`
+
+## Rules
+
+- Do NOT open files in Marked 2 during Steps 3-6. Only open agent-ready.md after Step 7.
+- Do NOT ask me anything. Run all steps autonomously.
+- Each agent prompt must include: "Do NOT open files with open -a. Write files only."
+- Skip criteria marked [NEEDS DESIGN] — those require Figma work first.
+
+## After Step 7
+
+Print the final report with all artifact paths and PR URL.
+Open /Users/jakestein/tryps-docs/scopes/p1/notifications-voting/agent-ready.md in Marked 2.
+```
