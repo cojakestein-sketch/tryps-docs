@@ -1,6 +1,0 @@
-Status changes detected at 2026-03-18 19:00 UTC:
-Previous:
-| p1-tooltips-teaching | Tooltips & Teaching | not-started | nadeem | - |
-| p2-booking-links | Booking Links | not-started | asif | - |
-Current:
-| p1-tooltips-teaching | Tooltips & Teaching | not-started | jake | - |
