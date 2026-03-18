@@ -1,7 +1,7 @@
 # Tryps Scope Tracker
 
 > Auto-generated from spec.md frontmatter. Do not edit manually.
-> Last updated: 2026-03-18 14:40 UTC
+> Last updated: 2026-03-18 14:46 UTC
 > Run `./generate-status.sh` to refresh.
 
 ## All Scopes
