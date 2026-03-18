@@ -3,7 +3,7 @@ id: p1-travel-dna
 title: "Travel DNA"
 phase: p1
 status: not-started
-assignee: arslan
+assignee: nadim
 priority: 5
 dependencies: []
 blocked: false

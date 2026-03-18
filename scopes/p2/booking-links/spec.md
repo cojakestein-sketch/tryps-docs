@@ -3,7 +3,7 @@ id: p2-booking-links
 title: "Booking Links"
 phase: p2
 status: not-started
-assignee: unassigned
+assignee: asif
 priority: 3
 dependencies: []
 blocked: false

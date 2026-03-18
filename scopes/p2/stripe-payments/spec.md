@@ -3,7 +3,7 @@ id: p2-stripe-payments
 title: "Stripe Payments"
 phase: p2
 status: not-started
-assignee: unassigned
+assignee: asif
 priority: 2
 dependencies: [p2-connectors]
 blocked: false

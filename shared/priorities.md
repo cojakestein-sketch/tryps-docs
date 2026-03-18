@@ -2,28 +2,39 @@
 
 > Updated: 2026-03-18
 
-## This Week — P1 Focus
+## This Week — Ship P1
 
-1. **p1-core-flows** — Asif. Foundation: 18 user flows. NEEDS SPEC (Jake writing criteria).
-2. **p1-notifications-voting** — Nadeem. Push infra + 22 triggers. Has criteria, ready to build.
-3. **p1-travel-dna** — Arslan. Quiz + compatibility scoring. Has criteria, ready to build.
-4. **p1-claude-connector** — Krisna. MCP server for Claude ↔ Tryps. NEEDS CRITERIA.
+Nadim is completing all P1 scopes this week. Goal: entire P1 done.
+
+| Scope | Assignee | Criteria | Notes |
+|-------|----------|----------|-------|
+| p1-core-flows | nadim | Already built | No spec needed — flows exist, team knows what to do |
+| p1-notifications-voting | nadim | 0/41 | Ready to build |
+| p1-tooltips-teaching | nadim | NEEDS SPEC | |
+| p1-post-trip-review | nadim | 0/39 | Has intent |
+| p1-travel-dna | nadim | 0/25 | Ready to build |
+| p1-recommendations | nadim | NEEDS SPEC | |
+| p1-claude-connector | nadim | 0/36 | Ready to build |
+
+## Next — P2 (Asif)
+
+Asif handles all P2 scopes after P1 ships.
+
+| Scope | Criteria | Notes |
+|-------|----------|-------|
+| p2-linq-imessage | 0/41 | |
+| p2-stripe-payments | 0/12 | Depends on connectors |
+| p2-booking-links | NEEDS SPEC | |
+| p2-connectors | 0/25 | |
+
+## Then — P3 (New Hire)
+
+New dev (replacing Ken) takes all P3 scopes. Blocked until hire starts.
 
 ## Jake's Spec Queue
 
-These scopes need specs or criteria before devs can start:
-- p1-core-flows (criteria for 18 flows)
-- p1-claude-connector (criteria section empty)
-- p1-post-trip-review (has intent, no testable criteria)
-- p1-tooltips-teaching (no spec)
-- p1-recommendations (no spec)
+Some scopes need spec sessions, but the exact list needs a rework session to decide which scopes really need individual specs vs. which are clear enough to build from. Core flows does NOT need a spec — it's already built.
 
-## Blocked
+## P4/P5
 
-- P3 (all 4 scopes) — waiting on replacement hire for Ken
-- P4/P5 — lower priority, not started
-
-## Next Up (after P1 ships)
-
-- p2-linq-imessage (Krisna, after claude-connector)
-- p2-connectors (Arslan, after travel-dna)
+Lower priority. Not started.

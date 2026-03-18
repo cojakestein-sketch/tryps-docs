@@ -3,7 +3,7 @@ id: p2-linq-imessage
 title: "iMessage via Linq"
 phase: p2
 status: not-started
-assignee: krisna
+assignee: asif
 priority: 1
 dependencies: [p1-claude-connector]
 blocked: false

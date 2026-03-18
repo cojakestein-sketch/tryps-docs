@@ -3,7 +3,7 @@ id: p2-connectors
 title: "Travel Life Connectors"
 phase: p2
 status: not-started
-assignee: arslan
+assignee: asif
 priority: 4
 dependencies: [p1-travel-dna]
 blocked: false
