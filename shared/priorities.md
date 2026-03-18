@@ -4,7 +4,7 @@
 
 ## This Week
 
-- **Nadim** — All P1 scopes (7 scopes)
+- **Nadeem** — All P1 scopes (7 scopes)
 - **Asif** — All P2 scopes (4 scopes)
 - **New dev (TBD)** — All P3 scopes (blocked until hire starts)
 

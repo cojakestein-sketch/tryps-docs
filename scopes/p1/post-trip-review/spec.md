@@ -3,7 +3,7 @@ id: p1-post-trip-review
 title: "Post-Trip Review"
 phase: p1
 status: not-started
-assignee: nadim
+assignee: nadeem
 priority: 4
 dependencies: []
 blocked: false

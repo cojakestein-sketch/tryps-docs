@@ -3,7 +3,7 @@ id: p1-recommendations
 title: "Recommendations"
 phase: p1
 status: not-started
-assignee: nadim
+assignee: nadeem
 priority: 6
 dependencies: []
 blocked: false

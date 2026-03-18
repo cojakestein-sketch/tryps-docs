@@ -5,7 +5,7 @@
 | Name | Role | Current Focus | Status |
 |------|------|---------------|--------|
 | Jake | Product / Founder | Specs + memory system + strategic planning | Active |
-| Nadim | Dev | All P1 scopes (shipping this week) | Active |
+| Nadeem | Dev | All P1 scopes (shipping this week) | Active |
 | Asif | Lead Dev | P2 scopes (after P1 ships) | Active |
 | Andreas | QA | Validates all scopes against criteria | Waiting on first ready-qa |
 | Marty | AI Agent (Hetzner) | PR reviews, state sync, standups | 24/7 |

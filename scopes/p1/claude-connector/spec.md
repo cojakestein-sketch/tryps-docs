@@ -3,7 +3,7 @@ id: p1-claude-connector
 title: "Claude Connector"
 phase: p1
 status: not-started
-assignee: nadim
+assignee: nadeem
 priority: 7
 dependencies: []
 blocked: false

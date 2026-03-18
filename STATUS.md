@@ -1,20 +1,20 @@
 # Tryps Scope Tracker
 
 > Auto-generated from spec.md frontmatter. Do not edit manually.
-> Last updated: 2026-03-18 15:19 UTC
+> Last updated: 2026-03-18 15:23 UTC
 > Run `./generate-status.sh` to refresh.
 
 ## All Scopes
 
 | | ID | Title | Status | Assignee | Criteria | Blocked |
 |---|-----|-------|--------|----------|----------|---------|
-| -- | p1-claude-connector | Claude Connector | not-started | nadim | 0/36 |  |
-| -- | p1-core-flows | Core Flows | not-started | nadim | NEEDS SPEC |  |
-| B | p1-notifications-voting | Notifications & Voting | in-progress | nadim | 0/41 |  |
-| -- | p1-post-trip-review | Post-Trip Review | not-started | nadim | 0/39 |  |
-| -- | p1-recommendations | Recommendations | not-started | nadim | NEEDS SPEC |  |
-| -- | p1-tooltips-teaching | Tooltips & Teaching | not-started | nadim | NEEDS SPEC |  |
-| -- | p1-travel-dna | Travel DNA | not-started | nadim | 0/25 |  |
+| -- | p1-claude-connector | Claude Connector | not-started | nadeem | 0/36 |  |
+| -- | p1-core-flows | Core Flows | not-started | nadeem | NEEDS SPEC |  |
+| B | p1-notifications-voting | Notifications & Voting | in-progress | nadeem | 0/41 |  |
+| -- | p1-post-trip-review | Post-Trip Review | not-started | nadeem | 0/39 |  |
+| -- | p1-recommendations | Recommendations | not-started | nadeem | NEEDS SPEC |  |
+| -- | p1-tooltips-teaching | Tooltips & Teaching | not-started | nadeem | NEEDS SPEC |  |
+| -- | p1-travel-dna | Travel DNA | not-started | nadeem | 0/25 |  |
 | -- | p2-booking-links | Booking Links | not-started | asif | NEEDS SPEC |  |
 | -- | p2-connectors | Travel Life Connectors | not-started | asif | 0/25 |  |
 | -- | p2-linq-imessage | iMessage via Linq | not-started | asif | 0/41 |  |
@@ -37,7 +37,7 @@
 
 Scopes with testable criteria. Review daily in standup.
 
-### Claude Connector (p1-claude-connector) — nadim — 0/36
+### Claude Connector (p1-claude-connector) — nadeem — 0/36
 
 - [ ] **P1.S7.C01.** Remote MCP server is deployed and reachable over HTTPS. Verified by: send a JSON-RPC 2.0 `initialize` request to the server URL -> server responds with `serverInfo` and supported capabilities within 2 seconds.
 - [ ] **P1.S7.C02.** Server uses Streamable HTTP transport (JSON-RPC 2.0 over POST). Verified by: send a POST request with `Content-Type: application/json` containing a valid MCP `tools/list` method -> server responds with a JSON-RPC result containing the tool list.
@@ -76,7 +76,7 @@ Scopes with testable criteria. Review daily in standup.
 - [ ] **P1.S7.C35.** Tool responses never leak data from other users' trips. Verified by: call every read tool as User A -> inspect all response payloads -> no trip IDs, member names, or expense data belonging to other users appears.
 - [ ] Typecheck passes
 
-### Notifications & Voting (p1-notifications-voting) — nadim — 0/41
+### Notifications & Voting (p1-notifications-voting) — nadeem — 0/41
 
 - [ ] **SC-1.** Expo push token registered on app launch and sign-in, stored in Supabase linked to user_id + device. Verified by: user signs in on two devices -> both push tokens stored -> sending a notification delivers to both devices.
 - [ ] **SC-2.** Supabase edge function sends push notifications accepting user_ids, title, body, and data/deep_link. Verified by: call edge function with user_id, title "Vote closes soon", body, and deep link -> user receives push -> tapping it opens the correct screen.
@@ -120,7 +120,7 @@ Scopes with testable criteria. Review daily in standup.
 - [ ] **SC-40.** Non-trip members do not receive any trip notifications. Verified by: user not in trip -> no push, group chat, or badge for that trip's events.
 - [ ] Typecheck passes
 
-### Post-Trip Review (p1-post-trip-review) — nadim — 0/39
+### Post-Trip Review (p1-post-trip-review) — nadeem — 0/39
 
 - [ ] `P1.S4.C01` — Trip Complete bottom sheet appears automatically for each member after trip end date. Verified by: trip end date passes → member opens app → bottom sheet overlay appears on the trip detail screen.
 - [ ] `P1.S4.C02` — Trip stats bar shows accurate Days, People, Places, Spent totals. Verified by: trip with 5 days, 4 people, 3 places, $1200 spent → bottom sheet shows "5 Days · 4 People · 3 Places · $1,200 Spent".
@@ -162,7 +162,7 @@ Scopes with testable criteria. Review daily in standup.
 - [ ] Default ambient track for montages without a Spotify playlist — what vibe/genre?
 - [ ] Photo aspect ratio handling — crop to 16:9 for montage, or letterbox?
 
-### Travel DNA (p1-travel-dna) — nadim — 0/25
+### Travel DNA (p1-travel-dna) — nadeem — 0/25
 
 - [ ] **P1.S5.C01.** User can generate a shareable image of their travel personality from the My DNA tab. Verified by: user who completed the core 10 questions -> taps Share on the My DNA tab -> image generated showing persona name, top trait pills, radar chart, and Tryps branding -> native share sheet opens with the image ready to send.
 - [ ] **P1.S5.C02.** Sharing card displays the user's current persona archetype, their strongest trait pills, and the 10-dimension radar chart. Verified by: user with "Adventurous Explorer" persona and 4 strong traits -> generates card -> card shows "Adventurous Explorer" title, all 4 trait pills, radar chart with 10 axes, and Tryps logo.

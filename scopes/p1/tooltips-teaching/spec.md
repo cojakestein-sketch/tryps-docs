@@ -3,7 +3,7 @@ id: p1-tooltips-teaching
 title: "Tooltips & Teaching"
 phase: p1
 status: not-started
-assignee: nadim
+assignee: nadeem
 priority: 2
 dependencies: []
 blocked: false

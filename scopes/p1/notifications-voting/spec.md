@@ -3,7 +3,7 @@ id: p1-notifications-voting
 title: "Notifications & Voting"
 phase: p1
 status: in-progress
-assignee: nadim
+assignee: nadeem
 priority: 3
 dependencies: []
 blocked: false

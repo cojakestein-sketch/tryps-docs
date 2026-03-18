@@ -7,13 +7,13 @@
 
 | ID | Title | Status | Assignee | Criteria |
 |----|-------|--------|----------|----------|
-| p1-core-flows | Core Flows | not-started | nadim | Already built |
-| p1-tooltips-teaching | Tooltips & Teaching | not-started | nadim | NEEDS SPEC |
-| p1-notifications-voting | Notifications & Voting | not-started | nadim | 0/41 |
-| p1-post-trip-review | Post-Trip Review | not-started | nadim | 0/39 |
-| p1-travel-dna | Travel DNA | not-started | nadim | 0/25 |
-| p1-recommendations | Recommendations | not-started | nadim | NEEDS SPEC |
-| p1-claude-connector | Claude Connector | not-started | nadim | 0/36 |
+| p1-core-flows | Core Flows | not-started | nadeem | Already built |
+| p1-tooltips-teaching | Tooltips & Teaching | not-started | nadeem | NEEDS SPEC |
+| p1-notifications-voting | Notifications & Voting | not-started | nadeem | 0/41 |
+| p1-post-trip-review | Post-Trip Review | not-started | nadeem | 0/39 |
+| p1-travel-dna | Travel DNA | not-started | nadeem | 0/25 |
+| p1-recommendations | Recommendations | not-started | nadeem | NEEDS SPEC |
+| p1-claude-connector | Claude Connector | not-started | nadeem | 0/36 |
 | p2-linq-imessage | iMessage via Linq | not-started | asif | 0/41 |
 | p2-stripe-payments | Stripe Payments | not-started | asif | 0/12 |
 | p2-booking-links | Booking Links | not-started | asif | NEEDS SPEC |
@@ -33,7 +33,7 @@
 ## Summary
 
 - **22 scopes** | 0 done, 0 in-progress, 22 not-started
-- **P1:** Nadim — shipping all 7 scopes this week
+- **P1:** Nadeem — shipping all 7 scopes this week
 - **P2:** Asif — all 4 scopes in parallel after P1
 - **P3:** Blocked — waiting on new hire
 - **P4/P5:** Not started, lower priority
