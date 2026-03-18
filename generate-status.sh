@@ -89,3 +89,6 @@ for spec in scopes/p*/*/spec.md; do
 done
 
 echo "STATUS.md generated ($(date -u +%H:%M))"
+
+# Regenerate the HTML dashboard too
+sh "$(dirname "$0")/generate-dashboard.sh"
