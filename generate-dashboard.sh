@@ -699,4 +699,6 @@ cat >> "$OUTPUT" << FOOTER_END
 </html>
 FOOTER_END
 
-echo "tracker/index.html generated ($(date -u +%H:%M))"
+# Also copy to root for GitHub Pages
+cp tracker/index.html index.html
+echo "tracker/index.html + index.html generated ($(date -u +%H:%M))"

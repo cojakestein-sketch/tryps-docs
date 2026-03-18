@@ -1,7 +1,7 @@
 # Tryps Scope Tracker
 
 > Auto-generated from spec.md frontmatter. Do not edit manually.
-> Last updated: 2026-03-18 14:55 UTC
+> Last updated: 2026-03-18 15:19 UTC
 > Run `./generate-status.sh` to refresh.
 
 ## All Scopes
@@ -10,7 +10,7 @@
 |---|-----|-------|--------|----------|----------|---------|
 | -- | p1-claude-connector | Claude Connector | not-started | nadim | 0/36 |  |
 | -- | p1-core-flows | Core Flows | not-started | nadim | NEEDS SPEC |  |
-| -- | p1-notifications-voting | Notifications & Voting | not-started | nadim | 0/41 |  |
+| B | p1-notifications-voting | Notifications & Voting | in-progress | nadim | 0/41 |  |
 | -- | p1-post-trip-review | Post-Trip Review | not-started | nadim | 0/39 |  |
 | -- | p1-recommendations | Recommendations | not-started | nadim | NEEDS SPEC |  |
 | -- | p1-tooltips-teaching | Tooltips & Teaching | not-started | nadim | NEEDS SPEC |  |
