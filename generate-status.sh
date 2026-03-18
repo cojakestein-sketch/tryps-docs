@@ -35,15 +35,18 @@ for spec in scopes/p*/*/spec.md; do
   assignee=$(get_field "$spec" "assignee")
   blocked=$(get_field "$spec" "blocked")
 
-  total=$(grep -cE '^\s*- \[(x| )\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
+  total=$(grep -cE '^\s*- \[(x| |!)\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
   done_count=$(grep -cE '^\s*- \[x\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
+  fail_count=$(grep -cE '^\s*- \[!\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
   [ -z "$total" ] && total=0
   [ -z "$done_count" ] && done_count=0
+  [ -z "$fail_count" ] && fail_count=0
+  untested_count=$((total - done_count - fail_count))
 
   if [ "$total" -eq 0 ]; then
     progress="NEEDS SPEC"
   else
-    progress="${done_count}/${total}"
+    progress="${done_count}pass/${fail_count}fail/${untested_count}"
   fi
 
   block_display=""
@@ -72,7 +75,7 @@ Scopes with testable criteria. Review daily in standup.
 DIVIDER
 
 for spec in scopes/p*/*/spec.md; do
-  total=$(grep -cE '^\s*- \[(x| )\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
+  total=$(grep -cE '^\s*- \[(x| |!)\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
   [ -z "$total" ] && total=0
   [ "$total" -eq 0 ] && continue
 
@@ -80,11 +83,13 @@ for spec in scopes/p*/*/spec.md; do
   title=$(get_field "$spec" "title")
   assignee=$(get_field "$spec" "assignee")
   done_count=$(grep -cE '^\s*- \[x\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
+  fail_count=$(grep -cE '^\s*- \[!\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
   [ -z "$done_count" ] && done_count=0
+  [ -z "$fail_count" ] && fail_count=0
 
-  echo "### ${title} (${id}) — ${assignee} — ${done_count}/${total}" >> "$OUTPUT"
+  echo "### ${title} (${id}) — ${assignee} — ${done_count}pass/${fail_count}fail/${total}total" >> "$OUTPUT"
   echo "" >> "$OUTPUT"
-  grep -E '^\s*- \[(x| )\]' "$spec" >> "$OUTPUT"
+  grep -E '^\s*- \[(x| |!)\]' "$spec" >> "$OUTPUT"
   echo "" >> "$OUTPUT"
 done
 

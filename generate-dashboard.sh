@@ -2,6 +2,8 @@
 # Generate tracker/index.html from spec.md frontmatter and criteria
 # Run from tryps-docs root. Produces a static HTML dashboard for GitHub Pages.
 # Compatible with macOS sh (no bash 4+ required)
+#
+# Three-state criteria: - [x] pass, - [!] fail, - [ ] untested
 
 set -e
 cd "$(dirname "$0")"
@@ -32,7 +34,7 @@ phase_label() {
 # Phase lead
 phase_lead() {
   case "$1" in
-    p1) echo "Nadim" ;;
+    p1) echo "Nadeem" ;;
     p2) echo "Asif" ;;
     p3) echo "TBD (hiring)" ;;
     p4) echo "Jake" ;;
@@ -76,7 +78,6 @@ pct_failing=0
 pct_done=0
 pct_blocked=0
 if [ "$count_total" -gt 0 ]; then
-  # Use awk for floating point
   pct_not_started=$(echo "$count_not_started $count_total" | awk '{printf "%.1f", ($1/$2)*100}')
   pct_in_progress=$(echo "$count_in_progress $count_total" | awk '{printf "%.1f", ($1/$2)*100}')
   pct_ready_qa=$(echo "$count_ready_qa $count_total" | awk '{printf "%.1f", ($1/$2)*100}')
@@ -210,6 +211,26 @@ cat > "$OUTPUT" << 'HTMLHEAD'
   .legend-dot.done { background: #22c55e; }
   .legend-dot.blocked { background: #94a3b8; }
 
+  /* Toggle bar */
+  .toggle-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+    gap: 8px;
+  }
+  .toggle-btn {
+    background: #1a1a2e;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .toggle-btn:hover { background: #2d2d4e; }
+
   .phase-section {
     margin-bottom: 28px;
   }
@@ -260,9 +281,24 @@ cat > "$OUTPUT" << 'HTMLHEAD'
   }
   tbody td:first-child { padding-left: 16px; }
   tbody tr:last-child td { border-bottom: none; }
-  tbody tr:hover { background: #fafbfd; }
   tbody tr.is-blocked { opacity: 0.55; }
   tbody tr.is-blocked .scope-name { text-decoration: line-through; }
+
+  /* Scope rows — clickable when has criteria */
+  .scope-trigger { cursor: pointer; transition: background 0.1s; }
+  .scope-trigger:hover { background: #f0f4f8; }
+  .scope-no-criteria { cursor: default; }
+  .scope-no-criteria:hover { background: transparent; }
+
+  .expand-arrow {
+    display: inline-block;
+    font-size: 10px;
+    color: #94a3b8;
+    transition: transform 0.2s ease;
+    margin-right: 6px;
+    width: 12px;
+  }
+  .scope-trigger.expanded .expand-arrow { transform: rotate(90deg); }
 
   .scope-name { font-weight: 600; }
   .assignee { color: #666; font-size: 12px; }
@@ -282,6 +318,7 @@ cat > "$OUTPUT" << 'HTMLHEAD'
   .pill.done { background: #dcfce7; color: #166534; }
   .pill.blocked { background: #f1f5f9; color: #94a3b8; border: 1px dashed #94a3b8; }
 
+  /* Criteria counts in table */
   .criteria-col {
     font-size: 12px;
     font-weight: 600;
@@ -289,7 +326,11 @@ cat > "$OUTPUT" << 'HTMLHEAD'
     white-space: nowrap;
   }
   .criteria-col.needs-spec { color: #94a3b8; font-style: italic; font-weight: 400; }
+  .cc-pass { color: #22c55e; }
+  .cc-fail { color: #ef4444; }
+  .cc-untested { color: #94a3b8; }
 
+  /* Three-color mini progress bar */
   .mini-bar {
     display: flex;
     height: 6px;
@@ -300,11 +341,9 @@ cat > "$OUTPUT" << 'HTMLHEAD'
     max-width: 120px;
     margin-top: 4px;
   }
-  .mini-bar .fill {
-    background: #22c55e;
-    border-radius: 3px 0 0 3px;
-    transition: width 0.3s ease;
-  }
+  .mini-bar .seg-pass { background: #22c55e; }
+  .mini-bar .seg-fail { background: #ef4444; }
+  .mini-bar .seg-untested { background: #e2e8f0; }
 
   .notes-col {
     font-size: 12px;
@@ -312,82 +351,62 @@ cat > "$OUTPUT" << 'HTMLHEAD'
     max-width: 200px;
   }
 
-  /* Criteria detail sections */
-  .criteria-detail {
-    margin-bottom: 24px;
+  /* Inline criteria expansion row */
+  .criteria-row { display: none; }
+  .criteria-row.visible { display: table-row; }
+  .criteria-row td {
+    padding: 0 16px 16px 16px;
+    background: #fafbfd;
+    border-bottom: 1px solid #f0f0f5;
   }
-  .criteria-detail details {
-    background: #fff;
-    border-radius: 10px;
-    margin-bottom: 6px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-    overflow: hidden;
+  .criteria-list {
+    padding-top: 8px;
   }
-  .criteria-detail summary {
-    padding: 12px 16px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    color: #1a1a2e;
+  .criteria-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    user-select: none;
-    list-style: none;
+    padding: 8px 0 10px 0;
+    margin-bottom: 6px;
+    border-bottom: 2px solid #e2e8f0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a2e;
   }
-  .criteria-detail summary::-webkit-details-marker { display: none; }
-  .criteria-detail summary::before {
-    content: "\25B6";
-    font-size: 10px;
-    color: #94a3b8;
-    transition: transform 0.2s ease;
-  }
-  .criteria-detail details[open] summary::before {
-    transform: rotate(90deg);
-  }
-  .criteria-detail .summary-meta {
+  .criteria-header .ch-assignee {
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
     color: #94a3b8;
-    margin-left: auto;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
   }
-  .criteria-detail .criteria-list {
-    padding: 0 16px 16px 16px;
-    border-top: 1px solid #f0f0f5;
+  .criteria-header .ch-counts {
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: auto;
   }
   .criteria-item {
     display: flex;
     align-items: flex-start;
     gap: 8px;
-    padding: 8px 0;
+    padding: 6px 0;
     font-size: 13px;
     line-height: 1.5;
-    border-bottom: 1px solid #f8f9fb;
+    border-bottom: 1px solid #f0f2f5;
   }
   .criteria-item:last-child { border-bottom: none; }
-  .criteria-check {
+  .criteria-icon {
     flex-shrink: 0;
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    border: 2px solid #d1d5db;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2px;
-    font-size: 12px;
+    width: 20px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.5;
   }
-  .criteria-check.checked {
-    background: #22c55e;
-    border-color: #22c55e;
-    color: #fff;
-  }
-  .criteria-check.unchecked {
-    background: #fff;
-    border-color: #d1d5db;
-  }
+  .criteria-icon.pass { color: #22c55e; }
+  .criteria-icon.fail { color: #ef4444; }
+  .criteria-icon.untested { color: #94a3b8; font-size: 11px; }
   .criteria-text { color: #444; }
-  .criteria-text.is-done { color: #94a3b8; text-decoration: line-through; }
+  .criteria-text.is-pass { color: #94a3b8; }
   .criteria-text code {
     background: #f1f5f9;
     padding: 1px 5px;
@@ -396,15 +415,7 @@ cat > "$OUTPUT" << 'HTMLHEAD'
     font-family: 'SF Mono', Menlo, monospace;
   }
   .criteria-text strong { font-weight: 600; color: #1a1a2e; }
-
-  .section-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1a1a2e;
-    margin-top: 40px;
-    margin-bottom: 16px;
-    padding-left: 4px;
-  }
+  .criteria-text.is-pass strong { color: #94a3b8; }
 
   .footer {
     margin-top: 32px;
@@ -427,7 +438,6 @@ cat > "$OUTPUT" << 'HTMLHEAD'
     thead th:first-child, tbody td:first-child { padding-left: 10px; }
     .pill { font-size: 10px; padding: 2px 8px; }
     .notes-col { max-width: 100px; }
-    .criteria-detail summary { font-size: 13px; padding: 10px 12px; }
     .criteria-item { font-size: 12px; }
     .phase-header { font-size: 15px; }
   }
@@ -524,7 +534,14 @@ cat >> "$OUTPUT" << 'LEGEND_END'
 </div>
 LEGEND_END
 
-# Phase sections with tables
+# Expand All / Collapse All toggle
+cat >> "$OUTPUT" << 'TOGGLE_END'
+<div class="toggle-bar">
+  <button class="toggle-btn" id="toggle-all-btn" onclick="toggleAll()">Expand All</button>
+</div>
+TOGGLE_END
+
+# Phase sections with tables and inline criteria
 for phase in p1 p2 p3 p4 p5; do
   plabel=$(phase_label "$phase")
   plead=$(phase_lead "$phase")
@@ -568,10 +585,14 @@ PHASE_HDR
     blocked=$(get_field "$spec" "blocked")
     blocked_reason=$(get_field "$spec" "blocked_reason")
 
-    total=$(grep -cE '^\s*- \[(x| )\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
-    done_count=$(grep -cE '^\s*- \[x\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
-    [ -z "$total" ] && total=0
-    [ -z "$done_count" ] && done_count=0
+    # Three-state criteria counts
+    cr_total=$(grep -cE '^\s*- \[(x| |!)\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
+    cr_pass=$(grep -cE '^\s*- \[x\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
+    cr_fail=$(grep -cE '^\s*- \[!\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
+    [ -z "$cr_total" ] && cr_total=0
+    [ -z "$cr_pass" ] && cr_pass=0
+    [ -z "$cr_fail" ] && cr_fail=0
+    cr_untested=$((cr_total - cr_pass - cr_fail))
 
     # Status pill
     if [ "$blocked" = "true" ]; then
@@ -591,16 +612,16 @@ PHASE_HDR
       esac
     fi
 
-    # Criteria display
-    if [ "$total" -eq 0 ]; then
+    # Criteria display and mini bar
+    if [ "$cr_total" -eq 0 ]; then
       criteria_html="<span class=\"criteria-col needs-spec\">needs spec</span>"
+      has_criteria="no"
     else
-      if [ "$total" -gt 0 ]; then
-        fill_pct=$(echo "$done_count $total" | awk '{printf "%.0f", ($1/$2)*100}')
-      else
-        fill_pct=0
-      fi
-      criteria_html="<span class=\"criteria-col\">${done_count}/${total}</span><div class=\"mini-bar\"><div class=\"fill\" style=\"width: ${fill_pct}%;\"></div></div>"
+      pct_pass=$(echo "$cr_pass $cr_total" | awk '{printf "%.0f", ($1/$2)*100}')
+      pct_fail=$(echo "$cr_fail $cr_total" | awk '{printf "%.0f", ($1/$2)*100}')
+      pct_untested=$(echo "$cr_untested $cr_total" | awk '{printf "%.0f", ($1/$2)*100}')
+      criteria_html="<span class=\"criteria-col\"><span class=\"cc-pass\">${cr_pass}</span> / <span class=\"cc-fail\">${cr_fail}</span> / <span class=\"cc-untested\">${cr_untested}</span></span><div class=\"mini-bar\"><div class=\"seg-pass\" style=\"width: ${pct_pass}%;\"></div><div class=\"seg-fail\" style=\"width: ${pct_fail}%;\"></div><div class=\"seg-untested\" style=\"width: ${pct_untested}%;\"></div></div>"
+      has_criteria="yes"
     fi
 
     # Notes
@@ -609,15 +630,91 @@ PHASE_HDR
       notes="$blocked_reason"
     fi
 
-    cat >> "$OUTPUT" << ROW_END
-      <tr class="${row_class}">
+    # Scope row — clickable if has criteria
+    if [ "$has_criteria" = "yes" ]; then
+      cat >> "$OUTPUT" << ROW_END
+      <tr class="scope-trigger ${row_class}" onclick="toggleScope('criteria-${id}')">
+        <td><span class="pill ${pill_class}">${pill_text}</span></td>
+        <td class="scope-name"><span class="expand-arrow">&#9656;</span>${title}</td>
+        <td class="assignee">${assignee}</td>
+        <td>${criteria_html}</td>
+        <td class="notes-col">${notes}</td>
+      </tr>
+ROW_END
+    else
+      cat >> "$OUTPUT" << ROW_END2
+      <tr class="scope-no-criteria ${row_class}">
         <td><span class="pill ${pill_class}">${pill_text}</span></td>
         <td class="scope-name">${title}</td>
         <td class="assignee">${assignee}</td>
         <td>${criteria_html}</td>
         <td class="notes-col">${notes}</td>
       </tr>
-ROW_END
+ROW_END2
+    fi
+
+    # Criteria detail row (hidden, inline) — failures first, then untested, then pass
+    if [ "$has_criteria" = "yes" ]; then
+      cat >> "$OUTPUT" << CRIT_OPEN
+      <tr class="criteria-row" id="criteria-${id}">
+        <td colspan="5"><div class="criteria-list">
+          <div class="criteria-header">
+            ${title}
+            <span class="ch-assignee">${assignee}</span>
+            <span class="ch-counts"><span class="cc-pass">${cr_pass}</span> / <span class="cc-fail">${cr_fail}</span> / <span class="cc-untested">${cr_untested}</span></span>
+            <span class="pill ${pill_class}" style="font-size:10px;">${pill_text}</span>
+          </div>
+CRIT_OPEN
+
+      # Helper: render a criteria item
+      # Usage: render_criteria_items <spec> <state_regex> <icon> <icon_class> <text_class>
+      # Fail items first
+      grep -E '^\s*- \[!\]' "$spec" 2>/dev/null | while IFS= read -r line; do
+        text=$(echo "$line" | sed 's/^[[:space:]]*- \[!\][[:space:]]*//')
+        text=$(echo "$text" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
+        text=$(echo "$text" | sed 's/\*\*\([^*]*\)\*\*/<strong>\1<\/strong>/g')
+        text=$(echo "$text" | sed 's/`\([^`]*\)`/<code>\1<\/code>/g')
+        cat >> "$OUTPUT" << ITEM_FAIL
+    <div class="criteria-item">
+      <div class="criteria-icon fail">&#10060;</div>
+      <div class="criteria-text">${text}</div>
+    </div>
+ITEM_FAIL
+      done
+
+      # Untested items next
+      grep -E '^\s*- \[ \]' "$spec" 2>/dev/null | while IFS= read -r line; do
+        text=$(echo "$line" | sed 's/^[[:space:]]*- \[ \][[:space:]]*//')
+        text=$(echo "$text" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
+        text=$(echo "$text" | sed 's/\*\*\([^*]*\)\*\*/<strong>\1<\/strong>/g')
+        text=$(echo "$text" | sed 's/`\([^`]*\)`/<code>\1<\/code>/g')
+        cat >> "$OUTPUT" << ITEM_UNTESTED
+    <div class="criteria-item">
+      <div class="criteria-icon untested">&#8212;</div>
+      <div class="criteria-text">${text}</div>
+    </div>
+ITEM_UNTESTED
+      done
+
+      # Pass items last
+      grep -E '^\s*- \[x\]' "$spec" 2>/dev/null | while IFS= read -r line; do
+        text=$(echo "$line" | sed 's/^[[:space:]]*- \[x\][[:space:]]*//')
+        text=$(echo "$text" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
+        text=$(echo "$text" | sed 's/\*\*\([^*]*\)\*\*/<strong>\1<\/strong>/g')
+        text=$(echo "$text" | sed 's/`\([^`]*\)`/<code>\1<\/code>/g')
+        cat >> "$OUTPUT" << ITEM_PASS
+    <div class="criteria-item">
+      <div class="criteria-icon pass">&#10003;</div>
+      <div class="criteria-text is-pass">${text}</div>
+    </div>
+ITEM_PASS
+      done
+
+      cat >> "$OUTPUT" << 'CRIT_CLOSE'
+        </div></td>
+      </tr>
+CRIT_CLOSE
+    fi
   done
 
   cat >> "$OUTPUT" << 'TABLE_END'
@@ -627,72 +724,53 @@ ROW_END
 TABLE_END
 done
 
-# Criteria detail section
-cat >> "$OUTPUT" << 'DETAIL_HDR'
-<div class="section-title">Success Criteria Detail</div>
-<div class="criteria-detail">
-DETAIL_HDR
+# JavaScript for expand/collapse
+cat >> "$OUTPUT" << 'SCRIPT_END'
+<script>
+function toggleScope(id) {
+  var row = document.getElementById(id);
+  if (!row) return;
+  row.classList.toggle('visible');
+  var trigger = row.previousElementSibling;
+  if (trigger) trigger.classList.toggle('expanded');
+  updateToggleBtn();
+}
 
-for spec in scopes/p*/*/spec.md; do
-  total=$(grep -cE '^\s*- \[(x| )\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
-  [ -z "$total" ] && total=0
-  [ "$total" -eq 0 ] && continue
+function toggleAll() {
+  var rows = document.querySelectorAll('.criteria-row');
+  var anyHidden = false;
+  for (var i = 0; i < rows.length; i++) {
+    if (!rows[i].classList.contains('visible')) { anyHidden = true; break; }
+  }
+  for (var i = 0; i < rows.length; i++) {
+    if (anyHidden) rows[i].classList.add('visible');
+    else rows[i].classList.remove('visible');
+  }
+  var triggers = document.querySelectorAll('.scope-trigger');
+  for (var i = 0; i < triggers.length; i++) {
+    if (anyHidden) triggers[i].classList.add('expanded');
+    else triggers[i].classList.remove('expanded');
+  }
+  updateToggleBtn();
+}
 
-  id=$(get_field "$spec" "id")
-  title=$(get_field "$spec" "title")
-  assignee=$(get_field "$spec" "assignee")
-  done_count=$(grep -cE '^\s*- \[x\]' "$spec" 2>/dev/null | tr -d '[:space:]' || echo 0)
-  [ -z "$done_count" ] && done_count=0
-
-  cat >> "$OUTPUT" << DETAIL_OPEN
-<details>
-  <summary>${title} <span class="summary-meta">${assignee} &mdash; ${done_count}/${total}</span></summary>
-  <div class="criteria-list">
-DETAIL_OPEN
-
-  # Extract criteria lines and generate HTML
-  grep -E '^\s*- \[(x| )\]' "$spec" | while IFS= read -r line; do
-    # Check if done or not
-    is_checked=$(echo "$line" | grep -c '\[x\]' || true)
-
-    # Extract the text after the checkbox
-    text=$(echo "$line" | sed 's/^[[:space:]]*- \[[x ]\][[:space:]]*//')
-    # Escape HTML special chars, then convert markdown bold and inline code
-    text=$(echo "$text" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
-    text=$(echo "$text" | sed 's/\*\*\([^*]*\)\*\*/<strong>\1<\/strong>/g')
-    text=$(echo "$text" | sed 's/`\([^`]*\)`/<code>\1<\/code>/g')
-
-    if [ "$is_checked" -gt 0 ]; then
-      cat >> "$OUTPUT" << ITEM_DONE
-    <div class="criteria-item">
-      <div class="criteria-check checked">&#10003;</div>
-      <div class="criteria-text is-done">${text}</div>
-    </div>
-ITEM_DONE
-    else
-      cat >> "$OUTPUT" << ITEM_TODO
-    <div class="criteria-item">
-      <div class="criteria-check unchecked"></div>
-      <div class="criteria-text">${text}</div>
-    </div>
-ITEM_TODO
-    fi
-  done
-
-  cat >> "$OUTPUT" << 'DETAIL_CLOSE'
-  </div>
-</details>
-DETAIL_CLOSE
-done
-
-cat >> "$OUTPUT" << 'DETAIL_FOOTER'
-</div>
-DETAIL_FOOTER
+function updateToggleBtn() {
+  var rows = document.querySelectorAll('.criteria-row');
+  var allVisible = true;
+  for (var i = 0; i < rows.length; i++) {
+    if (!rows[i].classList.contains('visible')) { allVisible = false; break; }
+  }
+  var btn = document.getElementById('toggle-all-btn');
+  if (btn) btn.textContent = allVisible ? 'Collapse All' : 'Expand All';
+}
+</script>
+SCRIPT_END
 
 # Footer
 cat >> "$OUTPUT" << FOOTER_END
 <div class="footer">
-  Auto-generated from spec.md frontmatter &middot; ${count_total} scopes across 5 phases &middot; Last updated: ${NOW}
+  Auto-generated from spec.md frontmatter &middot; ${count_total} scopes across 5 phases &middot; Last updated: ${NOW}<br>
+  Criteria: <span style="color:#22c55e">pass</span> / <span style="color:#ef4444">fail</span> / <span style="color:#94a3b8">untested</span>
 </div>
 
 </body>

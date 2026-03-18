@@ -1,30 +1,30 @@
 # Tryps Scope Tracker
 
 > Auto-generated from spec.md frontmatter. Do not edit manually.
-> Last updated: 2026-03-18 15:23 UTC
+> Last updated: 2026-03-18 15:45 UTC
 > Run `./generate-status.sh` to refresh.
 
 ## All Scopes
 
 | | ID | Title | Status | Assignee | Criteria | Blocked |
 |---|-----|-------|--------|----------|----------|---------|
-| -- | p1-claude-connector | Claude Connector | not-started | nadeem | 0/36 |  |
+| -- | p1-claude-connector | Claude Connector | not-started | nadeem | 0pass/0fail/36 |  |
 | -- | p1-core-flows | Core Flows | not-started | nadeem | NEEDS SPEC |  |
-| B | p1-notifications-voting | Notifications & Voting | in-progress | nadeem | 0/41 |  |
-| -- | p1-post-trip-review | Post-Trip Review | not-started | nadeem | 0/39 |  |
+| -- | p1-notifications-voting | Notifications & Voting | not-started | nadeem | 0pass/0fail/41 |  |
+| -- | p1-post-trip-review | Post-Trip Review | not-started | nadeem | 0pass/0fail/39 |  |
 | -- | p1-recommendations | Recommendations | not-started | nadeem | NEEDS SPEC |  |
 | -- | p1-tooltips-teaching | Tooltips & Teaching | not-started | nadeem | NEEDS SPEC |  |
-| -- | p1-travel-dna | Travel DNA | not-started | nadeem | 0/25 |  |
+| -- | p1-travel-dna | Travel DNA | not-started | nadeem | 0pass/0fail/25 |  |
 | -- | p2-booking-links | Booking Links | not-started | asif | NEEDS SPEC |  |
-| -- | p2-connectors | Travel Life Connectors | not-started | asif | 0/25 |  |
-| -- | p2-linq-imessage | iMessage via Linq | not-started | asif | 0/41 |  |
-| -- | p2-stripe-payments | Stripe Payments | not-started | asif | 0/12 |  |
+| -- | p2-connectors | Travel Life Connectors | not-started | asif | 0pass/0fail/25 |  |
+| -- | p2-linq-imessage | iMessage via Linq | not-started | asif | 0pass/0fail/41 |  |
+| -- | p2-stripe-payments | Stripe Payments | not-started | asif | 0pass/0fail/12 |  |
 | -- | p3-duffel-apis | Duffel APIs | not-started | unassigned | NEEDS SPEC | BLOCKED |
-| -- | p3-logistics-agent | Logistics Agent | not-started | unassigned | 0/26 | BLOCKED |
+| -- | p3-logistics-agent | Logistics Agent | not-started | unassigned | 0pass/0fail/26 | BLOCKED |
 | -- | p3-pay-on-behalf | Pay on My Behalf | not-started | unassigned | NEEDS SPEC | BLOCKED |
 | -- | p3-vote-on-behalf | Vote on My Behalf | not-started | unassigned | NEEDS SPEC | BLOCKED |
 | -- | p4-giveaways | Giveaways | not-started | unassigned | NEEDS SPEC |  |
-| -- | p4-launch-video | Launch Video | not-started | jake | 0/15 |  |
+| -- | p4-launch-video | Launch Video | not-started | jake | 0pass/0fail/15 |  |
 | -- | p4-referral-incentives | Referral Incentives | not-started | unassigned | NEEDS SPEC |  |
 | -- | p4-socials-presence | Socials & Presence | not-started | jake | NEEDS SPEC |  |
 | -- | p4-wispr-playbook | Wispr Flow Playbook | not-started | jake | NEEDS SPEC |  |
@@ -37,7 +37,7 @@
 
 Scopes with testable criteria. Review daily in standup.
 
-### Claude Connector (p1-claude-connector) — nadeem — 0/36
+### Claude Connector (p1-claude-connector) — nadeem — 0pass/0fail/36total
 
 - [ ] **P1.S7.C01.** Remote MCP server is deployed and reachable over HTTPS. Verified by: send a JSON-RPC 2.0 `initialize` request to the server URL -> server responds with `serverInfo` and supported capabilities within 2 seconds.
 - [ ] **P1.S7.C02.** Server uses Streamable HTTP transport (JSON-RPC 2.0 over POST). Verified by: send a POST request with `Content-Type: application/json` containing a valid MCP `tools/list` method -> server responds with a JSON-RPC result containing the tool list.
@@ -76,7 +76,7 @@ Scopes with testable criteria. Review daily in standup.
 - [ ] **P1.S7.C35.** Tool responses never leak data from other users' trips. Verified by: call every read tool as User A -> inspect all response payloads -> no trip IDs, member names, or expense data belonging to other users appears.
 - [ ] Typecheck passes
 
-### Notifications & Voting (p1-notifications-voting) — nadeem — 0/41
+### Notifications & Voting (p1-notifications-voting) — nadeem — 0pass/0fail/41total
 
 - [ ] **SC-1.** Expo push token registered on app launch and sign-in, stored in Supabase linked to user_id + device. Verified by: user signs in on two devices -> both push tokens stored -> sending a notification delivers to both devices.
 - [ ] **SC-2.** Supabase edge function sends push notifications accepting user_ids, title, body, and data/deep_link. Verified by: call edge function with user_id, title "Vote closes soon", body, and deep link -> user receives push -> tapping it opens the correct screen.
@@ -120,7 +120,7 @@ Scopes with testable criteria. Review daily in standup.
 - [ ] **SC-40.** Non-trip members do not receive any trip notifications. Verified by: user not in trip -> no push, group chat, or badge for that trip's events.
 - [ ] Typecheck passes
 
-### Post-Trip Review (p1-post-trip-review) — nadeem — 0/39
+### Post-Trip Review (p1-post-trip-review) — nadeem — 0pass/0fail/39total
 
 - [ ] `P1.S4.C01` — Trip Complete bottom sheet appears automatically for each member after trip end date. Verified by: trip end date passes → member opens app → bottom sheet overlay appears on the trip detail screen.
 - [ ] `P1.S4.C02` — Trip stats bar shows accurate Days, People, Places, Spent totals. Verified by: trip with 5 days, 4 people, 3 places, $1200 spent → bottom sheet shows "5 Days · 4 People · 3 Places · $1,200 Spent".
@@ -162,7 +162,7 @@ Scopes with testable criteria. Review daily in standup.
 - [ ] Default ambient track for montages without a Spotify playlist — what vibe/genre?
 - [ ] Photo aspect ratio handling — crop to 16:9 for montage, or letterbox?
 
-### Travel DNA (p1-travel-dna) — nadeem — 0/25
+### Travel DNA (p1-travel-dna) — nadeem — 0pass/0fail/25total
 
 - [ ] **P1.S5.C01.** User can generate a shareable image of their travel personality from the My DNA tab. Verified by: user who completed the core 10 questions -> taps Share on the My DNA tab -> image generated showing persona name, top trait pills, radar chart, and Tryps branding -> native share sheet opens with the image ready to send.
 - [ ] **P1.S5.C02.** Sharing card displays the user's current persona archetype, their strongest trait pills, and the 10-dimension radar chart. Verified by: user with "Adventurous Explorer" persona and 4 strong traits -> generates card -> card shows "Adventurous Explorer" title, all 4 trait pills, radar chart with 10 axes, and Tryps logo.
@@ -190,7 +190,7 @@ Scopes with testable criteria. Review daily in standup.
 - [ ] **P1.S5.C24.** The app never labels the group output as a "compatibility score" or shows a numerical compatibility percentage to users. Verified by: search all user-facing text in the trip -> no "compatibility score," "match percentage," or numerical group rating appears.
 - [ ] Typecheck passes
 
-### Travel Life Connectors (p2-connectors) — asif — 0/25
+### Travel Life Connectors (p2-connectors) — asif — 0pass/0fail/25total
 
 - [ ] **P2.S4.C01.** User can open a "Connected Accounts" screen from their profile settings. Verified by: user taps profile icon → taps "Connected Accounts" → screen displays a list of supported travel services (airlines, hotels, rideshare, vacation rentals) grouped by category, each showing "Connected" or "Not connected."
 - [ ] **P2.S4.C02.** User can connect an airline loyalty account by selecting an airline (e.g., American Airlines, Delta, United) and entering their frequent flyer number. Verified by: user taps "American Airlines" → enters AAdvantage number → taps Save → screen shows American Airlines as "Connected" with the last 4 digits of the number visible.
@@ -218,7 +218,7 @@ Scopes with testable criteria. Review daily in standup.
 - [ ] **P2.S4.C24.** Disconnecting an account permanently deletes the stored number — no soft-delete, no retention. Verified by: user disconnects AA → query the database for that user's AA entry → no record or remnant exists.
 - [ ] Typecheck passes
 
-### iMessage via Linq (p2-linq-imessage) — asif — 0/41
+### iMessage via Linq (p2-linq-imessage) — asif — 0pass/0fail/41total
 
 - [ ] **SC-1.** A user adds the Tryps number to an existing iMessage group chat. The agent sends a welcome message within 5 seconds — who it is, one example of what to ask, and an App Store link. Verified by: add Tryps number to a 4-person group chat -> agent responds with welcome -> message is under 6 lines.
 - [ ] **SC-2.** Everyone in the group chat is automatically part of the trip. No signup, no app download, no email. Verified by: 4 people in group chat, none have the app -> add Tryps number -> all 4 appear as trip members on the backend, linked by phone number.
@@ -262,7 +262,7 @@ Scopes with testable criteria. Review daily in standup.
 - [ ] **SC-40.** The iMessage group and the trip membership are always in sync. A user cannot be in the trip but not in the group, or in the group but not in the trip. They move together. Verified by: remove a participant in-app -> they are also removed from the iMessage group (or if Linq can't remove, agent stops tracking them and DMs explanation) -> add someone to iMessage group -> they appear in the trip.
 - [ ] Typecheck passes
 
-### Stripe Payments (p2-stripe-payments) — asif — 0/12
+### Stripe Payments (p2-stripe-payments) — asif — 0pass/0fail/12total
 
 - [ ] **P2.S2.C01** — A user can confirm a travel booking (flight, hotel, or Airbnb) and their saved card is charged immediately. Verified by: Given a user with a card on file viewing a flight option → user confirms "book it" → card is charged and a booking reference number is returned within 30 seconds.
 - [ ] **P2.S2.C02** — Booking confirmation appears in the same channel the user booked from. Verified by: Given a user who confirms a booking via iMessage → a confirmation message with booking details appears in that iMessage thread. Given a user who confirms in-app → a confirmation screen displays in the app.
@@ -277,7 +277,7 @@ Scopes with testable criteria. Review daily in standup.
 - [ ] **P2.S2.C11** — Completing a booking must not create, modify, or remove any entries in the trip's expense log. Stripe bookings and expense logging are separate features.
 - [ ] **P2.S2.C12** — Typecheck passes.
 
-### Logistics Agent (p3-logistics-agent) — unassigned — 0/26
+### Logistics Agent (p3-logistics-agent) — unassigned — 0pass/0fail/26total
 
 - [ ] Tapping a section button (e.g. "Find Flights" on the Flights section of the trip card) creates an agent task tied to that trip and category. Verified by: Trip with 3 members -> Alice taps "Find Flights" on trip card -> agent task appears in chat thread within 3 seconds with a "Searching..." status.
 - [ ] Empty state prompts trigger the agent. Verified by: Trip with no dinner planned -> Activities section shows "No dinner yet — want me to find one?" -> Alice taps it -> agent task starts for the dinner category.
@@ -306,7 +306,7 @@ Scopes with testable criteria. Review daily in standup.
 - [ ] Auto-book does NOT apply to group tasks. Verified by: Alice has auto-book on -> triggers "Find dinner for 4" on a group trip -> options still go to group vote with 48-hour window.
 - [ ] Typecheck passes
 
-### Launch Video (p4-launch-video) — jake — 0/15
+### Launch Video (p4-launch-video) — jake — 0pass/0fail/15total
 
 - [ ] **P4.LV.C01** — A written treatment document exists that any filmmaker or creative director can pick up and understand the full video concept cold. Verified by: Hand the treatment to someone who has never heard of Tryps → they describe the video's story, shot sequence, and tone back to you within 5 minutes of reading.
 - [ ] **P4.LV.C02** — The treatment includes a shot-by-shot breakdown where every scene has a description, approximate duration, and camera/framing note. Verified by: Open the treatment → each scene has all three elements → scene durations add up to the hero cut target length (90–150 seconds).
