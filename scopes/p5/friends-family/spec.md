@@ -1,3 +1,14 @@
+---
+id: p5-friends-family
+title: "Friends & Family Testing"
+phase: p5
+status: not-started
+assignee: unassigned
+priority: 1
+dependencies: []
+blocked: false
+blocked_reason: ""
+---
 # P5 Scope 1: Family & Friends Testing — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

@@ -1,3 +1,14 @@
+---
+id: p2-booking-links
+title: "Booking Links"
+phase: p2
+status: not-started
+assignee: unassigned
+priority: 3
+dependencies: []
+blocked: false
+blocked_reason: ""
+---
 # P2 Scope 3: Booking Links — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

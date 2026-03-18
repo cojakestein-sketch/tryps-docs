@@ -1,3 +1,14 @@
+---
+id: p3-pay-on-behalf
+title: "Pay on My Behalf"
+phase: p3
+status: not-started
+assignee: unassigned
+priority: 2
+dependencies: []
+blocked: true
+blocked_reason: "P3 dev slot open — waiting on hire"
+---
 # P3 Scope 2: Pay on My Behalf (X-402) — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

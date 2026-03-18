@@ -1,7 +1,13 @@
 ---
-feature: Travel DNA
-date: 2026-03-16
-status: ready
+id: p1-travel-dna
+title: "Travel DNA"
+phase: p1
+status: not-started
+assignee: arslan
+priority: 5
+dependencies: []
+blocked: false
+blocked_reason: ""
 ---
 
 # P1 Scope 5: Travel DNA — Spec

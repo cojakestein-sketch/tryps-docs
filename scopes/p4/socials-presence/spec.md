@@ -1,3 +1,14 @@
+---
+id: p4-socials-presence
+title: "Socials & Presence"
+phase: p4
+status: not-started
+assignee: jake
+priority: 1
+dependencies: []
+blocked: false
+blocked_reason: ""
+---
 # P4 Scope 1: Socials & Presence — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

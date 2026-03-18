@@ -1,3 +1,14 @@
+---
+id: p2-stripe-payments
+title: "Stripe Payments"
+phase: p2
+status: not-started
+assignee: unassigned
+priority: 2
+dependencies: [p2-connectors]
+blocked: false
+blocked_reason: ""
+---
 # P2 Scope 2: Stripe Payments — Spec
 
 > **Status:** draft

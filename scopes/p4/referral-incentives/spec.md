@@ -1,3 +1,14 @@
+---
+id: p4-referral-incentives
+title: "Referral Incentives"
+phase: p4
+status: not-started
+assignee: unassigned
+priority: 3
+dependencies: []
+blocked: false
+blocked_reason: ""
+---
 # P4 Scope 3: Referral Incentives (999/369) — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

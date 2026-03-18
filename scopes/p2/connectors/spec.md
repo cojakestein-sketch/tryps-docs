@@ -1,7 +1,13 @@
 ---
-feature: Travel Life Connectors
-date: 2026-03-17
-status: ready
+id: p2-connectors
+title: "Travel Life Connectors"
+phase: p2
+status: not-started
+assignee: arslan
+priority: 4
+dependencies: [p1-travel-dna]
+blocked: false
+blocked_reason: ""
 ---
 
 # P2 Scope 4: Travel Life Connectors — Spec

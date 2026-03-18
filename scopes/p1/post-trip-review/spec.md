@@ -1,3 +1,14 @@
+---
+id: p1-post-trip-review
+title: "Post-Trip Review"
+phase: p1
+status: not-started
+assignee: unassigned
+priority: 4
+dependencies: []
+blocked: false
+blocked_reason: ""
+---
 # Scope 4: Post-Trip Review — Spec
 
 > **Status:** Ready

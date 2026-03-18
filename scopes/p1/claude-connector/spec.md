@@ -1,7 +1,13 @@
 ---
-feature: Claude Connector
-date: 2026-03-15
-status: draft
+id: p1-claude-connector
+title: "Claude Connector"
+phase: p1
+status: not-started
+assignee: krisna
+priority: 7
+dependencies: []
+blocked: false
+blocked_reason: ""
 ---
 
 # P1 Scope 7: Claude Connector — Spec

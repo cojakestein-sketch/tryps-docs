@@ -1,7 +1,13 @@
 ---
-feature: Notifications & Voting
-date: 2026-03-14
-status: ready
+id: p1-notifications-voting
+title: "Notifications & Voting"
+phase: p1
+status: not-started
+assignee: nadeem
+priority: 3
+dependencies: []
+blocked: false
+blocked_reason: ""
 ---
 
 # P1 Scope 3: Notifications & Voting — Spec

@@ -1,3 +1,14 @@
+---
+id: p3-duffel-apis
+title: "Duffel APIs"
+phase: p3
+status: not-started
+assignee: unassigned
+priority: 3
+dependencies: []
+blocked: true
+blocked_reason: "P3 dev slot open — waiting on hire"
+---
 # P3 Scope 3: Duffel API & Dependencies — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

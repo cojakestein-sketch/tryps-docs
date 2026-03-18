@@ -1,3 +1,14 @@
+---
+id: p1-core-flows
+title: "Core Flows"
+phase: p1
+status: not-started
+assignee: asif
+priority: 1
+dependencies: []
+blocked: false
+blocked_reason: ""
+---
 # Scope 1: Core Flows — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

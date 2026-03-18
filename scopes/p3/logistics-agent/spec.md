@@ -1,8 +1,13 @@
 ---
-feature: Tryps Logistics Agent
-date: 2026-03-12
-status: draft
-phase: P3
+id: p3-logistics-agent
+title: "Logistics Agent"
+phase: p3
+status: not-started
+assignee: unassigned
+priority: 4
+dependencies: []
+blocked: true
+blocked_reason: "P3 dev slot open — waiting on hire"
 ---
 
 ## What

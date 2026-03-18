@@ -1,3 +1,14 @@
+---
+id: p4-giveaways
+title: "Giveaways"
+phase: p4
+status: not-started
+assignee: unassigned
+priority: 4
+dependencies: []
+blocked: false
+blocked_reason: ""
+---
 # P4 Scope 4: Giveaways (Dream Trip) — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

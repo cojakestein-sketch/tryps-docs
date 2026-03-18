@@ -1,3 +1,14 @@
+---
+id: p3-vote-on-behalf
+title: "Vote on My Behalf"
+phase: p3
+status: not-started
+assignee: unassigned
+priority: 1
+dependencies: []
+blocked: true
+blocked_reason: "P3 dev slot open — waiting on hire"
+---
 # P3 Scope 1: Vote on My Behalf — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

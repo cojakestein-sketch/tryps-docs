@@ -1,3 +1,14 @@
+---
+id: p5-strangers-review
+title: "Strangers Review"
+phase: p5
+status: not-started
+assignee: unassigned
+priority: 2
+dependencies: []
+blocked: false
+blocked_reason: ""
+---
 # P5 Scope 2: MIT + Stranger Reviews — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

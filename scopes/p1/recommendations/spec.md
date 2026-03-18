@@ -1,3 +1,14 @@
+---
+id: p1-recommendations
+title: "Recommendations"
+phase: p1
+status: not-started
+assignee: unassigned
+priority: 6
+dependencies: []
+blocked: false
+blocked_reason: ""
+---
 # Scope 6: Recommendation Algorithm — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

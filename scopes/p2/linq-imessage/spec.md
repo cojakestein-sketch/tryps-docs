@@ -1,7 +1,13 @@
 ---
-feature: iMessage via Linq
-date: 2026-03-15
-status: ready
+id: p2-linq-imessage
+title: "iMessage via Linq"
+phase: p2
+status: not-started
+assignee: krisna
+priority: 1
+dependencies: [p1-claude-connector]
+blocked: false
+blocked_reason: ""
 ---
 
 # P2 Scope 1: iMessage via Linq — Spec

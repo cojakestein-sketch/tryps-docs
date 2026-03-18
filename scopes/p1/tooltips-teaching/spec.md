@@ -1,3 +1,14 @@
+---
+id: p1-tooltips-teaching
+title: "Tooltips & Teaching"
+phase: p1
+status: not-started
+assignee: unassigned
+priority: 2
+dependencies: []
+blocked: false
+blocked_reason: ""
+---
 # Scope 2: Tooltips & Teaching — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

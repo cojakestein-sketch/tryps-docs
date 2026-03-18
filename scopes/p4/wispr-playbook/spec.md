@@ -1,3 +1,14 @@
+---
+id: p4-wispr-playbook
+title: "Wispr Flow Playbook"
+phase: p4
+status: not-started
+assignee: jake
+priority: 2
+dependencies: []
+blocked: false
+blocked_reason: ""
+---
 # P4 Scope 2: Wispr Flow Playbook (UGC) — Spec
 
 > **Status:** Not started — run `/vision /spec` to generate

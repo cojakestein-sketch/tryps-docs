@@ -1,9 +1,13 @@
 ---
-feature: Tryps Launch Video
-date: 2026-03-16
-status: draft
-phase: P4
-scope: launch-video
+id: p4-launch-video
+title: "Launch Video"
+phase: p4
+status: not-started
+assignee: jake
+priority: 5
+dependencies: []
+blocked: false
+blocked_reason: ""
 ---
 
 # P4: Launch Video — Spec
