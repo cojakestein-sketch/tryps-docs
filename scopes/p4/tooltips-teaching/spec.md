@@ -1,9 +1,9 @@
 ---
 id: p1-tooltips-teaching
 title: "Tooltips & Teaching"
-phase: p1
+phase: p4
 status: not-started
-assignee: nadeem
+assignee: jake
 priority: 2
 dependencies: []
 blocked: false
