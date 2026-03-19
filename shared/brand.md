@@ -16,8 +16,11 @@
 - **Tone:** Cheeky/knowing — group chat energy, not travel magazine
 - **We are:** Warm, real, a little chaotic, funny, effortless
 - **We are not:** Corporate, productivity-obsessed, luxury influencer, stock-photo polished
+- **Brand essence:** Welcome.
 - **Brand world:** "Your friends are magical, and getting them all in one place is the hard part. We handle that."
-- **Visual motif:** Film camera texture under consideration (grain, warmth, candid framing) — not yet committed
+- **Brand personality:** Anthony Bourdain — traveled everywhere, genuinely curious, warm, no pretense, loved connection over luxury
+- **Brand references:** Partiful, Poke AI, Venmo, Beli, Wispr Flow
+- **Visual motif:** Film camera texture — grain, warmth, candid framing. Disposable camera energy is the anchor.
 
 ## Color Palette
 
@@ -101,18 +104,29 @@ Source: `t4/utils/theme.ts`
 - Springs: snappy (damping 20, stiffness 300), bouncy (damping 12, stiffness 180)
 - Shadows: very subtle — max 0.1 opacity, warm tone
 
-## Voice & Tone (Draft — Pending Strategy Doc)
+## Voice & Tone
 
-- **Formal ←→ Casual:** Casual (but not sloppy)
-- **Serious ←→ Playful:** Playful (but not childish)
-- **Respectful ←→ Irreverent:** Slightly irreverent (knowing, not mean)
-- **Enthusiastic ←→ Matter-of-fact:** Enthusiastic (but grounded)
+- **Formal ←→ Casual:** Leans casual (but not sloppy)
+- **Serious ←→ Playful:** Leans playful (but not childish)
+- **Respectful ←→ Irreverent:** Stays respectful (warm, not edgy)
+- **Enthusiastic ←→ Matter-of-fact:** Stays enthusiastic (but grounded)
+
+### Tone Modulation
+- **Social:** Playful
+- **Payments/billing:** More trustworthy
+- **Onboarding:** Warmer
+
+### Voice North Star
+Every piece of Tryps copy should make the reader feel: "This is not some tacky gimmicky service. This is the way everybody is planning their trip this summer." Legitimacy + inevitability.
 
 ### We say / We don't say
-- "your crew" not "users" or "travelers"
+- "your friends" or "your people" — NOT "your crew" (never use "crew")
 - "trip" not "journey" or "adventure" (too precious)
+- NOT "users" or "travelers"
 - Short, punchy copy — group chat energy
 - Okay to be funny, never mean
+- No emojis or slang in agent/system copy — looks tacky
+- Notifications: blend of functional and personality, NEVER spammy
 
 ## Key Rules
 
