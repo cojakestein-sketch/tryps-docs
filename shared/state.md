@@ -1,7 +1,7 @@
 # Tryps State
 
 > Auto-generated from spec.md frontmatter. Do not edit manually.
-> Last updated: 2026-03-20 19:30 UTC
+> Last updated: 2026-03-20 20:00 UTC
 
 ## Scope Status
 
