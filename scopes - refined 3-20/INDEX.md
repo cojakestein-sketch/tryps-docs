@@ -17,7 +17,7 @@ total_scopes: 13
 | 4 | travel-identity | Travel Identity | People + profile tab | partial | nadeem |
 | 5 | onboarding-teaching | Onboarding & Teaching | Mobile app (everywhere), iMessage | partial | jake |
 | 6 | post-trip-retention | Post-Trip & Retention | Mobile app (after trip card), iMessage | partial | nadeem |
-| 7 | imessage-agent | iMessage Agent | iMessage | partial | asif |
+| 7 | imessage-agent | iMessage Agent | iMessage | specced | asif |
 | 8 | agent-intelligence | Agent Intelligence | Backend, mobile; Claude Connector in external services | not-started | rizwan |
 | 9 | payments-infrastructure | Payments Infrastructure | Backend, mobile, iMessage frontend | not-started | asif |
 | 10 | travel-booking | Travel Booking | iMessage, mobile, backend | built | — |
