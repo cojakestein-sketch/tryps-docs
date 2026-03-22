@@ -6,7 +6,7 @@ assignee: asif
 wave: 1
 dependencies: [brand-design-system]
 clickup_ids: ["86e0emu7g", "86e0f948t"]
-criteria_count: 51
+criteria_count: 57
 criteria_done: 0
 last_updated: 2026-03-21
 links:
@@ -41,7 +41,13 @@ iMessage is acquisition. The app is retention. The agent is the "holy shit" mome
 
 **85/15 Rule:** 85% reactive and helpful. 15% personality, a witty concierge who occasionally drops a one-liner. Never gimmicky. Never performing.
 
-**Routing Principle:** The agent responds only when directly addressed or when it detects actionable travel intent. Normal friend conversation gets silence.
+**Routing Principle:** The agent responds only when directly addressed or when it detects actionable travel intent. Normal friend conversation gets silence. **This is the hardest technical problem in the scope** — the line between "casual" and "actionable" is a judgment call that requires intentional design. A routing logic design doc with examples, edge cases, and "gotchas" must be created before implementation. See SC-52.
+
+**Daily Facilitator Model:** The agent is NOT an event-driven notification bot. It's a travel agent who checks in ~once a day with exactly what it needs from each person to progress the trip. Think: a real travel agent texting you because they get paid when the trip gets booked. The agent understands what stage of planning the group is in and sets realistic, bite-sized asks in small chunks until the trip is actually planned. It never blows up the group chat minute by minute.
+
+**Trip Completeness Levels:** The agent has a mental model of what a fully planned trip looks like (level 10) and steers the group from level 1 to level 10 through daily facilitation. Each level represents a concrete planning milestone. The level system drives what the agent asks for in its daily check-ins. Levels are visible to users so they can see their progress. **The exact level definitions need to be designed** — see SC-53 and the design section.
+
+**One Brain, Both Channels:** The agent draws from the same intelligence infrastructure (scope 8: Agent Intelligence) whether responding in iMessage or the app. Recommendations, memory, and vote-on-behalf are one system. iMessage is not a dumber version of the app experience.
 
 ---
 
@@ -93,19 +99,23 @@ iMessage is acquisition. The app is retention. The agent is the "holy shit" mome
 
 - [ ] **SC-19.** A user pastes a link and the agent captures it. Verified by: Jake pastes an Airbnb listing URL -> agent extracts name, dates, price -> adds to trip as accommodation option -> confirms in chat.
 
-### Proactive Agent Behavior
+### Proactive Agent Behavior — Daily Facilitator Model
 
-- [ ] **SC-20.** The agent sends a reminder when arriving at the destination. Verified by: trip start date arrives -> agent texts group with the Airbnb address and distance from the airport.
+The agent's proactive behavior follows a daily facilitator cadence, not an event-driven notification model. The agent checks in ~once a day with the group, telling everyone exactly what's needed to progress trip planning. It reads the trip's current completeness level, identifies what's blocking the next level, and makes specific asks. Like a real travel agent who texts you because they want the trip booked.
 
-- [ ] **SC-21.** The agent reminds the group about open votes. Verified by: poll has been open 24hrs with 2 of 5 people not voted -> agent nudges group "2 people haven't voted on dinner yet, poll closes tomorrow"
+**Reactive confirmations (expenses, votes, queries) still happen immediately.** The daily cadence applies to proactive outreach only.
 
-- [ ] **SC-22.** The agent sends notifications about trip updates to the group. Verified by: a new expense is added in-app -> agent texts group "{name} added $80 for Uber"
+- [ ] **SC-20.** The agent sends ~one proactive check-in per day to the group chat, summarizing where planning stands and making specific asks for what's needed next. Verified by: trip is at level 3 (stay not picked) -> agent sends a single message to the group: "stay is the big one right now. I found 3 options, want me to throw them up for a vote?" -> message includes what's needed and a concrete next step -> no second proactive message for ~24 hours.
+
+- [ ] **SC-21.** The daily check-in calls out specific people by name when they're blocking progress. Verified by: poll needs votes from Sarah and Mike -> daily check-in includes "Sarah, Mike, still need your votes on the dinner spot" -> other group members are not nagged about something they've already done.
+
+- [ ] **SC-22.** The agent sends a reminder when arriving at the destination. Verified by: trip start date arrives -> agent texts group with the accommodation address and relevant logistics (arrival info, check-in details).
 
 - [ ] **SC-23.** The agent surfaces when it detects an opportunity in group conversation. Verified by: someone texts "Yo we should go to the club at midnight" -> agent responds "I can look into tickets for that if you want" -> does NOT interrupt if the message has no actionable travel intent.
 
 - [ ] **SC-24.** The agent nudges the group when planning has stalled. Verified by: no trip-related activity in the group for 3+ days -> agent sends a single nudge that includes what's needed next (e.g., "3 days since anyone's touched this trip. still need to pick dates, want me to throw up a vote?") -> does NOT nudge again for at least 3 more days.
 
-- [ ] **SC-25.** The agent suggests next steps based on the planning funnel (vibe -> needs -> facilitation -> booking). Verified by: group has completed vibe quiz but hasn't picked dates -> agent suggests "everyone's vibes are in, want to vote on dates next?" -> suggestion matches the logical next step in the funnel.
+- [ ] **SC-25.** The agent's daily check-ins are driven by the trip completeness level system. It knows what stage the group is in, what the next level requires, and sets realistic bite-sized asks to get there. Verified by: trip is at level 2 (dates locked, no stay) -> agent's daily message focuses on accommodation, not activities -> trip advances to level 3 -> next day's message shifts to the new priority. The agent never asks for everything at once.
 
 ### Agent Personality & Jennifer Test
 
@@ -169,16 +179,32 @@ iMessage is acquisition. The app is retention. The agent is the "holy shit" mome
 
 - [ ] **SC-51.** The iMessage group and the trip membership are always in sync. Verified by: remove a participant in-app -> they are removed from the iMessage group (or agent stops tracking them and DMs explanation) -> add someone to iMessage group -> they appear in the trip.
 
+### Trip Completeness Levels & Recommendations
+
+- [ ] **SC-52.** A routing logic design doc exists with examples, edge cases, and "gotchas" that define when the agent speaks vs. stays silent. This is the source of truth for the hardest judgment call in the agent: "casual message" vs. "actionable travel intent." Verified by: document exists, covers at least 20 example messages with expected agent behavior (speak/silent), includes edge cases that could go either way, and is reviewed by Jake before implementation.
+
+- [ ] **SC-53.** A trip completeness level system exists that tracks where a trip is in the planning process. Each level represents a concrete milestone (e.g., level 1 = location + dates + name, level 2 = flights aligned, level 3 = stay picked, etc. up to level 10 = fully planned trip). Verified by: create a trip and progress through planning stages -> trip level advances as milestones are hit -> level is visible to users in the app -> agent's daily check-ins reference what's needed for the next level. **The exact level definitions are a design deliverable — see design.md.**
+
+- [ ] **SC-54.** The agent surfaces activity recommendations from the recommendations engine (scope 8) in iMessage when contextually relevant. Verified by: someone texts "what should we do in Bali?" -> agent pulls personalized recommendations from Agent Intelligence -> responds with 2-3 top suggestions with brief reasons (e.g., "based on your group's vibe: volcano hike, Seminyak beach day, Ubud rice terrace walk") -> recommendations match what the app would show.
+
+- [ ] **SC-55.** The agent's daily check-in can include activity recommendations when the trip's completeness level calls for it. Verified by: trip is at the "add activities" level -> daily check-in includes "here are a few ideas based on your group's vibe" with 2-3 personalized recommendations -> user can add them by replying.
+
+### Cross-Scope Coordination
+
+- [ ] **SC-56.** ⚠️ **COORDINATION REQUIRED (scope 8).** Agent Intelligence generates vote-on-behalf batch DMs and the iMessage Agent delivers them. The DM delivery pipeline — how scope 8 triggers a DM send through scope 7's Linq infrastructure — must be designed jointly by Asif and Rizwan before either side implements. Verified by: a shared interface spec exists defining how Agent Intelligence requests DM delivery, and both teams have signed off on it.
+
+- [ ] **SC-57.** ⚠️ **COORDINATION REQUIRED (scope 8).** When a user replies to a vote-on-behalf batch DM (e.g., "switch D to yes"), the iMessage Agent parses it and routes the override to Agent Intelligence's vote engine. The parsing logic and routing contract must be defined jointly. Verified by: user replies to batch DM with a vote change -> iMessage Agent recognizes it as a vote override (not a new message) -> routes to vote engine -> vote updated -> agent confirms.
+
 ---
 
 ## Out of Scope
 
 - **Agentic booking execution** (booking flights, making reservations): scope 10 (Travel Booking). Agent says "coming soon" if asked.
 - **Per-user and per-trip memory**: scope 8 (Agent Intelligence). Architecture must support plugging it in.
-- **Claude MCP Connector** (Claude's "Connect your apps" integration): scope 8. Totally separate from the iMessage agent backend.
+- **Claude MCP Connector** (Claude's "Connect your apps" integration): scope 14 (AI Platform Connectors, post-April 2). Totally separate from the iMessage agent backend.
 - **Android group chat support**: post-April 2.
 - **Payment processing in-thread**: scope 9 (Payments Infrastructure). For now, expense tracking only.
-- **Daily/morning trip summaries**: cut from April 2 (too likely to annoy).
+- **Per-event notifications to the group** (e.g., "Jake added $80 for Uber"): replaced by the daily facilitator model. The agent does NOT announce every in-app action. Reactive confirmations (expense logged, vote cast) still happen immediately when triggered by an iMessage text.
 - **In-app Linq settings/history screens**: post-April 2.
 - **Agent removal mechanic** (text REMOVE to kick agent): TBD, may not be technically possible via Linq. Deferred.
 
@@ -197,7 +223,7 @@ iMessage is acquisition. The app is retention. The agent is the "holy shit" mome
 | Scope | What's Needed | Blocks |
 |-------|--------------|--------|
 | brand-design-system (#11) | Voice & tone guide (copy doc) | SC-26 through SC-31 (personality). Draft complete. |
-| agent-intelligence (#8) | Memory architecture (per-user, per-trip) | Future upgrade, architect for it now |
+| agent-intelligence (#8) | Memory architecture (per-user, per-trip), recommendations engine, vote-on-behalf DMs | SC-34 (extension points), SC-54-55 (recommendations in iMessage), SC-56-57 (batch DM pipeline + vote override routing). **Asif and Rizwan must define the shared interface before implementation.** |
 
 ## References
 
@@ -226,7 +252,7 @@ Run the autonomous scope pipeline for "iMessage Agent" (imessage-agent).
 ## Context
 
 Read these files first:
-1. SCOPE_DIR/spec.md (51 success criteria)
+1. SCOPE_DIR/spec.md (57 success criteria)
 2. SCOPE_DIR/objective.md (key concepts, wave assignment)
 3. SCOPE_DIR/voice-guide.md (voice & tone copy doc)
 4. SCOPE_DIR/design.md (what's blocked on design)
@@ -244,7 +270,7 @@ Read these files first:
 | 5 | Agent Ready | SCOPE_DIR/agent-ready.md | Contains a PR URL |
 
 ### Plan Context
-Every unchecked SC-1 through SC-51 is a task. Group by subsystem. Write plan to SCOPE_DIR/plan.md.
+Every unchecked SC-1 through SC-57 is a task. Group by subsystem. Write plan to SCOPE_DIR/plan.md.
 
 ### Work Context
 Implement every task. Run typecheck after each change. Commit with "feat(imessage-agent): short description". Write progress to SCOPE_DIR/work-log.md.

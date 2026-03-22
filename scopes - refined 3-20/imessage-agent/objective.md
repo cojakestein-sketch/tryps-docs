@@ -22,19 +22,25 @@ iMessage is THE acquisition channel. One person adds the agent, everyone experie
 - **System Prompt Architecture:** Three layers: (1) routing logic (when the agent speaks vs. stays silent), (2) persona instructions (voice, tone, personality), (3) context window management (trip data, user data, conversation history). Must be modular so memory and intelligence plug in later. Rizwan has experience here.
 - **85/15 Rule:** 85% purely reactive and helpful. 15% personality, a witty concierge who occasionally drops a one-liner. Never gimmicky.
 - **iMessage-sufficient:** Non-app users can do everything: vote, log expenses, query the itinerary. App download encouraged, never required.
+- **Daily Facilitator Model:** The agent is NOT event-driven. It checks in ~once a day with the group, telling everyone exactly what's needed to progress the trip. Like a real travel agent who texts because they want the trip booked. Reactive confirmations (expenses, votes) still happen immediately.
+- **Trip Completeness Levels:** The agent knows what a fully planned trip looks like (level 10) and steers the group from level 1 to level 10. Each level is a planning milestone. Levels are visible to users. This system drives what the agent asks for each day.
+- **One Brain, Both Channels:** The agent draws from the same intelligence infrastructure (scope 8) in iMessage and the app. Recommendations, memory, vote-on-behalf are one system.
 
 ## Success Looks Like
 
 - Agent personality passes the Jennifer Test (voice guide + behavioral tests + Jake transcript review)
 - System prompt architecture is modular, maintainable, and supports plugging in memory/intelligence later
 - All 19 existing functional flows work (expenses, voting, queries, edge cases)
-- Proactive behavior surfaces at the right moments without being annoying
+- Daily facilitator model: agent checks in ~once a day with what's needed, never blows up the chat
+- Trip completeness levels drive the agent's asks — it knows what stage the group is in
+- Recommendations from Agent Intelligence surface in iMessage (one brain, both channels)
 - Non-app users have full participation, zero features gated behind app download
+- Routing logic design doc exists with examples and edge cases for when agent speaks vs. stays silent
 
 ## Wave Assignment
 
-- **Wave 1:** Voice & tone guide (copy doc), system prompt architecture, routing logic
-- **Wave 2:** Functional flows (expenses, voting, queries, proactive behavior), non-app-user participation
+- **Wave 1:** Voice & tone guide (copy doc), system prompt architecture, routing logic design doc, trip completeness level definitions
+- **Wave 2:** Functional flows (expenses, voting, queries), daily facilitator model, trip completeness tracking, recommendations in iMessage, cross-scope interface with Agent Intelligence (SC-56, SC-57)
 - **Wave 3:** Jennifer Test validation, behavioral tests, QA pass
 
 ## Dependencies

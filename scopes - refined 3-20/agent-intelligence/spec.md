@@ -6,7 +6,7 @@ assignee: rizwan
 wave: 2
 dependencies: [travel-identity]
 clickup_ids: ["86e05v28h", "86e0ajhte"]
-criteria_count: 56
+criteria_count: 61
 criteria_done: 0
 last_updated: 2026-03-22
 links:
@@ -52,7 +52,7 @@ Without intelligence, Tryps is a trip organizer. With it, Tryps is a travel agen
 
 **Batch, Don't Spam:** Vote-on-behalf notifications always arrive as a single batched DM covering all pending polls. Never one-per-poll.
 
-**Friend Data > Seed Data:** User-generated activities from friends rank higher than scraped defaults. The social graph is the best recommendation engine.
+**User Data > Seed Data:** User-generated activities from other Tryps users rank higher than scraped defaults. The social graph is derived from shared trip history and contact book sync — "other Tryps users did X, you could too." Connected users (travel companions, contacts) rank highest.
 
 **Facilitator, Not Dictator:** The agent infers and acts, but explicit human choices always override.
 
@@ -130,7 +130,7 @@ Without intelligence, Tryps is a trip organizer. With it, Tryps is a travel agen
 
 ### Recommendations Engine
 
-- [ ] **SC-33.** Activity database exists in Supabase with globally seeded data covering destinations worldwide. Verified by: query activity database -> returns activities across 50+ destinations on all inhabited continents -> total count exceeds 1,000.
+- [ ] **SC-33.** Activity database exists in Supabase with globally seeded data covering ALL destinations. Generic activity templates (beach day, museum visit, shopping, dining, nightlife, hiking, etc.) apply everywhere via applicability rules, so no destination has zero recommendations. Specific activities (named places) exist for popular destinations. Verified by: query activity database for any destination (popular or obscure) -> returns at least generic template matches -> popular destinations (50+) also have specific named activities -> total specific activity count exceeds 1,000.
 
 - [ ] **SC-34.** Two tiers of activities exist in the database: generic templates ("beach day", "museum visit", "go shopping") that apply broadly, and specific activities ("Bondi Beach", "Louvre Museum", "Grand Bazaar") tied to individual locations. Verified by: query activities -> results include both generic templates with broad applicability AND specific activities with location coordinates and addresses.
 
@@ -146,7 +146,7 @@ Without intelligence, Tryps is a trip organizer. With it, Tryps is a travel agen
 
 - [ ] **SC-40.** Group vibe quiz answers filter and rank activities for the trip's destination. Verified by: 4-person group, 3 answered "adventure" and 1 answered "relaxation" -> recommendations for Costa Rica prioritize adventure activities (zip-lining, white water rafting) over relaxation (spa day) -> ranking reflects the group majority.
 
-- [ ] **SC-41.** Recommendations surface on the Activities tab in the app as a "Suggested for your group" section showing ranked activity cards. Verified by: open trip -> navigate to Activities tab -> "Suggested for your group" section shows 5-8 ranked activities personalized to the group's vibe -> each card shows activity name, one-line reason, and an add button.
+- [ ] **SC-41.** Recommendations surface in both the app AND iMessage — one brain, both channels. In-app: "Suggested for your group" section on the Activities tab shows 5-8 ranked activity cards. In iMessage: when contextually relevant (user asks, or daily check-in calls for it), the agent serves 2-3 top recommendations with brief reasons. Verified by: open trip -> Activities tab shows ranked recommendations -> separately, text "what should we do?" in iMessage -> agent responds with personalized suggestions that match the app's top picks.
 
 - [ ] **SC-42.** Different groups going to the same destination get different recommendations. Verified by: Group A (adventure vibe) and Group B (relaxation vibe) both create trips to Bali -> Group A sees surfing, volcano hike, waterfall trek -> Group B sees spa day, beach club, sunset yoga -> top 5 lists have minimal overlap.
 
@@ -156,11 +156,11 @@ Without intelligence, Tryps is a trip organizer. With it, Tryps is a travel agen
 
 - [ ] **SC-45.** Feedback loop: adoption and favorites data improves the ranking algorithm over time. Verified by: 100 groups have visited Barcelona -> activities with high adoption rates rank higher for new Barcelona groups -> activities that were never adopted rank lower or drop out of recommendations.
 
-- [ ] **SC-46.** User-generated activities from past trips become recommendations for future trips to the same destination. Verified by: Group A creates custom activity "Hidden rooftop bar on Calle de Blai" in Barcelona -> Group B (containing friends of Group A members) creates a trip to Barcelona -> the rooftop bar appears in Group B's recommendations.
+- [ ] **SC-46.** User-generated activities from past trips become recommendations for future trips to the same destination. Verified by: Group A creates custom activity "Hidden rooftop bar on Calle de Blai" in Barcelona -> Group B creates a trip to Barcelona -> the rooftop bar appears in Group B's recommendations as "other Tryps users loved this."
 
-- [ ] **SC-47.** Friend-generated activities rank higher than seed data in recommendations. Verified by: seed data includes "La Boqueria Market" (scraped from travel blog) -> user's friend Quinn created "Secret tapas spot near La Boqueria" (user-generated) -> Quinn's activity ranks above the seed data activity in recommendations.
+- [ ] **SC-47.** User-generated activities rank higher than seed data in recommendations. Verified by: seed data includes "La Boqueria Market" (scraped from travel blog) -> another Tryps user created "Secret tapas spot near La Boqueria" (user-generated) -> user-generated activity ranks above seed data in recommendations. The framing is "other Tryps users did X, you could too."
 
-- [ ] **SC-48.** Social graph weighting: activities from direct friends rank highest, friends-of-friends next, then general population data. Verified by: recommendation ranking for Barcelona -> Quinn's activity (direct friend) ranks above Marcus's activity (friend-of-friend) ranks above seed data -> ranking is consistent.
+- [ ] **SC-48.** Social graph is derived from two sources: (1) shared trip history (people who've been on a trip together are connected), and (2) contact book sync (with user permission). Activities from connected users rank higher than general population data. Verified by: recommendation ranking for Barcelona -> activity from someone you've traveled with ranks above activity from a stranger who also used Tryps -> both rank above seed data.
 
 - [ ] **SC-49.** Recommendation algorithm follows established patterns: content-based filtering (matching activity tags to user preferences) combined with collaborative filtering (what similar users liked). Verified by: architecture review confirms two components: content-based matching (vibe -> activity tags) and collaborative filtering (similar users liked similar activities) -> both contribute to final ranking with documented weights.
 
@@ -179,6 +179,20 @@ Without intelligence, Tryps is a trip organizer. With it, Tryps is a travel agen
 - [ ] **SC-55.** Memory never stores raw conversation transcripts — only structured signals extracted from conversations. Verified by: query memory table for a user with 50+ iMessage interactions -> no raw message text stored -> only structured signals (preference tags, sentiment indicators, override records).
 
 - [ ] **SC-56.** Vote-on-behalf never sends individual DMs per poll — always batched into a single message covering all pending polls. Verified by: 8 polls open simultaneously -> user receives exactly 1 DM covering all 8 -> not 8 separate DMs.
+
+### Open Technical Design Decisions
+
+- [ ] **SC-57.** ⚠️ **DESIGN DECISION: NLP extraction pipeline.** A documented approach exists for how free-text natural language (Tier 2 trip intents and Tier 4 DM conversations) gets turned into structured memory signals. This is the core pipeline for half of Agent Intelligence and must be intentionally designed before implementation. Verified by: document in memory-architecture.md describes the extraction approach (e.g., Claude function calling with a schema, structured output prompt, dedicated extraction agent), includes example inputs/outputs for at least 10 message types, and Rizwan confirms it's buildable. Options to evaluate: (a) Claude function calling with a defined signal schema, (b) a dedicated extraction prompt that runs per-message, (c) batch processing with a periodic extraction agent.
+
+- [ ] **SC-58.** ⚠️ **DESIGN DECISION: Routing logic.** A routing logic design doc exists (shared with iMessage Agent scope 7, see SC-52) defining when the agent speaks vs. stays silent, with at least 20 example messages, edge cases, and "gotchas." This is the hardest judgment call in the product — the line between "casual" and "actionable travel intent." Verified by: document exists, is reviewed by Jake, and includes a classification rubric the system prompt can reference.
+
+### Cross-Scope Coordination
+
+- [ ] **SC-59.** ⚠️ **COORDINATION REQUIRED (scope 7).** The DM delivery pipeline — how Agent Intelligence triggers sending a batch DM through the iMessage Agent's Linq infrastructure — must be designed jointly by Asif (scope 7) and Rizwan (scope 8) before either side implements. Verified by: a shared interface spec exists defining the API contract (e.g., Agent Intelligence calls a `sendDM(userId, message)` function, or writes to a message queue that iMessage Agent drains), and both teams have signed off.
+
+- [ ] **SC-60.** ⚠️ **COORDINATION REQUIRED (scope 7).** When a user replies to a vote-on-behalf batch DM with a vote change (e.g., "switch D to yes"), the iMessage Agent must route it to Agent Intelligence's vote engine. The parsing logic and routing contract must be defined jointly. Verified by: shared spec exists defining how vote override messages are identified and routed.
+
+- [ ] **SC-61.** ⚠️ **COORDINATION REQUIRED (scope 7).** A shared rate limiter or message coordination mechanism prevents Agent Intelligence (batch DMs) and iMessage Agent (daily check-ins, proactive nudges) from spamming users with overlapping proactive messages. Verified by: mechanism exists (shared queue, rate limit, or scheduling coordination), and a user never receives more than one proactive outbound message in a 4-hour window.
 
 ---
 
@@ -208,7 +222,7 @@ Without intelligence, Tryps is a trip organizer. With it, Tryps is a travel agen
 | Scope | What's Needed | Blocks |
 |-------|--------------|--------|
 | travel-identity (#4) | Vibe quiz data (already built). Full Travel DNA enriches memory but not required. | SC-6, SC-8, SC-19 (vibe quiz as minimum signal) |
-| imessage-agent (#7) | System prompt extension points (SC-34). Memory injects into those slots. | SC-13 (memory injection into system prompt) |
+| imessage-agent (#7) | System prompt extension points (SC-34). Memory injects into those slots. DM delivery pipeline for batch DMs. Vote override routing. Recommendation serving in iMessage. | SC-13 (memory injection), SC-41 (recs in iMessage), SC-59 (DM pipeline), SC-60 (vote override routing), SC-61 (rate limiting). **Asif and Rizwan must define the shared interface before implementation.** |
 | brand-design-system (#11) | Voice guide rules apply to vote-on-behalf DM copy | SC-20 (batch DM format) |
 
 ## References

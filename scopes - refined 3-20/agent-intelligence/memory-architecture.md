@@ -93,7 +93,37 @@ destination_patterns
 
 This table is rebuilt periodically (daily or on-demand) from trip_memory data. It's a materialized view, not a primary data source.
 
-## 3. Signal Types
+## 3. NLP Extraction Pipeline (DESIGN DECISION — SC-57)
+
+⚠️ **This section is a placeholder. The approach must be designed and documented before implementation.**
+
+Free-text messages (Tier 2 trip intents and Tier 4 DM conversations) must be converted into structured memory signals. This is the core pipeline for half of Agent Intelligence.
+
+**The problem:** A user texts "I want a chill beach trip with good food and no hiking." This needs to become:
+- `preference(beach, positive, 0.4, trip_intent)`
+- `preference(food, positive, 0.4, trip_intent)`
+- `preference(hiking, negative, 0.4, trip_intent)`
+
+**Options to evaluate:**
+
+| Approach | Pros | Cons |
+|----------|------|------|
+| **(a) Claude function calling with signal schema** | Structured output, reliable, uses existing Claude integration | Cost per message, latency, requires well-defined schema |
+| **(b) Dedicated extraction prompt per message** | Flexible, can handle nuance | Needs careful prompt engineering, may produce inconsistent schemas |
+| **(c) Batch extraction agent (periodic)** | Lower cost, can process in bulk | Delay between message and memory, more complex architecture |
+
+**What needs to be decided:**
+1. Which approach (or hybrid)?
+2. What is the signal schema the extraction targets?
+3. How are conflicting signals from the same message handled?
+4. What's the latency budget? (Does memory need to be updated before the next agent response, or can it lag?)
+5. How are ambiguous messages handled? (e.g., "I like the beach" — is this a preference or a casual statement?)
+
+**Example inputs/outputs needed:** At least 10 message types with expected structured signal output, covering: trip intents, explicit preferences, implicit preferences, corrections/contradictions, interaction style requests, and ambiguous messages.
+
+**Rizwan to design this before starting Tier 2/4 memory implementation.**
+
+## 4. Signal Types
 
 ### Explicit Signals (user tells us directly)
 | Signal | Source | Weight | Example |
@@ -117,7 +147,7 @@ Signals do not decay by default — a preference stated 6 months ago is still va
 - Vote overrides in the same category compound (3 nightlife overrides > 1 nightlife override).
 - Recency breaks ties: if two signals have equal weight and conflict, the newer one wins.
 
-## 4. Engagement Tiers
+## 5. Engagement Tiers
 
 | Tier | What the user does | What we know | Memory quality |
 |------|-------------------|--------------|----------------|
@@ -129,9 +159,9 @@ Signals do not decay by default — a preference stated 6 months ago is still va
 
 The agent works at every tier. It just gets better.
 
-## 5. Integration Points
+## 6. Integration Points
 
-### 5.1 System Prompt Injection (iMessage Agent SC-34)
+### 6.1 System Prompt Injection (iMessage Agent SC-34)
 
 Memory data is serialized into the iMessage agent's system prompt at the `[USER CONTEXT]` extension point. Format:
 
@@ -148,7 +178,7 @@ This section is regenerated on every system prompt build — it always reflects 
 
 **Size constraint:** User context must stay under 500 tokens to avoid bloating the system prompt. If a user has extensive memory, summarize and prioritize by weight.
 
-### 5.2 Vote-on-Behalf Engine
+### 6.2 Vote-on-Behalf Engine
 
 When polls open, the vote engine:
 
@@ -163,7 +193,7 @@ When polls open, the vote engine:
 
 **Batch DM timing:** When polls open (or new polls are detected), the engine waits 5 minutes to batch any simultaneous polls, then sends a single DM.
 
-### 5.3 Recommendations Engine
+### 6.3 Recommendations Engine
 
 Recommendations combine three ranking components:
 
@@ -208,7 +238,7 @@ Feed adoption + favorites back into:
 Better rankings next time
 ```
 
-## 6. Activity Database Architecture
+## 7. Activity Database Architecture
 
 ### Two-Tier Activity Model
 
@@ -273,7 +303,22 @@ When a user creates a trip to Miami:
 - Review site integration (TripAdvisor, Google Places)
 - User-generated activities (highest priority source once users start creating)
 
-## 7. Privacy Model
+## 8. Social Graph Model
+
+The social graph powers recommendation ranking (SC-46-48). It comes from two sources:
+
+**Source 1: Shared trip history.** Anyone who's been on a Tryps trip with you is a connection. Stored implicitly — derived from trip membership data. No new table needed; query trips for shared participants.
+
+**Source 2: Contact book sync (with permission).** If a user syncs their contacts and another contact is also a Tryps user, they're connected. Requires a contact sync feature (may be post-April 2 if not already built).
+
+**Ranking tiers:**
+1. **Travel companions** (shared trip history) — highest weight in recommendations
+2. **Contacts** (phone book match, both are Tryps users) — medium weight
+3. **General Tryps users** (no connection) — lowest weight, still above seed data
+
+**Framing for users:** "Other Tryps users loved this" or "people who traveled to X also did Y." Not "your friend Quinn did this" unless Quinn is a direct travel companion.
+
+## 9. Privacy Model
 
 - Per-user memory is scoped to the user's ID. RLS policies enforce that users can only read/write their own memory.
 - Cross-trip patterns are anonymized — they show activity popularity, not which users did what.
@@ -282,7 +327,7 @@ When a user creates a trip to Miami:
 - Users can correct or remove individual memory signals from the memory screen.
 - Memory is not shared with third parties. It exists solely to improve the user's Tryps experience.
 
-## 8. Future Extensions (Post-April 2)
+## 10. Future Extensions (Post-April 2)
 
 - **Location intelligence:** cross-trip patterns enriched with seasonal data (Barcelona in summer vs winter)
 - **Group chemistry memory:** how specific friend combinations interact (this group always picks adventure, that group always picks relaxation)

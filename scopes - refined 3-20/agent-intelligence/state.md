@@ -4,7 +4,7 @@ status: specced
 assignee: rizwan
 clickup_ids: ["86e05v28h", "86e0ajhte"]
 clickup_status: needs spec
-criteria: 0/56
+criteria: 0/61
 blockers: ["Vibe quiz data must be accessible (already built)", "System prompt extension points (SC-34 from iMessage Agent) must exist"]
 last_updated: 2026-03-22T00:00:00Z
 updated_by: jake
@@ -13,7 +13,7 @@ review_status: reviewed
 
 ## Current State
 
-Spec complete (56 criteria across 3 sub-systems). Nothing built yet. Scope was refined during scoping interview on 2026-03-22 — Claude Connector and Logistics Agent moved to their own post-April 2 scopes. What remains: memory architecture, vote-on-behalf, and recommendations engine.
+Spec updated to 61 criteria across 3 sub-systems + cross-scope coordination + open design decisions. Nothing built yet. Scope was refined during scoping interview on 2026-03-22 — Claude Connector and Logistics Agent moved to their own post-April 2 scopes. What remains: memory architecture, vote-on-behalf, and recommendations engine. Post-audit additions (2026-03-22): NLP extraction pipeline design decision (SC-57), routing logic design doc (SC-58, shared with scope 7), and 3 cross-scope coordination SCs (SC-59-61) for DM delivery, vote override routing, and rate limiting.
 
 Memory-architecture.md (technical reference) is drafted and ready for Rizwan to build from.
 
@@ -31,8 +31,10 @@ Also deferred to post-April 2:
 
 ## Open Questions
 
-- Activity database size: Jake said "might need to be bigger than 10K." How much seed data is realistic for April 2?
-- Activity template vs. specific activity architecture: generic templates ("beach day") that apply broadly vs. specific activities ("Bondi Beach") tied to locations. Need to validate the two-tier model works.
+- **NLP extraction pipeline (SC-57, BLOCKING):** How does free-text NL become structured memory signals? Rizwan needs to design this before starting Tier 2/4 memory. See memory-architecture.md Section 3 for options.
+- **Routing logic design doc (SC-58, BLOCKING, shared with scope 7):** When does the agent speak vs. stay silent? Needs 20+ examples, edge cases, and Jake review. Asif and Rizwan co-own.
+- **Cross-scope interfaces (SC-59-61, BLOCKING):** DM delivery pipeline, vote override routing, and rate limiting between scopes 7 and 8. Asif and Rizwan must jointly design before either implements.
+- Activity database: generic templates should cover ALL destinations (no zero-rec destinations). Specific activities for 50+ popular destinations. 1000+ specific activities target.
 - Agent memory screen design: proposed in design.md, needs designer assignment and Figma mockup.
 - Scraping pipeline: who builds the initial scrape? Rizwan owns the scope but may need support for data sourcing.
 
