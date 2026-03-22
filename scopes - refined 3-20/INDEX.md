@@ -1,11 +1,11 @@
 ---
-generated: 2026-03-20
-total_scopes: 13
+generated: 2026-03-22
+total_scopes: 16
 ---
 
 # Scopes Index
 
-13 MECE capability areas covering everything Tryps needs. Flat folder structure — no phase nesting.
+16 MECE capability areas covering everything Tryps needs. Flat folder structure — no phase nesting. Scopes 14-16 added 2026-03-22.
 
 **Agent reading order:** INDEX.md → state.md → objective.md → spec.md
 
@@ -24,6 +24,9 @@ total_scopes: 13
 | 11 | brand-design-system | Brand & Design System | Figma | partial | jake |
 | 12 | launch-gtm | Launch & GTM | Figma, social platforms, etc. | not-started | jake |
 | 13 | qa-testing | QA & Testing | ClickUp, GitHub Issues | in-progress | andreas |
+| 14 | ai-platform-connectors | AI Platform Connectors | External services, backend | not-started | — |
+| 15 | logistics-agent | Logistics Agent | Backend, iMessage, mobile | not-started | — |
+| 16 | output-backed-screen | Output-Backed Screen | iMessage, mobile app | needs-spec | nadeem |
 
 ## Per-Scope File Structure
 

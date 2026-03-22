@@ -57,7 +57,7 @@ These principles guide every scope and design decision:
 
 ## 2. MECE Scope List
 
-15 mutually exclusive capability areas covering everything Tryps needs. Expense Tracking is folded into Core Trip Experience. Scopes 14-15 added 2026-03-22 after Agent Intelligence scoping interview carved out Claude Connector and Logistics Agent into their own post-April 2 scopes.
+16 mutually exclusive capability areas covering everything Tryps needs. Expense Tracking is folded into Core Trip Experience. Scopes 14-15 added 2026-03-22 after Agent Intelligence scoping interview carved out Claude Connector and Logistics Agent into their own post-April 2 scopes. Scope 16 added 2026-03-22 after scope audit identified the need for a tangible trip planning deliverable.
 
 | # | Scope | One-liner | Where it lives | April 2? |
 |---|-------|-----------|----------------|----------|
@@ -76,6 +76,7 @@ These principles guide every scope and design decision:
 | 13 | **QA & Testing** | Criteria validation, regression testing — does the code work? | ClickUp, GitHub Issues | Yes |
 | 14 | **AI Platform Connectors** | MCP remote server for Claude, OpenAI, and other AI platforms — meet users where they are | External services, backend | Post-April 2 |
 | 15 | **Logistics Agent** | Autonomous trip logistics — research, recommend, book on behalf of the group | Backend, iMessage, mobile | Post-April 2 |
+| 16 | **Output-Backed Screen** | The tangible trip deliverable — card-stack with draggable itinerary, works in iMessage | iMessage, mobile app | Yes |
 
 ### Scope Gap Cards
 
@@ -149,6 +150,12 @@ Built: Nothing
 Remaining: Autonomous trip logistics orchestration — agent researches options, presents ranked recommendations (Citymapper-style), books after group approval, auto-recovers from failures
 Note: Carved from scope 8 on 2026-03-22. Original spec had 26 criteria. Built LAST — depends on Agent Intelligence (scope 8), Payments Infrastructure (scope 9), and Travel Booking (scope 10) all being functional first.
 
+**16. Output-Backed Screen**
+Built: Trip card exists (scope 2). Itinerary exists (scope 2). No card-stack or deliverable concept yet.
+Remaining: Card-stack/scroll-book metaphor design, section cards for each planning domain (flights, stay, activities, transport, expenses), draggable itinerary components, iMessage-native rendering via Linq, integration with trip completeness levels (scope 7 SC-53)
+Blocker: Linq capability audit (what iMessage-native formats are available?), trip completeness level definitions (shared with scope 7)
+Note: Added 2026-03-22 after scope audit. This is the visual expression of the trip completeness levels — makes "level 4 out of 10" feel tangible. Nadeem to action starting 2026-03-23. Needs spec session.
+
 ---
 
 ### Cross-Reference: Existing Specs & ClickUp Mapping
@@ -170,6 +177,7 @@ Note: Carved from scope 8 on 2026-03-22. Original spec had 26 criteria. Built LA
 | 11 | Brand & Design System | (in `shared/brand.md`, `shared/brand-strategy.md`) | — |
 | 12 | Launch & GTM | `p4/launch-video` (15 criteria), `p4/socials-presence`, `p4/wispr-playbook`, `p4/referral-incentives`, `p4/giveaways` | `86e0emu98`, `86e0emu9w`, `86e0emu9h`, `86e0emua8`, `86e0emuar` |
 | 13 | QA & Testing | (cross-cutting) | (tracked via scope tickets) |
+| 16 | Output-Backed Screen | (new — objective only, needs spec) | (needs ClickUp task) |
 
 ---
 
