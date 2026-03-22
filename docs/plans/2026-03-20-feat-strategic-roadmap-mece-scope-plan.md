@@ -57,23 +57,25 @@ These principles guide every scope and design decision:
 
 ## 2. MECE Scope List
 
-13 mutually exclusive capability areas covering everything Tryps needs. Expense Tracking is folded into Core Trip Experience. Phasing TBD — review scopes first.
+15 mutually exclusive capability areas covering everything Tryps needs. Expense Tracking is folded into Core Trip Experience. Scopes 14-15 added 2026-03-22 after Agent Intelligence scoping interview carved out Claude Connector and Logistics Agent into their own post-April 2 scopes.
 
-| # | Scope | One-liner | Where it lives |
-|---|-------|-----------|----------------|
-| 1 | **Beta & User Feedback** | TestFlight, feedback pipeline — does the experience work? | Jake's iMessages, outreach |
-| 2 | **Core Trip Experience** | Creating, managing, visualizing trips + expense tracking — the foundation | Trip card (mobile app) |
-| 3 | **Group Decision-Making** | How groups align — voting, facilitation engine, notifications | iMessage, trip card |
-| 4 | **Travel Identity** | Travel DNA, connectors, passport, loyalty — who you are as a traveler | People + profile tab |
-| 5 | **Onboarding & Teaching** | First-run experience, tooltips, guided cadence — making it instantly obvious | Mobile app (everywhere), iMessage |
-| 6 | **Post-Trip & Retention** | Reviews, memories, rewards — what happens after and what brings you back | Mobile app (after trip card), iMessage |
-| 7 | **iMessage Agent** | The travel agent in your group chat — Linq, Jennifer Test, primary acquisition | iMessage |
-| 8 | **Agent Intelligence** | Claude Connector, vote-on-behalf, memory, recommendations — the brain | Backend, mobile app; Claude Connector in external services |
-| 9 | **Payments Infrastructure** | Stripe card-on-file, booking payments, auto-expense logging | Backend, mobile, iMessage frontend |
-| 10 | **Travel Booking** | Searching, sourcing, booking flights, stays, activities, restaurants, transport | iMessage, mobile, backend |
-| 11 | **Brand & Design System** | Visual identity, design tokens, Figma assets — the world | Figma |
-| 12 | **Launch & GTM** | Video, socials, referrals, giveaways — getting the word out | Figma, social platforms, etc. |
-| 13 | **QA & Testing** | Criteria validation, regression testing — does the code work? | ClickUp, GitHub Issues |
+| # | Scope | One-liner | Where it lives | April 2? |
+|---|-------|-----------|----------------|----------|
+| 1 | **Beta & User Feedback** | TestFlight, feedback pipeline — does the experience work? | Jake's iMessages, outreach | Yes |
+| 2 | **Core Trip Experience** | Creating, managing, visualizing trips + expense tracking — the foundation | Trip card (mobile app) | Yes |
+| 3 | **Group Decision-Making** | How groups align — voting, facilitation engine, notifications | iMessage, trip card | Yes |
+| 4 | **Travel Identity** | Travel DNA, connectors, passport, loyalty — who you are as a traveler | People + profile tab | Yes |
+| 5 | **Onboarding & Teaching** | First-run experience, tooltips, guided cadence — making it instantly obvious | Mobile app (everywhere), iMessage | Yes |
+| 6 | **Post-Trip & Retention** | Reviews, memories, rewards — what happens after and what brings you back | Mobile app (after trip card), iMessage | Yes |
+| 7 | **iMessage Agent** | The travel agent in your group chat — Linq, Jennifer Test, primary acquisition | iMessage | Yes |
+| 8 | **Agent Intelligence** | Vote-on-behalf, memory architecture, recommendations engine — the brain | Backend, mobile app | Yes |
+| 9 | **Payments Infrastructure** | Stripe card-on-file, booking payments, auto-expense logging | Backend, mobile, iMessage frontend | Yes |
+| 10 | **Travel Booking** | Searching, sourcing, booking flights, stays, activities, restaurants, transport | iMessage, mobile, backend | Yes |
+| 11 | **Brand & Design System** | Visual identity, design tokens, Figma assets — the world | Figma | Yes |
+| 12 | **Launch & GTM** | Video, socials, referrals, giveaways — getting the word out | Figma, social platforms, etc. | Yes |
+| 13 | **QA & Testing** | Criteria validation, regression testing — does the code work? | ClickUp, GitHub Issues | Yes |
+| 14 | **AI Platform Connectors** | MCP remote server for Claude, OpenAI, and other AI platforms — meet users where they are | External services, backend | Post-April 2 |
+| 15 | **Logistics Agent** | Autonomous trip logistics — research, recommend, book on behalf of the group | Backend, iMessage, mobile | Post-April 2 |
 
 ### Scope Gap Cards
 
@@ -111,8 +113,9 @@ Blocker: Voice & tone guide needs design/copy before dev
 
 **8. Agent Intelligence**
 Built: Nothing
-Remaining: Claude Connector, vote-on-behalf, per-user + per-trip memory, recommendations, Logistics Agent, research & suggest
-Blocker: Travel DNA must finish first (feeds vote-on-behalf + recs)
+Remaining: Vote-on-behalf (agent proxy voting), per-user + per-trip + cross-trip memory architecture, recommendations engine (activity database + personalized ranking + feedback loop)
+Blocker: Vibe quiz data must be accessible (already built). System prompt extension points (SC-34 from iMessage Agent) must exist.
+Note: Claude Connector moved to scope 14, Logistics Agent moved to scope 15 (both post-April 2). Spec complete: 56 criteria.
 
 **9. Payments Infrastructure**
 Built: Nothing
@@ -136,6 +139,16 @@ Built: QA pass started (partial, Andreas)
 Remaining: Complete 19 core flows validation, 240+ criteria across all scopes, ClickUp reconciliation, regression testing on all integrations
 Note: Runs in parallel — depends on other scopes finishing
 
+**14. AI Platform Connectors** *(Post-April 2)*
+Built: Nothing
+Remaining: Remote MCP server (OAuth 2.1, 14+ tools, CORS, Streamable HTTP transport), multi-platform support (Claude, OpenAI, etc.), directory submission, documentation
+Note: Carved from scope 8 on 2026-03-22. Original Claude Connector spec had 36 criteria — to be expanded for multi-platform. Validates the agent layer thesis: if Claude can operate Tryps, so can our own agents.
+
+**15. Logistics Agent** *(Post-April 2)*
+Built: Nothing
+Remaining: Autonomous trip logistics orchestration — agent researches options, presents ranked recommendations (Citymapper-style), books after group approval, auto-recovers from failures
+Note: Carved from scope 8 on 2026-03-22. Original spec had 26 criteria. Built LAST — depends on Agent Intelligence (scope 8), Payments Infrastructure (scope 9), and Travel Booking (scope 10) all being functional first.
+
 ---
 
 ### Cross-Reference: Existing Specs & ClickUp Mapping
@@ -149,7 +162,9 @@ Note: Runs in parallel — depends on other scopes finishing
 | 5 | Onboarding & Teaching | `p4/tooltips-teaching` | `86e0emu6c` |
 | 6 | Post-Trip & Retention | `p1/post-trip-review` (39 criteria) | `86e0emu4g` |
 | 7 | iMessage Agent | `p2/linq-imessage` (41 criteria) | `86e0emu7g`, `86e0f948t` |
-| 8 | Agent Intelligence | `p1/claude-connector` (36 criteria), `p1/recommendations`, `p3/vote-on-behalf`, `p3/logistics-agent` (26 criteria) | `86e0emu56`, `86e05v28h`, `86e0ajhte`, `86e0emu8z` |
+| 8 | Agent Intelligence | `p1/recommendations`, `p3/vote-on-behalf` | `86e05v28h`, `86e0ajhte` |
+| 14 | AI Platform Connectors | `p1/claude-connector` (36 criteria) | `86e0emu56` |
+| 15 | Logistics Agent | `p3/logistics-agent` (26 criteria) | `86e0emu8z` |
 | 9 | Payments Infrastructure | `p2/stripe-payments` (12 criteria), `p3/pay-on-behalf` | `86e0emu70`, `86e0emu8e` |
 | 10 | Travel Booking | `p3/duffel-apis` | `86e06y10g` |
 | 11 | Brand & Design System | (in `shared/brand.md`, `shared/brand-strategy.md`) | — |
