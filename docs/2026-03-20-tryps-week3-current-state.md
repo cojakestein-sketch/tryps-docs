@@ -29,6 +29,7 @@ Demo: live app on phone — create trip, invite someone, they download and join.
 | 13 | QA & Testing | Criteria validation, regression testing — does the code work? | ClickUp, GitHub | Yes |
 | 14 | AI Platform Connectors | MCP server for Claude, OpenAI, etc. — meet users in their AI tools | External services, backend | Post-April 2 |
 | 15 | Logistics Agent | Autonomous trip logistics — research, recommend, book on behalf of the group | Backend, iMessage, mobile | Post-April 2 |
+| 16 | Output-Backed Screen | The tangible trip deliverable — card-stack with draggable itinerary, works in iMessage | iMessage, mobile app | Yes |
 
 ```
 MAR 20            MAR 24            MAR 28            APR 2       POST-LAUNCH
@@ -48,6 +49,7 @@ MAR 20            MAR 24            MAR 28            APR 2       POST-LAUNCH
   | QA & Testing    ◆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▶ |              |
   | AI Connectors                                      |  ◆━━━━━━━━━▶ |
   | Logistics Agent                                    |  ◆━━━━━━━━━▶ |
+  | Output Screen           ◆━━━━━━━━━━━━━━━━━━━━━━━━▶ |              |
   |                 |                 |                 |              |
 ```
 
