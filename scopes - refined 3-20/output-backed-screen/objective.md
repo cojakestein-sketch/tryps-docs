@@ -5,75 +5,101 @@ scope_number: 16
 owner: jake
 created: 2026-03-22
 last_updated: 2026-03-22
-review_status: draft
+review_status: reviewed
 ---
 
 ## What
 
-A tangible, visual deliverable that users receive and work toward throughout the trip planning process — living natively in iMessage and in the app. When someone creates a trip in iMessage today, it doesn't register that they're building something real. The output-backed screen fixes that: it's the thing you're making together as a group, and when it's complete, you have a fully planned trip end to end.
+A single, glanceable view that shows everything about your trip — flights, stay, day-by-day itinerary — living in both iMessage and the app. The "second before you leave" test: if you looked at this one thing, you'd know everything you need to know.
 
-Think of it as a card-stack or scroll-book: the trip card is the front face (what exists today), and behind it are stacked section cards (flights, stay, activities, etc.) that fill in as planning progresses. The final section is the itinerary — a draggable, interactive view where everything comes together. The trip completeness levels (from iMessage Agent scope 7, SC-53) drive which cards are filled vs. empty.
+In iMessage, it's a dynamically generated infographic that the agent sends on demand and with each daily check-in. Tapping it opens the app. In the app, it's the full interactive experience — inline editing, drag-and-drop reordering, the works.
+
+The whole group builds toward this together. It's a due diligence checklist for trip planning: milestones get checked off as the group makes decisions, agents execute on people's behalf, and the thing fills in until the trip is fully planned.
 
 ## Why
 
-Right now, texting in the group chat feels ephemeral. You log an expense, you vote on dinner, but there's no sense that you're building toward a finished product. The output-backed screen makes the trip feel tangible — like a document filling in, a progress bar advancing, a thing that exists and is yours. It gives the agent's daily facilitation a destination: "we're working toward THIS."
+Right now, texting in the group chat feels ephemeral. You log an expense, you vote on dinner, but there's no sense that you're building toward a finished product. The output-backed screen makes the trip feel tangible — like a checklist filling in, progress advancing, a thing that exists and is yours. It gives the agent's daily facilitation a destination: "we're working toward THIS."
 
-This is also the key to making iMessage-first feel complete. If the output-backed screen works end to end in iMessage (not just the app), non-app users have a real deliverable they can see and interact with — not just a stream of texts.
+This is also the key to making iMessage-first feel complete. Non-app users see the infographic and have a real deliverable — not just a stream of texts. If they trust the plan, they never need the app.
 
 ## The Feeling (from Jake)
 
-> "I don't know exactly what I want, but I know what I want it to feel like. Users in an iMessage have a really clear deliverable that they receive, that they are working towards. When they finish that entire deliverable they have a fully planned trip end to end."
+> "All I really care about is that there's something in iMessage with draggable components that links to a screen in the app as well, with draggable components, where it's super easy for me to, in one view, look at everything I need to know about my trip. Almost like if there was only one thing that you looked at the second before the trip was about to start, you would know everything that you needed to know."
 
-The trip card is the front. Behind it, maybe it's a stack of cards, maybe a scroll book. Inside there's the itinerary section with draggable components so someone can see all the trip stuff at a glance, easily edit natively within iMessage or the app, and physically drag things around to rearrange.
+> "I almost think of it as a due diligence checklist where these are all of the scopes that we actually need to go build. The group is checking them off as we go along."
+
+> "How do we service all types of customers who come to us with all sorts of different combinations of groups and different levels of wants and preferences? The opening question is like: tell me what you want, tell me where you are, and we can help you."
 
 ## Key Concepts
 
-- **Card-Stack Metaphor:** Trip card is the cover. Behind it: section cards for each planning domain (flights, stay, activities, transport, expenses, etc.). Each card fills in as the group makes decisions. Empty cards show what's still needed. (See `sketch-card-stack.png` in this folder for Jake's original sketch.)
-- **Itinerary as the Culmination:** The final card is the full itinerary — draggable, interactive, everything in one place. When this card is complete, the trip is planned.
-- **Completeness = Levels:** This is the visual expression of the trip completeness level system (iMessage Agent SC-53). Level 1 = trip card with dates and location. Level 10 = every card filled, itinerary locked. The output-backed screen IS the level system, made tangible.
-- **iMessage-Native (as much as possible):** The deliverable should work in iMessage, not require the app. Linq's capabilities and iMessage's constraints (rich links, contact cards, etc.) will determine how much interactivity is possible natively. The app version can be richer, but the iMessage version must be functional and feel real.
-- **Draggable Itinerary:** Inside the itinerary card, components are draggable — users can reorder activities, move things between days, see the full picture at a glance. This works in the app for sure; iMessage version may be view-only or have limited interactivity depending on Linq.
+- **One View, Everything You Need:** Flights, stay, day-by-day itinerary, all in one glanceable screen. The "second before departure" test is the bar.
+
+- **Due Diligence Checklist:** The group is checking off milestones as planning progresses. Empty items show what's left. Filled items show what's decided. The whole thing builds toward "trip ready."
+
+- **Adaptive Completeness Levels:** The milestone system flexes based on the trip. A complex international trip might have ~15 milestones. A road trip might have 3-4. The system assesses what THIS trip needs and builds the checklist dynamically. Levels are an internal concept for the agent — they drive what it asks for next. See `completeness-levels.md` for the full milestone universe.
+
+- **Trip Spectrum:** Every trip lands between two poles. **Direct:** "Aspen, skiing, these dates, just do it" — destination/dates/activity already known, system skips ahead. **Ideated:** "6 friends, no idea where/when/what" — system starts from scratch, guides everything. The opening move assesses where the group is.
+
+- **iMessage = Infographic Preview:** A dynamically generated image showing the trip overview. Tapping opens the app. Updates on demand ("what's the plan?") and with the daily check-in. Same pattern as the existing trip card rich link — preview in iMessage, full experience in app.
+
+- **App = Full Interactive Experience:** Inline editing on the overview. Drag-and-drop for itinerary reordering — moving activities between days, reordering within a day. The app is where you touch things.
+
+- **Draggable Itinerary:** Drag solves itinerary reordering: "move dinner to Wednesday," "move the flight to the afternoon," "swap the order of these two activities." Drag operates within and between days.
+
+- **Celebration Moment:** When the trip hits the final milestone — everything locked, itinerary finalized — confetti. In both iMessage (agent sends something) and the app (animation). The group built this together and it's done.
+
+- **Post-Trip Handoff:** After the trip, the deliverable freezes as a memory and becomes the post-trip review artifact (scope 6). The overview transforms from planning tool to trip record.
 
 ## Success Looks Like
 
-- Users in an iMessage group chat can SEE the trip taking shape as a tangible deliverable, not just a stream of texts
-- The output-backed screen shows what's done and what's still needed — it makes "level 3 out of 10" feel real
-- Non-app users can interact with the deliverable in iMessage (at minimum view, ideally edit)
-- The itinerary section has draggable components in the app
-- When the deliverable is "complete" (level 10), the group has a fully planned trip with itinerary, stay, flights, activities, and expenses all in one place
-- The agent's daily check-ins reference the deliverable ("your trip card is at level 4, here's what we need for level 5")
+- Users in an iMessage group chat can SEE the trip taking shape as a tangible infographic, not just a stream of texts
+- The overview shows what's done and what's still needed — progress is visible and motivating
+- Non-app users see the infographic and have enough to go on the trip successfully
+- In the app, users can drag activities between days and reorder within a day
+- In the app, users can edit sections inline without leaving the overview
+- The milestone system adapts to the trip type — road trips get fewer milestones, international multi-city trips get more
+- When the trip is fully planned, confetti. The group feels like they accomplished something.
+- The agent's daily check-ins reference the overview ("here's where we are, here's what's next")
+- After the trip, the deliverable freezes as a memory/review artifact
 
 ## What This Is NOT
 
-- Not a redesign of the existing trip card — the trip card is the front face of this
-- Not an app-only feature — iMessage-native is the priority
-- Not a separate product — it's the visual layer on top of trip completeness levels
+- Not a redesign of the existing trip card — the trip card is the front face / entry point
+- Not a fixed 10-level system — levels are adaptive per trip
+- Not an app-only feature — the iMessage infographic is a first-class deliverable
+- Not a separate product — it's the visual layer on top of the adaptive completeness system
 - Not blocking existing trip flows — everything that works today keeps working
 
 ## Dependencies
 
-- **iMessage Agent (scope 7):** Trip completeness levels (SC-53) define what each level means. The output-backed screen is the visual expression of those levels.
-- **Core Trip Experience (scope 2):** The existing trip card, itinerary, and activity data model are the foundation.
-- **Agent Intelligence (scope 8):** Recommendations and vote-on-behalf results populate sections of the deliverable.
-- **Linq platform:** What's possible natively in iMessage determines the iMessage version's interactivity.
+- **iMessage Agent (scope 7):** Daily check-ins (SC-25) reference the overview. Agent sends the infographic. Completeness levels (SC-53) are DEFINED in this scope's `completeness-levels.md` and CONSUMED by the agent.
+- **Core Trip Experience (scope 2):** Existing trip card, itinerary, and activity data model are the foundation.
+- **Agent Intelligence (scope 8):** Recommendations and vote results populate sections of the overview.
+- **Post-Trip & Retention (scope 6):** The deliverable transforms into the post-trip review artifact after the trip ends.
+- **Linq platform:** Determines what the iMessage infographic can look like (image generation, rich link format).
 
-## Open Questions (for spec session)
+## Open Questions (Resolved in Spec Session)
 
-- What iMessage-native formats can Linq render? Rich links? Contact cards? Inline images? Interactive elements?
-- How much interactivity is possible in iMessage vs. app? Is iMessage view-only or can users tap/drag?
-- Is the metaphor a card stack (swipeable), a scroll (vertical), or something else?
-- How do section cards map to completeness levels? 1:1 or more fluid?
-- What happens to the deliverable after the trip? Does it become the post-trip review artifact?
-- Does each section card have its own mini-editing UI, or does editing always happen in the full app?
+| Question | Answer |
+|----------|--------|
+| Card stack vs. scroll vs. other? | Neither — it's a single overview/checklist view. The sketch was thinking-out-loud, not a spec. |
+| How much interactivity in iMessage? | Infographic (image) that taps through to the app. iMessage is view-only. |
+| Levels fixed or adaptive? | Adaptive. Complex trip ~15 milestones, road trip 3-4. System selects what applies. |
+| Can levels go backward? | No — "needs attention" flag instead. |
+| What happens post-trip? | Freezes as memory, becomes post-trip review artifact (scope 6). |
+| Editing in detail view or inline? | Inline on the overview. |
+| Direct vs. ideated trips? | System handles full spectrum. Assesses where the group is and builds remaining checklist. |
 
 ## Wave Assignment
 
-- **Wave 1:** Define the card-stack structure, map sections to completeness levels, Linq capability audit for iMessage rendering
-- **Wave 2:** Build the app version (card stack + draggable itinerary), build the iMessage version (best possible within Linq constraints)
-- **Wave 3:** Integration with agent daily check-ins, QA pass
+- **Wave 1:** Define adaptive milestone system, Linq capability audit for infographic rendering, design the overview layout (app + infographic)
+- **Wave 2:** Build the app overview (inline editing + draggable itinerary), build infographic generation pipeline, integrate with agent daily check-ins
+- **Wave 3:** Celebration moment (confetti), post-trip freeze/handoff, QA pass
 
 ## Reference
 
-- Jake's sketch: `sketch-card-stack.png` (trip card → section cards → itinerary with draggable components)
-- Trip completeness levels: `scopes - refined 3-20/imessage-agent/spec.md` SC-53
+- Jake's sketch: `sketch-card-stack.png` (early thinking — the final form is an overview, not a card stack)
+- Trip completeness levels: `completeness-levels.md` (full milestone universe)
+- iMessage Agent: `scopes - refined 3-20/imessage-agent/spec.md` SC-53, SC-25
 - Existing trip card: Core Trip Experience (scope 2)
+- Strategy intake: `docs/p2-p3-strategy-intake.md` Q5-Q10
