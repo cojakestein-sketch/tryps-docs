@@ -19,21 +19,25 @@ The app is ~60-70% built. Most core flows are shipping code. What remains is age
 
 ### Core Thesis
 
-There is no seamless way to plan a group trip end to end that accounts for: A) the differences in effort level people want to put into trip planning, B) easily coordinating people together, and C) facilitating the required steps to plan, go on, and review a trip.
+Tryps is literally the travel agent in your iMessage. It does everything a travel agency would do — you just text it and everything gets done. You can plan your entire trip, communicate what kind of vibe you want, and book the whole thing. It's not even an app. It's a number you text and your trip is done, booked, and planned.
 
-### The Bet
+### The Four Bets
 
-Center the experience around making it as EASY as possible to communicate the VIBE you want out of a trip — then Tryps just makes it happen. The agent is a facilitator (think of it as the designated driver) — it steers the group toward decisions, it doesn't make taste choices for you. We believe that iMessage is the acquisition channel for viral growth, starting by targeting the hard side of our network (the ultra-planners) who will engage in our mobile app. We are building a social-first, agent-native solution to this problem.
+1. **UI-lite is the future.** People want to interact in natural language where they already live — iMessage, WhatsApp. No new app to learn. The interface is the conversation.
+
+2. **Bespoke agent + persistent memory = retention moat.** As users travel more, the agent learns their preferences. Memory about your travels and your trips is a long-term foothold that keeps people coming back. We know your friends, your vibe, and your home airport.
+
+3. **Structured output + facilitation scaffolding.** Even though people want natural language, they still need to see structured output and they need help on the facilitation process to get there. We put up the boundaries and guidelines for how you actually facilitate a group decision — the agent is the designated driver, not the backseat passenger.
+
+4. **Manufactured viral growth from proven playbooks.** We've studied and are executing playbooks that have already happened. One person adds the Tryps agent to a group chat → everyone experiences it → some download the app for the visual layer. That's the Partiful playbook applied to travel.
 
 ### The 30-Second Pitch
 
-Make trip planning effortless. One app where the whole group plans together, so nobody has to do it alone.
+Tryps is the travel agent in your group chat. Instead of one person doing all the work across six apps (iMessage, Google Docs, Splitwise, Kayak, Airbnb, Google Calendar), you just text the Tryps number and your trip is planned, booked, and done. The agent steers the group toward decisions — sourcing options, running votes, locking in plans — so the trip actually happens.
 
-Tryps is the facilitation engine for group travel. Instead of one person doing all the work across six apps (iMessage, Google Docs, Splitwise, Kayak, Airbnb, Google Calendar), Tryps guides the entire group from "we should totally do that" to "we're booked." An agent in your iMessage steers the group toward decisions — sourcing options, running votes, locking in plans — so the trip actually happens.
+**The acquisition loop is free:** One person adds the Tryps number to a group chat → everyone experiences it → some download the app for the visual layer.
 
-**The acquisition loop is free:** One person adds the Tryps agent to a group chat → everyone experiences it → some download the app for the visual layer. That's the Partiful playbook applied to travel.
-
-**The moat is data + relationships.** As Tryps accumulates trip history and user preferences (Travel DNA, loyalty connections, group dynamics), planning through Tryps becomes better than any alternative because we know your friends, your vibe, and your home airport.
+**The moat is memory.** Every trip makes the agent smarter — your preferences, your friends' preferences, your group dynamics. Planning through Tryps gets better every time because the agent remembers everything.
 
 ### Strategic Principles
 
