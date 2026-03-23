@@ -1,0 +1,7 @@
+# Secrets - never commit
+zoom-credentials.json
+clickup-token.txt
+.google_tokens.json
+credentials.json
+data/credentials.json
+data/health-history.json
