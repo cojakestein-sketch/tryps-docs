@@ -59,10 +59,10 @@ Complete rewrite from Claude (3-call stateless) to OpenAI Responses API + Conver
 
 ### Rizwan — Agent Intelligence + Marty Memory System
 
-1.
-2.
-3.
-4.
+1. **Local Supabase setup for agent intelligence** — stood up full local dev environment with `supabase functions serve`. All 5 edge functions (extract-memory-signals, sync-dna-to-memory, sync-vibe-to-memory, vote-on-behalf, recommend-activities) running locally against PostgreSQL with seed data.
+2. **Agent demo app** — built `/agent-demo/` (Next.js) as a 6-step interactive walkthrough proving the full pipeline end-to-end: signal extraction → preference profile → smart recommendations → vote inference → architecture overview. Connected to local Supabase edge functions.
+3. **Database schema deployed** — 3 migrations covering 9 tables, 4 RPCs, 5 triggers, 1 cron job. All with RLS policies. Seed data for 2 test users (Alice, Bob), 1 trip (Bali), 10 activities, 1 poll.
+4. **Shared utilities integrated** — `buildUserContext()` and `fireAndForgetExtraction()` wired into the existing iMessage pipeline (intent-router.ts, action-handlers.ts, response-generator.ts, explore-chat-v2).
 
 ---
 
@@ -81,7 +81,9 @@ Complete rewrite from Claude (3-call stateless) to OpenAI Responses API + Conver
 - Look at the 16 MECE scopes — which 2 would be most helpful to scope out from Jake?
 
 ### Rizwan
--
+- Seed activity database (need 1,000+ activities for SC-33 to SC-39)
+- Extend test suite to verify all implemented SCs
+- Draft cross-scope interface spec for Asif sync session
 
 ### Nadeem
 -
