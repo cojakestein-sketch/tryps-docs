@@ -1,0 +1,152 @@
+{
+  "mappings": [
+    {
+      "codePath": "app/welcome.tsx",
+      "figmaPage": "Onboarding Flow 1",
+      "figmaFrame": "Onboarding : Landing",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/(auth)/phone.tsx",
+      "figmaPage": "Onboarding Flow 1",
+      "figmaFrame": "Onboarding : Phone Number",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/(auth)/verify.tsx",
+      "figmaPage": "Onboarding Flow 1",
+      "figmaFrame": "Onboarding : Verification Code",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/(auth)/contacts-permission.tsx",
+      "figmaPage": "Onboarding Flow 1",
+      "figmaFrame": "Onboarding : Push Notifications",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/(auth)/profile-setup.tsx",
+      "figmaPage": "Onboarding Flow 2",
+      "figmaFrame": "Onboarding : Profile Setup",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/travel-dna.tsx",
+      "figmaPage": "Onboarding Flow 2",
+      "figmaFrame": "Onboarding : Travel DNA Quiz",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/new-trip/index.tsx",
+      "figmaPage": "Trip Creation Flow 4",
+      "figmaFrame": "Trip Creation : Name & Destination",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/new-trip/dates.tsx",
+      "figmaPage": "Trip Creation Flow 4",
+      "figmaFrame": "Trip Creation : Dates",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/new-trip/vibe.tsx",
+      "figmaPage": "Trip Creation Flow 4",
+      "figmaFrame": "Trip Creation : Vibe Quiz",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/(tabs)/index.tsx",
+      "figmaPage": "Trips Menu Flow 6-12",
+      "figmaFrame": "Trips Menu : Home",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/trip/[id].tsx",
+      "figmaPage": "Trips Menu Flow 6-12",
+      "figmaFrame": "Trips Menu : Trip Details",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/trip/[id]/edit.tsx",
+      "figmaPage": "Trips Menu Flow 6-12",
+      "figmaFrame": "Trips Menu : Edit Trip",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/trip/[id]/add-expense.tsx",
+      "figmaPage": "Trips Menu Flow 6-12",
+      "figmaFrame": "Trips Menu : Add Expense",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/trip/[id]/add-flight.tsx",
+      "figmaPage": "Trips Menu Flow 6-12",
+      "figmaFrame": "Trips Menu : Add Flight",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/trip/[id]/add-accommodation.tsx",
+      "figmaPage": "Trips Menu Flow 6-12",
+      "figmaFrame": "Trips Menu : Add Stay",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/trip/[id]/share.tsx",
+      "figmaPage": "Trips Menu Flow 6-12",
+      "figmaFrame": "Trips Menu : Share Trip",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/trip/[id]/your-balance.tsx",
+      "figmaPage": "Trips Menu Flow 6-12",
+      "figmaFrame": "Trips Menu : Your Balance",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/trip/[id]/vibe-quiz.tsx",
+      "figmaPage": "Trips Menu Flow 6-12",
+      "figmaFrame": "Trips Menu : Vibe Quiz",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/(tabs)/calendar.tsx",
+      "figmaPage": "Calendar",
+      "figmaFrame": "Calendar : Home",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/(tabs)/explore.tsx",
+      "figmaPage": "Explore",
+      "figmaFrame": "Explore : Home",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/settings.tsx",
+      "figmaPage": "Profile & Settings",
+      "figmaFrame": "Settings : Home",
+      "figmaNodeId": null
+    },
+    {
+      "codePath": "app/profile/[userId].tsx",
+      "figmaPage": "Profile & Settings",
+      "figmaFrame": "Profile : View",
+      "figmaNodeId": null
+    }
+  ],
+  "unmapped": [
+    {
+      "codePath": "app/(auth)/callback.tsx",
+      "reason": "OAuth callback handler — no visual design"
+    },
+    {
+      "codePath": "components/home/ThumbnailStrip.tsx",
+      "reason": "Sub-component of home screen — no standalone Figma frame"
+    },
+    {
+      "codePath": "components/ErrorBoundary.tsx",
+      "reason": "Error fallback — no Figma design"
+    }
+  ],
+  "lastUpdated": "2026-03-24",
+  "notes": "Frame names are best guesses based on Figma naming convention (Section : Screen Name : Variant). Node IDs should be populated after Framelink MCP is connected — use Figma API to look up exact node IDs."
+}
