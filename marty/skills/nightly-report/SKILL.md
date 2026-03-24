@@ -15,7 +15,9 @@ Generate a printable HTML nightly brief for Jake. Runs at 8:30pm ET after the st
 - Include all 5 questions per dev, formatted cleanly
 
 ### Section 2: Tech Twitter Digest
-- Use Brave Search API to find today's most-discussed tweets from these accounts:
+- **Primary:** Use Exa Search via AgentCash x402 (`POST https://stableenrich.dev/api/exa/search`, $0.01/call) for neural search of today's tweets
+- **Fallback:** Use Brave Search API if Exa is unavailable
+- Accounts to track:
   - `@stakejein` (Jake's account — surface any posts with engagement)
   - `@karpathy` (AI research)
   - `@sama` (OpenAI / AI industry)
@@ -24,23 +26,18 @@ Generate a printable HTML nightly brief for Jake. Runs at 8:30pm ET after the st
   - `@AnthropicAI` (Claude / our stack)
   - `@OpenAI` (competitor landscape)
 
-- Search queries to run via Brave:
+- Exa search queries (run via AgentCash fetch):
+  ```json
+  POST https://stableenrich.dev/api/exa/search
+  {"query": "karpathy site:x.com", "numResults": 5, "startPublishedDate": "YYYY-MM-DDT00:00:00Z", "type": "neural"}
   ```
-  site:x.com karpathy since:today
-  site:x.com "sam altman" since:today
-  site:x.com pmarca since:today
-  site:x.com AnthropicAI since:today
-  site:x.com stakejein
-  ```
+  Repeat for each account. ~$0.07 total for all 7 accounts.
 
-- For each relevant post found: include the author, a one-liner summary of the post, and engagement if available
+- For each relevant post found: include the author, a one-liner summary, engagement if available, and **a direct link to the tweet**
 - No editorialization — just surface the posts with context
 - Aim for 5-10 posts total across all accounts
-- If Brave Search doesn't return good results, note "Twitter digest unavailable — consider setting up twit.sh x402 integration"
 
-**Future upgrade:** When agentcash/x402 is set up on Hetzner, switch to twit.sh API:
-- `GET https://twit.sh/tweets/user?username=karpathy` ($0.01/call)
-- `GET https://twit.sh/tweets/search?from=karpathy&minLikes=1000&since=YYYY-MM-DD` ($0.01/call)
+**Note:** twit.sh (previously planned) was deprecated as of March 2026. Exa neural search provides comparable coverage with direct links.
 
 ### Section 3: Trending GitHub Repos
 - Use Brave Search or `gh` CLI to find today's trending repos
@@ -68,9 +65,50 @@ Generate a printable HTML nightly brief for Jake. Runs at 8:30pm ET after the st
   - **Top 3 risks:** Things most likely to slip or cause problems
   - **Areas Jake should focus on:** Based on what Marty sees across all inputs
   - **What Marty thinks the #1 priority is:** And why
+- **Timing:** This section should reference the correct week. Week boundaries: Week 1 = Mar 2-8, Week 2 = Mar 9-15, Week 3 = Mar 16-22, Week 4 = Mar 23-29, Week 5 = Mar 30 - Apr 5. Use "Beginning of week X" on Mon/Tue, "Mid-week X" on Wed/Thu, "End of week X" on Fri/Sat/Sun.
 - **Important:** This section is designed for Jake to correct. If his understanding is wrong, Jake will tell him via voice memo or text. This is how Marty's strategic memory stays calibrated.
 
-### Section 6: Cost Snapshot
+### Section 6: Culture & Conversation
+- Surface 2-3 substantive topics that a founder/tech person in Jake's circle would likely discuss
+- **This is NOT TMZ or pop culture gossip.** Think: things people at a dinner with other founders, VCs, or tech professionals would talk about
+- Sources: Use Exa Search or Brave for today's top stories in tech, business, science, geopolitics, or cultural trends
+- Good examples: A new Supreme Court ruling on tech, a major IPO, a viral essay on startup culture, a notable acquisition, a scientific breakthrough, a thoughtful piece on AI ethics
+- Bad examples: Celebrity gossip, sports scores, reality TV, memes
+- Format: 2-3 items, each with a one-liner summary and a link. Add a brief "why this matters" or "conversation angle" note
+- Goal: Jake walks into any meeting or dinner and has something smart to say that isn't just AI/startup news
+
+### Section 7: AI Model Releases & Patch Notes
+- Synthesized daily release notes from the major model providers:
+  - **Anthropic** (Claude models, Claude Code, API changes)
+  - **OpenAI** (GPT models, ChatGPT, API updates)
+  - **Google DeepMind** (Gemini models, AI Studio)
+  - **xAI** (Grok models, platform updates)
+- Also include major product launches from the broader AI/tech ecosystem (e.g., Coinbase x402, new developer tools, significant open-source releases)
+- Sources: Company blogs, X/Twitter accounts, Hacker News, TechCrunch, The Verge
+- Use Exa Search (`POST https://stableenrich.dev/api/exa/search`) with queries like:
+  ```json
+  {"query": "Anthropic Claude release announcement", "numResults": 3, "startPublishedDate": "YYYY-MM-DDT00:00:00Z"}
+  {"query": "OpenAI GPT release update", "numResults": 3, "startPublishedDate": "YYYY-MM-DDT00:00:00Z"}
+  {"query": "Google Gemini update release", "numResults": 3, "startPublishedDate": "YYYY-MM-DDT00:00:00Z"}
+  {"query": "xAI Grok update", "numResults": 3, "startPublishedDate": "YYYY-MM-DDT00:00:00Z"}
+  ```
+- Format: Table or list with provider, what changed, and a one-liner on relevance
+- If nothing notable was released today, say "No major releases today" (don't pad with old news)
+
+### Section 8: Tools Highlight
+- Discover and surface 1-2 tools that could be useful for Jake or the team
+- Jake's current stack: ClickUp, Granola, Slack, Zoom, Wispr Flow, Figma, Markdown, WhatsApp, GitHub, Claude Code, Expo
+- For each tool surfaced, write a mini one-pager:
+  - **What it is** (one sentence)
+  - **How Jake would use it** (2-3 sentences, specific to Tryps workflow)
+  - **Pricing** (free tier? cost?)
+  - **Link**
+- Good candidates: productivity tools, design tools, developer tools, collaboration tools, AI-powered tools, analytics, user research tools
+- Do NOT recommend tools that overlap with existing stack unless they're meaningfully better
+- Sources: Product Hunt (today's top launches), Hacker News, Brave Search for "[category] tools 2026"
+- Rotate categories: Mon=productivity, Tue=design, Wed=developer, Thu=analytics, Fri=AI/automation, Weekend=wildcard
+
+### Section 9: Cost Snapshot
 - Parse OpenClaw session logs from today (`~/.openclaw/logs/`)
 - Calculate approximate API cost based on token usage × Anthropic pricing
 - Break down by session initiator (Jake DM, Asif DM, cron job, etc.)
@@ -200,7 +238,22 @@ The HTML must be:
   </section>
 
   <section>
-    <h2>6. Cost Snapshot</h2>
+    <h2>6. Culture & Conversation</h2>
+    <!-- 2-3 substantive topics for dinner/meeting conversation -->
+  </section>
+
+  <section>
+    <h2>7. AI Releases & Patch Notes</h2>
+    <!-- Synthesized daily releases from Anthropic, OpenAI, Google, xAI + major launches -->
+  </section>
+
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <!-- 1-2 tools with mini one-pager: what it is, how Jake would use it, pricing, link -->
+  </section>
+
+  <section>
+    <h2>9. Cost Snapshot</h2>
     <!-- Cost table -->
   </section>
 </body>
