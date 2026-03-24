@@ -6,6 +6,7 @@
 
 ## Needs More Content (Future Dictation)
 
+- [x] **Memory as a service** — We hold the shared trip context (the markdowns). That's the data moat and the compounding loop. See `06-memory-as-a-service.md`.
 - [ ] **Traveler DNA deep dive** — How DNA differs from per-trip Vibe. The persistent profile. The data moat.
 - [ ] **Team slide talking points** — Why this team wins.
 - [ ] **Business model specifics** — How Tryps makes money across all three layers.
