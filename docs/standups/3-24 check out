@@ -35,6 +35,17 @@ Complete rewrite from Claude (3-call stateless) to OpenAI Responses API + Conver
 - All core flows done: onboarding, expenses, voting, trip queries, proactive facilitator, routing logic (58 examples), trip completeness levels 1-10, voice guide, 1:1 DM assistant, bidirectional app↔iMessage sync.
 - Key bugs fixed: conversation poisoning, noise filter blocking photos/DMs, Linq chatId reuse, facilitator spam check.
 
+**Blocked — waiting on external deps (9 SCs):**
+
+| SC | What | Waiting On |
+|----|------|-----------|
+| SC-28 | Jennifer Test blind review — 10 excerpts shown to strangers, fail if AI identified 3+ times | Needs external testers who haven't seen the agent |
+| SC-29 | Jake transcript review — full conversation walkthrough, Jake says "this passes" | Needs Jake to sit down and review |
+| SC-54 | Recommendations in iMessage — "what should we do in Bali?" pulls from Agent Intelligence | Waiting on Rizwan — scope 8 not built yet |
+| SC-55 | Recommendations in daily check-in — facilitator suggests activities based on group vibe | Waiting on Rizwan — same scope 8 dependency |
+| SC-56 | Vote-on-behalf DM pipeline — Agent Intelligence sends batch DMs through our Linq infra | Waiting on Rizwan — needs joint design session to define the interface |
+| SC-57 | Vote override routing — user replies to vote DM, we parse and route back to Rizwan's vote engine | Waiting on Rizwan — needs shared contract |
+
 #### 2. Marty Improvement Day — Beta Feedback + Deploy + Dev Interaction
 
 **PR:** [#3](https://github.com/cojakestein-sketch/tryps-docs/pull/3)
