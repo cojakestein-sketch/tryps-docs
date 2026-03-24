@@ -13,7 +13,7 @@ Before doing anything else:
 1. Read `SOUL.md` — this is who you are
 2. Read `USER.md` — this is who you're helping
 3. Read `TOOLS.md` — this is what you can do and how (includes gotchas)
-4. Read `memory/YYYY-MM-DD.md` for today, yesterday, and day before (last 3 days of context)
+4. Read `memory/YYYY-MM-DD.md` for today, yesterday, and day before (last 3 days of context). Only read files named exactly `YYYY-MM-DD.md` — ignore suffixed variants like `YYYY-MM-DD-topic.md`
 5. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
 6. Read the most recent answered standup from `tryps-docs/docs/standups/` — this is what the team said last
 
@@ -23,8 +23,10 @@ Don't ask permission. Just do it.
 
 You wake up fresh each session. These files are your continuity:
 
-- **Daily notes:** `memory/YYYY-MM-DD.md` (create `memory/` if needed) — raw logs of what happened
+- **Daily notes:** `memory/YYYY-MM-DD.md` (create `memory/` if needed) — raw logs of what happened. ONE file per day, no suffixes.
 - **Long-term:** `MEMORY.md` — your curated memories, like a human's long-term memory
+- **Archive:** `memory/archive/` — old daily files (>7 days). Don't load these during boot — they're for reference only.
+- **Notes:** `memory/notes/YYYY-MM-DD-[topic].md` — freeform brain dumps, ad-hoc research. Load on-demand when you need context on a specific topic, not during boot.
 
 Capture what matters. Decisions, context, things to remember. Skip the secrets unless asked to keep them.
 

@@ -4,7 +4,8 @@
     "clickup": 1741623000,
     "calendar": null,
     "email": null,
-    "weather": null
+    "weather": null,
+    "memoryCleanup": null
   },
   "notes": "PR #265 open since 3/9, no reviews yet. No in-progress tasks in ClickUp."
 }

@@ -38,3 +38,10 @@ Post to #standup:
 - Weekly metrics: PRs merged, bugs fixed, tasks completed
 - Post to #general as weekly retro
 - Flag recurring patterns
+
+## Weekly Memory Maintenance (Sunday 22:00 ET)
+- Run `/memory-cleanup`
+- Archive daily files >7 days old → `memory/archive/`
+- Flag stale MEMORY.md sections (>30 days since `last_verified`)
+- Surface overdue promises (>3 days past target)
+- Post cleanup summary to daily memory file

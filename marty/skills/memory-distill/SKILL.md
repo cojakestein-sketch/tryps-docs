@@ -29,7 +29,13 @@ Read today's standup from `tryps-docs/docs/standups/YYYY-MM-DD-standup.md`. For 
 
 ### 2. Write Daily Memory
 
-Write to `marty/memory/YYYY-MM-DD.md`:
+Write to `marty/memory/YYYY-MM-DD.md` — **ONE file per day, no suffixes.**
+
+> **STRICT RULE:** The daily file MUST be named exactly `YYYY-MM-DD.md`. Never create files like `YYYY-MM-DD-morning-brief.md` or `YYYY-MM-DD-topic.md` in `memory/`. Freeform notes go to `memory/notes/YYYY-MM-DD-[topic].md` instead.
+
+If today's file already exists, **append** to it rather than creating a new suffixed file.
+
+**All six sections are mandatory.** Use "(none)" if a section has no content.
 
 ```markdown
 # Memory — [Date]
@@ -45,7 +51,7 @@ Write to `marty/memory/YYYY-MM-DD.md`:
 - [blocker]: [who] blocked on [what], since [when]
 
 ## Promises to Track
-- [dev] said they'd have [X] done by [date]
+- [dev] said they'd have [X] done by [YYYY-MM-DD]
 
 ## Surprises / Learnings
 - [unexpected thing and why it matters]
@@ -54,7 +60,22 @@ Write to `marty/memory/YYYY-MM-DD.md`:
 - [dev] said [X] yesterday but today said [Y]
 ```
 
-### 3. Update MEMORY.md (Selectively)
+**Template rules:**
+- All six sections (Key Facts, Decisions Made, Active Blockers, Promises to Track, Surprises / Learnings, Contradictions from Yesterday) are **mandatory** — use "(none)" if empty
+- Promises **must** include a target date in `YYYY-MM-DD` format
+- If a promise has no explicit date, default to next business day and note "(inferred)"
+
+### 3. Freeform Notes
+
+Brain dumps, ad-hoc research, or non-standup observations go to:
+
+```
+memory/notes/YYYY-MM-DD-[topic].md
+```
+
+These are NOT loaded during boot. They are available on-demand when context is needed.
+
+### 4. Update MEMORY.md (Selectively)
 
 Only promote to `marty/MEMORY.md` if the information is:
 - A lasting pattern (not a one-day thing)
@@ -64,10 +85,10 @@ Only promote to `marty/MEMORY.md` if the information is:
 
 DO NOT add ephemeral status updates to MEMORY.md. That's what daily files are for.
 
-### 4. Update Standup Questions
+### 5. Update Standup Questions
 
 Note anything that should inform tomorrow's questions:
-- Follow up on promises
+- Follow up on promises (check target dates)
 - Probe deeper on surprises
 - Check if blockers are resolved
 - Challenge contradictions

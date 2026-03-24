@@ -1,12 +1,14 @@
 # MEMORY.md — Marty Long-Term Memory
 
 ## Who I Am
+<!-- last_verified: 2026-03-25 -->
 - Name: Marty
 - Human: Jake Stein (Williamsburg, Brooklyn)
 - First online: 2026-03-08
 - Channel: Slack DM
 
 ## Tryps — Product Context
+<!-- last_verified: 2026-03-25 -->
 - **Brand:** Tryps (formerly Vamos). Domain: jointryps.com, scheme: tripful://
 - **Positioning:** "The Partiful for trips" — collaborative group trip planning
 - **Core loop:** Create trip → invite friends → collaborate (itinerary, stays, flights, activities, expenses) → settle up
@@ -30,6 +32,7 @@ Activities, Itinerary, People+Flights (combined), Stay, Vibe, Expenses
 - P3: Agent Layer — Duffel flights, Tryps Cash, X-402 micropayments
 
 ## Team Roster (Corrected 2026-03-10)
+<!-- last_verified: 2026-03-25 -->
 - Jake Stein — jake@jointryps.com (founder, product lead)
 - Asif Raza — asif.raza1013@gmail.com (dev lead)
 - Nadeem Khan — engineernadeemkhan120@gmail.com (developer)
@@ -38,6 +41,7 @@ Activities, Itinerary, People+Flights (combined), Stay, Vibe, Expenses
 - Muneeb Rasheed — rasheedmuneeb754@gmail.com (developer)
 
 ## Services
+<!-- last_verified: 2026-03-25 -->
 - **Google Workspace:** marty@jointryps.com — OAuth2 (Calendar, Gmail)
 - **GitHub:** marty-source, collaborator on cojakestein-sketch/tripful
 - **Brave Search:** API key configured
@@ -45,6 +49,7 @@ Activities, Itinerary, People+Flights (combined), Stay, Vibe, Expenses
 - **Slack:** Connected to #dev, #standup, #bugs, #general
 
 ## How Jake Works
+<!-- last_verified: 2026-03-25 -->
 - Brain dumps via voice dictation, especially late at night
 - Wants me AUTONOMOUS — execute first, ask only for real decisions
 - Hates permission loops and status updates
@@ -53,16 +58,19 @@ Activities, Itinerary, People+Flights (combined), Stay, Vibe, Expenses
 - **If something doesn't get resolved in the moment, Slack him the next morning to follow up.** Don't let threads die — if Jake mentions something and it's not done, remind him.
 
 ## Project Management
+<!-- last_verified: 2026-03-25 -->
 - **ClickUp** is source of truth for tasks/specs
 - **GitHub** for PRs and code review only
 - **Statuses:** Needs Spec → To Do → In Progress → Review → Done
 - **Workflow:** Jake writes specs in ClickUp → devs pick up "To Do" → branch + implement → PR → review + merge → Done
 
 ## Permissions & Capabilities
+<!-- last_verified: 2026-03-25 -->
 - **Exec permissions:** GRANTED 2026-03-10. tools.exec.security: "full". DO NOT ask Jake to grant exec permissions — you already have them. Just execute commands directly.
 - **Cron jobs:** Create and manage freely. No permission request needed.
 
 ## Key Coding Conventions
+<!-- last_verified: 2026-03-25 -->
 - Use @/ path aliases, never relative paths
 - No `any` types — use proper types or `unknown`
 - No console.logs in components
@@ -72,17 +80,20 @@ Activities, Itinerary, People+Flights (combined), Stay, Vibe, Expenses
 - The invite flow is sacred — never add friction
 
 ## Known Gotchas
+<!-- last_verified: 2026-03-25 -->
 - Phone numbers: auth.users stores WITHOUT + prefix. Always normalizePhone()
 - Dates: use parseDateSafe() for YYYY-MM-DD, never new Date() directly
 - EAS: eas build ≠ eas update. OTA always wins. After submit, run update.
 - Auth: Always getSession() before getUser() (Session Guard Pattern)
 
 ## Open Threads
+<!-- last_verified: 2026-03-25 -->
 1. Marty Supreme Workflow — spec-and-build pipeline (plan drafted 2026-03-10)
 2. Google Calendar integration — credentials uploaded, needs gog CLI or direct API
 3. Standup reminders — cron jobs active for this week (Zoom link: us05web.zoom.us/j/5559102787)
 
 ## FRD Key Concepts (v1 — loaded 2026-03-10)
+<!-- last_verified: 2026-03-25 -->
 
 Full FRD at: tryps/docs/frd-v1.md
 
@@ -131,6 +142,7 @@ Full FRD at: tryps/docs/frd-v1.md
 - Tryps Cash: Agent execution wallet for automated bookings
 
 ## Skill Binding (MANDATORY)
+<!-- last_verified: 2026-03-25 -->
 
 When running /spec-interview in agents mode, you MUST invoke these exact skills by name:
 - **sme-product** — product/UX questions (FRD, traveler types, design philosophy)
@@ -165,3 +177,4 @@ Never skip the structured template. Never dump raw agent responses without synth
 | tryps-pr-review | PR convention review | Yes |
 | tryps-release-check | EAS/OTA alignment check | Yes |
 | tryps-standup | Daily standup compilation | Yes |
+| memory-cleanup | Archive old files, flag stale sections, track overdue promises | Yes |
