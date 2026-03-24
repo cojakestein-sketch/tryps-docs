@@ -10,12 +10,11 @@ updated_by: jake
 review_status: un-reviewed
 ---
 
-## Current State
+## SUPERSEDED
+
+> This scope has been consolidated into `brand-and-gtm/` (2026-03-24).
+> See: `brand-and-gtm/scope.md` for the full sub-scope breakdown.
+
+## Previous State
 
 Nothing built yet. Landing page, App Store listing, launch video, socials, Wispr playbook, referral incentives, and giveaways are all not started.
-
-## What's Next
-
-- Landing page update (jointryps.com)
-- App Store listing
-- Launch video planning (Sean)

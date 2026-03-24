@@ -10,15 +10,11 @@ updated_by: jake
 review_status: un-reviewed
 ---
 
-## Current State
+## SUPERSEDED
+
+> This scope has been consolidated into `brand-and-gtm/` (2026-03-24).
+> See: `brand-and-gtm/sub-scopes/brand-world/scope.md`
+
+## Previous State
 
 Brand strategy doc, color palette, typography, and dark mode tokens are built and aligned in the app. A few outstanding screens need polish. Brand book in Figma not started.
-
-## Note
-
-This scope can block other scopes — new UI screens depend on brand alignment being complete.
-
-## What's Next
-
-- Polish outstanding screens
-- Start brand book in Figma

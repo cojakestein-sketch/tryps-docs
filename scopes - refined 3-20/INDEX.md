@@ -21,8 +21,8 @@ total_scopes: 16
 | 8 | agent-intelligence | Agent Intelligence | Backend, mobile; Claude Connector in external services | not-started | rizwan |
 | 9 | payments-infrastructure | Payments Infrastructure | Backend, mobile, iMessage frontend | not-started | asif |
 | 10 | travel-booking | Travel Booking | iMessage, mobile, backend | built | — |
-| 11 | brand-design-system | Brand & Design System | Figma | partial | jake |
-| 12 | launch-gtm | Launch & GTM | Figma, social platforms, etc. | not-started | jake |
+| 11 | brand-design-system | Brand & Design System | **SUPERSEDED** → `brand-and-gtm/` | — | jake |
+| 12 | launch-gtm | Launch & GTM | **SUPERSEDED** → `brand-and-gtm/` | — | jake |
 | 13 | qa-testing | QA & Testing | ClickUp, GitHub Issues | in-progress | andreas |
 | 14 | ai-platform-connectors | AI Platform Connectors | External services, backend | not-started | — |
 | 15 | logistics-agent | Logistics Agent | Backend, iMessage, mobile | not-started | — |

@@ -65,15 +65,16 @@ Each scope from tryps-docs maps to a ClickUp task. Subtasks are created by devs 
 | p3-pay-on-behalf | P3 | Rizwan | needs spec | `86e0emu8e` | Apr 8 → Apr 18 | |
 | p3-duffel-apis | P3 | Rizwan | needs spec | `86e06y10g` | Apr 10 → Apr 20 | (was "Group Flight Search") |
 | p3-logistics-agent | P3 | Rizwan | needs spec | `86e0emu8z` | Apr 12 → Apr 22 | 26 criteria |
-| p4-brand-strategy | P4 | Jake | needs spec | `86e0emu98` | Apr 22 → May 3 | Renamed from Socials & Presence |
-| p4-wispr-playbook | P4 | Jake | needs spec | `86e0emu9h` | Apr 25 → May 6 | |
-| p4-launch-video | P4 | Jake | needs spec | `86e0emu9w` | Apr 22 → May 10 | 15 criteria |
-| p4-referral-incentives | P4 | unassigned | needs spec | `86e0emua8` | Apr 28 → May 8 | |
-| p4-giveaways | P4 | unassigned | needs spec | `86e0emuar` | May 1 → May 10 | |
+| ~~p4-brand-strategy~~ | — | — | REMOVED | — | — | Moved to `brand-and-gtm/` (2026-03-24) |
+| ~~p4-wispr-playbook~~ | — | — | REMOVED | — | — | Moved to `brand-and-gtm/` (2026-03-24) |
+| ~~p4-launch-video~~ | — | — | REMOVED | — | — | Moved to `brand-and-gtm/` (2026-03-24) |
+| ~~p4-referral-incentives~~ | — | — | REMOVED | — | — | Moved to `brand-and-gtm/` (2026-03-24) |
+| ~~p4-giveaways~~ | — | — | REMOVED | — | — | Moved to `brand-and-gtm/` (2026-03-24) |
 | p5-friends-family | P5 | unassigned | needs spec | `86e0emube` | May 10 → May 22 | |
 | p5-strangers-review | P5 | unassigned | needs spec | `86e0emubu` | May 15 → May 30 | |
 
 **Removed:** `p2-booking-links` — killed per team meeting 2026-03-18.
+**Removed:** All P4 brand/GTM tasks — moved to `brand-and-gtm/` folder (2026-03-24). Brand work is tracked in tryps-docs, not ClickUp.
 
 ## CLI Usage
 
