@@ -32,38 +32,40 @@ Tryps is the one-stop shop for all things travel. Anything relating to you leavi
 
 ### Positioning Statement
 
-**For the post-grad who just wants to see her friends back home, Tryps is the way she gets to see them all — unlike Expedia or Kayak, which are inherently not social, and unlike group chats, where plans get buried and nothing gets done.**
+**For the post-grad who just wants to see her friends back home, Tryps is the travel concierge she texts — it handles everything so the group actually goes. Unlike Expedia or Kayak, which are tools you use alone, and unlike group chats, where plans get buried and nothing gets done, Tryps is an agent that lives in your iMessage and makes the trip happen.**
 
 ### Category We Own
 
-**Trip planning and going on.** Not just planning — the full lifecycle from vibe to booking to being there to remembering it.
+**AI travel concierge.** Not a planning tool — a travel agent you text. The full lifecycle from vibe to booking to being there to remembering it, all through conversation.
 
 ### One-Liner
 
-Partiful but for travel — group trip planning that replaces the scattered mess of iMessage + Google Docs + Splitwise.
+Your group's travel concierge — just text it.
 
 ### The Shift
 
-Tryps moves trip planning from **one person carries the burden** to **everyone contributes a little**. That single shift is worth the download alone.
+Tryps moves trip planning from **manually coordinating across 5 apps** to **texting one concierge that handles everything**. You don't plan the trip — you text it into existence. That single shift is worth the download alone.
 
 ### What Only Tryps Does
 
-Only Tryps lets you actually plan and go on the trip from your group chat.
+Only Tryps gives your group a travel concierge you can text in iMessage that actually plans, books, and coordinates the entire trip.
 
 ### Competitive Landscape
 
 | Competitor | What They Do Well | Where They Fall Short |
 |------------|-------------------|----------------------|
-| **Group chats (iMessage, WhatsApp)** | Easy, natural, everyone's already there | Nothing gets logged. Plans get buried and lost. |
+| **Group chats (iMessage, WhatsApp)** | Easy, natural, everyone's already there | Nothing gets logged. Plans get buried and lost. No agent helping. |
 | **Spreadsheets (Google Sheets)** | Organized, scalable, shareable | Not fun. Nobody wants to open a spreadsheet for their vacation. |
-| **Partiful** | Social coordination done right | Can't text it. Hard to see what's actually happening beyond "show up at this time." |
-| **Expedia / Kayak** | Book everything in one place | Not social. Not easy to share with other people. |
+| **Partiful** | Social coordination done right | Events only. Can't handle multi-day travel logistics. No concierge. |
+| **Expedia / Kayak** | Book everything in one place | Solo tools. Not social. No group coordination. |
+| **ChatGPT / AI assistants** | Can research and suggest | Not embedded in your group chat. Can't take action. No trip card. |
 
 ### Positioning Guardrails
 
 - **Never be compared to:** Splitwise, Tricount, or any expense-splitting utility. Those are ledgers. Tryps is a lifestyle brand.
 - **Never position as:** A project management tool, a productivity app, or a "travel hack" service.
-- **Always position as:** The obvious way your group plans a trip. Inevitable, not novel.
+- **Always position as:** Your group's travel concierge. You text it, it handles everything. Inevitable, not novel.
+- **The hero is the agent.** Every brand touchpoint should make it feel like Tryps is a person you text, not an app you open.
 
 ---
 
@@ -218,34 +220,34 @@ Enthusiastic ●●●○○○○○○○  Matter-of-fact → Stays enthusiast
 
 ### Primary Value Prop (one sentence)
 
-**Tryps turns your group chat into an actual trip — just communicate the vibe and it plans the rest.**
+**Tryps is your group's travel concierge — text it your vibe, and it plans the entire trip.**
 
 ### Three Supporting Messages
 
-**1. Everyone gets a voice without doing the work.**
-You don't have to be the planner to have opinions. Say what you want the trip to feel like, vote on the stuff that matters, and Tryps handles the logistics for the whole group.
+**1. Text your trip into existence.**
+Add Tryps to your iMessage group chat. Tell it where you want to go, when you're free, what vibe you want. It handles the rest — dates, flights, stays, activities. You don't plan the trip. You text it into existence.
 
-**2. It lives where you already are.**
-Add Tryps to your iMessage group chat. No new app to learn, no spreadsheet to maintain, no "okay who's checking Airbnb." Everything your group texts about gets logged to a real itinerary.
+**2. Everyone gets a voice without doing the work.**
+The concierge asks each person what they want. It collects votes, resolves conflicts, and builds the itinerary around what the group actually wants. No one person carries the burden.
 
-**3. The trip starts the moment you open it.**
-Tryps doesn't feel like a project management tool. It feels like the trip has already started — beautiful trip cards, friend activity, and a shared plan that actually gets people excited to go.
+**3. It's a travel agent, not an app.**
+Tryps doesn't feel like a tool you open. It feels like a person who works for your group — someone who remembers what you like, knows your friends, and handles logistics so you can just show up.
 
 ---
 
 ## 9. Tagline Candidates
 
-Tagline must encode: effortlessness, group dynamic, legitimacy. Should feel inevitable, not clever.
+Tagline must encode: concierge/agent, effortlessness, group dynamic. Should feel inevitable, not clever.
 
-### Shortlist (Top 3 — review with Trent)
+### Shortlist (Top 3 — review with Sean)
 
 | # | Tagline | Role | Notes |
 |---|---------|------|-------|
-| 1 | **Less planning. More going.** | Tagline | Cleanest. Works at every size — App Store, billboard, social bio. Universal. |
-| 2 | **For every "we should totally do that."** | Campaign line | Instant recognition. Everyone has that group chat. Most emotionally specific. |
-| 3 | **The trip you've been talking about? Go on it.** | Campaign line | Direct, activating. Feels like a friend calling you out. |
+| 1 | **Text your trip into existence.** | Tagline | The hero line. Encodes the core mechanic (texting) and the magic (it just happens). |
+| 2 | **Less planning. More going.** | Tagline (alt) | Still works. Universal, clean, scales everywhere. |
+| 3 | **For every "we should totally do that."** | Campaign line | Instant recognition. Everyone has that group chat. Most emotionally specific. |
 
-**Recommendation:** #1 as the tagline (works everywhere, scales down to an icon caption). #2 and #3 as campaign/launch lines — they're too long for a tagline but perfect for launch video, social, App Store hero copy.
+**Recommendation:** #1 as the primary tagline — it captures the concierge positioning and the iMessage mechanic in one line. #2 as the universal fallback. #3 for launch video and social.
 
 ### Other Candidates (Explored, Not Selected)
 
