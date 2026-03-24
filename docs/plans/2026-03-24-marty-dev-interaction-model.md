@@ -28,7 +28,7 @@ Marty's dev interactions follow a daily cadence aligned with the standup cycle:
 Morning (9-10 AM ET)
   - Scan GitHub for new issues, stale PRs, failed CI
   - Scan ClickUp for status changes overnight
-  - Prepare a dev-specific morning brief (DM to each dev)
+  - Prepare morning brief and post to #martydev (DM allowlist is Jake-only currently — expand when ready)
 
 Midday (standup, 2 PM ET)
   - Standup questions already generated (tryps-standup skill)
@@ -147,8 +147,8 @@ Want me to open a draft PR with this fix? React with :thumbsup: and I'll create 
 |--------|------------|-----|
 | Analyze code and identify root cause | Yes | Read-only analysis |
 | Post fix suggestion as comment | Yes | Suggestion only, no code change |
-| Open a draft PR with the fix | **No — requires dev thumbs-up** | Writing code needs human review |
-| Push a fix directly to a branch | **NEVER** | Only devs push code |
+| Open a draft PR with the fix | **No — requires dev thumbs-up** | Marty may create a bot-owned draft branch only after explicit approval |
+| Push a fix directly to a human-owned branch | **NEVER** | Only devs push to shared/human branches |
 
 ### Quality Bar
 
@@ -211,9 +211,9 @@ When a PR is opened against `develop`:
 
 ## 4. Proactive Dev Help
 
-### Morning Brief (DM to Each Dev)
+### Morning Brief
 
-Each morning at 9 AM ET, Marty DMs each active dev with a personalized brief:
+Each morning at 9 AM ET, Marty posts a per-dev brief to #martydev (Slack DM allowlist currently only includes Jake — post to channel until allowlist is expanded):
 
 ```
 Morning, Asif. Here's your plate:
@@ -316,7 +316,7 @@ Anthropic's autonomy research shows devs grant more autonomy over time: new user
 
 ## 7. What Marty Never Does
 
-1. **Never pushes code** to any branch — only suggests, never writes
+1. **Never pushes code to human-owned branches** — may only create bot-owned draft branches after explicit dev approval
 2. **Never approves PRs** — only reviews with comments
 3. **Never merges** without explicit human approval
 4. **Never closes issues** without human confirmation
