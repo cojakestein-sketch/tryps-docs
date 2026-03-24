@@ -124,9 +124,9 @@ Full details in `marty/TOOLS.md`.
 
 ## Assignments
 
-### Asif — Beta Feedback Ingestion + Deployment Guardian
+### Asif — Beta Feedback Ingestion + Deployment Guardian + Dev Interaction Model
 
-**Scope:** Build two new Marty skills that automate feedback routing and deployment safety.
+**Scope:** Build two new Marty skills that automate feedback routing and deployment safety. **Also define how Marty should interact with devs day-to-day** — especially around GitHub issue triage, code fix suggestions, and PR support. Other teams using OpenClaw-style agents are having their agents monitor GitHub issues, suggest fixes, and even open PRs. Define this process for Tryps.
 
 **Research findings:**
 - Marty already has Gmail (gog CLI), Slack (socket mode), and ClickUp (API) access — all the tools needed for feedback ingestion
@@ -137,13 +137,14 @@ Full details in `marty/TOOLS.md`.
 **Deliverable:** PR to `tryps-docs` with:
 - `marty/skills/beta-feedback-triage/SKILL.md` — skill that scans Gmail + Slack for beta feedback, categorizes (bug/feature/UX friction/praise), deduplicates against ClickUp, creates tasks, weekly digest
 - `marty/skills/tryps-deploy/SKILL.md` — skill with 3 modes: `staging` (auto on merge), `testflight` (approval-gated), `check` (verify OTA sync)
+- A "Marty Dev Interaction Model" doc defining how Marty should interact with devs daily: GitHub issue triage → code fix suggestions → PR support. What's autonomous vs. human-gated. How Marty routes issues to the right dev. How Marty suggests lines of code to fix. This is a process definition, not just a skill.
 - Any cron job definitions documented in `marty/crons/` (even if not installed yet)
 
 ---
 
-### Rizwan — Automated QA Runner
+### Rizwan — Automated QA Runner + Marty Memory System
 
-**Scope:** Research and build the infrastructure plan for automated mobile QA testing on Hetzner using Maestro.
+**Scope:** Dual scope. (A) Research and build the infrastructure plan for automated mobile QA testing on Hetzner using Maestro. (B) Audit Marty's entire memory system and propose improvements.
 
 **Research findings:**
 - Maestro is Expo's recommended E2E testing framework, used by Microsoft, Meta, DoorDash
@@ -157,6 +158,7 @@ Full details in `marty/TOOLS.md`.
 - `marty/skills/tryps-qa-runner/SKILL.md` — skill definition for running Maestro test flows against Android emulator
 - `tryps-docs/docs/plans/2026-03-24-feat-qa-runner-infrastructure-plan.md` — detailed infrastructure plan: what needs to be installed on Hetzner, how to build APKs, how to run headless emulator, how to integrate with PR review pipeline
 - At least 3 example Maestro YAML flow files for critical paths (invite flow, trip creation, voting)
+- **Memory system audit:** Read the full memory system (`marty/MEMORY.md`, `marty/memory/`, `marty/AGENTS.md`, `marty/skills/memory-distill/SKILL.md`). Write an assessment: Is the architecture sound? What's missing? How should memory decay/archival work? Compare to deer-flow's memory patterns. Propose improvements.
 
 ---
 
@@ -170,7 +172,7 @@ Full details in `marty/TOOLS.md`.
 - Supports both remote (`https://mcp.figma.com/mcp`) and desktop server modes
 - Anima API (1.5M Figma installs) bridges Figma and coding AI agents for pixel-perfect code
 - Known drift already documented: `.pen` file uses Space Grotesk instead of Plus Jakarta Sans, red is `#DC2626` vs correct `#D9071C`, background should be white/light gray per Figma not warm cream
-- Design tokens live in `t4/utils/theme.ts` — this is the code source of truth
+- **Figma is the design source of truth** — not `theme.ts`, not `brand.md`. Nadeem's job is to reconcile all three: audit Figma, theme.ts, and brand.md, document every discrepancy, and propose a plan where Figma leads, code follows, and brand.md documents
 
 **Deliverable:** PR to `tryps-docs` with:
 - `marty/skills/design-audit/SKILL.md` — skill with two modes: (A) PR Design Check (automated on every PR, compares changed screen components against Figma design tokens), (B) Full Component Inventory (weekly, maps Figma components to RN components, flags drift)
