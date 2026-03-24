@@ -26,7 +26,7 @@ Automate the Tryps TestFlight deployment pipeline. This is the exact flow Asif r
 
 ```bash
 # 1. Switch to production branch and pull latest
-cd ~/t4
+cd $TRYPS_REPO  # Default: ~/t4
 git checkout production && git pull
 
 # 2. Install dependencies (picks up any new/updated packages)

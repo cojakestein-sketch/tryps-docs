@@ -40,6 +40,9 @@ curl -s -H "Authorization: $CLICKUP_API_KEY" \
   "https://api.clickup.com/api/v2/list/901711582339/task?include_closed=false"
 
 curl -s -H "Authorization: $CLICKUP_API_KEY" \
+  "https://api.clickup.com/api/v2/list/901711582341/task?include_closed=false"
+
+curl -s -H "Authorization: $CLICKUP_API_KEY" \
   "https://api.clickup.com/api/v2/list/901711582345/task?include_closed=false"
 ```
 
