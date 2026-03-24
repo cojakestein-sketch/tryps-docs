@@ -14,7 +14,7 @@
 | 2 | Table of Contents | ⬜ New | MUST | Clickable section navigation |
 | 3 | Brand Story / Introduction | ⬜ New | MUST | Origin story, what this doc is, who it's for |
 
-## B. Brand Strategy (4-6 screens)
+## B. Brand Strategy (6-8 screens)
 
 | # | Screen | Status | Priority | Notes |
 |---|--------|--------|----------|-------|
@@ -22,6 +22,8 @@
 | 5 | Brand Values | ⬜ New | MUST | 3-5 core values with descriptions |
 | 6 | Brand Personality | ⬜ New | MUST | "We are X, not Y" framework |
 | 7 | Target Audience / Persona | ⬜ New | MUST | The "group chat CEO" profile |
+| 7b | How It Works | ⬜ New | MUST | 3-step visual: add Martin to group chat → text your vibe → trip happens |
+| 7c | Before / After | ⬜ New | MUST | Old way (5 apps, spreadsheets, chaos) vs. Tryps way (one text to Martin) |
 | 8 | Brand Positioning | ⬜ New | LATER | Competitive map, differentiation statement |
 
 ## C. Logo (6-8 screens)
@@ -113,13 +115,13 @@
 
 | | Count |
 |---|---|
-| **Total screens** | 46 |
+| **Total screens** | 48 |
 | **Already in Figma** | 7 (Logo x3, Color x1, Typography x1, iOS Icon x1, Splash x1, Components x1) |
-| **New screens needed** | 39 |
-| **MUST for launch** | 20 (7 existing + 13 new) |
+| **New screens needed** | 41 |
+| **MUST for launch** | 22 (7 existing + 15 new) |
 | **LATER (post-launch)** | 26 |
 
-### Phase 1 — MUST screens to create (13 new)
+### Phase 1 — MUST screens to create (15 new)
 
 1. Cover
 2. Table of Contents
@@ -128,12 +130,14 @@
 5. Brand Values
 6. Brand Personality
 7. Target Audience / Persona
-8. Clear Space & Minimum Size (logo rules)
-9. Logo Misuse / Don'ts
-10. Color — Secondary & Semantic
-11. Color Usage Rules
-12. Type Scale & Hierarchy
-13. Photography Style
+8. **How It Works** *(NEW — added 2026-03-24)*
+9. **Before / After** *(NEW — added 2026-03-24)*
+10. Clear Space & Minimum Size (logo rules)
+11. Logo Misuse / Don'ts
+12. Color — Secondary & Semantic
+13. Color Usage Rules
+14. Type Scale & Hierarchy
+15. Photography Style
 
 Plus add rationale/hex values to 3 existing screens (Logo, Color, Typography).
 

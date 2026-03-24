@@ -125,68 +125,76 @@ Hero product moments — these showcase the agent/concierge in action:
 
 ---
 
-## Questions to Discuss at Lunch
+## Decisions (Answered 2026-03-24 — Jake + Sean Lunch Session)
 
-### The Concierge Identity
-1. Does the concierge have a name, or is it just "Tryps"? If someone texts the group chat, does the agent respond as "Tryps" or something else?
-2. What's the concierge's personality? Is it the same as the brand voice (cheeky, warm, Bourdain-ish), or does it have its own distinct character?
-3. How does the concierge introduce itself when added to a group chat for the first time? What's that first message?
-4. The brand archetype is 70% Host / 30% Magician — the concierge IS both of these. Does this change how we describe the archetype in the brand book?
+### The Agent Identity
+1. **Name:** Martin. Contact saves as "Martin from Tryps" with profile picture. People should never know it's AI — Martin feels like a person.
+2. **Personality:** Same as brand voice (Jennifer Test — the aunt who planned all the group trips). Handles logistics AND shepherds people. Youth-inspired, not travel agent formality. Don't over-define in the brand book — devs are nailing it in the product.
+3. **First message:** No canned intro. Martin reacts to whatever you text — "Vegas" gets a different response than "help me plan a trip." First-message behavior is a dev scope (AI tester), not a branding decision.
+4. **Archetype:** No change. 70% Host / 30% Magician stands.
 
 ### Positioning & Tagline
-5. "Text your trip into existence" — is this THE tagline, or one of several? Does "Less planning. More going." still have a role?
-6. The Partiful comparison ("Partiful for travel") — still useful for explaining to investors/press, or does "travel concierge" make it irrelevant?
-7. Should the brand book explicitly position against ChatGPT/AI assistants? ("Unlike ChatGPT, Tryps lives in your group chat and can actually take action")
-8. What's the one sentence Jake says when someone asks "what's Tryps?" Is it "it's a travel concierge you text" or something else?
+5. **Tagline:** "Text your trip into existence" is one of several candidates, not locked. Will emerge as brand develops.
+6. **Partiful comparison:** Still useful as a case study for virality (invite mechanic). But the pitch is "travel agent in your iMessage."
+7. **vs. AI assistants:** No. Not positioning against ChatGPT/Claude. Tryps is a service for one use case, not competing with them. Ideally they integrate with Tryps via MCP.
+8. **One sentence:** "It's a travel agent in your iMessage." Travel agent > concierge (hits harder, more concrete).
 
 ### Brand Story
-9. Does the Chile/Quinn origin story still lead, or does it need a new ending? Something like: "We realized the answer wasn't a better planning app — it was a concierge you text."
-10. When did the concierge positioning click? What was the specific moment or beta conversation where you thought "this is it"?
-11. Is there a single beta user conversation that perfectly demonstrates the concierge in action — something we could reference or screenshot for the brand book?
+9. **Origin story:** Chile/Quinn still leads. New ending: "We realized the answer wasn't a better planning app — it was a travel agent you text."
+10. **When it clicked:** When Jake started demoing it and it just worked. Five minutes, trip booked, flights and hotels handled.
+11. **Hero demo:** Text Martin → 10 seconds → "Got everything. $2K. Want me to charge your card? Already have it on file." → "Done." That's the showcase moment for the brand book, launch video, every demo.
 
 ### Visual Direction
-12. The iMessage screenshots — real beta conversations, or idealized demo conversations crafted for the brand book?
-13. How prominent is the app (trip card, explore, profile) vs. the iMessage experience in the brand book? 70/30 agent/app? 50/50?
-14. Should there be a "Meet your concierge" screen — like introducing a character or a persona for the agent?
-15. The film camera / disposable camera motif — still the visual anchor, or does iMessage conversation UI become the primary visual language?
-16. What are the 3 hero iMessage conversations you'd want to showcase? (e.g., "plan a ski trip for 6 people in March," "find flights under $300," "what should we do in Tulum?")
+12. **Screenshots:** Idealized demo conversations, inspired by real ones but crafted for the brand book.
+13. **Agent vs. app:** 70/30 iMessage agent to app. Brand book highlights iMessage first, then links to app visualization.
+14. **"Meet Martin" screen:** No. Martin just is. Don't index on the character — focus on how Martin helps you book the trip.
+15. **Film camera:** It's a campaign, not the visual anchor. iMessage conversation UI is the primary visual language. Disposable camera program happens at launch.
+16. **Three hero conversations:** (a) "I know exactly what I want" — Vegas, specific dates, penthouse, Martin books in 5 min. (b) "I have no idea" — want to see college friends, no idea when/where/who, Martin helps ideate. (c) "Find flights under $300" — budget-conscious, practical power.
 
 ### Scope & Priority
-17. The screen checklist says 13 MUST + 26 LATER + 10 Glimmers = 49 new screens. What's Sean actually building by April 2?
-18. Do the Glimmer screens (product moments) belong in the brand book, or are they a separate deliverable?
-19. Any screens to CUT? If the hero is iMessage, some screens lose relevance (email signature, pitch deck template, merch mockups).
-20. Should we ADD screens? Candidates:
-    - "The Concierge in Action" — a full-page iMessage conversation showcase
-    - "How It Works" — 3-step visual (add to group chat → text your vibe → trip happens)
-    - "Agent Personality Guide" — how the concierge talks, responds, handles edge cases
-    - "Before/After" — the old way (5 apps, spreadsheets, chaos) vs. the Tryps way (one text)
+17. **What Sean builds:** Potentially the entire brand book by April 2 with the right Figma workflow.
+18. **Glimmers:** Yes, belong in the brand book. Sean best effort, product designer polishes later.
+19. **Cuts:** None.
+20. **Adds:** Two screens — "How It Works" (3-step) and "Before/After" (old way vs. Tryps way).
 
 ### The Brand Book's Audience
-21. Who is this brand book for? Investors seeing Tryps for the first time? Designers who need to build screens? Sean building the launch video? All three?
-22. If an investor opens this brand book, what's the one thing they should walk away thinking?
-23. If a UGC creator opens this brand book, what do they need to understand about the brand to make good content?
+21. **Who it's for:** Internal team alignment. Forces Jake and Sean to put the vision on paper. Reference doc when anyone asks "how should this feel?" Also bringing to Trent for review.
+22-23. **Not investor/UGC facing.** Maybe select slides shared for collaboration. This is the internal source of truth for the Tryps world.
 
 ### Cross-Scope Connections
-24. The launch video (scope 04) — should it literally show someone texting the concierge and a trip materializing? How tightly is the brand book tied to the video treatment?
-25. UGC creators (scope 03) — can they screen-record themselves texting the concierge? Is that a format we want?
-26. App Store screenshots (screen 37 on checklist) — the first screenshot is the most important. Is it an iMessage conversation, a trip card, or both?
-27. Social content (scope 02) — does the social strategy lead with concierge screenshots, or is that too product-y for social?
+24. **Launch video:** Separate scope. Sean handles later.
+25. **UGC screen recording Martin:** Yes, that's a format. Separate scope.
+26. **App Store screenshots:** Two-beat flow — iMessage conversation with Martin first, then app visualization. Sean first pass, Figma designer polishes.
+27. **Social leading with Martin screenshots:** Yes, plus other stuff. Sean's scope.
 
 ### Working Model with Sean
-28. Review cadence — daily check-ins, or Sean builds a section and reviews in batches?
-29. Does Sean have Figma Make access? Need a walkthrough?
-30. Does Sean work better from the spec + reference docs, or does he want a live walkthrough of the brand strategy?
+28-30. Sean has Figma. Sits next to Jake. They'll figure out cadence. On the milestone.
 
 ---
 
 ## Deliverable Checklist (Milestone 1 — April 2)
 
-- [ ] All MUST screens designed in Figma (13 new + 7 existing polished)
-- [ ] Concierge/agent framing consistent across every screen
-- [ ] "Text your trip into existence" as hero tagline
+- [ ] All MUST screens designed in Figma (15 new + 7 existing polished = 22 screens)
+- [ ] Martin / travel agent framing consistent across every screen (never disclosed as AI)
+- [ ] "Travel agent in your iMessage" as core positioning (tagline still evolving)
 - [ ] iMessage agent featured prominently in product screenshots
 - [ ] Brand book reviewed with Jake before finalization
 - [ ] Aligned with updated brand strategy doc
+
+---
+
+## Sean's Workflow
+
+1. Open the Figma file: "Tryps — Official (work here)" > "Building the world" page
+2. Grid is already set up (22 columns, 1920x1080 frames)
+3. Open `designs/brand-book-make-prompts.md` — all 64 prompts are ready to copy-paste
+4. For each slide: copy the prompt text (between triple backticks) into Figma Make
+5. Figma Make generates the slide using Tryps library tokens
+6. Click "Copy design" and paste into the correct column/position
+7. Swap text "tryps" placeholder for the real logo component (top-right corner)
+8. Batch by section — do all Brand Story slides, paste them all, then move to Mission & Vision
+9. Review with Jake after each section
+10. Glimmer screens: give your best effort, product designer polishes later
 
 ---
 
@@ -199,7 +207,8 @@ All in `brand-and-gtm/reference/INDEX.md`:
 | Brand Strategy (`shared/brand-strategy.md`) | Positioning, values, voice, personality — THE source of truth |
 | Intake Questionnaire (`docs/brand-intake-questionnaire.md`) | 87 answered questions — every brand decision traced back |
 | Screen Checklist (`docs/brand-book-screen-checklist.md`) | What screens to build, priority, status |
-| Make Prompts (`designs/brand-book-make-prompts.md`) | Copy-paste into Figma Make (updated with concierge framing) |
+| Make Prompts (`designs/brand-book-make-prompts.md`) | Copy-paste into Figma Make (updated with Martin/travel agent framing) |
 | Brand Book Grid (`designs/brand-book-grid.html`) | Grid layout for Figma page |
 | Glimmers Research (`designs/glimmers-research.md`) | Product moment inspiration |
 | Competitive Research (`docs/research/2026-03-19-brand-book-research.md`) | How other brands built their books |
+| Sean Handoff (`brand-and-gtm/01-brand-book/sean-handoff.md`) | Clean handoff doc with everything Sean needs |

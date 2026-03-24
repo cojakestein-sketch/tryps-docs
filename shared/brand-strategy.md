@@ -2,7 +2,8 @@
 
 > Internal strategy document. Every visual and verbal decision in the brand book traces back to this doc.
 > Owner: Jake Stein | Consultant: Trent (Open Invite Studio)
-> Created: 2026-03-20 | Status: Draft — pending Trent review
+> Created: 2026-03-20 | Updated: 2026-03-24 (post-Sean lunch session)
+> Status: Draft — pending Trent review
 
 ---
 
@@ -32,23 +33,31 @@ Tryps is the one-stop shop for all things travel. Anything relating to you leavi
 
 ### Positioning Statement
 
-**For the post-grad who just wants to see her friends back home, Tryps is the travel concierge she texts — it handles everything so the group actually goes. Unlike Expedia or Kayak, which are tools you use alone, and unlike group chats, where plans get buried and nothing gets done, Tryps is an agent that lives in your iMessage and makes the trip happen.**
+**For the post-grad who just wants to see her friends back home, Tryps is a travel agent in her iMessage — it handles everything so the group actually goes. Unlike Expedia or Kayak, which are tools you use alone, and unlike group chats, where plans get buried and nothing gets done, Tryps is a travel agent that lives in your group chat and makes the trip happen.**
 
 ### Category We Own
 
-**AI travel concierge.** Not a planning tool — a travel agent you text. The full lifecycle from vibe to booking to being there to remembering it, all through conversation.
+**Travel agent in your iMessage.** Not a planning tool — a travel agent you text. The full lifecycle from vibe to booking to being there to remembering it, all through conversation.
 
 ### One-Liner
 
-Your group's travel concierge — just text it.
+Your group's travel agent — in your iMessage.
 
 ### The Shift
 
-Tryps moves trip planning from **manually coordinating across 5 apps** to **texting one concierge that handles everything**. You don't plan the trip — you text it into existence. That single shift is worth the download alone.
+Tryps moves trip planning from **manually coordinating across 5 apps** to **texting one travel agent that handles everything**. You don't plan the trip — you text it into existence. That single shift is worth the download alone.
 
 ### What Only Tryps Does
 
-Only Tryps gives your group a travel concierge you can text in iMessage that actually plans, books, and coordinates the entire trip.
+Only Tryps gives your group a travel agent you can text in iMessage that actually plans, books, and coordinates the entire trip.
+
+### The Agent: Martin
+
+The travel agent's name is **Martin** — but people don't need to know that upfront. When you add Tryps to your group chat, the contact saves as **"Martin from Tryps"** with a profile picture. Martin feels like a person, not software. People should never know it's AI.
+
+- **No canned intro message.** Martin reacts to whatever you text — "Vegas" gets a different response than "help me plan a trip."
+- **Personality:** The Jennifer Test — that aunt who always planned group trips growing up. Handles logistics AND shepherds people. "Yo Sean, you gotta book your flight." Youth-inspired energy, not travel agent formality.
+- **Never disclosed as AI.** Martin is a person you text. Period.
 
 ### Competitive Landscape
 
@@ -58,14 +67,15 @@ Only Tryps gives your group a travel concierge you can text in iMessage that act
 | **Spreadsheets (Google Sheets)** | Organized, scalable, shareable | Not fun. Nobody wants to open a spreadsheet for their vacation. |
 | **Partiful** | Social coordination done right | Events only. Can't handle multi-day travel logistics. No concierge. |
 | **Expedia / Kayak** | Book everything in one place | Solo tools. Not social. No group coordination. |
-| **ChatGPT / AI assistants** | Can research and suggest | Not embedded in your group chat. Can't take action. No trip card. |
+| **ChatGPT / AI assistants** | Can research and suggest | Not embedded in your group chat. Can't take action. No trip card. Not competing — Tryps is a service for one use case, not an AI assistant. Ideally they connect TO Tryps via integrations. |
 
 ### Positioning Guardrails
 
 - **Never be compared to:** Splitwise, Tricount, or any expense-splitting utility. Those are ledgers. Tryps is a lifestyle brand.
 - **Never position as:** A project management tool, a productivity app, or a "travel hack" service.
-- **Always position as:** Your group's travel concierge. You text it, it handles everything. Inevitable, not novel.
-- **The hero is the agent.** Every brand touchpoint should make it feel like Tryps is a person you text, not an app you open.
+- **Never position against:** ChatGPT, Claude, or other AI assistants. Tryps isn't competing with them — it's a specific service. Ideally they integrate with Tryps.
+- **Always position as:** Your group's travel agent in iMessage. You text it, it handles everything. Inevitable, not novel.
+- **The hero is Martin.** Every brand touchpoint should make it feel like Tryps is a person you text, not an app you open. Martin is never disclosed as AI.
 
 ---
 
@@ -220,34 +230,38 @@ Enthusiastic ●●●○○○○○○○  Matter-of-fact → Stays enthusiast
 
 ### Primary Value Prop (one sentence)
 
-**Tryps is your group's travel concierge — text it your vibe, and it plans the entire trip.**
+**Tryps is a travel agent in your iMessage — text it your vibe, and it plans the entire trip.**
 
 ### Three Supporting Messages
 
 **1. Text your trip into existence.**
-Add Tryps to your iMessage group chat. Tell it where you want to go, when you're free, what vibe you want. It handles the rest — dates, flights, stays, activities. You don't plan the trip. You text it into existence.
+Add Tryps to your iMessage group chat. Tell it where you want to go, when you're free, what vibe you want. Martin handles the rest — dates, flights, stays, activities. You don't plan the trip. You text it into existence.
 
 **2. Everyone gets a voice without doing the work.**
-The concierge asks each person what they want. It collects votes, resolves conflicts, and builds the itinerary around what the group actually wants. No one person carries the burden.
+Martin asks each person what they want. Collects votes, resolves conflicts, and builds the itinerary around what the group actually wants. No one person carries the burden.
 
 **3. It's a travel agent, not an app.**
-Tryps doesn't feel like a tool you open. It feels like a person who works for your group — someone who remembers what you like, knows your friends, and handles logistics so you can just show up.
+Tryps doesn't feel like a tool you open. It feels like a person who works for your group — Martin remembers what you like, knows your friends, and handles logistics so you can just show up.
+
+### The Hero Demo Moment
+
+The showcase that sells Tryps in 30 seconds: You text Martin your trip idea. Martin says "let me get back to you." Ten seconds later: "Got everything — flights, hotel, activities. It's gonna cost $2K. Want me to charge your card? I already have it on file." You say "done." Trip planned in five minutes. This is the moment for the brand book, the launch video, every demo.
 
 ---
 
 ## 9. Tagline Candidates
 
-Tagline must encode: concierge/agent, effortlessness, group dynamic. Should feel inevitable, not clever.
+Tagline must encode: travel agent, effortlessness, group dynamic. Should feel inevitable, not clever.
 
 ### Shortlist (Top 3 — review with Sean)
 
 | # | Tagline | Role | Notes |
 |---|---------|------|-------|
-| 1 | **Text your trip into existence.** | Tagline | The hero line. Encodes the core mechanic (texting) and the magic (it just happens). |
+| 1 | **Text your trip into existence.** | Tagline (lead candidate) | Encodes the core mechanic (texting) and the magic (it just happens). Not locked — one of several candidates. |
 | 2 | **Less planning. More going.** | Tagline (alt) | Still works. Universal, clean, scales everywhere. |
 | 3 | **For every "we should totally do that."** | Campaign line | Instant recognition. Everyone has that group chat. Most emotionally specific. |
 
-**Recommendation:** #1 as the primary tagline — it captures the concierge positioning and the iMessage mechanic in one line. #2 as the universal fallback. #3 for launch video and social.
+**Status (2026-03-24):** Tagline is NOT locked. "Text your trip into existence" is the lead candidate but the final tagline will emerge as the brand develops. Using it as the working tagline for now.
 
 ### Other Candidates (Explored, Not Selected)
 
@@ -313,8 +327,8 @@ No explicit anti-persona. Tryps is for everybody. But the brand should never pan
 
 Two moments where someone goes from curious to committed:
 
-### 1. The iMessage Agent
-You add this agent to iMessage and it's actually your travel agent on your behalf. That's the "holy shit this is real" moment. The tech disappears — you're just texting, and a trip is forming.
+### 1. Martin in iMessage
+You add Martin to your group chat and text your trip idea. Martin responds like a person — not a bot, not a form, not an app. Five minutes later your flights and hotel are booked. That's the "holy shit this is real" moment. The tech disappears — you're just texting, and a trip is forming.
 
 ### 2. The Trip Card
 A beautiful Partiful-style card that says "so-and-so wants to go on a trip to New York" and you're like "oh fuck yeah, I want in." The card is the viral hook — shareworthy, beautiful, makes you HAVE to get on Tryps.
@@ -362,7 +376,7 @@ It's really easy, filled with trust, and effortless. "I just text all my friends
 
 ### Photography & Imagery
 
-- **Film camera aesthetic is the anchor.** Candid, disposable camera energy. Grain, warmth, real moments.
+- **Film camera is a campaign, not the visual anchor.** The disposable camera program (first 100+ trips) is a real brand play, but iMessage conversation UI is the primary visual language. Film texture (grain, warmth, candid) is art direction that supports — it doesn't lead.
 - More relatable than aspirational. Real friends, real chaos.
 - Both photography and illustration, but film photography is the core identity.
 - Brand play: first 100+ trips get a Tryps-branded disposable camera mailed to them. They take it on the trip, send it back, Tryps develops the film. "Do shit that doesn't scale."
@@ -427,7 +441,7 @@ When people hear "Tryps," they think: **Welcome.**
 
 ### The Elevator Pitch
 
-It's the easiest way for your group to plan a trip together — you just communicate the vibe and it helps plan the trip for you. It can book stuff, help facilitate what you should do, and plan the itinerary for the group.
+It's a travel agent in your iMessage. You text it your vibe, and it plans the entire trip — flights, hotels, activities, everything. Five minutes, done.
 
 ---
 
@@ -454,3 +468,11 @@ It's the easiest way for your group to plan a trip together — you just communi
 | 2026-03-20 | Film camera as visual anchor, not identity | Film texture (grain, warmth, candid) is art direction — it shouldn't dictate the logo or core identity. |
 | | Typography: serif + sans pairing | Pending Trent review. Wispr-inspired departure from current Plus Jakarta Sans. |
 | | Tagline selection | Pending Trent review. Top candidates: "Send the vibe. We'll plan the trip." and "Finally, a reason to actually go." |
+| 2026-03-24 | "Travel agent" as primary positioning term | "Concierge" is too luxury-coded. "Travel agent" hits harder, more concrete, more real. Use "travel agent" externally. |
+| 2026-03-24 | Agent name is Martin | Contact saves as "Martin from Tryps." Never disclosed as AI. Feels like a person. Youth-inspired personality, Jennifer Test energy. |
+| 2026-03-24 | No positioning against AI assistants | Tryps isn't competing with ChatGPT/Claude. It's a service for one use case. Ideally they integrate with Tryps via MCP. |
+| 2026-03-24 | Film camera is a campaign, not visual anchor | iMessage conversation UI is the primary visual language. Film camera program is a brand play (launch campaign), not the design system's foundation. |
+| 2026-03-24 | Tagline not locked | "Text your trip into existence" is the lead candidate but not final. Will emerge as brand develops. |
+| 2026-03-24 | Brand book is internal alignment tool | Not for investors or UGC creators. It's the team's source of truth for "what is the Tryps world." |
+| 2026-03-24 | 70/30 agent/app in brand book | iMessage agent is the hero of the brand book (70%). App visualization (trip cards, itinerary) supports (30%). |
+| 2026-03-24 | Two hero user extremes | Brand must serve both: (1) "I know exactly what I want, just book it in 5 min" and (2) "I have no idea, help me figure it out." |

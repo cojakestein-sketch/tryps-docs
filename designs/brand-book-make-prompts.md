@@ -67,8 +67,10 @@ Select all 22 labels, then use Figma's auto-layout (Shift+A) with 2100px horizon
 > - Use "tryps" as text placeholder where logo would go (top-right corner)
 > - Film camera / disposable camera warmth as visual motif where appropriate
 >
-> **TODO (post-lunch 2026-03-24):** Update all prompts to reflect concierge/agent positioning.
-> See `brand-and-gtm/01-brand-book/spec.md` for the new direction.
+> **Updated 2026-03-24:** All prompts now reflect the travel agent / Martin positioning.
+> Key framing: Martin from Tryps is a travel agent in your iMessage. Never disclosed as AI. Feels like a person.
+> iMessage conversation UI is the primary visual language (70% agent, 30% app).
+> Film camera is a campaign, not the visual anchor.
 
 ---
 
@@ -82,7 +84,7 @@ A bold cover page for the Tryps brand book. Centered layout.
 - Background: white
 - Large text "tryps" in Plus Jakarta Sans Bold, lowercase, centered, color #D9071C
 - Below it in smaller text: "Brand Book" in Plus Jakarta Sans SemiBold, dark charcoal
-- Below that: "Less planning. More going." in Plus Jakarta Sans Regular, medium gray
+- Below that: "Your travel agent in iMessage." in Plus Jakarta Sans Regular, medium gray
 - At the very bottom: "2026 | Confidential" in small text, light gray
 - Subtle warm grain texture overlay at very low opacity
 - Clean, minimal, confident. No illustrations or photos.
@@ -108,23 +110,25 @@ Left column:
 03  Brand Values
 04  Brand Personality
 05  Our Audience
-06  Brand Essence
-07  Visual Territory
-08  Photography
-09  Color System
-10  Typography
+06  How It Works
+07  Before / After
+08  Brand Essence
+09  Visual Territory
+10  Photography
+11  Color System
 
 Right column:
-11  Voice & Tone
-12  Social Media
-13  Logo
-14  Applications
-15  Brand in the Wild
-16  Motion & Icons
-17  App Design
-18  Glimmers
-19  Discover Tab
-20  Assets & Contact
+12  Typography
+13  Voice & Tone
+14  Social Media
+15  Logo
+16  Applications
+17  Brand in the Wild
+18  Motion & Icons
+19  App Design
+20  Glimmers
+21  Discover Tab
+22  Assets & Contact
 
 - Section numbers in Space Mono, #D9071C
 - Section names in Plus Jakarta Sans Regular, dark charcoal
@@ -170,7 +174,7 @@ A brand origin story slide. Split layout: text on the left (60%), warm atmospher
 
   There was no way to consolidate everything, and no easy way for me to engage with what Quinn was trying to get the group to do.
 
-  I saw the Partiful playbook and thought: nobody's done this for trips."
+  We realized the answer wasn't a better planning app -- it was a travel agent you text."
 - Right side: a warm, film-grain-textured placeholder area with a subtle warm gradient (light beige to white), suggesting a photo would go here. Maybe a faint airplane or passport motif.
 - Attribution at bottom-left: "-- Jake Stein, Founder" in Plus Jakarta Sans Medium italic, medium gray
 ```
@@ -180,7 +184,7 @@ A brand origin story slide. Split layout: text on the left (60%), warm atmospher
 ```
 Fixed 1920x1080 presentation slide, not a website, no scrolling.
 
-A bold statement slide showing a transformation. Large text, high impact.
+A bold before/after transformation slide. Large text, high impact.
 
 - Background: white
 - Top-right: small text "tryps" in #D9071C
@@ -188,10 +192,10 @@ A bold statement slide showing a transformation. Large text, high impact.
 - Two-part layout stacked vertically, centered:
 
 Top half: crossed-out old way
-  "One person carries the burden" in Plus Jakarta Sans Regular, 36px, medium gray, with a subtle strikethrough line
+  "5 apps. Spreadsheets. Group chat chaos. One person does all the work." in Plus Jakarta Sans Regular, 32px, medium gray, with a subtle strikethrough line
 
 Bottom half: the new way
-  "Everyone contributes a little" in Plus Jakarta Sans Bold, 48px, #D9071C
+  "One text to your travel agent. Trip booked in five minutes." in Plus Jakarta Sans Bold, 44px, #D9071C
 
 - A subtle arrow or visual transition between the two lines
 - Below both: "That single shift is worth the download alone." in Plus Jakarta Sans Regular, 18px, dark charcoal
@@ -465,13 +469,92 @@ A brand positioning statement slide. Clean, strategic.
 - Top-left: small section label "05 Our Audience" in Plus Jakarta Sans Medium, medium gray
 - Small label: "Positioning Statement" in Plus Jakarta Sans SemiBold, 14px, #D9071C, uppercase, letter-spaced
 - Main text in Plus Jakarta Sans Bold, 28px, dark charcoal, centered, max width ~900px:
-  "For the post-grad who just wants to see her friends back home, Tryps is the way she gets to see them all --"
+  "For the post-grad who just wants to see her friends back home, Tryps is a travel agent in her iMessage --"
 - Continued below in Plus Jakarta Sans Regular, 22px, medium gray:
-  "unlike Expedia or Kayak, which are inherently not social, and unlike group chats, where plans get buried and nothing gets done."
+  "unlike Expedia or Kayak, which are tools you use alone, and unlike group chats, where plans get buried and nothing gets done."
 - At the bottom, a simple horizontal competitive positioning bar:
   Left end: "Not social" (with Expedia, Kayak labels)
   Right end: "Social but no action" (with iMessage, WhatsApp labels)
   Center-right, highlighted in #D9071C: "Tryps" in the sweet spot
+```
+
+---
+
+### 05b HOW IT WORKS
+
+**Screen 07b-How-It-Works-01 — Three Steps**
+
+```
+Fixed 1920x1080 presentation slide, not a website, no scrolling.
+
+A "How It Works" slide showing the three-step flow from group chat to booked trip.
+
+- Background: white
+- Top-right: small text "tryps" in #D9071C
+- Top-left: small section label "05b How It Works" in Plus Jakarta Sans Medium, medium gray
+- Heading: "How It Works" in Plus Jakarta Sans Bold, 36px, dark charcoal
+- Subheading: "Three texts. One trip." in Plus Jakarta Sans Regular, 18px, medium gray
+
+Three steps in a horizontal row, connected by subtle arrows:
+
+Step 1:
+- Large "01" in Space Mono Bold, 48px, #D9071C
+- "Add Martin to your group chat" in Plus Jakarta Sans Bold, 22px, dark charcoal
+- A simplified phone icon showing a contact card: "Martin from Tryps" with a profile picture
+- "He saves to your contacts automatically." in Regular, 14px, medium gray
+
+Step 2:
+- "02" in Space Mono Bold, 48px, #D9071C
+- "Text your vibe" in Plus Jakarta Sans Bold, 22px, dark charcoal
+- A simplified iMessage bubble: "vegas, may 16, penthouse, 6 people"
+- "Know exactly what you want? Martin books it in five minutes. No idea? Martin helps you figure it out." in Regular, 14px, medium gray
+
+Step 3:
+- "03" in Space Mono Bold, 48px, #D9071C
+- "Trip happens" in Plus Jakarta Sans Bold, 22px, dark charcoal
+- A simplified trip card showing "Vegas 2026" with friend avatars
+- "Flights, hotel, activities — all booked. See everything in the app." in Regular, 14px, medium gray
+
+- Subtle connecting arrows between the three steps
+- Clean, editorial, generous spacing
+```
+
+---
+
+### 05c BEFORE / AFTER
+
+**Screen 07c-Before-After-01 — Old Way vs. Tryps Way**
+
+```
+Fixed 1920x1080 presentation slide, not a website, no scrolling.
+
+A dramatic before/after comparison slide showing the old way of planning trips vs. the Tryps way.
+
+- Background: white
+- Top-right: small text "tryps" in #D9071C
+- Top-left: small section label "05c Before / After" in Plus Jakarta Sans Medium, medium gray
+- Heading: "Before Tryps vs. After Tryps" in Plus Jakarta Sans Bold, 36px, dark charcoal
+
+Two-column layout with a bold vertical divider:
+
+Left column — "Before" (heading in Plus Jakarta Sans Bold, 28px, medium gray):
+- A chaotic collage of app icons and frustration:
+  - "Google Docs for the itinerary" in Regular, 16px, medium gray
+  - "Splitwise for expenses" in Regular, 16px, medium gray
+  - "Group chat for votes (that get buried)" in Regular, 16px, medium gray
+  - "Kayak for flights (alone)" in Regular, 16px, medium gray
+  - "Airbnb DMs (one person does all the work)" in Regular, 16px, medium gray
+- Below: "5 apps. 3 weeks of planning. One person carrying the burden." in Plus Jakarta Sans SemiBold, 18px, medium gray
+
+Right column — "After" (heading in Plus Jakarta Sans Bold, 28px, #D9071C):
+- A clean iMessage mockup:
+  - Blue bubble: "tulum, spring break, under 2k each"
+  - Gray bubble (Martin from Tryps): "got it. flights, villa, and a sunset boat tour. $1,850 per person. want me to book?"
+  - Blue bubble: "done."
+- Below: "One text. Five minutes. Trip booked." in Plus Jakarta Sans Bold, 18px, #D9071C
+
+- The contrast should be stark: left side feels cluttered and stressful, right side feels clean and effortless
+- This is one of the most impactful slides in the brand book
 ```
 
 ---
@@ -545,38 +628,37 @@ A grid/collage of 6-8 mood-evoking placeholder rectangles arranged asymmetricall
 - One rectangle could have "film camera" text inside as a placeholder
 
 Below the grid:
-"Disposable camera energy. Candid, warm, real moments. Grain, texture, friends being friends." in Plus Jakarta Sans Regular italic, 16px, medium gray
+"iMessage conversations as the hero visual. Film camera warmth as supporting texture. Candid, warm, real moments." in Plus Jakarta Sans Regular italic, 16px, medium gray
 
 - The layout should feel like a designer's inspiration board, not a rigid grid
 ```
 
-**Screen 09-Visual-Territory-02 — Film Camera Anchor**
+**Screen 09-Visual-Territory-02 — iMessage as Visual Language**
 
 ```
 Fixed 1920x1080 presentation slide, not a website, no scrolling.
 
-A photography direction slide establishing the film camera aesthetic as the visual anchor.
+A visual direction slide establishing iMessage conversation UI as the primary visual language, with film camera as a campaign element.
 
 - Background: white
 - Top-right: small text "tryps" in #D9071C
 - Top-left: small section label "07 Visual Territory" in Plus Jakarta Sans Medium, medium gray
-- Heading: "The Film Camera Is Our Anchor" in Plus Jakarta Sans Bold, 36px, dark charcoal
+- Heading: "iMessage Is Our Visual Language" in Plus Jakarta Sans Bold, 36px, dark charcoal
+- Subheading: "The conversation IS the product. Film camera is our launch campaign." in Regular, 16px, medium gray
 
-Three-column layout showing the aesthetic pillars:
+Two-column layout:
 
-Column 1:
-- "Grain" in Plus Jakarta Sans Bold, 24px, dark charcoal
-- "Natural film grain, not digital noise. Warmth and texture that says 'this moment was real.'" in Regular, 16px
+Left column (60%) — "Primary: The Conversation":
+- A simplified iMessage mockup showing a conversation with "Martin from Tryps"
+- User bubble: "plan something fun for spring break, 6 of us, under $2k each"
+- Martin bubble: "on it. let me get back to you."
+- Martin bubble: "got everything -- flights to Tulum, villa for 6, sunset boat tour. $1,850 per person. want me to book it?"
+- Clean iMessage styling with contact name "Martin from Tryps" at top
 
-Column 2:
-- "Warmth" in Plus Jakarta Sans Bold, 24px, dark charcoal
-- "Warm color temperature throughout. Golden hour energy. Never cool-toned or clinical." in Regular, 16px
-
-Column 3:
-- "Candid" in Plus Jakarta Sans Bold, 24px, dark charcoal
-- "Real friends in real moments. Motion blur is okay. Imperfection is the aesthetic." in Regular, 16px
-
-Below all three: a horizontal strip placeholder area with warm beige gradient, suggesting a filmstrip or contact sheet, with a subtle sprocket hole motif at edges
+Right column (40%) — "Supporting: Film Camera Campaign":
+- "Grain" in Plus Jakarta Sans Bold, 20px — "Natural film grain, warmth, real moments"
+- "Disposable Camera Program" in Bold, 20px — "First 100 trips get a Tryps-branded camera mailed to them"
+- "This is a launch campaign, not the design system." in Regular italic, 14px, medium gray
 ```
 
 **Screen 09-Visual-Territory-03 — Brand References**
@@ -1334,12 +1416,12 @@ A brand in the wild slide showing the app as it appears in the App Store.
 Center: a simplified App Store listing mockup:
 - App icon placeholder (rounded square, #D9071C background with white "t")
 - "Tryps" in bold, dark text
-- "Less planning. More going." as subtitle
+- "Your travel agent in iMessage" as subtitle
 - Star rating placeholder: 4.9 stars
 - "GET" button in #D9071C
-- Below: three screenshot placeholder rectangles side by side (phone-shaped, warm-toned gradients)
+- Below: three screenshot placeholder rectangles side by side — first screenshot shows an iMessage conversation with Martin, second shows a trip card in the app, third shows the itinerary view
 
-Below the mockup: "The App Store listing is often the first brand impression. Every word, every screenshot, every detail matters." in Regular, 14px, medium gray
+Below the mockup: "The first screenshot is an iMessage conversation with Martin. Plan everything in iMessage → see the full visualization in the app." in Regular, 14px, medium gray
 ```
 
 **Screen 17-Brand-Wild-02 — iMessage**
@@ -1354,18 +1436,17 @@ A brand in the wild slide showing Tryps in an iMessage conversation.
 - Top-left: small section label "15 Brand in the Wild" in Plus Jakarta Sans Medium, medium gray
 - Heading: "In the Group Chat" in Plus Jakarta Sans Bold, 28px, dark charcoal
 
-Center: a simplified iMessage conversation mockup:
-- Blue bubble (right): "we should do something for spring break"
-- Gray bubble (left): "yes please. where?"
-- Blue bubble (right): "i made a trip on tryps, everyone join"
-- Below: a rich link preview card with warm gradient and:
-  - "Jake invited you to Spring Break 2026"
-  - "jointr.yps/bali-2026"
-  - Warm placeholder image area
+Center: a simplified iMessage group conversation mockup:
+- Blue bubble (right, from Jake): "we should do something for spring break"
+- Gray bubble (left, from Quinn): "yes please. where?"
+- Blue bubble (right, from Jake): "i added our travel agent to the chat"
+- Gray bubble (left, from "Martin from Tryps"): "hey! where are you thinking? I can have flights and a place booked in five minutes."
+- Gray bubble (left, from Quinn): "tulum. under 2k each."
+- Gray bubble (left, from "Martin from Tryps"): "on it. let me get back to you."
 
-Right side annotation: "The Open Graph preview IS the first impression. The iMessage bubble is the invitation for 80% of recipients." in Regular, 14px, medium gray
+Right side annotation: "Martin lives in your group chat. The conversation IS the product. No app to open, no form to fill — just text." in Regular, 14px, medium gray
 
-Below: "This moment -- a friend texting a link that looks beautiful -- is how Tryps grows." in Regular italic, 16px, dark charcoal
+Below: "This moment -- your travel agent responding in the group chat like a friend -- is how Tryps grows." in Regular italic, 16px, dark charcoal
 ```
 
 **Screen 17-Brand-Wild-03 — Social Posts**
@@ -1390,13 +1471,13 @@ Three social post mockup frames side by side:
 
 2. Instagram Story (vertical):
    - Full warm gradient background
-   - "we should totally do that." in Plus Jakarta Sans Bold, white, centered
+   - iMessage screenshot showing a conversation with "Martin from Tryps" — Martin says "got everything booked. see you in tulum."
    - Small "tryps" logo text at bottom
 
 3. Twitter/X Post:
    - Profile pic placeholder + "tryps" username
-   - "For every 'we should totally do that.'" as tweet text
-   - Warm trip card image preview below
+   - "just texted our travel agent and had a trip to vegas booked in 5 minutes" as tweet text
+   - iMessage screenshot preview showing conversation with Martin
 
 Clean layout, realistic proportions
 ```
@@ -1512,14 +1593,14 @@ An app design principles slide.
 
 Four principles stacked vertically with numbers:
 
-"01" (Space Mono, #D9071C) — "The trip card is the hero"
-"Every screen revolves around the trip. The card is the artifact everyone shares." in Regular, 16px
+"01" (Space Mono, #D9071C) — "Martin is the hero"
+"The travel agent in your iMessage is the product. The app visualizes what Martin plans." in Regular, 16px
 
-"02" — "Social proof everywhere"
-"Friend faces, activity feeds, who's-voted indicators. Humans are the interface." in Regular, 16px
+"02" — "The trip card is the viral hook"
+"A beautiful card that makes you HAVE to join. The artifact everyone shares." in Regular, 16px
 
 "03" — "Zero-friction engagement"
-"One tap to vote, one tap to join, one tap to RSVP. If it takes two taps, question it." in Regular, 16px
+"One text to plan. One tap to vote. One tap to join. If it takes more, question it." in Regular, 16px
 
 "04" — "Value before commitment"
 "See the trip before logging in. Experience the plan before downloading. Show, then ask." in Regular, 16px
@@ -1620,25 +1701,28 @@ Below: "The card is the viral hook -- shareworthy, beautiful, makes you HAVE to 
 - Film grain texture accent in a corner
 ```
 
-**Screen 20-Glimmers-02 — The iMessage Agent**
+**Screen 20-Glimmers-02 — Martin in Action**
 
 ```
 Fixed 1920x1080 presentation slide, not a website, no scrolling.
 
-A "glimmer" slide highlighting the iMessage agent as a key brand moment.
+A "glimmer" slide highlighting the hero demo moment — texting Martin and getting a trip booked in five minutes.
 
 - Background: white
 - Top-right: small text "tryps" in #D9071C
 - Top-left: small section label "18 Glimmers" in Plus Jakarta Sans Medium, medium gray
 - Small label: "Aha Moment #2" in Plus Jakarta Sans SemiBold, 14px, #D9071C, uppercase, letter-spaced
-- Heading: "The iMessage Agent" in Plus Jakarta Sans Bold, 36px, dark charcoal
+- Heading: "Five Minutes. Trip Booked." in Plus Jakarta Sans Bold, 36px, dark charcoal
 
-Center: a simplified iMessage mockup showing:
-- Gray bubble: "where should we eat tonight?"
-- A "Tryps" agent response bubble (distinct styling): "Based on everyone's votes, here are the top 3 spots near your hotel..."
+Center: a simplified iMessage conversation mockup with "Martin from Tryps" as the contact:
+- Blue bubble: "vegas. may 16. penthouse. 6 people. martin garrix at omnia."
+- Gray bubble (Martin): "on it. let me get back to you."
+- Small "..." typing indicator, then:
+- Gray bubble (Martin): "got everything. flights, penthouse at the Wynn, Omnia table for 6. $2,100 per person. want me to charge your card? I already have it on file."
+- Blue bubble: "done."
 
 Right side: description:
-"You add this agent to iMessage and it's actually your travel agent. That's the 'holy shit this is real' moment." in Plus Jakarta Sans Regular, 20px, dark charcoal
+"You text Martin what you want. Ten seconds later, everything is booked. That's the 'holy shit this is real' moment." in Plus Jakarta Sans Regular, 20px, dark charcoal
 
 Below: "The tech disappears -- you're just texting, and a trip is forming." in Regular italic, 16px, medium gray
 ```
@@ -1777,7 +1861,7 @@ A closing / colophon slide. Warm, confident, final.
 
 - Background: #D9071C (Tryps Red — matches the vision slide for bookend effect)
 - Center: "tryps" in Plus Jakarta Sans Bold, 64px, white (placeholder for logo)
-- Below: "Less planning. More going." in Plus Jakarta Sans Regular, 24px, white at 80% opacity
+- Below: "Your travel agent in iMessage." in Plus Jakarta Sans Regular, 24px, white at 80% opacity
 - Below that: "jointryps.com" in Space Mono, 16px, white at 60% opacity
 - At the very bottom: "Brand Book v1.0 | 2026 | Confidential" in Regular, 12px, white at 40% opacity
 - Clean, bold, bookend to the cover. Red background makes it feel like a closing statement.
@@ -1796,6 +1880,8 @@ A closing / colophon slide. Warm, confident, final.
 | 03 Brand Values | 3 | 05-Brand-Values-01 through -03 |
 | 04 Brand Personality | 3 | 06-Brand-Personality-01 through -03 |
 | 05 Our Audience | 3 | 07-Our-Audience-01 through -03 |
+| 05b How It Works | 1 | 07b-How-It-Works-01 |
+| 05c Before / After | 1 | 07c-Before-After-01 |
 | 06 Brand Essence | 2 | 08-Brand-Essence-01, -02 |
 | 07 Visual Territory | 3 | 09-Visual-Territory-01 through -03 |
 | 08 Photography | 3 | 10-Photography-01 through -03 |
@@ -1811,17 +1897,18 @@ A closing / colophon slide. Warm, confident, final.
 | 18 Glimmers | 4 | 20-Glimmers-01 through -04 |
 | 19 Discover Tab | 2 | 21-Discover-01, -02 |
 | 20 Assets & Contact | 2 | 22-Assets-Contact-01, -02 |
-| **TOTAL** | **62** | |
+| **TOTAL** | **64** | |
 
 ---
 
 ## WORKFLOW REMINDER
 
-1. Jake sets up grid on "Building the world" page per instructions above
-2. For each slide: copy the prompt text (between the triple backticks) into Figma Make
-3. Make generates the slide using Tryps library tokens
-4. Jake clicks "Copy design" and pastes into the correct column/position in Figma
-5. Jake swaps text "tryps" placeholder for the real logo component (top-right corner)
-6. Repeat for all 62 slides
+1. Sean opens the Figma file "Tryps — Official (work here)" > "Building the world" page
+2. Grid is already set up (22 columns, 1920x1080 frames)
+3. For each slide: copy the prompt text (between the triple backticks) into Figma Make
+4. Make generates the slide using Tryps library tokens
+5. Click "Copy design" and paste into the correct column/position in Figma
+6. Swap text "tryps" placeholder for the real logo component (top-right corner)
+7. Repeat for all 64 slides
 
 Pro tip: batch by section. Do all 3 Brand Story slides, paste them all, then move to Mission & Vision.
