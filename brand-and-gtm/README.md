@@ -6,34 +6,25 @@ Everything related to Tryps brand, go-to-market, and launch lives here.
 
 | Path | What | Who |
 |------|------|-----|
-| `objective.md` | Umbrella objective for all brand & GTM work | Jake |
-| `scope.md` | Printable checklist of all sub-scopes + deliverables | Jake |
-| `spec.md` | Strategy spec — the crisp doc | Jake + Sean |
-| `reference/INDEX.md` | Links to all existing brand reference materials | — |
+| `sean.md` | Contract — 6 scopes, 2 milestones, all checkboxes | Jake |
+| `reference/` | All prior brand docs + discussion notes | — |
 | `sean-files/` | Sean's creative assets, decks, and docs | Sean |
-| `sub-scopes/` | Per-subscope breakdown | Jake + Sean |
 
-## Sub-Scopes
+## 6 Scopes (each has `objective.md`, will get `spec.md`)
 
-| Sub-Scope | What |
-|-----------|------|
-| `brand-world` | Visual identity, brand book, design system |
-| `launch-gtm` | Launch strategy, landing page, App Store listing |
-| `ugc-program` | Wispr Flow playbook, UGC strategy |
-| `referral-program` | Referral incentives, giveaways |
-| `geo-aeo-seo` | Search presence, AI discoverability |
-
-## Sequencing Principle
-
-1. **Strategy & Scoping** — What are we doing?
-2. **Operating Model** — How do we work together?
-3. **Org Design** — What roles do we need?
-4. **Talent Selection** — Who specifically?
-5. **Timeline** — When does each piece land? (target: May 2)
+| Scope | Owner | M1 (Apr 2) | M2 (May 2) |
+|-------|-------|------------|------------|
+| `brand-book/` | Sean | Design + finalize in Figma | Done in M1 |
+| `socials/` | Sean | Accounts set up + prepped | 3 weeks content, 4-5 posts/platform/week |
+| `ugc-program/` | Sean | 300 creator list + strategy doc | 80 creators engaged |
+| `launch-video/` | Sean | Pre-production locked | Video completed + posted |
+| `giveaways/` | Sean | Concept + mechanics defined | Campaign executed |
+| `physical-presence/` | Sean | Asset decisions + budget | Activation (NYC wallpaper, stickers, cameras) |
 
 ## For Sean
 
 - Drop your files in `sean-files/`
-- Reference materials are indexed in `reference/INDEX.md`
+- Your contract is `sean.md` — that's the source of truth
+- Reference materials are in `reference/INDEX.md`
 - Brand system tokens are in `../shared/brand.md`
 - Strategic brand doc is in `../shared/brand-strategy.md`
