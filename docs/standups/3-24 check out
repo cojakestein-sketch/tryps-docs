@@ -1,25 +1,83 @@
-Exec summary
-# what we did today
-Marty improvements:
-  1
-  2
-  3
-  4
-  5
+---
+title: "Checkout — March 24, 2026"
+date: 2026-03-24
+type: checkout
+---
 
-  Agent intellegenve (rizwan):
-    1
-    3
-    4
-  linq (asif)
-    1
-    2
-    3
-    4
-  Figma integration (nadeem / asif)
-    1 does it work how do i test it myself
-    2
-    3
-  Focus points for application tomorrow:
-  Asif - plan to move to travel booking scope tomorrow:
-  Look at the 16 MECE scopes - which 2 would be most helpful to scope out from jake?
+# Checkout — March 24, 2026
+
+> **End of day summary.** Each dev reports what they shipped today and focus for tomorrow.
+
+---
+
+## What We Did Today
+
+### Marty Improvements
+
+1.
+2.
+3.
+4.
+5.
+
+---
+
+## Per-Dev Checkout
+
+### Asif
+
+#### 1. iMessage Agent — OpenAI Migration
+
+Complete rewrite from Claude (3-call stateless) to OpenAI Responses API + Conversations API (persistent, single-call, 20 tools). Model: GPT-5.4.
+
+- **48/57 SCs passing.** 5 blocked on external deps (Jennifer Test, Rizwan's agent intelligence). 4 deferred post-April 2.
+- 16 new files, 6 migrations, 14 bugs found & fixed, ~30 edge function deploys.
+- All core flows done: onboarding, expenses, voting, trip queries, proactive facilitator, routing logic (58 examples), trip completeness levels 1-10, voice guide, 1:1 DM assistant, bidirectional app↔iMessage sync.
+- Key bugs fixed: conversation poisoning, noise filter blocking photos/DMs, Linq chatId reuse, facilitator spam check.
+
+#### 2. Marty Improvement Day — Beta Feedback + Deploy + Dev Interaction
+
+**PR:** [#3](https://github.com/cojakestein-sketch/tryps-docs/pull/3)
+
+- **beta-feedback-triage skill** — Reads all ClickUp tasks, finds unassigned/stuck/duplicate items semantically. Tested against real ClickUp data (found 7 unassigned bugs, 2 potential duplicates).
+- **tryps-deploy skill** — Our exact 6-step TestFlight flow: production branch → npm install → prebuild --clean → eas build → eas submit. No OTA.
+- **Dev Interaction Model doc** — How Marty triages issues, suggests code fixes, reviews PRs. Three modes: Watch, Triage, Fix. Autonomous vs. human-gated boundaries defined.
+- All 5 standup questions answered and pushed to main.
+
+---
+
+### Rizwan — Agent Intelligence + Marty Memory System
+
+1.
+2.
+3.
+4.
+
+---
+
+### Nadeem — Design-to-Code Bridge (Figma MCP)
+
+1.
+2.
+3.
+
+---
+
+## Focus Points for Tomorrow
+
+### Asif
+- Plan to move to **travel booking scope**
+- Look at the 16 MECE scopes — which 2 would be most helpful to scope out from Jake?
+
+### Rizwan
+-
+
+### Nadeem
+-
+
+---
+
+## Open Questions
+
+- **Figma integration (Nadeem / Asif):** Does it work? How do I test it myself?
+- **Which 2 MECE scopes should Jake prioritize for scoping next?**
