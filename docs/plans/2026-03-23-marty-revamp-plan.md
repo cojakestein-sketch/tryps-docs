@@ -1,7 +1,7 @@
 ---
 title: Marty Revamp — Full Plan
 date: 2026-03-23
-status: draft
+status: done
 assignee: jake
 ---
 
