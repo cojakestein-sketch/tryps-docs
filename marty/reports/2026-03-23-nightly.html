@@ -4,19 +4,39 @@
 <meta charset="utf-8">
 <title>Tryps Nightly Brief — March 23, 2026</title>
 <style>
-  @page { margin: 0.75in; size: letter; }
+  @page { margin: 0.5in; size: letter; }
   @media print {
-    body { font-size: 11pt; }
+    body { font-size: 10pt; padding: 0; }
     .no-print { display: none; }
-    section { page-break-inside: avoid; }
+    h1 { font-size: 20pt; margin-top: 0; }
+    h2 { font-size: 12pt; margin-top: 14px; padding-bottom: 3px; }
+    h3 { font-size: 10.5pt; margin-top: 8px; margin-bottom: 2px; }
+    p, li { font-size: 9.5pt; line-height: 1.35; }
+    .subtitle { margin-bottom: 12px; }
+    .dev-section { margin-bottom: 8px; }
+    .question p { margin: 2px 0; }
+    .tweet { padding: 3px 0; }
+    .repo { padding: 3px 0; }
+    .repo p { margin: 2px 0; }
+    .strategy-box { padding: 8px; margin-top: 6px; }
+    .strategy-box h3 { margin-top: 6px; }
+    .strategy-box p, .strategy-box li { margin: 2px 0; }
+    .cost-table td, .cost-table th { padding: 2px 6px; font-size: 9pt; }
+    /* Only avoid breaks on small elements, not whole sections */
+    .dev-section { page-break-inside: avoid; }
+    .tweet { page-break-inside: avoid; }
+    .repo { page-break-inside: avoid; }
+    .cost-table { page-break-inside: avoid; }
+    /* Keep headings with their content */
+    h2, h3 { page-break-after: avoid; }
   }
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
     max-width: 7in;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 20px 16px;
     color: #3D3530;
-    line-height: 1.5;
+    line-height: 1.4;
   }
   h1 {
     font-size: 24pt;
@@ -27,26 +47,29 @@
   .subtitle {
     font-size: 10pt;
     color: #888;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
   }
   h2 {
     font-size: 14pt;
     font-weight: 600;
     color: #3D3530;
     border-bottom: 1px solid #EDE4D8;
-    padding-bottom: 6px;
-    margin-top: 28px;
+    padding-bottom: 4px;
+    margin-top: 20px;
+    margin-bottom: 6px;
   }
-  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
-  p, li { font-size: 11pt; }
-  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 10px; margin-bottom: 3px; }
+  p { margin: 4px 0; }
+  li { font-size: 11pt; }
+  .tweet { padding: 5px 0; border-bottom: 1px solid #f0f0f0; }
   .tweet-author { font-weight: 600; }
   .tweet-text { color: #555; }
-  .repo { padding: 6px 0; }
+  .repo { padding: 4px 0; }
+  .repo p { margin: 2px 0; }
   .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
-  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 6px; }
   .cost-table td, .cost-table th {
-    padding: 4px 8px;
+    padding: 3px 6px;
     text-align: left;
     border-bottom: 1px solid #eee;
     font-family: 'Space Mono', monospace;
@@ -56,9 +79,11 @@
     background: #FFFDF8;
     border: 1px solid #EDE4D8;
     border-radius: 8px;
-    padding: 16px;
-    margin-top: 12px;
+    padding: 12px;
+    margin-top: 8px;
   }
+  .strategy-box h3 { margin-top: 8px; }
+  .strategy-box p { margin: 3px 0; }
   .print-btn {
     position: fixed;
     top: 20px;
@@ -74,11 +99,12 @@
     font-weight: 600;
   }
   .print-btn:hover { background: #B00618; }
-  .dev-section { margin-bottom: 20px; }
+  .dev-section { margin-bottom: 12px; }
   .dev-name { font-weight: 700; color: #D9071C; font-size: 12pt; }
-  .question { margin: 6px 0; padding-left: 12px; border-left: 2px solid #EDE4D8; }
-  ul { margin: 4px 0 8px 0; padding-left: 20px; }
-  li { margin-bottom: 3px; }
+  .question { margin: 4px 0; padding-left: 10px; border-left: 2px solid #EDE4D8; }
+  .question p { margin: 2px 0; }
+  ul { margin: 3px 0 6px 0; padding-left: 18px; }
+  li { margin-bottom: 2px; }
 </style>
 </head>
 <body>
