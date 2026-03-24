@@ -74,189 +74,194 @@
     font-weight: 600;
   }
   .print-btn:hover { background: #B00618; }
-  .note { background: #FFF8E7; border-left: 3px solid #F0C040; padding: 8px 12px; margin: 8px 0; font-size: 10pt; }
-  ul { margin: 4px 0; padding-left: 20px; }
-  li { margin-bottom: 4px; }
+  .dev-section { margin-bottom: 20px; }
+  .dev-name { font-weight: 700; color: #D9071C; font-size: 12pt; }
+  .question { margin: 6px 0; padding-left: 12px; border-left: 2px solid #EDE4D8; }
+  ul { margin: 4px 0 8px 0; padding-left: 20px; }
+  li { margin-bottom: 3px; }
 </style>
 </head>
 <body>
   <button class="print-btn no-print" onclick="window.print()">Print</button>
   <h1>Tryps Nightly Brief</h1>
   <div class="subtitle">
-    Monday, March 23, 2026 — Prepared by Marty at 7:50 PM ET
+    Monday, March 23, 2026 — Prepared by Marty at 8:35 PM ET
   </div>
 
-  <!-- ============================================ -->
+  <!-- SECTION 1: TOMORROW'S STANDUP -->
   <section>
-    <h2>1. Tomorrow's Standup (March 24)</h2>
+    <h2>1. Tomorrow's Standup (Tue Mar 24)</h2>
+    <p style="font-size:10pt;color:#888;">Questions generated from today's answers, ClickUp status, and GitHub activity. Each dev answers all 5 via Wispr Flow.</p>
 
-    <h3>Nadeem — output-backed-screen (48 SC)</h3>
-    <ol>
-      <li>Yesterday you said the output-backed-screen design is blocked on Krisna. Have you seen any progress from him? Have you pinged him or Jake about a timeline, or are you just waiting?</li>
-      <li>You listed 6 incomplete areas outside your scope (Stay tab, receipt scanner, calendar UI, Explore tab, onboarding, post-trip celebration). Which of those are you actively working on this week vs. which are parked? Give me a concrete list of what you'll touch before Friday.</li>
-      <li>You said dark mode and font scaling are the most broken things in the app. Rizwan opened PR #299 for font scaling on home &amp; activity components — have you reviewed it? Are you coordinating with him on font scaling or working independently?</li>
-      <li>Your ClickUp shows Travel DNA (P1) as "in progress" and Post-Trip Review as "for testing." What's the actual state of each — are they ready for Andreas to QA, or are there loose ends?</li>
-      <li>You have 0 of 48 SC filled in the tracking table from yesterday. Is that because the design isn't started, or because you haven't tracked what's ready? What's your honest SC count for output-backed-screen right now?</li>
-    </ol>
+    <div class="dev-section">
+      <div class="dev-name">Nadeem — output-backed-screen (48 SC)</div>
+      <div class="question">
+        <p><strong>1.</strong> Yesterday you said the output-backed-screen design is blocked on Krisna. Have you seen any progress from him? Have you pinged him or Jake about a timeline, or are you just waiting?</p>
+        <p><strong>2.</strong> You listed 6 incomplete areas outside your scope (Stay tab, receipt scanner, calendar UI, Explore tab, onboarding, post-trip celebration). Which are you actively working on this week vs. parked? Concrete list of what you'll touch before Friday.</p>
+        <p><strong>3.</strong> You said dark mode and font scaling are the most broken things in the app. Rizwan opened PR #299 for font scaling — have you reviewed it? Are you coordinating with him or working independently?</p>
+        <p><strong>4.</strong> ClickUp shows Travel DNA (P1) as "in progress" and Post-Trip Review as "for testing." What's the actual state — ready for Andreas to QA, or loose ends?</p>
+        <p><strong>5.</strong> You have 0 of 48 SC filled in the tracking table from yesterday. Is that because the design isn't started, or because you haven't tracked what's ready? Honest SC count right now?</p>
+      </div>
+    </div>
 
-    <h3>Asif — imessage-agent (57 SC)</h3>
-    <ol>
-      <li>Yesterday you said you'd connect with Rizwan about the cross-scope interface (SC-56, SC-57). Did that happen? If yes, what contracts did you agree on for DM delivery, vote override routing, and the shared rate limiter? If no, what blocked it?</li>
-      <li>You claimed 30-35 SC are complete and reported 44/57 ready for QA in the tracking table. That's a big jump. Walk me through exactly which SC moved from "implemented but not tested" to "ready for QA" since yesterday morning.</li>
-      <li>You discovered Linq media links expire after 1 hour and built a Supabase re-upload pipeline. Is that pipeline tested end-to-end in production, or just locally? What happens if the re-upload fails — is there a fallback or does the user see a broken image?</li>
-      <li>You flagged HMAC signature validation from Linq as inconsistent and said you'd address it yesterday. Is that security gap closed? What was the root cause?</li>
-      <li>The Jennifer Test (SC-28, SC-29) is blocked on Jake. Have you prepared the conversation transcript and routing logic doc so Jake can review them quickly, or are you waiting for him to come to you? What specifically does Jake need to look at?</li>
-    </ol>
+    <div class="dev-section">
+      <div class="dev-name">Asif — imessage-agent (57 SC)</div>
+      <div class="question">
+        <p><strong>1.</strong> Yesterday you said you'd connect with Rizwan about the cross-scope interface (SC-56, SC-57). Did that happen? What contracts did you agree on for DM delivery, vote override routing, and the shared rate limiter?</p>
+        <p><strong>2.</strong> You claimed 30-35 SC complete and reported 44/57 ready for QA. Walk me through exactly which SC moved from "implemented but not tested" to "ready for QA" since yesterday.</p>
+        <p><strong>3.</strong> You discovered Linq media links expire after 1 hour and built a Supabase re-upload pipeline. Is it tested end-to-end in production? What happens if re-upload fails?</p>
+        <p><strong>4.</strong> HMAC signature validation from Linq — is that security gap closed? What was the root cause?</p>
+        <p><strong>5.</strong> The Jennifer Test (SC-28, SC-29) is blocked on Jake. Have you prepared the conversation transcript and routing logic doc so Jake can review quickly?</p>
+      </div>
+    </div>
 
-    <h3>Rizwan — agent-intelligence (61 SC)</h3>
-    <ol>
-      <li>Yesterday you laid out a detailed three-layer memory architecture (user_memory, trip_memory, destination_patterns). Have you started implementing any of these tables in Supabase, or is it still in design/doc phase? Show me what exists in code today.</li>
-      <li>You reported 22/61 SC as "tested" in the tracking table but also said 35 are "not implemented." That means 22 tested + 0 implemented + 35 not implemented + 4 blocked = 61. How are 22 SC tested if you haven't written the memory tables yet? What exactly was tested?</li>
-      <li>You said you need a 30-minute session with Asif to spec the three cross-scope interfaces (DM delivery, vote override routing, shared rate limiter). Did that happen yesterday? If not, schedule it today — what time works for both of you?</li>
-      <li>Your two open PRs (#299 font scaling, #297 search-based address) have been open since March 19 with no merge. What's blocking them — are they waiting on review from Asif, or do they need changes? Get them merged or closed today.</li>
-      <li>You mentioned the NLP extraction pipeline should use Claude function calling at ~$0.001/message via Haiku. Have you built a prototype of this extraction pipeline, or is it still a research finding? What's your plan to go from research to a working SC this week?</li>
-    </ol>
-
-    <div class="note">
-      <strong>SC Tracking Table:</strong> Devs fill their rows at end of day. The getting-started prompts for Claude Code are included in the standup doc.
+    <div class="dev-section">
+      <div class="dev-name">Rizwan — agent-intelligence (61 SC)</div>
+      <div class="question">
+        <p><strong>1.</strong> You laid out a three-layer memory architecture. Have you started implementing any of these tables in Supabase, or still in design phase? Show what exists in code today.</p>
+        <p><strong>2.</strong> 22/61 SC as "tested" but also 35 "not implemented." How are 22 SC tested if you haven't written the memory tables yet? What exactly was tested?</p>
+        <p><strong>3.</strong> You said you need 30 min with Asif to spec three cross-scope interfaces. Did that happen yesterday? If not, schedule it today.</p>
+        <p><strong>4.</strong> PRs #299 (font scaling) and #297 (search-based address) open since Mar 19 with no merge. What's blocking them? Get them merged or closed today.</p>
+        <p><strong>5.</strong> The NLP extraction pipeline using Claude function calling at ~$0.001/msg via Haiku — built a prototype, or still research? Plan to go from research to working SC this week?</p>
+      </div>
     </div>
   </section>
 
-  <!-- ============================================ -->
+  <!-- SECTION 2: TECH TWITTER -->
   <section>
     <h2>2. Tech Twitter</h2>
 
     <div class="tweet">
-      <span class="tweet-author">@karpathy</span> —
-      <span class="tweet-text">Says he feels "nervous" when he doesn't use up all his AI tokens — describes a new dynamic where engineers are the bottleneck, not compute. Forbes coverage: "AI Agents Wrote 80% of Karpathy's Code."</span>
+      <span class="tweet-author">@karpathy</span> — <span class="tweet-text">Reveals "Dobby the Elf Claw" — his personal AI agent that manages lights, security cameras, deliveries, and household chores. Detailed walkthrough of everyday home automation with AI agents.</span>
+      <br><span style="font-size:9pt;color:#aaa;">India Today, Business Insider — trending today</span>
     </div>
 
     <div class="tweet">
-      <span class="tweet-author">@karpathy</span> —
-      <span class="tweet-text">Shared his home AI agent "Dobby the Elf Claw" that monitors his pool and tracks packages. Built on OpenClaw. (Business Insider, India Today coverage)</span>
+      <span class="tweet-author">@karpathy</span> — <span class="tweet-text">"Humans are the bottleneck in AI research." Ongoing thread about AI-generated training improvements outpacing human ability to evaluate them. ~20 automated changes all transferred to larger models.</span>
+      <br><span style="font-size:9pt;color:#aaa;">WinBuzzer — covered today</span>
     </div>
 
     <div class="tweet">
-      <span class="tweet-author">@elonmusk</span> —
-      <span class="tweet-text">Unveiled "Terafab" — a joint Tesla/SpaceX/xAI semiconductor fab in Austin aimed at producing a terawatt of compute/year. Massive news across CBS, Reuters, Yahoo Finance, The Register.</span>
+      <span class="tweet-author">@karpathy</span> — <span class="tweet-text">Says he feels "nervous" when he doesn't use up all his AI tokens. Frames it as a productivity signal — if you're not burning through your AI budget, you're not leveraging it enough.</span>
+      <br><span style="font-size:9pt;color:#aaa;">Business Insider — today</span>
     </div>
 
     <div class="tweet">
-      <span class="tweet-author">@AnthropicAI</span> —
-      <span class="tweet-text">Released "Dispatch" — launch Claude Cowork tasks from anywhere via phone. Also fighting Pentagon supply-chain-risk designation in court; Silicon Valley rallying behind them. (TechCrunch, CNN, NYT)</span>
+      <span class="tweet-author">@sama / OpenAI</span> — <span class="tweet-text">Steps down as board chair of Helion Energy (fusion startup he's backed since 2015) as OpenAI enters "advanced talks" to buy electricity from Helion at significant scale.</span>
+      <br><span style="font-size:9pt;color:#aaa;">Reuters, TechCrunch — breaking today</span>
     </div>
 
     <div class="tweet">
-      <span class="tweet-author">@OpenAI</span> —
-      <span class="tweet-text">Plans to double workforce to 8,000 by end of 2026. Also introducing ads to free/Go ChatGPT users in the US. (Reuters)</span>
+      <span class="tweet-author">@sama / OpenAI</span> — <span class="tweet-text">"AI will be sold like electricity and water." From BlackRock Infrastructure Summit: outlined usage-based pricing model replacing subscriptions.</span>
+      <br><span style="font-size:9pt;color:#aaa;">Times of India — recirculated today</span>
     </div>
 
     <div class="tweet">
-      <span class="tweet-author">@pmarca</span> —
-      <span class="tweet-text">His "zero introspection" interview clip went viral this week. The internet had a field day — Business Insider, Fast Company, The Nation all running critical takes. He reposted the clip with one word: "Well."</span>
+      <span class="tweet-author">@AnthropicAI</span> — <span class="tweet-text">Claude Code and Cowork updated to use your computer directly. New "Dispatch" feature lets you kick off and monitor desktop tasks from your phone.</span>
+      <br><span style="font-size:9pt;color:#aaa;">Engadget, Forbes — announced today</span>
     </div>
 
     <div class="tweet">
-      <span class="tweet-author">Ecosystem</span> —
-      <span class="tweet-text">OpenClaw's "ChatGPT moment" — Axios reports Nvidia (NemoClaw), Anthropic (Dispatch), Perplexity, and Snowflake all racing to build on the agent framework. CNBC notes concern about AI model commoditization. China's adoption accelerating. (Axios, CNBC, NYT)</span>
+      <span class="tweet-author">@AnthropicAI</span> — <span class="tweet-text">Pentagon court filing: Anthropic pushes back on "unacceptable national security risk" label. Two sworn declarations submitted to California federal court.</span>
+      <br><span style="font-size:9pt;color:#aaa;">TechCrunch — today</span>
     </div>
 
-    <div class="note">
-      <strong>@stakejein:</strong> No recent posts surfaced via Brave Search. Consider checking X directly.
+    <div class="tweet">
+      <span class="tweet-author">@elonmusk</span> — <span class="tweet-text">Unveils "Terafab" — semiconductor fabrication megaproject in Austin. Goal: 100-200 GW of computing on Earth, 1 TW in space. Combines Tesla, SpaceX, and xAI resources.</span>
+      <br><span style="font-size:9pt;color:#aaa;">TechCrunch, CBS News, The Register — dominating today</span>
     </div>
+
+    <p style="font-size:9pt;color:#999;margin-top:12px;">Sources: Brave Search. No direct tweet links — consider setting up twit.sh x402 integration for direct Twitter API access. @stakejein and @pmarca had no significant posts surfaced today.</p>
   </section>
 
-  <!-- ============================================ -->
+  <!-- SECTION 3: TRENDING REPOS -->
   <section>
     <h2>3. Trending GitHub Repos</h2>
 
     <div class="repo">
-      <span class="repo-name">bytedance/deer-flow</span> — ⭐ 39,177 (+3,569 today)<br>
-      Open-source SuperAgent harness: researches, codes, creates. Sandboxes, memories, tools, skills, subagents, message gateway. Python.<br>
-      <em>Why it matters:</em> Direct comp to our Phase 3 agent layer. Their memory + subagent architecture is worth studying for Rizwan's agent-intelligence scope. The "message gateway" pattern is exactly what Asif needs for Linq↔agent coordination.
+      <div class="repo-name">bytedance/deer-flow</div>
+      <div style="font-size:10pt;color:#888;">★ 39,283 · +3,546 today · Python</div>
+      <p>Open-source SuperAgent harness with sandboxes, memories, tools, skills, subagents, and message gateway. Handles tasks from minutes to hours.</p>
+      <p style="font-size:10pt;"><strong>Why it matters:</strong> Directly comparable to OpenClaw's architecture. Their memory/skill/subagent patterns could inform Rizwan's agent intelligence layer. ByteDance open-sourcing this signals agent frameworks are commoditizing fast.</p>
     </div>
 
     <div class="repo">
-      <span class="repo-name">Crosstalk-Solutions/project-nomad</span> — ⭐ 13,329 (+4,148 today)<br>
-      Self-contained offline survival computer with embedded AI. TypeScript.<br>
-      <em>Why it matters:</em> Interesting pattern for offline-first AI with local knowledge bases — relevant if we ever need trip agents to work without connectivity (airplane mode use case).
+      <div class="repo-name">affaan-m/everything-claude-code</div>
+      <div style="font-size:10pt;color:#888;">Trending today</div>
+      <p>Performance optimization system for Claude Code — skills, instincts, memory, security, and research-first development patterns.</p>
+      <p style="font-size:10pt;"><strong>Why it matters:</strong> Your devs are using Claude Code agent teams daily. This collects best practices for getting more out of them. Worth sharing with Asif and Rizwan.</p>
     </div>
 
     <div class="repo">
-      <span class="repo-name">affaan-m/everything-claude-code</span> — Trending<br>
-      Agent harness performance optimization: skills, instincts, memory, security for Claude Code, Codex, and beyond.<br>
-      <em>Why it matters:</em> Directly relevant to our dev workflow — the team is using Claude Code agent teams daily. Skills/memory patterns here could improve our standup + spec pipeline.
+      <div class="repo-name">browser-use/browser-use</div>
+      <div style="font-size:10pt;color:#888;">★ 83,616 · +1,157 today · Python</div>
+      <p>Make websites accessible for AI agents. Automate browser-based tasks.</p>
+      <p style="font-size:10pt;"><strong>Why it matters:</strong> P3 (agent layer with Duffel flights, automated bookings) will need browser automation for travel research. This is the leading tool, still growing fast.</p>
     </div>
   </section>
 
-  <!-- ============================================ -->
+  <!-- SECTION 4: DEEP DIVE -->
   <section>
-    <h2>4. Deep Dive: The OpenClaw Agent Wave — What It Means for Tryps</h2>
-
-    <div class="note">
-      No 3pm topic suggestion was sent today (first run of this skill). Topic auto-selected based on today's biggest signal: the OpenClaw ecosystem explosion and its relevance to Phase 3.
-    </div>
+    <h2>4. Deep Dive: Dan McAdams' Narrative Identity &amp; Travel DNA</h2>
+    <p style="font-size:9pt;color:#888;">Topic from Jake's late-night brain dump (Mar 23, ~1:30am). No 3pm topic suggestion response found — defaulting to this.</p>
 
     <h3>What It Is</h3>
-    <p>OpenClaw is an open-source AI agent framework that's having its "ChatGPT moment." In the past week, Nvidia launched NemoClaw, Anthropic released Dispatch (launch agent tasks from mobile), Baidu built on it in China, and CNBC is reporting that AI models are getting commoditized because developers are running cheap local models via OpenClaw instead of paying for cloud API calls. GitHub's trending page is dominated by agent frameworks (deer-flow, browser-use, TradingAgents, hermes-agent).</p>
+    <p>Dan P. McAdams (Northwestern) argues personality operates on three levels: <strong>dispositional traits</strong> (Big Five), <strong>characteristic adaptations</strong> (context-dependent goals, values, motivations), and <strong>narrative identity</strong> (the internalized life story that gives a person unity and purpose). Traditional personality stops at traits. McAdams says the story you tell about yourself — redemption arcs, generativity themes, how you connect past to future — is a distinct, measurable layer of who you are.</p>
 
-    <h3>Why It Matters at This Stage of Tryps</h3>
-    <p>Tryps' Phase 3 roadmap (agent layer — Duffel flights, Tryps Cash, X-402 micropayments) is building exactly what the market is now racing toward. Asif's iMessage agent and Rizwan's agent-intelligence work are ahead of the curve — most companies don't have a working agent in a real consumer product yet. The commoditization of models also means our agent layer will get cheaper to run over time, which makes the "Tryps Cash" wallet model more viable.</p>
+    <h3>Why It Matters for Tryps Right Now</h3>
+    <p>Travel DNA already captures the first level (Big Five-adjacent traits via vibe questions). McAdams' framework reveals two richer layers. <strong>Characteristic adaptations</strong> = what someone wants from this specific trip, which shifts per group and context. <strong>Narrative identity</strong> = why someone travels at all. If the agent understands not just "likes beaches" but "is trying to be more spontaneous after years of overplanning," it makes fundamentally better recommendations and vote-on-behalf decisions.</p>
 
     <h3>Key Takeaways</h3>
     <ul>
-      <li><strong>deer-flow's architecture</strong> (memories + sandboxes + subagents + message gateway) maps almost 1:1 to what Rizwan and Asif are building separately. Worth a 30-min team review.</li>
-      <li><strong>Model commoditization is good for us.</strong> If Haiku-class models drop to near-zero cost, our per-message agent inference ($0.001/msg) becomes effectively free. Build the agent infra now, costs shrink later.</li>
-      <li><strong>Anthropic's Dispatch pattern</strong> (trigger agent tasks from phone) is exactly what the Linq→iMessage→agent pipeline needs. Study their API design for Asif's cross-scope interface.</li>
-      <li><strong>Competitive window is open.</strong> Most agent frameworks are horizontal (any task). A vertical agent for group trip planning with Travel DNA memory is defensible.</li>
-      <li><strong>Karpathy's "Dobby" agent</strong> running personal tasks at home normalizes the pattern. Consumers are ready for always-on agents that do things proactively — which is Tryps' entire vision for trip planning.</li>
+      <li><strong>Travel DNA → Three Tiers:</strong> Tier 1 = vibe quiz (traits), Tier 2 = trip intent parsing (adaptations), Tier 3 = cross-trip pattern recognition (narrative). Rizwan's memory architecture loosely mirrors this — user_memory ≈ traits, trip_memory ≈ adaptations, destination_patterns ≈ narrative.</li>
+      <li><strong>The "Why" Question:</strong> Add one open-ended question to trip creation: "What are you hoping this trip will be?" NLP extraction from this single question yields richer signals than 20 A/B preference cards.</li>
+      <li><strong>Narrative ≠ Static:</strong> McAdams emphasizes narratives evolve. The agent should weight recent trip signals higher — Rizwan's recency-based contradiction resolution already handles this.</li>
+      <li><strong>Group Narrative Tension:</strong> When 6 people's narratives conflict, McAdams' generativity concept maps to the "Ultimate Planner" archetype. The agent should amplify planners' contributions while protecting "I Don't Care-ers" from decision fatigue.</li>
+      <li><strong>Competitive Moat:</strong> No travel app thinks about personality at this depth. If Tryps builds the richest traveler personality graph — traits + adaptations + narrative — that's a genuine data moat.</li>
     </ul>
 
-    <p><strong>Resource:</strong> <a href="https://www.axios.com/2026/03/23/openclaw-agents-nvidia-anthropic-perplexity">Axios: OpenClaw agents inspire Nvidia, Anthropic, Perplexity, Snowflake</a></p>
+    <p style="font-size:10pt;"><strong>Resource:</strong> McAdams, D.P. (2001). "The Psychology of Life Stories" — <em>Review of General Psychology</em>. The foundational paper on narrative identity as a personality layer.</p>
   </section>
 
-  <!-- ============================================ -->
+  <!-- SECTION 5: STRATEGY CHECK -->
   <section>
     <h2>5. Strategy Check</h2>
     <div class="strategy-box">
       <h3>Where We Are</h3>
-      <p>Week 3 of the refined scope plan. Three devs are building against 166 total SC across three scopes (output-backed-screen 48, imessage-agent 57, agent-intelligence 61). Asif is furthest along with 44/57 SC ready for QA. Rizwan has architecture designed but only 22/61 tested (and his testing numbers are suspicious — pressed him on that in tomorrow's standup). Nadeem is blocked on Krisna's designs with 0/48 SC started.</p>
+      <p>End of week 3. Three devs against refined scopes from the Mar 20 MECE plan. Asif is furthest ahead (44/57 SC ready for QA on imessage-agent). Rizwan has architecture designed but limited code (22/61 "tested" is suspect). Nadeem is fully blocked on Krisna's design for output-backed-screen (0/48 SC started) and filling time with app-wide cleanup. The state.md scope tracker shows 0 scopes — the generation script isn't running, so we have no automated progress visibility.</p>
 
       <h3>Top 3 Risks</h3>
       <ol>
-        <li><strong>Nadeem is stalled.</strong> 0 SC on his 48-SC scope. Blocked on Krisna's design with no timeline. If the design doesn't land this week, his entire scope slips past April 2. This is the highest-urgency item.</li>
-        <li><strong>Rizwan's numbers don't add up.</strong> 22 "tested" SC with 35 "not implemented" and 0 "implemented" — the math works but the meaning doesn't. What exactly was tested if the memory tables aren't built? Tomorrow's Q2 pushes on this directly.</li>
-        <li><strong>Cross-scope coordination (Asif ↔ Rizwan).</strong> Three shared interfaces (DM delivery, vote override routing, shared rate limiter) still undefined. Both have flagged it for days. If they don't sit down this week, SC-56/57/59/60/61 all stay blocked.</li>
+        <li><strong>Nadeem is stalled.</strong> 48 SC scope, 0 started, design dependency on Krisna with no timeline. He's doing useful cleanup (dark mode, font scaling) but none advances his assigned scope. If design doesn't land by mid-week, he has 3 days for 48 SC of screens. That's not happening.</li>
+        <li><strong>Rizwan's numbers don't add up.</strong> 35 "not implemented" + 22 "tested" + 0 "implemented" — how do you test what you haven't built? Tomorrow's Q2 probes this. If those 22 are research artifacts, actual code progress is much lower.</li>
+        <li><strong>Cross-scope interface keeps slipping.</strong> SC-56/57 (Asif) and SC-59/60/61 (Rizwan) are blocked on each other. They said they'd connect yesterday. If this session keeps slipping, both scopes have a 5-8 SC gap at deadline.</li>
       </ol>
 
       <h3>Where Jake Should Focus</h3>
       <ul>
-        <li><strong>Unblock Krisna.</strong> Get a timeline commitment on the output-backed-screen design. If Krisna can't deliver this week, consider scoping Nadeem onto the 6 cleanup items he identified (Stay tab, receipt scanner, calendar UI, Explore, onboarding, post-trip celebration) so he's not idle.</li>
-        <li><strong>Jennifer Test review.</strong> Asif needs you to review a conversation transcript and routing logic doc to validate SC-28/29. He's waiting on you — don't let it become the bottleneck.</li>
-        <li><strong>Force the Asif-Rizwan session.</strong> If they haven't scheduled the 30-min cross-scope interface meeting by tomorrow's standup, mandate it.</li>
+        <li><strong>Unblock Nadeem:</strong> Get a timeline from Krisna on output-backed-screen designs. If it's 2+ days out, reassign Nadeem or start with wireframes.</li>
+        <li><strong>Jennifer Test review:</strong> Asif has SC-28/29 blocked on you. Ask him for the transcript and routing logic doc tomorrow. 2 SC shouldn't be blocked a full week.</li>
+        <li><strong>Audit Rizwan's SC counts:</strong> The 22 "tested" claim needs scrutiny. Are they code-tested or research-validated?</li>
       </ul>
 
-      <h3>Marty's #1 Priority</h3>
-      <p><strong>Nadeem's idle time.</strong> He has the second-largest scope (48 SC) and has touched zero of them. Every day he waits for a Figma design is a day lost against April 2. Either Krisna delivers a design by Wednesday, or we re-scope Nadeem onto the cleanup backlog he already identified. The other two devs are executing (even if Rizwan's numbers need scrutiny) — Nadeem literally can't start.</p>
-    </div>
-
-    <div class="note">
-      <em>Jake — correct me where I'm wrong. This is how I stay calibrated. Voice memo or text, whatever's fastest.</em>
+      <h3>What I Think the #1 Priority Is</h3>
+      <p><strong>Get Nadeem unblocked.</strong> Largest gap between assigned work (48 SC) and progress (0 SC). Every day the design is delayed, probability of shipping drops. Asif is executing. Rizwan is at least building architecture. Nadeem is treading water. The Krisna dependency needs a forcing function — either a deadline or a plan B.</p>
     </div>
   </section>
 
-  <!-- ============================================ -->
+  <!-- SECTION 6: COST SNAPSHOT -->
   <section>
     <h2>6. Cost Snapshot</h2>
+    <p>Detailed cost tracking not yet configured. Rough estimates based on session patterns:</p>
     <table class="cost-table">
-      <tr><th>Category</th><th>Estimate</th></tr>
-      <tr><td>Today's sessions</td><td>—</td></tr>
-      <tr><td colspan="2" style="font-size:9pt; color:#888; font-family: inherit;">
-        Cost tracking not yet configured — session-level token logging isn't being written to disk.
-        To enable: configure <code>agents.defaults.logging.tokens: true</code> in openclaw.json, then parse daily logs.
-        This is a Phase 5 item per the revamp plan.
-      </td></tr>
+      <tr><th>Category</th><th>Estimate</th><th>Notes</th></tr>
+      <tr><td>This report session</td><td>~$0.80–1.20</td><td>Opus, ~60k ctx, web searches</td></tr>
+      <tr><td>Standup generator (8pm)</td><td>~$0.40–0.60</td><td>Opus cron, standup + ClickUp reads</td></tr>
+      <tr><td>Main session (Jake DMs)</td><td>~$2–5</td><td>Typical conversation length</td></tr>
+      <tr><td>Heartbeats + misc crons</td><td>~$0.50</td><td>Periodic checks, memory ops</td></tr>
+      <tr><td><strong>Est. daily total</strong></td><td><strong>~$4–8</strong></td><td>Need proper per-session logging</td></tr>
     </table>
+    <p style="font-size:9pt;color:#999;margin-top:8px;">To get accurate costs: configure per-session token logging in OpenClaw or parse the Anthropic usage dashboard. Phase 5 revamp item.</p>
   </section>
 
 </body>
