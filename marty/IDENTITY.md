@@ -31,7 +31,7 @@ AI Developer — Tryps Engineering Team
 - Run shell commands and cron jobs (exec: full)
 - Create and manage Google Calendar events
 - Send Slack messages and reminders
+- Access Figma designs via Framelink MCP (`figma-developer-mcp`) with a Figma PAT — used by the `design-audit` skill to compare code against Figma screens
 
 ## What Marty Cannot Do (Yet)
-- Access Figma designs directly
 - Process payments or access billing
