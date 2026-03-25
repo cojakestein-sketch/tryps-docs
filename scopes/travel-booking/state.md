@@ -12,6 +12,8 @@ updated_by: jake
 review_status: reviewed
 ---
 
+> Parent: [[travel-booking/objective|Travel Booking Objective]]
+
 ## Current State
 
 Spec session complete (2026-03-23). 58 success criteria across 6 booking categories (flights, stays, restaurants, events, transportation, activities), API infrastructure, payment handoff, multi-person coordination, edge cases, and existing flow preservation.

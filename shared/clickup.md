@@ -51,19 +51,19 @@ Each scope from tryps-docs maps to a ClickUp task. Subtasks are created by devs 
 
 | Scope ID | Phase | Assignee | ClickUp Status | ClickUp Task ID | Dates | Notes |
 |----------|-------|----------|---------------|-----------------|-------|-------|
-| p1-post-trip-review | P1 | Nadeem | for testing | `86e0emu4g` | Mar 25 → Apr 2 | 39 criteria |
-| p1-travel-dna | P1 | Nadeem | in progress | `86e0emu52` | Mar 24 → Mar 31 | 25 criteria |
+| [[post-trip-retention/objective|p1-post-trip-review]] | P1 | Nadeem | for testing | `86e0emu4g` | Mar 25 → Apr 2 | 39 criteria |
+| [[travel-identity/objective|p1-travel-dna]] | P1 | Nadeem | in progress | `86e0emu52` | Mar 24 → Mar 31 | 25 criteria |
 | p1-claude-connector | P1 | Nadeem | needs spec | `86e0emu56` | Mar 22 → Apr 5 | 36 criteria |
-| p1-notifications-voting | P1 | Nadeem | needs spec | `86e0emu5q` | Mar 22 → Mar 30 | 41 criteria |
-| p1-core-flows | P1 | Nadeem | — | — | Mar 9 → Mar 22 | No scope ticket — existing feature tickets cover this |
-| p1-recommendations | P1 | Nadeem | needs spec | `86e05v28h` | Mar 28 → Apr 5 | (was "Friend-Based Activity Recs") |
-| p1-tooltips-teaching | P1 | Nadeem | needs spec | `86e0emu6c` | Mar 22 → Mar 28 | |
-| p2-stripe-payments | P2 | Asif | to do | `86e0emu70` | Mar 25 → Apr 8 | 12 criteria |
-| p2-linq-imessage | P2 | Asif | needs spec | `86e0emu7g` | Mar 22 → Apr 5 | 41 criteria |
-| p2-connectors | P2 | Asif | needs spec | `86e0emu86` | Apr 1 → Apr 12 | 25 criteria |
-| p3-vote-on-behalf | P3 | Rizwan | needs spec | `86e0ajhte` | Apr 5 → Apr 15 | (was "Agent Proxy Voting") |
+| [[group-decision-making/objective|p1-notifications-voting]] | P1 | Nadeem | needs spec | `86e0emu5q` | Mar 22 → Mar 30 | 41 criteria |
+| [[core-trip-experience/objective|p1-core-flows]] | P1 | Nadeem | — | — | Mar 9 → Mar 22 | No scope ticket — existing feature tickets cover this |
+| [[agent-intelligence/objective|p1-recommendations]] | P1 | Nadeem | needs spec | `86e05v28h` | Mar 28 → Apr 5 | (was "Friend-Based Activity Recs") |
+| [[onboarding-teaching/objective|p1-tooltips-teaching]] | P1 | Nadeem | needs spec | `86e0emu6c` | Mar 22 → Mar 28 | |
+| [[payments-infrastructure/objective|p2-stripe-payments]] | P2 | Asif | to do | `86e0emu70` | Mar 25 → Apr 8 | 12 criteria |
+| [[imessage-agent/objective|p2-linq-imessage]] | P2 | Asif | needs spec | `86e0emu7g` | Mar 22 → Apr 5 | 41 criteria |
+| [[travel-identity/objective|p2-connectors]] | P2 | Asif | needs spec | `86e0emu86` | Apr 1 → Apr 12 | 25 criteria |
+| [[agent-intelligence/objective|p3-vote-on-behalf]] | P3 | Rizwan | needs spec | `86e0ajhte` | Apr 5 → Apr 15 | (was "Agent Proxy Voting") |
 | p3-pay-on-behalf | P3 | Rizwan | needs spec | `86e0emu8e` | Apr 8 → Apr 18 | |
-| p3-duffel-apis | P3 | Rizwan | needs spec | `86e06y10g` | Apr 10 → Apr 20 | (was "Group Flight Search") |
+| [[travel-booking/objective|p3-duffel-apis]] | P3 | Rizwan | needs spec | `86e06y10g` | Apr 10 → Apr 20 | (was "Group Flight Search") |
 | p3-logistics-agent | P3 | Rizwan | needs spec | `86e0emu8z` | Apr 12 → Apr 22 | 26 criteria |
 | ~~p4-brand-strategy~~ | — | — | REMOVED | — | — | Moved to `brand-and-gtm/` (2026-03-24) |
 | ~~p4-wispr-playbook~~ | — | — | REMOVED | — | — | Moved to `brand-and-gtm/` (2026-03-24) |

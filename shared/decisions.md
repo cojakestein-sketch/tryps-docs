@@ -2,7 +2,7 @@
 
 > Strategic decisions and their reasoning. Jake writes. Newest first.
 
-## 2026-03-18: Unified memory architecture
+## 2026-03-18: Unified memory architecture ([[agent-intelligence/objective|Agent Intelligence]])
 
 **Decision:** tryps-docs becomes the shared brain. Spec-only model with frontmatter status. Global CLAUDE.md with @import loads shared state into every session.
 **Reason:** Memory was fragmented across 5 silos. Sessions started blind. 76% of tryps-docs files were empty scaffolding from the old 10-step pipeline.

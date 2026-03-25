@@ -27,9 +27,9 @@ Friends / Advisors (no reporting line)
 | Name | Role | Email | Slack | Timezone | Current Focus |
 |------|------|-------|-------|----------|---------------|
 | Jake Stein | Product / Founder | jake@jointryps.com | @jake | America/New_York (ET) | Specs, memory system, strategy, brand |
-| Asif Raza | Lead Dev | asif.raza1013@gmail.com | @asif.raza1013 | Asia/Karachi (PKT) | P2 scopes |
-| Nadeem Khan | Dev | engineernadeemkhan120@gmail.com | @engineernadeemkhan120 | Asia/Karachi (PKT) | P1 scopes |
-| Rizwan Atta | Dev | rizwanatta@protonmail.com | @rizwanatta | Asia/Karachi (PKT) | P3 scopes (agent layer) |
+| Asif Raza | Lead Dev | asif.raza1013@gmail.com | @asif.raza1013 | Asia/Karachi (PKT) | [[imessage-agent/objective|iMessage Agent]], [[travel-booking/objective|Travel Booking]] |
+| Nadeem Khan | Dev | engineernadeemkhan120@gmail.com | @engineernadeemkhan120 | Asia/Karachi (PKT) | [[output-backed-screen/objective|Output-Backed Screen]], [[core-trip-experience/objective|Core Trip Experience]] |
+| Rizwan Atta | Dev | rizwanatta@protonmail.com | @rizwanatta | Asia/Karachi (PKT) | [[agent-intelligence/objective|Agent Intelligence]] |
 | Andreas Kurniawan | QA | andreas@kurniawan.ceo | @andreas | Asia/Bangkok (ICT) | Validates scopes against criteria |
 
 ## Designers (Adhoc)

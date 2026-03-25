@@ -10,6 +10,8 @@ updated_by: jake
 review_status: reviewed
 ---
 
+> Parent: [[imessage-agent/objective|iMessage Agent Objective]]
+
 ## Current State
 
 Spec updated to 57 criteria after audit on 2026-03-22. Voice & tone guide drafted and approved by Jake. Linq iMessage integration exists and works, needs system prompt architecture upgrades. Basic trip context and trip queries are partially working. App-iMessage sync is partial. Linq native polling coming in next few weeks — build text Q&A as baseline, architect for plug-in.

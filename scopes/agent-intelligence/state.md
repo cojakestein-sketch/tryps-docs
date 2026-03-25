@@ -11,6 +11,8 @@ updated_by: rizwan
 review_status: reviewed
 ---
 
+> Parent: [[agent-intelligence/objective|Agent Intelligence Objective]]
+
 ## Current State
 
 22 of 61 SC ready for QA as of 2026-03-24. Supabase local dev environment fully operational (130+ migrations passing). Three edge functions built and tested: **extract-memory-signals** (GPT-4o-mini for NLP extraction), **vote-on-behalf** (infers votes from preference profile), and **recommend-activities**. All supporting DB tables, triggers, and RPC functions are in place — user_memory, trip_memory, destination_patterns, vote_inferences, signal_extraction_log, activity_templates, recommended_activities. Five DB triggers implemented: trg_vote_override, trg_activity_adoption, trg_post_trip_favorite, trg_guard_explicit_vote, trg_sync_vibe_to_memory. Test script passing 28/28 checks. Agent demo UI (Next.js) showcasing the full pipeline (extract → profile → recommend → vote → summary). Seed data in place for test users, trip, poll, activities, vibe scores, and memory signals.

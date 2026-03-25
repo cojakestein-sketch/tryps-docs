@@ -17,6 +17,8 @@ links:
   memory_architecture: ./memory-architecture.md
 ---
 
+> Parent: [[agent-intelligence/objective|Agent Intelligence Objective]]
+
 # Agent Intelligence — Spec
 
 ## What
@@ -221,8 +223,8 @@ Without intelligence, Tryps is a trip organizer. With it, Tryps is a travel agen
 
 | Scope | What's Needed | Blocks |
 |-------|--------------|--------|
-| travel-identity (#4) | Vibe quiz data (already built). Full Travel DNA enriches memory but not required. | SC-6, SC-8, SC-19 (vibe quiz as minimum signal) |
-| imessage-agent (#7) | System prompt extension points (SC-34). Memory injects into those slots. DM delivery pipeline for batch DMs. Vote override routing. Recommendation serving in iMessage. | SC-13 (memory injection), SC-41 (recs in iMessage), SC-59 (DM pipeline), SC-60 (vote override routing), SC-61 (rate limiting). **Asif and Rizwan must define the shared interface before implementation.** |
+| [[travel-identity/objective|travel-identity]] (#4) | Vibe quiz data (already built). Full Travel DNA enriches memory but not required. | SC-6, SC-8, SC-19 (vibe quiz as minimum signal) |
+| [[imessage-agent/objective|imessage-agent]] (#7) | System prompt extension points (SC-34). Memory injects into those slots. DM delivery pipeline for batch DMs. Vote override routing. Recommendation serving in iMessage. | SC-13 (memory injection), SC-41 (recs in iMessage), SC-59 (DM pipeline), SC-60 (vote override routing), SC-61 (rate limiting). **Asif and Rizwan must define the shared interface before implementation.** |
 | brand-design-system (#11) | Voice guide rules apply to vote-on-behalf DM copy | SC-20 (batch DM format) |
 
 ## References
@@ -237,6 +239,6 @@ Without intelligence, Tryps is a trip organizer. With it, Tryps is a travel agen
 
 ### Context
 - Strategy intake: `docs/p2-p3-strategy-intake.md` — Q19-Q27 (agent layer vision), Q33-Q38 (sequencing, cut decisions)
-- iMessage Agent: `scopes/imessage-agent/spec.md` — SC-34 (extension points for memory injection)
+- iMessage Agent: [[imessage-agent/spec|scopes/imessage-agent/spec.md]] — SC-34 (extension points for memory injection)
 - Memory architecture: `scopes/agent-intelligence/memory-architecture.md` — technical reference for data model and algorithm
 - Brand voice: `scopes/imessage-agent/voice-guide.md` — rules for vote-on-behalf DM copy

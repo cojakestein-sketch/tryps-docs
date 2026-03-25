@@ -2,6 +2,7 @@
 
 > Source of truth for brand decisions. Visual brand book lives in Figma.
 > Code tokens live in `t4/utils/theme.ts`. This file bridges both.
+> See also: [[brand-strategy]] | [[brand-and-gtm/README|Brand & GTM workspace]]
 > Last updated: 2026-03-18
 
 ## Identity

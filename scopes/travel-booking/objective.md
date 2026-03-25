@@ -46,7 +46,14 @@ The core promise of Tryps is: say what you want in natural language and it gets 
 
 ## Dependencies
 
-- **Payments Infrastructure (scope 9):** Travel Booking delegates all charges to scope 9. The handoff interface (book request → payment → confirmation) must be designed jointly. Travel Booking cannot finalize bookings until scope 9 has a working Stripe integration.
+- **[[payments-infrastructure/objective|Payments Infrastructure]] (scope 9):** Travel Booking delegates all charges to scope 9. The handoff interface (book request → payment → confirmation) must be designed jointly. Travel Booking cannot finalize bookings until scope 9 has a working Stripe integration.
 - **External API Access:** Some providers (Resy, potentially Ticketmaster purchase API) require partnership agreements or API key approval. Jake needs to make calls — tracked in services.md.
 - **Logistics Agent (scope 15, post-April 2):** Will be the primary consumer of Travel Booking's search/book interfaces for autonomous orchestration. Travel Booking must expose clean interfaces that scope 15 can call later.
-- **iMessage Agent (scope 7):** Can trigger booking flows via text. Travel Booking provides the execution; iMessage Agent provides the conversational interface.
+- **[[imessage-agent/objective|iMessage Agent]] (scope 7):** Can trigger booking flows via text. Travel Booking provides the execution; iMessage Agent provides the conversational interface.
+
+## Scope Files
+- [[travel-booking/spec|Spec]]
+- [[travel-booking/state|Current State]]
+- [[travel-booking/design|Design Brief]]
+- [[travel-booking/testing|QA Criteria]]
+- [[travel-booking/services|Service Layer]]

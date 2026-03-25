@@ -1,6 +1,7 @@
 # Tryps Brand Strategy
 
 > Internal strategy document. Every visual and verbal decision in the brand book traces back to this doc.
+> See also: [[brand]] | [[brand-and-gtm/01-brand-book/objective|Brand Book]]
 > Owner: Jake Stein | Consultant: Trent (Open Invite Studio)
 > Created: 2026-03-20 | Updated: 2026-03-24 (post-Sean lunch session)
 > Status: Draft — pending Trent review

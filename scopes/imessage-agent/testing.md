@@ -8,6 +8,8 @@ last_tested: null
 last_updated: 2026-03-21
 ---
 
+> Parent: [[imessage-agent/objective|iMessage Agent Objective]]
+
 # iMessage Agent — Testing Plan
 
 ## How to Test

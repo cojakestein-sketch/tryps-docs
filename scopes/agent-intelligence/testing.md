@@ -8,6 +8,8 @@ last_tested: null
 last_updated: 2026-03-22
 ---
 
+> Parent: [[agent-intelligence/objective|Agent Intelligence Objective]]
+
 # Agent Intelligence — Testing Plan
 
 ## How to Test

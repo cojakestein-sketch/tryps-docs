@@ -65,23 +65,23 @@ These principles guide every scope and design decision:
 
 | # | Scope | One-liner | Status | Assignee | April 2? |
 |---|-------|-----------|--------|----------|----------|
-| 1 | ~~**Beta & User Feedback**~~ | TestFlight, feedback pipeline — does the experience work? | **in-progress** (no spec needed) | jake | ~~Yes~~ ongoing |
-| 2 | **Core Trip Experience** | Creating, managing, visualizing trips + expense tracking — the foundation | **testing** (Nadeem + Andreas) | nadeem / andreas | Yes |
-| 3 | **Group Decision-Making** | How groups align — voting, facilitation engine, notifications | **needs-spec** | — | Yes |
-| 4 | **Travel Identity** | Travel DNA, connectors, passport, loyalty — who you are as a traveler | **needs-spec** | — | Yes |
-| 5 | **Onboarding & Teaching** | First-run experience, tooltips, guided cadence — making it instantly obvious | **needs-spec** | — | Yes |
-| 6 | **Post-Trip & Retention** | Reviews, memories, rewards — what happens after and what brings you back | **specced** (spec in deprecated/p1/post-trip-review — needs migration) | nadeem | Yes |
-| 7 | **iMessage Agent** | The travel agent in your group chat — Linq, Jennifer Test, primary acquisition | **in-progress** | asif | Yes |
-| 8 | **Agent Intelligence** | Vote-on-behalf, memory architecture, recommendations engine — the brain | **in-progress** | rizwan | Yes |
-| 9 | **Payments Infrastructure** | Stripe card-on-file, booking payments, auto-expense logging | **not-started** | rizwan | Yes |
-| 10 | **Travel Booking** | Searching, sourcing, booking flights, stays, activities, restaurants, transport | **in-progress** | asif | Yes |
+| 1 | ~~**[[beta-user-feedback/objective|Beta & User Feedback]]**~~ | TestFlight, feedback pipeline — does the experience work? | **in-progress** (no spec needed) | jake | ~~Yes~~ ongoing |
+| 2 | **[[core-trip-experience/objective|Core Trip Experience]]** | Creating, managing, visualizing trips + expense tracking — the foundation | **testing** (Nadeem + Andreas) | nadeem / andreas | Yes |
+| 3 | **[[group-decision-making/objective|Group Decision-Making]]** | How groups align — voting, facilitation engine, notifications | **needs-spec** | — | Yes |
+| 4 | **[[travel-identity/objective|Travel Identity]]** | Travel DNA, connectors, passport, loyalty — who you are as a traveler | **needs-spec** | — | Yes |
+| 5 | **[[onboarding-teaching/objective|Onboarding & Teaching]]** | First-run experience, tooltips, guided cadence — making it instantly obvious | **needs-spec** | — | Yes |
+| 6 | **[[post-trip-retention/objective|Post-Trip & Retention]]** | Reviews, memories, rewards — what happens after and what brings you back | **specced** (spec in deprecated/p1/post-trip-review — needs migration) | nadeem | Yes |
+| 7 | **[[imessage-agent/objective|iMessage Agent]]** | The travel agent in your group chat — Linq, Jennifer Test, primary acquisition | **in-progress** | asif | Yes |
+| 8 | **[[agent-intelligence/objective|Agent Intelligence]]** | Vote-on-behalf, memory architecture, recommendations engine — the brain | **in-progress** | rizwan | Yes |
+| 9 | **[[payments-infrastructure/objective|Payments Infrastructure]]** | Stripe card-on-file, booking payments, auto-expense logging | **not-started** | rizwan | Yes |
+| 10 | **[[travel-booking/objective|Travel Booking]]** | Searching, sourcing, booking flights, stays, activities, restaurants, transport | **in-progress** | asif | Yes |
 | 11 | ~~**Brand & Design System**~~ | ~~Visual identity, design tokens, Figma assets~~ | **moved** → `brand-and-gtm/` | — | — |
 | 12 | ~~**Launch & GTM**~~ | ~~Video, socials, referrals, giveaways~~ | **moved** → `brand-and-gtm/` | — | — |
 | — | ~~**QA & Testing**~~ | Criteria validation, regression testing | **cross-cutting** (ongoing, completing 2026-03-25) | andreas | always |
 | — | ~~**AI Platform Connectors**~~ | ~~MCP remote server for Claude, OpenAI, etc.~~ | **deferred** | — | Post-April 2 |
 | — | ~~**Logistics Agent**~~ | ~~Autonomous trip logistics~~ | **deferred** | — | Post-April 2 |
-| 11 | **Output-Backed Screen** | The tangible trip deliverable — card-stack with draggable itinerary, works in iMessage | **in-progress** | nadeem | Yes |
-| 12 | **Customer Service & Triaging** | How we handle cancellations, disputes, support requests — the ops layer | **needs-spec** | jake | Yes |
+| 11 | **[[output-backed-screen/objective|Output-Backed Screen]]** | The tangible trip deliverable — card-stack with draggable itinerary, works in iMessage | **in-progress** | nadeem | Yes |
+| 12 | **[[customer-service-triaging/objective|Customer Service & Triaging]]** | How we handle cancellations, disputes, support requests — the ops layer | **needs-spec** | jake | Yes |
 
 ### Scope Gap Cards
 
@@ -193,13 +193,13 @@ Note: Added 2026-03-22 after scope audit. This is the visual expression of the t
 ### Dependency Chain
 
 ```
-#11 Outstanding screen polish ──→ New UI screens (#3, #4, #5, #7)
-#11 Voice & tone guide   ──→ #7 Agent personality ──→ #7 Non-app-user participation
-#4  Travel DNA (finish)  ──→ #8 Vote-on-behalf, Recommendations
-#4  Connector wallet design ──→ #4 Airline connectors ──→ #9 Stripe
+[[output-backed-screen/objective|#11]] Outstanding screen polish ──→ New UI screens (#3, #4, #5, #7)
+#11 Voice & tone guide   ──→ [[imessage-agent/objective|#7]] Agent personality ──→ #7 Non-app-user participation
+[[travel-identity/objective|#4]]  Travel DNA (finish)  ──→ [[agent-intelligence/objective|#8]] Vote-on-behalf, Recommendations
+#4  Connector wallet design ──→ #4 Airline connectors ──→ [[payments-infrastructure/objective|#9]] Stripe
                             ──→ #4 Passport storage
-#7  Linq refinement ──→ #7 Expense parsing, Voting facilitation
-#13 Core flows QA ──→ #3 Notifications wiring ──→ #7 iMessage agent triggers
+[[imessage-agent/objective|#7]]  Linq refinement ──→ #7 Expense parsing, Voting facilitation
+#13 Core flows QA ──→ [[group-decision-making/objective|#3]] Notifications wiring ──→ #7 iMessage agent triggers
 ```
 
 **Critical path:** Voice & tone guide → agent personality → Linq refinement → full QA → beta
@@ -470,9 +470,9 @@ Progressive disclosure. Overview first, details on demand.
 ## Appendix B: Sources
 
 - `/tryps-docs/docs/p2-p3-strategy-intake.md` — 38 questions answered (vision locked)
-- `/tryps-docs/shared/brand.md` — Brand system tokens
-- `/tryps-docs/shared/brand-strategy.md` — Brand strategy (pending Trent review)
-- `/tryps-docs/shared/state.md` — Scope status (needs reconciliation)
-- `/tryps-docs/shared/clickup.md` — ClickUp task mapping
+- `/tryps-docs/shared/brand.md` — [[brand|Brand system tokens]]
+- `/tryps-docs/shared/brand-strategy.md` — [[brand-strategy|Brand strategy]] (pending Trent review)
+- `/tryps-docs/shared/state.md` — [[state|Scope status]] (needs reconciliation)
+- `/tryps-docs/shared/clickup.md` — [[clickup|ClickUp task mapping]]
 - `/tryps-docs/scopes/` — All scope specs (P1-P5)
 - `/t4/` — Codebase audit (60-70% feature complete)

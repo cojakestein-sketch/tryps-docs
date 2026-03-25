@@ -34,10 +34,10 @@ archive/                 Old/stale files — DO NOT REFERENCE (see archive/AGENT
 
 | File | What |
 |------|------|
-| `scopes/INDEX.md` | Active scope list with status + assignees |
-| `docs/plans/2026-03-20-feat-strategic-roadmap-mece-scope-plan.md` | MECE strategic roadmap |
-| `shared/clickup.md` | ClickUp workspace IDs, CLI usage, task mapping |
-| `shared/brand.md` | Color palette, typography, spacing, voice & tone |
+| [[scopes/INDEX|scopes/INDEX.md]] | Active scope list with status + assignees |
+| [[2026-03-20-feat-strategic-roadmap-mece-scope-plan|Strategic Roadmap]] | MECE strategic roadmap |
+| [[clickup|shared/clickup.md]] | ClickUp workspace IDs, CLI usage, task mapping |
+| [[brand|shared/brand.md]] | Color palette, typography, spacing, voice & tone |
 
 ## Workflow
 
@@ -47,7 +47,7 @@ Each scope has one spec with numbered success criteria. Devs build from the spec
 
 ## For Agents
 
-1. Read `scopes/INDEX.md` first
-2. Then `shared/state.md` for current status
+1. Read [[scopes/INDEX|scopes/INDEX.md]] first
+2. Then [[state|shared/state.md]] for current status
 3. Then the specific scope's `objective.md` -> `spec.md`
 4. **Never read from `archive/`** — that content is stale

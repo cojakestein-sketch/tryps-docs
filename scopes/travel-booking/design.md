@@ -11,6 +11,8 @@ screens:
 last_updated: 2026-03-23
 ---
 
+> Parent: [[travel-booking/objective|Travel Booking Objective]]
+
 # Travel Booking — Design Needs
 
 This scope has UI deliverables: search results screens, booking confirmation flows, and the group flight coordination picker. The existing manual entry screens (add-flight, add-accommodation, add-dinner, add-transportation) stay as-is — these are NEW screens for API-powered search and booking.
