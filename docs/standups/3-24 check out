@@ -68,9 +68,9 @@ Complete rewrite from Claude (3-call stateless) to OpenAI Responses API + Conver
 
 ### Nadeem — Design-to-Code Bridge (Figma MCP)
 
-1.
-2.
-3.
+1. **design-audit skill for Marty** — Built complete skill (`SKILL.md` + `figma-component-map.json`) that maps every Figma screen to its code file. Marty can now report coverage: **23/29 screens built (79%)**, 6 remaining (all Explore tab + Overview tab).
+2. **Figma MCP integration verified** — Connected to Figma file (`CMhozPKkLjWk4pcKHsbTJF`) via MCP server. Verified all 6 page node IDs by fetching screenshots. Extracted design tokens (colors, typography, spacing, shadows) from Style Guide page.
+3. **Component map with 38 entries** — Full mapping including Trip Details tab breakdown (8 tabs with all sheets/modals referenced), frame-level Figma node IDs for 18 screens, status tracking (built/partial/in_review/not_built), and coverage report template for team reporting.
 
 ---
 
@@ -86,7 +86,7 @@ Complete rewrite from Claude (3-call stateless) to OpenAI Responses API + Conver
 - Draft cross-scope interface spec for Asif sync session
 
 ### Nadeem
--
+- TBD — will confirm with Jake
 
 ---
 
