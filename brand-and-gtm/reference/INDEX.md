@@ -6,8 +6,8 @@ All existing brand and GTM documents, indexed by location. These files stay wher
 
 | Document | Path | Size | What |
 |----------|------|------|------|
-| Brand System | `shared/brand.md` | — | Colors, typography, spacing, voice & tone — source of truth |
-| Brand Strategy | `shared/brand-strategy.md` | 20KB | Strategic brand direction, positioning, brand world |
+| Brand System | [[brand|shared/brand.md]] | — | Colors, typography, spacing, voice & tone — source of truth |
+| Brand Strategy | [[brand-strategy|shared/brand-strategy.md]] | 20KB | Strategic brand direction, positioning, brand world |
 
 ## Research & Discovery
 

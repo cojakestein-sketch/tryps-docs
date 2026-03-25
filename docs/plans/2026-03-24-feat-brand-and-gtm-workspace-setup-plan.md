@@ -82,7 +82,7 @@ The master `scope.md` follows Jake's principle:
 
 - [ ] Create `brand-and-gtm/` folder structure (all dirs + placeholder files)
 - [ ] Create `reference/INDEX.md` with links to all 10 existing reference docs
-- [ ] Create `README.md` explaining the folder for Sean
+- [ ] Create [[brand-and-gtm/README|README.md]] explaining the folder for Sean
 - [ ] Add Sean (`seadefaria@gmail.com`) as collaborator on tryps-docs repo
 - [ ] Mark old scope folders as superseded (add note to their state.md files)
 - [ ] Update `scopes/INDEX.md` to point scopes 11 + 12 → `brand-and-gtm/`
