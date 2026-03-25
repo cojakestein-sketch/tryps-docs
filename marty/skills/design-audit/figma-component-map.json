@@ -1,0 +1,403 @@
+{
+  "figmaFile": {
+    "fileKey": "CMhozPKkLjWk4pcKHsbTJF",
+    "fileName": "Tryps — Official (work here)",
+    "baseUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-"
+  },
+  "figmaPages": {
+    "Onboarding": {
+      "nodeId": "4130-35753"
+    },
+    "Add Trip": {
+      "nodeId": "4516-3207"
+    },
+    "Trips Menu": {
+      "nodeId": "4130-35754"
+    },
+    "Calendar": {
+      "nodeId": "4130-35877"
+    },
+    "Explore": {
+      "nodeId": "4130-35899"
+    },
+    "Profile & Settings": {
+      "nodeId": "4130-35900"
+    },
+    "Components": {
+      "nodeId": "4138-2374"
+    },
+    "Style Guide": {
+      "nodeId": "4130-33698"
+    },
+    "Icon": {
+      "nodeId": "22-2979"
+    }
+  },
+  "mappings": [
+    {
+      "codePath": "app/welcome.tsx",
+      "figmaPage": "Onboarding",
+      "figmaFrame": "Onboarding - Landing",
+      "figmaNodeId": "4151:2707",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4151-2707",
+      "status": "built"
+    },
+    {
+      "codePath": "app/(auth)/phone.tsx",
+      "figmaPage": "Onboarding",
+      "figmaFrame": "Onboarding - Phone Number",
+      "figmaNodeId": "4151:2638",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4151-2638",
+      "status": "built"
+    },
+    {
+      "codePath": "app/(auth)/verify.tsx",
+      "figmaPage": "Onboarding",
+      "figmaFrame": "Onboarding - Digit Input",
+      "figmaNodeId": "4151:2952",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4151-2952",
+      "status": "built"
+    },
+    {
+      "codePath": "app/(auth)/contacts-permission.tsx",
+      "figmaPage": "Onboarding",
+      "figmaFrame": "Onboarding - Push Notifications",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35753",
+      "status": "built"
+    },
+    {
+      "codePath": "app/(auth)/profile-setup.tsx",
+      "figmaPage": "Onboarding",
+      "figmaFrame": "Onboarding - Profile Setup",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35753",
+      "status": "built"
+    },
+    {
+      "codePath": "app/travel-dna.tsx",
+      "figmaPage": "Onboarding",
+      "figmaFrame": "Onboarding - Travel DNA Quiz",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35753",
+      "status": "built"
+    },
+    {
+      "codePath": "app/new-trip/index.tsx",
+      "figmaPage": "Add Trip",
+      "figmaFrame": "Add Trip - Landing",
+      "figmaNodeId": "4516:4277",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4516-4277",
+      "status": "built"
+    },
+    {
+      "codePath": "app/new-trip/dates.tsx",
+      "figmaPage": "Add Trip",
+      "figmaFrame": "Add Trip - Pick Dates",
+      "figmaNodeId": "4516:4774",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4516-4774",
+      "status": "built"
+    },
+    {
+      "codePath": "app/new-trip/vibe.tsx",
+      "figmaPage": "Add Trip",
+      "figmaFrame": "Add Trip - Trip Vibe",
+      "figmaNodeId": "4516:5265",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4516-5265",
+      "status": "built"
+    },
+    {
+      "codePath": "app/(tabs)/index.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trips Menu - Home",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "partial",
+      "notes": "Discover/Explore section not built"
+    },
+    {
+      "codePath": "app/trip/[id].tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trips Menu - Trip Details (container)",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built",
+      "notes": "Container screen — tabs rendered via NewTripDetails.tsx"
+    },
+    {
+      "codePath": "components/TripOverviewTab.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trip Details - Overview Tab",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "not_built",
+      "notes": "New tab — will be first tab, not yet wired into TripHeader"
+    },
+    {
+      "codePath": "components/new-activity-tab/NewActivitiesTab.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trip Details - Activities Tab",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built",
+      "sheets": [
+        "components/activities/AddActivitySheet.tsx",
+        "components/activities/ActivityDetailSheet.tsx",
+        "components/activities/DiscoverSheet.tsx",
+        "components/activities/ConfirmedSheet.tsx",
+        "components/activities/VotingBlockSheet.tsx",
+        "components/activities/ProgressiveDayAssignmentModal.tsx",
+        "components/activities/AddAttachmentSheet.tsx",
+        "components/activities/UniversalActivityModal.tsx"
+      ]
+    },
+    {
+      "codePath": "components/trip-detail/PlanTab.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trip Details - Itinerary Tab",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built",
+      "sheets": [
+        "components/itinerary/AddActionModal.tsx",
+        "components/itinerary/DayPickerSheet.tsx",
+        "components/itinerary/ItineraryPickerSheet.tsx",
+        "components/itinerary/ItineraryReviewSheet.tsx",
+        "components/itinerary/PasteTextSheet.tsx",
+        "components/overview/AddDateSuggestionSheet.tsx",
+        "components/overview/AddDestinationSheet.tsx"
+      ]
+    },
+    {
+      "codePath": "components/PeopleTab.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trip Details - People Tab",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built"
+    },
+    {
+      "codePath": "components/StayTab.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trip Details - Stay Tab",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "in_review",
+      "notes": "PR created, not yet merged",
+      "sheets": [
+        "components/stay/DiscoverBottomSheet.tsx",
+        "components/stay/AddAccommodationSheet.tsx",
+        "components/stay/StayDetailSheet.tsx"
+      ]
+    },
+    {
+      "codePath": "components/VibeTab.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trip Details - Vibe Tab",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built",
+      "sheets": [
+        "components/vibe/AddVibeBoardItemSheet.tsx",
+        "components/vibe/VibeQuizSheet.tsx"
+      ]
+    },
+    {
+      "codePath": "components/ExpensesTab.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trip Details - Expenses Tab",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "partial",
+      "notes": "Receipt Camera + OCR Review not working — blocked on OpenAI API key",
+      "sheets": [
+        "components/expenses/AddExpenseSheet.tsx",
+        "components/expenses/ExpenseDetailSheet.tsx",
+        "components/expenses/ScanReceiptSheet.tsx"
+      ]
+    },
+    {
+      "codePath": "components/PackingTab.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trip Details - Packing List Tab",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built",
+      "sheets": [
+        "components/PackingAISuggestionsSheet.tsx",
+        "components/PackingAddItemSheet.tsx"
+      ]
+    },
+    {
+      "codePath": "app/trip/[id]/edit.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trips Menu - Edit Trip",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built"
+    },
+    {
+      "codePath": "app/trip/[id]/add-expense.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trips Menu - Add Expense",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built"
+    },
+    {
+      "codePath": "app/trip/[id]/add-flight.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trips Menu - Add Flight",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built"
+    },
+    {
+      "codePath": "app/trip/[id]/add-accommodation.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trips Menu - Add Stay",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built"
+    },
+    {
+      "codePath": "app/trip/[id]/share.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trips Menu - Share Trip",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built"
+    },
+    {
+      "codePath": "app/trip/[id]/your-balance.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trips Menu - Your Balance",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built"
+    },
+    {
+      "codePath": "app/trip/[id]/vibe-quiz.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trips Menu - Vibe Quiz",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4130-35754",
+      "status": "built"
+    },
+    {
+      "codePath": "app/(tabs)/calendar.tsx",
+      "figmaPage": "Calendar",
+      "figmaFrame": "Calendar Menu - Landing",
+      "figmaNodeId": "4341:14666",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4341-14666",
+      "status": "built"
+    },
+    {
+      "codePath": null,
+      "figmaPage": "Explore",
+      "figmaFrame": "Explore - Landing",
+      "figmaNodeId": "5165:49905",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=5165-49905",
+      "status": "not_built"
+    },
+    {
+      "codePath": null,
+      "figmaPage": "Explore",
+      "figmaFrame": "Explore - Discover Tab",
+      "figmaNodeId": "5165:47494",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=5165-47494",
+      "status": "not_built"
+    },
+    {
+      "codePath": null,
+      "figmaPage": "Explore",
+      "figmaFrame": "Explore - Your Trip Tab",
+      "figmaNodeId": "5165:46890",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=5165-46890",
+      "status": "not_built"
+    },
+    {
+      "codePath": null,
+      "figmaPage": "Explore",
+      "figmaFrame": "Explore - Wishlist & Friends",
+      "figmaNodeId": "5165:48842",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=5165-48842",
+      "status": "not_built"
+    },
+    {
+      "codePath": null,
+      "figmaPage": "Explore",
+      "figmaFrame": "Explore - Guides",
+      "figmaNodeId": "5165:49217",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=5165-49217",
+      "status": "not_built"
+    },
+    {
+      "codePath": "app/profile/[userId].tsx",
+      "figmaPage": "Profile & Settings",
+      "figmaFrame": "Profile",
+      "figmaNodeId": "4986:27552",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4986-27552",
+      "status": "built"
+    },
+    {
+      "codePath": "app/(tabs)/friends.tsx",
+      "figmaPage": "Profile & Settings",
+      "figmaFrame": "My Friends",
+      "figmaNodeId": "4986:27894",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4986-27894",
+      "status": "built"
+    },
+    {
+      "codePath": "app/settings.tsx",
+      "figmaPage": "Profile & Settings",
+      "figmaFrame": "Settings",
+      "figmaNodeId": "4986:27373",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4986-27373",
+      "status": "built"
+    },
+    {
+      "codePath": "components/settings/NotificationsSheet.tsx",
+      "figmaPage": "Profile & Settings",
+      "figmaFrame": "Notifications",
+      "figmaNodeId": "4986:27957",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4986-27957",
+      "status": "built",
+      "notes": "Sheet inside Settings screen"
+    },
+    {
+      "codePath": "components/settings/DeleteAccountSheet.tsx",
+      "figmaPage": "Profile & Settings",
+      "figmaFrame": "Delete Account confirmation",
+      "figmaNodeId": "4986:28157",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4986-28157",
+      "status": "built",
+      "notes": "Bottom sheet inside Settings screen"
+    },
+    {
+      "codePath": "components/settings/BetaFeedbackSheet.tsx",
+      "figmaPage": "Profile & Settings",
+      "figmaFrame": "Feedback",
+      "figmaNodeId": "4986:28328",
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-?node-id=4986-28328",
+      "status": "built",
+      "notes": "Beta Feedback sheet inside Settings screen"
+    }
+  ],
+  "unmapped": [
+    {
+      "codePath": "app/(auth)/callback.tsx",
+      "reason": "OAuth callback handler — no visual design"
+    },
+    {
+      "codePath": "components/home/ThumbnailStrip.tsx",
+      "reason": "Sub-component of home screen — no standalone Figma frame"
+    },
+    {
+      "codePath": "components/ErrorBoundary.tsx",
+      "reason": "Error fallback — no Figma design"
+    }
+  ],
+  "lastUpdated": "2026-03-25",
+  "notes": "Individual frame node IDs (figmaNodeId) are still null — populate by fetching each page and searching for the frame by name. The figmaUrl currently points to the page level; append frame-specific node IDs once discovered."
+}
