@@ -133,12 +133,38 @@ The full mapping lives in `marty/skills/design-audit/figma-component-map.json`. 
 
 ```json
 {
+  "figmaFile": {
+    "fileKey": "CMhozPKkLjWk4pcKHsbTJF",
+    "fileName": "Tryps — Official (work here)",
+    "baseUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/Tryps---Official--work-here-"
+  },
+  "figmaPages": {
+    "Onboarding": { "nodeId": "4130-35753" },
+    "Add Trip": { "nodeId": "4516-3207" },
+    "Trips Menu": { "nodeId": "4130-35754" }
+  },
   "mappings": [
     {
       "codePath": "app/(auth)/phone.tsx",
-      "figmaPage": "Onboarding Flow 1",
-      "figmaFrame": "Onboarding : Phone Number",
-      "figmaNodeId": null
+      "figmaPage": "Onboarding",
+      "figmaFrame": "Onboarding - Phone Number",
+      "figmaNodeId": null,
+      "figmaUrl": "https://www.figma.com/design/CMhozPKkLjWk4pcKHsbTJF/...?node-id=4130-35753",
+      "status": "built"
+    },
+    {
+      "codePath": "components/StayTab.tsx",
+      "figmaPage": "Trips Menu",
+      "figmaFrame": "Trip Details - Stay Tab",
+      "figmaNodeId": null,
+      "figmaUrl": "...",
+      "status": "in_review",
+      "notes": "PR created, not yet merged",
+      "sheets": [
+        "components/stay/DiscoverBottomSheet.tsx",
+        "components/stay/AddAccommodationSheet.tsx",
+        "components/stay/StayDetailSheet.tsx"
+      ]
     }
   ],
   "unmapped": [
@@ -147,12 +173,69 @@ The full mapping lives in `marty/skills/design-audit/figma-component-map.json`. 
       "reason": "OAuth callback handler — no visual design"
     }
   ],
-  "lastUpdated": "2026-03-24"
+  "lastUpdated": "2026-03-25"
 }
 ```
 
-- `figmaNodeId`: Figma node ID for direct fetch. `null` means search by frame name.
-- Update this file when new screens are added or Figma frames are renamed.
+**Fields:**
+- `figmaNodeId`: Figma node ID for direct fetch. `null` means use the page-level URL.
+- `status`: One of `built`, `partial`, `in_review`, `not_built` (see Status Definitions below).
+- `sheets`: Array of sheet/modal code paths used within a tab.
+- `notes`: Free-text context (blockers, PR status, etc.).
+- Update this file when new screens are added, Figma frames are renamed, or statuses change.
+
+### Status Definitions
+
+| Status | JSON value | Meaning | Count as built? |
+|--------|-----------|---------|-----------------|
+| **Built** | `built` | Screen/tab is implemented and merged to develop | Yes |
+| **Partial** | `partial` | Screen exists but some features are missing or blocked | Yes (with caveats) |
+| **In Review** | `in_review` | Code exists in a PR, not yet merged | Yes (code exists) |
+| **Not Built** | `not_built` | No code implementation exists | No |
+
+### How to Count Coverage
+
+When reporting **"xx / yy screens"**:
+
+1. **Count each row** in the "Build Status per Frame" table, "Trip Details — Tab Breakdown" table, and "Other Screens" table as **one screen**. Do NOT count variants (e.g. Phone Number has 3 Figma variants but counts as 1 screen).
+2. **Sheets/modals are NOT counted** as separate screens — they are sub-flows of their parent tab.
+3. **"Built" count** = `built` + `partial` + `in_review` (code exists for all three).
+4. **"Not Built" count** = `not_built` only.
+5. **Total** = Built + Not Built.
+6. **Coverage %** = Built / Total × 100.
+
+**Current count (as of 2026-03-25):**
+- Top-level screens (Onboarding through Trips Menu): 6 Built, 1 Partial = **7**
+- Trip Details tabs: 5 Built, 1 In Review, 1 Partial, 1 Not Built = **8**
+- Related Trip Detail screens: 5 Built = **5**
+- Other screens (Calendar, Explore, Profile & Settings): 7 Built, 5 Not Built = **12**
+- **Total: 23 Built / 29 screens (79%)**  |  **6 Not Built**
+
+### Coverage Report Template
+
+When asked for a coverage report, use this format:
+
+```
+## Figma → Code Coverage Report
+**Date:** YYYY-MM-DD
+**Total screens:** XX / YY (ZZ%)
+
+### By Section
+| Section | Built | Not Built | Coverage |
+|---------|-------|-----------|----------|
+| Onboarding | X/Y | ... | ...% |
+| Add Trip | X/Y | ... | ...% |
+| ... | ... | ... | ... |
+
+### Not Built (remaining)
+- [ ] Screen Name — notes/blockers
+
+### Blockers
+- Screen Name — blocker description
+
+### In Review
+- Screen Name — PR link
+```
 
 ---
 
