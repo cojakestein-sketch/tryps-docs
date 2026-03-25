@@ -61,26 +61,27 @@ These principles guide every scope and design decision:
 
 ## 2. MECE Scope List
 
-16 mutually exclusive capability areas covering everything Tryps needs. Expense Tracking is folded into Core Trip Experience. Scopes 14-15 added 2026-03-22 after Agent Intelligence scoping interview carved out Claude Connector and Logistics Agent into their own post-April 2 scopes. Scope 16 added 2026-03-22 after scope audit identified the need for a tangible trip planning deliverable.
+> **Updated 2026-03-25.** 13 active scopes. Brand/GTM moved to `brand-and-gtm/`. AI Platform Connectors and Logistics Agent deferred post-April 2. Customer Service & Triaging added. QA is cross-cutting (always running, not a discrete scope).
 
-| # | Scope | One-liner | Where it lives | April 2? |
-|---|-------|-----------|----------------|----------|
-| 1 | **Beta & User Feedback** | TestFlight, feedback pipeline — does the experience work? | Jake's iMessages, outreach | Yes |
-| 2 | **Core Trip Experience** | Creating, managing, visualizing trips + expense tracking — the foundation | Trip card (mobile app) | Yes |
-| 3 | **Group Decision-Making** | How groups align — voting, facilitation engine, notifications | iMessage, trip card | Yes |
-| 4 | **Travel Identity** | Travel DNA, connectors, passport, loyalty — who you are as a traveler | People + profile tab | Yes |
-| 5 | **Onboarding & Teaching** | First-run experience, tooltips, guided cadence — making it instantly obvious | Mobile app (everywhere), iMessage | Yes |
-| 6 | **Post-Trip & Retention** | Reviews, memories, rewards — what happens after and what brings you back | Mobile app (after trip card), iMessage | Yes |
-| 7 | **iMessage Agent** | The travel agent in your group chat — Linq, Jennifer Test, primary acquisition | iMessage | Yes |
-| 8 | **Agent Intelligence** | Vote-on-behalf, memory architecture, recommendations engine — the brain | Backend, mobile app | Yes |
-| 9 | **Payments Infrastructure** | Stripe card-on-file, booking payments, auto-expense logging | Backend, mobile, iMessage frontend | Yes |
-| 10 | **Travel Booking** | Searching, sourcing, booking flights, stays, activities, restaurants, transport | iMessage, mobile, backend | Yes |
-| 11 | **Brand & Design System** | Visual identity, design tokens, Figma assets — the world | Figma | Yes |
-| 12 | **Launch & GTM** | Video, socials, referrals, giveaways — getting the word out | Figma, social platforms, etc. | Yes |
-| 13 | **QA & Testing** | Criteria validation, regression testing — does the code work? | ClickUp, GitHub Issues | Yes |
-| 14 | **AI Platform Connectors** | MCP remote server for Claude, OpenAI, and other AI platforms — meet users where they are | External services, backend | Post-April 2 |
-| 15 | **Logistics Agent** | Autonomous trip logistics — research, recommend, book on behalf of the group | Backend, iMessage, mobile | Post-April 2 |
-| 16 | **Output-Backed Screen** | The tangible trip deliverable — card-stack with draggable itinerary, works in iMessage | iMessage, mobile app | Yes |
+| # | Scope | One-liner | Status | Assignee | April 2? |
+|---|-------|-----------|--------|----------|----------|
+| 1 | ~~**Beta & User Feedback**~~ | TestFlight, feedback pipeline — does the experience work? | **in-progress** (no spec needed) | jake | ~~Yes~~ ongoing |
+| 2 | **Core Trip Experience** | Creating, managing, visualizing trips + expense tracking — the foundation | **testing** (Nadeem + Andreas) | nadeem / andreas | Yes |
+| 3 | **Group Decision-Making** | How groups align — voting, facilitation engine, notifications | **needs-spec** | — | Yes |
+| 4 | **Travel Identity** | Travel DNA, connectors, passport, loyalty — who you are as a traveler | **needs-spec** | — | Yes |
+| 5 | **Onboarding & Teaching** | First-run experience, tooltips, guided cadence — making it instantly obvious | **needs-spec** | — | Yes |
+| 6 | **Post-Trip & Retention** | Reviews, memories, rewards — what happens after and what brings you back | **specced** (spec in deprecated/p1/post-trip-review — needs migration) | nadeem | Yes |
+| 7 | **iMessage Agent** | The travel agent in your group chat — Linq, Jennifer Test, primary acquisition | **in-progress** | asif | Yes |
+| 8 | **Agent Intelligence** | Vote-on-behalf, memory architecture, recommendations engine — the brain | **in-progress** | rizwan | Yes |
+| 9 | **Payments Infrastructure** | Stripe card-on-file, booking payments, auto-expense logging | **not-started** | rizwan | Yes |
+| 10 | **Travel Booking** | Searching, sourcing, booking flights, stays, activities, restaurants, transport | **in-progress** | asif | Yes |
+| 11 | ~~**Brand & Design System**~~ | ~~Visual identity, design tokens, Figma assets~~ | **moved** → `brand-and-gtm/` | — | — |
+| 12 | ~~**Launch & GTM**~~ | ~~Video, socials, referrals, giveaways~~ | **moved** → `brand-and-gtm/` | — | — |
+| — | ~~**QA & Testing**~~ | Criteria validation, regression testing | **cross-cutting** (ongoing, completing 2026-03-25) | andreas | always |
+| — | ~~**AI Platform Connectors**~~ | ~~MCP remote server for Claude, OpenAI, etc.~~ | **deferred** | — | Post-April 2 |
+| — | ~~**Logistics Agent**~~ | ~~Autonomous trip logistics~~ | **deferred** | — | Post-April 2 |
+| 11 | **Output-Backed Screen** | The tangible trip deliverable — card-stack with draggable itinerary, works in iMessage | **in-progress** | nadeem | Yes |
+| 12 | **Customer Service & Triaging** | How we handle cancellations, disputes, support requests — the ops layer | **needs-spec** | jake | Yes |
 
 ### Scope Gap Cards
 

@@ -256,7 +256,7 @@ tryps-docs/
     memory/         # Daily memory files
     skills/         # All your skills
     reports/        # Nightly reports
-  scopes - refined 3-20/   # Current scope specs
+  scopes/   # Current scope specs
 ```
 
 ### Gotchas

@@ -36,7 +36,7 @@ Generate tomorrow's standup document with 5 personalized questions per active de
 
 **Scope specs:**
 - Read each active dev's scope spec for success criteria counts and objectives
-- Scopes live at `tryps-docs/scopes - refined 3-20/{scope-name}/spec.md`
+- Scopes live at `tryps-docs/scopes/{scope-name}/spec.md`
 - Current assignments:
   - Nadeem → `output-backed-screen` (48 SC)
   - Asif → `imessage-agent` (57 SC)
@@ -133,7 +133,7 @@ type: standup
 ### [Dev Name] — paste this:
 
 \```
-I'm [Dev Name]. Read the standup doc at ~/tryps-docs/docs/standups/YYYY-MM-DD-standup.md and help me answer my 5 questions in Section 1. My scope is [scope-name]. The spec is at ~/tryps-docs/scopes - refined 3-20/[scope-name]/spec.md. The codebase is at ~/t4.
+I'm [Dev Name]. Read the standup doc at ~/tryps-docs/docs/standups/YYYY-MM-DD-standup.md and help me answer my 5 questions in Section 1. My scope is [scope-name]. The spec is at ~/tryps-docs/scopes/[scope-name]/spec.md. The codebase is at ~/t4.
 
 Walk me through each question. If I don't know something, help me deploy an agent team to research it. Once I've answered all 5, edit the standup doc with my answers (only my section), commit, and push to main.
 \```
