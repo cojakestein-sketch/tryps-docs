@@ -103,3 +103,10 @@ This is also the key to making iMessage-first feel complete. Non-app users see t
 - iMessage Agent: `scopes/imessage-agent/spec.md` SC-53, SC-25
 - Existing trip card: Core Trip Experience (scope 2)
 - Strategy intake: `docs/p2-p3-strategy-intake.md` Q5-Q10
+
+## Scope Files
+- [[output-backed-screen/spec|Spec (48 SC)]]
+- [[output-backed-screen/state|Current State]]
+- [[output-backed-screen/design|Design Brief]]
+- [[output-backed-screen/testing|QA Criteria]]
+- [[output-backed-screen/completeness-levels|Completeness Levels]]

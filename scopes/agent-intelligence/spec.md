@@ -17,6 +17,8 @@ links:
   memory_architecture: ./memory-architecture.md
 ---
 
+> Parent: [[agent-intelligence/objective|Agent Intelligence Objective]]
+
 # Agent Intelligence — Spec
 
 ## What

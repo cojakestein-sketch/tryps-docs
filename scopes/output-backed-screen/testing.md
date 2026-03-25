@@ -8,6 +8,8 @@ last_tested: null
 last_updated: 2026-03-22
 ---
 
+> Parent: [[output-backed-screen/objective|Output-Backed Screen Objective]]
+
 # Output-Backed Screen — Testing Plan
 
 ## How to Test

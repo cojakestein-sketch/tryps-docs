@@ -13,9 +13,12 @@ links:
   design: ./design.md
   testing: ./testing.md
   objective: ./objective.md
+
   state: ./state.md
   completeness_levels: ./completeness-levels.md
 ---
+
+> Parent: [[output-backed-screen/objective|Output-Backed Screen Objective]]
 
 # Output-Backed Screen — Spec
 

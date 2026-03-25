@@ -9,6 +9,8 @@ screens: []
 last_updated: 2026-03-21
 ---
 
+> Parent: [[imessage-agent/objective|iMessage Agent Objective]]
+
 # iMessage Agent — Design Needs
 
 This scope has NO Figma screen needs, everything lives in iMessage. The critical design deliverable is a **copy doc**: the voice & tone guide for the agent.

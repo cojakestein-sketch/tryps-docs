@@ -8,6 +8,8 @@ last_tested: null
 last_updated: 2026-03-23
 ---
 
+> Parent: [[travel-booking/objective|Travel Booking Objective]]
+
 # Travel Booking — Testing Plan
 
 ## How to Test

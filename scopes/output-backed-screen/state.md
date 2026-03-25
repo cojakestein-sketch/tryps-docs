@@ -11,6 +11,8 @@ updated_by: jake
 review_status: reviewed
 ---
 
+> Parent: [[output-backed-screen/objective|Output-Backed Screen Objective]]
+
 ## Current State
 
 Spec session complete (2026-03-22). 48 success criteria defined across: trip overview, inline editing, draggable itinerary, adaptive completeness system, iMessage infographic, celebration moment, post-trip handoff, multi-user sync, and edge cases.

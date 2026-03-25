@@ -47,3 +47,10 @@ iMessage is THE acquisition channel. One person adds the agent, everyone experie
 
 - Voice & tone guide (scope 11, [[brand-and-gtm/README|Brand & GTM]]) blocks agent personality work. Draft complete, needs final review.
 - Memory (per-user, per-trip) lives in scope 8 ([[agent-intelligence/objective|Agent Intelligence]]). Architect the agent to support it now.
+
+## Scope Files
+- [[imessage-agent/spec|Spec (57 SC)]]
+- [[imessage-agent/state|Current State]]
+- [[imessage-agent/design|Design Brief]]
+- [[imessage-agent/testing|QA Criteria]]
+- [[imessage-agent/voice-guide|Voice & Tone Guide]]

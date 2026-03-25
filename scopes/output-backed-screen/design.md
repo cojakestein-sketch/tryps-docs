@@ -14,6 +14,8 @@ screens:
 last_updated: 2026-03-22
 ---
 
+> Parent: [[output-backed-screen/objective|Output-Backed Screen Objective]]
+
 # Output-Backed Screen — Design Needs
 
 This scope is heavily design-driven. The output-backed screen is the most visual deliverable in Tryps — it's the thing users look at to understand their entire trip. Design quality here directly impacts whether this feels like a premium travel experience or a todo app.

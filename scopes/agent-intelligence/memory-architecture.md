@@ -6,6 +6,8 @@ blocks: [SC-13, SC-17, SC-49, SC-50]
 last_updated: 2026-03-22
 ---
 
+> Parent: [[agent-intelligence/objective|Agent Intelligence Objective]]
+
 # Agent Intelligence — Memory Architecture
 
 Technical reference for how Tryps memory works. This is the build document — Rizwan starts here.

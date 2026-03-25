@@ -7,6 +7,8 @@ consumed_by: [imessage-agent-SC-25, imessage-agent-SC-53]
 last_updated: 2026-03-22
 ---
 
+> Parent: [[output-backed-screen/objective|Output-Backed Screen Objective]]
+
 # Trip Completeness Level System
 
 This document defines the adaptive milestone system that drives trip planning progression. It is the source of truth for completeness levels. The iMessage Agent (scope 7, SC-53) consumes this system for daily check-ins. The Output-Backed Screen (scope 16) visualizes it.

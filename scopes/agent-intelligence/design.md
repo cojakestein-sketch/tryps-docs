@@ -9,6 +9,8 @@ screens:
 last_updated: 2026-03-22
 ---
 
+> Parent: [[agent-intelligence/objective|Agent Intelligence Objective]]
+
 # Agent Intelligence — Design Needs
 
 This scope has two UI surfaces that need design, plus a message format for vote-on-behalf DMs.

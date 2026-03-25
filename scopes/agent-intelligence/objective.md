@@ -46,3 +46,10 @@ Without intelligence, Tryps is just a trip organizer. With it, Tryps knows your 
 
 - [[travel-identity/objective|Travel Identity]] (scope 4): Vibe quiz data feeds vote-on-behalf and recommendations. Vibe quiz is already built — full Travel DNA not required but enriches memory.
 - [[imessage-agent/objective|iMessage Agent]] (scope 7): System prompt extension points (SC-34) must exist for memory injection. Agent Intelligence provides the data; iMessage Agent renders it.
+
+## Scope Files
+- [[agent-intelligence/spec|Spec (61 SC)]]
+- [[agent-intelligence/state|Current State]]
+- [[agent-intelligence/design|Design Brief]]
+- [[agent-intelligence/testing|QA Criteria]]
+- [[agent-intelligence/memory-architecture|Memory Architecture]]

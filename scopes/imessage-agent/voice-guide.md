@@ -10,6 +10,8 @@ research_sources:
   - Messaging-first AI competitive analysis (Poke, x.ai Amy, Magic, Mezi, Replika)
 ---
 
+> Parent: [[imessage-agent/objective|iMessage Agent Objective]]
+
 # iMessage Agent Voice & Tone Guide
 
 ## Who the Agent Is

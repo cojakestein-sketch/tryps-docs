@@ -17,6 +17,8 @@ links:
   voice_guide: ./voice-guide.md
 ---
 
+> Parent: [[imessage-agent/objective|iMessage Agent Objective]]
+
 # iMessage Agent — Spec
 
 ## What
