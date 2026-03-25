@@ -56,10 +56,10 @@ target: 2026-05-02
 
 ## Sub-Scopes
 
-| Sub-Scope | Owner | Status | Key Deliverables |
-|-----------|-------|--------|-----------------|
-| [Brand World](sub-scopes/brand-world/scope.md) | — | not-started | |
-| [Launch & GTM](sub-scopes/launch-gtm/scope.md) | — | not-started | |
-| [UGC Program](sub-scopes/ugc-program/scope.md) | — | not-started | |
-| [Referral Program](sub-scopes/referral-program/scope.md) | — | not-started | |
-| [GEO / AEO / SEO](sub-scopes/geo-aeo-seo/scope.md) | — | not-started | |
+| Sub-Scope                                                | Owner | Status      | Key Deliverables |
+| -------------------------------------------------------- | ----- | ----------- | ---------------- |
+| [Brand World](sub-scopes/brand-world/scope.md)           | —     | not-started |                  |
+| [Launch & GTM](sub-scopes/launch-gtm/scope.md)           | —     | not-started |                  |
+| [UGC Program](sub-scopes/ugc-program/scope.md)           | —     | not-started |                  |
+| [Referral Program](sub-scopes/referral-program/scope.md) | —     | not-started |                  |
+| [GEO / AEO / SEO](sub-scopes/geo-aeo-seo/scope.md)       | —     | not-started |                  |
