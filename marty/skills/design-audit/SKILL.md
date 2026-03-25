@@ -19,15 +19,71 @@ Single Figma file, organized by flow. Krishna maintains the designs. To fetch an
 
 ### Design Pages (Screens)
 
-| Page | Node ID | Figma URL |
-|------|---------|-----------|
-| Onboarding Flow 1 | `4130-35753` | `?node-id=4130-35753` |
-| Onboarding Flow 2 | `4516-3207` | `?node-id=4516-3207` |
-| Trip Creation Flow 4 | `4130-35754` | `?node-id=4130-35754` |
-| Trips Menu Flow 6-12 | `4130-35877` | `?node-id=4130-35877` |
-| Calendar | `4130-35899` | `?node-id=4130-35899` |
-| Explore | — | Needs node ID |
-| Profile & Settings | `4130-35900` | `?node-id=4130-35900` |
+| Page | Node ID | Figma URL | Notes |
+|------|---------|-----------|-------|
+| Onboarding | `4130-35753` | `?node-id=4130-35753` | Frames: Onboarding - Landing, Phone Number (3 variants), Digit Input (3 variants) |
+| Add Trip | `4516-3207` | `?node-id=4516-3207` | Frames: Add Trip - Landing, Planning (visit list), Where are you going, Pick Dates, Trip Vibe, Trip Vibe (Full Page/Filled/Finish) |
+| Trips Menu | `4130-35754` | `?node-id=4130-35754` | Large page — Trips Menu, Trip Details, Share, Expenses, Flights, Stays, Pings, and more |
+| Calendar | `4130-35877` | `?node-id=4130-35877` | Frames: Calendar Menu — Landing, trip detail popup |
+| Explore | `4130-35899` | `?node-id=4130-35899` | Frames: Explore — Landing, Discover Tab, Your Trip Tab, Wishlist & Friends, Guides |
+| Profile & Settings | `4130-35900` | `?node-id=4130-35900` | Frames: Profile (2 variants), My Friends, Settings, Notifications, Delete Account confirmation, Feedback |
+
+### Build Status per Frame
+
+| Figma Frame | Figma Page | Code File | Status |
+|-------------|-----------|-----------|--------|
+| Onboarding - Landing | Onboarding | `app/welcome.tsx` | Built |
+| Onboarding - Phone Number | Onboarding | `app/(auth)/phone.tsx` | Built |
+| Onboarding - Digit Input | Onboarding | `app/(auth)/verify.tsx` | Built |
+| Add Trip - Landing | Add Trip | `app/new-trip/index.tsx` | Built |
+| Add Trip - Pick Dates | Add Trip | `app/new-trip/dates.tsx` | Built |
+| Add Trip - Trip Vibe | Add Trip | `app/new-trip/vibe.tsx` | Built |
+| Trips Menu - Home | Trips Menu | `app/(tabs)/index.tsx` | Partial (Discover/Explore section not built) |
+| Trips Menu - Trip Details (container) | Trips Menu | `app/trip/[id].tsx` → `components/trip-detail/NewTripDetails.tsx` | Built |
+| Trips Menu - Edit Trip | Trips Menu | `app/trip/[id]/edit.tsx` | Built |
+| Trips Menu - Share Trip | Trips Menu | `app/trip/[id]/share.tsx` | Built |
+
+### Trip Details — Tab Breakdown
+
+The Trip Details screen (`NewTripDetails.tsx`) contains multiple tabs. Each tab has its own screens, sheets, and sub-flows in Figma.
+
+| Tab | Code File | Status | Sheets / Modals |
+|-----|-----------|--------|-----------------|
+| Overview | `components/TripOverviewTab.tsx` | Not Built (will be first tab) | `overview/AddDateSuggestionSheet`, `overview/AddDestinationSheet`, `overview/AddAccommodationSheet` |
+| Activities | `components/new-activity-tab/NewActivitiesTab.tsx` | Built | `activities/AddActivitySheet`, `activities/ActivityDetailSheet`, `activities/DiscoverSheet`, `activities/ConfirmedSheet`, `activities/VotingBlockSheet`, `activities/ProgressiveDayAssignmentModal`, `activities/AddAttachmentSheet`, `activities/UniversalActivityModal` |
+| Itinerary | `components/trip-detail/PlanTab.tsx` | Built | `itinerary/AddActionModal`, `itinerary/DayPickerSheet`, `itinerary/ItineraryPickerSheet`, `itinerary/ItineraryReviewSheet`, `itinerary/PasteTextSheet` |
+| People | `components/PeopleTab.tsx` | Built | — |
+| Stay | `components/StayTab.tsx` | In Review (PR created, not merged) | `stay/DiscoverBottomSheet`, `stay/AddAccommodationSheet`, `stay/StayDetailSheet` |
+| Vibe | `components/VibeTab.tsx` | Built | `vibe/AddVibeBoardItemSheet`, `vibe/VibeQuizSheet` |
+| Expenses | `components/ExpensesTab.tsx` | Partial (Receipt Camera + OCR Review blocked — OpenAI API key blocker) | `expenses/AddExpenseSheet`, `expenses/ExpenseDetailSheet`, `expenses/ScanReceiptSheet` |
+| Packing List | `components/PackingTab.tsx` | Built | `PackingAISuggestionsSheet`, `PackingAddItemSheet` |
+
+#### Related Trip Detail Screens
+
+| Figma Frame | Code File | Status |
+|-------------|-----------|--------|
+| Add Expense | `app/trip/[id]/add-expense.tsx` | Built |
+| Add Flight | `app/trip/[id]/add-flight.tsx` | Built |
+| Add Stay | `app/trip/[id]/add-accommodation.tsx` | Built |
+| Your Balance | `app/trip/[id]/your-balance.tsx` | Built |
+| Vibe Quiz | `app/trip/[id]/vibe-quiz.tsx` | Built |
+
+### Other Screens
+
+| Figma Frame | Figma Page | Code File | Status |
+|-------------|-----------|-----------|--------|
+| Calendar Menu - Landing | Calendar | `app/(tabs)/calendar.tsx` | Built |
+| Explore - Landing | Explore | — | Not Built |
+| Explore - Discover Tab | Explore | — | Not Built |
+| Explore - Your Trip Tab | Explore | — | Not Built |
+| Explore - Wishlist & Friends | Explore | — | Not Built |
+| Explore - Guides | Explore | — | Not Built |
+| Profile | Profile & Settings | `app/profile/[userId].tsx` | Built |
+| My Friends | Profile & Settings | `app/(tabs)/friends.tsx` | Built |
+| Settings | Profile & Settings | `app/settings.tsx` | Built |
+| Notifications | Profile & Settings | `components/settings/NotificationsSheet.tsx` | Built (sheet inside Settings) |
+| Delete Account confirmation | Profile & Settings | `components/settings/DeleteAccountSheet.tsx` | Built (sheet inside Settings) |
+| Feedback | Profile & Settings | `components/settings/BetaFeedbackSheet.tsx` | Built (sheet inside Settings) |
 
 ### Supporting Pages
 
@@ -62,13 +118,12 @@ The app lives in `cojakestein-sketch/tripful`. File-based routing under `app/`.
 
 | Figma Section | Code Location |
 |---------------|--------------|
-| Onboarding Flow 1 | `app/welcome.tsx`, `app/(auth)/phone.tsx`, `app/(auth)/verify.tsx`, `app/(auth)/contacts-permission.tsx` |
-| Onboarding Flow 2 | `app/(auth)/profile-setup.tsx`, `app/travel-dna.tsx` |
-| Trip Creation Flow 4 | `app/new-trip/index.tsx`, `app/new-trip/dates.tsx`, `app/new-trip/vibe.tsx` |
-| Trips Menu Flow 6-12 | `app/(tabs)/index.tsx`, `app/trip/[id].tsx`, `app/trip/[id]/edit.tsx`, `app/trip/[id]/add-expense.tsx`, `app/trip/[id]/add-flight.tsx`, `app/trip/[id]/add-accommodation.tsx`, `app/trip/[id]/share.tsx`, `app/trip/[id]/your-balance.tsx` |
+| Onboarding | `app/welcome.tsx`, `app/(auth)/phone.tsx`, `app/(auth)/verify.tsx`, `app/(auth)/contacts-permission.tsx`, `app/(auth)/profile-setup.tsx`, `app/travel-dna.tsx` |
+| Add Trip | `app/new-trip/index.tsx`, `app/new-trip/dates.tsx`, `app/new-trip/vibe.tsx` |
+| Trips Menu | `app/(tabs)/index.tsx`, `app/trip/[id].tsx`, `app/trip/[id]/edit.tsx`, `app/trip/[id]/add-expense.tsx`, `app/trip/[id]/add-flight.tsx`, `app/trip/[id]/add-accommodation.tsx`, `app/trip/[id]/share.tsx`, `app/trip/[id]/your-balance.tsx` |
 | Calendar | `app/(tabs)/calendar.tsx` |
-| Explore | `app/(tabs)/explore.tsx` |
-| Profile & Settings | `app/settings.tsx`, `app/profile/[userId].tsx` |
+| Explore | Not built — all 5 Figma frames (Landing, Discover Tab, Your Trip Tab, Wishlist & Friends, Guides) are pending |
+| Profile & Settings | `app/settings.tsx`, `app/profile/[userId].tsx`, `app/(tabs)/friends.tsx`, `components/settings/NotificationsSheet.tsx`, `components/settings/DeleteAccountSheet.tsx`, `components/settings/BetaFeedbackSheet.tsx` |
 
 Components live in `components/` organized by feature: `components/home/`, `components/trip-detail/`, `components/calendar/`, `components/activities/`, `components/TrypsCard/`, etc.
 
@@ -115,14 +170,51 @@ We are migrating from legacy `theme.ts` (StyleSheet.create) to **Uniwind** (Tail
 
 ### Design Tokens (from Figma Style Guide)
 
+Extracted from Figma file `CMhozPKkLjWk4pcKHsbTJF`, Style Guide page `4130-33698`. Last verified: 2026-03-25.
+
+#### Colors
+
+| Token | CSS Variable | Value |
+|-------|-------------|-------|
+| Brand Primary (Red) | `--brand/primary` | `#D9071C` |
+| Text Primary | `--text/primary` | `#111827` |
+| Text Secondary | `--text/secondary` | `#4B5563` |
+| Border Default | `--border/default` | `#E5E7EB` |
+| Background White | `--background/white` | `white` |
+| Background Primary | `--background/primary` | `#F9FAFB` |
+| Neutral Gray | — | `#9CA3AF` |
+| Dark Gray | — | `#181D27` |
+
+**Important:** Background is White / Light Gray (`#F9FAFB`), NOT the warm cream `#FFFBF5` in legacy theme.ts.
+
+#### Typography
+
 | Token | Value |
 |-------|-------|
-| Primary Red | `#D9071C` |
-| Primary Font | Plus Jakarta Sans |
-| Mono Font | Space Mono |
-| Background | White / Light Gray (NOT the warm cream `#FFFBF5` in legacy theme.ts) |
-| Spacing Scale | 4px base (4, 8, 12, 16, 20, 24, 32, 48, 64) |
-| Border Radii | xs:4, sm:8, md:12, lg:16, xl:24, full:9999 |
+| Primary Font | **Plus Jakarta Sans** (Regular, Medium, Semibold, Bold) |
+| Type Scale | text-xs (`12px`), text-sm (`14px`), text-base (`16px`), text-lg (`18px`), text-xl (`20px`), text-2xl (`24px`), text-3xl (`30px`), text-4xl (`36px`), text-5xl (`48px`), text-6xl (`60px`), text-7xl (`72px`), text-8xl (`96px`), text-9xl (`128px`) |
+| Font Weights | Regular (400), Medium (500), Semibold (600), Bold (700) |
+| Letter Spacing | Tighter at larger sizes: `-0.18px` (sm) → `-2.56px` (9xl) |
+
+> **Font discrepancy:** The Figma Style Guide page uses **Inter** as a placeholder font, but the app uses **Plus Jakarta Sans** throughout. Plus Jakarta Sans is the correct production font — always use it in code. If Figma shows Inter, ignore the font family and match everything else (size, weight, spacing).
+
+#### Spacing
+
+| Token | CSS Variable | Value |
+|-------|-------------|-------|
+| Spacing 8 | `--spacing/8` | `8px` |
+| Spacing 16 | `--spacing/16` | `16px` |
+| Observed spacing values | — | 8, 12, 16, 32, 48, 64, 80, 128 (px) |
+
+#### Border Radii
+
+| Token | CSS Variable | Value |
+|-------|-------------|-------|
+| Pill | `--radius/pill` | `999px` |
+
+#### Shadows
+
+Shadow scale: `shadow-xs`, `shadow-sm`, `shadow-md`, `shadow-lg`, `shadow-xl`, `shadow-2xl`, `shadow-3xl`
 
 ---
 
@@ -137,7 +229,7 @@ You have access to Figma through the Framelink MCP server (`figma-developer-mcp`
 
 When comparing Figma to code, focus on:
 - Background color (should be white/light gray, not warm cream)
-- Font family (Plus Jakarta Sans, not system default)
+- Font family (Plus Jakarta Sans — Figma shows Inter but the app uses Plus Jakarta Sans)
 - Primary red (#D9071C, not #DC2626 or other reds)
 - Spacing and border radius values
 - Layout direction (flex row vs column)
@@ -198,7 +290,8 @@ These are known issues as of March 2026:
 
 | Issue | Figma (Correct) | Code (Wrong) | Impact |
 |-------|-----------------|-------------|--------|
-| Background color | White / Light Gray | `#FFFBF5` warm cream in theme.ts | Affects all screens using theme.ts |
+| Background color | White / Light Gray (`#F9FAFB`) | `#FFFBF5` warm cream in theme.ts | Affects all screens using theme.ts |
+| Primary font | Figma shows Inter (placeholder) | App uses **Plus Jakarta Sans** (correct) — do NOT flag as drift | Intentional override |
 | Hardcoded reds | `#D9071C` | Some files use `#DC2626` or other reds | Scattered across components |
 | Inline styles | N/A | ~179 files bypass design system | Drift risk — no centralized control |
 | Mixed styling | Uniwind should be standard | Some screens use theme.ts, others Uniwind | Inconsistent look and feel |
