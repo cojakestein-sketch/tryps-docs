@@ -221,7 +221,7 @@ Tryps is a travel agent, not a planning tool. The promise is: say what you want 
 
 ## References
 
-- Deprecated spec: `scopes - deprecated/p3/duffel-apis/spec.md` (intent + key areas, no criteria — Duffel flights, Amadeus backup, restaurant/activity/hotel APIs, credential management)
-- Deprecated spec: `scopes - deprecated/p3/logistics-agent/spec.md` (26 criteria — the orchestration side, now scope 15. Travel Booking provides the underlying APIs.)
+- Deprecated spec: `archive/scopes-deprecated/p3/duffel-apis/spec.md` (intent + key areas, no criteria — Duffel flights, Amadeus backup, restaurant/activity/hotel APIs, credential management)
+- Deprecated spec: `archive/scopes-deprecated/p3/logistics-agent/spec.md` (26 criteria — the orchestration side, now scope 15. Travel Booking provides the underlying APIs.)
 - Strategy intake: `docs/p2-p3-strategy-intake.md` (Q2: "holy shit" moment — booking flights for everyone landing within 90 min. Q3: if only ship one thing, "ability to book flights and Airbnbs with natural language." Q11-Q18: payments & booking vision.)
-- Services catalog: `scopes - refined 3-20/travel-booking/services.md`
+- Services catalog: `scopes/travel-booking/services.md`

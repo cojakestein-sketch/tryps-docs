@@ -220,4 +220,4 @@ This scope is heavily design-driven. The output-backed screen is the most visual
 - Completeness levels: `completeness-levels.md` (full milestone system)
 - Brand tokens: `~/tryps-docs/shared/brand.md`
 - Existing trip card: scope 2 (Core Trip Experience) — this overview extends it
-- iMessage Agent voice guide: `scopes - refined 3-20/imessage-agent/voice-guide.md` (for celebration message tone)
+- iMessage Agent voice guide: `scopes/imessage-agent/voice-guide.md` (for celebration message tone)

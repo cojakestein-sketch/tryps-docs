@@ -228,15 +228,15 @@ Without intelligence, Tryps is a trip organizer. With it, Tryps is a travel agen
 ## References
 
 ### Migrated
-- Old spec: `scopes - deprecated/p1/recommendations/spec.md` — intent only (5 sub-scopes, 0 criteria). All 5 sub-scope concepts absorbed. Activity and accommodation recommendations are in-scope. Flight, trip, and discovery recommendations deferred to post-April 2 alongside Travel Booking and Logistics Agent.
-- Old spec: `scopes - deprecated/p3/vote-on-behalf/spec.md` — intent only (0 criteria). Fully specced now as SC-18 through SC-32. Key areas from the intent doc (inference engine, pre-deadline nudge, confidence scoring, opt-in/opt-out) all addressed. Opt-in/opt-out replaced with "on by default."
+- Old spec: `archive/scopes-deprecated/p1/recommendations/spec.md` — intent only (5 sub-scopes, 0 criteria). All 5 sub-scope concepts absorbed. Activity and accommodation recommendations are in-scope. Flight, trip, and discovery recommendations deferred to post-April 2 alongside Travel Booking and Logistics Agent.
+- Old spec: `archive/scopes-deprecated/p3/vote-on-behalf/spec.md` — intent only (0 criteria). Fully specced now as SC-18 through SC-32. Key areas from the intent doc (inference engine, pre-deadline nudge, confidence scoring, opt-in/opt-out) all addressed. Opt-in/opt-out replaced with "on by default."
 
 ### Moved to New Scopes
-- Old spec: `scopes - deprecated/p1/claude-connector/spec.md` — 36 criteria, fully specced. Moved to new scope 14 (AI Platform Connectors), post-April 2. Expanded from Claude-only to multi-platform (Claude, OpenAI, etc.).
-- Old spec: `scopes - deprecated/p3/logistics-agent/spec.md` — 26 criteria, fully specced. Moved to its own scope, post-April 2. Built last after intelligence + booking infrastructure.
+- Old spec: `archive/scopes-deprecated/p1/claude-connector/spec.md` — 36 criteria, fully specced. Moved to new scope 14 (AI Platform Connectors), post-April 2. Expanded from Claude-only to multi-platform (Claude, OpenAI, etc.).
+- Old spec: `archive/scopes-deprecated/p3/logistics-agent/spec.md` — 26 criteria, fully specced. Moved to its own scope, post-April 2. Built last after intelligence + booking infrastructure.
 
 ### Context
 - Strategy intake: `docs/p2-p3-strategy-intake.md` — Q19-Q27 (agent layer vision), Q33-Q38 (sequencing, cut decisions)
-- iMessage Agent: `scopes - refined 3-20/imessage-agent/spec.md` — SC-34 (extension points for memory injection)
-- Memory architecture: `scopes - refined 3-20/agent-intelligence/memory-architecture.md` — technical reference for data model and algorithm
-- Brand voice: `scopes - refined 3-20/imessage-agent/voice-guide.md` — rules for vote-on-behalf DM copy
+- iMessage Agent: `scopes/imessage-agent/spec.md` — SC-34 (extension points for memory injection)
+- Memory architecture: `scopes/agent-intelligence/memory-architecture.md` — technical reference for data model and algorithm
+- Brand voice: `scopes/imessage-agent/voice-guide.md` — rules for vote-on-behalf DM copy

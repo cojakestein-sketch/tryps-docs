@@ -227,8 +227,8 @@ The agent's proactive behavior follows a daily facilitator cadence, not an event
 
 ## References
 
-- Old spec: `scopes - deprecated/p2/linq-imessage/spec.md` (40 criteria, all migrated, 11 new added)
-- Voice guide: `scopes - refined 3-20/imessage-agent/voice-guide.md` (copy doc, drafted)
+- Old spec: `archive/scopes-deprecated/p2/linq-imessage/spec.md` (40 criteria, all migrated, 11 new added)
+- Voice guide: `scopes/imessage-agent/voice-guide.md` (copy doc, drafted)
 - Strategy intake: `docs/p2-p3-strategy-intake.md` (Q5-Q10: iMessage agent vision)
 - Brand strategy: `shared/brand-strategy.md` (voice, tone, personality)
 - Brand tokens: `shared/brand.md` (word lists, copy rules)
@@ -245,7 +245,7 @@ Run the autonomous scope pipeline for "iMessage Agent" (imessage-agent).
 ## Variables
 
 - FEATURE: imessage-agent
-- SCOPE_DIR: /Users/jakestein/tryps-docs/scopes - refined 3-20/imessage-agent
+- SCOPE_DIR: /Users/jakestein/tryps-docs/scopes/imessage-agent
 - BRANCH: feat/imessage-agent
 - WORKSTREAM_ID: imessage-agent
 

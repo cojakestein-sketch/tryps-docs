@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tryps Brand Book Grid</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&family=Space+Mono&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1A1A1A;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow: auto;
+    /* Total width: 22 columns * 2100px = 46200px */
+    /* Total height: labels + up to 4 slides stacked */
+    width: 46200px;
+    height: 6000px;
+    position: relative;
+  }
+
+  .column {
+    position: absolute;
+    top: 0;
+  }
+
+  .label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    color: #FFFFFF;
+    white-space: nowrap;
+    margin-bottom: 24px;
+  }
+
+  .slide {
+    width: 1920px;
+    height: 1080px;
+    background: #FFFFFF;
+    border-radius: 0;
+    margin-bottom: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 24px;
+    color: #C0B8AE;
+    text-align: center;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<script>
+const columns = [
+  { label: "Cover",               prefix: "01-Cover",             count: 1 },
+  { label: "TOC",                 prefix: "02-TOC",               count: 1 },
+  { label: "01 Brand Story",      prefix: "03-Brand-Story",       count: 3 },
+  { label: "02 Mission & Vision", prefix: "04-Mission-Vision",    count: 2 },
+  { label: "03 Brand Values",     prefix: "05-Brand-Values",      count: 3 },
+  { label: "04 Brand Personality", prefix: "06-Brand-Personality", count: 3 },
+  { label: "05 Our Audience",     prefix: "07-Our-Audience",      count: 3 },
+  { label: "06 Brand Essence",    prefix: "08-Brand-Essence",     count: 2 },
+  { label: "07 Visual Territory", prefix: "09-Visual-Territory",  count: 3 },
+  { label: "08 Photography",      prefix: "10-Photography",       count: 3 },
+  { label: "09 Color System",     prefix: "11-Color-System",      count: 4 },
+  { label: "10 Typography",       prefix: "12-Typography",        count: 3 },
+  { label: "11 Voice & Tone",     prefix: "13-Voice-Tone",        count: 4 },
+  { label: "12 Social Media",     prefix: "14-Social-Media",      count: 3 },
+  { label: "13 Logo",             prefix: "15-Logo",              count: 4 },
+  { label: "14 Applications",     prefix: "16-Applications",      count: 3 },
+  { label: "15 Brand in the Wild", prefix: "17-Brand-Wild",       count: 3 },
+  { label: "16 Motion & Icons",   prefix: "18-Motion-Icons",      count: 3 },
+  { label: "17 App Design",       prefix: "19-App-Design",        count: 3 },
+  { label: "18 Glimmers",         prefix: "20-Glimmers",          count: 4 },
+  { label: "19 Discover Tab",     prefix: "21-Discover",          count: 2 },
+  { label: "20 Assets & Contact", prefix: "22-Assets-Contact",    count: 2 },
+];
+
+const COL_STRIDE = 2100;
+const ROW_STRIDE = 1280; // 1080 slide + 200 gap
+const SLIDES_TOP = 80;   // below label
+
+columns.forEach((col, i) => {
+  const colDiv = document.createElement('div');
+  colDiv.className = 'column';
+  colDiv.style.left = (i * COL_STRIDE) + 'px';
+
+  // Label
+  const label = document.createElement('div');
+  label.className = 'label';
+  label.textContent = col.label;
+  colDiv.appendChild(label);
+
+  // Slides
+  for (let j = 0; j < col.count; j++) {
+    const name = `${col.prefix}-${String(j + 1).padStart(2, '0')}`;
+    const slide = document.createElement('div');
+    slide.className = 'slide';
+    slide.style.marginTop = j === 0 ? '24px' : '200px';
+
+    const nameEl = document.createElement('div');
+    nameEl.className = 'slide-name';
+    nameEl.textContent = name;
+    slide.appendChild(nameEl);
+
+    colDiv.appendChild(slide);
+  }
+
+  document.body.appendChild(colDiv);
+});
+</script>
+
+</body>
+</html>

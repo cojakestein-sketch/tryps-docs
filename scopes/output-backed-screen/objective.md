@@ -100,6 +100,6 @@ This is also the key to making iMessage-first feel complete. Non-app users see t
 
 - Jake's sketch: `sketch-card-stack.png` (early thinking — the final form is an overview, not a card stack)
 - Trip completeness levels: `completeness-levels.md` (full milestone universe)
-- iMessage Agent: `scopes - refined 3-20/imessage-agent/spec.md` SC-53, SC-25
+- iMessage Agent: `scopes/imessage-agent/spec.md` SC-53, SC-25
 - Existing trip card: Core Trip Experience (scope 2)
 - Strategy intake: `docs/p2-p3-strategy-intake.md` Q5-Q10
