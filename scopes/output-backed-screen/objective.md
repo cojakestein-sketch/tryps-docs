@@ -72,10 +72,10 @@ This is also the key to making iMessage-first feel complete. Non-app users see t
 
 ## Dependencies
 
-- **iMessage Agent (scope 7):** Daily check-ins (SC-25) reference the overview. Agent sends the infographic. Completeness levels (SC-53) are DEFINED in this scope's `completeness-levels.md` and CONSUMED by the agent.
-- **Core Trip Experience (scope 2):** Existing trip card, itinerary, and activity data model are the foundation.
-- **Agent Intelligence (scope 8):** Recommendations and vote results populate sections of the overview.
-- **Post-Trip & Retention (scope 6):** The deliverable transforms into the post-trip review artifact after the trip ends.
+- **[[imessage-agent/objective|iMessage Agent]] (scope 7):** Daily check-ins (SC-25) reference the overview. Agent sends the infographic. Completeness levels (SC-53) are DEFINED in this scope's `completeness-levels.md` and CONSUMED by the agent.
+- **[[core-trip-experience/objective|Core Trip Experience]] (scope 2):** Existing trip card, itinerary, and activity data model are the foundation.
+- **[[agent-intelligence/objective|Agent Intelligence]] (scope 8):** Recommendations and vote results populate sections of the overview.
+- **[[post-trip-retention/objective|Post-Trip & Retention]] (scope 6):** The deliverable transforms into the post-trip review artifact after the trip ends.
 - **Linq platform:** Determines what the iMessage infographic can look like (image generation, rich link format).
 
 ## Open Questions (Resolved in Spec Session)

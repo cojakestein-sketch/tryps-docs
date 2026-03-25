@@ -28,8 +28,8 @@ As we onboard real users, things will go wrong — bookings need cancelling, pay
 
 ## In Scope
 
-- Cancellation flows (flights, stays, activities, restaurants)
-- Refund/dispute handling (Stripe integration)
+- Cancellation flows (flights, stays, activities, restaurants) — see [[travel-booking/objective|Travel Booking]]
+- Refund/dispute handling (Stripe integration) — see [[payments-infrastructure/objective|Payments Infrastructure]]
 - Support request triaging (where do they land, who sees them)
 - Agent error recovery (what happens when the agent messes up)
 - Escalation paths
