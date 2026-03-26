@@ -1,17 +1,27 @@
 # Tryps State
 
-> Auto-generated from spec.md frontmatter. Do not edit manually.
-> Last updated: 2026-03-26 13:00 UTC
+> Auto-generated from scope state.md frontmatter. Do not edit manually.
+> Last updated: 2026-03-26 13:18 UTC
 
 ## Scope Status
 
 | ID | Title | Status | Assignee | Criteria | Notes |
 |----|-------|--------|----------|----------|-------|
-
+| agent-intelligence | Agent Intelligence | in-progress | rizwan | 55/61 | 55/61 implemented |
+| beta-user-feedback | Beta & User Feedback | in-progress | jake | 0/0 | In progress |
+| core-trip-experience | Core Trip Experience | testing | nadeem | 15/16 | Bug testing in progress |
+| customer-service-triaging | Customer Service & Triaging | needs-spec | jake | 0/0 | Jake to spec |
+| group-decision-making | Group Decision-Making | needs-spec | jake | 0/41 | Jake to spec |
+| imessage-agent | iMessage Agent | in-progress | asif | 34/57 | 34/57 implemented |
+| onboarding-teaching | Onboarding & Teaching | needs-spec | jake | 0/0 | Jake to spec |
+| output-backed-screen | Output-Backed Screen | in-progress | nadeem | 7/48 | 7/48 implemented |
+| payments-infrastructure | Payments Infrastructure | not-started | rizwan | 0/12 |  |
+| post-trip-retention | Post-Trip & Retention | specced | nadeem | 0/39 | Spec exists, not started |
+| travel-booking | Travel Booking | in-progress | asif, rizwan | 0/58 | 0/58 implemented |
+| travel-identity | Travel Identity | needs-spec | jake | 0/50 | Jake to spec |
 
 ## Summary
 
-- **0 scopes** total: 0 done, 0 in-progress, 0 ready-qa, 0 failing, 0 not-started
-- **0 with criteria**, 0 need criteria
-- **0 assigned**, 0 blocked
-- **P1 is the focus**
+- **12 scopes** total: 0 done, 5 in-progress, 1 testing, 1 specced, 4 needs-spec, 1 not-started
+- **9 with criteria progress**, 3 need criteria
+- **7 assigned to devs**, 5 assigned to jake
