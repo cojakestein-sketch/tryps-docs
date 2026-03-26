@@ -6,7 +6,7 @@ owner: jake
 for: rizwan
 baseline_score: 85.7
 current_best: 87.5
-experiments_run: 10
+experiments_run: 20
 ---
 
 # Prompt Optimization Findings
@@ -15,11 +15,17 @@ experiments_run: 10
 
 We ran Karpathy's autoresearch pattern against the Tryps agent system prompt. An AI agent made targeted modifications to the prompt, tested each change against 16 scenarios using GPT-5.4, scored the responses with an LLM judge, and kept improvements.
 
-**Baseline: 85.7/100 → Current best: 87.5/100** after 10 experiments (3 kept, 7 discarded).
+**20 experiments run. 4 kept, 16 discarded. Hit rate: 20%.**
+
+Two rubric versions:
+- **Rubric v1** (5 dimensions): Baseline 85.7 → Best 87.5 (+1.8)
+- **Rubric v2** (6 dimensions, +correctness, send_multiple_messages fix): Baseline 83.2 → Best 83.3 (+0.1)
 
 The prompt is already strong. The wins are about concrete examples over abstract rules. GPT-5.4 follows "got it, $45, split 4 ways" better than "be concise."
 
-**Hit rate: 30%.** Most experiments make things worse. This is normal for prompt optimization at this quality level — the prompt is already good, so most changes are regressions. The valuable finding is knowing what NOT to do.
+**Hit rate: 20%.** Most experiments make things worse. This is normal for prompt optimization at this quality level — the prompt is already good, so most changes are regressions. The valuable finding is knowing what NOT to do.
+
+At experiment 12, we upgraded the rubric to add a **correctness** dimension and fixed a blindspot where the judge couldn't see text inside `send_multiple_messages` tool calls. This reset the baseline but gave much more accurate scoring.
 
 ## What We're Scoring
 
@@ -75,6 +81,19 @@ Without this, the model was opening multi-message responses with formal intros l
 When giving multiple options via send_multiple_messages, the first message should be casual and short: "ok couple options" or "found some spots" — NOT "Here are some recommendations for you". Then each following message covers one option in 1-2 lines max.
 ```
 
+### 4. Don't narrate tool results (+0.1 points, rubric v2)
+
+The model was announcing what tools returned instead of just translating results into useful info.
+
+**Expand texting rule #6 in `persona.ts`:**
+```
+Don't announce what you're about to do. Just do it. Don't narrate tool results either — translate them into something useful.
+- BAD: "Let me look into flight options for you!"
+- BAD: "I found 3 options for you. Here they are:"
+- GOOD: just do it. Or if it takes time: "checking flights, one sec"
+- GOOD: "ok couple options" then jump straight into the options
+```
+
 ## Changes That Did NOT Work (Don't Bother)
 
 | Change | Score impact | Why it failed |
@@ -96,6 +115,25 @@ When giving multiple options via send_multiple_messages, the first message shoul
 **Don't touch routing.** The model's routing (when to respond vs stay silent) is nearly perfect at 100%. Any change to routing rules improves one scenario and breaks others.
 
 **Don't fight send_multiple_messages.** The model uses this tool well. Trying to force it to also generate text alongside the tool call just creates duplication.
+
+### Full Discard List (experiments 5-20)
+
+| # | Change | Score | Why it failed |
+|---|--------|-------|---------------|
+| 5 | Actionable intent → offer help | 87.0 | Improved one scenario, hurt voice on 3 others |
+| 6 | Simplify BOUNDARIES | 87.4 | Redundancy helps GPT-5.4 follow rules |
+| 7 | Identity example in WHO YOU ARE | 86.0 | Model over-indexed on casual, got sloppy |
+| 8 | ai_suggest flow example | 84.8 | More verbose, gate failure |
+| 9 | Text alongside send_multiple_messages | 86.8 | Model got chattier |
+| 10 | Vote one-line-max | 85.7 | Too rigid for confirmations |
+| 11 | CRITICAL RULES at top | 86.8 | Formatting 93 but message length dropped |
+| 13 | Skip recap on actionable intent | 82.6 | That scenario +7 but others dipped |
+| 15 | Self-correction as trust signal | 82.6 | No measurable impact |
+| 16 | Confirmations offer next step | 82.2 | Hurt more than helped |
+| 17 | Limit send_multiple_messages count | 83.0 | Marginal loss |
+| 18 | "here are" to kill list | 82.6 | Net negative |
+| 19 | Behavioral summary after identity | 82.9 | Marginal loss |
+| 20 | Tighten RESPONSE FORMAT | 81.7 | Duplicate constraint, balance dropped |
 
 ## Key Insight
 
@@ -152,11 +190,25 @@ python3 eval.py
 
 See `~/autoresearch/results.tsv` for the full log. See `git log` on the `autoresearch/mar25` branch for the actual diffs.
 
+## Meta-Findings: What We Learned About the Process
+
+1. **The prompt is near-optimal for these scenarios.** After 20 experiments, we gained +1.8 points on v1 rubric and +0.1 on v2. The original prompt was already good.
+
+2. **20% hit rate is expected.** At this quality level, most changes are regressions. The value is in knowing what NOT to change as much as what to change.
+
+3. **Eval harness quality matters more than experiment count.** The biggest unlock was fixing the `send_multiple_messages` blindspot and adding correctness scoring — not running more experiments.
+
+4. **LLM-as-judge has ~2-3 point variance between runs.** The same prompt can score 82 or 85 on different runs. Gains under 1 point are noise.
+
+5. **Mock data limits signal.** The `ai_suggest` mock always returns the same 3 restaurants. The model noticed ("search gave me restaurants not hotels"). Real evaluation needs dynamic mocks or live API calls.
+
+6. **Correctness is the next frontier.** Brand voice and formatting are nearly solved. The remaining gains are in: did the agent do the right thing with the right data? This matters more once bookings are live.
+
 ## Next Steps
 
-- [ ] Run 20+ more experiments targeting the weak scenarios
-- [ ] Add more test scenarios (currently 16 — want 30+)
-- [ ] Add scenarios for edge cases: currency detection, undo, flight parsing
-- [ ] Test with dynamic context variations (different trip sizes, stages)
-- [ ] Compare prompt performance on Claude vs GPT-5.4
-- [ ] Rizwan to review findings and apply changes to production prompt files
+- [ ] Add 15+ more scenarios: currency detection, undo, flight parsing, multi-currency expenses, edge case routing
+- [ ] Add dynamic mock data (vary the trip context per scenario)
+- [ ] Human eval pass: Jake + Andreas score 20 responses side-by-side with the LLM judge
+- [ ] Rizwan to review findings and apply the 4 kept changes to production prompt files
+- [ ] Run correctness-focused experiments once booking tools are live
+- [ ] Compare prompt performance on Claude vs GPT-5.4 (cross-model robustness)

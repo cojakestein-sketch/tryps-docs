@@ -1,9 +1,9 @@
 # App Store Screenshots — Process Plan
 
 > Owner: Jake + Sean
-> Status: Phase 2 complete, Phase 3 next
+> Status: Phase 3 in progress — treatment + headlines drafted, needs Jake + Sean review
 > Goal: Best-in-class App Store presence — video + linked screenshots that tell the Tryps story
-> Output: 1 app preview video (slot 1) + 5 linked screenshot assets (slots 2-6)
+> Output: 1 app preview video (slot 1) + 5 screenshot assets (slots 2-6)
 > Dimensions: 1320 x 2868 px (iPhone 6.9" — Apple auto-scales for smaller devices)
 
 ---
@@ -12,163 +12,231 @@
 
 Full research doc: [research.md](research.md)
 
-### Key findings:
-- 90% of users never scroll past screenshot 3
-- Screenshot #1 gets 10x more views — video auto-plays on mute in search results
-- 30-40% conversion lift from optimizing slot 1 alone
-- 3-5 words per headline, benefit over feature ("Plan your next trip" not "AI itinerary engine")
-- Dark backgrounds feel premium, make bright UI pop
-- Panoramic continuity (linked images) compels scrolling
-- Lead with group trip outcome, NOT the AI agent
-- One message per screenshot, no feature dumping
+Key findings: 90% never scroll past screenshot 3. Slot 1 gets 10x views. Video auto-plays on mute = 47% conversion lift. 20-40% lift from well-made video. Bad video = -30%. First 5 seconds is everything.
 
 ---
 
 ## Phase 2: Competitive Inspiration — DONE
 
-### Approved references:
-
-| App | Verdict | What to steal |
-|-----|---------|---------------|
-| **Partiful** | STEAL | Video in slot 1 — shows key functionality, clean and fast |
-| **Flighty** | STEAL | Panoramic link between screenshots — images flow into each other |
-| **Arc Search** | STEAL | Video in slot 1, smart move |
-| **BeReal** | YES | Video in slot 1, confident we can do this |
-| **Venmo** | YES | Crystal clear simplicity — tells you exactly what they do |
-| **Copilot** | STEAL | Compelling video |
-| **Wispr Flow** | STEAL | Linked/flowing images in search results view — continuous visual narrative across frames |
-
-### Rejected:
-Airbnb (meh), Hopper (hate), Splitwise (awful), TripIt (horrible), Wanderlog (ugly colors), Things 3 (no), Raycast (too dark), Linear (no), Notion (doesn't tell you what it does), Poke AI (no app found)
-
-### Key decisions from review:
-1. **Slot 1 = APP PREVIEW VIDEO** — not a screenshot
-2. **Slots 2-4 = Panoramic linked images** that flow together (Wispr Flow / Flighty style)
-3. **Search results view is critical** — how the first 3 frames look as thumbnails when someone types "trip planning" matters as much as the product page
+Approved refs: Partiful (video), Flighty (panoramic link), Arc (video), BeReal (video), Venmo (clarity), Copilot (video), Wispr Flow (linked images in search).
 
 ---
 
-## Phase 3: Strategy — The 6-slot plan
+## Phase 3: Strategy — DECISIONS MADE
 
-### Slot 1: App Preview Video (~6 seconds)
+### Resolved decisions:
 
-**Concept:** The full Tryps workflow, end to end, in one take.
-
-Storyboard (draft):
-1. iMessage group chat — someone drops a Tryps link
-2. Tap the link — app opens
-3. Trip dashboard appears — destination photo, friends' faces
-4. Quick flash of itinerary / voting / coordination
-5. Settle up — money handled
-6. End frame: Tryps logo + tagline
-
-**Specs:**
-- Duration: 15-30 seconds (Apple requirement), but core story in first 5 seconds
-- Auto-plays on mute in search results — 47% conversion lift from autoplay alone
-- Must work without sound — use text callouts, not voiceover
-- Poster frame must work as a standalone static screenshot (fallback when autoplay is off)
-- Format: H.264 or ProRes 422, max 500MB
-- **MUST be portrait orientation** — landscape pushes video below screenshots on product page
-
-**Conversion data:**
-- 20-40% conversion lift from well-made video (new-to-market social apps = higher end)
-- Bad video = -30% conversion — quality bar is high
-- 10% of viewers drop off every 5 seconds — front-load everything
-- Consider 2 short 15-second previews (outperform 1 long 30-second in most A/B tests)
-  - Video 1: The group flow (iMessage → link → Tryps → trip dashboard)
-  - Video 2: The coordination magic (voting, itinerary, settle up)
-
-**Who makes it:**
-- Jake + Sean storyboard the flow together
-- Designer provides the app mockup frames / real screenshots
-- Sean does motion work — timing, transitions, pacing
-- Could be screen recording with polish, or fully designed frames with animation
-
-### Slots 2-4: Panoramic Linked Images
-
-These three screenshots share a continuous background/visual element that flows across them. When viewed in search results, they look like one connected piece.
-
-| Slot | Theme | Headline (draft) | What it shows |
-|------|-------|-------------------|---------------|
-| 2 | Group planning | TBD | Creating a trip, inviting friends — the "start" moment |
-| 3 | Coordination | TBD | Voting, itinerary, decisions — the "middle" |
-| 4 | AI magic | TBD | Agent handling logistics — the "effortless" part |
-
-Visual treatment:
-- Continuous warm dark background (#1E1B19) or Tryps Red gradient flowing across all 3
-- Device frames at slight angles, positioned to create visual flow
-- Plus Jakarta Sans Bold headlines, 3-5 words each
-- Elements cut off at right edge of each frame to compel scrolling
-
-### Slots 5-6: Standalone Screens
-
-| Slot | Theme | Headline (draft) | What it shows |
-|------|-------|-------------------|---------------|
-| 5 | Money | TBD | Settle Up / expense splitting — trust and clarity |
-| 6 | The payoff | TBD | The trip itself — friends together, the emotional close |
+| Decision | Answer |
+|----------|--------|
+| Slot 1 format | 1 video, 15 seconds |
+| Video style | Hybrid — real app UI with designed transitions (Partiful-style) |
+| Sound | Music/SFX for unmute viewers, but works fully silent with text callouts |
+| Poster frame | iMessage screenshot — agent sent link, friends hearting it, "Your travel agent" callout |
+| Background | White/light (matching the app's current background) |
+| Palette | Consistent across all slots — Sean to finalize |
+| Panoramic link (2-4) | Sean to decide — color consistency, maybe a visual element flows between |
+| Screenshots to use | Trip creation, voting, itinerary, settle up, explore tab, travel DNA |
+| Data | Real trip data — will mock up real destinations, real friend avatars |
 
 ---
 
-### Strategy decisions (resolved):
+## Video Treatment — Slot 1
 
-| Decision | Answer | Rationale |
-|----------|--------|-----------|
-| Slot 1 format | Video | Partiful, Arc, BeReal, Copilot all do it — auto-plays in search |
-| Slots 2-4 style | Panoramic linked | Wispr Flow / Flighty style — flows in search results |
-| Background | Warm dark or Tryps Red gradient | Research says dark = premium; brand says stay warm |
-| Typography | Plus Jakarta Sans Bold | Brand consistency |
-| Copy voice | Punchy benefit statements | Verb + Benefit, 3-5 words, group chat energy |
-| Device frames | iPhone 16 Pro, slight angles | Current device signals active development |
-| Data in screenshots | Real trip data | No placeholder content — real destinations, real friend avatars |
+### "Your travel agent lives in iMessage"
 
-### Open questions for Phase 3 session (Jake + Sean):
-- [ ] Final headline copy for each slot
-- [ ] Which specific app screens to capture
-- [ ] Video: screen recording vs designed frames vs hybrid?
-- [ ] Video: music/sound design or purely visual?
-- [ ] Background: warm dark vs Tryps Red gradient vs something else?
-- [ ] How to handle the panoramic link visually — gradient? photo? pattern?
+**Duration:** 15 seconds
+**Orientation:** Portrait (1320 x 2868)
+**Style:** Hybrid — real app UI, polished transitions, text callouts on screen
+**Sound:** Upbeat, warm music track + subtle SFX (message sent sound, notification pop). Works fully on mute.
+
+---
+
+#### Frame-by-frame:
+
+**FRAME 1 (0:00 - 0:02) — The group chat**
+- iMessage group chat: "Euro Trip 2026" with 6 friends
+- Someone texts: "ok who's planning this thing"
+- Chaos energy — multiple texts overlapping ("not me lol", "i'm not doing it again")
+- TEXT CALLOUT: None yet — let the chaos breathe
+
+**FRAME 2 (0:02 - 0:04) — Tryps enters the chat**
+- Someone adds Tryps to the group chat
+- Tryps agent message appears: "Hey! I'm your travel agent. Where are you thinking?"
+- Friends react — heart, thumbs up, "!!" reactions on the message
+- TEXT CALLOUT: **"A travel agent in your iMessage"**
+
+**FRAME 3 (0:04 - 0:06) — The ask**
+- Friend replies: "Barcelona, 5 days, late June"
+- Tryps agent responds: "On it. I'll put together options for everyone."
+- Typing indicator shows Tryps working
+- TEXT CALLOUT: **"Tell it where. It handles the rest."**
+
+**FRAME 4 (0:06 - 0:08) — The link drops**
+- Tryps sends a rich link card into the group chat — trip thumbnail with Barcelona photo, "Euro Trip 2026 — tap to view your trip"
+- Friends react — heart eyes, fire emoji reactions flood in
+- TEXT CALLOUT: **"Plans and books your trip for you"**
+
+**FRAME 5 (0:08 - 0:10) — Tap into the app**
+- Finger taps the link card
+- Smooth transition — iMessage dissolves, Tryps app opens
+- Trip dashboard appears: Barcelona header photo, friend avatars, itinerary timeline, flight info
+- TEXT CALLOUT: **"Everything in one place"**
+
+**FRAME 6 (0:10 - 0:12) — The features flash**
+- Quick montage (0.5s each):
+  - Voting screen — "Where should we eat tonight?" with friends voting
+  - Itinerary view — day-by-day schedule, clean and organized
+  - Settle up screen — "$342 split 6 ways" with one-tap pay
+- TEXT CALLOUT (rotating): **"Vote together" → "See the plan" → "Split it up"**
+
+**FRAME 7 (0:12 - 0:15) — The close**
+- Pull back to the trip dashboard — warm, complete, friends' faces visible
+- Tryps logo fades in center
+- Tagline below logo (TBD — use whatever the current tagline is, or "Your trip, handled.")
+- TEXT CALLOUT: **"Tryps — your trip, handled."**
+
+---
+
+#### Poster frame (static fallback):
+
+Use **Frame 4** — the iMessage group chat with:
+- Tryps agent's rich link card visible (Barcelona trip)
+- Friends' heart/fire reactions on the message
+- Text callout: **"A travel agent in your iMessage"**
+
+This works as a standalone image because it immediately communicates: group chat + AI agent + trip planning.
+
+---
+
+#### Production notes for Sean:
+- All transitions should feel like natural iOS — no flashy effects, just smooth fades/slides
+- Message bubbles should appear with real iMessage timing (not too fast, not too slow)
+- The "chaos" in Frame 1 should feel real and relatable — this is every group chat
+- Music should be warm, upbeat, modern — think Partiful energy, not corporate
+- SFX: iMessage send/receive sounds, a subtle "pop" when the link card appears
+- The app UI in Frames 5-6 must be actual screenshots from the real app with real data
+- Text callouts: Plus Jakarta Sans Bold, white with subtle shadow for readability
+
+---
+
+## Screenshot Strategy — Slots 2-6
+
+### Headline options (Jake + Sean to pick):
+
+**Slot 2 — Trip Creation**
+App screen: Trip creation flow — destination photo, friend invites, date picker
+
+| Option | Headline |
+|--------|----------|
+| A | **"Start a trip in seconds"** |
+| B | **"One tap, trip started"** |
+| C | **"Add your friends. Go."** |
+| D | **"Create. Invite. Done."** |
+
+**Slot 3 — Voting**
+App screen: Voting modal — "Where should we eat?" with friend votes visible
+
+| Option | Headline |
+|--------|----------|
+| A | **"Everyone gets a say"** |
+| B | **"Vote on everything"** |
+| C | **"No more 'idc you pick'"** |
+| D | **"Decide together, instantly"** |
+
+**Slot 4 — Itinerary**
+App screen: Day-by-day itinerary view — activities, times, locations
+
+| Option | Headline |
+|--------|----------|
+| A | **"Your whole trip, organized"** |
+| B | **"Every day, planned out"** |
+| C | **"See the full picture"** |
+| D | **"The plan, at a glance"** |
+
+**Slot 5 — Settle Up**
+App screen: Settle up / expense splitting — amounts, who owes who, one-tap pay
+
+| Option | Headline |
+|--------|----------|
+| A | **"Split costs, skip the drama"** |
+| B | **"Settle up in one tap"** |
+| C | **"No awkward Venmo requests"** |
+| D | **"Money handled. Friends kept."** |
+
+**Slot 6 — Explore + Travel DNA**
+App screen: Explore tab or Travel DNA profile — this is the "your world" screen
+
+| Option | Headline |
+|--------|----------|
+| A | **"Your travel personality"** |
+| B | **"Discover what's next"** |
+| C | **"Built around how you travel"** |
+| D | **"Your trips. Your taste."** |
+
+### Slot 6 — screen decision needed:
+
+Jake listed both Explore tab and Travel DNA. Pick one for slot 6:
+- **Explore tab** = forward-looking, aspirational ("what's next")
+- **Travel DNA** = personal, identity-driven ("this is who you are as a traveler")
+
+Recommendation: **Travel DNA** — it's more unique to Tryps. Every travel app has an explore tab. Nobody else has Travel DNA. It's a differentiator and a conversation starter ("what's your travel DNA?").
+
+---
+
+### Visual treatment for slots 2-6:
+
+- **Background:** White/light matching app's current background
+- **Device:** iPhone 16 Pro frame, portrait, centered or slight angle
+- **Headlines:** Plus Jakarta Sans Bold, Deep Slate (#3D3530), positioned above device
+- **Subheadline (optional):** Plus Jakarta Sans Regular, lighter weight, one line below
+- **Slots 2-4:** Panoramic link — Sean to decide the visual connective element (consistent color palette, maybe a subtle element that flows between frames)
+- **Slots 5-6:** Standalone but visually consistent with 2-4
+- **All screenshots use real trip data** — real destinations, real friend avatars, real names
 
 ---
 
 ## Phase 4: Execution
 
 ### Video (Slot 1):
-1. Jake + Sean storyboard the 6-second flow
-2. Screen record real app flows with realistic data
-3. Sean adds motion, transitions, timing
-4. Export: H.264, 1320x2868, 15-30 seconds
-5. Set poster frame (must work as static fallback)
+1. Jake + Sean review this treatment — mark up what changes
+2. Stage real app with Barcelona trip data + real friend avatars
+3. Screen record iMessage flow + app screens
+4. Sean edits: transitions, timing, text callouts, music/SFX
+5. Export: H.264, 1320x2868, portrait, 15 seconds
+6. Set poster frame (Frame 4 — iMessage with link card)
+7. Test: watch on mute at thumbnail size — does it work?
 
 ### Screenshots (Slots 2-6):
-1. Capture real app screens with realistic trip data
-2. Design in Figma — panoramic layout for slots 2-4, standalone for 5-6
-3. Use Figma Make for backgrounds / treatments if helpful
-4. Export: 1320 x 2868 px PNG
-5. Review how they look in search results view (thumbnail size)
+1. Stage real app with trip data for each screen
+2. Capture screenshots from the real app
+3. Design in Figma — headline text, device frame, background, panoramic link for 2-4
+4. Sean finalizes visual treatment + panoramic element
+5. Export: 1320 x 2868 px PNG
+6. Test: view all 6 slots at search-result thumbnail size — does the story read?
 
 ### After launch:
 - A/B test via Apple Product Page Optimization (PPO)
-- Test video vs static in slot 1
+- Test video poster frame variations
 - Test different headline copy
-- Refresh quarterly with new features / seasonal themes
+- Refresh quarterly
 
 ---
 
 ## Timeline
 
-| Phase | Who | When |
-|-------|-----|------|
+| Phase | Who | Status |
+|-------|-----|--------|
 | Phase 1: Research | Claude | DONE |
 | Phase 2: Competitive review | Jake | DONE |
-| Phase 3: Strategy session | Jake + Sean | This week |
-| Phase 4: Video production | Sean + Designer | Next week |
-| Phase 4: Screenshot design | Designer + Sean | Next week |
+| Phase 3: Treatment + headlines | Claude | DONE — needs Jake + Sean review |
+| Phase 3: Final decisions | Jake + Sean | THIS WEEK |
+| Phase 4: Video production | Sean + Designer | After treatment approved |
+| Phase 4: Screenshot design | Designer + Sean | After headlines picked |
 | Review + upload | Jake | Before launch |
 
 ---
 
 ## Files in this folder
 
-- `plan.md` — this file (process plan + decisions)
+- `plan.md` — this file (process plan, treatment, headlines, decisions)
 - `research.md` — Phase 1 deep research (conversion data, best practices, tools)
