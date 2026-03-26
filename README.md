@@ -38,6 +38,11 @@ archive/                 Old/stale files — DO NOT REFERENCE (see archive/AGENT
 | [[2026-03-20-feat-strategic-roadmap-mece-scope-plan|Strategic Roadmap]] | MECE strategic roadmap |
 | [[clickup|shared/clickup.md]] | ClickUp workspace IDs, CLI usage, task mapping |
 | [[brand|shared/brand.md]] | Color palette, typography, spacing, voice & tone |
+| [[decisions|shared/decisions.md]] | Strategic decisions log |
+| [[team|shared/team.md]] | Team roster, org chart, contacts |
+| [[observations|shared/observations.md]] | Agent observations for Jake review |
+| [[priorities|shared/priorities.md]] | Current sprint focus |
+| [[docs/plans/INDEX|docs/plans/INDEX.md]] | All strategic and feature plans |
 
 ## Workflow
 
@@ -50,4 +55,5 @@ Each scope has one spec with numbered success criteria. Devs build from the spec
 1. Read [[scopes/INDEX|scopes/INDEX.md]] first
 2. Then [[state|shared/state.md]] for current status
 3. Then the specific scope's `objective.md` -> `spec.md`
-4. **Never read from `archive/`** — that content is stale
+4. Check [[docs/plans/INDEX|docs/plans/INDEX.md]] for strategic context
+5. **Never read from `archive/`** — that content is stale
