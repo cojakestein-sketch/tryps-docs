@@ -64,6 +64,8 @@ Friends / Advisors (no reporting line)
 | Andreas | U0AJG90JHN3 | 95380391 |
 | Arslan | U0AJZ6EHVNG | 102619517 |
 | Krisna | U0AK8FSES6M | 84754219 |
+| Sean | U0ANN485UUT | — |
+| Warda | U0ANSCQPJFQ | — |
 | Marty | U0AK97BBDTL | 95390289 |
 
 ## Notes

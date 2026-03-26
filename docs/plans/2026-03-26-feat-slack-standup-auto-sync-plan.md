@@ -99,7 +99,7 @@ When Marty reads a thread reply:
 
 ## Marty Prompt
 
-**Copy-paste this entire prompt to Marty. Replace MARTYBRAND_CHANNEL_ID with the actual ID once you have it.**
+**Copy-paste this entire prompt to Marty. Replace C0AP2B9J5PU with the actual ID once you have it.**
 
 ````
 You have a new workflow: Slack Standup Auto-Sync. Post standup questions to Slack channels, watch for thread replies, and auto-update the standup doc.
@@ -108,7 +108,7 @@ You have a new workflow: Slack Standup Auto-Sync. Post standup questions to Slac
 
 Post these messages to the specified channels. Each is a SINGLE message (all questions for that channel in one post). Post as yourself (Marty), not on behalf of Jake.
 
-### Post to #martybrand (channel ID: MARTYBRAND_CHANNEL_ID)
+### Post to #martybrand (channel ID: C0AP2B9J5PU)
 
 Message 1 — for Sean:
 
@@ -179,8 +179,8 @@ After posting each message, save the channel ID and message timestamp (ts) for e
 Store them like this:
 ```
 MESSAGES = {
-  "martybrand_sean": { channel: "MARTYBRAND_CHANNEL_ID", ts: "..." },
-  "martybrand_jake": { channel: "MARTYBRAND_CHANNEL_ID", ts: "..." },
+  "martybrand_sean": { channel: "C0AP2B9J5PU", ts: "..." },
+  "martybrand_jake": { channel: "C0AP2B9J5PU", ts: "..." },
   "martydev_asif": { channel: "C0AKS98Q5K5", ts: "..." },
   "martydev_rizwan": { channel: "C0AKS98Q5K5", ts: "..." },
   "martydev_nadeem": { channel: "C0AKS98Q5K5", ts: "..." },
