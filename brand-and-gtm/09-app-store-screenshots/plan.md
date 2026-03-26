@@ -1,128 +1,157 @@
 # App Store Screenshots — Process Plan
 
 > Owner: Jake + Sean
-> Status: Not started
-> Goal: 6 best-in-class App Store screenshots that tell the Tryps story and drive downloads
-> Output: 6 Figma Make prompts → 6 final screenshot assets (iPhone 15 Pro Max, 1290x2796)
+> Status: Phase 2 complete, Phase 3 next
+> Goal: Best-in-class App Store presence — video + linked screenshots that tell the Tryps story
+> Output: 1 app preview video (slot 1) + 5 linked screenshot assets (slots 2-6)
+> Dimensions: 1320 x 2868 px (iPhone 6.9" — Apple auto-scales for smaller devices)
 
 ---
 
-## Phase 1: Research — What does "best in class" look like?
+## Phase 1: Research — DONE
 
-**Method:** Auto-research with Claude (Karpathy-style deep dive)
+Full research doc: [research.md](research.md)
 
-Research questions:
-- What do the highest-converting App Store screenshots have in common?
-- What's the anatomy of a great screenshot (headline, device frame, background, callout)?
-- What ratios of text-to-UI work best?
-- How many screenshots do top apps use? What's the narrative arc across the set?
-- What are the ASO (App Store Optimization) rules and constraints for screenshots?
-- What do social/travel apps specifically do well (and badly)?
-- What does Apple recommend in their Human Interface Guidelines for screenshots?
-
-Deliverable: A research summary doc with principles and patterns to follow.
-
----
-
-## Phase 2: Competitive Inspiration — Yes/No on real examples
-
-**Method:** Jake browses App Store, Claude provides a curated list of brands to review
-
-### Brands to evaluate (propose/debate this list):
-
-**Travel & social apps:**
-1. Partiful
-2. Airbnb
-3. Hopper
-4. Flighty
-5. Wanderlog
-6. Splitwise
-7. TripIt
-
-**Consumer apps with great screenshot design:**
-8. Arc Browser
-9. Lemon8
-10. BeReal
-11. Retro (photo sharing)
-12. Copilot (finance)
-13. Artifact (was news, good design)
-14. Poke AI
-15. Venmo
-
-**Wild cards (known for elite App Store presence):**
-16. Notion
-17. Linear
-18. Raycast
-19. Things 3
-20. Halide
-
-### Process:
-1. Jake opens each app's App Store page
-2. For each: **YES** (love the screenshots), **NO** (skip), or **STEAL THIS** (specific element to borrow)
-3. For every YES/STEAL, note what specifically works — the headline copy? the color? the device framing? the story arc?
-
-Deliverable: A filtered list of 5-8 approved references with annotations on what to steal.
+### Key findings:
+- 90% of users never scroll past screenshot 3
+- Screenshot #1 gets 10x more views — video auto-plays on mute in search results
+- 30-40% conversion lift from optimizing slot 1 alone
+- 3-5 words per headline, benefit over feature ("Plan your next trip" not "AI itinerary engine")
+- Dark backgrounds feel premium, make bright UI pop
+- Panoramic continuity (linked images) compels scrolling
+- Lead with group trip outcome, NOT the AI agent
+- One message per screenshot, no feature dumping
 
 ---
 
-## Phase 3: Strategy — Craft the 6-screen narrative
+## Phase 2: Competitive Inspiration — DONE
 
-**Method:** Synthesize Phase 1 research + Phase 2 references into a Tryps-specific screenshot strategy
+### Approved references:
 
-### The 6-screen story arc (draft — to be refined):
+| App | Verdict | What to steal |
+|-----|---------|---------------|
+| **Partiful** | STEAL | Video in slot 1 — shows key functionality, clean and fast |
+| **Flighty** | STEAL | Panoramic link between screenshots — images flow into each other |
+| **Arc Search** | STEAL | Video in slot 1, smart move |
+| **BeReal** | YES | Video in slot 1, confident we can do this |
+| **Venmo** | YES | Crystal clear simplicity — tells you exactly what they do |
+| **Copilot** | STEAL | Compelling video |
+| **Wispr Flow** | STEAL | Linked/flowing images in search results view — continuous visual narrative across frames |
 
-| # | Theme | Headline (draft) | What it shows |
-|---|-------|-------------------|---------------|
-| 1 | Hook / Hero | TBD | The "aha" moment — what is Tryps? |
-| 2 | Group planning | TBD | Creating a trip, inviting friends |
-| 3 | AI agent magic | TBD | Linq/agent doing the work for you |
-| 4 | Coordination | TBD | Voting, decisions, itinerary |
-| 5 | Money | TBD | Splitting costs, Settle Up |
-| 6 | Social proof / emotion | TBD | The payoff — your trip, your people |
+### Rejected:
+Airbnb (meh), Hopper (hate), Splitwise (awful), TripIt (horrible), Wanderlog (ugly colors), Things 3 (no), Raycast (too dark), Linear (no), Notion (doesn't tell you what it does), Poke AI (no app found)
 
-### Strategy decisions to make:
-- Device frame style: floating device? full bleed? no device?
-- Background treatment: solid color? gradient? lifestyle photo blur?
-- Typography: Plus Jakarta Sans (brand) or something bolder for headlines?
-- Color palette per screen: all Tryps Red? or vary by theme?
-- Copy voice: punchy one-liners? questions? statements?
-- Include real UI or stylized/simplified mockups?
-
-Deliverable: A finalized shot list with headline copy, UI screen selection, and visual treatment per screenshot.
+### Key decisions from review:
+1. **Slot 1 = APP PREVIEW VIDEO** — not a screenshot
+2. **Slots 2-4 = Panoramic linked images** that flow together (Wispr Flow / Flighty style)
+3. **Search results view is critical** — how the first 3 frames look as thumbnails when someone types "trip planning" matters as much as the product page
 
 ---
 
-## Phase 4: Execution — Figma Make
+## Phase 3: Strategy — The 6-slot plan
 
-**Method:** Sean and Jake use Figma Make to generate the screenshots
+### Slot 1: App Preview Video (~6 seconds)
 
-### Per screenshot:
-1. Write a detailed Figma Make prompt informed by Phase 3 strategy
-2. Include: exact headline text, background description, device frame style, which app screen to show, color tokens from brand.md
-3. Generate in Figma Make
-4. Review and iterate (2-3 rounds max per screen)
-5. Export at 1290x2796 (iPhone 15 Pro Max)
+**Concept:** The full Tryps workflow, end to end, in one take.
 
-### Prompt template:
-```
-Create an App Store screenshot for a travel app called Tryps.
+Storyboard (draft):
+1. iMessage group chat — someone drops a Tryps link
+2. Tap the link — app opens
+3. Trip dashboard appears — destination photo, friends' faces
+4. Quick flash of itinerary / voting / coordination
+5. Settle up — money handled
+6. End frame: Tryps logo + tagline
 
-Screen [N] of 6.
-Headline: "[HEADLINE]"
-Subheadline: "[SUBHEADLINE]" (optional)
+**Specs:**
+- Duration: 15-30 seconds (Apple requirement), but core story in first 5 seconds
+- Auto-plays on mute in search results — 47% conversion lift from autoplay alone
+- Must work without sound — use text callouts, not voiceover
+- Poster frame must work as a standalone static screenshot (fallback when autoplay is off)
+- Format: H.264 or ProRes 422, max 500MB
+- **MUST be portrait orientation** — landscape pushes video below screenshots on product page
 
-Show: [description of the app UI to display]
-Device: [frame style]
-Background: [treatment]
-Colors: Tryps Red (#D9071C), Warm Cream (#F5EADB), Deep Slate (#3D3530)
-Font: Plus Jakarta Sans Bold for headline
-Style: [reference notes from Phase 2]
+**Conversion data:**
+- 20-40% conversion lift from well-made video (new-to-market social apps = higher end)
+- Bad video = -30% conversion — quality bar is high
+- 10% of viewers drop off every 5 seconds — front-load everything
+- Consider 2 short 15-second previews (outperform 1 long 30-second in most A/B tests)
+  - Video 1: The group flow (iMessage → link → Tryps → trip dashboard)
+  - Video 2: The coordination magic (voting, itinerary, settle up)
 
-This screenshot should make someone stop scrolling and think:
-"[the feeling we want to evoke]"
-```
+**Who makes it:**
+- Jake + Sean storyboard the flow together
+- Designer provides the app mockup frames / real screenshots
+- Sean does motion work — timing, transitions, pacing
+- Could be screen recording with polish, or fully designed frames with animation
 
-Deliverable: 6 exported screenshot assets ready for App Store Connect upload.
+### Slots 2-4: Panoramic Linked Images
+
+These three screenshots share a continuous background/visual element that flows across them. When viewed in search results, they look like one connected piece.
+
+| Slot | Theme | Headline (draft) | What it shows |
+|------|-------|-------------------|---------------|
+| 2 | Group planning | TBD | Creating a trip, inviting friends — the "start" moment |
+| 3 | Coordination | TBD | Voting, itinerary, decisions — the "middle" |
+| 4 | AI magic | TBD | Agent handling logistics — the "effortless" part |
+
+Visual treatment:
+- Continuous warm dark background (#1E1B19) or Tryps Red gradient flowing across all 3
+- Device frames at slight angles, positioned to create visual flow
+- Plus Jakarta Sans Bold headlines, 3-5 words each
+- Elements cut off at right edge of each frame to compel scrolling
+
+### Slots 5-6: Standalone Screens
+
+| Slot | Theme | Headline (draft) | What it shows |
+|------|-------|-------------------|---------------|
+| 5 | Money | TBD | Settle Up / expense splitting — trust and clarity |
+| 6 | The payoff | TBD | The trip itself — friends together, the emotional close |
+
+---
+
+### Strategy decisions (resolved):
+
+| Decision | Answer | Rationale |
+|----------|--------|-----------|
+| Slot 1 format | Video | Partiful, Arc, BeReal, Copilot all do it — auto-plays in search |
+| Slots 2-4 style | Panoramic linked | Wispr Flow / Flighty style — flows in search results |
+| Background | Warm dark or Tryps Red gradient | Research says dark = premium; brand says stay warm |
+| Typography | Plus Jakarta Sans Bold | Brand consistency |
+| Copy voice | Punchy benefit statements | Verb + Benefit, 3-5 words, group chat energy |
+| Device frames | iPhone 16 Pro, slight angles | Current device signals active development |
+| Data in screenshots | Real trip data | No placeholder content — real destinations, real friend avatars |
+
+### Open questions for Phase 3 session (Jake + Sean):
+- [ ] Final headline copy for each slot
+- [ ] Which specific app screens to capture
+- [ ] Video: screen recording vs designed frames vs hybrid?
+- [ ] Video: music/sound design or purely visual?
+- [ ] Background: warm dark vs Tryps Red gradient vs something else?
+- [ ] How to handle the panoramic link visually — gradient? photo? pattern?
+
+---
+
+## Phase 4: Execution
+
+### Video (Slot 1):
+1. Jake + Sean storyboard the 6-second flow
+2. Screen record real app flows with realistic data
+3. Sean adds motion, transitions, timing
+4. Export: H.264, 1320x2868, 15-30 seconds
+5. Set poster frame (must work as static fallback)
+
+### Screenshots (Slots 2-6):
+1. Capture real app screens with realistic trip data
+2. Design in Figma — panoramic layout for slots 2-4, standalone for 5-6
+3. Use Figma Make for backgrounds / treatments if helpful
+4. Export: 1320 x 2868 px PNG
+5. Review how they look in search results view (thumbnail size)
+
+### After launch:
+- A/B test via Apple Product Page Optimization (PPO)
+- Test video vs static in slot 1
+- Test different headline copy
+- Refresh quarterly with new features / seasonal themes
 
 ---
 
@@ -130,15 +159,16 @@ Deliverable: 6 exported screenshot assets ready for App Store Connect upload.
 
 | Phase | Who | When |
 |-------|-----|------|
-| Phase 1: Research | Claude | Day 1 |
-| Phase 2: Yes/No | Jake | Day 1-2 |
-| Phase 3: Strategy | Jake + Sean + Claude | Day 2-3 |
-| Phase 4: Execution | Sean + Jake (Figma Make) | Day 3-5 |
+| Phase 1: Research | Claude | DONE |
+| Phase 2: Competitive review | Jake | DONE |
+| Phase 3: Strategy session | Jake + Sean | This week |
+| Phase 4: Video production | Sean + Designer | Next week |
+| Phase 4: Screenshot design | Designer + Sean | Next week |
+| Review + upload | Jake | Before launch |
 
 ---
 
-## Notes
+## Files in this folder
 
-- Google Play screenshots are different dimensions (1080x1920) — do iPhone first, adapt later
-- Consider a "preview video" as screenshot slot 1 (Apple allows 3 app preview videos)
-- App Store allows up to 10 screenshots but 6 is the sweet spot — most users see 3 before swiping
+- `plan.md` — this file (process plan + decisions)
+- `research.md` — Phase 1 deep research (conversion data, best practices, tools)
