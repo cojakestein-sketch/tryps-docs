@@ -1,0 +1,14 @@
+Status changes detected at 2026-03-26 13:00 UTC:
+Previous:
+| agent-intelligence | Agent Intelligence | in-progress | rizwan | 55/61 | 55 ready for QA |
+| beta-user-feedback | Beta & User Feedback | in-progress | jake | — | Ongoing, no spec needed |
+| core-trip-experience | Core Trip Experience | testing | nadeem / andreas | 15/16 | Bug testing in progress |
+| customer-service-triaging | Customer Service & Triaging | needs-spec | jake | 0/0 | Added 2026-03-24 |
+| group-decision-making | Group Decision-Making | needs-spec | jake | 0/41 | Jake to spec |
+| imessage-agent | iMessage Agent | in-progress | asif | 34/57 | 34 QA passing |
+| onboarding-teaching | Onboarding & Teaching | needs-spec | jake | 0/0 | Jake to spec |
+| output-backed-screen | Output-Backed Screen | in-progress | nadeem | 7/48 | Overview tab started |
+| payments-infrastructure | Payments Infrastructure | not-started | rizwan | 0/12 | Blocked on scope 7+8 |
+| post-trip-retention | Post-Trip & Retention | specced | nadeem | 0/39 | Spec exists, not started |
+| travel-booking | Travel Booking | in-progress | asif, rizwan | 0/58 | API integrations ongoing |
+| travel-identity | Travel Identity | needs-spec | jake | 0/50 | Jake to spec |
