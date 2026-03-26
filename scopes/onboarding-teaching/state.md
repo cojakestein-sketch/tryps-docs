@@ -1,14 +1,16 @@
 ---
 id: onboarding-teaching
-status: partial
+status: needs-spec
 assignee: jake
 clickup_ids: ["86e0emu6c"]
 criteria: 0/0
 blockers: ["All 3 remaining items need design"]
-last_updated: 2026-03-20
+last_updated: 2026-03-26
 updated_by: jake
 review_status: un-reviewed
 ---
+
+> Parent: [[onboarding-teaching/objective|Onboarding & Teaching Objective]]
 
 ## Current State
 

@@ -1,14 +1,16 @@
 ---
 id: travel-identity
-status: partial
-assignee: nadeem
+status: needs-spec
+assignee: jake
 clickup_ids: ["86e0emu52", "86e0emu86"]
 criteria: 0/50
 blockers: ["Connector wallet needs design (Jake has sketch)"]
-last_updated: 2026-03-20
+last_updated: 2026-03-26
 updated_by: jake
 review_status: un-reviewed
 ---
+
+> Parent: [[travel-identity/objective|Travel Identity Objective]]
 
 ## Current State
 

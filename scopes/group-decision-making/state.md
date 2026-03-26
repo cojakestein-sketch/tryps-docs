@@ -1,14 +1,16 @@
 ---
 id: group-decision-making
-status: partial
-assignee: nadeem
+status: needs-spec
+assignee: jake
 clickup_ids: ["86e0emu5q"]
 criteria: 0/41
 blockers: ["Guided cadence + role cards need design before dev"]
-last_updated: 2026-03-20
+last_updated: 2026-03-26
 updated_by: jake
 review_status: un-reviewed
 ---
+
+> Parent: [[group-decision-making/objective|Group Decision-Making Objective]]
 
 ## Current State
 

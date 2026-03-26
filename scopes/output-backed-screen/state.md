@@ -1,12 +1,12 @@
 ---
 id: output-backed-screen
-status: specced
+status: in-progress
 assignee: nadeem
 clickup_ids: []
 clickup_status: null
-criteria: 0/48
-blockers: ["Linq capability audit for iMessage infographic rendering", "Design: trip overview layout + draggable itinerary (blocks all dev)"]
-last_updated: 2026-03-22T23:00:00Z
+criteria: 7/48
+blockers: ["Design: trip overview layout + draggable itinerary (blocks remaining dev)"]
+last_updated: 2026-03-26
 updated_by: jake
 review_status: reviewed
 ---

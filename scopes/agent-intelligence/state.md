@@ -1,13 +1,13 @@
 ---
 id: agent-intelligence
-status: specced
+status: in-progress
 assignee: rizwan
 clickup_ids: ["86e05v28h", "86e0ajhte"]
-clickup_status: needs spec
-criteria: 22/61
-blockers: ["Vibe quiz data must be accessible (already built)", "System prompt extension points (SC-34 from iMessage Agent) must exist"]
-last_updated: 2026-03-24T00:00:00Z
-updated_by: rizwan
+clickup_status: in progress
+criteria: 55/61
+blockers: ["Cross-scope interfaces SC-59/60/61 need joint design with Asif"]
+last_updated: 2026-03-26
+updated_by: jake
 review_status: reviewed
 ---
 

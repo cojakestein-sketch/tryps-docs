@@ -1,14 +1,16 @@
 ---
 id: core-trip-experience
-status: built
+status: testing
 assignee: nadeem
 clickup_ids: []
-criteria: 0/0
+criteria: 15/16
 blockers: []
-last_updated: 2026-03-20
+last_updated: 2026-03-26
 updated_by: jake
 review_status: un-reviewed
 ---
+
+> Parent: [[core-trip-experience/objective|Core Trip Experience Objective]]
 
 ## Current State
 

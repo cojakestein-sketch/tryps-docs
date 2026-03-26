@@ -1,13 +1,13 @@
 ---
 id: travel-booking
-status: specced
+status: in-progress
 assignee: asif, rizwan
 clickup_ids: ["86e06y10g"]
 criteria: 0/58
 blockers:
   - "Payments Infrastructure (scope 9) — payment handoff interface needed for booking finalization"
   - "API partnerships (Resy, OpenTable, etc.) — devs pursuing organically, will escalate to Jake if blocked"
-last_updated: 2026-03-23
+last_updated: 2026-03-26
 updated_by: jake
 review_status: reviewed
 ---

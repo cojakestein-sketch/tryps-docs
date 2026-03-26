@@ -1,14 +1,16 @@
 ---
 id: payments-infrastructure
 status: not-started
-assignee: asif
+assignee: rizwan
 clickup_ids: ["86e0emu70", "86e0emu8e"]
 criteria: 0/12
 blockers: []
-last_updated: 2026-03-20
+last_updated: 2026-03-26
 updated_by: jake
 review_status: un-reviewed
 ---
+
+> Parent: [[payments-infrastructure/objective|Payments Infrastructure Objective]]
 
 ## Current State
 
