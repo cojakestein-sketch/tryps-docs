@@ -6,7 +6,7 @@ owner: jake
 for: rizwan
 baseline_score: 85.7
 current_best: 87.5
-experiments_run: 6
+experiments_run: 10
 ---
 
 # Prompt Optimization Findings
@@ -15,9 +15,11 @@ experiments_run: 6
 
 We ran Karpathy's autoresearch pattern against the Tryps agent system prompt. An AI agent made targeted modifications to the prompt, tested each change against 16 scenarios using GPT-5.4, scored the responses with an LLM judge, and kept improvements.
 
-**Baseline: 85.7/100 → Current best: 87.5/100** after 6 experiments (3 kept, 3 discarded).
+**Baseline: 85.7/100 → Current best: 87.5/100** after 10 experiments (3 kept, 7 discarded).
 
 The prompt is already strong. The wins are about concrete examples over abstract rules. GPT-5.4 follows "got it, $45, split 4 ways" better than "be concise."
+
+**Hit rate: 30%.** Most experiments make things worse. This is normal for prompt optimization at this quality level — the prompt is already good, so most changes are regressions. The valuable finding is knowing what NOT to do.
 
 ## What We're Scoring
 
@@ -77,9 +79,23 @@ When giving multiple options via send_multiple_messages, the first message shoul
 
 | Change | Score impact | Why it failed |
 |--------|-------------|---------------|
-| Remove duplicate rules from BOUNDARIES | -0.1 | The redundancy actually helps GPT-5.4 follow rules. Don't simplify. |
-| Make capitalize rule more aggressive ("never start a sentence with capital") | -0.3 + gate failure | Caused false positives on proper nouns (restaurant names). Too strict. |
-| Change actionable intent routing to "offer help" instead of querying | -0.5 | Improved that one scenario but hurt voice scores on 3 others. |
+| Remove duplicate rules from BOUNDARIES | -0.1 | Redundancy helps GPT-5.4 follow rules. Don't simplify. |
+| Aggressive capitalize rule | -0.3 + gate fail | Too strict on proper nouns (restaurant names). |
+| Change actionable intent routing | -0.5 | Improved one scenario, hurt voice on 3 others. |
+| Add concrete identity example to WHO YOU ARE | -1.5 | Model over-indexed on the casual example, got sloppy elsewhere. |
+| Add ai_suggest → send_multiple_messages flow example | -2.7 | Made model more verbose, not less. More examples ≠ better. |
+| Tell model to output text alongside send_multiple_messages | -0.7 | Model got chattier. The tool call IS the response. |
+| Add vote confirmation examples + one-line-max rule | -1.8 | Vote score dropped. Rigid line limits backfire on confirmations. |
+
+### Pattern: What Makes Experiments Fail
+
+**Adding more examples makes things worse.** After experiment 8, the pattern became clear: the model already has good instincts from the existing examples. Adding MORE examples in the same section creates noise — the model tries to match the new examples and drifts from its natural tone.
+
+**Abstract constraints are better than rigid limits.** "Aim for 1-2 lines" works. "One line max" doesn't. The model needs room to use judgment.
+
+**Don't touch routing.** The model's routing (when to respond vs stay silent) is nearly perfect at 100%. Any change to routing rules improves one scenario and breaks others.
+
+**Don't fight send_multiple_messages.** The model uses this tool well. Trying to force it to also generate text alongside the tool call just creates duplication.
 
 ## Key Insight
 
