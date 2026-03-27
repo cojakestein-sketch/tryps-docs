@@ -60,9 +60,81 @@
 
 ---
 
-## 2. Expense Tracking
+## 2. Trip Creation
 
-### UC-2.1: Standard expense (SC-7)
+### UC-2.1: Create trip — full details
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "let's plan a trip to Miami, March 15-20" | Creates trip: destination Miami, dates March 15-20. Confirms all details |
+| 2 | "bali trip june 5 to june 12" | Creates trip: destination Bali, dates June 5-12 |
+| 3 | "planning a bachelor party in Vegas, April 3-6, call it Jake's Bachelor" | Creates trip: name "Jake's Bachelor", destination Vegas, dates April 3-6 |
+| 4 | "spring break cancun march 8 through the 15th" | Creates trip with destination + dates |
+| 5 | "trip to portugal, september 1st to 10th, Lisbon trip" | Creates trip with name + destination + dates |
+
+### UC-2.2: Create trip — destination only
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "let's go to Bali" | Creates trip with destination Bali. Asks for dates |
+| 2 | "we should do a Miami trip" | Creates trip with destination Miami. Asks for dates |
+| 3 | "thinking Portugal" | Detects trip intent. Asks to confirm creating a trip, then asks for dates |
+| 4 | "Barcelona" (after agent asks "where to?") | Sets destination. Asks for dates |
+| 5 | "somewhere warm" | Asks to narrow down destination |
+
+### UC-2.3: Create trip — dates only
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "let's do something march 15-20" | Creates trip with dates. Asks for destination |
+| 2 | "I'm free june 5 through 12" | Asks if they want to start a trip for those dates, then asks destination |
+| 3 | "spring break, third week of march" | Parses approximate dates. Asks for destination |
+| 4 | "long weekend in april" | Asks which weekend, then destination |
+| 5 | "next weekend" | Parses relative date. Asks for destination |
+
+### UC-2.4: Create trip — name only
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "start a trip called Jake's Bachelor Party" | Creates trip with name. Asks for destination and dates |
+| 2 | "new trip: Summer 2026" | Creates trip with name. Asks for destination and dates |
+| 3 | "let's call it the Bali Boyz trip" | Creates trip with name. Asks for destination and dates |
+
+### UC-2.5: Create trip — minimal / vague intent
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "let's plan a trip" | Asks where and when |
+| 2 | "we should go somewhere" | Asks for destination |
+| 3 | "I need a vacation" | Asks if they want to start planning, then destination |
+| 4 | "trip?" | Asks what they're thinking |
+| 5 | "yo let's get out of here for a few days" | Detects trip intent. Asks for destination and dates |
+
+### UC-2.6: Update trip details
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "actually make it march 16-21" | Updates trip dates, confirms |
+| 2 | "change the destination to Tulum" | Updates destination, confirms |
+| 3 | "rename the trip to Spring Fling" | Updates trip name, confirms |
+| 4 | "push the dates back a week" | Calculates new dates, confirms before applying |
+| 5 | "we're doing 4 nights not 5" | Adjusts end date, confirms |
+| 6 | "nah let's do Cancun instead of Miami" | Updates destination, confirms |
+
+### UC-2.7: Cancel / delete trip
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "cancel the trip" | Confirms before deleting: "you sure? this removes everything" |
+| 2 | "trip's off" | Asks to confirm cancellation |
+| 3 | "delete this trip" | Confirms before deleting |
+| 4 | "we're not going anymore" | Asks if they want to cancel the trip |
+
+---
+
+## 3. Expense Tracking
+
+### UC-3.1: Standard expense (SC-7)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -72,7 +144,7 @@
 | 4 | "120 for dinner" | Logs $120, infers group split |
 | 5 | "$120 dinner" | Logs it, confirms |
 
-### UC-2.2: Ambiguous expense — missing amount (SC-8)
+### UC-3.2: Ambiguous expense — missing amount (SC-8)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -82,7 +154,7 @@
 | 4 | "I paid for Uber" → "$45" | Logs $45 for Uber after clarification |
 | 5 | "I paid for Uber" → "it was like 45ish" | Parses ~$45, confirms exact amount |
 
-### UC-2.3: Custom split (SC-9)
+### UC-3.3: Custom split (SC-9)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -92,7 +164,7 @@
 | 4 | "$200 airbnb, everyone except tom" | Splits among all group members minus Tom |
 | 5 | "I paid 150 for the boat, split 50/50 with sarah" | 2-way split, $75 each |
 
-### UC-2.4: Receipt photo (SC-10)
+### UC-3.4: Receipt photo (SC-10)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -101,7 +173,7 @@
 | 3 | *Send blurry receipt photo* | Asks for the amount manually |
 | 4 | *Send receipt with tip included* | Uses total including tip |
 
-### UC-2.5: Expense correction (SC-46)
+### UC-3.5: Expense correction (SC-46)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -111,7 +183,7 @@
 | 4 | "$45 Uber" → "undo that" | Removes the expense, confirms |
 | 5 | "$45 Uber" → "my bad, that was Tom's expense not mine" | Reassigns payer to Tom |
 
-### UC-2.6: Duplicate detection (SC-42)
+### UC-3.6: Duplicate detection (SC-42)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -119,7 +191,7 @@
 | 2 | Jake: "$120 dinner" → Jake: "$120 for dinner tonight" (within 5 min) | Flags as possible duplicate |
 | 3 | Jake: "$120 dinner" → Tom: "$45 uber" (within 2 min) | No flag — different amounts/descriptions |
 
-### UC-2.7: Balance queries (SC-17)
+### UC-3.7: Balance queries (SC-17)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -129,11 +201,77 @@
 | 4 | "what's the total so far" | Total trip expenses to date |
 | 5 | "am I even with everyone?" | Balance status — even or who owes what |
 
+### UC-3.8: Update expense — change amount
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "change the dinner expense to $150" | Updates amount, confirms new total and per-person split |
+| 2 | "the uber was actually $52 not $45" | Finds the Uber expense, updates to $52, confirms |
+| 3 | "update last expense to $80" | Updates the most recent expense, confirms |
+| 4 | "that $120 dinner should be $135 with tip" | Updates amount, confirms |
+| 5 | "add tip to the dinner, total is $140 now" | Updates dinner expense amount to $140 |
+
+### UC-3.9: Update expense — change split
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "actually split the dinner between everyone not just 3" | Updates split to full group, recalculates per-person |
+| 2 | "remove tom from the uber split" | Removes Tom, recalculates among remaining people |
+| 3 | "add sarah to the dinner split" | Adds Sarah, recalculates |
+| 4 | "the airbnb should be split unevenly, I paid $300 and sarah paid $200" | Updates to custom amounts |
+| 5 | "change the uber split to just me and jake" | Updates to 2-way split |
+
+### UC-3.10: Update expense — change description / category
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "that $45 wasn't uber it was lyft" | Updates description, confirms |
+| 2 | "rename the dinner expense to Nobu dinner" | Updates name, confirms |
+| 3 | "that grocery expense was actually for the party supplies" | Updates description |
+
+### UC-3.11: Remove / delete expense
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "delete the uber expense" | Confirms before removing: "remove the $45 uber?" |
+| 2 | "remove that last expense" | Identifies most recent, confirms before removing |
+| 3 | "cancel the $120 dinner expense" | Finds it, confirms, removes |
+| 4 | "that dinner expense was a mistake, get rid of it" | Confirms before removing |
+| 5 | "never mind about the grocery expense" | Interprets as delete request, confirms |
+| 6 | "we already settled the uber outside the app, remove it" | Confirms and removes |
+
+### UC-3.12: Expense — multiple currencies / foreign amounts
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "paid 500 pesos for tacos" | Logs with currency. Converts or asks which currency to track in |
+| 2 | "€80 for dinner" | Recognizes euro symbol, logs appropriately |
+| 3 | "dinner was 10,000 yen" | Parses large foreign amount correctly |
+| 4 | "50 bucks for the taxi" | Parses "bucks" as USD |
+
+### UC-3.13: Expense — percentage split
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "I paid $100, jake owes 60% and sarah owes 40%" | Calculates $60 Jake, $40 Sarah |
+| 2 | "$200 hotel, I'll cover half and split the rest 3 ways" | $100 sender, ~$33.33 each for 3 others |
+| 3 | "split it 70/30 between me and tom" | Applies percentage split |
+
+### UC-3.14: Expense — settle up / mark as paid
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "tom paid me back for the uber" | Marks Tom's share as settled |
+| 2 | "sarah and I are even now" | Settles all balances between sender and Sarah |
+| 3 | "everyone paid me back" | Settles all outstanding balances for sender |
+| 4 | "jake venmoed me $30" | Logs as settlement, reduces Jake's balance by $30 |
+| 5 | "settle up with tom" | Marks Tom's balance as settled |
+
 ---
 
-## 3. Voting & Polls
+## 4. Voting & Polls
 
-### UC-3.1: Start a vote (SC-11, SC-14)
+### UC-4.1: Start a vote (SC-11, SC-14)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -143,7 +281,7 @@
 | 4 | "should we do nobu or zuma" | Creates 2-option poll |
 | 5 | "vote: beach day, city tour, or chill at the house" | Creates poll for activities |
 
-### UC-3.2: Cast a vote (SC-14)
+### UC-4.2: Cast a vote (SC-14)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -153,7 +291,7 @@
 | 4 | "zuma for sure" | Records vote for Zuma |
 | 5 | "option 2" | Records vote |
 
-### UC-3.3: Change a vote (SC-12)
+### UC-4.3: Change a vote (SC-12)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -162,7 +300,7 @@
 | 3 | "changed my mind, Komodo" | Updates vote |
 | 4 | "wait no, go with 3 for me" | Updates vote to option 3 |
 
-### UC-3.4: Poll results (SC-13)
+### UC-4.4: Poll results (SC-13)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -171,7 +309,7 @@
 | 3 | "who hasn't voted yet?" | Lists non-voters |
 | 4 | "close the vote" | Closes poll, announces result |
 
-### UC-3.5: Multiple active polls — disambiguation (SC-43)
+### UC-4.5: Multiple active polls — disambiguation (SC-43)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -181,9 +319,9 @@
 
 ---
 
-## 4. Trip Planning & Queries
+## 5. Trip Planning & Queries
 
-### UC-4.1: Add an activity (SC-15)
+### UC-5.1: Add an activity (SC-15)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -193,7 +331,7 @@
 | 4 | "beach day tomorrow" | Adds to next day's itinerary |
 | 5 | "we should check out that ramen place" | Adds to activities (may ask for day/time) |
 
-### UC-4.2: Ask about the plan (SC-16)
+### UC-5.2: Ask about the plan (SC-16)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -203,7 +341,7 @@
 | 4 | "anything locked in yet?" | Lists confirmed activities |
 | 5 | "run me through the itinerary" | Day-by-day summary, brief |
 
-### UC-4.3: Ask who's going (SC-18)
+### UC-5.3: Ask who's going (SC-18)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -212,7 +350,7 @@
 | 3 | "how many people" | Count + names |
 | 4 | "is sarah coming?" | Confirms if Sarah is a trip member |
 
-### UC-4.4: Paste a link (SC-19)
+### UC-5.4: Paste a link (SC-19)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -222,11 +360,54 @@
 | 4 | *Paste flight confirmation link* | Extracts flight details, adds to People+Flights |
 | 5 | "check this out [URL]" | Same behavior — extracts and adds |
 
+### UC-5.5: Update an activity
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "move Nobu to Saturday" | Updates the day, confirms |
+| 2 | "change dinner from 7 to 8:30" | Updates time, confirms |
+| 3 | "actually make the beach day start at noon not 11" | Updates time |
+| 4 | "nobu is at 8pm not 7pm" | Updates, confirms |
+| 5 | "rename the dinner to Nobu Malibu" | Updates activity name |
+| 6 | "the sunset cruise is actually 2 hours not 1" | Updates duration |
+
+### UC-5.6: Remove an activity
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "remove the beach day" | Confirms before removing |
+| 2 | "cancel nobu" | Confirms: "remove Nobu from Friday?" |
+| 3 | "we're not doing the sunset cruise anymore" | Confirms and removes |
+| 4 | "scratch the museum visit" | Confirms and removes |
+| 5 | "take off everything on Sunday" | Confirms before clearing Sunday's activities |
+
+### UC-5.7: Update stay / accommodation
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "we booked the airbnb, here's the link [URL]" | Updates stay to confirmed, extracts details |
+| 2 | "change the hotel to the W" | Updates accommodation |
+| 3 | "check-in is at 3pm" | Adds check-in time to stay details |
+| 4 | "the address is 123 Ocean Drive" | Updates stay address |
+| 5 | "we're switching from hotel to airbnb" | Updates accommodation type, asks for link/details |
+| 6 | "cancel the airbnb, we're staying with friends" | Updates stay info |
+
+### UC-5.8: Update flight / arrival info
+
+| # | Example Phrasing | Expected Behavior |
+|---|-------------------|-------------------|
+| 1 | "my flight lands at 3pm on Thursday" | Logs flight arrival for sender |
+| 2 | "I'm driving, getting there around 5" | Logs arrival time, marks as driving (no flight) |
+| 3 | "flight changed, now arriving at 6pm not 3" | Updates sender's arrival time |
+| 4 | "sarah's flying in from LA, lands at noon" | Logs Sarah's flight details |
+| 5 | "here's my flight confirmation [screenshot]" | Extracts flight details from image |
+| 6 | "I'm on Delta 457" | Logs flight number for sender |
+
 ---
 
-## 5. Proactive Agent Behavior (Daily Facilitator Model)
+## 6. Proactive Agent Behavior (Daily Facilitator Model)
 
-### UC-5.1: Daily check-in driven by completeness level (SC-20, SC-25)
+### UC-6.1: Daily check-in driven by completeness level (SC-20, SC-25)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
@@ -236,7 +417,7 @@
 | 4 | Trip already fully planned | No daily nudge needed — maybe a "you're all set" once |
 | 5 | *After a daily check-in* | No second proactive message for ~24 hours |
 
-### UC-5.2: Call out specific blockers by name (SC-21)
+### UC-6.2: Call out specific blockers by name (SC-21)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
@@ -244,14 +425,14 @@
 | 2 | Everyone has voted except Tom | "Tom, still need your vote" — doesn't nag others |
 | 3 | Deposit needed from 2 of 6 people | Names the 2 specifically |
 
-### UC-5.3: Arrival day message (SC-22)
+### UC-6.3: Arrival day message (SC-22)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
 | 1 | Trip start date arrives | Agent texts accommodation address + logistics (check-in time, etc.) |
 | 2 | Trip start date, multiple stays | Summarizes who's staying where |
 
-### UC-5.4: Detect opportunity in conversation (SC-23)
+### UC-6.4: Detect opportunity in conversation (SC-23)
 
 | # | Example Message | Expected Behavior |
 |---|-----------------|-------------------|
@@ -260,7 +441,7 @@
 | 3 | "we need to figure out airport transfers" | Offers to help coordinate |
 | 4 | "I heard there's a market on Saturday mornings" | "want me to add that to Saturday?" |
 
-### UC-5.5: Stalled planning nudge (SC-24)
+### UC-6.5: Stalled planning nudge (SC-24)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
@@ -270,9 +451,9 @@
 
 ---
 
-## 6. 1:1 DM (Personal Assistant Mode)
+## 7. 1:1 DM (Personal Assistant Mode)
 
-### UC-6.1: Direct message to Tryps number (SC-45)
+### UC-7.1: Direct message to Tryps number (SC-45)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -284,9 +465,9 @@
 
 ---
 
-## 7. Agent Personality & Jennifer Test
+## 8. Agent Personality & Jennifer Test
 
-### UC-7.1: 85/15 personality rule (SC-27)
+### UC-8.1: 85/15 personality rule (SC-27)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
@@ -295,7 +476,7 @@
 | 3 | Finding a great deal | Personality earned: "this airbnb has a pool AND it's walking distance. $89/night. kind of a steal" |
 | 4 | Review 20 responses across scenarios | 17+ purely functional, 1-3 have subtle personality, 0 gimmicky |
 
-### UC-7.2: Voice guide compliance (SC-26, SC-30)
+### UC-8.2: Voice guide compliance (SC-26, SC-30)
 
 | # | Check | Expected Behavior |
 |---|-------|-------------------|
@@ -305,7 +486,7 @@
 | 4 | Review for structural patterns | No rule-of-three lists, no compulsive summaries, no rhetorical question fragments |
 | 5 | Lowercase check | Conversational messages in lowercase. Sentence case only for structured data |
 
-### UC-7.3: Tension handling (SC-31)
+### UC-8.3: Tension handling (SC-31)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -317,12 +498,12 @@
 
 ---
 
-## 8. Routing Logic (Speak vs. Silent)
+## 9. Routing Logic (Speak vs. Silent)
 
 > **This is the hardest judgment call in the agent.** SC-52 requires a routing design doc with 20+ examples.
 > ⚠️ **DESIGN DECISION NEEDED from Jake:** Several edge cases below could go either way. Marked with 🔶.
 
-### UC-8.1: Clearly silent — casual conversation (SC-47)
+### UC-9.1: Clearly silent — casual conversation (SC-47)
 
 | # | Example Message | Expected Behavior |
 |---|-----------------|-------------------|
@@ -337,7 +518,7 @@
 | 9 | "who's pregaming?" | Silent |
 | 10 | "miss you guys" | Silent |
 
-### UC-8.2: Clearly respond — direct address (SC-47, SC-23)
+### UC-9.2: Clearly respond — direct address (SC-47, SC-23)
 
 | # | Example Message | Expected Behavior |
 |---|-----------------|-------------------|
@@ -347,7 +528,7 @@
 | 4 | "can you add that to the trip?" | Responds — implied address to agent |
 | 5 | "what's the total expenses so far?" | Responds — clearly a query only agent can answer |
 
-### UC-8.3: Clearly respond — actionable travel intent (SC-23)
+### UC-9.3: Clearly respond — actionable travel intent (SC-23)
 
 | # | Example Message | Expected Behavior |
 |---|-----------------|-------------------|
@@ -357,7 +538,7 @@
 | 4 | *Pastes Airbnb link* | Extracts and adds |
 | 5 | "add a beach day on saturday" | Adds activity |
 
-### UC-8.4: Edge cases — judgment calls 🔶
+### UC-9.4: Edge cases — judgment calls 🔶
 
 > These need explicit design decisions. For each, Jake should decide: speak or silent?
 
@@ -391,9 +572,9 @@
 
 ---
 
-## 9. Message Behavior & Formatting
+## 10. Message Behavior & Formatting
 
-### UC-9.1: Message length (SC-35)
+### UC-10.1: Message length (SC-35)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
@@ -403,7 +584,7 @@
 | 4 | Poll with 5 options | May exceed 6 lines — split into multiple messages |
 | 5 | Balance query with 5 people | Under 6 lines — summarize or split |
 
-### UC-9.2: Message burst limit (SC-36)
+### UC-10.2: Message burst limit (SC-36)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
@@ -411,7 +592,7 @@
 | 2 | Welcome flow | 2-3 messages, then waits for user input |
 | 3 | Presenting hotel options | 3 messages max (intro, options, rec) |
 
-### UC-9.3: Silent on background actions (SC-49)
+### UC-10.3: Silent on background actions (SC-49)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
@@ -421,15 +602,15 @@
 
 ---
 
-## 10. Edge Cases & Error States
+## 11. Edge Cases & Error States
 
-### UC-10.1: 2-person chat (SC-38)
+### UC-11.1: 2-person chat (SC-38)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
 | 1 | Add Tryps to a 2-person chat | Handles via 1:1 messages to each person (Linq requires 3+ for groups) |
 
-### UC-10.2: Nonsense / unparseable input (SC-39)
+### UC-11.2: Nonsense / unparseable input (SC-39)
 
 | # | Example Message | Expected Behavior |
 |---|-----------------|-------------------|
@@ -438,14 +619,14 @@
 | 3 | *sends a GIF* | Silent |
 | 4 | "hahahahahaha" | Silent |
 
-### UC-10.3: First message with no trip context (SC-40)
+### UC-11.3: First message with no trip context (SC-40)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
 | 1 | "$50 for gas" (brand new group, first message) | Creates trip first, then logs expense, confirms both |
 | 2 | "add dinner friday" (no trip exists) | Creates trip, adds activity |
 
-### UC-10.4: Out of scope requests (SC-41)
+### UC-11.4: Out of scope requests (SC-41)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -455,20 +636,20 @@
 | 4 | "can you venmo sarah for me?" | "can't handle payments yet. I can track the expense though" |
 | 5 | "what's the capital of France?" | Silent or very brief — not travel-related |
 
-### UC-10.5: Trip owner leaves (SC-44)
+### UC-11.5: Trip owner leaves (SC-44)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
 | 1 | Trip owner Jake leaves the group | Ownership transfers to another member. Agent confirms to group |
 
-### UC-10.6: Non-member data access (SC-50)
+### UC-11.6: Non-member data access (SC-50)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
 | 1 | Outsider texts Tryps number asking "what's the plan for Miami?" | No trip data revealed |
 | 2 | Someone not in the group DMs the agent about a specific trip | No data shared |
 
-### UC-10.7: App ↔ iMessage sync (SC-51)
+### UC-11.7: App ↔ iMessage sync (SC-51)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
@@ -479,12 +660,12 @@
 
 ---
 
-## 11. Cross-Scope: Agent Intelligence (SC-54–57)
+## 12. Cross-Scope: Agent Intelligence (SC-54–57)
 
 > ⚠️ These are BLOCKED pending interface design between Asif and Rizwan.
 > Listed here for completeness — test when unblocked.
 
-### UC-11.1: Recommendations in iMessage (SC-54, SC-55)
+### UC-12.1: Recommendations in iMessage (SC-54, SC-55)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -492,14 +673,14 @@
 | 2 | Daily check-in at "add activities" level | Includes rec suggestions based on group vibe |
 | 3 | "any restaurant ideas near the hotel?" | Context-aware recs |
 
-### UC-11.2: Vote-on-behalf DM delivery (SC-56)
+### UC-12.2: Vote-on-behalf DM delivery (SC-56)
 
 | # | Scenario | Expected Behavior |
 |---|----------|-------------------|
 | 1 | Agent Intelligence generates batch DM for vote-on-behalf | iMessage Agent delivers DM to the target user |
 | 2 | User receives DM with pending votes | Can respond to cast votes |
 
-### UC-11.3: Vote override from DM (SC-57)
+### UC-12.3: Vote override from DM (SC-57)
 
 | # | Example Phrasing | Expected Behavior |
 |---|-------------------|-------------------|
@@ -513,9 +694,10 @@
 | Category | Use Cases | Example Phrasings | Key SCs |
 |----------|-----------|-------------------|---------|
 | Onboarding | 6 | 14 | SC-1 to SC-6 |
-| Expenses | 7 | 30 | SC-7 to SC-10, SC-17, SC-42, SC-46 |
+| Trip Creation & Management | 7 | 33 | SC-40 (partial) |
+| Expense Tracking & Management | 14 | 62 | SC-7 to SC-10, SC-17, SC-42, SC-46 |
 | Voting | 5 | 17 | SC-11 to SC-14, SC-43 |
-| Trip Planning | 4 | 20 | SC-15, SC-16, SC-18, SC-19 |
+| Trip Planning, Activities, Stay, Flights | 8 | 42 | SC-15, SC-16, SC-18, SC-19 |
 | Proactive | 5 | 13 | SC-20 to SC-25 |
 | 1:1 DM | 1 | 5 | SC-45 |
 | Personality | 3 | 15 | SC-26 to SC-31 |
@@ -523,7 +705,7 @@
 | Message Format | 3 | 10 | SC-35, SC-36, SC-49 |
 | Edge Cases | 7 | 16 | SC-38 to SC-44, SC-50, SC-51 |
 | Cross-Scope | 3 | 6 | SC-54 to SC-57 |
-| **Total** | **48** | **~170** | **All 57 SCs covered** |
+| **Total** | **66** | **~258** | **All 57 SCs covered** |
 
 ---
 
