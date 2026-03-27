@@ -98,7 +98,7 @@ status: active
 ### 2. Socials Activation
 
 - [ ] 3 weeks of content ready from launch (everything in Tryps launch proposal completed)
-- [ ] 4-5 posts per platform per week
+- [ ] 4-5 posts per platform per week - unique for 3 majors (instagram, tik tok, twitter); seeded to everything else - youtube shorts, facebook reels, snapchat, pintrest
 - [ ] Sean handling initial filming and editing
 - [ ] Strategic decision on outsourcing to Upwork (Jake committed to helping transition execution away from Sean)
 
