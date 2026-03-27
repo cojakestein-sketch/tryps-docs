@@ -38,7 +38,7 @@ Phase 4: Brand Book in Figma (30-40 screens)
 Phase 5: Apply to touchpoints (app, website, social, video)
 ```
 
-Parallel track: create `shared/brand.md` as the text source of truth, `@import` into global CLAUDE.md so every dev session is brand-aware.
+Parallel track: create [[brand|shared/brand.md]] as the text source of truth, `@import` into global CLAUDE.md so every dev session is brand-aware.
 
 ---
 
@@ -77,7 +77,7 @@ Parallel track: create `shared/brand.md` as the text source of truth, `@import` 
 ### Phase 2: Brand Strategy Doc (Mar 20-22)
 
 **Owner:** Jake + Claude
-**Deliverable:** `tryps-docs/shared/brand-strategy.md` — the internal strategy document
+**Deliverable:** [[brand-strategy|tryps-docs/shared/brand-strategy.md]] — the internal strategy document
 
 #### Tasks
 
@@ -105,7 +105,7 @@ Parallel track: create `shared/brand.md` as the text source of truth, `@import` 
 ### Phase 3: Create brand.md + Fix Token Drift (Mar 20-21)
 
 **Owner:** Jake + Claude
-**Deliverable:** `tryps-docs/shared/brand.md` — auto-loaded into all Claude sessions
+**Deliverable:** [[brand|tryps-docs/shared/brand.md]] — auto-loaded into all Claude sessions
 
 #### Tasks
 

@@ -20,6 +20,26 @@ Format:
 > **New bugs:** [count needing triage]
 > **Blocked:** [anything flagged]
 
+## Post-Standup State Sync (after standup commits land, ~3:00 PM ET)
+
+1. Detect new commits to `standups/` since last check
+2. Read the standup doc and extract from each dev's answers:
+   - SC counts (e.g., "34 out of 57 are done" → `criteria: 34/57`)
+   - Status changes (e.g., "started implementation" → `status: in-progress`)
+   - New blockers mentioned
+   - PRs merged (cross-reference with GitHub)
+3. Update the corresponding `scopes/{scope}/state.md` frontmatter fields:
+   - `criteria` — update done/total count
+   - `status` — update if changed
+   - `blockers` — add/remove based on answers
+   - `last_updated` — set to today
+   - `updated_by` — set to `marty`
+4. Regenerate `shared/state.md` by reading all 12 scope state.md frontmatter values
+5. Commit and push with message: `chore: sync state from standup answers (YYYY-MM-DD)`
+
+**Manual fallback:** Until this automation is running, any session can run:
+> Read the latest standup. Extract SC counts, status changes, and blockers from each dev's answers. Update the corresponding scopes/*/state.md frontmatter. Regenerate shared/state.md by aggregating all 12 scope state.md files. Commit and push.
+
 ## Throughout Day (Every 30 Minutes)
 - New PRs opened → post summary to #dev
 - Tasks moved to "Review" → check if PR exists, link if found

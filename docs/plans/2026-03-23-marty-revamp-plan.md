@@ -45,9 +45,9 @@ tryps-docs/
   marty/
     SOUL.md              # Personality, values
     USER.md              # Jake's profile, working style
-    IDENTITY.md          # Role definition, capabilities
-    TOOLS.md             # ★ Comprehensive tool guide with gotchas (rewritten)
-    MEMORY.md            # Long-term curated memory
+    [[IDENTITY|IDENTITY.md]]          # Role definition, capabilities
+    [[TOOLS|TOOLS.md]]             # ★ Comprehensive tool guide with gotchas (rewritten)
+    [[MEMORY|MEMORY.md]]            # Long-term curated memory
     AGENTS.md            # Boot sequence
     HEARTBEAT.md         # Scheduled routines (rewritten for new system)
     memory/              # Daily memory files

@@ -42,7 +42,7 @@ status: active
 
 ### 1. Brand Book
 
-- [ ] Brand book fully designed and finalized in Figma
+- [ ] Brand book fully designed and finalized in Figma - **deliverables we care about**
 - [ ] Aligned with overall Tryps strategy and reviewed with Jake
 
 ### 2. Socials Setup & Prep
@@ -52,18 +52,29 @@ status: active
 - [ ] Bios, headers, profile photos updated to current brand
 - [ ] Verifications purchased/activated where applicable
 - [ ] Ready for immediate content posting upon completion
+- [ ] **Jake** - refine bright connect scope to look nice everywhere
 
+Status 3/27 -
+* Jake to create linkedin, snapchat, youtube
+* Sean to update above once jake is done, get verified, etc.
 ### 3. UGC Program Foundations
 
-- [ ] Clear criteria for ideal creators defined (segments, follower ranges, content style, demo)
-- [ ] Target master list of ~300 potential creators compiled
-- [ ] Approach defined:
+- [ ] Clear criteria for ideal creators defined (segments, follower ranges, content style, demo) - **heavily sean**
+- [ ] Target master list of ~300 potential creators compiled - **prompted / agent cash**
+- [ ] Approach defined: - **heavily heavily sean**
   - [ ] DM templates written
   - [ ] Offer structure defined
   - [ ] Deliverable expectations documented
   - [ ] Pricing ranges set
   - [ ] Which account sends DMs decided
 - [ ] 4-page deliverable outlining complete targeting and outreach strategy
+
+Action items for sean:
+1. get really clear criteria doc - want you to use /grill-me to do so - [ ] Clear criteria for ideal creators defined (segments, follower ranges, content style, demo) - **heavily sean**
+2. leverage teh above criteria doc to write the -page deliverable outlining complete targeting and outreach strategy - nclude an exec summ up front for jake to engaeg with, use /grill-me to do this
+3. Output for Jake: very clear criteria / prompt of the type of creator we are looking for, so that we can activate our girls (molly/ana/gianna AND agent cash for this list)
+	1. Here is the list
+	2. manually search for 20-25 creators to reference as ideal candidates (grace donner, hailey schulvitz, lily rudder) 
 
 ### 4. Launch Video Pre-Production
 
@@ -72,6 +83,13 @@ status: active
 - [ ] Location(s), talent, and crew needs identified
 - [ ] Rough budget and production schedule outlined
 - [ ] Ready to click record immediately after milestone completion
+
+1. Sean to describe - what are we looking for, what is the questions answering, what does tryp slook like?
+2. keep current list but pull 2026 launches that are successful too
+3. jake and sean to watch these videos and give feedback at 330 
+4. Jake to run science experiment here
+	1. Sean - research- give claude this article: https://x.com/mitcheil/status/2034633159409869069?s=46 and say we need more best practices for technology consumer launch videos
+3.
 
 ### 5. Giveaways Planning
 
@@ -97,7 +115,7 @@ status: active
 ### 2. Socials Activation
 
 - [ ] 3 weeks of content ready from launch (everything in Tryps launch proposal completed)
-- [ ] 4-5 posts per platform per week
+- [ ] 4-5 posts per platform per week - unique for 3 majors (instagram, tik tok, twitter); seeded to everything else - youtube shorts, facebook reels, snapchat, pintrest
 - [ ] Sean handling initial filming and editing
 - [ ] Strategic decision on outsourcing to Upwork (Jake committed to helping transition execution away from Sean)
 

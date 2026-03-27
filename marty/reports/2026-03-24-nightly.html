@@ -78,6 +78,26 @@
   a:hover { text-decoration: underline; }
   .tag { display: inline-block; background: #EDE4D8; color: #3D3530; padding: 1px 6px; border-radius: 4px; font-size: 9pt; margin-left: 4px; }
   .tool-card { background: #FFFDF8; border: 1px solid #EDE4D8; border-radius: 8px; padding: 16px; margin-top: 12px; }
+  .special-report { background: #FFFDF8; border-left: 4px solid #D9071C; padding: 0 0 0 0; margin-bottom: 24px; }
+  .special-report h2 { color: #D9071C; border-bottom: 2px solid #D9071C; font-size: 16pt; }
+  .special-report h3 { color: #3D3530; margin-top: 18px; }
+  .evidence-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  .evidence-table td, .evidence-table th { padding: 5px 8px; text-align: left; border-bottom: 1px solid #EDE4D8; font-size: 10pt; }
+  .evidence-table th { background: #EDE4D8; font-weight: 600; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.5px; }
+  .callout { background: #FFF3F3; border: 1px solid #E85050; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: 10pt; }
+  .callout-green { background: #F0F9F4; border: 1px solid #2D6B4F; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: 10pt; }
+  .source-list { font-size: 9pt; color: #888; column-count: 2; column-gap: 20px; margin-top: 8px; }
+  .source-list li { margin-bottom: 2px; }
+  .verdict { font-weight: 600; }
+  .verdict-proven { color: #2D6B4F; }
+  .verdict-promising { color: #E8913A; }
+  .verdict-unproven { color: #D14343; }
+  .verdict-preclinical { color: #888; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 12px 0; }
+  .stat-card { background: white; border: 1px solid #EDE4D8; border-radius: 8px; padding: 12px; text-align: center; }
+  .stat-card .number { font-family: 'Space Mono', monospace; font-size: 20pt; font-weight: 700; color: #D9071C; }
+  .stat-card .label { font-size: 9pt; color: #888; margin-top: 2px; }
+  @media print { .special-report { page-break-after: always; } }
 </style>
 </head>
 <body>
@@ -88,38 +108,220 @@
   </div>
 
   <!-- ============================================================ -->
+  <!-- SPECIAL REPORT: PEPTIDES -->
+  <!-- ============================================================ -->
+  <section class="special-report">
+    <h2>Special Report: The State of Peptides</h2>
+    <p style="font-size: 10pt; color: #888; margin-top: -8px;">A science-based briefing on BPC-157, the "Wolverine Peptide," and why everyone is losing their minds. March 2026.</p>
+
+    <h3>What Are Peptides?</h3>
+    <p>Peptides are short chains of amino acids (2-50 amino acids) linked by peptide bonds. Smaller than proteins, they bind to specific cell-surface receptors and trigger intracellular signaling cascades -- mimicking or modulating naturally occurring hormones, neurotransmitters, and growth factors. The body produces thousands of endogenous peptides that regulate appetite, immune response, tissue repair, and more. Pharmacologically, they're interesting because of high specificity and potency at low concentrations, with generally lower toxicity than small-molecule drugs. The catch: most are rapidly degraded by gut enzymes, which is why most require injection.</p>
+
+    <h3>BPC-157: The Main Character</h3>
+    <p><strong>Body Protection Compound-157</strong> is a synthetic 15-amino-acid peptide derived from a protein found in human gastric juice. First isolated in 1993 by <strong>Predrag Sikiric</strong> at the University of Zagreb, Croatia. It's classified as a "stable gastric pentadecapeptide" because of its unusual resistance to enzymatic degradation.</p>
+
+    <p><strong>Mechanism of action</strong> (based on preclinical research):</p>
+    <ul>
+      <li><strong>Angiogenesis:</strong> Promotes new blood vessel formation by upregulating VEGFR2 and activating the PI3K-Akt-eNOS signaling axis. A 2020 <em>Nature Scientific Reports</em> paper showed it also activates a VEGF-independent pathway via Src-Caveolin-1-eNOS.</li>
+      <li><strong>Nitric oxide modulation:</strong> Bidirectional -- promotes beneficial NO-mediated vasodilation while counteracting cytotoxic NO effects.</li>
+      <li><strong>Growth factor modulation:</strong> Interacts with EGF, bFGF, VEGF, HGF. Upregulates receptor expression. Engages ERK1/2 signaling and promotes fibroblast activity.</li>
+      <li><strong>Gut-brain axis:</strong> Acts bidirectionally -- anti-ulcer and cytoprotective in the GI tract, plus dopaminergic, serotonergic, GABAergic, and opioid system interactions in the CNS.</li>
+      <li><strong>Anti-inflammatory:</strong> Reduces inflammatory markers and stabilizes intestinal permeability.</li>
+    </ul>
+
+    <p><strong>The animal data is genuinely extensive</strong> (~178 publications on PubMed). Rats showed accelerated healing of transected Achilles tendons, gut mucosa, peripheral nerves, and traumatic brain injury. BPC-157 protected against NSAID-induced damage, colitis, and even electrolyte overdose.</p>
+
+    <div class="callout">
+      <strong>The massive gap:</strong> As of March 2026, only <strong>3 pilot studies</strong> have been published in humans -- totaling fewer than <strong>30 patients</strong>. No completed randomized controlled trials. No Phase I trials for the musculoskeletal indications being marketed. A 2025 systematic review in the <em>American Journal of Sports Medicine</em> screened 544 articles: of 36 that met criteria, <strong>35 were animal studies</strong>. The single clinical study was a 12-person case series with no control group.
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="number">178</div>
+        <div class="label">Papers on PubMed</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">&lt;30</div>
+        <div class="label">Total humans studied</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">80%+</div>
+        <div class="label">Papers from one lab (Zagreb)</div>
+      </div>
+    </div>
+
+    <p><strong>The single-lab problem:</strong> Over 80% of all BPC-157 publications list Predrag Sikiric or colleague Sven Seiwerth as author. Sikiric holds patents on BPC-157 dating to 1989 and is listed as CEO of Diagen (patent holder) and owner of PharmaCotherapia (trial sponsor). <strong>None of these conflicts were disclosed in published papers</strong> (Undark, Feb 2026). Independent replication is virtually absent.</p>
+
+    <h3>The "Wolverine Peptide" and Sleep Claims</h3>
+    <p>The "Wolverine" nickname comes from accelerated tissue repair in animal models -- tendons, ligaments, muscles, bones, gut, nerves, and blood vessels all healed faster in rats. The Marvel analogy caught fire in biohacker communities. Some clinics now market a "Wolverine Stack" (BPC-157 + TB-500).</p>
+
+    <div class="callout">
+      <strong>Sleep/REM claims: There is no published evidence -- not even preclinical -- linking BPC-157 to sleep or REM.</strong> This is likely conflation with DSIP (Delta Sleep-Inducing Peptide), an entirely different compound studied since the 1970s, or with growth hormone secretagogues like CJC-1295/Sermorelin that users claim improve deep sleep. Users experiencing better sleep on BPC-157 are likely benefiting from reduced pain (less pain = better sleep), which then gets attributed to the peptide itself.
+    </div>
+
+    <h3>The Evidence Landscape: What's Proven vs. What's Hype</h3>
+    <table class="evidence-table">
+      <tr><th>Peptide</th><th>Human Evidence</th><th>FDA Status</th><th>Verdict</th></tr>
+      <tr>
+        <td><strong>Semaglutide</strong> (Ozempic/Wegovy)</td>
+        <td>Thousands of patients, Phase 3 RCTs. Oral Wegovy approved Dec 2025. OASIS 4 trial: 16.6% weight loss.</td>
+        <td>FDA-approved (diabetes 2017, obesity 2021)</td>
+        <td><span class="verdict verdict-proven">Gold standard</span></td>
+      </tr>
+      <tr>
+        <td><strong>Tirzepatide</strong> (Mounjaro/Zepbound)</td>
+        <td>SURMOUNT-1 trial: up to 22.5% weight loss at 72 weeks. Dual GIP/GLP-1 mechanism.</td>
+        <td>FDA-approved (diabetes 2022, obesity 2023)</td>
+        <td><span class="verdict verdict-proven">Gold standard</span></td>
+      </tr>
+      <tr>
+        <td><strong>PT-141</strong> (Bremelanotide/Vyleesi)</td>
+        <td>Phase 3 RCTs for HSDD. First-in-class melanocortin agonist.</td>
+        <td>FDA-approved 2019</td>
+        <td><span class="verdict verdict-proven">Validated</span></td>
+      </tr>
+      <tr>
+        <td><strong>TB-500</strong> (Thymosin Beta-4)</td>
+        <td>Two Phase 2 trials (stasis/pressure ulcers) -- accelerated healing by ~1 month. Ophthalmic trials ongoing.</td>
+        <td>Not approved; trials advancing</td>
+        <td><span class="verdict verdict-promising">Promising</span></td>
+      </tr>
+      <tr>
+        <td><strong>GHK-Cu</strong></td>
+        <td>Small clinical skincare studies. 12-week trial: improved collagen in 70% (vs 50% vitamin C, 40% retinoic acid).</td>
+        <td>Not drug-approved; in cosmetics</td>
+        <td><span class="verdict verdict-promising">Moderate evidence (topical)</span></td>
+      </tr>
+      <tr>
+        <td><strong>BPC-157</strong></td>
+        <td>3 pilot studies, &lt;30 total patients, no RCTs, no blinding.</td>
+        <td>Category 2 banned substance</td>
+        <td><span class="verdict verdict-unproven">Extensive preclinical, near-zero human data</span></td>
+      </tr>
+      <tr>
+        <td><strong>KPV</strong></td>
+        <td>Zero human trials. Promising murine IBD models only.</td>
+        <td>Not approved</td>
+        <td><span class="verdict verdict-preclinical">Preclinical only</span></td>
+      </tr>
+      <tr>
+        <td><strong>Selank / Semax</strong></td>
+        <td>Approved in Russia. Limited Western clinical data.</td>
+        <td>Not FDA-approved</td>
+        <td><span class="verdict verdict-preclinical">Limited Western data</span></td>
+      </tr>
+    </table>
+
+    <h3>Why the Medical Community Is Cautious</h3>
+    <ul>
+      <li><strong>Translation failure rate:</strong> 85-95% of drugs that work in animals fail in human trials. BPC-157 has never been subjected to this gauntlet.</li>
+      <li><strong>No pharmacokinetics in humans:</strong> We don't know how BPC-157 is absorbed, distributed, metabolized, or excreted in humans. The half-life, dose-response curve, drug interactions -- all unknown. The 2025 IV pilot (2 adults, single dose) is the entirety of our PK data.</li>
+      <li><strong>Cancer risk (the big one):</strong> BPC-157 is a potent angiogenesis promoter -- it upregulates VEGFR2 and stimulates blood vessel formation. These are the same pathways tumors exploit to grow blood supply. No study has investigated whether BPC-157 could accelerate existing cancers. As a 2025 narrative review noted: "Pathways promoting healing can be hijacked by cancer cells."</li>
+      <li><strong>Contamination:</strong> Independent testing found <strong>30% of online peptides contained incorrect amino acid sequences</strong> and <strong>65% had endotoxin levels above safety thresholds</strong>. Case reports describe severe infections from contaminated injectable peptides.</li>
+      <li><strong>Zero long-term safety data.</strong> No study has followed BPC-157 users for more than 12 months.</li>
+    </ul>
+
+    <h3>The Regulatory War (2024-2026)</h3>
+    <p><strong>FDA crackdown:</strong> In late 2023, BPC-157 was placed on the FDA's Category 2 list ("may present significant safety risks"), banning it from compounding pharmacies. In September 2025 alone, 50+ warning letters went to peptide vendors. WADA, NCAA, NFL, NBA, MLB, NHL, UFC, and PGA have all banned it.</p>
+    <p><strong>The RFK Jr. reversal:</strong> On the Joe Rogan Experience (Feb 27, 2026), HHS Secretary Kennedy announced plans to move ~14 peptides back to Category 1, restoring compounding eligibility. <strong>However, as of March 2026, no FDA rule has actually changed</strong> -- no Federal Register notice, no statute amendment. Compounding eligibility is not FDA approval. Legal experts describe it as an announcement with no regulatory teeth yet.</p>
+    <p><strong>The market:</strong> Global peptide therapeutics market estimated at $45-50B (2024), driven overwhelmingly by GLP-1 agonists (Novo Nordisk's semaglutide alone generated ~$25B in 2024). The gray-market peptide economy (BPC-157, TB-500, etc.) is estimated at $1-3B, mostly sourced from Chinese manufacturers with minimal quality control.</p>
+
+    <h3>Why People Are Freaking Out Anyway</h3>
+
+    <p><strong>The influencer pipeline is the story.</strong> The information flows from peptide sellers to biohacker influencers to podcasts to mainstream audiences:</p>
+    <ul>
+      <li><strong>Joe Rogan</strong> is the single biggest amplifier. Told millions: "I had tendonitis in my elbow, I started using BPC-157, and it was gone in two weeks." On JRE #2440 (Jan 2026, with Damon and Affleck): "If you ever get injured, get immediately on BPC-157 and TB500" -- coining the "Wolverine Stack."</li>
+      <li><strong>Andrew Huberman</strong> dedicated a full Huberman Lab episode to peptides. More measured, but still gave BPC-157 a massive platform. On a16z podcast (Mar 2026): "I have tried various peptides. I've tried BPC. I don't know if it helped me or not."</li>
+      <li><strong>Gary Brecka</strong> (2M+ Instagram followers) sells peptide injectables for $350-$600 each. Hosted RFK Jr. on his podcast.</li>
+      <li><strong>Celebrity endorsements:</strong> Jennifer Aniston called peptide shots "one of her biggest wellness tools." Gwyneth Paltrow (Goop), Dr. Mark Hyman, MMA fighter Derrick Lewis -- all public advocates.</li>
+    </ul>
+
+    <p><strong>The media tsunami (early 2026):</strong></p>
+    <ul>
+      <li><em>The Atlantic</em> (Mar 16): "The Peptide Boom Is Getting Out of Hand"</li>
+      <li><em>Men's Health</em> (Feb 19): "They Call It the 'Wolverine Peptide.' And Everyone from Biohackers to Your Dad Wants It Now"</li>
+      <li><em>TIME</em> (Feb 24): "Why 'Anti-Aging' Peptide Shots Are Trending on Social Media" -- "tens of thousands" swapping stacking stories on TikTok/Reddit/Instagram</li>
+      <li><em>The Guardian</em> (Feb 5): "'People are turning themselves into lab rats'"</li>
+      <li><em>BBC</em>: "Wellness peptide craze: Why people are injecting drugs 'not for human consumption'"</li>
+      <li><em>NPR Morning Edition</em> (Feb 23): Full national broadcast</li>
+    </ul>
+
+    <p><strong>Twitter/X sentiment:</strong> Approximately 70% excitement / 30% skepticism. The excitement is volume-driven (consumers, fitness influencers, biohackers). The skepticism is concentrated among credentialed voices but being massively outpaced by the hype cycle.</p>
+
+    <h3>The Credentialed Pushback</h3>
+    <ul>
+      <li><strong>Dr. Eric Topol</strong> (Scripps Research): "None of them are proven. None of them have gone through what would be considered adequate clinical trials."</li>
+      <li><strong>Paul Knoepfler, PhD</strong> (UC Davis): Warned BPC-157 could theoretically encourage growth of precancerous cells. "You must test these in clinical trials to be sure of anything."</li>
+      <li><strong>Dr. Vikas Patel</strong> (KevinMD): "This is an administration that demands food companies prove their ingredients are safe... and simultaneously is preparing to expand access to injectable compounds with less human safety data than most food additives it wants to ban."</li>
+      <li><strong>Christopher Robertson</strong> (Boston University, FDA regulatory expert): "We don't even know what's in these bottles."</li>
+      <li><strong>Chris Mendias</strong> (Performance Medicine Institute): Has seen patients who "started peeing blood" after taking BPC-157.</li>
+    </ul>
+
+    <h3>Bottom Line</h3>
+    <div class="callout-green">
+      <strong>The mechanisms are real. The animal data is voluminous. The human data is almost nonexistent.</strong><br><br>
+      Peptides like semaglutide and tirzepatide prove the category works -- when properly validated through rigorous clinical trials. BPC-157 has never been subjected to that process. The gap between "rats healed faster in a Croatian lab" and "you should inject this" is approximately a decade of research and billions of dollars that no one has spent. The hype is being driven by a perfect storm: Joe Rogan's megaphone, RFK Jr.'s political promises, biohacker culture's frustration with pharma timelines, and the legitimizing halo of the GLP-1 revolution. What's missing is the science. 178 papers, 80% from one lab, fewer than 30 humans ever studied.
+    </div>
+
+    <p style="margin-top: 16px;"><strong>What to watch:</strong> Whether the RFK Jr. reclassification actually materializes in the Federal Register. Whether any institution launches a proper Phase I/II trial for BPC-157 musculoskeletal indications. And the next-generation pipeline: oral peptide delivery (avoiding injections), AI-designed peptides, and retatrutide (Eli Lilly's triple-agonist that produced 24% weight loss in Phase 2).</p>
+
+    <h3 style="font-size: 10pt; color: #888;">Sources</h3>
+    <ul class="source-list">
+      <li>STAT News, "BPC-157: The peptide with big claims and scant evidence" (Feb 2026)</li>
+      <li>Undark, "BPC-157: A MAHA-Adjacent Peptide, Linked to Croatia" (Feb 2026)</li>
+      <li>The Atlantic, "The Peptide Boom Is Getting Out of Hand" (Mar 2026)</li>
+      <li>Men's Health, "They Call It the 'Wolverine Peptide'" (Feb 2026)</li>
+      <li>TIME, "Why Anti-Aging Peptide Shots Are Trending" (Feb 2026)</li>
+      <li>CNN, "Unproven peptides spreading through influencers" (Nov 2025)</li>
+      <li>Nature Scientific Reports, Src-Caveolin-1-eNOS pathway (2020)</li>
+      <li>Pharmaceuticals, BPC 157 Therapy review (2025)</li>
+      <li>Am J Sports Med, Systematic Review of BPC-157 (2025)</li>
+      <li>PMC, Regeneration or Risk? Narrative Review (2025)</li>
+      <li>PubMed, IV BPC157 Safety Pilot, PMID: 40131143 (2025)</li>
+      <li>USADA, "BPC-157: Experimental Peptide Creates Risk"</li>
+      <li>FDA.gov, Category 2 Bulk Drug Substances</li>
+      <li>The Guardian, "'People are turning themselves into lab rats'" (Feb 2026)</li>
+      <li>NPR Morning Edition, Peptides broadcast (Feb 2026)</li>
+      <li>BBC, "Wellness peptide craze" (Mar 2026)</li>
+    </ul>
+  </section>
+
+  <div style="text-align: center; padding: 20px 0 8px 0; font-size: 9pt; color: #888; border-bottom: 2px solid #D9071C; margin-bottom: 20px;">
+    END SPECIAL REPORT &mdash; REGULAR NIGHTLY BRIEF FOLLOWS
+  </div>
+
+  <!-- ============================================================ -->
   <section>
     <h2>1. Tomorrow's Standup (March 25)</h2>
     <p>Full standup doc generated at 8:00 PM. Below are the key questions per dev.</p>
 
     <h3>Nadeem — output-backed-screen (48 SC)</h3>
+    <p><em>Note: All new bug tickets (Packing List, Expenses Tab, Vibe Tab, People Tab, Itinerary, Activities, Auth, Trip Creation) have been assigned to Nadeem. No need to discuss assignment — just status.</em></p>
     <ol>
-      <li>Status of Krisna's output-backed-screen design — asked two days in a row with no answer. What's actually happening?</li>
-      <li>Travel DNA revamp PR (#291) merged. ClickUp still shows "in progress" — when does it move to "for testing"? What's left?</li>
-      <li>5 items sitting in "for testing" — has Andreas started QA on any of them? Are they actually testable?</li>
-      <li>New bug tickets landed today (Packing List, Expenses Tab, Vibe Tab, People Tab, Itinerary, Activities, Auth, Trip Creation) — all unassigned. Which are yours?</li>
-      <li>0/48 SC reported for output-backed-screen two days running. Honest assessment: how many SC ready for QA by end of week?</li>
+      <li>Where are we on output-backed-screen and Krisna's design? When do you expect the design to be ready?</li>
+      <li>Travel DNA revamp PR (#291) merged — when does ClickUp move to "for testing"? Anything still left?</li>
+      <li>5 items sitting in "for testing" — has Andreas started QA on any of them? Are they testable?</li>
+      <li>SC count check: how many of the 48 SC are ready for QA by end of week?</li>
     </ol>
 
     <h3>Asif — imessage-agent (57 SC)</h3>
     <ol>
-      <li>No answers on yesterday's standup. Walk through what shipped in last 48h and which SC those map to.</li>
-      <li>Rizwan cross-scope interface meeting (SC-56, SC-57) — did it happen? If not, block 30 min today.</li>
-      <li>Packing List Feature moved to "ready for production" but also has a new bug ticket. What's broken?</li>
+      <li>Cross-scope interface meeting with Rizwan (SC-56, SC-57) — did it happen? If not, please schedule it. Marty will add it to both calendars after standup if you give a time that works.</li>
+      <li>Please test that the cross-scope interface is actually working between your environment and Rizwan's. If it's not, fix it today.</li>
+      <li>Packing List Feature moved to "ready for production" but also has a new bug ticket — what's broken?</li>
       <li>HMAC signature validation fix for Linq — did the commits close the security gap or is it still inconsistent?</li>
-      <li>Jennifer Test (SC-28, SC-29) blocked on Jake for 3 days — have you prepared the conversation transcript and routing logic doc?</li>
     </ol>
+    <p><strong>Action item for tomorrow (not a standup question):</strong> Jake is going to onboard Asif on the spec process. Asif's first spec: spec out what QA should test for the initial agent message flows — the core 10-25 flows, including multi-capacity messages. Use <code>/spec</code> with the objective.md already set. This spec will become part of Rizwan's QA team onboarding. Jake will walk through this with Asif during the day.</p>
 
     <h3>Rizwan — agent-intelligence (61 SC)</h3>
     <ol>
-      <li>Show working code since Sunday's architecture plan. (Rizwan answered: 55/61 SC verified, 9 tables, 5 edge functions, 1001 curated activities, 65-check test suite all passing.)</li>
-      <li>PRs #299 and #297 — six days open. Merge or close today.</li>
-      <li>Explain the 22→55 SC progression. (Answered: now automated tests on live local Supabase.)</li>
-      <li>ClickUp side tasks ("Tools suggestion", "Establish maestro practice") — priority order this week?</li>
-      <li>Draft the 20 example messages for Jake's routing logic review (SC-58). Bring to standup.</li>
+      <li>What's the status of PR #299 ("Add font scaling protection to home &amp; activity components") and PR #297 ("Fix: search-based address in Add Activity Sheet")? Ready to merge?</li>
+      <li>QA onboarding: what specific questions do you have about onboarding the new QA person? What does the QA person need from you to start testing agent-intelligence?</li>
+      <li>Current scope wrap-up: what's left on agent-intelligence to hit done? What's your next scope after this one?</li>
+      <li>Draft the 20 example messages for Jake's routing logic review (SC-58) — bring to standup if ready.</li>
     </ol>
 
-    <p><strong>Note:</strong> Rizwan is the only dev who filled in yesterday's standup. Nadeem and Asif went blank. Third day in a row for some questions.</p>
+    <p><strong>Shared topic for all three:</strong> QA person onboarding — each dev should come prepared with what the QA person needs to know about their scope, what's testable now, and what documentation exists.</p>
   </section>
 
   <!-- ============================================================ -->
@@ -317,18 +519,21 @@
   <section>
     <h2>9. Cost Snapshot</h2>
 
-    <p>Cost tracking is not yet fully configured — OpenClaw session logs at <code>~/.openclaw/logs/</code> don't contain per-session token usage breakdowns. The log directory has a commands.log and config audit, but no token-level cost data.</p>
+    <p>Actual costs from OpenClaw cron run logs (<code>~/.openclaw/cron/runs/*.jsonl</code>). Parsed using Anthropic pricing: Opus $15/$75/$3.75 per 1M tokens (input/output/cached).</p>
 
     <table class="cost-table">
-      <tr><th>Category</th><th>Estimate</th><th>Notes</th></tr>
-      <tr><td>This session (nightly report)</td><td>~$0.80-1.20</td><td>Opus model, ~60K input + research calls</td></tr>
-      <tr><td>Standup generator (8pm cron)</td><td>~$0.60-0.80</td><td>Opus, standup compilation</td></tr>
-      <tr><td>Jake DM sessions today</td><td>~$1.00-2.00</td><td>Brain dump processing, calendar work</td></tr>
-      <tr><td>Heartbeats &amp; misc</td><td>~$0.20-0.40</td><td>Background checks</td></tr>
-      <tr><td><strong>Estimated Daily Total</strong></td><td><strong>~$2.60-4.40</strong></td><td>Rough estimate based on session count × model pricing</td></tr>
+      <tr><th>Category</th><th>Cost</th><th>Tokens</th><th>Notes</th></tr>
+      <tr><td>Nightly report cron</td><td>$1.13</td><td>79,475 total (11,728 out)</td><td>Opus 4.6, 1 run</td></tr>
+      <tr><td>Standup generator cron</td><td>$0.90</td><td>96,356 total (7,557 out)</td><td>Opus 4.6, 3 runs</td></tr>
+      <tr><td>Topic suggestion cron</td><td>—</td><td>—</td><td>No runs today</td></tr>
+      <tr><td>Cost report cron</td><td>—</td><td>—</td><td>No runs today</td></tr>
+      <tr><td><strong>Marty crons total</strong></td><td><strong>$2.03</strong></td><td><strong>175,831</strong></td><td>Confirmed from logs</td></tr>
+      <tr><td>Jake DM sessions (est.)</td><td>~$1-3</td><td>—</td><td>Check console.anthropic.com</td></tr>
+      <tr><td>Jake local Claude Code</td><td>—</td><td>—</td><td>Check console.anthropic.com</td></tr>
+      <tr><td><strong>Est. daily total</strong></td><td><strong>~$3-5</strong></td><td></td><td></td></tr>
     </table>
 
-    <p><em>To get precise cost tracking: need to enable token usage logging in openclaw.json or parse Anthropic API response headers. See Phase 5 of revamp plan.</em></p>
+    <p><em>Token usage logging is now being parsed from cron run JSONL files. DM session costs and Jake's local usage still require checking <a href="https://console.anthropic.com/settings/usage">console.anthropic.com</a>.</em></p>
   </section>
 
 </body>

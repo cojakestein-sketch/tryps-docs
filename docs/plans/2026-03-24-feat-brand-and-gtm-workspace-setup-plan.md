@@ -8,7 +8,7 @@ date: 2026-03-24
 
 ## Overview
 
-Consolidate all brand and go-to-market work into a single `brand-and-gtm/` folder in tryps-docs. This replaces the two separate scope folders (`brand-design-system` and `launch-gtm` in `scopes - refined 3-20/`) with a unified workspace that supports today's strategy session with Sean and the ongoing brand/launch workstream through May 2.
+Consolidate all brand and go-to-market work into a single `brand-and-gtm/` folder in tryps-docs. This replaces the two separate scope folders (`brand-design-system` and `launch-gtm` in `scopes/`) with a unified workspace that supports today's strategy session with Sean and the ongoing brand/launch workstream through May 2.
 
 ## Problem Statement
 
@@ -82,10 +82,10 @@ The master `scope.md` follows Jake's principle:
 
 - [ ] Create `brand-and-gtm/` folder structure (all dirs + placeholder files)
 - [ ] Create `reference/INDEX.md` with links to all 10 existing reference docs
-- [ ] Create `README.md` explaining the folder for Sean
+- [ ] Create [[brand-and-gtm/README|README.md]] explaining the folder for Sean
 - [ ] Add Sean (`seadefaria@gmail.com`) as collaborator on tryps-docs repo
 - [ ] Mark old scope folders as superseded (add note to their state.md files)
-- [ ] Update `scopes - refined 3-20/INDEX.md` to point scopes 11 + 12 → `brand-and-gtm/`
+- [ ] Update `scopes/INDEX.md` to point scopes 11 + 12 → `brand-and-gtm/`
 
 ### Phase 2: Remove Brand from ClickUp
 

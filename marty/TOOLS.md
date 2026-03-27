@@ -139,9 +139,10 @@ gog gmail list
 - Credentials are at `~/.openclaw/workspace-marty/.google_tokens.json`
 - Jake's calendar: `jake@jointryps.com`
 - Marty's email: `marty@jointryps.com`
+- **Calendar permissions:** marty@jointryps.com has "Make changes to events" access on Jake's calendar. Create events directly on `jake@jointryps.com` — do NOT create from marty@jointryps.com and send invites.
 - ALWAYS add Zoom links to meetings
 - Zoom settings: NO passcode, NO waiting room — people join directly
-- If OAuth tokens expire, you'll get an auth error — tell Jake to re-authorize
+- If gog gives an auth error, you can self-refresh: `GOG_KEYRING_PASSWORD` and `GOG_ACCOUNT` are in `secrets.env`. The `client_secret.json` is at `~/.openclaw/workspace-marty/client_secret.json` and credentials are stored in gog at `~/.config/gogcli/credentials.json`. gog auto-refreshes tokens using the stored refresh token — just ensure env vars are loaded. If the refresh token itself is revoked, tell Jake to re-authorize via `gog auth add marty@jointryps.com --services calendar,gmail`.
 
 ---
 
@@ -256,7 +257,7 @@ tryps-docs/
     memory/         # Daily memory files
     skills/         # All your skills
     reports/        # Nightly reports
-  scopes - refined 3-20/   # Current scope specs
+  scopes/   # Current scope specs
 ```
 
 ### Gotchas
@@ -282,6 +283,6 @@ These are things that have broken before. Check these first when debugging.
 
 5. **Sandbox can't find files** — OpenClaw sandbox ignores `workspaceAccess:rw`. Must copy files INTO sandbox directories explicitly. The sync script handles this for shared state and MEMORY.md.
 
-6. **Google OAuth expired** — Re-authorize via `gog auth`. Tokens are at `.google_tokens.json`.
+6. **Google OAuth expired** — gog auto-refreshes if `GOG_KEYRING_PASSWORD` and `GOG_ACCOUNT` env vars are set (both in secrets.env). Client credentials are at `~/.config/gogcli/credentials.json`. Backup token copy at `~/.openclaw/workspace-marty/.google_tokens.json`. Only escalate to Jake if the refresh token itself is revoked.
 
 7. **Gateway not picking up changes** — Restart: `systemctl --user restart openclaw-gateway.service`. Config changes (secrets.env, openclaw.json, cron jobs) require a gateway restart.

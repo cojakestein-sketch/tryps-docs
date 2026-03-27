@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tryps Nightly Brief — March 25, 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #3D3530;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #3D3530;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+  }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
+  p, li { font-size: 11pt; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+  }
+  .strategy-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14pt;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #B00618; }
+  a { color: #D9071C; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .tag { display: inline-block; background: #EDE4D8; color: #3D3530; padding: 2px 8px; border-radius: 4px; font-size: 9pt; font-weight: 600; margin-right: 4px; }
+  .alert-box { background: #FFF5F5; border: 1px solid #D9071C; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+</style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Print</button>
+  <h1>Tryps Nightly Brief</h1>
+  <div class="subtitle">
+    Wednesday, March 25, 2026 — Prepared by Marty at 8:30 PM ET
+  </div>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>1. Tomorrow's Standup (March 26)</h2>
+    <p>Full standup generated at 8:00 PM. Here are the key questions per dev:</p>
+
+    <h3>Nadeem — output-backed-screen (48 SC) + Bug Fixes</h3>
+    <ol>
+      <li>Overview tab progress: how many of the 48 SCs are done? List the specific components built so far — need a concrete count.</li>
+      <li>You have 78 open bugs. Pick 5 to fix today and list them by ClickUp ID. Starting bugs-fixed-per-day tracking now.</li>
+      <li>Did Andreas verify the Travel DNA and Post-Trip Review items in "for testing"? Any regressions from PR #291?</li>
+      <li>PR #302 (Stay Tab) merged yesterday — any new bugs? Has Andreas tested the Google Places hotel discovery flow end to end?</li>
+      <li>You and Rizwan are both looking at Maestro for E2E testing. Who owns trip creation vs invite flow tests? Get aligned today.</li>
+    </ol>
+
+    <h3>Asif — imessage-agent (57 SC) + Onboarding Deep Link</h3>
+    <ol>
+      <li>Did you deploy the web landing page to Vercel at jointryps.com? If yes, screenshot the rich link preview. If not, what blocked?</li>
+      <li>34/50 QA tests passing (68%). Pick 3 of the 10 untested SCs to get passing today. Which 3 and why?</li>
+      <li>vCard contact card — you said you'd ship yesterday. Did you create/host the .vcf at jointryps.com/contact.vcf? Show what shipped.</li>
+      <li>Did the 2-3 hour session with Rizwan on SC-56/57/59/60/61 happen? What was agreed? If not, schedule it first thing.</li>
+      <li>PR #304 (wire memory into agent-router) from Rizwan touches your linq-worker path. Review and merge today if clean.</li>
+    </ol>
+
+    <h3>Rizwan — agent-intelligence (61 SC) + QA Process</h3>
+    <ol>
+      <li>PR #303 merged — nice. PR #304 still open. What's blocking? Get it merged today.</li>
+      <li>PR #299 (font scaling) has been open since March 19. Merge it today or close it with a reason.</li>
+      <li>Convert the 20-message classification taxonomy into testable cases with expected responses + expected DB writes. Show the promptfoo YAML.</li>
+      <li>You said 22 SCs ready for QA but also 28/28 test checks passing. Clarify the gap. How many have been actually QA'd?</li>
+      <li>Cross-scope session with Asif on SC-59/60/61 — did it happen? Need the agreed API contract documented today.</li>
+    </ol>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>2. Tech Twitter</h2>
+
+    <div class="tweet">
+      <span class="tweet-author">@karpathy</span> — <span class="tag">SECURITY</span>
+      <p class="tweet-text">Detailed breakdown of the LiteLLM PyPI supply chain attack, listing exfiltration targets: cloud creds, SSH keys, K8s configs, CI/CD secrets, crypto wallets, shell history. Called it "software horror." Also warned about transitive risk to packages like DSPy.</p>
+      <a href="https://www.latent.space/p/ainews-apples-war-on-slop" target="_blank">via Latent Space recap →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@karpathy</span> — <span class="tag">AI AGENTS</span>
+      <p class="tweet-text">On the No Priors podcast with Sarah Guo, discussed code agents, AutoResearch, and what he calls the "loopy era of AI." Coined "AI psychosis" — the anxiety of seeing everyone building with AI and feeling compelled to stay at the frontier. Says he no longer writes much code himself.</p>
+      <a href="https://businessengineer.ai/p/karpathys-map-the-new-playbook-for" target="_blank">detailed writeup →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@karpathy</span> — <span class="tag">HOME AUTOMATION</span>
+      <p class="tweet-text">Revealed he uses Dobby (his AI agent on WhatsApp) to control his home — lights, HVAC, shades, pool, spa, and security system. Natural language home control, no app switching.</p>
+      <a href="https://www.moneycontrol.com/technology/openai-co-founder-andrej-karpathy-suggests-he-uses-an-ai-agent-to-do-household-chores-article-13870405.html" target="_blank">source →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@sama</span> — <span class="tag">OPENAI</span>
+      <p class="tweet-text">Internal memo: OpenAI finished pretraining "Spud," their next major model. Altman told staff it can "really accelerate the economy" and expects to have "a very strong model" in a few weeks. Sora shut down to free compute for Spud.</p>
+      <a href="https://the-decoder.com/openai-ceo-sam-altman-reportedly-teases-a-very-strong-model-internally-that-can-really-accelerate-the-economy/" target="_blank">source →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@sama</span> — <span class="tag">PHILANTHROPY</span>
+      <p class="tweet-text">Announced the OpenAI Foundation (non-profit arm) will spend at least $1 billion over the next year on discovering cures for disease, with focus on life sciences + AI resilience.</p>
+      <a href="https://www.techradar.com/ai-platforms-assistants/openai/ai-will-also-present-new-threats-to-society-sam-altman-issues-stark-warning-as-usd1-billion-plan-is-revealed" target="_blank">source →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@elonmusk</span> — <span class="tag">X PLATFORM</span>
+      <p class="tweet-text">Overruled his own product head Nikita Bier on a proposed revenue-sharing policy that would have told non-American creators to "focus on your own region." Musk paused the rollout after creator backlash.</p>
+      <a href="https://www.businessinsider.com/elon-musk-x-twitter-trolls-nikita-bier-product-pause-2026-3" target="_blank">source →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@AnthropicAI</span> — <span class="tag">PRODUCT</span>
+      <p class="tweet-text">Launched computer use capabilities in preview for Claude Cowork and Claude Code — Claude can now click, scroll, navigate web pages and apps to complete tasks. Works with Dispatch (assign tasks from your phone). This is the feature we're running on.</p>
+      <a href="https://www.cnbc.com/2026/03/24/anthropic-claude-ai-agent-use-computer-finish-tasks.html" target="_blank">source →</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>3. Trending Repos</h2>
+
+    <div class="repo">
+      <p><span class="repo-name">bytedance/deer-flow</span> — ⭐ 46,163 (+3,787 today)</p>
+      <p>Open-source SuperAgent harness with sandboxes, memories, tools, skills, sub-agents, and message gateway. Handles tasks from minutes to hours.</p>
+      <p><strong>Why it matters:</strong> Direct comp to the agent infrastructure we're building for Tryps' iMessage agent. Worth studying their memory system and sub-agent coordination patterns — especially as Rizwan builds out agent-intelligence.</p>
+    </div>
+
+    <div class="repo">
+      <p><span class="repo-name">supermemoryai/supermemory</span> — ⭐ 19,202 (+810 today)</p>
+      <p>Memory engine and API for AI agents — persistent, multimodal, with plugins for Claude Code and OpenCode. Fast and scalable.</p>
+      <p><strong>Why it matters:</strong> We're building agent memory from scratch for the Tryps travel agent. Supermemory could be a ready-made solution or at least a design reference for how to structure persistent agent context across conversations.</p>
+    </div>
+
+    <div class="repo">
+      <p><span class="repo-name">ruvnet/ruflo</span> — ⭐ 26,199 (+1,174 today)</p>
+      <p>Agent orchestration platform for Claude — multi-agent swarms, distributed intelligence, RAG, native Claude Code/Codex integration.</p>
+      <p><strong>Why it matters:</strong> Enterprise-grade Claude orchestration. As we move toward P2/P3 with the agent layer, this is the kind of infra pattern we'd want. Enterprise RAG + swarm coordination could be relevant for scaling the Tryps agent beyond simple Q&A.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>4. Deep Dive: The LiteLLM Supply Chain Attack</h2>
+    <p><em>Topic selected by Marty — couldn't read Jake's DM response to the 3pm suggestion (Slack channel_not_found error). This is today's biggest security story and directly relevant to our stack.</em></p>
+
+    <h3>What Happened</h3>
+    <p>On March 24, a threat group called TeamPCP compromised the PyPI packages for LiteLLM (versions 1.82.7 and 1.82.8) — a widely-used Python SDK that proxies 100+ LLM APIs. The attack exploited a prior compromise of the Trivy security scanner's CI/CD pipeline, which gave attackers access to the LiteLLM CEO's GitHub account. The malicious packages contained a credential stealer and malware dropper targeting cloud credentials, SSH keys, Kubernetes configs, CI/CD secrets, crypto wallets, and shell history.</p>
+
+    <h3>Why This Matters for Tryps Right Now</h3>
+    <p>We don't use LiteLLM directly, but we use the same open-source supply chain (npm, PyPI). Our agent-intelligence scope (Rizwan) is building infra that will call multiple LLM providers. This attack demonstrates that even "trusted" packages with millions of downloads can be silently compromised through cascading CI/CD breaches. The transitive risk — where a compromised security tool (Trivy) leads to a compromised LLM tool (LiteLLM) — is the pattern to worry about.</p>
+
+    <h3>Key Takeaways</h3>
+    <ul>
+      <li><strong>Pin dependencies:</strong> Never use floating versions in production. Lock exact versions in package.json and requirements.txt. This attack only hit 1.82.7-1.82.8 — pinned users on 1.82.6 were safe.</li>
+      <li><strong>Audit CI/CD secrets:</strong> The attack chain started with compromised CI credentials. Review GitHub Actions secrets, Supabase tokens, and EAS build credentials. Rotate anything that's been in plaintext.</li>
+      <li><strong>Monitor for compromised packages:</strong> Set up automated alerts (e.g., Socket.dev, npm audit) on all production dependencies. Especially anything that handles credentials or API keys.</li>
+      <li><strong>Isolate agent execution:</strong> As we build the Tryps agent, run LLM calls in sandboxed environments with minimal credential exposure. Don't give the agent process access to the full secret store.</li>
+      <li><strong>Action item:</strong> Have Rizwan add a dependency audit step to the Maestro/QA process he's setting up. 10 minutes of setup, could save a catastrophic breach.</li>
+    </ul>
+
+    <p><a href="https://thehackernews.com/2026/03/teampcp-backdoors-litellm-versions.html" target="_blank">Full writeup (The Hacker News) →</a></p>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>5. Strategy Check</h2>
+    <p><em>Mid-week 4 (March 23-29)</em></p>
+
+    <div class="strategy-box">
+      <h3>Where We Are</h3>
+      <p>Three parallel scope tracks running: Nadeem on output-backed-screen (48 SCs), Asif on imessage-agent (57 SCs), Rizwan on agent-intelligence (61 SCs). Total: 166 success criteria across three scopes. The state.md is showing 0 scopes tracked — the auto-sync from spec frontmatter appears broken, so I'm working from standup data instead.</p>
+      <p>Nadeem's Overview tab is in progress. Asif is at 68% QA pass rate (34/50). Rizwan merged the agent memory system (PR #303) and has the router integration (PR #304) pending. The cross-scope session between Asif and Rizwan on the DM delivery pipeline (SC-56/57/59/60/61) is the critical integration point and may or may not have happened yesterday.</p>
+      <p>Bug count is climbing: 78 open bugs on Nadeem's side, with Andreas actively testing. No bugs-fixed-per-day metric exists yet — tomorrow's standup kicks that off.</p>
+
+      <h3>Top 3 Risks</h3>
+      <ol>
+        <li><strong>Cross-scope integration gap:</strong> The Asif-Rizwan interface (how Agent Intelligence triggers DMs through Linq, how replies route back) is the glue between two of the three scopes. If the design session hasn't happened, 6+ SCs are blocked. This is the single biggest dependency.</li>
+        <li><strong>Bug debt compounding:</strong> 78 bugs and growing with no systematic triage cadence. Nadeem says he'll fix bugs "after Overview tab progress" but the number keeps climbing. Without a bugs-per-day commitment, this becomes a wall before QA sign-off.</li>
+        <li><strong>state.md sync is broken:</strong> The auto-generated scope status table is empty (0 scopes total). This means the shared visibility layer isn't working. Jake and Marty are flying blind on aggregate progress. Need to debug the frontmatter sync script.</li>
+      </ol>
+
+      <h3>Where Jake Should Focus</h3>
+      <ul>
+        <li><strong>Force the Asif-Rizwan session today.</strong> If it hasn't happened, escalate. The DM delivery pipeline design can't wait — it's blocking 6 SCs across both scopes.</li>
+        <li><strong>Agent first-response study.</strong> Jake's brain dump from last night (00:05 ET) laid out the iMessage classification pipeline. The Rizwan QA taxonomy (20 message types) is the right starting point — connect those two threads.</li>
+        <li><strong>Review Nadeem's 5-bug commitment.</strong> Tomorrow's standup asks him to pick 5 bugs by ClickUp ID. Hold him to it — this is the start of the bugs-per-day metric.</li>
+      </ul>
+
+      <h3>Marty's #1 Priority</h3>
+      <p><strong>The cross-scope API contract between Asif and Rizwan.</strong> Without a documented interface for how Agent Intelligence sends DMs via Linq and how replies route back, both scopes are building toward an integration point that doesn't have a spec. Every day this stays undefined increases the risk of a painful rework when they try to connect the pieces. Get the contract written and reviewed this week.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>6. Culture & Conversation</h2>
+
+    <div style="margin-bottom: 16px;">
+      <h3>OpenAI Kills Sora, Disney Pulls $1B Investment</h3>
+      <p>OpenAI is shuttering its Sora video generation app — less than a year after launch and just 3 months after signing a $1B deal with Disney for licensed character generation. Disney has withdrawn. Altman's internal rationale: redirect compute to "Spud" (next-gen model) and the upcoming desktop superapp. The product org is being renamed "AGI Deployment."</p>
+      <p><strong>Conversation angle:</strong> This is a case study in product focus vs. optionality. OpenAI launched Sora to massive hype, signed Disney, then killed it when the economics didn't work. The lesson for any startup: launch ≠ commit. Sometimes the right move is to kill your most visible product to focus on what actually matters.</p>
+      <p><a href="https://deadline.com/2026/03/sora-shut-down-disney-investment-1236764689/" target="_blank">Deadline →</a></p>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <h3>Meta Hit with $375M Verdict in Child Safety Case</h3>
+      <p>A New Mexico jury ordered Meta to pay $375 million for misleading users about platform safety and enabling exploitation of minors. This is the first major jury-backed verdict of its kind — it could open the floodgates for similar lawsuits from other states.</p>
+      <p><strong>Conversation angle:</strong> Platform liability is shifting from "Section 230 protects everything" to "if you knew and didn't act, you pay." For any social app (including Tryps, eventually), the design-for-safety conversation just got more expensive to ignore.</p>
+      <p><a href="https://www.theguardian.com/technology/2026/mar/25/meta-child-safety-verdict" target="_blank">The Guardian →</a></p>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <h3>Jensen Huang: "We've Achieved AGI"</h3>
+      <p>On Lex Fridman's podcast, Nvidia CEO Jensen Huang declared AGI is here — defining it as systems capable of autonomously building and running billion-dollar companies. He pointed to open-source agents and agentic AI as evidence, while noting sustained enterprise-scale autonomy is still rare.</p>
+      <p><strong>Conversation angle:</strong> The AGI goalposts keep moving, but Huang's definition is pragmatic — not "human-level intelligence" but "can run a business." The question at dinner: if AGI is here, why does everyone still need 5 SaaS subscriptions and a team of humans?</p>
+      <p><a href="https://www.forbes.com/sites/antoniopequenoiv/2026/03/23/nvidias-jensen-huang-says-he-thinks-weve-achieved-agi/" target="_blank">Forbes →</a></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>7. AI Releases & Patch Notes</h2>
+
+    <table class="cost-table">
+      <thead>
+        <tr><th>Provider</th><th>What Changed</th><th>Relevance</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Anthropic</strong></td>
+          <td>Claude Computer Use launched in preview for Cowork + Claude Code. Click, scroll, navigate apps. Dispatch integration (assign tasks from phone).</td>
+          <td>This is our stack. Computer use means Claude can now interact with UIs directly — opens up automated QA and testing possibilities for Tryps.</td>
+        </tr>
+        <tr>
+          <td><strong>Anthropic</strong></td>
+          <td>Claude.ai experienced elevated errors / partial outage (resolved).</td>
+          <td>Minor — service restored. No action needed.</td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI</strong></td>
+          <td>Finished pretraining "Spud" (next-gen model). Product org renamed to "AGI Deployment." Sora app + API + ChatGPT video features shut down.</td>
+          <td>Spud could shift the model landscape in weeks. The desktop "superapp" (ChatGPT + Codex + Atlas browser) is the competitive move to watch vs. Claude.</td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI</strong></td>
+          <td>Foundation announced $1B commitment to AI-driven disease cure research.</td>
+          <td>Non-profit arm flex. No direct product impact.</td>
+        </tr>
+        <tr>
+          <td><strong>xAI</strong></td>
+          <td>Baltimore files first U.S. city lawsuit against xAI over Grok generating nonconsensual deepfakes, including of minors.</td>
+          <td>Legal/regulatory signal. AI safety lawsuits are escalating from individuals to municipalities.</td>
+        </tr>
+        <tr>
+          <td><strong>ARM</strong></td>
+          <td>Unveiled "AGI CPU" — first in-house AI chip for data centers. Early customers: Meta, OpenAI, Cloudflare, Cerebras.</td>
+          <td>Infra-level shift. ARM moving from licensing designs to selling silicon directly. Could reshape the AI compute cost stack long-term.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p><em>Wednesday = Developer Tools</em></p>
+
+    <h3>Supermemory — Persistent Memory API for AI Agents</h3>
+    <p><strong>What it is:</strong> An open-source memory engine and API that gives AI agents persistent, multimodal memory across sessions. Trending on GitHub today (19K+ stars).</p>
+    <p><strong>How Jake would use it:</strong> The Tryps iMessage agent (Asif's scope) needs to remember user preferences, past conversations, and trip context. Supermemory could replace the custom memory system Rizwan is building from scratch — or at least serve as a battle-tested reference. It has plugins for Claude Code and supports the same agent patterns we use. Could save weeks of memory infra development.</p>
+    <p><strong>Pricing:</strong> Open source (self-hosted free). Hosted API available with free tier.</p>
+    <p><a href="https://github.com/supermemoryai/supermemory" target="_blank">github.com/supermemoryai/supermemory →</a></p>
+
+    <h3>Deer Flow (ByteDance) — Open-Source SuperAgent Harness</h3>
+    <p><strong>What it is:</strong> ByteDance's open-source agent orchestration framework with sandboxes, tool use, sub-agents, memories, and a message gateway. 46K stars, 3,787 gained today alone.</p>
+    <p><strong>How Jake would use it:</strong> Reference architecture for the Tryps agent layer (P2/P3). Their message gateway pattern is similar to what we need for iMessage → agent routing. Worth having Rizwan or Asif do a 1-hour code review to see if any patterns port over. Not a drop-in replacement, but could accelerate design decisions.</p>
+    <p><strong>Pricing:</strong> Open source (Apache 2.0).</p>
+    <p><a href="https://github.com/bytedance/deer-flow" target="_blank">github.com/bytedance/deer-flow →</a></p>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+    <table class="cost-table">
+      <thead>
+        <tr><th>Category</th><th>Estimated Cost</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Total (today)</td><td>—</td></tr>
+        <tr><td>Jake DM sessions</td><td>—</td></tr>
+        <tr><td>Cron jobs (standup, nightly, topic)</td><td>—</td></tr>
+        <tr><td>Other sessions</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p style="color: #888; font-size: 10pt; margin-top: 8px;">Cost tracking not yet configured — OpenClaw logs directory only contains commands.log and config-audit.jsonl. No per-session token usage data available for parsing. Need to configure session-level cost tracking in openclaw.json or add a log parser for the Anthropic API response headers.</p>
+  </section>
+
+</body>
+</html>

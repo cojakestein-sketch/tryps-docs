@@ -1,0 +1,214 @@
+---
+title: "Autoresearch: Prompt Optimization Findings"
+date: 2026-03-26
+status: in-progress
+owner: jake
+for: rizwan
+baseline_score: 85.7
+current_best: 87.5
+experiments_run: 20
+---
+
+# Prompt Optimization Findings
+
+## Summary
+
+We ran Karpathy's autoresearch pattern against the Tryps agent system prompt. An AI agent made targeted modifications to the prompt, tested each change against 16 scenarios using GPT-5.4, scored the responses with an LLM judge, and kept improvements.
+
+**20 experiments run. 4 kept, 16 discarded. Hit rate: 20%.**
+
+Two rubric versions:
+- **Rubric v1** (5 dimensions): Baseline 85.7 → Best 87.5 (+1.8)
+- **Rubric v2** (6 dimensions, +correctness, send_multiple_messages fix): Baseline 83.2 → Best 83.3 (+0.1)
+
+The prompt is already strong. The wins are about concrete examples over abstract rules. GPT-5.4 follows "got it, $45, split 4 ways" better than "be concise."
+
+**Hit rate: 20%.** Most experiments make things worse. This is normal for prompt optimization at this quality level — the prompt is already good, so most changes are regressions. The valuable finding is knowing what NOT to do.
+
+At experiment 12, we upgraded the rubric to add a **correctness** dimension and fixed a blindspot where the judge couldn't see text inside `send_multiple_messages` tool calls. This reset the baseline but gave much more accurate scoring.
+
+## What We're Scoring
+
+Each scenario is scored 0-100 across 5 dimensions:
+- **Routing correctness (25%):** Did it respond when it should, stay silent when it should?
+- **Brand voice (25%):** Does it sound like a real person texting? The Jennifer Test.
+- **Helpfulness (20%):** Did it actually help? Right tool, right answer?
+- **Conciseness (15%):** Appropriately brief for a text message?
+- **Formatting (15%):** Lowercase, no emojis, no em dashes, message length.
+
+Plus hard gates (pass/fail): must call the right tool, must not use banned words, must stay lowercase.
+
+## Changes That Worked
+
+### 1. Tighten message length: 6 lines → 4 lines (+1.6 points)
+
+**The biggest single win.** The model was generating wordy confirmations. Dropping the max to 4 lines and adding a concrete brevity example forced tighter output.
+
+**What to change in `persona.ts`:**
+```diff
+- Every message MUST be 6 lines or fewer
++ Every message MUST be 4 lines or fewer. Aim for 1-2 lines per message
+```
+
+**Add this line to the formatting rules:**
+```
+If you can say it in fewer words, do. "got it, $45, split 4 ways" beats "got it, I've logged $45 for the airport taxi and split it equally among all 4 trip members"
+```
+
+**Before:** `got it, I've logged your $45.00 expense for the airport taxi and split it equally among all 4 trip members`
+**After:** `got it, $45, split 4 ways`
+
+### 2. Multi-message recommendation examples (+0.2 points)
+
+The prompt had one example for presenting options but it was a single wall-of-text message. Adding a concrete `send_multiple_messages` example improved how the model structures restaurant/hotel suggestions.
+
+**Replace the Options pattern in `persona.ts`:**
+```
+Options — max 2-3, always with a recommendation. Use send_multiple_messages to break them into separate texts:
+- Message 1: "ok found a few spots near the villa"
+- Message 2: "Ibu Oka, famous roast pig, been around forever, 12 min walk"
+- Message 3: "Naughty Nuri's, bbq ribs and margs, 5 min walk. I'd go here for the group"
+
+When presenting options, each option gets its own short message. Name, what it's known for, one practical detail (distance, price, vibe). No numbered lists. No bullet points. The recommendation goes in the last message, casually: "I'd go X" or "X is the move for your group"
+```
+
+### 3. Casual lead-in for multi-message responses (+0.2 points)
+
+Without this, the model was opening multi-message responses with formal intros like "Here are some recommendations."
+
+**Add as texting rule #9 in `persona.ts`:**
+```
+When giving multiple options via send_multiple_messages, the first message should be casual and short: "ok couple options" or "found some spots" — NOT "Here are some recommendations for you". Then each following message covers one option in 1-2 lines max.
+```
+
+### 4. Don't narrate tool results (+0.1 points, rubric v2)
+
+The model was announcing what tools returned instead of just translating results into useful info.
+
+**Expand texting rule #6 in `persona.ts`:**
+```
+Don't announce what you're about to do. Just do it. Don't narrate tool results either — translate them into something useful.
+- BAD: "Let me look into flight options for you!"
+- BAD: "I found 3 options for you. Here they are:"
+- GOOD: just do it. Or if it takes time: "checking flights, one sec"
+- GOOD: "ok couple options" then jump straight into the options
+```
+
+## Changes That Did NOT Work (Don't Bother)
+
+| Change | Score impact | Why it failed |
+|--------|-------------|---------------|
+| Remove duplicate rules from BOUNDARIES | -0.1 | Redundancy helps GPT-5.4 follow rules. Don't simplify. |
+| Aggressive capitalize rule | -0.3 + gate fail | Too strict on proper nouns (restaurant names). |
+| Change actionable intent routing | -0.5 | Improved one scenario, hurt voice on 3 others. |
+| Add concrete identity example to WHO YOU ARE | -1.5 | Model over-indexed on the casual example, got sloppy elsewhere. |
+| Add ai_suggest → send_multiple_messages flow example | -2.7 | Made model more verbose, not less. More examples ≠ better. |
+| Tell model to output text alongside send_multiple_messages | -0.7 | Model got chattier. The tool call IS the response. |
+| Add vote confirmation examples + one-line-max rule | -1.8 | Vote score dropped. Rigid line limits backfire on confirmations. |
+
+### Pattern: What Makes Experiments Fail
+
+**Adding more examples makes things worse.** After experiment 8, the pattern became clear: the model already has good instincts from the existing examples. Adding MORE examples in the same section creates noise — the model tries to match the new examples and drifts from its natural tone.
+
+**Abstract constraints are better than rigid limits.** "Aim for 1-2 lines" works. "One line max" doesn't. The model needs room to use judgment.
+
+**Don't touch routing.** The model's routing (when to respond vs stay silent) is nearly perfect at 100%. Any change to routing rules improves one scenario and breaks others.
+
+**Don't fight send_multiple_messages.** The model uses this tool well. Trying to force it to also generate text alongside the tool call just creates duplication.
+
+### Full Discard List (experiments 5-20)
+
+| # | Change | Score | Why it failed |
+|---|--------|-------|---------------|
+| 5 | Actionable intent → offer help | 87.0 | Improved one scenario, hurt voice on 3 others |
+| 6 | Simplify BOUNDARIES | 87.4 | Redundancy helps GPT-5.4 follow rules |
+| 7 | Identity example in WHO YOU ARE | 86.0 | Model over-indexed on casual, got sloppy |
+| 8 | ai_suggest flow example | 84.8 | More verbose, gate failure |
+| 9 | Text alongside send_multiple_messages | 86.8 | Model got chattier |
+| 10 | Vote one-line-max | 85.7 | Too rigid for confirmations |
+| 11 | CRITICAL RULES at top | 86.8 | Formatting 93 but message length dropped |
+| 13 | Skip recap on actionable intent | 82.6 | That scenario +7 but others dipped |
+| 15 | Self-correction as trust signal | 82.6 | No measurable impact |
+| 16 | Confirmations offer next step | 82.2 | Hurt more than helped |
+| 17 | Limit send_multiple_messages count | 83.0 | Marginal loss |
+| 18 | "here are" to kill list | 82.6 | Net negative |
+| 19 | Behavioral summary after identity | 82.9 | Marginal loss |
+| 20 | Tighten RESPONSE FORMAT | 81.7 | Duplicate constraint, balance dropped |
+
+## Key Insight
+
+**Concrete examples > abstract rules.** Every win came from adding a specific before/after example in the exact register we want. Every loss came from adding or tightening abstract rules. The model already understands "be concise" — what it needs is "here is exactly what concise looks like in this context."
+
+If Rizwan wants to keep improving the prompt, the playbook is:
+1. Find a scenario where the agent's response feels off
+2. Write the exact response you WANT to see
+3. Add it as a BAD/GOOD example in the relevant section
+4. Test it
+
+## Per-Scenario Scores (Current Best)
+
+| Scenario | Score | What the agent does |
+|----------|-------|---|
+| Stay silent on "lol" | 100 | Calls stay_silent. Perfect. |
+| Stay silent on casual chat | 100 | Calls stay_silent. Perfect. |
+| Stay silent on emoji | 100 | Calls stay_silent. Perfect. |
+| Stay silent on friend-to-friend | 100 | Calls stay_silent. Perfect. |
+| Add activity (formatting test) | 89.5 | `added, warung babi guling, wednesday at 7pm` |
+| Jennifer test ("we just landed") | 87.0 | Uses send_multiple_messages, natural suggestions |
+| Log expense ($45 taxi) | 85.9 | `got it, $45 for airport taxi, split 4 ways` |
+| No AI tells (transportation Q) | 85.0 | Uses ai_suggest, no banned phrases |
+| No banned words (plan first day) | 84.5 | Uses ai_suggest, clean vocabulary |
+| Query balance ("what do I owe") | 84.0 | `you're owed $84.75` + breakdown |
+| Direct question (Saturday plan) | 83.0 | `saturday is rice terrace hike, 8am on april 18` |
+| Cast vote ("2") | 83.5 | `vote's in, you're on beach house in seminyak` |
+| Restaurant suggestions | 82.5 | Uses ai_suggest + send_multiple_messages |
+| Actionable intent (hotel situation) | 81.5 | Queries trip details, offers to help |
+| Message length (hotel options) | 79.0 | Uses send_multiple_messages, keeps it short |
+| No emoji (fun things in Ubud) | 77.5 | Uses ai_suggest, no emojis but brand voice dips |
+
+## Weakest Areas (Optimization Targets)
+
+1. **No emoji scenario (77.5):** Model passes the hard gate but brand voice scores low in multi-message flows. The judge can't see the text inside `send_multiple_messages` tool calls well.
+2. **Message length (79.0):** When presenting multiple options, individual messages are short but the overall flow is still slightly verbose.
+3. **Actionable intent (81.5):** When someone says "we need to figure out the hotel situation," the model queries trip details rather than proactively offering to search. Hard to fix without hurting other scores.
+
+## How to Reproduce
+
+```bash
+cd ~/autoresearch
+# Set your OpenAI key
+echo "OPENAI_API_KEY=sk-..." > .env
+# Install openai
+pip3 install openai
+# Run the eval
+python3 eval.py
+# Run the optimization loop
+./optimize.sh
+```
+
+## Experiment Log
+
+See `~/autoresearch/results.tsv` for the full log. See `git log` on the `autoresearch/mar25` branch for the actual diffs.
+
+## Meta-Findings: What We Learned About the Process
+
+1. **The prompt is near-optimal for these scenarios.** After 20 experiments, we gained +1.8 points on v1 rubric and +0.1 on v2. The original prompt was already good.
+
+2. **20% hit rate is expected.** At this quality level, most changes are regressions. The value is in knowing what NOT to change as much as what to change.
+
+3. **Eval harness quality matters more than experiment count.** The biggest unlock was fixing the `send_multiple_messages` blindspot and adding correctness scoring — not running more experiments.
+
+4. **LLM-as-judge has ~2-3 point variance between runs.** The same prompt can score 82 or 85 on different runs. Gains under 1 point are noise.
+
+5. **Mock data limits signal.** The `ai_suggest` mock always returns the same 3 restaurants. The model noticed ("search gave me restaurants not hotels"). Real evaluation needs dynamic mocks or live API calls.
+
+6. **Correctness is the next frontier.** Brand voice and formatting are nearly solved. The remaining gains are in: did the agent do the right thing with the right data? This matters more once bookings are live.
+
+## Next Steps
+
+- [ ] Add 15+ more scenarios: currency detection, undo, flight parsing, multi-currency expenses, edge case routing
+- [ ] Add dynamic mock data (vary the trip context per scenario)
+- [ ] Human eval pass: Jake + Andreas score 20 responses side-by-side with the LLM judge
+- [ ] Rizwan to review findings and apply the 4 kept changes to production prompt files
+- [ ] Run correctness-focused experiments once booking tools are live
+- [ ] Compare prompt performance on Claude vs GPT-5.4 (cross-model robustness)
