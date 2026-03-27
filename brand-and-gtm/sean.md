@@ -54,6 +54,9 @@ status: active
 - [ ] Ready for immediate content posting upon completion
 - [ ] **Jake** - refine bright connect scope to look nice everywhere
 
+Status 3/27 -
+* Jake to create linkedin, snapchat, youtube
+* Sean to update above once jake is done, get verified, etc.
 ### 3. UGC Program Foundations
 
 - [ ] Clear criteria for ideal creators defined (segments, follower ranges, content style, demo) - **heavily sean**
@@ -66,6 +69,13 @@ status: active
   - [ ] Which account sends DMs decided
 - [ ] 4-page deliverable outlining complete targeting and outreach strategy
 
+Action items for sean:
+1. get really clear criteria doc - want you to use /grill-me to do so - [ ] Clear criteria for ideal creators defined (segments, follower ranges, content style, demo) - **heavily sean**
+2. leverage teh above criteria doc to write the -page deliverable outlining complete targeting and outreach strategy - nclude an exec summ up front for jake to engaeg with, use /grill-me to do this
+3. Output for Jake: very clear criteria / prompt of the type of creator we are looking for, so that we can activate our girls (molly/ana/gianna AND agent cash for this list)
+	1. Here is the list
+	2. manually search for 20-25 creators to reference as ideal candidates (grace donner, hailey schulvitz, lily rudder) 
+
 ### 4. Launch Video Pre-Production
 
 - [ ] Treatment + creative direction locked
@@ -73,6 +83,13 @@ status: active
 - [ ] Location(s), talent, and crew needs identified
 - [ ] Rough budget and production schedule outlined
 - [ ] Ready to click record immediately after milestone completion
+
+1. Sean to describe - what are we looking for, what is the questions answering, what does tryp slook like?
+2. keep current list but pull 2026 launches that are successful too
+3. jake and sean to watch these videos and give feedback at 330 
+4. Jake to run science experiment here
+	1. Sean - research- give claude this article: https://x.com/mitcheil/status/2034633159409869069?s=46 and say we need more best practices for technology consumer launch videos
+3.
 
 ### 5. Giveaways Planning
 
