@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tryps Nightly Brief — March 26, 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #3D3530;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #3D3530;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+  }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
+  p, li { font-size: 11pt; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+  }
+  .strategy-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14pt;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #B00618; }
+  a { color: #D9071C; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .tag { display: inline-block; background: #EDE4D8; color: #3D3530; padding: 1px 6px; border-radius: 4px; font-size: 9pt; font-weight: 600; margin-right: 4px; }
+  .dim { color: #999; font-size: 10pt; }
+</style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Print</button>
+  <h1>Tryps Nightly Brief</h1>
+  <div class="subtitle">
+    Thursday, March 26, 2026 — Prepared by Marty at 8:30 PM ET
+  </div>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>1. Tomorrow's Standup</h2>
+    <p class="dim">Questions generated at 8:00 PM from GitHub activity + scope specs. Devs answer via Wispr Flow voice dump, edit their section, commit &amp; push.</p>
+
+    <h3>Nadeem — output-backed-screen (48 SC)</h3>
+    <ol>
+      <li>PR #305 (overview tab) just merged — itinerary timeline, drag-and-drop reorder, expand/collapse, weather display. How many of the 48 success criteria does this cover? List specific SC numbers.</li>
+      <li>Commits also touched calendar (trip preview, badge polish), vibe quiz (all 10 Qs + icon UI), and activity scheduling timezone fixes. Part of output-backed-screen or separate? What's driving the priority?</li>
+      <li>Realtime sync plan doc for trip activities — "activities and votes by other travellers don't appear until trip is reopened." Blocker or nice-to-have? Fix timeline?</li>
+      <li>Overview tab has within-day drag-and-drop. Tested on low-end Android? Performance concerns with Reanimated + sortable on long itineraries (10+ activities/day)?</li>
+      <li>Honest read: what % of the 48 SC are done-done (tested, working)? Single biggest risk to finishing on time?</li>
+    </ol>
+
+    <h3>Asif — imessage-agent (57 SC)</h3>
+    <ol>
+      <li>Merged Rizwan's memory integration into agent-router (#304), but there was a revert/re-apply cycle. What broke? Are the try/catch guards enough, or is this papering over a deeper issue?</li>
+      <li>Fixed trip creation in 1:1 chat, OpenAI retry logic, linq integration (contact cards + trip preview links). Which map to iMessage agent SC items vs. firefighting?</li>
+      <li>The Jennifer Test: "If grandma can't tell it's AI, we win." With memory wired in and 1:1 trip creation working, how close? What's still missing?</li>
+      <li>PR #286 (iMessage via Linq) merged March 17. Since then, incremental fixes. Is core Linq integration stable now? Most fragile part?</li>
+      <li>Of 57 SC, how many ready for QA right now? Single thing most likely to slip this week?</li>
+    </ol>
+
+    <h3>Rizwan — agent-intelligence (61 SC)</h3>
+    <ol>
+      <li>PR #303 (agent intelligence memory system) merged March 25. Walk through the architecture — per-user memory, per-trip memory, cross-trip learning, or some subset?</li>
+      <li>Memory wiring into agent-router had revert + re-apply (#304). buildUserContext + fireAndForgetExtraction — if extraction fails silently, how do you know the memory system is learning?</li>
+      <li>PR #299 (font scaling protection) open since March 26, not merged. What's blocking? Related to agent-intelligence scope or a side fix?</li>
+      <li>Spec has three sub-systems: memory architecture, vote-on-behalf, recommendations engine. Memory is landing — what's the order for the other two? Started on vote-on-behalf?</li>
+      <li>Of 61 SC, how many does the memory PR (#303) cover? Realistic SC completion estimate by end of week?</li>
+    </ol>
+
+    <table style="width:100%; border-collapse:collapse; margin-top:16px; font-size:10pt;">
+      <tr style="border-bottom:2px solid #EDE4D8;">
+        <th style="text-align:left; padding:4px 8px;">Dev</th>
+        <th style="text-align:left; padding:4px 8px;">Scope</th>
+        <th style="text-align:center; padding:4px 8px;">Total SC</th>
+        <th style="text-align:center; padding:4px 8px;">Ready for QA</th>
+        <th style="text-align:center; padding:4px 8px;">QA Passed</th>
+      </tr>
+      <tr style="border-bottom:1px solid #f0f0f0;">
+        <td style="padding:4px 8px;">Nadeem</td>
+        <td style="padding:4px 8px;">output-backed-screen</td>
+        <td style="text-align:center; padding:4px 8px;"><strong>48</strong></td>
+        <td style="text-align:center; padding:4px 8px;">___/48</td>
+        <td style="text-align:center; padding:4px 8px;">___/___</td>
+      </tr>
+      <tr style="border-bottom:1px solid #f0f0f0;">
+        <td style="padding:4px 8px;">Asif</td>
+        <td style="padding:4px 8px;">imessage-agent</td>
+        <td style="text-align:center; padding:4px 8px;"><strong>57</strong></td>
+        <td style="text-align:center; padding:4px 8px;">___/57</td>
+        <td style="text-align:center; padding:4px 8px;">___/___</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;">Rizwan</td>
+        <td style="padding:4px 8px;">agent-intelligence</td>
+        <td style="text-align:center; padding:4px 8px;"><strong>61</strong></td>
+        <td style="text-align:center; padding:4px 8px;">___/61</td>
+        <td style="text-align:center; padding:4px 8px;">___/___</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>2. Tech Twitter</h2>
+    <p class="dim">Direct tweet links unavailable (X/Brave indexing gap). Surfaced via news coverage of tracked accounts.</p>
+
+    <div class="tweet">
+      <span class="tag">@AnthropicAI</span>
+      <span class="tweet-author">Anthropic</span> — Claude mobile app gets major professional tools update. Claude Code + Cowork now have computer-use capabilities (launched March 23).
+      <br><span class="dim"><a href="https://www.engadget.com/ai/claude-code-and-cowork-can-now-use-your-computer-210000126.html">engadget.com</a></span>
+    </div>
+
+    <div class="tweet">
+      <span class="tag">@AnthropicAI</span>
+      <span class="tweet-author">Anthropic</span> — Claude Code Channels shipped: hook Claude Code into Discord or Telegram for persistent messaging. VentureBeat called it an "OpenClaw killer."
+      <br><span class="dim"><a href="https://venturebeat.com/orchestration/anthropic-just-shipped-an-openclaw-killer-called-claude-code-channels">venturebeat.com</a></span>
+    </div>
+
+    <div class="tweet">
+      <span class="tag">@elonmusk</span>
+      <span class="tweet-author">Elon Musk</span> — Jury found Musk liable for misleading Twitter investors with two tweets during the $44B acquisition (verdict March 20). Financial damages still TBD. Musk absolved of broader "scheme to defraud" charges.
+      <br><span class="dim"><a href="https://www.cnbc.com/2026/03/20/elon-musk-determined-to-be-liable-for-misleading-twitter-investors.html">cnbc.com</a></span>
+    </div>
+
+    <div class="tweet">
+      <span class="tag">@OpenAI</span>
+      <span class="tweet-author">OpenAI</span> — Invested in AI agent startup Isara at $650M valuation. Isara builds multi-agent systems that communicate and solve complex problems together. Less than a year old.
+      <br><span class="dim"><a href="https://www.republicworld.com/tech/what-is-isara-openais-new-650m-love-interest-in-ai-agents">republicworld.com</a></span>
+    </div>
+
+    <div class="tweet">
+      <span class="tag">@OpenAI</span>
+      <span class="tweet-author">OpenAI</span> — Paused erotic chatbot plans indefinitely. Refocusing on core products. Signal: product restraint is becoming AI strategy, not just ethics theater.
+      <br><span class="dim"><a href="https://www.reuters.com/business/openai-indefinitely-pauses-plans-release-erotic-chatbot-ft-says-2026-03-26/">reuters.com</a></span>
+    </div>
+
+    <div class="tweet">
+      <span class="tag">Industry</span>
+      <span class="tweet-author">Nvidia-backed Reflection AI</span> — In talks to raise $2.5B at a $25B valuation. Another signal that the AI infrastructure/agent layer is where capital is flowing.
+      <br><span class="dim"><a href="https://www.reuters.com/business/nvidia-backed-reflection-ai-eyes-25-billion-valuation-wsj-reports-2026-03-26/">reuters.com</a></span>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>3. Trending Repos</h2>
+
+    <div class="repo">
+      <span class="repo-name">bytedance/deer-flow</span> — ⭐ 48,277 (+2,394 today)
+      <br>Open-source long-horizon SuperAgent harness: researches, codes, creates. Sandboxes, memories, tools, skills, subagents, and message gateway.
+      <br><span class="dim"><strong>Why it matters:</strong> Direct analog to what Tryps is building with agent-intelligence. Their architecture (memory + subagents + message gateway) mirrors the iMessage agent + Rizwan's memory system. Worth studying their memory persistence patterns.</span>
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">Yeachan-Heo/oh-my-claudecode</span> — ⭐ 12,594 (+598 today)
+      <br>Teams-first multi-agent orchestration for Claude Code. TypeScript.
+      <br><span class="dim"><strong>Why it matters:</strong> Multi-agent orchestration in TypeScript — directly relevant to how Asif is wiring agent-router. Could inform the vote-on-behalf and recommendations engine architecture.</span>
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">datalab-to/chandra</span> — ⭐ 6,131 (+557 today)
+      <br>OCR model handling complex tables, forms, handwriting with full layout preservation.
+      <br><span class="dim"><strong>Why it matters:</strong> If Tryps ever does receipt scanning for expenses, this is the state-of-the-art OCR to build on. File away for P2/P3.</span>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>4. Deep Dive: AI Agent Memory — From Chatbot Amnesia to Persistent Context</h2>
+    <p class="dim">No topic suggestion response from Jake today. Writing up the most sprint-relevant topic: agent memory systems — directly connected to Rizwan's PR #303 and the agent-intelligence scope.</p>
+
+    <h3>What It Is</h3>
+    <p>Agent memory is the ability for an AI system to retain, retrieve, and reason over information across conversations. Unlike stateless chat (where every session starts fresh), memory-equipped agents build a persistent model of users, preferences, and context. The industry is converging on a layered approach: short-term (conversation buffer), medium-term (session summaries), and long-term (semantic retrieval from vector stores).</p>
+
+    <h3>Why It Matters for Tryps Right Now</h3>
+    <p>Rizwan's PR #303 shipped the memory architecture foundation — <code>buildUserContext</code> and <code>fireAndForgetExtraction</code>. This is the moment where the Tryps iMessage agent goes from "helpful chatbot" to "travel companion who remembers." The Jennifer Test ("grandma can't tell it's AI") is essentially a memory test: does the agent remember what it discussed, what preferences were expressed, and what context matters? Without memory, every conversation restarts cold. With it, the agent passes the Jennifer Test naturally.</p>
+
+    <h3>Key Takeaways</h3>
+    <ul>
+      <li><strong>Fire-and-forget is risky.</strong> If extraction fails silently, the memory system degrades without anyone noticing. Rizwan needs observability — at minimum, a counter of successful vs. failed extractions, queryable via Supabase.</li>
+      <li><strong>Per-trip vs. per-user memory matters.</strong> "Jake likes window seats" is per-user. "The Vegas trip crew prefers late-night plans" is per-trip. The architecture should separate these or the agent will bleed context across trips.</li>
+      <li><strong>Industry benchmark: deer-flow (trending today, 48K stars)</strong> uses a memory + subagent + message gateway pattern. Their architecture doc is worth 30 minutes of Rizwan's time.</li>
+      <li><strong>Vote-on-behalf (next in Rizwan's queue) depends on good memory.</strong> If the agent can't remember preferences, voting on behalf becomes random guessing. Memory quality directly gates the next feature.</li>
+      <li><strong>OpenAI just invested $650M in Isara for multi-agent coordination.</strong> The industry is betting that agents working together (and remembering context about each other) is the next platform. Tryps is already building this with the iMessage relay.</li>
+    </ul>
+
+    <p><strong>Resource:</strong> <a href="https://github.com/bytedance/deer-flow">bytedance/deer-flow</a> — open-source SuperAgent with memory architecture worth studying.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>5. Strategy Check</h2>
+    <div class="strategy-box">
+      <h3>Where We Are — End of Week 4 (Mar 23-29)</h3>
+      <p>Three major scopes running in parallel, all mid-sprint:</p>
+      <ul>
+        <li><strong>output-backed-screen (Nadeem, 48 SC):</strong> PR #305 merged with overview tab — itinerary timeline, drag-drop, weather. Also shipped calendar polish, vibe quiz (all 10 questions), and timezone fixes. Productive week, but SC completion numbers are unknown until standup answers come in.</li>
+        <li><strong>imessage-agent (Asif, 57 SC):</strong> Memory integration landed (#304) after a revert/re-apply cycle. Trip creation in 1:1 chat working. Linq integration (contact cards + preview links) shipped. Core plumbing is stabilizing but Jennifer Test readiness is the question.</li>
+        <li><strong>agent-intelligence (Rizwan, 61 SC):</strong> Memory system PR #303 merged March 25. Font scaling protection PR #299 still open. Three sub-systems defined (memory, vote-on-behalf, recommendations) — only memory is landing. 61 SC is the largest scope.</li>
+      </ul>
+
+      <h3>Top 3 Risks</h3>
+      <ol>
+        <li><strong>Rizwan's 61 SC scope is the biggest and least visible.</strong> Memory landed, but vote-on-behalf and recommendations haven't started. With 1 week left in March and 61 SC, even 50% completion would be aggressive. Need a standup answer on realistic SC count.</li>
+        <li><strong>The revert/re-apply cycle on #304 suggests integration fragility.</strong> Asif and Rizwan are building interconnected systems (agent-router + memory). One breaks, both break. No integration test coverage visible.</li>
+        <li><strong>No QA numbers from anyone.</strong> The SC tracking table has been blank for days. Andreas (QA) needs completed features to test, but devs aren't filling in "SC Ready for QA" counts. Without this data, we're flying blind on actual sprint progress.</li>
+      </ol>
+
+      <h3>Where Jake Should Focus</h3>
+      <ul>
+        <li><strong>Tomorrow's standup is the forcing function.</strong> The SC completion questions are designed to get real numbers. Push devs to fill the tracking table — the table is the artifact, not the conversation.</li>
+        <li><strong>Agent first-response study (from March 25 brain dump).</strong> This is still unscheduled. Rizwan was assigned to set up the QA person. Check if that's happened.</li>
+        <li><strong>Scope triage for Rizwan.</strong> 61 SC across 3 sub-systems in one sprint is a lot. If vote-on-behalf and recommendations aren't started, consider pushing them to next sprint and getting memory rock-solid.</li>
+      </ul>
+
+      <h3>What Marty Thinks the #1 Priority Is</h3>
+      <p><strong>Get the SC tracking table filled.</strong> Everything else — risk assessment, scope triage, sprint planning — depends on knowing where we actually are. The standup questions are designed to force this. If devs dodge the SC numbers again, that itself is the signal: they don't know either, which means the scopes are underspecified or the work is less done than it appears.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>6. Culture &amp; Conversation</h2>
+
+    <div style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>China Bars Manus Co-Founders From Leaving Country During Meta Deal Review</strong>
+      <br>Chinese authorities restricted two co-founders of AI agent startup Manus from traveling as regulators review whether Meta's $2B acquisition violated investment rules. The deal closed in 2025 but is now under retroactive scrutiny.
+      <br><span class="dim"><strong>Conversation angle:</strong> Cross-border AI acquisitions are becoming geopolitical chess pieces. If you're building an AI company with any non-US talent or infrastructure, exit paths just got more complicated. <a href="https://www.bloomberg.com/news/articles/2026-03-25/china-restricts-manus-founders-from-leaving-china-ft-says">bloomberg.com</a></span>
+    </div>
+
+    <div style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>Section 230 Is Actually Under Threat Now — Two Jury Verdicts Against Meta &amp; Google</strong>
+      <br>Juries in California and New Mexico found Meta and Google liable for harms to children, sidestepping Section 230 by targeting platform design decisions (not user content). 2,400+ related cases are centralized in California federal court.
+      <br><span class="dim"><strong>Conversation angle:</strong> This isn't about content moderation anymore — it's product design liability. If courts rule that recommendation algorithms and engagement features are "products" (not protected speech), every consumer tech company's legal posture changes. <a href="https://www.reuters.com/sustainability/boards-policy-regulation/us-jury-verdicts-against-meta-google-tee-up-fight-over-tech-liability-shield-2026-03-26/">reuters.com</a></span>
+    </div>
+
+    <div style="padding: 8px 0;">
+      <strong>Nvidia-Backed Reflection AI Seeking $25B Valuation — The Agent Infrastructure Bet</strong>
+      <br>Reflection AI (Nvidia-backed) is raising $2.5B at a $25B valuation. Same week OpenAI invested in Isara ($650M valuation, &lt;1 year old). Capital is flooding into "agent infrastructure" — the layer between foundation models and actual user-facing agents.
+      <br><span class="dim"><strong>Conversation angle:</strong> The AI value chain is stratifying: foundation models → agent infrastructure → vertical applications. Tryps sits in the "vertical application" layer. The question at any dinner: are the vertical apps going to capture value, or will the agent infrastructure layer eat it all? <a href="https://www.reuters.com/business/nvidia-backed-reflection-ai-eyes-25-billion-valuation-wsj-reports-2026-03-26/">reuters.com</a></span>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>7. AI Releases &amp; Patch Notes</h2>
+
+    <table style="width:100%; border-collapse:collapse; font-size:10pt;">
+      <tr style="border-bottom:2px solid #EDE4D8;">
+        <th style="text-align:left; padding:6px 8px;">Provider</th>
+        <th style="text-align:left; padding:6px 8px;">What Changed</th>
+        <th style="text-align:left; padding:6px 8px;">Relevance</th>
+      </tr>
+      <tr style="border-bottom:1px solid #f0f0f0;">
+        <td style="padding:6px 8px; font-weight:600;">Anthropic</td>
+        <td style="padding:6px 8px;">Claude Code 2.1.78 — StopFailure hooks, persistent plugin data, frontmatter for plugin agents, tmux passthrough, streaming responses, sandbox/git/worktree/WSL2/memory fixes</td>
+        <td style="padding:6px 8px;">Direct impact on our dev workflow. StopFailure hooks catch rate limits. tmux passthrough is useful for our coding agents.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #f0f0f0;">
+        <td style="padding:6px 8px; font-weight:600;">Anthropic</td>
+        <td style="padding:6px 8px;">Claude mobile app — major professional tools update. Claude Code + Cowork get computer-use capabilities (March 23)</td>
+        <td style="padding:6px 8px;">Computer use expanding to mobile. Interesting for future Tryps agent UX.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #f0f0f0;">
+        <td style="padding:6px 8px; font-weight:600;">Anthropic</td>
+        <td style="padding:6px 8px;">Claude Code Channels — hook Claude Code into Discord/Telegram for persistent messaging (last week)</td>
+        <td style="padding:6px 8px;">Competitive to OpenClaw. We're already ahead on Slack integration. Watch for feature parity.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #f0f0f0;">
+        <td style="padding:6px 8px; font-weight:600;">OpenAI</td>
+        <td style="padding:6px 8px;">GPT-5.4 released March 5. GPT-5.3 Instant rolled out March 3-16. ChatGPT Enterprise/EDU Impact surveys expanding.</td>
+        <td style="padding:6px 8px;">GPT-5.4 is the current frontier from OpenAI. Worth benchmarking against Opus for agent-router if pricing improves.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #f0f0f0;">
+        <td style="padding:6px 8px; font-weight:600;">Google</td>
+        <td style="padding:6px 8px;">Gemini 3.1 Pro rolling out. 750M users announced. Gemini Canvas in Search. New Google TV features.</td>
+        <td style="padding:6px 8px;">Gemini 3.1 Pro worth evaluating for cost-sensitive agent tasks.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #f0f0f0;">
+        <td style="padding:6px 8px; font-weight:600;">xAI</td>
+        <td style="padding:6px 8px;">Grok 5 still in training — missed Q1 2026 window. Grok 4 active. Grok Imagine got Chibi art templates. Series E closed at $15B+.</td>
+        <td style="padding:6px 8px;">No model updates. Grok 5 delay is notable — xAI's infrastructure buildout taking longer than projected.</td>
+      </tr>
+      <tr>
+        <td style="padding:6px 8px; font-weight:600;">Microsoft</td>
+        <td style="padding:6px 8px;">Making Claude Sonnet available to Microsoft 365 Copilot users (announced March 9)</td>
+        <td style="padding:6px 8px;">Anthropic models going mainstream via M365. Validation for the Claude stack we're building on.</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p class="dim">Thursday = Analytics category</p>
+
+    <div style="background: #FFFDF8; border: 1px solid #EDE4D8; border-radius: 8px; padding: 16px; margin-top: 12px;">
+      <h3 style="margin-top:0;">Littlebird — AI Context Capture &amp; Meeting Memory</h3>
+      <p><strong>What it is:</strong> Background AI that captures on-screen context as searchable text, includes a Granola-style meeting notetaker, and offers "Prep for meeting" feature that synthesizes past meetings + emails + company history.</p>
+
+      <p><strong>How Jake would use it:</strong> Right now Jake relies on Granola for meeting notes and Wispr Flow for voice dumps. Littlebird captures the screen context <em>between</em> meetings too — browsing Figma, reviewing PRs, reading Slack. That passive context capture means when Jake brain dumps at midnight, Littlebird already knows what he was looking at all day. The "Prep for meeting" feature would be killer for standup — auto-generates context from the day's work before the call starts.</p>
+
+      <p><strong>Pricing:</strong> Just raised $11M (TechCrunch, March 23). Free tier available, paid plans TBD. Early-stage — likely generous free tier for now.</p>
+
+      <p><strong>Link:</strong> <a href="https://techcrunch.com/2026/03/23/littlebird-raises-11m-to-capture-context-from-your-computer-so-you-can-query-your-data/">TechCrunch coverage</a></p>
+
+      <p><strong>Overlap check:</strong> Supplements Granola (which is meeting-only). Doesn't replace Wispr Flow (voice input). Fills the gap: passive screen context that neither tool captures.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+    <table class="cost-table">
+      <tr>
+        <th>Metric</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>Sessions today</td>
+        <td>136</td>
+      </tr>
+      <tr>
+        <td>Session data volume</td>
+        <td>~14 MB</td>
+      </tr>
+      <tr>
+        <td>Estimated tokens</td>
+        <td>~560K</td>
+      </tr>
+      <tr>
+        <td>Model</td>
+        <td>claude-opus-4-6</td>
+      </tr>
+      <tr>
+        <td>Estimated cost</td>
+        <td>$15–25 (rough, based on JSONL volume)</td>
+      </tr>
+    </table>
+    <p class="dim" style="margin-top:8px;">⚠️ Cost tracking is approximate — based on JSONL session file sizes, not actual API billing. Precise per-session cost tracking is planned but not yet configured. For exact numbers, check the Anthropic Console billing dashboard.</p>
+  </section>
+
+  <div style="margin-top: 40px; padding-top: 16px; border-top: 1px solid #EDE4D8; font-size: 9pt; color: #aaa;">
+    Generated by Marty · March 26, 2026 at 8:30 PM ET · tryps-docs/marty/reports/2026-03-26-nightly.html
+  </div>
+</body>
+</html>
