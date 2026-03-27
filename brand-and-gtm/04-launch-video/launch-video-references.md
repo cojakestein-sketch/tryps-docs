@@ -1,106 +1,89 @@
-# Launch Video References for Tryps
+# Launch Video References for Tryps — 2026 Edition
 
-Research compiled March 27, 2026. For Tryps -- a group trip planning app where you text an AI travel agent named Marty in iMessage and he plans your whole trip.
-
----
-
-## 20 Best App/Startup Launch Videos
-
-| # | Company | Video Title | URL | Length | Style | Why It Worked |
-|---|---------|-------------|-----|--------|-------|---------------|
-| 1 | Dollar Shave Club | DollarShaveClub.com - Our Blades Are F***ing Great | https://www.youtube.com/watch?v=ZUG9qYTJMsI | 1:34 | Founder-led comedy | Shot for $4,500 with CEO Michael Dubin walking through a warehouse delivering deadpan jokes. Crashed the site in 1 hour, 12,000 orders in 48 hours, 28M+ views. The gold standard for founder-personality launch videos. |
-| 2 | Slack | "So Yeah, We Tried Slack..." (by Sandwich Video) | https://www.youtube.com/watch?v=B6zVzWU95Sw | 2:21 | Mockumentary / testimonial | Slack hired Sandwich Video to make an ad, then Sandwich fell in love with the product during production. The meta-narrative of the video team becoming genuine users was more convincing than any scripted demo. |
-| 3 | Dropbox | Dropbox Explainer Video (Common Craft) | https://www.youtube.com/watch?v=w4eTR7tci6A | 2:17 | Animated explainer | A simple whiteboard-style explainer that cost ~$50K and drove a 10% conversion rate increase, translating to $48M in revenue. Proved that clarity beats production value -- the beta waitlist jumped from 5,000 to 75,000 overnight. |
-| 4 | Rabbit | Introducing r1 (CES 2024 Keynote) | https://www.youtube.com/watch?v=22wlLy7hKP4 | 25:00 | Keynote / product reveal | CEO Jesse Lyu channeled Steve Jobs energy at CES 2024 with a tight, polished keynote revealing a $199 AI device. 4.8M YouTube views and 10.5M views on X in the first week. All pre-order batches sold out. Produced by PHNTM. |
-| 5 | Humane | This is the Humane Ai Pin | https://www.youtube.com/watch?v=9lNIwOOMVHk | 10:35 | Cinematic product film | Beautifully shot lifestyle film showing the AI Pin in daily use with a calm, aspirational tone. Even though the product flopped commercially, the launch video itself is a masterclass in building desire through atmosphere rather than feature lists. |
-| 6 | Wispr Flow | Porsche GT3 RS Challenge | https://x.com/tankots/status/2027404378307809701 | ~2:00 | Viral challenge / stunt | CEO Tanay Kothari offered a Porsche GT3 RS to anyone who could make Wispr Flow's dictation make a mistake. 3.5M views. The format turned a product demo into appointment viewing -- people watched to see if it would fail. |
-| 7 | Arc (The Browser Company) | Introducing Arc for iPhone | https://www.youtube.com/watch?v=kEE8GhLy6U4 | 0:41 | Cinematic lifestyle | 41 seconds of pure vibes -- beautiful cinematography, no voiceover explaining features, just people using their phones with Arc. The Browser Company also pioneered "building in public" on YouTube with Josh Miller's personal updates. |
-| 8 | Notion | What is Notion? | https://www.youtube.com/watch?v=oTahLEX3NXo | 2:34 | Product demo / explainer | Clean, calm product walkthrough that lets the UI speak for itself. No hype, no founder on camera -- just screen recordings with gentle narration showing how flexible the tool is. Widely cited as one of the best SaaS explainer videos ever. |
-| 9 | Airbnb | Wall and Chain (Berlin Wall short film) | https://www.youtube.com/watch?v=mzCBkofiZBA | 1:17 | Animated short film / brand storytelling | An animated true story about two former Berlin Wall border guards who meet through Airbnb. 8M views in the first month, 130 press hits in 15 countries. Proved that brand films can be more powerful than product demos. |
-| 10 | Coinbase | Bouncing QR Code (Super Bowl 2022) | https://www.youtube.com/watch?v=Vrf-Q3Jhzig | 1:00 | Minimalist stunt | 60 seconds of a bouncing QR code on a black screen -- nothing else. 20M hits on the landing page in one minute, app crashed, jumped from #186 to #2 on the App Store. The anti-ad that outperformed every Super Bowl commercial that year. |
-| 11 | Dispo | Live in the Moment (dir. Mark Romanek) | https://www.youtube.com/watch?v=o8q3O0f-7zA | 0:58 | Cinematic / emotional | David Dobrik dressed as an elderly version of himself, crying over Polaroid photos. Directed by Mark Romanek (One Hour Photo). The nostalgia angle perfectly matched the disposable camera app's positioning. |
-| 12 | Poo-Pourri | Girls Don't Poop | https://www.youtube.com/watch?v=0vMgikacd5s | 5:34 | Comedy / viral ad | A prim British woman on a toilet delivers an absurdly polished monologue about bathroom odor. 6M views and 300K shares in the first week, won Funniest Viral Video Award. Proved taboo topics + deadpan delivery = massive shareability. |
-| 13 | Headspace | Meditation - How It Works | https://www.youtube.com/watch?v=W38Xhg0afWs | 1:17 | Animated explainer | Simple, charming animation with a calm voiceover explaining meditation basics. The visual style became synonymous with the Headspace brand. Showed that for wellness apps, the video itself should embody the product's emotional promise. |
-| 14 | Locket Widget | Original TikTok announcement | https://www.tiktok.com/@locketcamera (founder's original TikTok) | ~0:30 | Raw founder TikTok | Founder Matt Moss posted a simple TikTok about the photo widget he built for his girlfriend. 100K views in days, then users made their own content with the same audio. 2M signups in 2 weeks, 15M downloads by April 2022. Zero ad spend. |
-| 15 | Poparazzi | TikTok launch campaign | https://www.tiktok.com/@poparazziapp (company TikTok) | Various | Raw social / organic TikTok | 11 TikTok videos in February 2021 totaled 1.44M views, with the top video hitting 1.1M. 500K App Store pre-installs before launch day. Hit #1 in the App Store on day one. The onboarding flow went viral on Tech Twitter for its haptic camera shutter feedback. |
-| 16 | Calm | CNN Election Night Sponsorship (2020) | https://techcrunch.com/2020/11/05/calms-hilarious-cnn-ad-campaign-sent-the-meditation-app-flying-up-app-store-charts/ (coverage; video was broadcast) | ~0:15 | Contextual brand placement | Calm's logo appeared during CNN's "Key Race Alert" segments on election night 2020. The juxtaposition of meditation branding against election anxiety was instant viral content. App shot up the charts. Not a traditional launch video but a masterclass in contextual marketing. |
-| 17 | Duolingo | Duo is Dead (2025 campaign) | https://www.tiktok.com/@duolingo (campaign across social) | Various | Multi-platform social stunt | Announced their mascot Duo was "dead" across all social platforms. 25,000% spike in mentions, #ripduo used 45,000+ times. Then revealed Duo's resurrection. Not a product launch but the most viral app marketing campaign of 2025. |
-| 18 | Spotify | Wrapped (annual campaign) | https://www.youtube.com/results?search_query=spotify+wrapped+official | Various | Data-driven personalized content | Not a launch video per se, but the most successful recurring app marketing campaign ever. Each year users share their personalized listening stats, generating billions of free impressions. The template for turning user data into shareable content. |
-| 19 | Rabbit | rabbit r1: $199, no subscription (short version) | https://www.youtube.com/watch?v=vp52L6UlmJY | 0:57 | Product trailer | The 57-second cut of the R1 announcement -- punchy, fast, designed for social sharing. Shows the device in action with quick cuts and bold text overlays. The short format version that circulated on X alongside the full keynote. |
-| 20 | Arc (The Browser Company) | Arc Max - Bringing AI to Arc Browser | https://www.youtube.com/watch?v=ttylMKwIe7c | 0:18 | Ultra-short teaser | 18 seconds. That is it. A rapid-fire montage of AI features in Arc, set to music. Proved you can generate massive excitement with an 18-second video if the product is genuinely new and the editing is tight. |
+Research compiled March 27, 2026. The 20 best launch videos and viral marketing moments from 2025-2026. For Tryps -- a group trip planning app where you text an AI travel agent named Marty in iMessage and he plans your whole trip.
 
 ---
 
-## Key Patterns for Tryps
+## Top 20 Launch Videos & Viral Campaigns (2025-2026)
 
-Based on these 20 videos, here is what matters most for a group trip planning app with an AI agent:
-
-**1. Show the conversation, not the features.** Tryps's core experience is texting Marty in iMessage. The launch video should show a real group chat where someone drops Marty in and the trip comes together in real time. Like Slack's video, let the product demo itself through genuine use.
-
-**2. The founder story works when it is real.** Dollar Shave Club and Locket Widget both worked because the founder's personality/story was authentic. If Jake has a genuine story about why group trip planning sucks, a 60-90 second founder-led video could be the move.
-
-**3. Short wins on social, long wins on YouTube.** Arc's 18-second teaser and Rabbit's 57-second cut drove social sharing. The full 25-minute keynote drove YouTube search traffic. Consider making both: a sub-60-second social cut and a 2-3 minute product walkthrough.
-
-**4. Emotional payoff beats feature lists.** Airbnb's Wall and Chain, Dispo's elderly Dobrik, Headspace's calm animations -- the videos people remember make you FEEL something. For Tryps, the feeling is: "My friend just dropped an AI in our group chat and suddenly we have a whole trip planned." That moment of surprise and delight is the video.
-
-**5. TikTok-native format for Gen Z travel apps.** Locket and Poparazzi both launched primarily through TikTok with raw, unpolished content. If Tryps targets 20-somethings planning group trips, a TikTok-first strategy with founder-shot content could outperform a polished production.
-
-**6. The stunt/challenge format drives views.** Wispr Flow's Porsche challenge turned a product demo into a game show. Coinbase's QR code turned a Super Bowl ad into a scavenger hunt. For Tryps: "We gave Marty 60 seconds to plan a trip for 8 people to Tulum. Here is what happened."
+| # | Company | What Happened | Style | Impact |
+|---|---------|---------------|-------|--------|
+| 1 | **Duolingo** — "Death of Duo" | Announced their owl mascot was dead (hit by a Cybertruck). Two-week content arc across all platforms, then resurrection. | TikTok-native, multi-part narrative stunt | 144M views on X, 9.3M on initial TikTok, 1.7B total impressions. #ripduo used 45K+ times. Dua Lipa posted condolences. 25,000% spike in mentions. |
+| 2 | **Wispr Flow** — Porsche GT3 RS Challenge | CEO challenges anyone: if Wispr makes one transcription mistake, they win a Porsche. | Challenge/stunt, founder-led | 3.5M+ views. Controversy when viewers found frame-by-frame errors actually amplified reach. Spawned dozens of reaction videos. |
+| 3 | **Anthropic Claude** — Super Bowl "A Time and a Place" | Two satirical spots showing AI chatbots disguised as therapists pushing ads. "Ads are coming to AI. But not to Claude." | Satirical attack ad, Dr. Dre soundtrack | 11% jump in daily active users. App Store #41 to #7. 148K downloads in 3 days. Sparked feud with Sam Altman. |
+| 4 | **Salesforce x MrBeast** — "$1M Puzzle Vault" | MrBeast announces $1M locked in a vault, solvable through puzzle clues hidden across social media. | Interactive stunt, gamified, creator-led | 60M people visited contest site on Super Bowl Sunday. Streamers dedicated entire broadcasts to solving. Discord servers and subreddits emerged. Produced in 27 days. |
+| 5 | **Cursor** — AI Agents Build a Browser | CEO posts X thread showing AI agents building a full web browser autonomously for 7 days. 3M+ lines of Rust code, no human intervention. | Founder-led, build-in-public, technical demo | 6M+ views on X. Cursor hit $2B ARR by Feb 2026. Simon Willison said he was "off by three years" on his prediction. |
+| 6 | **Manus AI** — Autonomous Agent Demo | Demo of AI agent completing complex multi-step tasks. Dropped on X with zero paid promotion. | Technical product demo | 1M+ views in under 20 hours. Waitlist hit 2M people. Discord hit 138K members in days. Bloomberg covered it. |
+| 7 | **Squarespace x Yorgos Lanthimos x Emma Stone** — "Unavailable" | Emma Stone discovers emmastone.com is taken. Shot on 35mm black and white Kodak film in her own home reimagined as an ocean island. | Cinematic auteur, film-noir | Most talked-about creative of Super Bowl LX. Shot on Panavision lenses and Kodak 2302 film stock. Proved a website builder can make prestige art. |
+| 8 | **Perplexity AI** — Super Bowl Social Strategy (No TV Ad) | While OpenAI and Google bought $7M Super Bowl spots, Perplexity used a tweet and a Cybertruck with sports influencers in New Orleans. | Guerrilla, social-first, anti-advertising | 50% increase in app installs (30K to 45K daily). Zero TV ad spend. $1M contest drove engagement. |
+| 9 | **DeepSeek R1** — Open Source AI Launch | Released an open-source AI model with no traditional launch video. The product was the marketing. | Product-led growth, zero marketing spend | 16M downloads in 18 days. #1 free app in 57 countries. 2.6M downloads on January 27 alone. Crashed Nvidia's stock price. |
+| 10 | **Rippling** — "The Mastermind" ft. Tim Robinson | Tim Robinson plays a corporate villain whose evil plans are foiled by fragmented business software. | Comedy, absurdist, celebrity-led | First Super Bowl ad for an HR/finance startup. Tim Robinson's built-in audience from I Think You Should Leave brought immediate cultural relevance. |
+| 11 | **McDonald's CEO** — Accidental Viral Taste Test | CEO takes a comically small bite of the Big Arch, uses corporate language ("product" instead of "burger"). | Unintentional comedy, CEO-led | 11M views on Instagram, 4.5M+ on other platforms. Burger King responded with their own video (17M views). Washington Post opinion piece. Proved authentic awkwardness outperforms polish. |
+| 12 | **Bolt.new** — "Built This in One Night" User Demos | Users posting their own demos of apps built in minutes across X, LinkedIn, TikTok. No single launch video. | User-generated, build-in-public, organic | $1.8B valuation. Hundreds of user demos became the marketing. Non-technical founders shipping MVPs created a viral loop. The output IS the content. |
+| 13 | **Lovable** — Vibe Coding Movement | Multiple social demos of non-technical users building full apps with natural language prompts. | Product demo, user-generated | $6.6B valuation, 8M users, 25M projects created, 100K new projects daily. $400M+ ARR. Every user became a marketing channel. |
+| 14 | **Browser Company** — Dia Announcement | CEO Josh Miller shows prototypes of Dia, the AI-native browser replacing Arc. Just talking to camera with prototypes. No flashy editing. | Founder-led, lo-fi, build-in-public | TechCrunch, The Verge, every major tech outlet covered it. Josh's "just talking to camera" style became a template for startup founders. |
+| 15 | **Coinbase** — "Everybody" Karaoke Super Bowl | Karaoke-style sing-along to Backstreet Boys' "Everybody (Backstreet's Back)" with on-screen lyrics. | Musical, participatory, mass-market | Follow-up to their legendary 2022 QR code ad. Pivoted from "scan this" to "sing along" — positioning crypto as mainstream entertainment. |
+| 16 | **Sabrina Carpenter x Dunkin'** — "Shake That Ess" | Music video-style ad directed by Dave Meyers for Sabrina's Brown Sugar Shakin' Espresso. | Music video, celebrity collab, TikTok-native | 811K+ likes on TikTok. Created by Artists Equity (Ben Affleck). Bridged "Espresso" hit song into a real product. Massive foot traffic. |
+| 17 | **Grok Imagine 1.0** — Chibi Template Viral Moment | Grok's image generation launches, chibi-style template goes viral after Musk pins one to his X profile. | Feature launch, meme-driven, user-generated | 1.245B videos generated in January 2026. 314M visits to Imagine feature by March. The product itself became the content. |
+| 18 | **Replit** — Mobile Apps via Vibe Coding | Demo of creating publishable mobile apps from natural language. "Stock trader says build me an app" demo was the viral moment. | Product demo, founder-led | CNBC, eWeek, Fox Business covered it. Nearing $9B valuation. Coined/popularized "vibe coding" as a term. |
+| 19 | **Trae AI (ByteDance)** — Free Cursor Alternative | Launched as free alternative to Cursor with premium AI models included. Developer community drove awareness. | Product comparison, community-driven | 6M registered users in 12 months across 200 countries. Controversy over ByteDance data privacy actually amplified awareness. |
+| 20 | **Rabbit R1** — CES Keynote (Impact Extended Into 2025) | CEO Jesse Lyu demos the R1 live on stage. No slides, just a live product demo with Steve Jobs energy. Produced by PHNTM. | Founder-led keynote, live demo | 10.5M views on X, 4.3M on YouTube. 20K pre-orders in 48 hours. The launch video was better than the product. |
 
 ---
 
-## Articles and Strategy Resources
+## Key Patterns for Tryps (2026 Edition)
 
-### Launch Video Strategy Guides
+Based on what actually worked in 2025-2026:
+
+### 1. Challenge/stunt format is the #1 play right now.
+Wispr's Porsche challenge, Salesforce's puzzle vault, Duolingo's death arc. All three created multi-day engagement that grew bigger over time. For Tryps: the "Go on Your Dream Trip" contest IS a stunt if framed right. "We gave Marty 60 seconds to plan a trip for 8 people. Here's what happened."
+
+### 2. Anti-advertising beats advertising.
+Perplexity spent $0 on TV and got a 50% install bump while competitors spent $7M. DeepSeek had no launch video at all. Bolt and Lovable let users make the content. The lesson: if the product is genuinely good, show it working. Don't explain it.
+
+### 3. Controversy amplifies reach.
+Wispr's "errors" controversy doubled their views. Anthropic attacking OpenAI started a public feud that benefited Anthropic. McDonald's CEO going viral was an accident. The takeaway: don't be afraid of a strong opinion or a bold claim.
+
+### 4. Founder on camera still works — but keep it raw.
+Browser Company's Josh Miller, Cursor's CEO X thread, Wispr's Tanay Kothari. All low-production, high-conviction. The polish is in what you say, not how you film it. Jake talking to camera about why group trip planning sucks could be the move.
+
+### 5. The product demo IS the launch video.
+Bolt, Lovable, Replit, Cursor, DeepSeek — the most impactful launches of 2026 just showed the product working. No voiceover explaining features. No brand film. Just "watch this." For Tryps: screen-record a real group chat where Marty plans a trip in 60 seconds. That's the video.
+
+### 6. User-generated content > one hero video.
+Bolt and Lovable didn't have a single viral video. They had hundreds of users posting their own demos. For Tryps: the UGC program IS part of the launch video strategy. 80 creators posting GRWM-style trip planning videos might collectively outperform any single hero film.
+
+### 7. Multi-day narrative arcs beat single drops.
+Duolingo's two-week death arc and Salesforce's multi-day puzzle vault created sustained attention, not a one-day spike. For Tryps: consider a countdown to launch or a "day 1, day 2, day 3" content series rather than dropping everything on May 2.
+
+---
+
+## What This Means for the "However You Get To Us" Treatment
+
+The existing treatment (desaturated white world, red screens, 5 people texting Marty) is a **hero film**. That format still works (Squarespace x Lanthimos proves it). But the 2026 data says it should be ONE piece of a larger strategy:
+
+1. **The hero film** (60s, cinematic) — for YouTube, Product Hunt, press, website
+2. **A founder video** (Jake talking to camera, raw, 60-90s) — for TikTok/IG, the personal angle
+3. **A stunt/challenge** (the "Dream Trip" contest announcement) — for virality
+4. **UGC wave** (80 creators posting GRWM trip-planning videos) — for volume
+
+The hero film alone won't carry the launch. In 2026, you need all four layers.
+
+---
+
+## Resource Links
 
 | Resource | URL |
 |----------|-----|
+| Launch Library (160+ curated startup launch videos) | https://launchlibrary.xyz |
 | a16z Speedrun: How to Make a Viral Launch Video | https://speedrun.substack.com/p/how-to-make-a-viral-launch-video |
-| Launch Library: 160+ Startup Launch Videos That Went Viral on X | https://launchlibrary.xyz |
-| LaunchViral: Grow Your Startup with Viral Launch Videos | https://launchvir.al |
+| Lenny's Newsletter: First 1,000 Users | https://www.lennysnewsletter.com/p/how-the-biggest-consumer-apps-got |
 | Product Hunt Official Launch Guide | https://www.producthunt.com/launch |
-| Product Hunt: Preparing for Launch | https://www.producthunt.com/launch/preparing-for-launch |
-| Advids: 30 Startup Launch Video Examples | https://advids.co/blog/startup-launch-video |
-| Wyzowl: 9 Best Startup Videos Ever | https://wyzowl.com/best-startup-videos/ |
-| Wyzowl: 22 Best Product Launch Videos Ever | https://wyzowl.com/product-launch-videos/ |
-| Vidico: 17 Best Startup Video Examples (2026 Edition) | https://vidico.com/news/best-startup-videos/ |
-| Flowjam: 15 Best Startup Launch Campaigns | https://www.flowjam.com/blog/best-startup-launch-campaigns |
-| MotionCue: 7 Product Launch Video Examples That Drive Results | https://motioncue.com/product-launch-video-examples/ |
-| Loom: 7 Tips for Impactful Product Launch Videos + 15 Examples | https://www.loom.com/blog/product-launch-video |
-
-### Startup Launch Strategy Articles
-
-| Resource | URL |
-|----------|-----|
-| Lenny's Newsletter: How the Biggest Consumer Apps Got Their First 1,000 Users | https://www.lennysnewsletter.com/p/how-the-biggest-consumer-apps-got |
-| Lenny's Newsletter: Competing with Giants (The Browser Company / Josh Miller) | https://www.lennysnewsletter.com/p/competing-with-giants-an-inside-look |
-| Flowjam: Best Startup Launch Campaigns That Actually Worked | https://www.flowjam.com/blog/best-startup-launch-campaigns-that-actually-worked |
-| Contrary Research: BeReal Business Breakdown and Founding Story | https://research.contrary.com/company/bereal |
-| Dollar Shave Club: How a $4,500 YouTube Video Turned Into a $1 Billion Company (Inc.) | https://www.inc.com/magazine/201707/how-i-did-it-michael-dubin-dollar-shave-club.html |
-| IdeaRocket: Best Startup Videos of All Time and Why They Work | https://idearocketanimation.com/17827-tech-company-videos/ |
-| GetCameraCrew: 18 Best Startup Videos of 2025 | https://getcameracrew.com/blog/best-startup-videos |
-
-### Relevant Podcast/Interview Deep Dives
-
-| Resource | URL |
-|----------|-----|
-| The Untold Story of The Browser Company with Josh Miller | https://www.thespl.it/p/josh-miller-on-how-the-browser-company |
-| Latent Space: Cursor.so -- The AI-first Code Editor | https://www.latent.space/p/cursor |
-| Rabbit R1 Keynote Full Text Transcript | https://www.shloomth.com/rabbit-r1-announcement-full-text/ |
-| PHNTM: Introducing r1 (Production Company Behind the Keynote) | https://www.phntm.com/projects/introducing-r1 |
-
-### Mitchell "Shown" / Agency Launch Strategy
-
-Could not find specific articles about "Mitchell" or "Shown" agency with verified URLs. The memory reference in CLAUDE.md points to a previous research session -- if you have a more specific company name or person name, I can search again.
+| LaunchViral: Grow Your Startup with Viral Launch Videos | https://launchvir.al |
+| Meltwater: Duolingo Campaign Analysis | https://www.meltwater.com/en/blog/duolingo-dead-mascot-campaign |
+| TechCrunch: Anthropic Super Bowl Impact | https://techcrunch.com/2026/02/13/anthropics-super-bowl-ads-mocking-ai-with-ads-helped-push-claudes-app-into-the-top-10/ |
+| TechCrunch: Perplexity Super Bowl Strategy | https://techcrunch.com/2025/02/10/perplexitys-super-bowl-tweet-increased-app-installs-by-50/ |
 
 ---
 
-## Notes on URL Verification
-
-- All YouTube URLs were verified by searching YouTube directly and confirming the video title and watch ID match
-- The Wispr Flow Porsche challenge video lives primarily on X (Twitter), not YouTube
-- Locket Widget and Poparazzi launched primarily through TikTok -- their "launch videos" are TikTok posts, not YouTube uploads
-- The Calm CNN election night placement was a broadcast TV moment, not a standalone video with its own URL
-- The Dropbox explainer video URL (w4eTR7tci6A) is the most commonly cited version but may be a reupload -- the original was embedded directly on dropbox.com in 2009
-- Spotify Wrapped is a recurring campaign, not a single video -- I linked the search results page rather than guess a specific video
-- Duolingo "Duo is Dead" played out across multiple platforms simultaneously -- no single canonical video URL exists
+*Last updated: March 27, 2026*
