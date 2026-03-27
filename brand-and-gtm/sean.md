@@ -42,7 +42,7 @@ status: active
 
 ### 1. Brand Book
 
-- [ ] Brand book fully designed and finalized in Figma
+- [ ] Brand book fully designed and finalized in Figma - **deliverables we care about**
 - [ ] Aligned with overall Tryps strategy and reviewed with Jake
 
 ### 2. Socials Setup & Prep
@@ -52,12 +52,13 @@ status: active
 - [ ] Bios, headers, profile photos updated to current brand
 - [ ] Verifications purchased/activated where applicable
 - [ ] Ready for immediate content posting upon completion
+- [ ] **Jake** - refine bright connect scope to look nice everywhere
 
 ### 3. UGC Program Foundations
 
-- [ ] Clear criteria for ideal creators defined (segments, follower ranges, content style, demo)
-- [ ] Target master list of ~300 potential creators compiled
-- [ ] Approach defined:
+- [ ] Clear criteria for ideal creators defined (segments, follower ranges, content style, demo) - **heavily sean**
+- [ ] Target master list of ~300 potential creators compiled - **prompted / agent cash**
+- [ ] Approach defined: - **heavily heavily sean**
   - [ ] DM templates written
   - [ ] Offer structure defined
   - [ ] Deliverable expectations documented
