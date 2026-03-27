@@ -29,13 +29,20 @@ Activities, Itinerary, People+Flights (combined), Stay, Vibe, Expenses
 - P2: Stripe + Linq integration — iMessage + payments
 - P3: Agent Layer — Duffel flights, Tryps Cash, X-402 micropayments
 
-## Team Roster (Corrected 2026-03-10)
+## Team Roster
+**Canonical source: `tryps-docs/shared/team.md` — ALWAYS check this file for current team info, emails, and Slack IDs.**
+
 - Jake Stein — jake@jointryps.com (founder, product lead)
 - Asif Raza — asif.raza1013@gmail.com (dev lead)
-- Nadeem Khan — engineernadeemkhan120@gmail.com (developer)
-- Arslan Anjum — arslan.anjum951@gmail.com (Figma designer)
-- Krisna Subarkah — krisnasubarkah@gmail.com (Figma designer)
-- Muneeb Rasheed — rasheedmuneeb754@gmail.com (developer)
+- Nadeem Khan — engineernadeemkhan120@gmail.com (developer — P1 Core App)
+- Rizwan Atta — rizwanatta@protonmail.com (developer — P3 Agent Layer)
+- Warda Fareed — (AI QA, replaced Andreas end of March 2026)
+- Arslan Anjum — arslan.anjum951@gmail.com (Figma designer, adhoc)
+- Krisna Subarkah — krisnasubarkah@gmail.com (designer, adhoc)
+- Sean — sean@defaria.nyc (creative — socials, launch video)
+- Jackson — strategy advisor (VC-style)
+- Trent — trent@openinvite.studio (branding consultant, Open Invite Studio)
+- Andreas Kurniawan — andreas@kurniawan.ceo (QA — departing end of March 2026)
 
 ## Services
 - **Google Workspace:** marty@jointryps.com — OAuth2 (Calendar, Gmail)

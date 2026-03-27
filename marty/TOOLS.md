@@ -139,6 +139,7 @@ gog gmail list
 - Credentials are at `~/.openclaw/workspace-marty/.google_tokens.json`
 - Jake's calendar: `jake@jointryps.com`
 - Marty's email: `marty@jointryps.com`
+- **Calendar permissions:** marty@jointryps.com has "Make changes to events" access on Jake's calendar. Create events directly on `jake@jointryps.com` — do NOT create from marty@jointryps.com and send invites.
 - ALWAYS add Zoom links to meetings
 - Zoom settings: NO passcode, NO waiting room — people join directly
 - If OAuth tokens expire, you'll get an auth error — tell Jake to re-authorize
