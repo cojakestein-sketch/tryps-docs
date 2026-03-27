@@ -1,7 +1,7 @@
 # Tryps State
 
 > Auto-generated from scope state.md frontmatter. Do not edit manually.
-> Last updated: 2026-03-27 16:30 UTC
+> Last updated: 2026-03-27 17:00 UTC
 
 ## Scope Status
 
@@ -19,9 +19,10 @@
 | post-trip-retention | Post-Trip & Retention | specced | nadeem | 0/39 | Spec exists, not started |
 | travel-booking | Travel Booking | in-progress | asif, rizwan | 0/58 | 0/58 implemented |
 | travel-identity | Travel Identity | needs-spec | jake | 0/50 | Jake to spec |
+| voice-calls | Voice Calls | specced | asif | — | Spec exists, not started |
 
 ## Summary
 
-- **12 scopes** total: 0 done, 5 in-progress, 1 testing, 1 specced, 4 needs-spec, 1 not-started
-- **9 with criteria progress**, 3 need criteria
-- **7 assigned to devs**, 5 assigned to jake
+- **13 scopes** total: 0 done, 5 in-progress, 1 testing, 2 specced, 4 needs-spec, 1 not-started
+- **9 with criteria progress**, 4 need criteria
+- **8 assigned to devs**, 5 assigned to jake
