@@ -1,0 +1,71 @@
+{
+  "description": "LLM-as-judge scoring rubric for Tryps launch video copy. Four judge personas score independently on 5 engagement dimensions. Composite = weighted average across personas and dimensions.",
+  "dimensions": [
+    {
+      "name": "scroll_stop",
+      "weight": 0.25,
+      "description": "Would this make someone stop scrolling in their feed? Does the opening line create an instant pattern interrupt? Punchy > polished. Specific > generic. Unexpected > familiar.",
+      "scoring": {
+        "0": "Completely invisible — would scroll past without registering",
+        "3": "Mildly interesting but doesn't demand attention",
+        "5": "Decent hook but feels like an ad, not a moment",
+        "7": "Strong — would pause for a second, maybe read again",
+        "9": "Excellent — thumb stops, attention locked, need to know more",
+        "10": "Perfect pattern interrupt — impossible to scroll past"
+      }
+    },
+    {
+      "name": "share_impulse",
+      "weight": 0.25,
+      "description": "Would someone tag a friend, send this to a group chat, or screenshot it? The ultimate test: does this make the reader think of a specific person to share it with?",
+      "scoring": {
+        "0": "No impulse to share — feels like a billboard, not a conversation starter",
+        "3": "Might save it privately but wouldn't send to anyone",
+        "5": "Could see sharing if someone asked, but no spontaneous impulse",
+        "7": "Would tag one friend or drop in one group chat",
+        "9": "Immediately thinks of 2-3 people to send this to",
+        "10": "Can't NOT share this — it's too relatable/funny/true to keep to yourself"
+      }
+    },
+    {
+      "name": "identity_resonance",
+      "weight": 0.20,
+      "description": "Does this feel like something the target demo would repost to say 'this is so me' or 'why is this so accurate'? Does it capture a feeling they've had but never articulated?",
+      "scoring": {
+        "0": "Generic — could be about anyone, doesn't feel personal",
+        "3": "Somewhat relatable but surface-level",
+        "5": "Recognizable situation but described in a generic way",
+        "7": "Nails a specific feeling — 'oh they GET it'",
+        "9": "Eerily accurate — feels like it was written about their life",
+        "10": "Instant identity capture — 'I'm in this video and I don't even care'"
+      }
+    },
+    {
+      "name": "curiosity_gap",
+      "weight": 0.15,
+      "description": "Does this create enough tension or intrigue to make someone watch the full video, click through, or learn more? Is there an open loop that demands closure?",
+      "scoring": {
+        "0": "No tension — everything is stated, nothing to discover",
+        "3": "Mild curiosity but easy to ignore",
+        "5": "Interesting enough to watch if already idle, but not compelling",
+        "7": "Clear open loop — need to know what happens next or what this is",
+        "9": "Strong tension — feels incomplete without watching, must resolve",
+        "10": "Irresistible gap — the brain physically cannot leave this unresolved"
+      }
+    },
+    {
+      "name": "brand_clarity",
+      "weight": 0.15,
+      "description": "Within 3 seconds, do you understand what Tryps is and why it exists? Is the value prop clear without being stated? Does it feel like a real product, not a concept?",
+      "scoring": {
+        "0": "No idea what this is or why it exists",
+        "3": "Vaguely travel-related but unclear what the product does",
+        "5": "Understand it's a travel app but not the group/social angle",
+        "7": "Clear: it's a group trip planning tool, and the problem is obvious",
+        "9": "Crystal clear value prop AND the brand personality comes through",
+        "10": "Instantly get it, want it, and understand how it's different from everything else"
+      }
+    }
+  ],
+  "composite_score": "Weighted average across all dimensions (0-100 scale). Formula: sum(dimension_score * weight * 10). Then averaged across all 4 judge personas with persona weights."
+}
