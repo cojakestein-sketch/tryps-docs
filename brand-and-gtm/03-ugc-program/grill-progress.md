@@ -13,7 +13,7 @@ current_question: 0
 | Step | Deliverable | Status |
 |------|-------------|--------|
 | 1 | `creator-criteria.md` — Clear criteria for ideal creators | DONE (draft, in review) |
-| 2 | `ugc-strategy.md` — 4-page targeting + outreach strategy (exec summary for Jake) | NOT STARTED |
+| 2 | `ugc-strategy.md` — 4-page targeting + outreach strategy (exec summary for Jake) | DONE (draft, in review) |
 | 3 | `ugc-research.md` — Research topics flagged during grill | DONE (draft, in review) |
 
 ## Decisions Locked
