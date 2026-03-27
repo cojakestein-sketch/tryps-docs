@@ -151,15 +151,25 @@ Jake records this on his phone. No script reading, just hit these beats:
 - You need guaranteed posting dates (launch week is non-negotiable timing)
 - Their content quality is high enough to repurpose as ads
 
-### Total Budget Estimate (for $5K ad budget allocation)
+### Total Budget: $8,000 | Target: 300 Creators | ~$100/creator average
+
+The math only works if the majority of creators are micro-influencers getting product-only or small gift cards. The bigger names eat budget fast, so keep those tight.
 
 | Tier | Creators | Cost Each | Total |
 |------|----------|-----------|-------|
-| Micro (1K-10K) | 30-50 | $0-100 | $0-2,500 |
-| Mid (10K-100K) | 10-15 | $200-500 | $2,000-5,000 |
-| Macro (100K+) | 2-3 | $1,000-3,000 | $2,000-6,000 |
+| Micro (1K-10K) | 230 | $0-50 | $0-4,000 |
+| Mid (10K-100K) | 50 | $50-150 | $2,500-5,000 |
+| Macro (100K+) | 20 | $150-500 | $3,000-5,000 |
 
-Realistically, with $5K earmarked for influencer spend, focus on 30 micro (product-only) + 8-10 mid ($300 avg) + 1-2 macro ($1,500 avg). That lands around $5,400-6,000 total. Worth slightly over-indexing here because UGC from real creators will outperform paid ads 9 times out of 10 for an app launch.
+**Realistic allocation to stay under $8K:**
+- 230 micro creators: 150 get product-only (early access + founding creator title), 80 get $25-50 gift cards after posting = ~$2,500
+- 50 mid-tier creators at $75 avg = ~$3,750
+- 20 macro creators at $100-150 avg = ~$1,750
+- **Total: ~$8,000**
+
+**Why this works:** At $100/creator average, you can't afford to pay macro rates ($1,000+ per post). But you don't need to. The strategy is volume, not headlines. 300 creators each posting to 5,000-50,000 followers creates a wave that no single big name can match. 300 posts in launch week from real people using Tryps in their actual group chats will look like organic adoption, not a campaign.
+
+**The "founding creator" angle is your currency.** For micro and mid-tier creators, being part of a launch is more valuable than $100. Frame it as: "You're one of 300 people who get to say they were there from day one." That's social capital they can't buy.
 
 ---
 
@@ -260,7 +270,7 @@ Send this as a clean, simple document (Google Doc or Notion page). Do not send a
 **TRYPS x [Creator Name] - Content Brief**
 
 **Campaign:** Tryps Launch (May 2, 2026)
-**Contact:** Sean DeFaria, sean@defaria.digital / Jake Stein, jake@jointryps.com
+**Contact:** Sean DeFaria, sean@defaria.nyc / Jake Stein, jake@jointryps.com
 
 ### The App in One Line
 Tryps is a travel agent for your group chat. Plan trips with your friends right in iMessage.
@@ -317,7 +327,7 @@ We'd love to repost your content on @tryps channels and potentially use it in pa
 - Timing: Within 7 days of content going live
 
 ### Questions?
-DM Jake (@[jake_handle]) or email sean@defaria.digital. We're around and happy to jump on a quick call if that's easier.
+DM Jake (@[jake_handle]) or email sean@defaria.nyc. We're around and happy to jump on a quick call if that's easier.
 
 ---
 
