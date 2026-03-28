@@ -1,0 +1,5 @@
+Status changes detected at 2026-03-28 15:30 UTC:
+Previous:
+| group-decision-making | Group Decision-Making | needs-spec | jake | 0/41 | Jake to spec |
+Current:
+| group-decision-making | Group Decision-Making | specced | rizwan | 0/14 | Spec exists, not started |
