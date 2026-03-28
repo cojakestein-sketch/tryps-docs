@@ -29,7 +29,7 @@ Stand up a Paperclip AI org that augments the existing Tryps human team with spe
 The official Figma MCP server (launched 2026-03-24) gives Claude Code native Plugin API access — create frames, text, components, auto layout, variables directly on the Figma canvas.
 
 **Steps:**
-- [ ] Run `claude plugin install figma@claude-plugins-official`
+- [x] Run `claude plugin install figma@claude-plugins-official` (ran — needs OAuth in separate session)
 - [ ] Authorize via OAuth with `jake@jointryps.com` (Pro plan = full write access)
 - [ ] Verify write access: create a test frame in the Tryps file (`CMhozPKkLjWk4pcKHsbTJF`)
 - [ ] Confirm the `use_figma` tool appears in Claude Code's tool list
