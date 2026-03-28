@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tryps Nightly Brief — March 27, 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #3D3530;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #3D3530;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+  }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
+  p, li { font-size: 11pt; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+  }
+  .strategy-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14pt;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #B00618; }
+  .risk-tag {
+    display: inline-block;
+    background: #FFF3CD;
+    color: #856404;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 9pt;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+  .risk-tag.red {
+    background: #F8D7DA;
+    color: #721C24;
+  }
+  .tool-card {
+    background: #F8F6F3;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Print</button>
+  <h1>Tryps Nightly Brief</h1>
+  <div class="subtitle">
+    Friday, March 27, 2026 — Prepared by Marty at 8:30 PM ET<br>
+    End of Week 4 (Mar 23–29) · April 2 release gate: 6 days
+  </div>
+
+  <!-- =============================== -->
+  <section>
+    <h2>1. Tomorrow's Standup</h2>
+    <p><em>Saturday — no standup scheduled. The team's Monday standup will be generated Sunday night. Today's answered standup (March 27) is the latest.</em></p>
+
+    <h3>Key Answers from Today (Friday, March 27)</h3>
+
+    <h3>Asif — iMessage Agent (34/57 SC)</h3>
+    <ul>
+      <li><strong>April 2 gap:</strong> Agent can create trips, add items, manage votes, do daily facilitation, extract memory, generate images. Missing: proactive trip advancement, auto-recommendations from memory, vote-on-behalf with batch DMs, cross-trip intelligence, smooth iMessage→app handoff.</li>
+      <li><strong>Top 5 coordination challenges:</strong> Context window management at scale, per-member state tracking, proactive sequencing (workflow engine), conflict resolution (knowing when to push vs back off), external data integration for real-time pricing.</li>
+      <li><strong>Voice agent research:</strong> Evaluating Vapi, Bland, Retell, Twilio Voice AI on latency, tool calling, cost, and integration with existing trip snapshot + memory.</li>
+      <li><strong>Langfuse:</strong> Punted to Rizwan. No tracing confirmed yet.</li>
+      <li><strong>Phone auth:</strong> Deployed fix for corrupted auth user recovery. "Tripful"→"Tryps" SMS fixed via Twilio dashboard.</li>
+    </ul>
+
+    <h3>Rizwan — Agent Intelligence (55/61 SC) → Travel Booking</h3>
+    <ul>
+      <li><strong>PR #303 shipped:</strong> Full memory foundation — per-user, per-trip, cross-trip learning. Vote-on-behalf + recommend-activities edge functions. NLP extraction pipeline via GPT-4o-mini. 1000+ seed activities.</li>
+      <li><strong>PR #304 fire-and-forget:</strong> Extraction runs async with try/catch. signal_extraction_log audits every call. Gap: no retry/alerting on network failures.</li>
+      <li><strong>Honest SC count:</strong> PR #303 covers ~22 SCs, not the 55 reported. Realistic end-of-week: ~30/61 (49%). Recommendations engine is the biggest gap (16 SCs remaining).</li>
+      <li><strong>Switching to travel-booking:</strong> Stripe + Duffel sandbox starting today.</li>
+    </ul>
+
+    <h3>Nadeem — Bug Fixes</h3>
+    <ul>
+      <li><strong>12-13 bugs fixed</strong> (exceeded 10 target), 9 confirmed by Andreas.</li>
+      <li><strong>3 embarrassing bugs:</strong> All three fixed and merged (phone verification crash, wrong trip design, trip not appearing).</li>
+      <li><strong>Phone auth SMS:</strong> Fixed — now says "Tryps."</li>
+      <li><strong>Travel DNA:</strong> PR merged, Andreas tested. Post-Trip Review status unknown.</li>
+    </ul>
+
+    <h3>Jake — Brand + Strategy</h3>
+    <ul>
+      <li>Brand day with Sean: watching 20 launch videos, writing treatment for Jackson (Rich Ross), UGC creator strategy for Gianna + Molly O'Neil.</li>
+      <li>April 2 gate defined: end-to-end trip planning via iMessage NL, booking capability, 78 bugs cleared, conversational agent.</li>
+      <li>Coordination/facilitation: Asif builds it within existing scopes.</li>
+    </ul>
+  </section>
+
+  <!-- =============================== -->
+  <section>
+    <h2>2. Tech Twitter</h2>
+    <p><em>Sourced via Brave Search. Direct X links unavailable (API limitation).</em></p>
+
+    <div class="tweet">
+      <span class="tweet-author">@karpathy</span> — <span class="tweet-text">On vibe coding (MenuGen project): "The hardest part was not the code but service integration." Anticipates AI agents fully automating end-to-end deployment via agent-native CLIs/APIs. Also: swarms of agents collaborating asynchronously — "the goal is not to emulate a single PhD student, it's to emulate a research lab." (<a href="https://grokipedia.com/page/Andrej_Karpathy">context</a>)</span>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@sama</span> — <span class="tweet-text">OpenAI restructuring ahead of IPO: stepped down as Helion Energy chairman (Mar 23), halted Sora to reallocate compute toward new LLM "Spud" and enterprise tools. Appointed former DocuSign CFO for investor relations. IPO signals intensifying. (<a href="https://observer.com/2026/03/sam-altman-openai-strategy-shift-before-ipo/">Observer</a>)</span>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@AnthropicAI</span> — <span class="tweet-text">Major story: "Claude Mythos" model accidentally leaked via Fortune. Described internally as "by far the most powerful AI model we've ever developed" with meaningful advances in reasoning, coding, and cybersecurity. Leaked docs also reference "Claude Capybara." Judge blocked Trump admin's Pentagon "supply chain risk" designation — preliminary injunction granted. (<a href="https://fortune.com/2026/03/26/anthropic-says-testing-mythos-powerful-new-ai-model-after-data-leak-reveals-its-existence-step-change-in-capabilities/">Fortune</a>)</span>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@elonmusk / xAI</span> — <span class="tweet-text">Dutch court ordered xAI/Grok to stop generating non-consensual "undressing" images. Court demo on Mar 9 showed safeguards failed. Musk says next Grok update will be "most important change to X ever" and xAI is "doubling down" on Imagine. (<a href="https://www.cnbc.com/2026/03/27/grok-elon-musk-dutch-court-ban-ai-nudes.html">CNBC</a>)</span>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">Industry</span> — <span class="tweet-text">SoftBank secured $40B bridge loan to fund its $30B OpenAI commitment (part of OpenAI's $110B raise). TechCrunch calls it a signal of 2026 OpenAI IPO. (<a href="https://techcrunch.com/2026/03/27/why-softbanks-new-40b-loan-points-to-a-2026-openai-ipo/">TechCrunch</a>)</span>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">Industry</span> — <span class="tweet-text">Apple preparing to open Siri to rival AI assistants in iOS 27. Currently ChatGPT only via OpenAI partnership — Gemini, Claude, and others will compete for default assistant slot. (<a href="https://www.cnbc.com/video/2026/03/26/apple-plans-to-open-up-siri-to-rival-ai-assistants-in-ios-27-update.html">CNBC</a>)</span>
+    </div>
+  </section>
+
+  <!-- =============================== -->
+  <section>
+    <h2>3. Trending Repos</h2>
+
+    <div class="repo">
+      <span class="repo-name"><a href="https://github.com/Yeachan-Heo/oh-my-claudecode">oh-my-claudecode</a></span> — ⭐ 13,939 (+1,411 today)<br>
+      Teams-first multi-agent orchestration for Claude Code. Coordinates 32 specialized agents with smart model routing (Haiku → Opus), persistent verify/fix loops, and a real-time HUD.<br>
+      <em>Why it matters:</em> Directly relevant to our agent architecture. If Claude Code multi-agent orchestration catches on, the patterns here could inform how we coordinate Tryps' agent subsystems (facilitation, booking, memory).
+    </div>
+
+    <div class="repo">
+      <span class="repo-name"><a href="https://github.com/SakanaAI/AI-Scientist-v2">SakanaAI/AI-Scientist-v2</a></span> — ⭐ 2,850 (+143 today)<br>
+      Workshop-level automated scientific discovery via agentic tree search. AI that generates, tests, and refines hypotheses autonomously.<br>
+      <em>Why it matters:</em> The "agentic tree search" pattern is what our coordination layer needs — branching through options (flights, hotels, activities), evaluating them, and converging on a plan. Worth studying the architecture.
+    </div>
+
+    <div class="repo">
+      <span class="repo-name"><a href="https://github.com/datalab-to/chandra">datalab-to/chandra</a></span> — ⭐ 7,010 (+912 today)<br>
+      OCR model for complex tables, forms, handwriting with full layout preservation.<br>
+      <em>Why it matters:</em> Receipt/itinerary scanning for expense tracking. If Tryps ever needs to parse boarding passes, hotel confirmations, or handwritten trip notes — this is the OCR layer.
+    </div>
+  </section>
+
+  <!-- =============================== -->
+  <section>
+    <h2>4. Deep Dive: Agent Coordination — From Nudges to Workflow Engine</h2>
+    <p><em>No topic response received from Jake's 3pm DM. Using the most pressing April 2 topic.</em></p>
+
+    <h3>What It Is</h3>
+    <p>The Tryps agent currently operates in "respond mode" — it answers questions, creates trips, and sends daily facilitation nudges. The April 2 gate requires "advance mode" — the agent proactively moves a trip from "just created" to "complete trip card with flights, stay, activities, and everyone confirmed." This is the difference between a chatbot and a concierge.</p>
+
+    <h3>Why It Matters Now</h3>
+    <p>This is the single biggest gap between current capabilities and the April 2 demo. Asif identified 5 technical challenges today (context window management, per-member state tracking, proactive sequencing, conflict resolution, external data integration). None of these are solved. The daily facilitator is text nudges — it needs to become a state machine that knows what's missing per-person and takes action.</p>
+
+    <h3>Key Takeaways</h3>
+    <ul>
+      <li><strong>Define "trip completeness" as a measurable score:</strong> Each trip card section (destination, dates, flights, stay, activities, attendees confirmed) gets a 0-1 completion score. The agent's job is to maximize the score, not just send reminders.</li>
+      <li><strong>Build per-member tracking first:</strong> Current completeness is trip-wide. The agent can't say "Alex hasn't added flights yet" — it needs to. This is a database schema change (member_trip_progress table) + agent prompt change.</li>
+      <li><strong>Sequencing matters more than intelligence:</strong> The agent doesn't need to be brilliant — it needs to ask for things in the right order. Dates first, then destination, then flights (once dates are locked), then stay, then activities. This is a hardcoded workflow, not AI creativity.</li>
+      <li><strong>Conflict resolution = voting, not AI judgment:</strong> When 3 people want different dates, the agent shouldn't pick — it should create a poll, set a deadline, and enforce the result. The vote-on-behalf system Rizwan is building is the conflict resolution mechanism.</li>
+      <li><strong>External APIs are Phase 2:</strong> For April 2, the agent can recommend destinations and activities from seed data. Real-time flight/hotel pricing via Duffel + booking via Stripe is Rizwan's travel-booking scope — it doesn't need to be in the coordination layer on day 1.</li>
+    </ul>
+
+    <h3>Resource</h3>
+    <p><a href="https://github.com/SakanaAI/AI-Scientist-v2">AI-Scientist-v2's agentic tree search</a> — study how it branches through hypotheses and converges. Similar pattern to what the trip coordination engine needs.</p>
+  </section>
+
+  <!-- =============================== -->
+  <section>
+    <h2>5. Strategy Check</h2>
+    <div class="strategy-box">
+      <h3>Where We Are <span style="font-size: 10pt; color: #888; font-weight: normal;">(End of Week 4)</span></h3>
+      <p>Six days to April 2. The week was productive: 10 PRs merged (Nadeem 3, Rizwan 3, Marty 4), phone auth unblocked, memory system shipped. But the April 2 gate — "text in iMessage to plan an entire trip end-to-end" — requires agent coordination that doesn't exist yet. We're shipping features but the integration layer is the gap.</p>
+
+      <p><strong>Scope status:</strong> 13 scopes total. Agent Intelligence at 55/61 (though honest count is closer to 30/61). iMessage Agent at 34/57. Output-Backed Screen paused at 7/48 while Nadeem burns bugs. Travel Booking just started (0/58). 4 scopes still need spec from Jake.</p>
+
+      <h3>Top 3 Risks</h3>
+      <ol>
+        <li><strong>Coordination layer doesn't exist yet</strong> <span class="risk-tag red">CRITICAL</span><br>
+        Asif identified 5 hard technical problems today. None have started. The agent can create trips but can't advance them. This is the core of the April 2 demo. 6 days, 0 progress on the hardest part.</li>
+
+        <li><strong>SC numbers are inflated</strong> <span class="risk-tag">HIGH</span><br>
+        Agent Intelligence reports 55/61 but Rizwan's own standup says ~23 SCs are truly covered by merged PRs. This means we're tracking optimistic numbers. Same risk applies to other scopes.</li>
+
+        <li><strong>Bug count still high</strong> <span class="risk-tag">MEDIUM</span><br>
+        Started the week at 78 bugs. Nadeem crushed 12-13 today + Marty's 4 PRs. But even if we're down to ~60, the gate requires "app feels clean." At current burn rate (15-20/day with two engineers), we need 3-4 more bug-fix days.</li>
+      </ol>
+
+      <h3>Where Jake Should Focus</h3>
+      <ul>
+        <li><strong>Monday:</strong> Spec the coordination/facilitation workflow. Not the AI part — the state machine. What does the agent check, in what order, and what actions does it take? Asif needs this to build.</li>
+        <li><strong>Retest phone auth:</strong> It was marked "ready for production" at 7:58 PM tonight. Confirm it works on your device.</li>
+        <li><strong>Scope down April 2:</strong> "End-to-end trip planning with booking" in 6 days is aggressive. Consider: "Create trip via NL → agent populates card from conversation → one booking action (flight)" as the realistic demo.</li>
+      </ul>
+
+      <h3>What Marty Thinks the #1 Priority Is</h3>
+      <p><strong>Get the coordination state machine specced by Monday.</strong> Everything else is in motion — bugs are burning down, memory system shipped, travel booking kicked off. The missing piece is the brain that ties it all together. If Asif doesn't have a spec Monday morning, the April 2 demo won't have the "advance a trip to completion" capability. That's the whole point.</p>
+    </div>
+  </section>
+
+  <!-- =============================== -->
+  <section>
+    <h2>6. Culture &amp; Conversation</h2>
+
+    <div style="padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>"The AI Doc: Or How I Became an Apocaloptimist"</strong> — NYT review just dropped. Daniel Roher (Oscar winner for "Navalny") documentary featuring Sam Altman, Dario Amodei, and Demis Hassabis on the record. Rated 8.2 on IMDB. On Apple TV now.<br>
+      <em>Conversation angle:</em> First major film with all three frontier lab CEOs. The "apocaloptimist" framing is the exact tension every AI founder navigates — bullish on capability, anxious about misuse. Good watch before any investor meeting. (<a href="https://www.nytimes.com/2026/03/26/movies/the-ai-doc-movie-anthropic-openai-claude-chatgpt.html">NYT</a>)
+    </div>
+
+    <div style="padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>Shield AI raises $2B at $12.7B valuation</strong> — Defense-tech startup making autonomous military drones. Revenue projecting $540M this year. Also acquiring Aechelon Technology (flight simulation).<br>
+      <em>Conversation angle:</em> Defense tech is the counter-narrative to "AI is just chatbots." Shield AI doubled its valuation in one round. If someone asks "where's the real money in AI?" — it's autonomous systems and defense, not just SaaS. (<a href="https://fortune.com/2026/03/26/shield-ai-revenue-series-g-funding-12-billion-valuation/">Fortune</a>)
+    </div>
+
+    <div style="padding: 10px 0;">
+      <strong>Apple opening Siri to rival AI assistants in iOS 27</strong> — Competing AI services (Gemini, Claude, others) will be able to integrate alongside ChatGPT. This is Apple admitting Siri can't compete alone.<br>
+      <em>Conversation angle:</em> The platform play shifts from "build the best AI" to "be the best AI distribution channel." Apple is becoming the app store for AI assistants. For any consumer AI startup (like Tryps), the question becomes: do you build a Siri integration, or does iMessage remain the primary surface? (<a href="https://www.cnbc.com/video/2026/03/26/apple-plans-to-open-up-siri-to-rival-ai-assistants-in-ios-27-update.html">CNBC</a>)
+    </div>
+  </section>
+
+  <!-- =============================== -->
+  <section>
+    <h2>7. AI Releases &amp; Patch Notes</h2>
+
+    <table class="cost-table">
+      <tr><th>Provider</th><th>What Changed</th><th>Relevance</th></tr>
+      <tr>
+        <td><strong>Anthropic</strong></td>
+        <td>"Claude Mythos" leaked via Fortune — described as "by far the most powerful model" with advances in reasoning, coding, cybersecurity. Also references "Claude Capybara." Separate: Claude Code session limits adjusted during peak hours (5hr session caps, weekly limits unchanged).</td>
+        <td>We run on Claude. Mythos could be a major upgrade to our agent's reasoning. The session limit changes affect Claude Code dev workflow — may need to stagger heavy coding sessions.</td>
+      </tr>
+      <tr>
+        <td><strong>OpenAI</strong></td>
+        <td>Sora officially shut down (Mar 24). Compute reallocated to "Spud" LLM and enterprise tools. Altman stepped down from Helion Energy. Shelved erotic chatbot plans. Expanding to 600+ advertisers with self-serve ad access launching April. SoftBank $40B loan signals IPO.</td>
+        <td>OpenAI pivoting hard toward enterprise + IPO. Sora shutdown = focus. The ad business is notable — OpenAI competing for ad dollars, not just subscriptions.</td>
+      </tr>
+      <tr>
+        <td><strong>Google</strong></td>
+        <td>March "Gemini Drop": chat history import from rival AI apps (ChatGPT → Gemini transfer), personalized assistance across Google apps for free, Gemini Live upgrade, music composition features, Google TV integration.</td>
+        <td>The "switching tools" play is aggressive — Google trying to poach ChatGPT users by making migration painless. Memory portability is becoming a competitive battleground (relevant to our agent memory system).</td>
+      </tr>
+      <tr>
+        <td><strong>xAI</strong></td>
+        <td>Grok 4.20 Multi-Agent Beta — 2M token context window, agentic index 68.7. Dutch court banned non-consensual image generation. Musk teasing "most important change to X ever" for next Grok update.</td>
+        <td>2M context window is industry-leading. The multi-agent beta pattern mirrors what we need for trip coordination (multiple agent subsystems working together).</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- =============================== -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p><em>Friday = AI/Automation category</em></p>
+
+    <div class="tool-card">
+      <h3>oh-my-claudecode (omc)</h3>
+      <p><strong>What it is:</strong> Open-source multi-agent orchestration layer for Claude Code — coordinates 32 specialized agents with smart model routing (Haiku for scaffolding, Opus for complex logic), persistent verify/fix loops, and a real-time HUD dashboard.</p>
+      <p><strong>How Jake would use it:</strong> Instead of one Claude Code instance working on a feature, omc splits work across specialized agents (architecture, implementation, testing, docs) that coordinate automatically. For the April 2 push, this could let one developer supervise multiple agents working on different bug fixes simultaneously. The verify/fix loop means agents self-correct before submitting PRs.</p>
+      <p><strong>Pricing:</strong> Free / open-source (MIT license). You pay for Claude API usage, which the smart routing minimizes by using cheaper models where possible.</p>
+      <p><strong>Link:</strong> <a href="https://github.com/Yeachan-Heo/oh-my-claudecode">github.com/Yeachan-Heo/oh-my-claudecode</a> — 13,939 stars, trending #1 today.</p>
+    </div>
+
+    <div class="tool-card">
+      <h3>SuperTurtle</h3>
+      <p><strong>What it is:</strong> Mobile control interface for cloud-based coding agents. Monitor and steer Codex/Claude Code sessions from your phone.</p>
+      <p><strong>How Jake would use it:</strong> Review agent coding sessions from your phone while out. Approve/reject PRs, steer agent direction, and monitor progress without being at a laptop. Especially useful during brand day sessions with Sean when you want to keep an eye on dev work.</p>
+      <p><strong>Pricing:</strong> Launched on Product Hunt this week. Free tier available.</p>
+      <p><strong>Link:</strong> <a href="https://www.producthunt.com/categories/ai-coding-agents">Product Hunt AI Coding Agents</a></p>
+    </div>
+  </section>
+
+  <!-- =============================== -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+    <table class="cost-table">
+      <tr><th>Category</th><th>Estimate</th></tr>
+      <tr><td>Session logs</td><td>Structured cost tracking not yet available — OpenClaw logs at <code>~/.openclaw/logs/</code> contain command logs only, not token-level usage.</td></tr>
+      <tr><td colspan="2" style="padding-top: 12px;"><strong>Rough estimate based on today's activity:</strong></td></tr>
+      <tr><td>Main session (Jake DMs)</td><td>~$2-4 (morning brief, standup interactions, EOD report)</td></tr>
+      <tr><td>Cron jobs (standup gen, topic suggestion, nightly report)</td><td>~$3-5 (3 cron sessions with research)</td></tr>
+      <tr><td>Marty PRs (4 bug fixes)</td><td>~$2-3 (coding agent sessions)</td></tr>
+      <tr><td>Slack interactions</td><td>~$1-2</td></tr>
+      <tr><td><strong>Estimated Total</strong></td><td><strong>~$8-14</strong></td></tr>
+    </table>
+    <p style="font-size: 10pt; color: #888; margin-top: 8px;">Proper cost tracking requires token-level log parsing. Will implement structured logging in a future update.</p>
+  </section>
+
+  <div style="margin-top: 40px; padding-top: 16px; border-top: 1px solid #EDE4D8; font-size: 9pt; color: #aaa;">
+    Generated by Marty · Friday, March 27, 2026 at 8:30 PM ET · End of Week 4
+  </div>
+</body>
+</html>
