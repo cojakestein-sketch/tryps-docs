@@ -141,5 +141,15 @@ This isn't a one-directional ask. Tryps is early — the kind of early where get
 
 ---
 
+## Action Items Before the Meeting
+
+1. **Hire a promotions attorney ($300-500).** Giveaways over $5K require official rules, a no-purchase-necessary alternate entry method, and state registrations (New York requires 30 days before launch, Florida requires 7 days). This is not optional — it's federal and state law. If the giveaway launches April 14, the legal work needs to start immediately.
+
+2. **Confirm Rich's current role and affiliations.** Rich may no longer be at Disney. Jake needs to know what Rich is doing now before the meeting so the conversation and asks are calibrated to Rich's current world, not his old one. The media contacts he has today may be different from his Disney-era network.
+
+3. **Lead with the "AI in your group chat" hook, not the prize.** This is in the notes above but it bears repeating as a pre-meeting action: Jake should rehearse describing the Marty mechanic out loud. "You add a phone number to your group chat and it plans your entire trip like a friend" — that sentence is the one that makes Rich lean in. The giveaway is the vehicle. The product is the story.
+
+---
+
 *Prepared by Sean DeFaria, DeFaria LLC — sean@defaria.nyc*
 *For Jake Stein's meeting with Rich Ross, Spring 2026*
