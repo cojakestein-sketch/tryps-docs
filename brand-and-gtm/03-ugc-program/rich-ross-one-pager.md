@@ -49,13 +49,13 @@ All 80 creators repost the Tryps giveaway contest on their Stories within 24 hou
 
 ## By the Numbers
 
-| Metric | Target |
-|--------|--------|
-| Creators activated | 80 |
-| Day 1 Story reposts | 80 |
-| Paid original videos | 40 |
-| **Total content pieces** | **120** |
-| Combined creator following | 3-4M |
+| Metric                              | Target   |
+| ----------------------------------- | -------- |
+| Creators activated                  | 80       |
+| Day 1 Story reposts                 | 80       |
+| Paid original videos                | 40       |
+| **Total content pieces**            | **120**  |
+| Combined creator following          | 3-4M     |
 | **Projected impressions (3 weeks)** | **5-8M** |
 
 ---
