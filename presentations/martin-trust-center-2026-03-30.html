@@ -275,88 +275,23 @@
       <div style="padding: 20px; background: var(--off-white); border-radius: 12px; border: 1px solid var(--g200); border-top: 3px solid var(--blue);">
         <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue); margin-bottom: 6px;">Product</div>
         <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">The app + iMessage</h4>
-        <p style="font-size: 12px; color: var(--g500); line-height: 1.5;">Native app for itinerary, expenses, and trip details. iMessage integration for group coordination where it already happens.</p>
+        <p style="font-size: 12px; color: var(--g500); line-height: 1.5;">Native app for itinerary, expenses, and trip details. iMessage via Linq for natural language trip creation and group polling.</p>
       </div>
       <div style="padding: 20px; background: var(--off-white); border-radius: 12px; border: 1px solid var(--g200); border-top: 3px solid var(--agent-green);">
         <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--agent-green); margin-bottom: 6px;">Agents</div>
         <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">AI that executes</h4>
-        <p style="font-size: 12px; color: var(--g500); line-height: 1.5;">Searches flights, finds stays, compares prices, and books on your behalf. The group approves — the agent does the work.</p>
+        <p style="font-size: 12px; color: var(--g500); line-height: 1.5;">Duffel for flights, X-402 for agent-to-API payments, memory that learns preferences over time. The group approves — the agent books.</p>
       </div>
       <div style="padding: 20px; background: var(--off-white); border-radius: 12px; border: 1px solid var(--g200); border-top: 3px solid var(--red);">
         <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--red); margin-bottom: 6px;">Facilitator</div>
         <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Steers the group</h4>
-        <p style="font-size: 12px; color: var(--g500); line-height: 1.5;">Runs polls, nudges stragglers, resolves decision paralysis. The designated driver for group travel planning.</p>
+        <p style="font-size: 12px; color: var(--g500); line-height: 1.5;">Runs polls, nudges stragglers, resolves decision paralysis. Three layers — iMessage, app, agents — one coordination engine.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- S5: ARCHITECTURE (Pencil style) -->
-<section class="slide" id="s5">
-  <div class="logo"></div>
-  <div class="label">A &middot; Product Deep Dive</div>
-  <h2 style="font-size: 32px;">Your Group Texts. Tryps Plans. Agents Execute.</h2>
-  <p style="font-size: 13px; color: var(--g500);">The coordination layer that lives inside your group chat</p>
-
-  <div class="arch">
-    <div class="arch-col">
-      <h3 style="color: var(--blue);">iMessage</h3>
-      <p>Users text. Tryps responds.</p>
-      <div class="arch-box" style="border-color: var(--blue); background: rgba(52,120,246,0.03);">
-        <div class="placeholder">
-          <div style="font-size: 11px; text-align: left;">
-            <div style="background: var(--g100); border-radius: 10px; padding: 6px 10px; margin-bottom: 4px; font-size: 11px;">let's go to Lisbon in June!</div>
-            <div style="background: rgba(217,7,28,0.06); border-radius: 10px; padding: 6px 10px; margin-bottom: 4px; font-size: 11px; border: 1px solid rgba(217,7,28,0.1);">Found 3 flights. Best: JetBlue, $847/person. Confirm?</div>
-            <div style="background: var(--blue); color: white; border-radius: 10px; padding: 6px 10px; font-size: 11px; margin-left: auto; max-width: 80%; text-align: right;">book it ✅</div>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top: 8px; font-size: 10px; color: var(--g400);">
-        → Natural language trip creation<br>→ Group polling via Linq<br>→ Expense logging by text
-      </div>
-    </div>
-
-    <div class="arch-bridge"><span>LINQ</span><div class="arrow">›</div><span>STRIPE</span></div>
-
-    <div class="arch-col">
-      <h3 style="color: var(--red);">Tryps App</h3>
-      <p>The group's source of truth.</p>
-      <div class="arch-box" style="border-color: var(--red); background: rgba(217,7,28,0.02);">
-        <img src="detail.png" alt="Tryps App — Trip Detail View" style="width: 100%; height: auto; display: block;">
-      </div>
-      <div style="margin-top: 8px; font-size: 10px; color: var(--g400);">
-        → Trip itinerary + drag-and-drop<br>→ Expense tracking & splitting<br>→ Travel DNA & preferences
-      </div>
-    </div>
-
-    <div class="arch-bridge"><span>AGENTS</span><div class="arrow">›</div></div>
-
-    <div class="arch-col">
-      <h3 style="color: var(--agent-green);">Agent Layer</h3>
-      <p>AI does the work.</p>
-      <div class="arch-box" style="border-color: var(--agent-green); background: rgba(45,139,94,0.03);">
-        <div class="placeholder">
-          <div style="text-align: left;">
-            <div style="background: rgba(45,139,94,0.08); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; border-left: 3px solid var(--agent-green);">
-              <div style="font-size: 10px; font-weight: 700;">Duffel API</div>
-              <div style="font-size: 9px; color: var(--g400);">Flight search, booking, pricing</div>
-            </div>
-            <div style="background: rgba(45,139,94,0.08); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; border-left: 3px solid var(--agent-green);">
-              <div style="font-size: 10px; font-weight: 700;">X-402 Protocol</div>
-              <div style="font-size: 9px; color: var(--g400);">Agent-to-API micropayments</div>
-            </div>
-            <div style="background: rgba(45,139,94,0.08); border-radius: 8px; padding: 8px 10px; border-left: 3px solid var(--agent-green);">
-              <div style="font-size: 10px; font-weight: 700;">Memory + Recommendations</div>
-              <div style="font-size: 9px; color: var(--g400);">Learns over time, votes on behalf</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- S7: A — SCOPES -->
+<!-- S5: SCOPES -->
 <section class="slide slide-alt" id="s6">
   <div class="logo"></div>
   <div class="label">A &middot; Product Deep Dive</div>
@@ -368,13 +303,13 @@
     <div class="st"><div class="sn">3</div><div class="sl">Specced & ready</div></div>
   </div>
   <div class="scopes">
-    <div class="sc s-t"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">01</span><b>Core Trip Experience</b><div class="ss">Testing</div><div class="sm">Nadeem · 15/16</div><div class="bar"><div style="width:94%;"></div></div></div>
-    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">02</span><b>iMessage Agent</b><div class="ss">In Progress</div><div class="sm">Asif · 34/57</div><div class="bar"><div style="width:60%;"></div></div></div>
-    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">03</span><b>Agent Intelligence</b><div class="ss">In Progress</div><div class="sm">Rizwan · 55/61</div><div class="bar"><div style="width:90%;"></div></div></div>
-    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">04</span><b>Travel Booking & Payments</b><div class="ss">In Progress</div><div class="sm">Asif + Rizwan</div><div class="bar"><div style="width:15%;"></div></div></div>
-    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">05</span><b>Beta & User Feedback</b><div class="ss">In Progress</div><div class="sm">Jake</div></div>
-    <div class="sc s-s"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">06</span><b>Group Decision-Making</b><div class="ss">Specced</div><div class="sm">14 criteria ready</div></div>
-    <div class="sc s-s"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">07</span><b>Post-Trip & Retention</b><div class="ss">Specced</div><div class="sm">39 criteria ready</div></div>
+    <div class="sc s-t"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">01</span><b>Core Trip Experience</b><div class="ss">Testing</div><div class="bar"><div style="width:94%;"></div></div></div>
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">02</span><b>iMessage Agent</b><div class="ss">In Progress</div><div class="bar"><div style="width:60%;"></div></div></div>
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">03</span><b>Agent Intelligence</b><div class="ss">In Progress</div><div class="bar"><div style="width:90%;"></div></div></div>
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">04</span><b>Travel Booking & Payments</b><div class="ss">In Progress</div><div class="bar"><div style="width:15%;"></div></div></div>
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">05</span><b>Beta & User Feedback</b><div class="ss">In Progress</div></div>
+    <div class="sc s-s"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">06</span><b>Group Decision-Making</b><div class="ss">Specced</div></div>
+    <div class="sc s-s"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">07</span><b>Post-Trip & Retention</b><div class="ss">Specced</div></div>
     <div class="sc s-n"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">08</span><b>Travel Identity</b><div class="ss">Needs Spec</div></div>
     <div class="sc s-n"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">09</span><b>Onboarding & Teaching</b><div class="ss">Needs Spec</div></div>
   </div>
@@ -423,7 +358,7 @@
 
   <div class="org-top" style="margin-top: 16px;">
     <div class="oc oc-emp"><b>Jake Stein</b><small>Founder & CEO</small></div>
-    <div class="oc oc-ai"><b>Marty</b><small>AI Agent (24/7)</small></div>
+    <div class="oc oc-ai"><b>Marty</b><small>Open Claw</small></div>
   </div>
   <div class="vline"></div>
   <div style="display: flex; gap: 32px; justify-content: center;">
