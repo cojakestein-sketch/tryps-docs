@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tryps — Martin Trust Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D9071C;
+    --red-dark: #B00618;
+    --red-light: #E85050;
+    --cream: #F5EADB;
+    --cream-light: #FFFDF8;
+    --slate: #3D3530;
+    --slate-light: #5A4F48;
+    --mist: #EDE4D8;
+    --green: #2D6B4F;
+    --gold: #E8913A;
+    --blue: #2B5F83;
+    --imessage-blue: #3478F6;
+    --agent-green: #2D8B5E;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    color: var(--slate);
+    background: var(--cream-light);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide-dark {
+    background: var(--slate);
+    color: var(--cream-light);
+  }
+
+  .slide-red {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  .slide-cream {
+    background: var(--cream);
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  p, li {
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .mono {
+    font-family: 'Space Mono', monospace;
+  }
+
+  .label {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    margin-bottom: 12px;
+  }
+
+  .accent { color: var(--red); }
+  .accent-blue { color: var(--imessage-blue); }
+  .accent-green { color: var(--agent-green); }
+  .muted { opacity: 0.6; }
+
+  .max-w { max-width: 900px; }
+  .max-w-wide { max-width: 1200px; }
+
+  /* Navigation */
+  .nav {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nav-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--slate);
+    opacity: 0.2;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+  }
+
+  .nav-dot.active {
+    opacity: 1;
+    background: var(--red);
+    transform: scale(1.3);
+  }
+
+  .nav-dot:hover {
+    opacity: 0.6;
+  }
+
+  /* Slide counter */
+  .slide-counter {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    color: var(--slate);
+    opacity: 0.4;
+    z-index: 100;
+  }
+
+  /* ===== SLIDE 1: TITLE ===== */
+  .title-slide {
+    background: var(--slate);
+    color: var(--cream-light);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title-slide h1 {
+    font-size: 120px;
+    letter-spacing: -4px;
+    color: var(--red);
+  }
+
+  .title-slide .tagline {
+    font-size: 28px;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-top: 8px;
+    margin-bottom: 48px;
+  }
+
+  .title-slide .context {
+    font-size: 16px;
+    opacity: 0.4;
+    font-weight: 500;
+  }
+
+  /* ===== SLIDE 2: WHAT IS TRYPS ===== */
+  .demo-box {
+    background: var(--slate);
+    color: var(--cream-light);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-top: 32px;
+    max-width: 600px;
+  }
+
+  .demo-box .phone-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--red);
+    margin: 16px 0;
+  }
+
+  .demo-box p {
+    font-size: 18px;
+    opacity: 0.7;
+  }
+
+  /* ===== PROBLEM / SOLUTION ===== */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 40px;
+  }
+
+  .problem-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+
+  .problem-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(217, 7, 28, 0.1);
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  .problem-text h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .problem-text p {
+    font-size: 16px;
+    opacity: 0.7;
+    line-height: 1.4;
+  }
+
+  /* Solution flow */
+  .solution-flow {
+    display: flex;
+    gap: 24px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .solution-step {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 14px;
+    padding: 28px;
+    position: relative;
+  }
+
+  .solution-step .step-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .solution-step h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .solution-step p {
+    font-size: 15px;
+    opacity: 0.7;
+    line-height: 1.4;
+  }
+
+  .solution-step::after {
+    content: '→';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  .solution-step:last-child::after { display: none; }
+
+  /* ===== BUSINESS MODEL ===== */
+  .biz-model-box {
+    background: var(--red);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 48px;
+    margin-top: 32px;
+    max-width: 700px;
+  }
+
+  .biz-model-box .big-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .biz-model-box p {
+    font-size: 20px;
+    opacity: 0.9;
+  }
+
+  /* ===== ORG CHART ===== */
+  .org-chart {
+    margin-top: 32px;
+    width: 100%;
+  }
+
+  .org-top {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .org-card {
+    border-radius: 12px;
+    padding: 16px 24px;
+    text-align: center;
+    min-width: 140px;
+    position: relative;
+  }
+
+  .org-card.full-time {
+    background: var(--slate);
+    color: var(--cream-light);
+    border: 2px solid var(--slate);
+  }
+
+  .org-card.part-time {
+    background: transparent;
+    border: 2px dashed var(--slate-light);
+    color: var(--slate);
+  }
+
+  .org-card.partner {
+    background: transparent;
+    border: 2px solid var(--red);
+    color: var(--slate);
+  }
+
+  .org-card.ai {
+    background: var(--agent-green);
+    color: var(--white);
+    border: 2px solid var(--agent-green);
+  }
+
+  .org-card .name {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .org-card .role {
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+
+  .org-card .badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .badge-ft { background: var(--slate); color: var(--cream-light); }
+  .badge-pt { background: var(--gold); color: var(--white); }
+  .badge-partner { background: var(--red); color: var(--white); }
+  .badge-ai { background: var(--agent-green); color: var(--white); }
+
+  .org-section {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+  }
+
+  .org-column {
+    flex: 1;
+    max-width: 500px;
+  }
+
+  .org-column-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--mist);
+  }
+
+  .org-column-title.product { color: var(--red); border-color: var(--red); }
+  .org-column-title.gtm { color: var(--blue); border-color: var(--blue); }
+
+  .org-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .org-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .org-divider {
+    width: 2px;
+    background: var(--mist);
+    align-self: stretch;
+    min-height: 100px;
+  }
+
+  .connector {
+    width: 1px;
+    height: 20px;
+    background: var(--slate);
+    opacity: 0.3;
+    margin: 0 auto;
+  }
+
+  .connector-dotted {
+    width: 1px;
+    height: 20px;
+    border-left: 2px dashed var(--slate-light);
+    margin: 0 auto;
+    opacity: 0.4;
+  }
+
+  .org-legend {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .legend-swatch {
+    width: 24px;
+    height: 14px;
+    border-radius: 4px;
+  }
+
+  /* ===== THREE LAYER STACK ===== */
+  .stack-container {
+    display: flex;
+    gap: 0;
+    margin-top: 40px;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(61,53,48,0.1);
+  }
+
+  .stack-layer {
+    flex: 1;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .stack-layer.imessage {
+    background: var(--imessage-blue);
+    color: var(--white);
+  }
+
+  .stack-layer.app {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  .stack-layer.agent {
+    background: var(--agent-green);
+    color: var(--white);
+  }
+
+  .stack-layer .layer-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+  }
+
+  .stack-layer .layer-title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .stack-layer .layer-desc {
+    font-size: 15px;
+    opacity: 0.85;
+    line-height: 1.5;
+  }
+
+  .stack-layer .layer-features {
+    list-style: none;
+    padding: 0;
+  }
+
+  .stack-layer .layer-features li {
+    font-size: 14px;
+    padding: 4px 0;
+    opacity: 0.85;
+  }
+
+  .stack-layer .layer-features li::before {
+    content: '→ ';
+    opacity: 0.6;
+  }
+
+  .stack-connector {
+    position: absolute;
+    right: -28px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: var(--white);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--slate);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    white-space: nowrap;
+  }
+
+  /* ===== SCOPES ===== */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .scope-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 4px solid var(--mist);
+  }
+
+  .scope-card.status-testing { border-left-color: var(--gold); }
+  .scope-card.status-in-progress { border-left-color: var(--imessage-blue); }
+  .scope-card.status-specced { border-left-color: var(--agent-green); }
+  .scope-card.status-needs-spec { border-left-color: var(--mist); }
+  .scope-card.status-not-started { border-left-color: var(--slate-light); }
+
+  .scope-card .scope-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .scope-card .scope-status {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .scope-card .scope-assignee {
+    font-size: 13px;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+
+  .scope-card .scope-progress {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    margin-top: 8px;
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  /* Status colors */
+  .status-testing .scope-status { color: var(--gold); }
+  .status-in-progress .scope-status { color: var(--imessage-blue); }
+  .status-specced .scope-status { color: var(--agent-green); }
+  .status-needs-spec .scope-status { color: var(--slate-light); }
+
+  /* ===== GTM ===== */
+  .gtm-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .gtm-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 32px;
+    border: 1px solid var(--mist);
+  }
+
+  .gtm-card h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .gtm-card p {
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: 0.7;
+  }
+
+  .gtm-card .gtm-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+
+  .gtm-tag.sean { background: rgba(232,145,58,0.15); color: var(--gold); }
+  .gtm-tag.jake { background: rgba(217,7,28,0.1); color: var(--red); }
+
+  /* ===== RIGHT TO WIN ===== */
+  .rtw-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .rtw-card {
+    padding: 32px;
+    border-radius: 14px;
+  }
+
+  .rtw-card.primary {
+    background: var(--red);
+    color: var(--white);
+    grid-column: 1 / -1;
+  }
+
+  .rtw-card.secondary {
+    background: var(--white);
+    border: 1px solid var(--mist);
+  }
+
+  .rtw-card h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .rtw-card p {
+    font-size: 16px;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+
+  /* ===== QUOTE BLOCK ===== */
+  .quote-block {
+    border-left: 4px solid var(--red);
+    padding: 24px 32px;
+    margin: 32px 0;
+    background: rgba(217, 7, 28, 0.04);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .quote-block p {
+    font-size: 24px;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  /* ===== STATS ROW ===== */
+  .stats-row {
+    display: flex;
+    gap: 48px;
+    margin: 32px 0;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: left;
+  }
+
+  .stat .stat-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .stat .stat-label {
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+
+  .slide-dark .stat .stat-number { color: var(--red-light); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .slide { padding: 40px 32px; }
+    h1 { font-size: 42px; }
+    h2 { font-size: 32px; }
+    .title-slide h1 { font-size: 72px; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .solution-flow { flex-direction: column; }
+    .solution-step::after { display: none; }
+    .stack-container { flex-direction: column; height: auto; }
+    .scope-grid { grid-template-columns: 1fr; }
+    .gtm-grid { grid-template-columns: 1fr; }
+    .rtw-grid { grid-template-columns: 1fr; }
+    .org-section { flex-direction: column; }
+    .nav { display: none; }
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== HERO VISUAL ===== */
+  .hero-visual {
+    margin-top: 40px;
+    padding: 32px;
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid var(--mist);
+  }
+
+  .imessage-mock {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .bubble {
+    padding: 12px 18px;
+    border-radius: 18px;
+    margin-bottom: 8px;
+    max-width: 85%;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .bubble.sent {
+    background: var(--imessage-blue);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+  }
+
+  .bubble.received {
+    background: #E9E9EB;
+    color: var(--slate);
+    margin-right: auto;
+    border-bottom-left-radius: 4px;
+  }
+
+  .bubble .sender {
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+
+  /* Presentation controls hint */
+  .controls-hint {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    color: var(--slate);
+    opacity: 0.3;
+    z-index: 100;
+    transition: opacity 0.5s;
+  }
+
+  .controls-hint.hidden { opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<!-- Navigation Dots -->
+<nav class="nav" id="nav"></nav>
+<div class="slide-counter" id="slideCounter"></div>
+<div class="controls-hint" id="controlsHint">↑ ↓ Arrow keys to navigate</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 1: TITLE -->
+<!-- ============================================ -->
+<section class="slide title-slide" id="slide-0">
+  <h1>Tryps</h1>
+  <p class="tagline">Your group's travel agent — in your iMessage</p>
+  <p class="context">Martin Trust Center &middot; March 30, 2026</p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 2: WHAT IS TRYPS -->
+<!-- ============================================ -->
+<section class="slide slide-cream" id="slide-1">
+  <div class="label">Live Demo</div>
+  <h2>What is Tryps?</h2>
+  <p class="max-w" style="font-size: 24px; line-height: 1.5;">
+    Tryps is the travel agent in your group chat. Instead of one person doing all the work across six apps, you text our number and your trip is planned, booked, and done.
+  </p>
+
+  <div class="demo-box">
+    <p>Try it right now — text this number:</p>
+    <div class="phone-number">+1 (XXX) XXX-XXXX</div>
+    <p>Say: "Planning a trip to Miami with 4 friends"</p>
+  </div>
+
+  <div class="hero-visual" style="margin-top: 32px; max-width: 500px;">
+    <div class="imessage-mock">
+      <div class="bubble sent">Hey Martin — planning a bachelor party in Nashville, 8 guys, last weekend of May</div>
+      <div class="bubble received">
+        <div class="sender">Martin from Tryps</div>
+        Nashville for a bachelor party — great call. I'll get flights, a house, and activities lined up. Give me 30 seconds.
+      </div>
+      <div class="bubble received">
+        <div class="sender">Martin from Tryps</div>
+        Here's what I found: 4-bed house downtown ($280/night), flights from $189pp. Want me to send this to the group and start a vote?
+      </div>
+      <div class="bubble sent">Send it</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 3: THE PROBLEM -->
+<!-- ============================================ -->
+<section class="slide" id="slide-2">
+  <div class="label">The Problem</div>
+  <h2>Trip planning happens in iMessage.<br><span class="accent">Nothing acts on it.</span></h2>
+
+  <div class="problem-grid max-w-wide">
+    <div>
+      <div class="problem-item">
+        <div class="problem-icon">1</div>
+        <div class="problem-text">
+          <h4>Coordination is natural in group chat</h4>
+          <p>Friends already text about where to go, when, who's in. This is where travel decisions start.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">2</div>
+        <div class="problem-text">
+          <h4>But plans get buried</h4>
+          <p>Dates, prices, preferences — all scattered across 200 messages. One person becomes the unpaid travel agent.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">3</div>
+        <div class="problem-text">
+          <h4>Nothing captures + executes</h4>
+          <p>There's no way to extract what's being discussed and immediately act on it — search flights, book stays, split costs.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="problem-item">
+        <div class="problem-icon">4</div>
+        <div class="problem-text">
+          <h4>6+ apps, one frustrated planner</h4>
+          <p>iMessage + Google Docs + Splitwise + Kayak + Airbnb + Calendar. No single tool for group travel.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">5</div>
+        <div class="problem-text">
+          <h4>Existing tools are solo-first</h4>
+          <p>Expedia, Kayak, Google Flights — all built for one person booking one trip. Groups are an afterthought.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">6</div>
+        <div class="problem-text">
+          <h4>Trips die in the group chat</h4>
+          <p>Without someone driving it forward, trips stall. The "we should totally go" never becomes "we're going."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 4: THE SOLUTION -->
+<!-- ============================================ -->
+<section class="slide slide-dark" id="slide-3">
+  <div class="label" style="color: var(--red-light);">The Solution</div>
+  <h2>An agent in your iMessage that<br>captures, facilitates, and books.</h2>
+
+  <div class="solution-flow">
+    <div class="solution-step" style="background: rgba(52,120,246,0.1); border: 1px solid rgba(52,120,246,0.2);">
+      <div class="step-num">01 — Capture</div>
+      <h4 style="color: var(--imessage-blue);">Reads the group chat</h4>
+      <p style="color: var(--cream-light);">Agent picks up on travel intent, dates, destinations, preferences — everything your group is already saying.</p>
+    </div>
+    <div class="solution-step" style="background: rgba(217,7,28,0.1); border: 1px solid rgba(217,7,28,0.2);">
+      <div class="step-num">02 — Facilitate</div>
+      <h4 style="color: var(--red-light);">Steers the group</h4>
+      <p style="color: var(--cream-light);">Runs natural polls, surfaces options, drives toward decisions. Like a designated driver for planning — not a backseat passenger.</p>
+    </div>
+    <div class="solution-step" style="background: rgba(45,139,94,0.1); border: 1px solid rgba(45,139,94,0.2);">
+      <div class="step-num">03 — Book</div>
+      <h4 style="color: var(--agent-green);">Executes on behalf</h4>
+      <p style="color: var(--cream-light);">Once the group decides, agent books flights, stays, and activities. In one text, a group can book their entire trip.</p>
+    </div>
+  </div>
+
+  <div class="quote-block" style="margin-top: 48px; background: rgba(217,7,28,0.08); max-width: 700px;">
+    <p style="color: var(--cream-light);">"In one text, any group can book their entire trip."</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 5: BUSINESS MODEL -->
+<!-- ============================================ -->
+<section class="slide" id="slide-4">
+  <div class="label">Business Model</div>
+  <h2>Simple: we take a cut<br>of every booking we facilitate.</h2>
+
+  <div class="biz-model-box">
+    <div class="big-number">1%</div>
+    <p style="font-size: 24px; font-weight: 600; margin-bottom: 8px;">Booking fee on flights and stays</p>
+    <p>In exchange for planning, facilitating, and booking your entire group trip, we take a 1% fee on every flight and stay booked through Tryps.</p>
+  </div>
+
+  <div class="stats-row" style="margin-top: 40px;">
+    <div class="stat">
+      <div class="stat-number">$4,200</div>
+      <div class="stat-label">Avg. group trip spend (8 people)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">$42</div>
+      <div class="stat-label">Revenue per trip at 1%</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">2.3x</div>
+      <div class="stat-label">Trips/year per active group</div>
+    </div>
+  </div>
+
+  <p style="font-size: 16px; opacity: 0.5; margin-top: 24px;">Future revenue layers: premium features, data licensing, affiliate partnerships. Core model stays simple.</p>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 6: CURRENT STATE — THE TEAM -->
+<!-- ============================================ -->
+<section class="slide slide-cream" id="slide-5">
+  <div class="label">Current State</div>
+  <h2>The Team</h2>
+
+  <div class="org-chart">
+    <!-- Top: Jake + Marty -->
+    <div class="org-top">
+      <div class="org-card full-time">
+        <div class="name">Jake Stein</div>
+        <div class="role">Founder & CEO</div>
+      </div>
+      <div class="org-card ai">
+        <span class="badge badge-ai">AI</span>
+        <div class="name">Marty</div>
+        <div class="role">OpenClaw Agent (24/7)</div>
+      </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <!-- Two columns -->
+    <div class="org-section">
+      <!-- PRODUCT -->
+      <div class="org-column">
+        <div class="org-column-title product">Product & Engineering</div>
+        <div class="org-team">
+          <div class="org-card full-time">
+            <span class="badge badge-ft">FT</span>
+            <div class="name">Asif Raza</div>
+            <div class="role">Head of Engineering</div>
+          </div>
+          <div class="connector"></div>
+          <div class="org-row">
+            <div class="org-card full-time">
+              <span class="badge badge-ft">FT</span>
+              <div class="name">Nadeem Khan</div>
+              <div class="role">Developer</div>
+            </div>
+            <div class="org-card full-time">
+              <span class="badge badge-ft">FT</span>
+              <div class="name">Rizwan Atta</div>
+              <div class="role">Developer (Agent Layer)</div>
+            </div>
+          </div>
+          <div class="connector-dotted"></div>
+          <div class="org-row">
+            <div class="org-card part-time">
+              <span class="badge badge-pt">PT</span>
+              <div class="name">Arsalan</div>
+              <div class="role">UI/UX Designer</div>
+            </div>
+            <div class="org-card part-time">
+              <span class="badge badge-pt">PT</span>
+              <div class="name">Krishna</div>
+              <div class="role">UI/UX Designer</div>
+            </div>
+          </div>
+          <div style="margin-top: 12px;">
+            <div class="org-card partner" style="display: inline-block;">
+              <span class="badge badge-partner">Partner</span>
+              <div class="name" style="font-size: 14px;">Linq</div>
+              <div class="role">iMessage Native Polling</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="org-divider"></div>
+
+      <!-- GTM -->
+      <div class="org-column">
+        <div class="org-column-title gtm">Distribution & Go-to-Market</div>
+        <div class="org-team">
+          <div class="org-card full-time">
+            <span class="badge badge-ft">FT</span>
+            <div class="name">GTM Engineer</div>
+            <div class="role">Tools & Automation</div>
+          </div>
+          <div class="connector"></div>
+          <div class="org-card partner">
+            <span class="badge badge-partner">Partner</span>
+            <div class="name">Sean DeFaria</div>
+            <div class="role">Defaria LLC — Brand & Influencer</div>
+          </div>
+          <div class="connector-dotted"></div>
+          <div class="org-row">
+            <div class="org-card part-time" style="border-color: var(--blue);">
+              <div class="name">Andreas</div>
+              <div class="role">QA</div>
+            </div>
+            <div class="org-card part-time" style="border-color: var(--blue);">
+              <div class="name">Jackson</div>
+              <div class="role">Strategy Advisor</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="org-legend">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background: var(--slate);"></div>
+        Full-time
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background: transparent; border: 2px dashed var(--slate-light);"></div>
+        Part-time / Ad Hoc
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background: transparent; border: 2px solid var(--red);"></div>
+        Partner
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background: var(--agent-green);"></div>
+        AI Agent
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 7: PRODUCT DEEP DIVE — THE STACK -->
+<!-- ============================================ -->
+<section class="slide" id="slide-6">
+  <div class="label">Product Deep Dive</div>
+  <h2>Three-Layer Architecture</h2>
+  <p style="font-size: 18px; opacity: 0.6; margin-bottom: 8px;">Each layer reinforces the others. Nobody else integrates all three.</p>
+
+  <div class="stack-container max-w-wide">
+    <div class="stack-layer imessage">
+      <div>
+        <div class="layer-label">Layer 1</div>
+        <div class="layer-title">iMessage</div>
+        <div class="layer-desc" style="margin-top: 8px;">Where conversations happen. Zero behavior change — people already coordinate trips here.</div>
+      </div>
+      <ul class="layer-features">
+        <li>Natural language trip creation</li>
+        <li>Group polling & voting via Linq</li>
+        <li>Expense logging by text</li>
+        <li>"Martin" agent (passes Jennifer Test)</li>
+      </ul>
+      <div class="stack-connector">Linq &rarr;</div>
+    </div>
+
+    <div class="stack-layer app">
+      <div>
+        <div class="layer-label">Layer 2</div>
+        <div class="layer-title">Mobile App</div>
+        <div class="layer-desc" style="margin-top: 8px;">Where plans take shape. Visual, structured, interactive — for people who want to see it all.</div>
+      </div>
+      <ul class="layer-features">
+        <li>Trip itinerary with drag-and-drop</li>
+        <li>Expense tracking & splitting</li>
+        <li>Travel DNA & preferences</li>
+        <li>Completeness checklist</li>
+      </ul>
+      <div class="stack-connector">Stripe &rarr;</div>
+    </div>
+
+    <div class="stack-layer agent">
+      <div>
+        <div class="layer-label">Layer 3</div>
+        <div class="layer-title">Agentic Layer</div>
+        <div class="layer-desc" style="margin-top: 8px;">Where execution happens. AI books, coordinates, and acts on behalf of the group.</div>
+      </div>
+      <ul class="layer-features">
+        <li>Flight & stay search/booking</li>
+        <li>Vote-on-behalf from preferences</li>
+        <li>Memory architecture (learns over time)</li>
+        <li>Recommendation engine</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 8: PRODUCT — SCOPES -->
+<!-- ============================================ -->
+<section class="slide slide-cream" id="slide-7">
+  <div class="label">Product Deep Dive</div>
+  <h2>What the Team is Building</h2>
+  <p style="font-size: 18px; opacity: 0.6;">13 MECE scopes covering the full product surface. App is ~60-70% built.</p>
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-number">13</div>
+      <div class="stat-label">Total scopes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">5</div>
+      <div class="stat-label">In progress</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">1</div>
+      <div class="stat-label">In testing</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Specced, ready</div>
+    </div>
+  </div>
+
+  <div class="scope-grid max-w-wide">
+    <div class="scope-card status-testing">
+      <div class="scope-name">Core Trip Experience</div>
+      <div class="scope-status">Testing</div>
+      <div class="scope-assignee">Nadeem / Andreas</div>
+      <div class="scope-progress">15/16 criteria</div>
+    </div>
+    <div class="scope-card status-in-progress">
+      <div class="scope-name">iMessage Agent</div>
+      <div class="scope-status">In Progress</div>
+      <div class="scope-assignee">Asif</div>
+      <div class="scope-progress">34/57 criteria</div>
+    </div>
+    <div class="scope-card status-in-progress">
+      <div class="scope-name">Agent Intelligence</div>
+      <div class="scope-status">In Progress</div>
+      <div class="scope-assignee">Rizwan</div>
+      <div class="scope-progress">55/61 criteria</div>
+    </div>
+    <div class="scope-card status-in-progress">
+      <div class="scope-name">Output-Backed Screen</div>
+      <div class="scope-status">In Progress</div>
+      <div class="scope-assignee">Nadeem</div>
+      <div class="scope-progress">7/48 criteria</div>
+    </div>
+    <div class="scope-card status-in-progress">
+      <div class="scope-name">Travel Booking</div>
+      <div class="scope-status">In Progress</div>
+      <div class="scope-assignee">Asif / Rizwan</div>
+      <div class="scope-progress">0/58 criteria</div>
+    </div>
+    <div class="scope-card status-in-progress">
+      <div class="scope-name">Beta & User Feedback</div>
+      <div class="scope-status">In Progress</div>
+      <div class="scope-assignee">Jake</div>
+    </div>
+    <div class="scope-card status-specced">
+      <div class="scope-name">Group Decision-Making</div>
+      <div class="scope-status">Specced</div>
+      <div class="scope-assignee">Rizwan</div>
+      <div class="scope-progress">0/14 criteria</div>
+    </div>
+    <div class="scope-card status-specced">
+      <div class="scope-name">Post-Trip & Retention</div>
+      <div class="scope-status">Specced</div>
+      <div class="scope-assignee">Nadeem</div>
+      <div class="scope-progress">0/39 criteria</div>
+    </div>
+    <div class="scope-card status-specced">
+      <div class="scope-name">Voice Calls</div>
+      <div class="scope-status">Specced</div>
+      <div class="scope-assignee">Asif</div>
+    </div>
+    <div class="scope-card status-not-started">
+      <div class="scope-name">Payments Infrastructure</div>
+      <div class="scope-status">Not Started</div>
+      <div class="scope-assignee">Rizwan</div>
+      <div class="scope-progress">0/12 criteria</div>
+    </div>
+    <div class="scope-card status-needs-spec">
+      <div class="scope-name">Travel Identity</div>
+      <div class="scope-status">Needs Spec</div>
+      <div class="scope-assignee">Jake</div>
+    </div>
+    <div class="scope-card status-needs-spec">
+      <div class="scope-name">Onboarding & Teaching</div>
+      <div class="scope-status">Needs Spec</div>
+      <div class="scope-assignee">Jake</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 9: BRAND & GTM -->
+<!-- ============================================ -->
+<section class="slide" id="slide-8">
+  <div class="label">Brand & Go-to-Market</div>
+  <h2>Distribution Strategy</h2>
+  <p style="font-size: 18px; opacity: 0.6; max-width: 700px;">Ambassador-led growth with UGC creators, a launch video, giveaways, and physical presence. Partnered with Sean DeFaria / Defaria LLC.</p>
+
+  <div class="gtm-grid max-w-wide">
+    <div class="gtm-card">
+      <div class="gtm-tag sean">Sean / Defaria LLC</div>
+      <h4>Launch Video</h4>
+      <p>"However You Get To Us" — 60-second film. Desaturated world, only Tryps Red visible on devices. Five scenes capturing how people discover and use Tryps.</p>
+      <p style="margin-top: 8px; font-size: 13px; color: var(--red); font-weight: 600;">Budget: $2,500–$4,000 &middot; Status: Treatment locked</p>
+    </div>
+
+    <div class="gtm-card">
+      <div class="gtm-tag sean">Sean / Defaria LLC</div>
+      <h4>UGC Program — Tryps Troop</h4>
+      <p>80 creators (10-15 mid-tier, 65-70 micro). Welcome packages include sweatsuits, film cameras, exclusive club access. $100-400 per creator.</p>
+      <p style="margin-top: 8px; font-size: 13px; color: var(--red); font-weight: 600;">Budget: ~$8K for 80 creators</p>
+    </div>
+
+    <div class="gtm-card">
+      <div class="gtm-tag sean">Sean / Defaria LLC</div>
+      <h4>Giveaway Campaign</h4>
+      <p>"Win Your Dream Trip" — follow, comment destination, tag 4-6 friends. Bonus entries for story reposts. Winner reveal filmed as content.</p>
+      <p style="margin-top: 8px; font-size: 13px; color: var(--red); font-weight: 600;">Projected reach: 50K–120K unique accounts</p>
+    </div>
+
+    <div class="gtm-card">
+      <div class="gtm-tag jake">Physical + Social</div>
+      <h4>Physical Presence & Socials</h4>
+      <p>NYC wallpaper activations, branded stickers, disposable cameras at events. TikTok-first social with 4-5 posts/platform/week across TikTok, Instagram, X, LinkedIn.</p>
+      <p style="margin-top: 8px; font-size: 13px; color: var(--red); font-weight: 600;">8-week launch cadence starting April</p>
+    </div>
+  </div>
+
+  <div class="quote-block" style="max-width: 700px;">
+    <p>"Every piece of Tryps copy should make you feel: this is not some gimmicky service. This is the way everybody is planning their trip this summer."</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 10: RIGHT TO WIN -->
+<!-- ============================================ -->
+<section class="slide slide-dark" id="slide-9">
+  <div class="label" style="color: var(--red-light);">Competitive Differential</div>
+  <h2>Our Right to Win</h2>
+
+  <div class="rtw-grid max-w-wide">
+    <div class="rtw-card primary">
+      <h4 style="font-size: 28px;">First to market with native polling in iMessage</h4>
+      <p style="font-size: 18px;">We believe agents will facilitate interactions between people and execute on their behalf. If we can put an agent where people already are — in a way that's super convenient to communicate preferences — we win in this new era of human-shared, agent-selected preferences.</p>
+    </div>
+
+    <div class="rtw-card secondary">
+      <h4>Data Moat: Shared Trip Memory</h4>
+      <p>No other platform holds the full record of what a group decided, preferred, voted on, and experienced together. More trips = richer memory = smarter agent = users return.</p>
+    </div>
+
+    <div class="rtw-card secondary">
+      <h4>Three-Layer Integration</h4>
+      <p>Anyone can build a travel app. Nobody integrates iMessage, a native mobile experience, and an autonomous agentic booking layer into one product.</p>
+    </div>
+
+    <div class="rtw-card secondary">
+      <h4>Target: Group Travelers 20s–30s</h4>
+      <p>People who believe travel is an innate part of the human experience. Bachelor/bachelorette parties, friend group trips, reunion trips. Willing to spend, looking for someone to handle the logistics.</p>
+    </div>
+
+    <div class="rtw-card secondary">
+      <h4>Agent as Facilitator — "The Grill"</h4>
+      <p>Our Trip Agent runs on cron jobs, steering the group chat toward completion. It grills the group — polls, guides, nudges — until the trip is booked. Facilitation, not dictation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 11: NEXT STEPS -->
+<!-- ============================================ -->
+<section class="slide slide-red" id="slide-10">
+  <h2 style="font-size: 56px;">Where We're Headed</h2>
+
+  <div style="margin-top: 40px; max-width: 700px;">
+    <div style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 24px;">
+      <span class="mono" style="font-size: 48px; font-weight: 700; opacity: 0.3;">01</span>
+      <div>
+        <h3 style="margin-bottom: 4px;">Ship core product by April 2</h3>
+        <p style="opacity: 0.85; font-size: 18px;">13 MECE scopes, 5 in active development. Core trip experience in testing. iMessage agent and agent intelligence close behind.</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 24px;">
+      <span class="mono" style="font-size: 48px; font-weight: 700; opacity: 0.3;">02</span>
+      <div>
+        <h3 style="margin-bottom: 4px;">Launch with Tryps Troop</h3>
+        <p style="opacity: 0.85; font-size: 18px;">80 UGC creators, giveaway campaign, launch video. Target: 100K downloads through viral loop (K-factor 0.4 = 1.67x multiplier).</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 24px;">
+      <span class="mono" style="font-size: 48px; font-weight: 700; opacity: 0.3;">03</span>
+      <div>
+        <h3 style="margin-bottom: 4px;">Prove the viral loop</h3>
+        <p style="opacity: 0.85; font-size: 18px;">One person texts the Tryps number &rarr; everyone in the group experiences it &rarr; some download the app. Partiful playbook applied to travel.</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 16px;">
+      <span class="mono" style="font-size: 48px; font-weight: 700; opacity: 0.3;">04</span>
+      <div>
+        <h3 style="margin-bottom: 4px;">MIT in the fall</h3>
+        <p style="opacity: 0.85; font-size: 18px;">Building from campus. Looking for support from the Martin Trust Center ecosystem — mentorship, network, and strategic guidance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 12: CLOSING -->
+<!-- ============================================ -->
+<section class="slide title-slide" id="slide-11">
+  <h1 style="font-size: 80px;">Tryps</h1>
+  <p class="tagline">Text your trip into existence.</p>
+  <p class="context" style="margin-top: 32px; opacity: 0.6;">Jake Stein &middot; jake@jointryps.com &middot; jointryps.com</p>
+</section>
+
+<script>
+  // Slide navigation
+  const slides = document.querySelectorAll('.slide');
+  const nav = document.getElementById('nav');
+  const counter = document.getElementById('slideCounter');
+  const hint = document.getElementById('controlsHint');
+
+  // Create nav dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.addEventListener('click', () => {
+      slides[i].scrollIntoView({ behavior: 'smooth' });
+    });
+    nav.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.nav-dot');
+
+  // Track current slide
+  let currentSlide = 0;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const index = Array.from(slides).indexOf(entry.target);
+        currentSlide = index;
+
+        // Update dots
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+
+        // Update counter
+        counter.textContent = `${index + 1} / ${slides.length}`;
+
+        // Update dot colors for dark/red slides
+        const isDark = entry.target.classList.contains('slide-dark') || entry.target.classList.contains('slide-red') || entry.target.classList.contains('title-slide');
+        dots.forEach(d => {
+          d.style.background = isDark ? 'rgba(255,255,255,0.3)' : '';
+        });
+        dots[index].style.background = 'var(--red)';
+        counter.style.color = isDark ? 'rgba(255,255,255,0.4)' : '';
+
+        // Fade in animations
+        entry.target.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(s => observer.observe(s));
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+      e.preventDefault();
+      if (currentSlide < slides.length - 1) {
+        slides[currentSlide + 1].scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      if (currentSlide > 0) {
+        slides[currentSlide - 1].scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+
+  // Hide controls hint after first interaction
+  let hintShown = true;
+  document.addEventListener('keydown', () => {
+    if (hintShown) {
+      hint.classList.add('hidden');
+      hintShown = false;
+    }
+  });
+  document.addEventListener('scroll', () => {
+    if (hintShown) {
+      hint.classList.add('hidden');
+      hintShown = false;
+    }
+  });
+</script>
+
+</body>
+</html>
