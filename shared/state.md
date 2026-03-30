@@ -1,13 +1,13 @@
 # Tryps State
 
 > Auto-generated from scope state.md frontmatter. Do not edit manually.
-> Last updated: 2026-03-30 22:30 UTC
+> Last updated: 2026-03-30 23:00 UTC
 
 ## Scope Status
 
 | ID | Title | Status | Assignee | Criteria | Notes |
 |----|-------|--------|----------|----------|-------|
-| agent-intelligence | Agent Intelligence | in-progress | rizwan | 55/61 | 55/61 implemented |
+| agent-intelligence | Agent Intelligence | in-progress | rizwan | 27/61 | 27/61 implemented |
 | beta-user-feedback | Beta & User Feedback | in-progress | jake | 0/0 | In progress |
 | core-trip-experience | Core Trip Experience | testing | nadeem | 15/16 | Bug testing in progress |
 | customer-service-triaging | Customer Service & Triaging | needs-spec | jake | 0/0 | Jake to spec |
@@ -17,7 +17,7 @@
 | output-backed-screen | Output-Backed Screen | in-progress | nadeem | 7/48 | 7/48 implemented |
 | payments-infrastructure | Payments Infrastructure | not-started | rizwan | 0/12 |  |
 | post-trip-retention | Post-Trip & Retention | specced | nadeem | 0/31 | Spec exists, not started |
-| travel-booking | Travel Booking | in-progress | asif, rizwan | 0/70 | 0/70 implemented |
+| travel-booking | Travel Booking | in-progress | asif, rizwan | 5/70 | 5/70 implemented |
 | travel-identity | Travel Identity | specced | nadeem | 0/50 | Spec exists, not started |
 | voice-calls | Voice Calls | specced | asif | — | Spec exists, not started |
 
