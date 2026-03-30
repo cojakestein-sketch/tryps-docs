@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tryps Nightly Brief — Sunday, March 29, 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #3D3530;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #3D3530;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+  }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
+  p, li { font-size: 11pt; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+  }
+  .strategy-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14pt;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #B00618; }
+  .highlight { background: #FFF3CD; padding: 2px 6px; border-radius: 3px; }
+  a { color: #D9071C; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Print</button>
+  <h1>Tryps Nightly Brief</h1>
+  <div class="subtitle">
+    Sunday, March 29, 2026 — Prepared by Marty at 8:31 PM ET
+  </div>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>1. Tomorrow's Standup</h2>
+    <p>Standup doc generated at 8:00 PM — <strong>15 questions across 3 devs</strong>. All three (Nadeem, Asif, Rizwan) have skipped the last 3 standups. Questions are pointed.</p>
+
+    <h3>Nadeem — output-backed-screen (7/48 SC)</h3>
+    <ul>
+      <li>Three skipped standups. Zero SC data. Last merged PR was #311 on Mar 27.</li>
+      <li>Jake opened 13 bug-fix PRs (#315–#327) this weekend touching areas Nadeem owns — expenses, packing list, vibe board, trip creation, people tab. Were these known gaps?</li>
+      <li>ClickUp shows Travel DNA and Post-Trip Review stuck in "for testing" for days. What actually needs action?</li>
+      <li>Concrete number requested: how many of 48 SCs are done-done, tested, ready for QA?</li>
+      <li>It's Monday. Jake spent his weekend filing bugs. What's the plan?</li>
+    </ul>
+
+    <h3>Asif — imessage-agent (34/57 SC)</h3>
+    <ul>
+      <li>Three skipped standups. Last commits Mar 27 — merging others' PRs and fixing expense tab duplication.</li>
+      <li>13 Jake bug-fix PRs unreviewed. As dev lead, what's the review plan? Some touch core flows.</li>
+      <li>"AI Agent One to One Chat Issues" reassigned to Rizwan — intentional? "Bug: iMessage via Linq" still unassigned. Deploy Marty Pipeline still on Asif.</li>
+      <li>Cross-scope SCs 59-61 were blocked on coordination with Rizwan 4 days ago. Has that happened?</li>
+      <li>Jake's PR #326 does the jointripful.com → jointryps.com migration. Does this close the ClickUp task, or separate effort?</li>
+    </ul>
+
+    <h3>Rizwan — agent-intelligence (55/61 SC)</h3>
+    <ul>
+      <li>Only dev who's answered standups — thank you. Was targeting 30/61 by EOW. PR #312 merged. Actual number?</li>
+      <li>How many vote-on-behalf SCs does #312 close? Was 7/15 ready on Mar 27.</li>
+      <li>No retry/alerting for failed fire-and-forget memory extraction — addressed since?</li>
+      <li>Recommendations engine at 2/18 — biggest gap. What's moved? Realistic timeline for remaining 16 SCs?</li>
+      <li>"Deploy Marty Memory System to Hetzner" still in "to do." What's blocking?</li>
+    </ul>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>2. Tech Twitter</h2>
+    <p><em>Brave Search returned no direct X/Twitter results today (Sunday). Sourced from news coverage and Polymarket data instead.</em></p>
+
+    <div class="tweet">
+      <span class="tweet-author">Anthropic (via Thariq Shihipar)</span><br>
+      <span class="tweet-text">Announced peak-hour session throttling for all Claude tiers (5am–11am PT weekdays). ~7% of users will hit new limits. Recommends running token-intensive jobs off-peak.</span><br>
+      <a href="https://gizmodo.com/anthropic-and-openai-just-gave-us-a-glimpse-into-the-future-of-model-pricing-2000739173">Coverage →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">OpenAI (via Thibault Sottiaux, Codex lead)</span><br>
+      <span class="tweet-text">Responded same day by removing all Codex usage caps across all plans. "You can just build unlimited things with Codex. Have fun!" Classic competitive counter-punch.</span><br>
+      <a href="https://gizmodo.com/anthropic-and-openai-just-gave-us-a-glimpse-into-the-future-of-model-pricing-2000739173">Coverage →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">OpenAI — ChatGPT Updates</span><br>
+      <span class="tweet-text">Launched location sharing for ChatGPT (iOS + web). Users can share device location for local recs, weather, and news. Precise location opt-in available. Android coming soon.</span><br>
+      <a href="https://releasebot.io/updates/openai">Release notes →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">Elon Musk</span><br>
+      <span class="tweet-text">Reposted AI safety commentary ("A woke AI would be catastrophic to the future of humanity"). Meanwhile, Musk-Zuckerberg private texts leaked from OpenAI trial — Zuck offered to help DOGE, Musk invited him to bid on OpenAI assets.</span><br>
+      <a href="https://www.24matins.uk/elon-musk-vs-sam-altman-trial-leaked-private-conversations-revealed-328139">Coverage →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">xAI — Grok</span><br>
+      <span class="tweet-text">New multilingual features highlighted by Musk this weekend. All but 2 of Musk's 11 xAI co-founders have now departed the company.</span><br>
+      <a href="https://llm-stats.com/ai-news">Coverage →</a>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>3. Trending GitHub Repos</h2>
+
+    <div class="repo">
+      <span class="repo-name">microsoft/VibeVoice</span> — ⭐ 27,193 (+1,056 today)<br>
+      Open-source frontier voice AI from Microsoft. <strong>Why it matters:</strong> Jake is interested in voice APIs (Asif was researching Vapi, Bland, Retell). This could be a viable open-source alternative for the iMessage agent voice capabilities.<br>
+      <a href="https://github.com/microsoft/VibeVoice">→ github.com/microsoft/VibeVoice</a>
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">mvanhorn/last30days-skill</span> — ⭐ 15,305 (+1,308 today)<br>
+      AI agent skill that researches any topic across Reddit, X, YouTube, HN, and Polymarket, then synthesizes a grounded summary. <strong>Why it matters:</strong> This is literally what the nightly report's tech twitter section tries to do. Worth evaluating as an OpenClaw skill for better cross-platform research.<br>
+      <a href="https://github.com/mvanhorn/last30days-skill">→ github.com/mvanhorn/last30days-skill</a>
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">twentyhq/twenty</span> — ⭐ 42,925 (+447 today)<br>
+      Modern open-source CRM (Salesforce alternative). TypeScript. <strong>Why it matters:</strong> As Tryps approaches beta/launch, a lightweight CRM for early user management could be useful. Open-source means customizable for group-trip-specific user data.<br>
+      <a href="https://github.com/twentyhq/twenty">→ github.com/twentyhq/twenty</a>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>4. Deep Dive: AI Q&A → Instant Group Polling</h2>
+    <p><em>No topic suggestion response from Jake today. Using his March 29 product north star brain dump: "Make it dead simple to grill an AI about your trip, then AB test every answer with your group via native polling."</em></p>
+
+    <h3>What it is</h3>
+    <p>The core product thesis Jake crystallized last night: two pillars that make Tryps undeniable. Pillar 1 is a conversational AI you can "grill" about your trip — ask anything, get great answers. Pillar 2 is the instant handoff to group polling, where every AI answer becomes a native poll the group votes on. The magic is the seamless transition from asking to polling.</p>
+
+    <h3>Why it matters at this stage</h3>
+    <p>This is the tightest articulation of Tryps' core loop yet. With April 2 release approaching (4 days), this thesis should be the lens for every feature and bug decision. It also resolves the 60/30/10 traveler split: "I Don't Care-ers" just vote on polls, Casual Planners ask the AI questions, and Ultimate Planners curate which AI answers become polls.</p>
+
+    <h3>Key takeaways</h3>
+    <ul>
+      <li><strong>The AI Q&A must feel conversational, not transactional.</strong> Users should be able to ask follow-up questions naturally. The current agent-intelligence scope (55/61 SC) covers memory and context — that's the foundation.</li>
+      <li><strong>Every AI answer needs a one-tap "Poll the group" button.</strong> This is the conversion point. If it takes more than one tap to turn an AI suggestion into a group poll, the magic breaks. Check if output-backed-screen covers this interaction.</li>
+      <li><strong>"AB test" framing is key.</strong> Polls shouldn't just be "yes/no" — they should present 2-3 AI-generated options side by side (e.g., "Beach resort in Tulum" vs "Boutique hotel in Mexico City"). This maps to the Vibe tab's preference mechanism.</li>
+      <li><strong>The iMessage agent is the distribution channel.</strong> Non-app users see AI suggestions and vote via iMessage. This makes Asif's scope (34/57) the growth engine, not just a feature.</li>
+      <li><strong>Measure the handoff.</strong> Track: questions asked → polls created → votes received → decisions made. This funnel is the product's heartbeat.</li>
+    </ul>
+
+    <h3>Resource</h3>
+    <p><a href="https://www.oreateai.com/blog/beyond-the-raise-of-hands-unlocking-audience-engagement-with-polling-apps/c8aa2969bdd0ce8d9d6820737a46b26a">Audience Polling App UX Patterns</a> — good reference for real-time group polling interaction design.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>5. Strategy Check</h2>
+    <p><em>End of Week 4 (Mar 23–29). April 2 release in 4 days.</em></p>
+    <div class="strategy-box">
+      <h3>Where we are</h3>
+      <p>Jake spent the entire weekend in a testing marathon, opening <strong>15 bug-fix PRs (#313–#327)</strong> covering expenses, packing list, vibe board, trip creation, people tab, domain migration, and test infrastructure. None have been reviewed or merged yet — they're all waiting on Asif.</p>
+      <p>Scope progress: agent-intelligence is the furthest along (55/61), but output-backed-screen is critically behind (7/48). iMessage-agent sits at 34/57. Three devs have skipped 3 consecutive standups.</p>
+
+      <h3>Top 3 Risks</h3>
+      <ol>
+        <li><strong>15 PRs sitting unreviewed.</strong> Jake did the work this weekend. If Asif doesn't review and merge these Monday morning PKT, we lose a full day before April 2. Some of these PRs may conflict with each other.</li>
+        <li><strong>output-backed-screen at 7/48 (15%).</strong> Nadeem's scope is the most behind of any active scope, and he's been silent for 3 days. This is the core app UI — if it's not done, nothing else matters.</li>
+        <li><strong>Three days of radio silence.</strong> Nobody answered standups Friday, Saturday, or Sunday. That's the entire PKT weekend, which is expected, but it also means Monday's standup is the first real pulse check in 4 days.</li>
+      </ol>
+
+      <h3>Areas Jake should focus on</h3>
+      <ul>
+        <li><strong>Monday morning: ensure Asif reviews the 15 PRs immediately.</strong> A quick Slack message in #all-tryps at 9am ET (7pm PKT) setting the expectation: "I filed 15 bug fixes this weekend. Review and merge all of them today."</li>
+        <li><strong>Get a real SC count from Nadeem.</strong> 7/48 feels impossibly low — either the state.md is stale, or Nadeem has a serious delivery problem. The standup question forces this.</li>
+        <li><strong>April 2 release gate decision.</strong> After Monday's standup answers, Jake needs to decide: ship what's ready, or push the date. The original gate was "text in iMessage → plan entire trip end-to-end in NL, book things, app clean, agent conversational." That's ambitious for 4 days.</li>
+      </ul>
+
+      <h3>What I think the #1 priority is</h3>
+      <p><strong>Merge Jake's 15 PRs and stabilize the app for April 2.</strong> The bug fixes are already written. The bottleneck is review velocity. Every hour those PRs sit unmerged is an hour closer to release with known bugs. The scope completion numbers (7/48, 34/57) are secondary to having a stable, demonstrable app. Ship clean over ship complete.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>6. Culture &amp; Conversation</h2>
+
+    <div style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>Musk-Zuckerberg Private Texts Leaked in OpenAI Trial</strong><br>
+      Court documents from the Musk v. OpenAI case revealed private messages where Musk invited Zuckerberg to bid on OpenAI's assets, and Zuckerberg offered to help with DOGE content moderation. Zuckerberg's reply: wanted to "discuss it live."<br>
+      <em>Conversation angle:</em> The trial is surfacing how personal relationships drive billion-dollar tech decisions. Founders will have opinions on whether Musk's public lawsuit matches his private dealmaking.<br>
+      <a href="https://www.24matins.uk/elon-musk-vs-sam-altman-trial-leaked-private-conversations-revealed-328139">→ Full story</a>
+    </div>
+
+    <div style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>Indonesia Becomes First SE Asian Country to Ban Social Media for Under-16s</strong><br>
+      Enforcement started Saturday (March 28). Platforms classified as "high-risk" (including Roblox) are restricted. Implementation details remain unclear — enforcement mechanism is vague.<br>
+      <em>Conversation angle:</em> This is the Australia playbook spreading. Relevant for any consumer app founder thinking about age verification, content moderation liability, and whether this trend reaches the US.<br>
+      <a href="https://apnews.com/article/indonesia-social-media-children-under-16-761b3ae00231ea0b176f93813c0a35eb">→ AP News</a>
+    </div>
+
+    <div style="padding: 8px 0;">
+      <strong>Largest AI Safety Protest in US History: 200 Marchers Hit Anthropic → OpenAI → xAI</strong><br>
+      Organized by Michaël Trazzi on March 22. One demand: each company commits to pausing if the others do too (a "mutual pause" framework). No company responded.<br>
+      <em>Conversation angle:</em> The protest was small (200 people) but the "mutual pause" framing is interesting game theory. It mirrors nuclear arms control logic. Worth discussing: is coordinated pause even possible when compute = competitive advantage?<br>
+      <a href="https://futurism.com/artificial-intelligence/protestors-anthropic-ai">→ Futurism</a>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>7. AI Releases &amp; Patch Notes</h2>
+
+    <h3>Anthropic</h3>
+    <ul>
+      <li><strong>Claude Code v2.1.86</strong> — Major stability release. Key changes: session ID headers for proxy aggregation, fixed --resume breaking on old sessions, fixed Write/Edit/Read failing on files outside project root, fixed memory growth in long sessions, reduced token overhead for @ file mentions, improved prompt cache hit rate for Bedrock/Vertex/Foundry. <a href="https://releasebot.io/updates/anthropic">Full changelog →</a></li>
+      <li><strong>Peak-hour throttling announced.</strong> Session limits enforced faster during 5am–11am PT weekdays. ~7% of users affected. Weekly limits unchanged, just redistributed.</li>
+    </ul>
+
+    <h3>OpenAI</h3>
+    <ul>
+      <li><strong>ChatGPT location sharing</strong> — Device location opt-in for local recommendations, weather, and news. Precise location available. iOS + web now, Android soon.</li>
+      <li><strong>Codex caps removed</strong> — All usage limits reset across all plans. Unlimited Codex access, timed to counter Anthropic's throttling announcement.</li>
+      <li><strong>Simplified mobile sidebar</strong> — ChatGPT experiences (Images, Codex, Pulse, Apps) now appear in a horizontal bar above chats.</li>
+    </ul>
+
+    <h3>Google</h3>
+    <ul>
+      <li>No new releases this weekend. Gemini 3.1 Pro (launched Feb 2026) remains current frontier Pro-tier model with 1M-token context window and 77.1% on ARC-AGI-2.</li>
+    </ul>
+
+    <h3>xAI</h3>
+    <ul>
+      <li>Grok new multilingual features highlighted by Musk this weekend. Co-founder exodus continues — all but 2 of the original 11 co-founders have left.</li>
+    </ul>
+
+    <h3>Ecosystem</h3>
+    <ul>
+      <li><strong>MCP crossed 97 million installs</strong> in March (Anthropic ecosystem report). For context: MCP was introduced in late 2024.</li>
+      <li><strong>Oh-My-ClaudeCode</strong> — New multi-agent orchestration tool for teams, trending on GitHub.</li>
+    </ul>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p><em>Weekend wildcard edition.</em></p>
+
+    <h3>Littlebird — Context Layer for AI Assistants</h3>
+    <p><strong>What it is:</strong> An AI assistant that builds continuous memory of your digital workspace, functioning as a "context layer" — giving AI ongoing access to relevant working context without repeated prompts. Just raised $11M.</p>
+    <p><strong>How Jake would use it:</strong> Think of it as an always-on Marty for personal productivity. Littlebird captures context from your apps (Slack, email, docs) and makes it available to any AI you're working with. Could complement Wispr Flow — Wispr captures voice, Littlebird captures workspace context. Together they'd make Jake's brain dumps even more effective by auto-injecting relevant project state.</p>
+    <p><strong>Pricing:</strong> Early access / invite-only. Free tier likely at launch, enterprise pricing TBD.</p>
+    <p><a href="https://ventureburn.com/littlebird-raises-11m-for-full%E2%80%91context-ai-assistant/">→ ventureburn.com/littlebird</a></p>
+
+    <h3>Pensieve — Company Context for AI Agents</h3>
+    <p><strong>What it is:</strong> Connects to your existing tools and builds a knowledge graph that gives AI agents full company context — like a well-maintained CLAUDE.md but automatic and company-wide.</p>
+    <p><strong>How Jake would use it:</strong> Right now, Marty's context comes from manually maintained files (MEMORY.md, state.md, team.md). Pensieve could auto-generate and maintain these from ClickUp, Slack, and GitHub activity. Would reduce the "context loading" overhead at session start and keep agent context fresher. Especially useful as the team grows past 6 people.</p>
+    <p><strong>Pricing:</strong> Just launched on Product Hunt. Pricing not yet public.</p>
+    <p><a href="https://www.producthunt.com/products/pensieve-5">→ producthunt.com/pensieve</a></p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+    <table class="cost-table">
+      <tr><th>Category</th><th>Estimate</th></tr>
+      <tr><td>This session (nightly report)</td><td>~$0.80 (77k context, opus-4-6)</td></tr>
+      <tr><td>Standup generation (8pm cron)</td><td>~$0.40</td></tr>
+      <tr><td>State sync crons (30-min intervals)</td><td>~$1.50/day</td></tr>
+      <tr><td colspan="2" style="padding-top: 8px; font-style: italic; color: #888;">Detailed per-session cost breakdown not available — OpenClaw session logs at ~/.openclaw/logs/ contain only command audit logs, not token-level billing. Full cost tracking requires API provider dashboard access.</td></tr>
+    </table>
+    <p style="font-size: 10pt; color: #888; margin-top: 8px;">Estimated daily total: ~$3–5 across all cron + interactive sessions. Anthropic API dashboard has exact numbers.</p>
+  </section>
+
+</body>
+</html>
