@@ -4,978 +4,539 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tryps — Martin Trust Center</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --red: #D9071C;
     --red-dark: #B00618;
     --red-light: #E85050;
-    --cream: #F5EADB;
-    --cream-light: #FFFDF8;
-    --slate: #3D3530;
-    --slate-light: #5A4F48;
-    --mist: #EDE4D8;
+    --white: #FFFFFF;
+    --off-white: #F8F9FA;
+    --slate: #1C1917;
+    --slate-warm: #3D3530;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-400: #9CA3AF;
+    --gray-500: #6B7280;
     --green: #2D6B4F;
     --gold: #E8913A;
-    --blue: #2B5F83;
-    --imessage-blue: #3478F6;
+    --blue: #3478F6;
     --agent-green: #2D8B5E;
-    --white: #FFFFFF;
+    --amber: #F5B740;
+    --amber-light: #FEF3E0;
+    --amber-dark: #D4851A;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+  body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; color: var(--slate-warm); background: var(--white); -webkit-font-smoothing: antialiased; }
 
-  html {
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-  }
-
-  body {
-    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-    color: var(--slate);
-    background: var(--cream-light);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ===== SLIDES ===== */
   .slide {
-    min-height: 100vh;
-    scroll-snap-align: start;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 80px 60px;
-    position: relative;
-    overflow: hidden;
+    min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column;
+    justify-content: center; padding: 72px 80px 48px; position: relative; overflow: hidden;
   }
-
-  .slide-dark { background: var(--slate); color: var(--cream-light); }
+  .slide-dark { background: var(--slate); color: var(--off-white); }
+  .slide-alt { background: var(--off-white); }
   .slide-red { background: var(--red); color: var(--white); }
-  .slide-cream { background: var(--cream); }
 
-  /* Dot grid background */
-  .slide-grid {
-    background-image: radial-gradient(circle, rgba(61,53,48,0.06) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
+  /* Logo */
+  .logo { position: absolute; top: 24px; left: 36px; width: 36px; height: 36px; border-radius: 8px; z-index: 10; }
 
-  .slide-dark.slide-grid {
-    background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 24px 24px;
-    background-color: var(--slate);
-  }
-
-  /* ===== HEADER LOGO ===== */
-  .slide-logo {
-    position: absolute;
-    top: 28px;
-    left: 40px;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    object-fit: cover;
-    z-index: 10;
-  }
-
-  /* ===== TYPOGRAPHY ===== */
-  h1 { font-size: 64px; font-weight: 800; line-height: 1.05; letter-spacing: -2px; margin-bottom: 20px; }
-  h2 { font-size: 48px; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px; }
-  h3 { font-size: 28px; font-weight: 600; line-height: 1.2; margin-bottom: 12px; }
-  p, li { font-size: 20px; line-height: 1.5; }
-
+  /* Typography */
+  h1 { font-size: 56px; font-weight: 800; line-height: 1.08; letter-spacing: -2px; }
+  h2 { font-size: 42px; font-weight: 700; line-height: 1.12; letter-spacing: -1px; margin-bottom: 12px; }
+  h3 { font-size: 24px; font-weight: 600; line-height: 1.25; }
+  p, li { font-size: 18px; line-height: 1.55; }
   .mono { font-family: 'Space Mono', monospace; }
-  .label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; margin-bottom: 12px; }
+  .label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--red); margin-bottom: 8px; }
+  .slide-dark .label { color: var(--red-light); }
+  .muted { color: var(--gray-500); }
   .accent { color: var(--red); }
-  .max-w { max-width: 900px; }
-  .max-w-wide { max-width: 1200px; }
 
-  /* ===== NAV ===== */
-  .nav {
-    position: fixed; right: 24px; top: 50%; transform: translateY(-50%); z-index: 100;
-    display: flex; flex-direction: column; gap: 6px;
-  }
-  .nav-dot {
-    width: 8px; height: 8px; border-radius: 50%; background: var(--slate); opacity: 0.15;
-    cursor: pointer; transition: all 0.3s; border: none;
-  }
-  .nav-dot.active { opacity: 1; background: var(--red); transform: scale(1.4); }
-  .slide-counter {
-    position: fixed; bottom: 24px; right: 24px;
-    font-family: 'Space Mono', monospace; font-size: 13px; color: var(--slate); opacity: 0.3; z-index: 100;
-  }
+  /* Nav */
+  .nav { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 5px; }
+  .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-300); cursor: pointer; transition: all 0.3s; border: none; }
+  .nav-dot.active { background: var(--red); transform: scale(1.5); }
+  .counter { position: fixed; bottom: 20px; right: 20px; font-family: 'Space Mono', monospace; font-size: 12px; color: var(--gray-400); z-index: 100; }
 
-  /* ===== TITLE SLIDE ===== */
-  .title-slide {
-    background: var(--slate); color: var(--cream-light);
-    text-align: center; align-items: center;
-  }
-  .title-logo { width: 100px; height: 100px; border-radius: 24px; margin-bottom: 32px; }
-  .title-slide .tagline { font-size: 26px; font-weight: 500; opacity: 0.7; margin-bottom: 48px; }
-  .title-slide .context { font-size: 15px; opacity: 0.35; }
+  /* ===== TITLE ===== */
+  .title-slide { background: var(--slate); color: var(--off-white); text-align: center; align-items: center; }
+  .title-logo { width: 80px; height: 80px; border-radius: 18px; margin-bottom: 28px; }
+  .title-slide h1 { font-size: 88px; color: var(--red); letter-spacing: -3px; }
+  .title-slide .tagline { font-size: 24px; font-weight: 500; opacity: 0.65; margin-top: 4px; }
+  .title-slide .context { font-size: 14px; opacity: 0.3; margin-top: 40px; }
 
   /* ===== iMESSAGE CHAT ===== */
-  .chat-container {
-    max-width: 480px;
-    margin: 0 auto;
-    background: var(--white);
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 8px 60px rgba(61,53,48,0.12);
-  }
-  .chat-header {
-    background: #F8F8F8;
-    padding: 16px 20px;
-    border-bottom: 1px solid #E5E5E5;
-    text-align: center;
-  }
-  .chat-header .chat-title { font-size: 16px; font-weight: 700; }
-  .chat-header .chat-members { font-size: 12px; opacity: 0.5; margin-top: 2px; }
-  .chat-body { padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+  .chat { max-width: 400px; background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.08); border: 1px solid var(--gray-200); }
+  .chat-hdr { background: var(--off-white); padding: 14px 16px; border-bottom: 1px solid var(--gray-200); text-align: center; }
+  .chat-hdr .ch-title { font-size: 15px; font-weight: 700; }
+  .chat-hdr .ch-sub { font-size: 11px; color: var(--gray-400); margin-top: 1px; }
+  .chat-body { padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; }
 
-  .msg { display: flex; gap: 8px; align-items: flex-end; max-width: 88%; }
-  .msg.right { margin-left: auto; flex-direction: row-reverse; }
-  .msg.left { margin-right: auto; }
+  .m { display: flex; gap: 6px; align-items: flex-end; max-width: 85%; }
+  .m.r { margin-left: auto; flex-direction: row-reverse; }
+  .m.l { margin-right: auto; }
+  .m-av { width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: white; }
+  .m-c { display: flex; flex-direction: column; gap: 1px; }
+  .m-n { font-size: 10px; font-weight: 600; color: var(--gray-400); padding-left: 4px; }
+  .m-b { padding: 8px 14px; border-radius: 18px; font-size: 14px; line-height: 1.35; }
+  .m.r .m-b { background: var(--blue); color: white; border-bottom-right-radius: 4px; }
+  .m.l .m-b { background: var(--gray-100); color: var(--slate-warm); border-bottom-left-radius: 4px; }
+  .m.tryps .m-b { background: rgba(217,7,28,0.06); color: var(--slate-warm); border: 1px solid rgba(217,7,28,0.08); border-bottom-left-radius: 4px; }
+  .m-av img { width: 100%; height: 100%; border-radius: 50%; }
 
-  .msg-avatar {
-    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 700; color: white;
+  /* iMessage Polls — iOS 17 amber pill style */
+  .poll { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; align-items: flex-end; }
+  .poll-pill {
+    display: flex; align-items: center; gap: 8px;
+    border-radius: 999px; padding: 8px 10px 8px 16px;
+    font-size: 14px; font-weight: 600; min-width: 100px;
+    transition: all 0.3s;
   }
-  .msg-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+  .poll-pill.empty { background: var(--amber-light); color: var(--amber-dark); }
+  .poll-pill.voted { background: var(--amber); color: white; }
+  .poll-pill .pill-text { flex: 1; }
+  .poll-pill .pill-circle {
+    width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+    border: 2px solid var(--amber-dark);
+  }
+  .poll-pill.voted .pill-circle { background: var(--amber-dark); border-color: var(--amber-dark); }
+  .poll-pill .pill-votes { font-size: 11px; font-weight: 700; opacity: 0.7; }
+  .poll-add { font-size: 11px; color: var(--amber-dark); font-weight: 600; text-align: right; margin-top: 2px; }
 
-  .msg-content { display: flex; flex-direction: column; gap: 2px; }
-  .msg-name { font-size: 11px; font-weight: 600; opacity: 0.5; padding-left: 4px; }
-  .msg-bubble {
-    padding: 10px 14px; border-radius: 18px;
-    font-size: 15px; line-height: 1.4;
-  }
-  .msg.right .msg-bubble { background: var(--imessage-blue); color: white; border-bottom-right-radius: 4px; }
-  .msg.left .msg-bubble { background: #E9E9EB; color: var(--slate); border-bottom-left-radius: 4px; }
-  .msg.tryps .msg-bubble { background: #FDEBED; color: var(--slate); border: 1px solid rgba(217,7,28,0.12); border-bottom-left-radius: 4px; }
+  .chat-cta { text-align: center; padding: 14px; background: var(--off-white); border-top: 1px solid var(--gray-200); }
+  .chat-cta span { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; color: var(--red); }
+  .chat-cta p { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
 
-  .poll-options { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-  .poll-btn {
-    padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600;
-    background: white; border: 1.5px solid var(--red); color: var(--red); cursor: default;
-  }
-  .poll-btn.selected { background: var(--red); color: white; }
+  /* ===== SPLIT ===== */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
 
-  .chat-phone {
-    text-align: center; padding: 16px;
-    background: #F8F8F8; border-top: 1px solid #E5E5E5;
-  }
-  .chat-phone span {
-    font-family: 'Space Mono', monospace; font-size: 18px; font-weight: 700; color: var(--red);
-  }
-  .chat-phone p { font-size: 12px; opacity: 0.5; margin-top: 4px; }
+  /* ===== ORG ===== */
+  .org { margin-top: 20px; }
+  .org-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .org-line { display: flex; justify-content: center; padding: 6px 0; }
+  .org-line div { width: 1px; height: 14px; background: var(--gray-300); }
 
-  /* ===== SPLIT LAYOUT ===== */
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-  .split-divider { position: relative; }
-  .split-divider::before {
-    content: ''; position: absolute; left: -30px; top: 0; bottom: 0;
-    width: 1px; background: var(--mist);
-  }
+  .org-card { padding: 10px 16px; border-radius: 10px; text-align: center; min-width: 100px; }
+  .org-card .oc-name { font-size: 13px; font-weight: 700; }
+  .org-card .oc-role { font-size: 10px; opacity: 0.6; margin-top: 1px; }
 
-  /* ===== ORG CHART V2 ===== */
-  .org-v2 { margin-top: 24px; }
-  .org-level { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-  .org-connector { display: flex; justify-content: center; padding: 8px 0; }
-  .org-connector-line { width: 1px; height: 16px; background: rgba(61,53,48,0.15); }
-  .org-connector-branch {
-    display: flex; align-items: flex-start; justify-content: center; position: relative;
-  }
-  .org-connector-branch::before {
-    content: ''; position: absolute; top: 0;
-    left: 20%; right: 20%; height: 1px; background: rgba(61,53,48,0.15);
-  }
+  .oc-employee { background: var(--slate); color: var(--off-white); }
+  .oc-ai { background: var(--agent-green); color: white; }
+  .oc-partner { background: transparent; border: 2px solid var(--red); }
+  .oc-hiring { background: transparent; border: 2px dashed var(--blue); }
+  .oc-adhoc { background: transparent; border: 1.5px dashed var(--gray-300); }
 
-  .org-node {
-    padding: 10px 18px; border-radius: 10px; text-align: center;
-    min-width: 120px; font-size: 14px; position: relative;
-  }
-  .org-node .n-name { font-weight: 700; font-size: 14px; }
-  .org-node .n-role { font-size: 11px; opacity: 0.6; margin-top: 1px; }
-  .org-node .n-tag {
-    position: absolute; top: -6px; right: -6px;
-    font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
-    padding: 2px 6px; border-radius: 4px;
-  }
+  .org-branch { display: flex; gap: 48px; justify-content: center; margin-top: 8px; }
+  .org-col { flex: 1; max-width: 420px; }
+  .org-col-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; text-align: center; padding: 6px 14px; border-radius: 6px; margin-bottom: 10px; }
 
-  .org-ft { background: var(--slate); color: var(--cream-light); }
-  .org-ft .n-tag { background: var(--green); color: white; }
-  .org-pt { background: transparent; border: 1.5px dashed var(--slate-light); }
-  .org-pt .n-tag { background: var(--gold); color: white; }
-  .org-partner { background: transparent; border: 1.5px solid var(--red); }
-  .org-partner .n-tag { background: var(--red); color: white; }
-  .org-ai { background: var(--agent-green); color: white; }
-  .org-ai .n-tag { background: #1a5238; color: white; }
-  .org-hiring { background: transparent; border: 1.5px dashed var(--blue); }
-  .org-hiring .n-tag { background: var(--blue); color: white; }
+  .org-legend { display: flex; gap: 16px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+  .org-legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--gray-500); }
+  .org-legend-sw { width: 16px; height: 10px; border-radius: 3px; }
 
-  .org-section-label {
-    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
-    text-align: center; padding: 6px 16px; border-radius: 6px; margin-bottom: 12px;
+  /* ===== SECTION MARKER ===== */
+  .section-marker {
+    display: flex; gap: 40px; margin-top: 32px; justify-content: center;
   }
+  .marker-card {
+    padding: 20px 32px; border-radius: 14px; text-align: center;
+    cursor: default; min-width: 260px;
+  }
+  .marker-card .mc-label { font-size: 48px; font-weight: 800; opacity: 0.1; line-height: 1; }
+  .marker-card h3 { font-size: 18px; margin-top: 4px; }
+  .marker-card p { font-size: 13px; opacity: 0.5; margin-top: 4px; }
 
-  .org-legend {
-    display: flex; gap: 20px; justify-content: center; margin-top: 24px; flex-wrap: wrap;
-  }
-  .org-legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; }
-  .org-legend-swatch { width: 20px; height: 12px; border-radius: 3px; }
-
-  /* ===== THREE-LAYER STACK V2 ===== */
-  .stack-v2 {
-    display: flex; gap: 0; margin-top: 32px;
-    border-radius: 20px; overflow: visible;
-    box-shadow: 0 4px 40px rgba(61,53,48,0.08);
-    position: relative;
-  }
-  .stack-layer {
-    flex: 1; padding: 32px 28px; display: flex; flex-direction: column;
-    justify-content: space-between; min-height: 360px;
-  }
-  .stack-layer.l-imessage { background: var(--imessage-blue); color: white; border-radius: 20px 0 0 20px; }
-  .stack-layer.l-app { background: var(--red); color: white; }
-  .stack-layer.l-agent { background: var(--agent-green); color: white; border-radius: 0 20px 20px 0; }
-
-  .stack-layer .l-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; }
-  .stack-layer .l-title { font-size: 26px; font-weight: 800; line-height: 1.15; margin-top: 8px; }
-  .stack-layer .l-desc { font-size: 14px; opacity: 0.8; line-height: 1.4; margin-top: 8px; }
-  .stack-layer .l-features { list-style: none; padding: 0; margin-top: auto; }
-  .stack-layer .l-features li { font-size: 13px; padding: 3px 0; opacity: 0.85; }
-  .stack-layer .l-features li::before { content: '→ '; opacity: 0.5; }
+  /* ===== STACK ===== */
+  .stack { display: flex; gap: 2px; margin-top: 28px; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
+  .stack-layer { flex: 1; padding: 28px 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 320px; position: relative; }
+  .stack-layer.sl-blue { background: var(--blue); color: white; }
+  .stack-layer.sl-red { background: var(--red); color: white; }
+  .stack-layer.sl-green { background: var(--agent-green); color: white; }
+  .sl-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; }
+  .sl-title { font-size: 24px; font-weight: 800; margin-top: 4px; }
+  .sl-desc { font-size: 13px; opacity: 0.75; margin-top: 6px; line-height: 1.4; }
+  .sl-list { list-style: none; padding: 0; margin-top: auto; padding-top: 16px; }
+  .sl-list li { font-size: 12px; padding: 3px 0; opacity: 0.8; }
+  .sl-list li::before { content: '→ '; opacity: 0.4; }
 
   .stack-bridge {
-    position: absolute; z-index: 10;
-    background: white; border-radius: 8px; padding: 6px 14px;
-    font-size: 12px; font-weight: 800; color: var(--slate);
-    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
-    white-space: nowrap; letter-spacing: 0.5px;
-  }
-  .stack-bridge.bridge-linq { left: 31.5%; top: 50%; transform: translate(-50%, -50%); }
-  .stack-bridge.bridge-stripe { left: 65%; top: 50%; transform: translate(-50%, -50%); }
-
-  /* ===== SCOPE CARDS V2 ===== */
-  .scopes-v2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px; }
-  .scope-v2 {
-    background: var(--white); border-radius: 12px; padding: 18px 20px;
-    border-left: 4px solid var(--mist); transition: transform 0.2s;
-  }
-  .scope-v2:hover { transform: translateY(-2px); }
-  .scope-v2 .s-name { font-size: 15px; font-weight: 700; }
-  .scope-v2 .s-status { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-  .scope-v2 .s-meta { font-size: 12px; opacity: 0.5; margin-top: 4px; }
-  .scope-v2 .s-bar { height: 4px; border-radius: 2px; background: var(--mist); margin-top: 10px; overflow: hidden; }
-  .scope-v2 .s-bar-fill { height: 100%; border-radius: 2px; }
-
-  .scope-v2.s-testing { border-left-color: var(--gold); }
-  .scope-v2.s-testing .s-status { color: var(--gold); }
-  .scope-v2.s-testing .s-bar-fill { background: var(--gold); }
-
-  .scope-v2.s-progress { border-left-color: var(--imessage-blue); }
-  .scope-v2.s-progress .s-status { color: var(--imessage-blue); }
-  .scope-v2.s-progress .s-bar-fill { background: var(--imessage-blue); }
-
-  .scope-v2.s-specced { border-left-color: var(--agent-green); }
-  .scope-v2.s-specced .s-status { color: var(--agent-green); }
-
-  .scope-v2.s-needs-spec { border-left-color: var(--slate-light); }
-  .scope-v2.s-needs-spec .s-status { color: var(--slate-light); }
-
-  /* ===== GTM CARDS ===== */
-  .gtm-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 24px; }
-  .gtm-card {
-    background: var(--white); border-radius: 14px; padding: 28px;
-    border: 1px solid var(--mist);
-  }
-  .gtm-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
-  .gtm-card p { font-size: 14px; line-height: 1.5; opacity: 0.65; }
-  .gtm-card .gtm-stat {
-    font-family: 'Space Mono', monospace; font-size: 24px; font-weight: 700;
-    color: var(--red); margin-bottom: 4px;
+    position: absolute; right: -24px; top: 50%; transform: translateY(-50%); z-index: 10;
+    background: white; border-radius: 6px; padding: 4px 10px;
+    font-size: 10px; font-weight: 800; color: var(--slate-warm); letter-spacing: 0.5px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.12);
   }
 
-  /* ===== RTW CARDS ===== */
-  .rtw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
-  .rtw-card { padding: 28px; border-radius: 14px; }
-  .rtw-card.rtw-primary { background: var(--red); color: white; grid-column: 1 / -1; }
-  .rtw-card.rtw-secondary { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
-  .rtw-card h4 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .rtw-card p { font-size: 15px; line-height: 1.5; opacity: 0.85; }
+  /* ===== SCOPES ===== */
+  .scopes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+  .sc { background: var(--white); border-radius: 10px; padding: 16px 18px; border-left: 3px solid var(--gray-200); border: 1px solid var(--gray-200); border-left: 3px solid var(--gray-200); }
+  .sc .sc-name { font-size: 14px; font-weight: 700; }
+  .sc .sc-status { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
+  .sc .sc-meta { font-size: 11px; color: var(--gray-400); margin-top: 3px; }
+  .sc .sc-bar { height: 3px; border-radius: 2px; background: var(--gray-200); margin-top: 8px; overflow: hidden; }
+  .sc .sc-bar-fill { height: 100%; border-radius: 2px; }
+  .sc.sc-testing { border-left-color: var(--gold); }
+  .sc.sc-testing .sc-status { color: var(--gold); }
+  .sc.sc-testing .sc-bar-fill { background: var(--gold); }
+  .sc.sc-progress { border-left-color: var(--blue); }
+  .sc.sc-progress .sc-status { color: var(--blue); }
+  .sc.sc-progress .sc-bar-fill { background: var(--blue); }
+  .sc.sc-specced { border-left-color: var(--agent-green); }
+  .sc.sc-specced .sc-status { color: var(--agent-green); }
+  .sc.sc-needs { border-left-color: var(--gray-300); }
+  .sc.sc-needs .sc-status { color: var(--gray-400); }
 
-  /* ===== BIZ MODEL ===== */
-  .biz-hero {
-    background: var(--red); color: white; border-radius: 16px;
-    padding: 40px 48px; max-width: 600px; margin-top: 24px;
-  }
-  .biz-hero .big-num { font-family: 'Space Mono', monospace; font-size: 72px; font-weight: 700; line-height: 1; }
-  .biz-hero p { font-size: 18px; opacity: 0.9; margin-top: 8px; }
+  /* ===== GTM ===== */
+  .gtm { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  .gc { background: var(--white); border-radius: 12px; padding: 24px; border: 1px solid var(--gray-200); }
+  .gc h4 { font-size: 16px; font-weight: 700; }
+  .gc p { font-size: 13px; color: var(--gray-500); line-height: 1.5; margin-top: 4px; }
+  .gc .gc-num { font-family: 'Space Mono', monospace; font-size: 28px; font-weight: 700; color: var(--red); margin-bottom: 4px; }
+
+  /* ===== RIGHT TO WIN ===== */
+  .rtw { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .rc { padding: 24px; border-radius: 12px; }
+  .rc-primary { background: var(--red); color: white; grid-column: 1 / -1; }
+  .rc-secondary { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+  .rc h4 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .rc p { font-size: 14px; line-height: 1.5; opacity: 0.85; }
 
   /* ===== STATS ===== */
-  .stats-row { display: flex; gap: 40px; margin: 24px 0; flex-wrap: wrap; }
-  .stat .stat-num { font-family: 'Space Mono', monospace; font-size: 40px; font-weight: 700; color: var(--red); line-height: 1; }
-  .stat .stat-label { font-size: 13px; font-weight: 500; opacity: 0.5; margin-top: 4px; }
-  .slide-dark .stat .stat-num { color: var(--red-light); }
+  .stats { display: flex; gap: 36px; margin: 20px 0; flex-wrap: wrap; }
+  .st .st-n { font-family: 'Space Mono', monospace; font-size: 36px; font-weight: 700; color: var(--red); line-height: 1; }
+  .st .st-l { font-size: 12px; color: var(--gray-400); margin-top: 3px; }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
     .slide { padding: 40px 24px; }
-    h1 { font-size: 36px; }
-    h2 { font-size: 30px; }
+    h1 { font-size: 36px; } h2 { font-size: 28px; }
+    .title-slide h1 { font-size: 56px; }
     .split { grid-template-columns: 1fr; gap: 32px; }
-    .split-divider::before { display: none; }
-    .stack-v2 { flex-direction: column; }
-    .stack-layer { border-radius: 0 !important; }
-    .stack-layer:first-child { border-radius: 20px 20px 0 0 !important; }
-    .stack-layer:last-child { border-radius: 0 0 20px 20px !important; }
+    .stack { flex-direction: column; }
     .stack-bridge { display: none; }
-    .scopes-v2 { grid-template-columns: 1fr; }
-    .gtm-grid { grid-template-columns: 1fr; }
-    .rtw-grid { grid-template-columns: 1fr; }
+    .scopes, .gtm, .rtw { grid-template-columns: 1fr; }
     .nav { display: none; }
+    .org-branch { flex-direction: column; gap: 24px; }
+    .section-marker { flex-direction: column; gap: 16px; }
   }
 </style>
 </head>
 <body>
 
 <nav class="nav" id="nav"></nav>
-<div class="slide-counter" id="slideCounter"></div>
+<div class="counter" id="counter"></div>
 
-<!-- ================================================ -->
-<!-- SLIDE 1: TITLE -->
-<!-- ================================================ -->
-<section class="slide title-slide" id="slide-0">
-  <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" class="title-logo" alt="Tryps">
-  <h1 style="font-size: 96px; color: var(--red); letter-spacing: -3px;">tryps</h1>
+<!-- LOGO DATA URI -->
+<!-- Using inline SVG logo fallback since file:// paths don't work -->
+
+<!-- ========== SLIDE 1: TITLE ========== -->
+<section class="slide title-slide" id="s0">
+  <img src="data:image/png;base64,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IGbpQ6QxDAEhiGEKEXHMQkAIYpY+RBrDEBCCGKYQEccsBIQgZulDpDEMASGIYQoRccxCQAhilj5EGsMQEIIYphARxywEhCBm6UOkMQwBIYhhChFxzEJACGKWPkQawxAQghimEBHHLASEIGbpQ6QxDAEhiGEKEXHMQkAIYpY+RBrDEBCCGKYQEccsBIQgZulDpDEMASGIYQoRccxCQAhilj5EGsMQEIIYphARxywEhCBm6UOkMQwBIYhhChFxzEJACGKWPkQawxAQghimEBHHLASEIGbpQ6QxDAEhiGEKEXHMQkAIYpY+RBrDEBCCGKYQEccsBIQgZulDpDEMASGIYQoRccxCQAhilj5EGsMQEIIYphARxywEhCBm6UOkMQwBIYhhChFxzEJACGKWPkQawxAQghimEBHHLASEIGbpQ6QxDAEhiGEKEXHMQkAIYpY+RBrDEBCCGKYQEccsBIQgZulDpDEMASGIYQoRccxCQAhilj5EGsMQEIIYphARxywEhCBm6UOkMQwBIYhhChFxzEJACGKWPkQawxAQghimEBHHLASEIGbpQ6QxDAEhiGEKEXHMQkAIYpY+RBrDEBCCGKYQEccsBIQgZulDpDEMASGIYQoRccxCQAhilj5EGsMQEIIYphARxywEhCBm6UOkMQwBIYhhChFxzEJACGKWPkQawxAQghimEBHHLASEIGbpQ6QxDAEhiGEKEXHMQkAIYpY+RBrDEBCCGKYQEccsBIQgZulDpDEMASGIYQoRccxCQAhilj5EGsMQEIIYphARxywEhCBm6UOkMQyB/weN/hU2xEng7wAAAABJRU5ErkJggg==" class="title-logo" alt="Tryps">
+  <h1>tryps</h1>
   <p class="tagline">Your group's travel agent — in your iMessage</p>
   <p class="context">Martin Trust Center &middot; March 30, 2026</p>
 </section>
 
-<!-- ================================================ -->
-<!-- SLIDE 2: WHAT IS TRYPS — GROUP CHAT DEMO -->
-<!-- ================================================ -->
-<section class="slide slide-cream slide-grid" id="slide-1">
-  <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" class="slide-logo" alt="Tryps">
-  <div style="display: flex; gap: 60px; align-items: center; width: 100%;">
-
+<!-- ========== SLIDE 2: WHAT IS TRYPS — GROUP CHAT ========== -->
+<section class="slide" id="s1">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAyKADAAQAAAABAAAAyAAAAACbWz2VAAAdKUlEQVR4Ae1dB5hURbY+nSYyecgDKuoaHqYnxkVddU2rYsQ1yyJiXsWccE3PHFfXvEbM7KoYMWBEUFfXgIKKShoGZmDy9Ezn95/q6abTVKdB6+Kpj2a6b4V77n/qr3DqVF3bd4V1IZIgCAgCKRGwp7wqFwUBQUAhIASRiiAIaBAQgmjAkShBQAgidUAQ0CAgBNGAI1GCgBBE6oAgoEFACKIBR6IEASGI1AFBQIOAEEQDjkQJAkIQqQOCgAYBIYgGHIkSBIQgUgcEAQ0CQhANOBIlCAhBpA4IAhoEhCAacCRKEBCCSB0QBDQICEE04EiUICAEkTogCGgQEIJowJEoQUAIInVAENAgIATRgCNRgoAQROqAIKBBQAiiAUeiBAEhiNQBQUCDgBBEA45ECQJCEKkDgoAGASGIBhyJEgSEIFIHBAENAkIQDTgSJQgIQaQOCAIaBIQgGnAkShAQgkgdEAQ0CAhBNOBIlCAgBJE6IAhoEBCCaMCRKEFACCJ1QBDQICAE0YAjUYKAEETqgCCgQUAIogFHogQBIYjUAUFAg4AQRAOORAkCQhCpA4KABgEhiAYciRIEhCBSBwQBDQJCEA04EiUICEGkDggCGgSEIBpwJEoQEIJIHRAENAgIQTTgSJQgIASROiAIaBAQgmjAkShBQAgidUAQ0CAgBNGAI1GCgBBE6oAgoEFACKIBR6IEAa0D6J8DAelBEkIA" class="logo" alt="">
+  <div style="display: flex; gap: 48px; align-items: center; width: 100%;">
     <div style="flex: 1;">
       <div class="label">What is Tryps?</div>
-      <h2 style="font-size: 40px;">In one text, a group<br>books their entire trip.</h2>
-      <p style="font-size: 18px; opacity: 0.6; margin-top: 12px; max-width: 400px;">
-        Text the Tryps number in your group chat. The agent captures what your group wants, facilitates decisions through natural polling, and books on your behalf.
+      <h2 style="font-size: 36px;">In one text, your group<br>books their entire trip.</h2>
+      <p style="font-size: 16px; color: var(--gray-500); margin-top: 12px; max-width: 380px;">
+        Add the Tryps number to your group chat. It captures what your group wants, runs natural polls, and books on your behalf.
       </p>
-      <div style="margin-top: 32px; background: var(--slate); color: var(--cream-light); border-radius: 12px; padding: 20px 28px; display: inline-block;">
-        <p style="font-size: 14px; opacity: 0.6;">Try it live — text this number:</p>
-        <p style="font-family: 'Space Mono', monospace; font-size: 28px; font-weight: 700; color: var(--red); margin-top: 4px;">+1 917 745 3624</p>
+      <div style="margin-top: 28px; background: var(--slate); color: white; border-radius: 12px; padding: 16px 24px; display: inline-block;">
+        <p style="font-size: 12px; opacity: 0.5;">Try it live:</p>
+        <p style="font-family: 'Space Mono', monospace; font-size: 24px; font-weight: 700; color: var(--red); margin-top: 2px;">+1 917 745 3624</p>
       </div>
     </div>
-
-    <div style="flex: 0 0 420px;">
-      <div class="chat-container">
-        <div class="chat-header">
-          <div class="chat-title">Europe Trip 2026</div>
-          <div class="chat-members">Sarah, Mike, Lisa, Tryps</div>
+    <div style="flex: 0 0 380px;">
+      <div class="chat">
+        <div class="chat-hdr">
+          <div class="ch-title">Europe Trip 2026</div>
+          <div class="ch-sub">Sarah, Mike, Lisa, +1 917 745 3624</div>
         </div>
         <div class="chat-body">
-          <!-- Sarah initiates -->
-          <div class="msg left">
-            <div class="msg-avatar" style="background: #9B59B6;">S</div>
-            <div class="msg-content">
-              <div class="msg-name">Sarah</div>
-              <div class="msg-bubble">hey everyone! looking to go on a trip to Europe this summer</div>
+          <div class="m l"><div class="m-av" style="background:#9B59B6;">S</div><div class="m-c"><div class="m-n">Sarah</div><div class="m-b">hey everyone! looking to go on a trip to Europe this summer</div></div></div>
+
+          <!-- Tryps responds -->
+          <div class="m l tryps"><div class="m-av" style="background:var(--red);"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAyKADAAQAAAABAAAAyAAAAACbWz2VAAAdKUlEQVR4Ae1dB5hURbY+nSYyecgDKuoaHqYnxkVddU2rYsQ1yyJiXsWccE3PHFfXvEbM7KoYMWBEUFfXgIKKShoGZmDy9Ezn95/q6abTVKdB6+Kpj2a6b4V77n/qr3DqVF3bd4V1IZIgCAgCKRGwp7wqFwUBQUAhIASRiiAIaBAQgmjAkShBQAgidUAQ0CAgBNGAI1GCgBBE6oAgoEFACKIBR6IEASGI1AFBQIOAEEQDjkQJAkIQqQOCgAYBIYgGHIkSBIQgUgcEAQ0CQhANOBIlCAhBpA4IAhoEhCAacCRKEBCCSB0QBDQICEE04EiUICAEkTogCGgQEIJowJEoQUAIInVAENAgIATRgCNRgoAQROqAIKBBQAiiAUeiBAEhiNQBQUCDgBBEA45ECQJCEKkDgoAGASGIBhyJEgSEIFIHBAENAkIQDTgSJQgIQaQOCAIaBIQgGnAkShAQgkgdEAQ0CAhBNOBIlCAgBJE6IAhoEBCCaMCRKEFACCJ1QBDQICAE0YAjUYKAEETqgCCgQUAIogFHogQBIYjUAUFAg4AQRAOORAkCQhCpA4KABgEhiAYciRIEhCBSBwQBDQJCEA04EiUICEGkDggCGgSEIBpwJEoQEIJIHRAENAgIQTTgSJQgIASROiAIaBAQgmjAkShBQAgidUAQ0CAgBNGAI1GCgBBE6oAgoEFACKIBR6IEAa0D6J8DAelBEkIA" alt=""></div><div class="m-c"><div class="m-n" style="color:var(--red);">Tryps</div><div class="m-b">Love that. Where are you thinking?</div></div></div>
+
+          <!-- iOS-style poll: destination -->
+          <div style="padding: 4px 0 4px 32px;">
+            <div class="poll">
+              <div class="poll-pill empty" style="width: 55%;"><span class="pill-text">London</span><span class="pill-votes">1</span><div class="pill-circle"></div></div>
+              <div class="poll-pill voted" style="width: 85%;"><span class="pill-text">Greece</span><span class="pill-votes">3</span><div class="pill-circle"></div></div>
+              <div class="poll-pill empty" style="width: 45%;"><span class="pill-text">Paris</span><div class="pill-circle"></div></div>
+              <div class="poll-pill empty" style="width: 55%;"><span class="pill-text">Barcelona</span><div class="pill-circle"></div></div>
             </div>
           </div>
 
-          <!-- Tryps responds with poll -->
-          <div class="msg left tryps">
-            <div class="msg-avatar" style="background: var(--red); padding: 0;">
-              <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" alt="T">
-            </div>
-            <div class="msg-content">
-              <div class="msg-name" style="color: var(--red);">Tryps</div>
-              <div class="msg-bubble">
-                Love that. Where are you thinking?
-                <div class="poll-options">
-                  <span class="poll-btn selected">London</span>
-                  <span class="poll-btn selected" style="background: var(--red-dark);">Greece</span>
-                  <span class="poll-btn">Paris</span>
-                  <span class="poll-btn">Barcelona</span>
-                </div>
-              </div>
+          <div class="m l"><div class="m-av" style="background:#3498DB;">M</div><div class="m-c"><div class="m-n">Mike</div><div class="m-b">Greece 100%</div></div></div>
+          <div class="m r"><div class="m-c"><div class="m-b">Greece too!</div></div></div>
+          <div class="m l"><div class="m-av" style="background:#E67E22;">L</div><div class="m-c"><div class="m-n">Lisa</div><div class="m-b">Greece works</div></div></div>
+
+          <!-- Tryps: dates -->
+          <div class="m l tryps"><div class="m-av" style="background:var(--red);font-size:9px;font-weight:800;color:white;">T</div><div class="m-c"><div class="m-n" style="color:var(--red);">Tryps</div><div class="m-b">Greece it is. When works?</div></div></div>
+
+          <!-- iOS-style poll: dates -->
+          <div style="padding: 4px 0 4px 32px;">
+            <div class="poll">
+              <div class="poll-pill empty" style="width: 45%;"><span class="pill-text">July</span><span class="pill-votes">1</span><div class="pill-circle"></div></div>
+              <div class="poll-pill voted" style="width: 80%;"><span class="pill-text">August</span><span class="pill-votes">3</span><div class="pill-circle"></div></div>
+              <div class="poll-pill empty" style="width: 50%;"><span class="pill-text">September</span><div class="pill-circle"></div></div>
             </div>
           </div>
 
-          <!-- Friends vote -->
-          <div class="msg left">
-            <div class="msg-avatar" style="background: #3498DB;">M</div>
-            <div class="msg-content">
-              <div class="msg-name">Mike</div>
-              <div class="msg-bubble">Greece 100%</div>
-            </div>
-          </div>
+          <div class="m l"><div class="m-av" style="background:#3498DB;">M</div><div class="m-c"><div class="m-b">August</div></div></div>
+          <div class="m r"><div class="m-c"><div class="m-b">Aug!</div></div></div>
+          <div class="m l"><div class="m-av" style="background:#E67E22;">L</div><div class="m-c"><div class="m-b">aug works</div></div></div>
 
-          <div class="msg right">
-            <div class="msg-content">
-              <div class="msg-bubble">I'm down for Greece too!</div>
-            </div>
-          </div>
-
-          <div class="msg left">
-            <div class="msg-avatar" style="background: #E67E22;">L</div>
-            <div class="msg-content">
-              <div class="msg-name">Lisa</div>
-              <div class="msg-bubble">Greece works for me</div>
-            </div>
-          </div>
-
-          <!-- Tryps tallies and asks dates -->
-          <div class="msg left tryps">
-            <div class="msg-avatar" style="background: var(--red); padding: 0;">
-              <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" alt="T">
-            </div>
-            <div class="msg-content">
-              <div class="msg-name" style="color: var(--red);">Tryps</div>
-              <div class="msg-bubble">
-                Greece it is. When in the summer works for everyone?
-                <div class="poll-options">
-                  <span class="poll-btn">July</span>
-                  <span class="poll-btn selected" style="background: var(--red-dark);">August</span>
-                  <span class="poll-btn">September</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Quick votes -->
-          <div class="msg left">
-            <div class="msg-avatar" style="background: #3498DB;">M</div>
-            <div class="msg-content"><div class="msg-bubble">August</div></div>
-          </div>
-          <div class="msg right">
-            <div class="msg-content"><div class="msg-bubble">Aug!</div></div>
-          </div>
-          <div class="msg left">
-            <div class="msg-avatar" style="background: #E67E22;">L</div>
-            <div class="msg-content"><div class="msg-bubble">aug works</div></div>
-          </div>
-
-          <!-- Tryps confirms and takes action -->
-          <div class="msg left tryps">
-            <div class="msg-avatar" style="background: var(--red); padding: 0;">
-              <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" alt="T">
-            </div>
-            <div class="msg-content">
-              <div class="msg-name" style="color: var(--red);">Tryps</div>
-              <div class="msg-bubble">August in Greece — great call. I'll start pulling flights and stays for the group. Give me a minute.</div>
-            </div>
-          </div>
+          <div class="m l tryps"><div class="m-av" style="background:var(--red);font-size:9px;font-weight:800;color:white;">T</div><div class="m-c"><div class="m-n" style="color:var(--red);">Tryps</div><div class="m-b">August in Greece. I'll pull flights and stays for everyone. Give me a minute.</div></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================================================ -->
-<!-- SLIDE 3: PROBLEM / SOLUTION -->
-<!-- ================================================ -->
-<section class="slide slide-grid" id="slide-2">
-  <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" class="slide-logo" alt="Tryps">
-  <div class="split max-w-wide">
-    <!-- PROBLEM -->
+<!-- ========== SLIDE 3: PROBLEM / SOLUTION ========== -->
+<section class="slide slide-alt" id="s2">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAyKADAAQAAAABAAAAyAAAAACbWz2VAAAdKUlEQVR4Ae1dB5hURbY+nSYyecgDKuoaHqYnxkVddU2rYsQ1yyJiXsWccE3PHFfXvEbM7KoYMWBEUFfXgIKKShoGZmDy9Ezn95/q6abTVKdB6+Kpj2a6b4V77n/qr3DqVF3bd4V1IZIgCAgCKRGwp7wqFwUBQUAhIASRiiAIaBAQgmjAkShBQAgidUAQ0CAgBNGAI1GCgBBE6oAgoEFACKIBR6IEASGI1AFBQIOAEEQDjkQJAkIQqQOCgAYBIYgGHIkSBIQgUgcEAQ0CQhANOBIlCAhBpA4IAhoEhCAacCRKEBCCSB0QBDQICEE04EiUICAEkTogCGgQEIJowJEoQUAIInVAENAgIATRgCNRgoAQROqAIKBBQAiiAUeiBAEhiNQBQUCDgBBEA45ECQJCEKkDgoAGASGIBhyJEgSEIFIHBAENAkIQDTgSJQgIQaQOCAIaBIQgGnAkShAQgkgdEAQ0CAhBNOBIlCAgBJE6IAhoEBCCaMCRKEFACCJ1QBDQICAE0YAjUYKAEETqgCCgQUAIogFHogQBIYjUAUFAg4AQRAOORAkCQhCpA4KABgEhiAYciRIEhCBSBwQBDQJCEA04EiUICEGkDggCGgSEIBpwJEoQEIJIHRAENAgIQTTgSJQgIASROiAIaBAQgmjAkShBQAgidUAQ0CAgBNGAI1GCgBBE6oAgoEFACKIBR6IEAa0D6J8DAelBEkIA" class="logo" alt="">
+  <div class="split" style="max-width: 1100px;">
     <div>
-      <div class="label" style="color: var(--red);">The Problem</div>
-      <h2 style="font-size: 36px;">Travel coordination<br>happens in iMessage.<br><span class="accent">Nothing acts on it.</span></h2>
-      <ul style="list-style: none; padding: 0; margin-top: 20px;">
-        <li style="font-size: 17px; padding: 8px 0; opacity: 0.7; border-bottom: 1px solid var(--mist);">Plans get buried in 200+ messages</li>
-        <li style="font-size: 17px; padding: 8px 0; opacity: 0.7; border-bottom: 1px solid var(--mist);">One person becomes the unpaid travel agent</li>
-        <li style="font-size: 17px; padding: 8px 0; opacity: 0.7;">6+ apps, zero integration — trips die in the group chat</li>
-      </ul>
+      <div class="label">The Problem</div>
+      <h2 style="font-size: 32px;">Trip planning happens in iMessage. <span class="accent">Nothing acts on it.</span></h2>
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px;">
+        <div style="padding: 14px 18px; border-radius: 10px; background: white; border: 1px solid var(--gray-200);">
+          <div style="font-size: 15px; font-weight: 600;">Plans get buried in 200+ messages</div>
+          <div style="font-size: 13px; color: var(--gray-500); margin-top: 2px;">Dates, prices, preferences — scattered and lost</div>
+        </div>
+        <div style="padding: 14px 18px; border-radius: 10px; background: white; border: 1px solid var(--gray-200);">
+          <div style="font-size: 15px; font-weight: 600;">One person becomes the unpaid travel agent</div>
+          <div style="font-size: 13px; color: var(--gray-500); margin-top: 2px;">6+ apps, zero integration, all on one person</div>
+        </div>
+        <div style="padding: 14px 18px; border-radius: 10px; background: white; border: 1px solid var(--gray-200);">
+          <div style="font-size: 15px; font-weight: 600;">Trips die in the group chat</div>
+          <div style="font-size: 13px; color: var(--gray-500); margin-top: 2px;">"We should totally go" never becomes "we're going"</div>
+        </div>
+      </div>
     </div>
-
-    <!-- SOLUTION -->
-    <div class="split-divider">
+    <div style="border-left: 1px solid var(--gray-200); padding-left: 48px;">
       <div class="label" style="color: var(--agent-green);">The Solution</div>
-      <h2 style="font-size: 36px;">An agent in your<br>iMessage that <span style="color: var(--agent-green);">does it all.</span></h2>
-      <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+      <h2 style="font-size: 32px;">An agent in your iMessage that <span style="color: var(--agent-green);">does it all.</span></h2>
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 16px;">
         <div style="display: flex; gap: 12px; align-items: center;">
-          <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(52,120,246,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: var(--imessage-blue); font-size: 14px;">1</div>
-          <div>
-            <div style="font-size: 16px; font-weight: 700;">Captures</div>
-            <div style="font-size: 14px; opacity: 0.6;">Reads intent, dates, preferences from natural conversation</div>
-          </div>
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(52,120,246,0.08); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--blue); font-size: 13px; flex-shrink: 0;">1</div>
+          <div><div style="font-size: 15px; font-weight: 700;">Captures</div><div style="font-size: 13px; color: var(--gray-500);">Reads intent from natural conversation</div></div>
         </div>
         <div style="display: flex; gap: 12px; align-items: center;">
-          <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(217,7,28,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: var(--red); font-size: 14px;">2</div>
-          <div>
-            <div style="font-size: 16px; font-weight: 700;">Facilitates</div>
-            <div style="font-size: 14px; opacity: 0.6;">Natural polling to steer group toward decisions</div>
-          </div>
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(217,7,28,0.06); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--red); font-size: 13px; flex-shrink: 0;">2</div>
+          <div><div style="font-size: 15px; font-weight: 700;">Facilitates</div><div style="font-size: 13px; color: var(--gray-500);">Runs polls, steers group toward decisions</div></div>
         </div>
         <div style="display: flex; gap: 12px; align-items: center;">
-          <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(45,139,94,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: var(--agent-green); font-size: 14px;">3</div>
-          <div>
-            <div style="font-size: 16px; font-weight: 700;">Books</div>
-            <div style="font-size: 14px; opacity: 0.6;">Flights, stays, activities — booked on the group's behalf</div>
-          </div>
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(45,139,94,0.06); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--agent-green); font-size: 13px; flex-shrink: 0;">3</div>
+          <div><div style="font-size: 15px; font-weight: 700;">Books</div><div style="font-size: 13px; color: var(--gray-500);">Flights, stays, activities — on the group's behalf</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================================================ -->
-<!-- SLIDE 4: BUSINESS MODEL + RIGHT TO DOLLARS -->
-<!-- ================================================ -->
-<section class="slide slide-dark slide-grid" id="slide-3">
-  <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" class="slide-logo" alt="Tryps">
-  <div class="label" style="color: var(--red-light);">Business Model</div>
-  <h2>We facilitate the trip.<br>We earn a cut of every booking.</h2>
-
-  <div style="display: flex; gap: 48px; margin-top: 32px; align-items: flex-start; flex-wrap: wrap;">
-    <div class="biz-hero" style="flex: 0 0 auto;">
-      <div class="big-num">1%</div>
-      <p>booking fee on flights and stays</p>
+<!-- ========== SLIDE 4: BUSINESS MODEL + RIGHT TO DOLLARS ========== -->
+<section class="slide slide-dark" id="s3">
+  <div class="label">Business Model</div>
+  <h2>We facilitate the trip. We earn a cut of every booking.</h2>
+  <div style="display: flex; gap: 40px; margin-top: 24px; align-items: flex-start; flex-wrap: wrap;">
+    <div style="background: var(--red); color: white; border-radius: 14px; padding: 36px 44px;">
+      <div style="font-family: 'Space Mono', monospace; font-size: 64px; font-weight: 700; line-height: 1;">1%</div>
+      <p style="font-size: 16px; opacity: 0.85; margin-top: 6px;">booking fee on flights & stays</p>
     </div>
-    <div style="flex: 1; min-width: 300px;">
-      <h3 style="font-size: 22px; margin-bottom: 16px; color: var(--red-light);">Our right to those dollars</h3>
-      <div style="display: flex; flex-direction: column; gap: 14px;">
-        <div style="padding: 16px 20px; background: rgba(255,255,255,0.04); border-radius: 10px; border-left: 3px solid var(--red);">
-          <div style="font-size: 15px; font-weight: 700;">We do the work nobody wants to do</div>
-          <div style="font-size: 13px; opacity: 0.6; margin-top: 2px;">Coordinating 6+ people across preferences, dates, and budgets</div>
+    <div style="flex: 1; min-width: 280px;">
+      <h3 style="color: var(--gold); font-size: 18px; margin-bottom: 14px;">Our right to those dollars</h3>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="padding: 14px 18px; background: rgba(255,255,255,0.04); border-radius: 10px; border-left: 3px solid var(--red);">
+          <div style="font-size: 14px; font-weight: 700;">We do the work nobody wants to do</div>
+          <div style="font-size: 12px; opacity: 0.5; margin-top: 2px;">Coordinating 6+ people across preferences, dates, and budgets</div>
         </div>
-        <div style="padding: 16px 20px; background: rgba(255,255,255,0.04); border-radius: 10px; border-left: 3px solid var(--imessage-blue);">
-          <div style="font-size: 15px; font-weight: 700;">We live where the decision happens</div>
-          <div style="font-size: 13px; opacity: 0.6; margin-top: 2px;">iMessage — no app download required to participate</div>
+        <div style="padding: 14px 18px; background: rgba(255,255,255,0.04); border-radius: 10px; border-left: 3px solid var(--blue);">
+          <div style="font-size: 14px; font-weight: 700;">We live where the decision happens</div>
+          <div style="font-size: 12px; opacity: 0.5; margin-top: 2px;">iMessage — no app download required to participate</div>
         </div>
-        <div style="padding: 16px 20px; background: rgba(255,255,255,0.04); border-radius: 10px; border-left: 3px solid var(--agent-green);">
-          <div style="font-size: 15px; font-weight: 700;">We close the loop: intent → booking</div>
-          <div style="font-size: 13px; opacity: 0.6; margin-top: 2px;">No one else goes from group chat to booked trip in one flow</div>
+        <div style="padding: 14px 18px; background: rgba(255,255,255,0.04); border-radius: 10px; border-left: 3px solid var(--agent-green);">
+          <div style="font-size: 14px; font-weight: 700;">We close the loop: intent to booking</div>
+          <div style="font-size: 12px; opacity: 0.5; margin-top: 2px;">From group chat to booked trip in one flow</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================================================ -->
-<!-- SLIDE 5: THE TEAM -->
-<!-- ================================================ -->
-<section class="slide slide-cream slide-grid" id="slide-4">
-  <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" class="slide-logo" alt="Tryps">
+<!-- ========== SLIDE 5: THE TEAM + SECTION MARKERS ========== -->
+<section class="slide" id="s4">
   <div class="label">Current State</div>
   <h2>The Team</h2>
-
-  <div class="org-v2">
-    <!-- TOP: Jake + Marty -->
-    <div class="org-level">
-      <div class="org-node org-ft">
-        <div class="n-name">Jake Stein</div>
-        <div class="n-role">Founder & CEO</div>
+  <div class="org">
+    <div class="org-row">
+      <div class="org-card oc-employee"><div class="oc-name">Jake Stein</div><div class="oc-role">Founder & CEO</div></div>
+    </div>
+    <div class="org-line"><div></div></div>
+    <div class="org-row" style="gap: 8px;">
+      <div class="org-card oc-ai"><div class="oc-name">Marty</div><div class="oc-role">AI Agent (24/7)</div></div>
+      <div class="org-card oc-partner"><div class="oc-name">Linq</div><div class="oc-role">iMessage Polling</div></div>
+      <div class="org-card oc-partner"><div class="oc-name">Defaria LLC</div><div class="oc-role">Brand & Influencer</div></div>
+    </div>
+    <div class="org-line"><div></div></div>
+    <div class="org-branch">
+      <div class="org-col">
+        <div class="org-col-label" style="background: rgba(217,7,28,0.06); color: var(--red);">Product & Engineering</div>
+        <div class="org-row"><div class="org-card oc-employee"><div class="oc-name">Asif Raza</div><div class="oc-role">Head of Engineering</div></div></div>
+        <div class="org-line"><div></div></div>
+        <div class="org-row">
+          <div class="org-card oc-employee"><div class="oc-name">Nadeem</div><div class="oc-role">Developer</div></div>
+          <div class="org-card oc-employee"><div class="oc-name">Rizwan</div><div class="oc-role">Agent Layer</div></div>
+        </div>
+        <div class="org-line"><div style="border-left: 1.5px dashed var(--gray-300); background: none; width: 0;"></div></div>
+        <div class="org-row">
+          <div class="org-card oc-adhoc" style="padding: 6px 10px;"><div class="oc-name" style="font-size: 11px;">Arsalan</div><div class="oc-role">Design</div></div>
+          <div class="org-card oc-adhoc" style="padding: 6px 10px;"><div class="oc-name" style="font-size: 11px;">Krishna</div><div class="oc-role">Design</div></div>
+          <div class="org-card oc-adhoc" style="padding: 6px 10px;"><div class="oc-name" style="font-size: 11px;">Andreas</div><div class="oc-role">QA</div></div>
+          <div class="org-card oc-adhoc" style="padding: 6px 10px;"><div class="oc-name" style="font-size: 11px;">Warda</div><div class="oc-role">QA</div></div>
+        </div>
       </div>
-      <div class="org-node org-ai">
-        <span class="n-tag">AI</span>
-        <div class="n-name">Marty</div>
-        <div class="n-role">OpenClaw Agent</div>
+      <div style="width: 1px; background: var(--gray-200);"></div>
+      <div class="org-col">
+        <div class="org-col-label" style="background: rgba(43,95,131,0.06); color: var(--blue);">Distribution & GTM</div>
+        <div class="org-row"><div class="org-card oc-hiring"><div class="oc-name">GTM Engineer</div><div class="oc-role">Hiring</div></div></div>
       </div>
     </div>
-
-    <div class="org-connector"><div class="org-connector-line"></div></div>
-
-    <!-- BRANCHES -->
-    <div style="display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;">
-
-      <!-- PRODUCT -->
-      <div style="flex: 1; max-width: 460px;">
-        <div class="org-section-label" style="background: rgba(217,7,28,0.08); color: var(--red);">Product & Engineering</div>
-        <div class="org-level">
-          <div class="org-node org-ft">
-            <span class="n-tag">FT</span>
-            <div class="n-name">Asif Raza</div>
-            <div class="n-role">Head of Engineering</div>
-          </div>
-        </div>
-        <div class="org-connector"><div class="org-connector-line"></div></div>
-        <div class="org-level">
-          <div class="org-node org-ft">
-            <span class="n-tag">FT</span>
-            <div class="n-name">Nadeem</div>
-            <div class="n-role">Developer</div>
-          </div>
-          <div class="org-node org-ft">
-            <span class="n-tag">FT</span>
-            <div class="n-name">Rizwan</div>
-            <div class="n-role">Agent Layer</div>
-          </div>
-        </div>
-        <div class="org-connector"><div class="org-connector-line" style="border-left: 1.5px dashed rgba(61,53,48,0.2); background: none; width: 0;"></div></div>
-        <div class="org-level">
-          <div class="org-node org-pt" style="min-width: 90px; padding: 8px 12px;">
-            <span class="n-tag">PT</span>
-            <div class="n-name" style="font-size: 12px;">Arsalan</div>
-            <div class="n-role">Design</div>
-          </div>
-          <div class="org-node org-pt" style="min-width: 90px; padding: 8px 12px;">
-            <span class="n-tag">PT</span>
-            <div class="n-name" style="font-size: 12px;">Krishna</div>
-            <div class="n-role">Design</div>
-          </div>
-          <div class="org-node org-pt" style="min-width: 90px; padding: 8px 12px;">
-            <div class="n-name" style="font-size: 12px;">Andreas</div>
-            <div class="n-role">QA</div>
-          </div>
-          <div class="org-node org-pt" style="min-width: 90px; padding: 8px 12px;">
-            <div class="n-name" style="font-size: 12px;">Warda</div>
-            <div class="n-role">QA</div>
-          </div>
-        </div>
-        <div style="text-align: center; margin-top: 12px;">
-          <div class="org-node org-partner" style="display: inline-block; min-width: 0; padding: 8px 14px;">
-            <span class="n-tag">Partner</span>
-            <div class="n-name" style="font-size: 13px;">Linq</div>
-            <div class="n-role">iMessage Polling</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DIVIDER -->
-      <div style="width: 1px; background: var(--mist); min-height: 200px;"></div>
-
-      <!-- GTM -->
-      <div style="flex: 1; max-width: 340px;">
-        <div class="org-section-label" style="background: rgba(43,95,131,0.08); color: var(--blue);">Distribution & GTM</div>
-        <div class="org-level">
-          <div class="org-node org-hiring">
-            <span class="n-tag">Hiring</span>
-            <div class="n-name">GTM Engineer</div>
-            <div class="n-role">Tools & Automation</div>
-          </div>
-        </div>
-        <div class="org-connector"><div class="org-connector-line"></div></div>
-        <div class="org-level">
-          <div class="org-node org-partner">
-            <span class="n-tag">Partner</span>
-            <div class="n-name">Defaria LLC</div>
-            <div class="n-role">Brand & Influencer</div>
-          </div>
-        </div>
-        <div class="org-connector"><div class="org-connector-line" style="border-left: 1.5px dashed rgba(61,53,48,0.2); background: none; width: 0;"></div></div>
-        <div class="org-level">
-          <div class="org-node org-pt" style="min-width: 90px; padding: 8px 12px;">
-            <div class="n-name" style="font-size: 12px;">Jackson</div>
-            <div class="n-role">Strategy</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LEGEND -->
     <div class="org-legend">
-      <div class="org-legend-item"><div class="org-legend-swatch" style="background: var(--slate);"></div> Full-time</div>
-      <div class="org-legend-item"><div class="org-legend-swatch" style="border: 1.5px dashed var(--slate-light);"></div> Part-time</div>
-      <div class="org-legend-item"><div class="org-legend-swatch" style="border: 1.5px solid var(--red);"></div> Partner</div>
-      <div class="org-legend-item"><div class="org-legend-swatch" style="background: var(--agent-green);"></div> AI Agent</div>
-      <div class="org-legend-item"><div class="org-legend-swatch" style="border: 1.5px dashed var(--blue);"></div> Hiring</div>
+      <div class="org-legend-item"><div class="org-legend-sw" style="background: var(--slate);"></div> Employee</div>
+      <div class="org-legend-item"><div class="org-legend-sw" style="border: 1.5px dashed var(--gray-300);"></div> Ad Hoc</div>
+      <div class="org-legend-item"><div class="org-legend-sw" style="border: 1.5px solid var(--red);"></div> Partner</div>
+      <div class="org-legend-item"><div class="org-legend-sw" style="background: var(--agent-green);"></div> AI</div>
+      <div class="org-legend-item"><div class="org-legend-sw" style="border: 1.5px dashed var(--blue);"></div> Hiring</div>
+    </div>
+  </div>
+
+  <!-- Section markers -->
+  <div class="section-marker">
+    <div class="marker-card" style="background: rgba(217,7,28,0.04); border: 1px solid rgba(217,7,28,0.1); border-radius: 14px;">
+      <div class="mc-label" style="color: var(--red);">A</div>
+      <h3>Product Deep Dive</h3>
+      <p>Architecture, scopes, progress</p>
+    </div>
+    <div class="marker-card" style="background: rgba(43,95,131,0.04); border: 1px solid rgba(43,95,131,0.1); border-radius: 14px;">
+      <div class="mc-label" style="color: var(--blue);">B</div>
+      <h3>Brand & Go-to-Market</h3>
+      <p>Distribution, launch, growth</p>
     </div>
   </div>
 </section>
 
-<!-- ================================================ -->
-<!-- SLIDE 6: THREE-LAYER ARCHITECTURE -->
-<!-- ================================================ -->
-<section class="slide slide-grid" id="slide-5">
-  <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" class="slide-logo" alt="Tryps">
-  <div class="label">Product Deep Dive</div>
+<!-- ========== SLIDE 6: A — PRODUCT: ARCHITECTURE ========== -->
+<section class="slide slide-alt" id="s5">
+  <div class="label">A &middot; Product Deep Dive</div>
   <h2>Three-Layer Architecture</h2>
-  <p style="font-size: 16px; opacity: 0.5;">Each layer reinforces the others. Nobody else integrates all three.</p>
-
-  <div class="stack-v2 max-w-wide">
-    <div class="stack-layer l-imessage">
-      <div>
-        <div class="l-label">Layer 1</div>
-        <div class="l-title">iMessage</div>
-        <div class="l-desc">Where conversations happen. Zero behavior change.</div>
-      </div>
-      <ul class="l-features">
-        <li>Natural language trip creation</li>
-        <li>Group polling via Linq</li>
-        <li>Expense logging by text</li>
-        <li>Daily facilitation check-ins</li>
-      </ul>
+  <p style="font-size: 14px; color: var(--gray-500);">Each layer reinforces the others. We're building the only product that integrates all three.</p>
+  <div class="stack" style="max-width: 1100px;">
+    <div class="stack-layer sl-blue">
+      <div><div class="sl-label">Layer 1</div><div class="sl-title">iMessage</div><div class="sl-desc">Where conversations happen. Zero behavior change.</div></div>
+      <ul class="sl-list"><li>Natural language trip creation</li><li>Group polling via Linq</li><li>Expense logging by text</li><li>Daily facilitation check-ins</li></ul>
+      <div class="stack-bridge">LINQ</div>
     </div>
-
-    <div class="stack-bridge bridge-linq">LINQ</div>
-
-    <div class="stack-layer l-app">
-      <div>
-        <div class="l-label">Layer 2</div>
-        <div class="l-title">Mobile App</div>
-        <div class="l-desc">Where plans take shape. Visual and interactive.</div>
-      </div>
-      <ul class="l-features">
-        <li>Trip itinerary + drag-and-drop</li>
-        <li>Expense tracking & splitting</li>
-        <li>Travel DNA & preferences</li>
-        <li>Trip completeness checklist</li>
-      </ul>
+    <div class="stack-layer sl-red">
+      <div><div class="sl-label">Layer 2</div><div class="sl-title">Mobile App</div><div class="sl-desc">Where plans take shape. Visual, interactive.</div></div>
+      <ul class="sl-list"><li>Trip itinerary + drag-and-drop</li><li>Expense tracking & splitting</li><li>Travel DNA & preferences</li><li>Trip completeness checklist</li></ul>
+      <div class="stack-bridge">STRIPE</div>
     </div>
-
-    <div class="stack-bridge bridge-stripe">STRIPE</div>
-
-    <div class="stack-layer l-agent">
-      <div>
-        <div class="l-label">Layer 3</div>
-        <div class="l-title">Agentic Layer</div>
-        <div class="l-desc">Where execution happens. AI acts on behalf.</div>
-      </div>
-      <ul class="l-features">
-        <li>Flight & stay search + booking</li>
-        <li>Vote-on-behalf from preferences</li>
-        <li>Memory that learns over time</li>
-        <li>Personalized recommendations</li>
-      </ul>
+    <div class="stack-layer sl-green">
+      <div><div class="sl-label">Layer 3</div><div class="sl-title">Agentic Layer</div><div class="sl-desc">Where execution happens. AI acts on behalf.</div></div>
+      <ul class="sl-list"><li>Flight & stay search + booking</li><li>Vote-on-behalf from preferences</li><li>Memory that learns over time</li><li>Personalized recommendations</li></ul>
     </div>
   </div>
 </section>
 
-<!-- ================================================ -->
-<!-- SLIDE 7: WHAT WE'RE BUILDING -->
-<!-- ================================================ -->
-<section class="slide slide-cream slide-grid" id="slide-6">
-  <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" class="slide-logo" alt="Tryps">
-  <div class="label">Product Deep Dive</div>
+<!-- ========== SLIDE 7: A — PRODUCT: SCOPES ========== -->
+<section class="slide" id="s6">
+  <div class="label">A &middot; Product Deep Dive</div>
   <h2>What the Team is Building</h2>
-
-  <div class="stats-row">
-    <div class="stat">
-      <div class="stat-num">9</div>
-      <div class="stat-label">Active scopes</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">5</div>
-      <div class="stat-label">In progress</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">1</div>
-      <div class="stat-label">In testing</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">~65%</div>
-      <div class="stat-label">App built</div>
-    </div>
+  <div class="stats">
+    <div class="st"><div class="st-n">9</div><div class="st-l">Active scopes</div></div>
+    <div class="st"><div class="st-n">5</div><div class="st-l">In progress</div></div>
+    <div class="st"><div class="st-n">1</div><div class="st-l">In testing</div></div>
+    <div class="st"><div class="st-n">~65%</div><div class="st-l">App built</div></div>
   </div>
-
-  <div class="scopes-v2 max-w-wide">
-    <div class="scope-v2 s-testing">
-      <div class="s-name">Core Trip Experience</div>
-      <div class="s-status">Testing</div>
-      <div class="s-meta">Nadeem &middot; 15/16 criteria</div>
-      <div class="s-bar"><div class="s-bar-fill" style="width: 94%;"></div></div>
-    </div>
-    <div class="scope-v2 s-progress">
-      <div class="s-name">iMessage Agent</div>
-      <div class="s-status">In Progress</div>
-      <div class="s-meta">Asif &middot; 34/57 criteria</div>
-      <div class="s-bar"><div class="s-bar-fill" style="width: 60%;"></div></div>
-    </div>
-    <div class="scope-v2 s-progress">
-      <div class="s-name">Agent Intelligence</div>
-      <div class="s-status">In Progress</div>
-      <div class="s-meta">Rizwan &middot; 55/61 criteria</div>
-      <div class="s-bar"><div class="s-bar-fill" style="width: 90%;"></div></div>
-    </div>
-    <div class="scope-v2 s-progress">
-      <div class="s-name">Travel Booking & Payments</div>
-      <div class="s-status">In Progress</div>
-      <div class="s-meta">Asif + Rizwan</div>
-      <div class="s-bar"><div class="s-bar-fill" style="width: 15%;"></div></div>
-    </div>
-    <div class="scope-v2 s-progress">
-      <div class="s-name">Beta & User Feedback</div>
-      <div class="s-status">In Progress</div>
-      <div class="s-meta">Jake</div>
-    </div>
-    <div class="scope-v2 s-specced">
-      <div class="s-name">Group Decision-Making</div>
-      <div class="s-status">Specced</div>
-      <div class="s-meta">14 criteria ready</div>
-    </div>
-    <div class="scope-v2 s-specced">
-      <div class="s-name">Post-Trip & Retention</div>
-      <div class="s-status">Specced</div>
-      <div class="s-meta">39 criteria ready</div>
-    </div>
-    <div class="scope-v2 s-needs-spec">
-      <div class="s-name">Travel Identity</div>
-      <div class="s-status">Needs Spec</div>
-    </div>
-    <div class="scope-v2 s-needs-spec">
-      <div class="s-name">Onboarding & Teaching</div>
-      <div class="s-status">Needs Spec</div>
-    </div>
+  <div class="scopes" style="max-width: 1100px;">
+    <div class="sc sc-testing"><div class="sc-name">Core Trip Experience</div><div class="sc-status">Testing</div><div class="sc-meta">Nadeem &middot; 15/16</div><div class="sc-bar"><div class="sc-bar-fill" style="width:94%;"></div></div></div>
+    <div class="sc sc-progress"><div class="sc-name">iMessage Agent</div><div class="sc-status">In Progress</div><div class="sc-meta">Asif &middot; 34/57</div><div class="sc-bar"><div class="sc-bar-fill" style="width:60%;"></div></div></div>
+    <div class="sc sc-progress"><div class="sc-name">Agent Intelligence</div><div class="sc-status">In Progress</div><div class="sc-meta">Rizwan &middot; 55/61</div><div class="sc-bar"><div class="sc-bar-fill" style="width:90%;"></div></div></div>
+    <div class="sc sc-progress"><div class="sc-name">Travel Booking & Payments</div><div class="sc-status">In Progress</div><div class="sc-meta">Asif + Rizwan</div><div class="sc-bar"><div class="sc-bar-fill" style="width:15%;"></div></div></div>
+    <div class="sc sc-progress"><div class="sc-name">Beta & User Feedback</div><div class="sc-status">In Progress</div><div class="sc-meta">Jake</div></div>
+    <div class="sc sc-specced"><div class="sc-name">Group Decision-Making</div><div class="sc-status">Specced</div><div class="sc-meta">14 criteria ready</div></div>
+    <div class="sc sc-specced"><div class="sc-name">Post-Trip & Retention</div><div class="sc-status">Specced</div><div class="sc-meta">39 criteria ready</div></div>
+    <div class="sc sc-needs"><div class="sc-name">Travel Identity</div><div class="sc-status">Needs Spec</div></div>
+    <div class="sc sc-needs"><div class="sc-name">Onboarding & Teaching</div><div class="sc-status">Needs Spec</div></div>
   </div>
 </section>
 
-<!-- ================================================ -->
-<!-- SLIDE 8: BRAND & GTM -->
-<!-- ================================================ -->
-<section class="slide slide-grid" id="slide-7">
-  <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" class="slide-logo" alt="Tryps">
-  <div class="label">Brand & Go-to-Market</div>
+<!-- ========== SLIDE 8: B — BRAND & GTM ========== -->
+<section class="slide slide-alt" id="s7">
+  <div class="label" style="color: var(--blue);">B &middot; Brand & Go-to-Market</div>
   <h2>Distribution Strategy</h2>
-  <p style="font-size: 16px; opacity: 0.5; max-width: 600px;">Ambassador-led growth: UGC creators, a launch video, giveaways, and physical presence.</p>
-
-  <div class="gtm-grid max-w-wide">
-    <div class="gtm-card">
-      <div class="gtm-stat">80</div>
-      <h4>UGC Creators — Tryps Troop</h4>
-      <p>10-15 mid-tier (50K-500K), 65-70 micro (10K-50K). Welcome packages: sweatsuits, film cameras, exclusive club. Content: GRWM videos showing the app in real group chats.</p>
-    </div>
-    <div class="gtm-card">
-      <h4>Launch Video</h4>
-      <p>"However You Get To Us" — 60-second film. Desaturated world, only Tryps Red visible on devices. Five scenes of real moments where friends discover Tryps.</p>
-      <p style="margin-top: 8px; font-size: 12px; color: var(--red); font-weight: 600;">Treatment locked &middot; Pre-production underway</p>
-    </div>
-    <div class="gtm-card">
-      <div class="gtm-stat">50K–120K</div>
-      <h4>"Win Your Dream Trip" Giveaway</h4>
-      <p>Follow, comment your dream destination, tag 4-6 friends. Bonus entries for story reposts. Winner reveal filmed as launch content.</p>
-    </div>
-    <div class="gtm-card">
-      <h4>Physical Presence + Socials</h4>
-      <p>NYC wallpaper activations, branded stickers, disposable cameras at events. TikTok-first social strategy, 4-5 posts/platform/week.</p>
-      <p style="margin-top: 8px; font-size: 12px; color: var(--red); font-weight: 600;">8-week launch cadence starting April</p>
-    </div>
+  <p style="font-size: 14px; color: var(--gray-500);">Ambassador-led growth with UGC creators, a launch video, giveaways, and physical presence.</p>
+  <div class="gtm" style="max-width: 1000px;">
+    <div class="gc"><div class="gc-num">80</div><h4>UGC Creators — Tryps Troop</h4><p>10-15 mid-tier, 65-70 micro. Welcome packages: sweatsuits, film cameras, exclusive club. GRWM-style content showing real group chat planning.</p></div>
+    <div class="gc"><h4>Launch Video</h4><p>"However You Get To Us" — 60-second film. Desaturated world, only Tryps Red visible on devices. Five scenes of real discovery moments.</p><p style="color: var(--red); font-weight: 600; font-size: 12px; margin-top: 6px;">Treatment locked &middot; Pre-production underway</p></div>
+    <div class="gc"><div class="gc-num">50K–120K</div><h4>"Win Your Dream Trip" Giveaway</h4><p>Follow, comment dream destination, tag 4-6 friends. Bonus entries for story reposts. Winner reveal filmed as launch content.</p></div>
+    <div class="gc"><h4>Physical Presence + Socials</h4><p>NYC wallpaper activations, branded stickers, disposable cameras. TikTok-first social strategy, 4-5 posts/platform/week, 8-week launch cadence.</p></div>
   </div>
 </section>
 
-<!-- ================================================ -->
-<!-- SLIDE 9: RIGHT TO WIN -->
-<!-- ================================================ -->
-<section class="slide slide-dark slide-grid" id="slide-8">
-  <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" class="slide-logo" alt="Tryps">
-  <div class="label" style="color: var(--red-light);">Competitive Differential</div>
+<!-- ========== SLIDE 9: RIGHT TO WIN ========== -->
+<section class="slide slide-dark" id="s8">
+  <div class="label">Competitive Differential</div>
   <h2>Our Right to Win</h2>
-
-  <div class="rtw-grid max-w-wide">
-    <div class="rtw-card rtw-primary">
-      <h4 style="font-size: 24px;">First to market with native polling in iMessage</h4>
-      <p>We put an agent where people already coordinate — their group chat. If we can make it effortless to communicate preferences, we win in this era of human-shared, agent-executed decisions.</p>
-    </div>
-    <div class="rtw-card rtw-secondary">
-      <h4>Data Moat: Shared Trip Memory</h4>
-      <p>No one else holds the full record of what a group decided, preferred, and experienced together. More trips = smarter agent = more return usage.</p>
-    </div>
-    <div class="rtw-card rtw-secondary">
-      <h4>Three Layers, One Product</h4>
-      <p>Anyone can build a travel app. Nobody integrates iMessage + native mobile + autonomous booking into one seamless product.</p>
-    </div>
-    <div class="rtw-card rtw-secondary">
-      <h4>The Group Traveler (20s–30s)</h4>
-      <p>People who believe travel is innate. Bachelor/bachelorette parties, friend groups, reunions. Willing to spend — looking for someone to handle it.</p>
-    </div>
-    <div class="rtw-card rtw-secondary">
-      <h4>The Grill: Agent as Facilitator</h4>
-      <p>Our agent runs on schedule, steering the group toward completion — polling, guiding, nudging — until the trip is booked. Facilitation, not dictation.</p>
-    </div>
+  <div class="rtw" style="max-width: 1000px;">
+    <div class="rc rc-primary"><h4 style="font-size: 22px;">First to market with native polling in iMessage</h4><p>We're building the agent where people already coordinate — their group chat. If we can make it effortless to share preferences, we win in this era of human-shared, agent-executed decisions.</p></div>
+    <div class="rc rc-secondary"><h4>Data Moat: Shared Trip Memory</h4><p>No one else holds the full record of what a group decided, preferred, and experienced together. More trips = smarter agent = more return usage.</p></div>
+    <div class="rc rc-secondary"><h4>Three Layers, One Product</h4><p>We're building the only product that combines iMessage, a native mobile app, and autonomous booking into one seamless experience.</p></div>
+    <div class="rc rc-secondary"><h4>The Group Traveler (20s–30s)</h4><p>People who believe travel is innate. Bachelor/bachelorette parties, friend groups, reunions. Willing to spend — looking for someone to handle it.</p></div>
+    <div class="rc rc-secondary"><h4>The Grill: Agent as Facilitator</h4><p>Our agent runs on schedule, steering the group toward completion — polling, guiding, nudging — until the trip is booked. Facilitation, not dictation.</p></div>
   </div>
 </section>
 
-<!-- ================================================ -->
-<!-- SLIDE 10: WHERE WE'RE HEADED -->
-<!-- ================================================ -->
-<section class="slide slide-red" id="slide-9">
-  <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" class="slide-logo" alt="Tryps" style="filter: brightness(10);">
-  <h2 style="font-size: 48px;">Where We're Headed</h2>
-
-  <div style="margin-top: 36px; max-width: 700px;">
-    <div style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px;">
-      <span class="mono" style="font-size: 40px; font-weight: 700; opacity: 0.25;">01</span>
-      <div>
-        <h3 style="margin-bottom: 2px; font-size: 22px;">Ship core product</h3>
-        <p style="opacity: 0.85; font-size: 16px;">Core trip experience in testing. iMessage agent and intelligence close behind.</p>
-      </div>
-    </div>
-    <div style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px;">
-      <span class="mono" style="font-size: 40px; font-weight: 700; opacity: 0.25;">02</span>
-      <div>
-        <h3 style="margin-bottom: 2px; font-size: 22px;">Launch with Tryps Troop</h3>
-        <p style="opacity: 0.85; font-size: 16px;">80 UGC creators, giveaway campaign, launch video. Viral loop: one person texts → everyone experiences it.</p>
-      </div>
-    </div>
-    <div style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px;">
-      <span class="mono" style="font-size: 40px; font-weight: 700; opacity: 0.25;">03</span>
-      <div>
-        <h3 style="margin-bottom: 2px; font-size: 22px;">Prove the viral loop</h3>
-        <p style="opacity: 0.85; font-size: 16px;">Partiful playbook applied to travel. Target: 100K downloads through organic growth.</p>
-      </div>
-    </div>
-    <div style="display: flex; align-items: baseline; gap: 16px;">
-      <span class="mono" style="font-size: 40px; font-weight: 700; opacity: 0.25;">04</span>
-      <div>
-        <h3 style="margin-bottom: 2px; font-size: 22px;">MIT in the fall</h3>
-        <p style="opacity: 0.85; font-size: 16px;">Building from campus. Looking for Martin Trust Center support — mentorship, network, and strategic guidance.</p>
-      </div>
-    </div>
+<!-- ========== SLIDE 10: NEXT STEPS ========== -->
+<section class="slide slide-red" id="s9">
+  <h2 style="font-size: 44px;">Where We're Headed</h2>
+  <div style="margin-top: 32px; max-width: 640px;">
+    <div style="display: flex; gap: 14px; margin-bottom: 24px;"><span class="mono" style="font-size: 36px; font-weight: 700; opacity: 0.2;">01</span><div><h3 style="font-size: 20px;">Ship core product</h3><p style="font-size: 15px; opacity: 0.85;">Core trip experience in testing. iMessage agent and intelligence close behind.</p></div></div>
+    <div style="display: flex; gap: 14px; margin-bottom: 24px;"><span class="mono" style="font-size: 36px; font-weight: 700; opacity: 0.2;">02</span><div><h3 style="font-size: 20px;">Launch with Tryps Troop</h3><p style="font-size: 15px; opacity: 0.85;">80 UGC creators, giveaway campaign, launch video. One person texts = everyone experiences it.</p></div></div>
+    <div style="display: flex; gap: 14px; margin-bottom: 24px;"><span class="mono" style="font-size: 36px; font-weight: 700; opacity: 0.2;">03</span><div><h3 style="font-size: 20px;">Prove the viral loop</h3><p style="font-size: 15px; opacity: 0.85;">Partiful playbook applied to travel. Target: 100K downloads through organic growth.</p></div></div>
+    <div style="display: flex; gap: 14px;"><span class="mono" style="font-size: 36px; font-weight: 700; opacity: 0.2;">04</span><div><h3 style="font-size: 20px;">MIT in the fall</h3><p style="font-size: 15px; opacity: 0.85;">Building from campus. Martin Trust Center support — mentorship, network, strategic guidance.</p></div></div>
   </div>
 </section>
 
-<!-- ================================================ -->
-<!-- SLIDE 11: CLOSING -->
-<!-- ================================================ -->
-<section class="slide title-slide" id="slide-10">
-  <img src="../brand-and-gtm/02-socials/tryps-pfp-1080.png" class="title-logo" alt="Tryps">
-  <h1 style="font-size: 80px; color: var(--red);">tryps</h1>
+<!-- ========== SLIDE 11: CLOSE ========== -->
+<section class="slide title-slide" id="s10">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAyKADAAQAAAABAAAAyAAAAACbWz2VAAAdKUlEQVR4Ae1dB5hURbY+nSYyecgDKuoaHqYnxkVddU2rYsQ1yyJiXsWccE3PHFfXvEbM7KoYMWBEUFfXgIKKShoGZmDy9Ezn95/q6abTVKdB6+Kpj2a6b4V77n/qr3DqVF3bd4V1IZIgCAgCKRGwp7wqFwUBQUAhIASRiiAIaBAQgmjAkShBQAgidUAQ0CAgBNGAI1GCgBBE6oAgoEFACKIBR6IEASGI1AFBQIOAEEQDjkQJAkIQqQOCgAYBIYgGHIkSBIQgUgcEAQ0CQhANOBIlCAhBpA4IAhoEhCAacCRKEBCCSB0QBDQICEE04EiUICAEkTogCGgQEIJowJEoQUAIInVAENAgIATRgCNRgoAQROqAIKBBQAiiAUeiBAEhiNQBQUCDgBBEA45ECQJCEKkDgoAGASGIBhyJEgSEIFIHBAENAkIQDTgSJQgIQaQOCAIaBIQgGnAkShAQgkgdEAQ0CAhBNOBIlCAgBJE6IAhoEBCCaMCRKEFACCJ1QBDQICAE0YAjUYKAEETqgCCgQUAIogFHogQBIYjUAUFAg4AQRAOORAkCQhCpA4KABgEhiAYciRIEhCBSBwQBDQJCEA04EiUICEGkDggCGgSEIBpwJEoQEIJIHRAENAgIQTTgSJQgIASROiAIaBAQgmjAkShBQAgidUAQ0CAgBNGAI1GCgBBE6oAgoEFACKIBR6IEAa0D6J8DAelBEkIA" class="title-logo" alt="Tryps">
+  <h1 style="font-size: 72px; color: var(--red);">tryps</h1>
   <p class="tagline">Text your trip into existence.</p>
-  <div style="margin-top: 40px; opacity: 0.5; font-size: 15px;">
+  <div style="margin-top: 36px; opacity: 0.45; font-size: 14px;">
     <p>Jake Stein</p>
-    <p style="margin-top: 4px;">jake@jointryps.com &middot; steinjp@mit.edu</p>
-    <p style="margin-top: 4px;">jointryps.com</p>
+    <p style="margin-top: 3px;">jake@jointryps.com &middot; steinjp@mit.edu</p>
+    <p style="margin-top: 3px;">jointryps.com</p>
   </div>
 </section>
 
 <script>
-  const slides = document.querySelectorAll('.slide');
-  const nav = document.getElementById('nav');
-  const counter = document.getElementById('slideCounter');
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'nav-dot';
-    dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
-    nav.appendChild(dot);
-  });
-
-  const dots = document.querySelectorAll('.nav-dot');
-  let currentSlide = 0;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const index = Array.from(slides).indexOf(entry.target);
-        currentSlide = index;
-        dots.forEach((d, i) => d.classList.toggle('active', i === index));
-        counter.textContent = `${index + 1} / ${slides.length}`;
-        const isDark = entry.target.classList.contains('slide-dark') || entry.target.classList.contains('slide-red') || entry.target.classList.contains('title-slide');
-        dots.forEach(d => d.style.background = isDark ? 'rgba(255,255,255,0.2)' : '');
-        dots[index].style.background = 'var(--red)';
-        counter.style.color = isDark ? 'rgba(255,255,255,0.3)' : '';
-      }
-    });
-  }, { threshold: 0.5 });
-
-  slides.forEach(s => observer.observe(s));
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
-      e.preventDefault();
-      if (currentSlide < slides.length - 1) slides[currentSlide + 1].scrollIntoView({ behavior: 'smooth' });
-    }
-    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-      e.preventDefault();
-      if (currentSlide > 0) slides[currentSlide - 1].scrollIntoView({ behavior: 'smooth' });
-    }
-  });
+const slides=document.querySelectorAll('.slide'),nav=document.getElementById('nav'),ctr=document.getElementById('counter');
+slides.forEach((_,i)=>{const d=document.createElement('button');d.className='nav-dot';d.onclick=()=>slides[i].scrollIntoView({behavior:'smooth'});nav.appendChild(d);});
+const dots=document.querySelectorAll('.nav-dot');let cur=0;
+new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const i=Array.from(slides).indexOf(e.target);cur=i;dots.forEach((d,j)=>d.classList.toggle('active',j===i));ctr.textContent=`${i+1} / ${slides.length}`;const dk=e.target.classList.contains('slide-dark')||e.target.classList.contains('slide-red')||e.target.classList.contains('title-slide');dots.forEach(d=>d.style.background=dk?'rgba(255,255,255,0.15)':'');dots[i].style.background='var(--red)';ctr.style.color=dk?'rgba(255,255,255,0.25)':'';}});},{threshold:0.5}).observe&&slides.forEach(s=>new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const i=Array.from(slides).indexOf(e.target);cur=i;dots.forEach((d,j)=>d.classList.toggle('active',j===i));ctr.textContent=`${i+1} / ${slides.length}`;const dk=e.target.classList.contains('slide-dark')||e.target.classList.contains('slide-red')||e.target.classList.contains('title-slide');dots.forEach(d=>d.style.background=dk?'rgba(255,255,255,0.15)':'');dots[i].style.background='var(--red)';ctr.style.color=dk?'rgba(255,255,255,0.25)':'';}});},{threshold:0.5}).observe(s));
+document.addEventListener('keydown',e=>{if(['ArrowDown','ArrowRight',' '].includes(e.key)){e.preventDefault();if(cur<slides.length-1)slides[cur+1].scrollIntoView({behavior:'smooth'});}if(['ArrowUp','ArrowLeft'].includes(e.key)){e.preventDefault();if(cur>0)slides[cur-1].scrollIntoView({behavior:'smooth'});}});
 </script>
 </body>
 </html>
