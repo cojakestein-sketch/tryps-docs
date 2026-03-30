@@ -1,14 +1,14 @@
 ---
 id: travel-booking
-title: "Travel Booking"
+title: "Travel Booking & Payments"
 status: specced
 assignee: asif, rizwan
 wave: 1
-dependencies: [payments-infrastructure]
-clickup_ids: ["86e06y10g"]
-criteria_count: 58
+dependencies: []
+clickup_ids: ["86e06y10g", "86e0emu70"]
+criteria_count: 70
 criteria_done: 0
-last_updated: 2026-03-23
+last_updated: 2026-03-30
 links:
   design: ./design.md
   testing: ./testing.md
@@ -190,6 +190,34 @@ Tryps is a travel agent, not a planning tool. The promise is: say what you want 
 - [ ] **SC-57.** Manual transportation entry via add-transportation.tsx continues to work alongside API-powered ride search. Verified by: open add-transportation → manually enter vehicle type, pickup/dropoff, time → saves correctly.
 
 - [ ] **SC-58.** URL paste and generic scrape for restaurants and transportation continue to work. Verified by: paste an OpenTable URL into add-dinner → details extracted → restaurant saved.
+
+### Payments Infrastructure (Stripe)
+
+> Absorbed from payments-infrastructure scope. These criteria cover the Stripe card-on-file system that all booking finalization depends on.
+
+- [ ] **SC-59.** User can save a payment method (credit/debit card) to their profile via Stripe. Card details are tokenized by Stripe — Tryps never sees or stores raw card numbers. Verified by: user opens payment settings → enters card → card saved → payment settings show last 4 digits and card brand → database contains only Stripe token, no raw card data.
+
+- [ ] **SC-60.** User can update or remove their saved payment method from profile settings. Verified by: user with saved card → taps "Remove" → confirms → card removed → adding a new card replaces the old one.
+
+- [ ] **SC-61.** User with no saved payment method is prompted to add one before completing any booking. Adding a card does not require restarting the booking flow. Verified by: user with no card confirms a flight booking → card entry screen appears inline → user enters card → booking resumes from where it left off → flight booked.
+
+- [ ] **SC-62.** Card decline shows a plain-language reason — never raw Stripe error codes. Verified by: simulate insufficient funds → user sees "Your card was declined — insufficient funds. Try a different card." → no Stripe error codes or technical messages visible.
+
+- [ ] **SC-63.** When booking for a group, the system surfaces which members have incomplete profiles (missing passport or preferences) before charging. Verified by: group booking for 4 people, 1 missing passport → flow shows "[Name] is missing passport information" → user can proceed or notify member.
+
+- [ ] **SC-64.** Stripe webhook confirms payment success before booking is finalized with the provider. If webhook doesn't fire within 60 seconds, booking is held and user notified. Verified by: trace a booking → Stripe charge → webhook received → booking finalized. Simulate webhook delay >60s → user sees "Payment processing — we'll confirm shortly" → booking finalizes when webhook arrives.
+
+- [ ] **SC-65.** All Stripe API calls go through Supabase edge functions. No Stripe secret keys in client code. Verified by: grep codebase for Stripe secret key patterns → zero matches in client code → all Stripe calls route through edge functions.
+
+- [ ] **SC-66.** Payment receipts are stored on the booking record in the trip. Verified by: complete a booking → open the booked item in trip → receipt/invoice link is accessible.
+
+- [ ] **SC-67.** Refund flow: when a booking is cancelled and the provider issues a refund, the refund is processed through Stripe back to the original payment method. User sees refund status. Verified by: cancel a refundable stay → provider confirms refund → Stripe processes refund → user sees "Refund of $X processing — 5-10 business days" → expense entry updated.
+
+- [ ] **SC-68.** Trust ramp: first-time payment requires explicit card entry + booking confirmation. Returning bookings with the same saved card use streamlined one-tap confirmation. Verified by: first booking → full card entry + confirm. Second booking → shows saved card last 4 digits + one-tap "Book" button.
+
+- [ ] **SC-69.** Payment amount shown to user before confirmation always matches what Stripe charges. No hidden fees, no surprise currency conversions. Verified by: user sees "$450" before confirming → Stripe charges exactly $450 → receipt matches.
+
+- [ ] **SC-70.** Stripe integration uses test mode keys in development/staging and live keys only in production. Environments never mix. Verified by: code review → environment variable check → staging uses `sk_test_*` → production uses `sk_live_*` → no cross-contamination.
 
 ---
 

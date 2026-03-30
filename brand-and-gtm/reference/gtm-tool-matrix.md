@@ -144,6 +144,7 @@ Tryps launches May 2, 2026. This document maps every capability the brand and go
 | 7.3 | Structured data / schema markup | Add machine-readable metadata to jointryps.com so search engines and AI assistants can parse what Tryps is, what it does, and how it's rated | **Schema.org manual implementation** | Yoast (WordPress only) | — | GTM Engineer implements directly in code | Homegrow | $0 |
 | 7.4 | Landing pages | Build 3-5 SEO-optimized pages targeting high-intent keywords ("group trip planner app", "plan trip with friends", "travel group chat") | **Webflow** ($14/mo) | Framer ($5/mo) | Code directly on jointryps.com | GTM Engineer builds pages | Depends on current site stack | $0-14/mo |
 | 7.5 | Content for AI citation | Write blog posts, comparison articles, and FAQs that AI engines will cite when recommending travel planning tools | **Write on jointryps.com/blog** | Get listed on Product Hunt, TechCrunch | Wikipedia travel apps list | Agent drafts; human edits for accuracy and voice | Agent + human workflow | $0 |
+| 7.6 | Landing page redesign | Fix and redesign jointryps.com to properly convert visitors — clear value prop, Marty demo, download CTA, email capture, mobile-optimized. This is the front door for every paid ad, press mention, and organic search result. | **Webflow** ($14/mo) | Framer ($5/mo) | Code directly | GTM Engineer builds; Sean approves design direction | Depends on current site stack | $0-14/mo |
 
 ---
 

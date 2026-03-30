@@ -1,31 +1,36 @@
 ---
-generated: 2026-03-25
-total_scopes: 12
+generated: 2026-03-30
+total_scopes: 9
 ---
 
 # Scopes Index
 
-12 active scopes. Brand/GTM moved to `brand-and-gtm/`. AI Platform Connectors + Logistics Agent deferred post-April 2. QA is cross-cutting (always running).
+9 active scopes. All specs written. Aligned to Martin Trust Center pitch (2026-03-30).
 
-Updated 2026-03-25: statuses refreshed, assignees updated, numbering cleaned up.
+Brand/GTM in `brand-and-gtm/`. Voice Calls + Customer Service deferred post-launch. OBS folded into Core Trip. Payments absorbed into Travel Booking. QA is cross-cutting.
 
 **Agent reading order:** INDEX.md → state.md → objective.md → spec.md
 
-| # | ID | Title | Status | Assignee | Notes |
-|---|-----|-------|--------|----------|-------|
-| ~~1~~ | ~~[[beta-user-feedback/objective|beta-user-feedback]]~~ | ~~Beta & User Feedback~~ | **in-progress** | jake | No spec needed — ongoing |
-| 2 | [[core-trip-experience/objective|core-trip-experience]] | Core Trip Experience | **testing** | nadeem / andreas | Bug testing in progress |
-| 3 | [[group-decision-making/objective|group-decision-making]] | Group Decision-Making | **needs-spec** | — | Jake to spec |
-| 4 | [[travel-identity/objective|travel-identity]] | Travel Identity | **needs-spec** | — | Jake to spec |
-| 5 | [[onboarding-teaching/objective|onboarding-teaching]] | Onboarding & Teaching | **needs-spec** | — | Jake to spec |
-| 6 | [[post-trip-retention/objective|post-trip-retention]] | Post-Trip & Retention | **specced** | nadeem | Spec in archive/scopes-deprecated/p1/post-trip-review (39 criteria) — migrate |
-| 7 | [[imessage-agent/objective|imessage-agent]] | iMessage Agent | **in-progress** | asif | 57 SC |
-| 8 | [[agent-intelligence/objective|agent-intelligence]] | Agent Intelligence | **in-progress** | rizwan | 61 SC |
-| 9 | [[payments-infrastructure/objective|payments-infrastructure]] | Payments Infrastructure | **not-started** | rizwan | |
-| 10 | [[travel-booking/objective|travel-booking]] | Travel Booking | **in-progress** | asif | |
-| 11 | [[output-backed-screen/objective|output-backed-screen]] | Output-Backed Screen | **in-progress** | nadeem | 48 SC |
-| 12 | [[customer-service-triaging/objective|customer-service-triaging]] | Customer Service & Triaging | **needs-spec** | jake | Added 2026-03-24, cancellations/disputes/support |
-| — | qa-testing | QA & Testing | **cross-cutting** | andreas | Ongoing, not a discrete scope |
+| # | ID | Title | Status | Assignee | SC | Notes |
+|---|-----|-------|--------|----------|-----|-------|
+| 01 | [[core-trip-experience/objective|core-trip-experience]] | Core Trip Experience | **testing** | nadeem | 15/16 | OBS folded in |
+| 02 | [[imessage-agent/objective|imessage-agent]] | iMessage Agent | **in-progress** | asif | 34/57 | |
+| 03 | [[agent-intelligence/objective|agent-intelligence]] | Agent Intelligence | **in-progress** | rizwan | 55/61 | |
+| 04 | [[travel-booking/objective|travel-booking]] | Travel Booking & Payments | **in-progress** | asif, rizwan | 0/70 | Payments absorbed (SC-59–70) |
+| 05 | [[beta-user-feedback/objective|beta-user-feedback]] | Beta & User Feedback | **in-progress** | jake | — | Ongoing |
+| 06 | [[group-decision-making/objective|group-decision-making]] | Group Decision-Making | **specced** | rizwan | 0/14 | |
+| 07 | [[post-trip-retention/objective|post-trip-retention]] | Post-Trip & Retention | **specced** | nadeem | 0/31 | Migrated from archive |
+| 08 | [[travel-identity/objective|travel-identity]] | Travel Identity | **specced** | nadeem | 0/50 | DNA (25) + Connectors (25) |
+| 09 | [[onboarding-teaching/objective|onboarding-teaching]] | Onboarding & Teaching | **specced** | nadeem | 0/14 | 8 tooltips |
+
+### Deferred (Post-Launch)
+
+| ID | Title | Notes |
+|----|-------|-------|
+| voice-calls | Voice Calls | Spec exists (14 SC). Depends on iMessage Agent + Agent Intelligence. |
+| customer-service-triaging | Customer Service & Triaging | Needs spec. Manual triaging pre-launch. |
+| output-backed-screen | Output-Backed Screen | Folded into Core Trip Experience. |
+| payments-infrastructure | Payments Infrastructure | Absorbed into Travel Booking (SC-59–70). |
 
 See [[brand-and-gtm/README|Brand & GTM]] for brand/launch scopes.
 
