@@ -2,6 +2,7 @@
 title: "Scope Audit: Pitch vs. Repo Alignment"
 date: 2026-03-30
 triggered_by: Martin Trust Center pitch (presentations/martin-trust-center-2026-03-30.html)
+status: EXECUTED — all recommendations applied
 ---
 
 # Scope Audit — 2026-03-30

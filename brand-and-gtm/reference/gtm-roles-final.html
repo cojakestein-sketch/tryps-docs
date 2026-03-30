@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tryps GTM Team — Final Role Definitions</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #F9FAFB; color: #3D3530; line-height: 1.6; padding: 40px 20px; }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .subtitle { font-size: 14px; color: #6B6560; margin-bottom: 32px; }
+
+  .org-box { background: white; border: 1px solid #EDE4D8; border-radius: 14px; padding: 24px; margin-bottom: 32px; }
+  .org-box h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+  .org-chart { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .org-node { padding: 10px 20px; border-radius: 10px; text-align: center; font-size: 13px; }
+  .org-sean { background: #FEF3C7; border: 1px solid #F59E0B; font-weight: 600; }
+  .org-row { display: flex; gap: 16px; justify-content: center; }
+  .org-eng1 { background: #DBEAFE; border: 1px solid #3B82F6; }
+  .org-eng2 { background: #D1FAE5; border: 1px solid #10B981; }
+  .org-agents { background: #F3F0EC; border: 1px solid #D1CBC5; font-size: 11px; color: #6B6560; }
+  .org-line { width: 1px; height: 16px; background: #D1CBC5; }
+  .org-branch { display: flex; align-items: flex-start; justify-content: center; gap: 80px; position: relative; }
+  .org-branch::before { content: ''; position: absolute; top: 0; left: calc(50% - 48px); width: 96px; height: 1px; background: #D1CBC5; }
+
+  .role-card { background: white; border-radius: 14px; border: 1px solid #EDE4D8; margin-bottom: 32px; overflow: hidden; }
+  .role-header { padding: 24px 28px 20px; }
+  .role-label { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+  .label-1 { color: #3B82F6; }
+  .label-2 { color: #10B981; }
+  .role-header h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .role-header .one-liner { font-size: 14px; color: #6B6560; }
+
+  .role-body { padding: 0 28px 28px; }
+
+  .section { margin-bottom: 24px; }
+  .section:last-child { margin-bottom: 0; }
+  .section h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #6B6560; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid #F3F0EC; }
+
+  .section p { font-size: 14px; margin-bottom: 8px; }
+  .section ul { font-size: 14px; padding-left: 20px; }
+  .section li { margin-bottom: 6px; }
+  .section li strong { color: #3D3530; }
+
+  .scope-grid { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13px; }
+  .scope-num { font-family: 'Space Mono', monospace; color: #9B9590; font-size: 11px; padding-top: 2px; }
+  .scope-desc { padding: 2px 0 6px; border-bottom: 1px solid #F9F7F5; }
+
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill { font-size: 11px; padding: 4px 10px; border-radius: 999px; background: #F3F0EC; color: #6B6560; }
+  .skill-must { background: #3D3530; color: white; }
+
+  .example-week { background: #FAFAF8; border-radius: 10px; padding: 16px; font-size: 13px; }
+  .example-week .week-label { font-family: 'Space Mono', monospace; font-size: 11px; color: #9B9590; margin-bottom: 4px; }
+  .example-week p { margin-bottom: 4px; }
+
+  .hire-box { background: #F0FDF4; border-radius: 10px; padding: 16px; font-size: 13px; margin-top: 12px; }
+  .hire-box strong { color: #065F46; }
+
+  .anti-list { background: #FEF2F2; border-radius: 10px; padding: 16px; font-size: 13px; }
+  .anti-list strong { color: #991B1B; }
+  .anti-list ul { padding-left: 16px; margin-top: 6px; }
+
+  .cost-bar { padding: 16px 28px; background: #FAFAF8; border-top: 1px solid #EDE4D8; display: flex; align-items: center; gap: 16px; }
+  .cost-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #6B6560; }
+  .cost-value { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; }
+  .cost-1 { color: #3B82F6; }
+  .cost-2 { color: #10B981; }
+  .cost-note { font-size: 12px; color: #9B9590; }
+
+  .divider { height: 1px; background: #EDE4D8; margin: 20px 0; }
+
+  .final-box { background: white; border: 2px solid #D9071C; border-radius: 14px; padding: 28px; margin-top: 32px; }
+  .final-box h2 { font-size: 18px; font-weight: 700; color: #D9071C; margin-bottom: 12px; }
+  .final-box p { font-size: 14px; color: #6B6560; margin-bottom: 8px; }
+  .final-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+  .final-table th { text-align: left; padding: 8px; border-bottom: 2px solid #EDE4D8; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #6B6560; }
+  .final-table td { padding: 8px; border-bottom: 1px solid #F3F0EC; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Tryps Brand & GTM — Two Roles</h1>
+<p class="subtitle">Both are flexible, AI-native engineers. Sean directs. They execute. Scopes shift week to week based on what's needed.</p>
+
+<!-- ORG CHART -->
+<div class="org-box">
+  <h2>How it works</h2>
+  <div class="org-chart">
+    <div class="org-node org-sean">Sean DeFaria — Creative Director<br><span style="font-weight:400;font-size:11px;">Calls shots, reviews, approves, manages relationships</span></div>
+    <div class="org-line"></div>
+    <div class="org-row">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div class="org-node org-eng1">GTM Infrastructure Engineer<br><span style="font-weight:400;font-size:11px;">Builds the systems</span></div>
+        <div class="org-node org-agents">AI Agents (Pablo, Don, Rio)<br>Draft production</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div class="org-node org-eng2">GTM Growth Engineer<br><span style="font-weight:400;font-size:11px;">Runs on the systems</span></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:#9B9590;text-align:center;margin-top:16px;">Both report to Sean. Jake sets priorities and reviews strategy. Sean directs day-to-day execution.</p>
+</div>
+
+<!-- ROLE 1 -->
+<div class="role-card">
+  <div class="role-header">
+    <div class="role-label label-1">Role 1</div>
+    <h2>GTM Infrastructure Engineer</h2>
+    <p class="one-liner">Builds every tool, workflow, and system the brand and go-to-market org runs on.</p>
+  </div>
+  <div class="role-body">
+
+    <div class="section">
+      <h3>The Job</h3>
+      <p>You're the person who makes everyone else faster. Sean says "I need to publish across 8 platforms without spending 2 hours a day." You set up Buffer, connect the accounts, build the auto-repost workflows, and hand Sean a dashboard. The Growth Engineer says "I need 50 ad variants from this UGC clip." You build the Recharm pipeline and Figma plugin that lets them do it in 5 minutes.</p>
+      <p>You evaluate tools, trial them, set them up, wire them together, and teach the team how to use them. When a tool doesn't exist, you build it — with Claude Code, n8n, Remotion, or whatever gets it done fastest. Once systems are live, you maintain them and improve them based on what the team needs.</p>
+    </div>
+
+    <div class="section">
+      <h3>What You'll Build (Across All 13 Scopes)</h3>
+      <div class="scope-grid">
+        <span class="scope-num">2</span><span class="scope-desc"><strong>Socials:</strong> Scheduling tool setup (Buffer/Metricool), auto-repost workflows to secondary platforms, Remotion template pipeline for product demo clips</span>
+        <span class="scope-num">3</span><span class="scope-desc"><strong>UGC:</strong> Trial and deploy creator tool (Stormy/Modash/HypeAuditor), build affiliate link system (jointryps.com/go/{name} → iMessage pre-fill), ambassador stats dashboard</span>
+        <span class="scope-num">7</span><span class="scope-desc"><strong>SEO/AEO:</strong> Schema markup on jointryps.com, structured data implementation, landing page build (3-5 pages)</span>
+        <span class="scope-num">8</span><span class="scope-desc"><strong>Referrals:</strong> Branch deep link integration, referral tracking system, trip invite OG image generation (dynamic, per-trip)</span>
+        <span class="scope-num">9</span><span class="scope-desc"><strong>App Store:</strong> ASO tool setup (ASO.dev), Apple PPO configuration, Product Hunt listing prep</span>
+        <span class="scope-num">10</span><span class="scope-desc"><strong>Paid:</strong> Meta pixel installation, ad copy Claude Code slash command (/meta-ads), Figma plugin for bulk ad variant generation (Austin Lau model)</span>
+        <span class="scope-num">11</span><span class="scope-desc"><strong>Email:</strong> Loops setup, onboarding drip sequence configuration, waitlist email capture on jointryps.com</span>
+        <span class="scope-num">13</span><span class="scope-desc"><strong>Analytics:</strong> All n8n/Make automation workflows, Looker Studio dashboards, LangFuse agent observability, Slack performance alerts, daily cost tracking, UTM naming system</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Example Weeks</h3>
+      <div class="example-week" style="margin-bottom:8px;">
+        <div class="week-label">Week 1-2 (Setup Sprint)</div>
+        <p>Trial 5 creator tools, run 13 reference creators through each, recommend one. Set up Buffer with all 8 platform accounts. Install Meta pixel. Build affiliate link redirect pages. Deploy Branch. Set up Loops with welcome email. Wire first n8n workflow (new App Store review → Slack alert).</p>
+      </div>
+      <div class="example-week" style="margin-bottom:8px;">
+        <div class="week-label">Week 3-4 (Build Sprint)</div>
+        <p>Build Remotion template for product demo clips. Build Figma ad variant plugin. Implement schema markup on jointryps.com. Build 3 SEO landing pages. Set up Looker Studio dashboard pulling from Buffer + Meta + AppsFlyer. Configure LangFuse for agent team. Build ambassador dashboard.</p>
+      </div>
+      <div class="example-week">
+        <div class="week-label">Week 5+ (Maintain + Improve)</div>
+        <p>Fix broken workflows. Add new n8n automations as needs emerge. Improve Remotion templates based on Sean's feedback. Optimize landing pages based on traffic data. Build whatever Sean or the Growth Engineer needs next.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Required Skills</h3>
+      <div class="skills-grid">
+        <span class="skill skill-must">Python or TypeScript</span>
+        <span class="skill skill-must">n8n or Make</span>
+        <span class="skill skill-must">Claude Code / AI tools</span>
+        <span class="skill skill-must">API integrations</span>
+        <span class="skill">Remotion</span>
+        <span class="skill">Branch / deep linking</span>
+        <span class="skill">Figma plugin development</span>
+        <span class="skill">Prompt engineering</span>
+        <span class="skill">Basic web dev (HTML/CSS for landing pages)</span>
+        <span class="skill">Google Looker Studio</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>This Person Is NOT</h3>
+      <div class="anti-list">
+        <strong>Not a designer.</strong> They don't make pretty things. They build systems that let other people (and agents) make pretty things fast.
+        <ul>
+          <li>Not creating social content or carousels</li>
+          <li>Not writing ad copy or blog posts</li>
+          <li>Not talking to influencers or journalists</li>
+          <li>Not managing day-to-day ad spend</li>
+          <li>Not editing video (they build the template; someone else fills it)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Who to Hire</h3>
+      <div class="hire-box">
+        <strong>Profile:</strong> Automation engineer or full-stack developer who's gotten into AI tooling. Has built n8n/Make/Zapier workflows professionally. Comfortable with APIs, webhooks, and duct-taping systems together. Ideally has touched marketing tools before (analytics dashboards, ad platforms) but marketing experience is not required — engineering skill is.
+        <br><br>
+        <strong>Where to find:</strong> Upwork (search: "n8n developer", "automation engineer", "AI workflow builder"). You may already have this person from your interviews.
+        <br><br>
+        <strong>Red flag:</strong> Someone who only knows one tool (e.g., only Zapier, only Make). You need someone who can pick up any tool and figure it out.
+      </div>
+    </div>
+
+  </div>
+  <div class="cost-bar">
+    <span class="cost-label">Est. Rate</span>
+    <span class="cost-value cost-1">$3-4K/mo</span>
+    <span class="cost-note">20-30 hrs/week contractor, $25-40/hr depending on location</span>
+  </div>
+</div>
+
+<!-- ROLE 2 -->
+<div class="role-card">
+  <div class="role-header">
+    <div class="role-label label-2">Role 2</div>
+    <h2>GTM Growth Engineer</h2>
+    <p class="one-liner">The flexible, AI-native operator that Sean and Jake point at whatever the GTM org needs that week.</p>
+  </div>
+  <div class="role-body">
+
+    <div class="section">
+      <h3>The Job</h3>
+      <p>You're not a specialist. You're the person who makes things happen across the entire brand and go-to-market operation. One week you're writing App Store copy and running A/B tests. The next week you're building a journalist outreach list. The week after that you're managing Meta ad spend and flagging which UGC clips are winning.</p>
+      <p>You use the systems the Infrastructure Engineer builds — but you can also build your own when needed (you know Claude Code, you can spin up a quick script or workflow). You're technical enough to be dangerous, marketing-savvy enough to know what good looks like, and fast enough to produce volume. Sean directs what to make and approves before it goes live. You execute.</p>
+      <p>The goal is 100+ distributed attempts per month — across social, ads, SEO, App Store, email, and anywhere else Tryps needs to show up. You're not precious about any single piece. Volume and speed over perfection. Let the data tell you what's working.</p>
+    </div>
+
+    <div class="section">
+      <h3>What You'll Do (Flexible — Changes Week to Week)</h3>
+      <div class="scope-grid">
+        <span class="scope-num">2</span><span class="scope-desc"><strong>Socials:</strong> Produce content using templates and AI tools (screen recordings, carousels, clip edits). Schedule across platforms. Track performance daily. Flag winners to Sean for doubling down.</span>
+        <span class="scope-num">3</span><span class="scope-desc"><strong>UGC:</strong> Run creators through verification tools. Track deliverables and payment status. Update the creator spreadsheet. Help Sean manage operational logistics (not relationships — Sean owns those).</span>
+        <span class="scope-num">7</span><span class="scope-desc"><strong>SEO/AEO:</strong> Write landing page copy and blog posts targeting high-intent keywords. Run AEO grader baseline. Publish comparison articles for AI citation.</span>
+        <span class="scope-num">9</span><span class="scope-desc"><strong>App Store:</strong> Write and optimize App Store title, subtitle, description, and keywords. Run Apple PPO screenshot tests. Monitor conversion rates. Prep and launch Product Hunt listing on May 2.</span>
+        <span class="scope-num">10</span><span class="scope-desc"><strong>Paid:</strong> Manage $5K/month Meta ad spend day-to-day. Use Recharm to generate ad variants from UGC. Run A/B tests. Optimize toward CPI. Set up and manage TikTok Spark Ads on best-performing organic UGC.</span>
+        <span class="scope-num">11</span><span class="scope-desc"><strong>Email:</strong> Write launch announcement email and onboarding drip copy. Monitor open rates and click-throughs. Iterate on subject lines.</span>
+        <span class="scope-num">12</span><span class="scope-desc"><strong>Press:</strong> Research and build targeted journalist list. Draft pitch emails for Sean/Jake to review and send. Build /press page on jointryps.com.</span>
+        <span class="scope-num">Any</span><span class="scope-desc"><strong>Whatever's needed:</strong> If Sean says "I need X by tomorrow," you figure out how to make X happen using AI tools, the infrastructure the other engineer built, or brute force.</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Example Weeks</h3>
+      <div class="example-week" style="margin-bottom:8px;">
+        <div class="week-label">Week 1 (Pre-Launch)</div>
+        <p>Write App Store copy and submit for review. Produce 10 social posts from Sean's content direction using Canva + CapCut + Claude. Run AEO baseline grader. Draft 3 SEO landing pages. Build journalist target list (50 contacts). Set up Product Hunt draft listing.</p>
+      </div>
+      <div class="example-week" style="margin-bottom:8px;">
+        <div class="week-label">Week 2 (Launch Week)</div>
+        <p>Execute launch day: publish across all platforms, coordinate Product Hunt upvote rally, send launch email blast, post in relevant communities. Monitor everything. Flag what's popping. Help Sean respond to engagement.</p>
+      </div>
+      <div class="example-week">
+        <div class="week-label">Week 3+ (Growth Mode)</div>
+        <p>Take best-performing organic content, create 20 ad variants with Recharm, launch Meta campaign. Run ASO keyword tests. Cut underperforming UGC creators (Locket playbook). Write blog post "Tryps vs Splitwise vs Google Docs." Manage daily ad optimization. Weekly performance report to Jake and Sean.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Required Skills</h3>
+      <div class="skills-grid">
+        <span class="skill skill-must">Claude / AI tools (daily user)</span>
+        <span class="skill skill-must">Fast learner (new tool every week)</span>
+        <span class="skill skill-must">Can write (copy, emails, landing pages)</span>
+        <span class="skill skill-must">Meta Ads Manager</span>
+        <span class="skill">CapCut / basic video editing</span>
+        <span class="skill">Canva / Figma basics</span>
+        <span class="skill">ASO experience</span>
+        <span class="skill">SEO fundamentals</span>
+        <span class="skill">Claude Code (can run basic scripts)</span>
+        <span class="skill">Analytics / data comfort</span>
+        <span class="skill">Startup speed (not agency pace)</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>This Person Is NOT</h3>
+      <div class="anti-list">
+        <strong>Not a strategist.</strong> The strategy is set. They execute what Sean and Jake direct.
+        <ul>
+          <li>Not building infrastructure or automation (that's Role 1)</li>
+          <li>Not a traditional designer (uses AI + templates, not Figma from scratch)</li>
+          <li>Not managing influencer relationships (Sean owns those)</li>
+          <li>Not directing creative vision (Sean calls those shots)</li>
+          <li>Not a specialist in one channel — they need to be comfortable across many</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Who to Hire</h3>
+      <div class="hire-box">
+        <strong>Profile:</strong> A growth marketer who's technical. Has run Meta ads at a startup (doesn't need to be $500K/month — $5-20K is fine). Has written App Store copy or landing pages. Comfortable with AI tools and uses them daily. The kind of person who, when asked to do something they've never done, says "give me 2 hours" instead of "that's not my job."
+        <br><br>
+        <strong>The Austin Lau test:</strong> Could this person, with access to Claude Code and the right tools, run a marketing function solo? If yes, hire them.
+        <br><br>
+        <strong>Where to find:</strong> Upwork (search: "growth marketer AI", "technical marketer startup", "one-person marketing team"). Also: indie hackers, Product Hunt community, and people who've done "head of growth" at a seed-stage startup.
+        <br><br>
+        <strong>Red flag:</strong> Someone who wants to "build the strategy" before executing. The strategy exists. Someone who can only do one thing (only Meta ads, only SEO). You need a generalist.
+      </div>
+    </div>
+
+  </div>
+  <div class="cost-bar">
+    <span class="cost-label">Est. Rate</span>
+    <span class="cost-value cost-2">$3-5K/mo</span>
+    <span class="cost-note">20-30 hrs/week contractor, $30-50/hr depending on experience</span>
+  </div>
+</div>
+
+<!-- FINAL SUMMARY -->
+<div class="final-box">
+  <h2>The Full Brand & GTM Org</h2>
+  <p>Three humans + AI agents. Total people cost: $11-14K/month. Total GTM spend with software + ads + creators: ~$22-24K/month.</p>
+  <table class="final-table">
+    <tr>
+      <th>Person</th>
+      <th>What they do</th>
+      <th>Monthly</th>
+    </tr>
+    <tr>
+      <td><strong>Sean DeFaria</strong></td>
+      <td>Creative director. Calls shots on everything creative. Reviews and approves all content before it goes live. Manages influencer relationships and DM outreach. Directs the team via Slack + in-person + markdown briefs.</td>
+      <td>$5K (M1)<br>$5K (M2)</td>
+    </tr>
+    <tr>
+      <td><strong>GTM Infrastructure Engineer</strong></td>
+      <td>Builds every tool, workflow, and system. Trials and deploys software. Wires automation. Builds dashboards. Maintains the machine. Manages AI agents (Pablo, Don, Rio).</td>
+      <td>$3-4K</td>
+    </tr>
+    <tr>
+      <td><strong>GTM Growth Engineer</strong></td>
+      <td>Flexible operator. Produces content, manages ads, writes copy, runs ASO, does whatever the GTM org needs that week. Uses the infrastructure engineer's systems + AI tools to move fast.</td>
+      <td>$3-5K</td>
+    </tr>
+    <tr style="background:#F0FDF4;">
+      <td><strong>AI Agents</strong></td>
+      <td>Pablo (design drafts), Don (research), Rio (video drafts). Produce first drafts that humans review and polish.</td>
+      <td>~$50-100</td>
+    </tr>
+    <tr style="background:#FAFAF8;font-weight:600;">
+      <td>People subtotal</td>
+      <td></td>
+      <td>$11-14K</td>
+    </tr>
+  </table>
+  <table class="final-table" style="margin-top:16px;">
+    <tr>
+      <th>Other costs</th>
+      <th></th>
+      <th>Monthly</th>
+    </tr>
+    <tr><td>Software stack</td><td>Buffer, CapCut, Canva, Opus Clip, Foreplay, Recharm, ASO.dev, Loops, etc.</td><td>$330-690</td></tr>
+    <tr><td>Meta ad spend</td><td>$5K/month budget, managed by Growth Engineer</td><td>$5,000</td></tr>
+    <tr><td>Creator payments</td><td>50 tested, 25 retained at $50-500 each over 2 months</td><td>~$2-4K</td></tr>
+    <tr><td>TikTok ad spend</td><td>Spark Ads boosting winning UGC</td><td>TBD</td></tr>
+    <tr style="background:#FAFAF8;font-weight:600;">
+      <td>Total monthly GTM burn</td>
+      <td></td>
+      <td>$20-25K</td>
+    </tr>
+  </table>
+</div>
+
+</div>
+</body>
+</html>

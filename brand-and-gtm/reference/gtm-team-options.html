@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tryps Brand & GTM Team — 3 Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #F9FAFB; color: #3D3530; line-height: 1.6; padding: 40px 20px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  header { margin-bottom: 48px; }
+  h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+  .subtitle { font-size: 16px; color: #6B6560; margin-bottom: 24px; }
+
+  .context-box { background: white; border: 1px solid #EDE4D8; border-radius: 14px; padding: 24px; margin-bottom: 40px; }
+  .context-box h2 { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+  .context-box p { font-size: 14px; color: #6B6560; margin-bottom: 8px; }
+  .context-box ul { font-size: 14px; color: #6B6560; padding-left: 20px; }
+  .context-box li { margin-bottom: 4px; }
+  .context-box strong { color: #3D3530; }
+
+  .options-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
+
+  .option-card { background: white; border-radius: 14px; overflow: hidden; border: 1px solid #EDE4D8; }
+  .option-header { padding: 24px 28px; border-bottom: 1px solid #EDE4D8; }
+  .option-label { font-family: 'Space Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+  .option-a .option-label { color: #D9071C; }
+  .option-b .option-label { color: #2B5F83; }
+  .option-c .option-label { color: #2D6B4F; }
+  .option-header h3 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .option-header .tagline { font-size: 14px; color: #6B6560; }
+
+  .option-body { padding: 28px; }
+
+  .role-section { margin-bottom: 28px; }
+  .role-section:last-child { margin-bottom: 0; }
+  .role-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .role-tag { font-family: 'Space Mono', monospace; font-size: 10px; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .tag-new { background: #FEF3C7; color: #92400E; }
+  .tag-hired { background: #D1FAE5; color: #065F46; }
+  .role-subtitle { font-size: 13px; color: #6B6560; margin-bottom: 12px; }
+
+  .scope-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 16px; }
+  .scope-table th { text-align: left; padding: 6px 8px; border-bottom: 2px solid #EDE4D8; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #6B6560; }
+  .scope-table td { padding: 6px 8px; border-bottom: 1px solid #F3F0EC; vertical-align: top; }
+  .scope-table td:first-child { font-weight: 500; white-space: nowrap; }
+  .scope-num { font-family: 'Space Mono', monospace; color: #9B9590; font-size: 11px; }
+
+  .skills-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .skill-chip { font-size: 11px; padding: 3px 10px; border-radius: 999px; background: #F3F0EC; color: #6B6560; }
+
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; padding-top: 16px; border-top: 1px solid #EDE4D8; }
+  .pros h4, .cons h4 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .pros h4 { color: #2D6B4F; }
+  .cons h4 { color: #D14343; }
+  .pros ul, .cons ul { font-size: 13px; padding-left: 16px; color: #6B6560; }
+  .pros li, .cons li { margin-bottom: 4px; }
+
+  .cost-bar { display: flex; align-items: center; gap: 12px; padding: 16px 28px; background: #FAFAF8; border-top: 1px solid #EDE4D8; }
+  .cost-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #6B6560; }
+  .cost-value { font-family: 'Space Mono', monospace; font-size: 18px; font-weight: 700; }
+  .option-a .cost-value { color: #D9071C; }
+  .option-b .cost-value { color: #2B5F83; }
+  .option-c .cost-value { color: #2D6B4F; }
+  .cost-note { font-size: 12px; color: #9B9590; }
+
+  .rec-box { background: white; border: 2px solid #D9071C; border-radius: 14px; padding: 28px; margin-bottom: 40px; }
+  .rec-box h2 { font-size: 20px; font-weight: 700; color: #D9071C; margin-bottom: 12px; }
+  .rec-box p { font-size: 14px; color: #6B6560; margin-bottom: 8px; }
+
+  .sean-row { background: #FFF8F0; }
+  .sean-row td:first-child { color: #E8913A; font-weight: 600; }
+
+  .divider { height: 1px; background: #EDE4D8; margin: 20px 0; }
+
+  .comparison-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 20px; }
+  .comparison-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid #EDE4D8; font-weight: 600; font-size: 12px; }
+  .comparison-table td { padding: 10px 12px; border-bottom: 1px solid #F3F0EC; }
+  .comparison-table tr:hover { background: #FAFAF8; }
+  .check { color: #2D6B4F; font-weight: 700; }
+  .dash { color: #D1CBC5; }
+  .partial { color: #E8913A; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Brand & GTM Team Structure</h1>
+  <p class="subtitle">Three options for building Sean's execution team. All hires are AI-capable engineers, not designers.</p>
+</header>
+
+<div class="context-box">
+  <h2>Constraints from the Jake + Sean Meeting</h2>
+  <ul>
+    <li><strong>Sean is creative director.</strong> Full autonomy to direct the team. Calls shots, reviews everything before it goes live.</li>
+    <li><strong>No more designers.</strong> Random Figma designers are not helpful. Engineers + Claude > creatives.</li>
+    <li><strong>All hires must be AI-capable first.</strong> They should be able to use Claude, build workflows, and leverage AI tools as a multiplier.</li>
+    <li><strong>Workers, not strategists.</strong> The vision is set. The scopes are defined. We need execution.</li>
+    <li><strong>Goal: 100+ viral attempts per month</strong> with 2-3 major successes. Systematic reach building.</li>
+    <li><strong>One person already being hired</strong> who's strong on AI agents and automation (n8n, workflow engineering).</li>
+    <li><strong>Connecting with Jackson's Meta ads expert</strong> doing $500K/month — may handle paid acquisition externally.</li>
+    <li><strong>Budget: hiring 2 people this week.</strong> Contractors, not full-time. Slack access, 2-3x weekly meetings.</li>
+  </ul>
+</div>
+
+<!-- OPTION A -->
+<div class="options-grid">
+
+<div class="option-card option-a">
+  <div class="option-header">
+    <div class="option-label">Option A</div>
+    <h3>Automation Engineer + Growth Operator</h3>
+    <p class="tagline">One person builds the machine, one person runs campaigns on it</p>
+  </div>
+  <div class="option-body">
+
+    <div class="role-section">
+      <div class="role-title">Sean DeFaria <span class="role-tag" style="background:#FEE2E2;color:#991B1B;">Creative Director</span></div>
+      <p class="role-subtitle">Calls all creative shots. Reviews and approves everything. Manages creator/press relationships. Directs the team via Slack, in-person, and markdown briefs.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="role-section">
+      <div class="role-title">Role 1: AI & Automation Engineer <span class="role-tag tag-hired">Likely Hired</span></div>
+      <p class="role-subtitle">Builds the infrastructure that makes Sean's team 10x productive. Doesn't create content — creates the systems that create content.</p>
+      <table class="scope-table">
+        <tr><th>Scope</th><th>What they own</th></tr>
+        <tr><td><span class="scope-num">2</span> Socials</td><td>Build Remotion templates, Figma ad plugin (Austin Lau model), set up Buffer/scheduling</td></tr>
+        <tr><td><span class="scope-num">3</span> UGC</td><td>Trial and set up creator tools (Stormy/Modash/HypeAuditor), build affiliate link system, ambassador dashboard</td></tr>
+        <tr><td><span class="scope-num">7</span> SEO/AEO</td><td>Implement schema markup, build landing pages, structured data</td></tr>
+        <tr><td><span class="scope-num">8</span> Referrals</td><td>Build deep link system (Branch), referral tracking, trip invite OG image system</td></tr>
+        <tr><td><span class="scope-num">9</span> App Store</td><td>Set up ASO tools, configure Apple PPO testing</td></tr>
+        <tr><td><span class="scope-num">10</span> Paid</td><td>Set up Meta pixel, build ad copy slash command, Figma plugin for variants</td></tr>
+        <tr><td><span class="scope-num">11</span> Email</td><td>Set up Loops, build onboarding drip sequences</td></tr>
+        <tr><td><span class="scope-num">13</span> Analytics</td><td>Build all n8n workflows, dashboards, Slack notifications, LangFuse, cost tracking</td></tr>
+      </table>
+      <div class="skills-list">
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">TypeScript</span>
+        <span class="skill-chip">n8n / Make</span>
+        <span class="skill-chip">Remotion</span>
+        <span class="skill-chip">Claude Code</span>
+        <span class="skill-chip">API integrations</span>
+        <span class="skill-chip">Prompt engineering</span>
+        <span class="skill-chip">Branch / deep linking</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="role-section">
+      <div class="role-title">Role 2: Growth Marketing Operator <span class="role-tag tag-new">Hiring</span></div>
+      <p class="role-subtitle">Runs campaigns using the tools the engineer builds. Manages day-to-day ad spend, creator coordination, ASO, and content scheduling. Has done this before at a startup.</p>
+      <table class="scope-table">
+        <tr><th>Scope</th><th>What they own</th></tr>
+        <tr><td><span class="scope-num">2</span> Socials</td><td>Schedule and publish all content, manage posting calendar, track performance, flag winners</td></tr>
+        <tr><td><span class="scope-num">3</span> UGC</td><td>Coordinate with Sean on outreach, run creators through verification tools, track deliverables and payments</td></tr>
+        <tr><td><span class="scope-num">5</span> Giveaways</td><td>Execute contest mechanics, track entries, coordinate winner selection</td></tr>
+        <tr><td><span class="scope-num">7</span> SEO/AEO</td><td>Write landing page copy, blog posts for AI citation, keyword research</td></tr>
+        <tr><td><span class="scope-num">9</span> App Store</td><td>Write App Store copy, manage keyword optimization, run PPO tests, monitor reviews</td></tr>
+        <tr><td><span class="scope-num">10</span> Paid</td><td>Manage $5K/month Meta spend, create ad variants (using Recharm), run A/B tests, optimize daily</td></tr>
+        <tr><td><span class="scope-num">11</span> Email</td><td>Write email copy, manage launch blast, monitor onboarding drip performance</td></tr>
+        <tr><td><span class="scope-num">12</span> Press</td><td>Build journalist list, draft pitches, prep press kit, coordinate launch day outreach</td></tr>
+      </table>
+      <div class="skills-list">
+        <span class="skill-chip">Meta Ads Manager</span>
+        <span class="skill-chip">ASO experience</span>
+        <span class="skill-chip">Creator/influencer ops</span>
+        <span class="skill-chip">Copywriting</span>
+        <span class="skill-chip">Claude / AI tools</span>
+        <span class="skill-chip">Analytics</span>
+        <span class="skill-chip">Startup experience</span>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Strengths</h4>
+        <ul>
+          <li>Clear separation of concerns — builder vs. operator</li>
+          <li>Engineer can go deep on infrastructure without campaign distractions</li>
+          <li>Operator has real marketing experience and judgment</li>
+          <li>Scales well: engineer builds once, operator runs daily</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Risks</h4>
+        <ul>
+          <li>Dependency: operator is blocked until engineer builds tools</li>
+          <li>Two different skill profiles = harder to find, manage, align</li>
+          <li>Operator may want to do things their way vs. using your systems</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="cost-bar">
+    <span class="cost-label">Est. Monthly</span>
+    <span class="cost-value">$6-8K</span>
+    <span class="cost-note">~$3-4K each, 20-30 hrs/week contractors</span>
+  </div>
+</div>
+
+<!-- OPTION B -->
+<div class="option-card option-b">
+  <div class="option-header">
+    <div class="option-label">Option B</div>
+    <h3>Automation Engineer + Technical Content Producer</h3>
+    <p class="tagline">One person builds infrastructure, one person produces content at volume using AI</p>
+  </div>
+  <div class="option-body">
+
+    <div class="role-section">
+      <div class="role-title">Sean DeFaria <span class="role-tag" style="background:#FEE2E2;color:#991B1B;">Creative Director</span></div>
+      <p class="role-subtitle">Same as Option A. Calls shots, reviews, approves, manages relationships.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="role-section">
+      <div class="role-title">Role 1: AI & Automation Engineer <span class="role-tag tag-hired">Likely Hired</span></div>
+      <p class="role-subtitle">Same scope as Option A — builds infrastructure, tools, and automation.</p>
+      <table class="scope-table">
+        <tr><th>Scope</th><th>What they own</th></tr>
+        <tr><td><span class="scope-num">2-3</span> Socials + UGC</td><td>Remotion templates, creator tools, affiliate system, scheduling setup</td></tr>
+        <tr><td><span class="scope-num">7-8</span> SEO + Referrals</td><td>Schema markup, landing pages, Branch deep links, trip invite OG system</td></tr>
+        <tr><td><span class="scope-num">10</span> Paid</td><td>Meta pixel, ad copy slash command, Figma plugin</td></tr>
+        <tr><td><span class="scope-num">13</span> Analytics</td><td>All n8n workflows, dashboards, LangFuse, Slack notifications</td></tr>
+      </table>
+      <div class="skills-list">
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">TypeScript</span>
+        <span class="skill-chip">n8n / Make</span>
+        <span class="skill-chip">Remotion</span>
+        <span class="skill-chip">Claude Code</span>
+        <span class="skill-chip">API integrations</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="role-section">
+      <div class="role-title">Role 2: Technical Content Producer <span class="role-tag tag-new">Hiring</span></div>
+      <p class="role-subtitle">Produces the actual content at volume. Not a traditional designer or marketer — an AI-native producer who uses Claude, CapCut, Canva, and Remotion to crank out 100+ assets per month. Sean says "I need X," this person makes it in under an hour.</p>
+      <table class="scope-table">
+        <tr><th>Scope</th><th>What they own</th></tr>
+        <tr><td><span class="scope-num">1</span> Brand Book</td><td>Produce remaining brand book screens using Figma + AI, polish agent-generated drafts</td></tr>
+        <tr><td><span class="scope-num">2</span> Socials</td><td>Screen record app demos, edit all video clips, design carousels, produce 100+ pieces/month</td></tr>
+        <tr><td><span class="scope-num">4</span> Launch Video</td><td>Assist Sean on post-production — edits, platform cuts, caption burns</td></tr>
+        <tr><td><span class="scope-num">5</span> Giveaways</td><td>Design contest graphics, announcement posts, winner reveal assets</td></tr>
+        <tr><td><span class="scope-num">6</span> Physical</td><td>Design poster files, sticker artwork, camera wraps — send to print</td></tr>
+        <tr><td><span class="scope-num">9</span> App Store</td><td>Design screenshots, edit App Store video, create Product Hunt assets</td></tr>
+        <tr><td><span class="scope-num">10</span> Paid</td><td>Produce ad creative variants from UGC using Recharm + CapCut</td></tr>
+        <tr><td><span class="scope-num">12</span> Press</td><td>Build press kit page, design one-pager, prep assets for journalists</td></tr>
+      </table>
+      <div class="skills-list">
+        <span class="skill-chip">CapCut / video editing</span>
+        <span class="skill-chip">Canva / Figma</span>
+        <span class="skill-chip">Screen recording</span>
+        <span class="skill-chip">Claude / AI generation</span>
+        <span class="skill-chip">Fast turnaround</span>
+        <span class="skill-chip">Brand-aware production</span>
+        <span class="skill-chip">Motion graphics</span>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Strengths</h4>
+        <ul>
+          <li>Maximum content output — this person's entire job is producing assets</li>
+          <li>100+ viral attempts/month becomes achievable</li>
+          <li>Sean gets a direct production arm that responds in hours, not days</li>
+          <li>Engineer stays focused on infrastructure</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Risks</h4>
+        <ul>
+          <li><strong>Nobody is running campaigns.</strong> Who manages Meta ads day-to-day? Who does ASO keyword optimization? Who writes SEO content?</li>
+          <li>Content production without campaign management = beautiful assets nobody sees</li>
+          <li>May need Jackson's Meta ads person to fill the gap, or Sean absorbs campaign ops</li>
+          <li>Press outreach falls to Sean or Jake</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="cost-bar">
+    <span class="cost-label">Est. Monthly</span>
+    <span class="cost-value">$5-7K</span>
+    <span class="cost-note">Engineer ~$3-4K, Producer ~$2-3K (production is cheaper than strategy)</span>
+  </div>
+</div>
+
+<!-- OPTION C -->
+<div class="option-card option-c">
+  <div class="option-header">
+    <div class="option-label">Option C — Recommended</div>
+    <h3>Automation Engineer + Growth Engineer</h3>
+    <p class="tagline">Two engineers. One builds infrastructure, one builds and runs campaigns. Both use AI as a multiplier. No traditional marketers.</p>
+  </div>
+  <div class="option-body">
+
+    <div class="role-section">
+      <div class="role-title">Sean DeFaria <span class="role-tag" style="background:#FEE2E2;color:#991B1B;">Creative Director</span></div>
+      <p class="role-subtitle">Same as above. Sean directs everything creative. The two engineers are his execution arm. Sean + 2 engineers + AI agents = a full creative agency.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="role-section">
+      <div class="role-title">Role 1: AI & Automation Engineer <span class="role-tag tag-hired">Likely Hired</span></div>
+      <p class="role-subtitle">Builds every system, tool, and workflow the team runs on. The "machine builder." After week 2-3, this person shifts from building to maintaining + improving.</p>
+      <table class="scope-table">
+        <tr><th>Scope</th><th>What they build</th></tr>
+        <tr><td><span class="scope-num">2</span> Socials</td><td>Remotion template pipeline, scheduling tool setup, auto-repost workflows</td></tr>
+        <tr><td><span class="scope-num">3</span> UGC</td><td>Creator tool stack (trial + deploy), affiliate link system, ambassador dashboard</td></tr>
+        <tr><td><span class="scope-num">8</span> Referrals</td><td>Branch deep links, referral tracking, trip invite OG image generation</td></tr>
+        <tr><td><span class="scope-num">10</span> Paid</td><td>Meta pixel, ad copy Claude Code command, Figma ad variant plugin</td></tr>
+        <tr><td><span class="scope-num">11</span> Email</td><td>Loops setup, onboarding drip triggers, waitlist email capture</td></tr>
+        <tr><td><span class="scope-num">13</span> Analytics</td><td>All n8n/Make workflows, Looker Studio dashboards, LangFuse, Slack alerts, cost tracking</td></tr>
+      </table>
+      <div class="skills-list">
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">TypeScript / React</span>
+        <span class="skill-chip">n8n / Make</span>
+        <span class="skill-chip">Remotion</span>
+        <span class="skill-chip">Claude Code</span>
+        <span class="skill-chip">API integrations</span>
+        <span class="skill-chip">Prompt engineering</span>
+        <span class="skill-chip">Agent infrastructure</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="role-section">
+      <div class="role-title">Role 2: Growth Engineer <span class="role-tag tag-new">Hiring</span></div>
+      <p class="role-subtitle">The Austin Lau role. A technical person who runs campaigns, produces content, AND can code when needed. Uses the automation engineer's systems but can also build their own tools. The person who turns Sean's direction into 100+ viral attempts per month. Produces content AND manages distribution — no handoff gap.</p>
+      <table class="scope-table">
+        <tr><th>Scope</th><th>What they own</th></tr>
+        <tr class="sean-row"><td colspan="2" style="font-size:11px;padding:8px;"><em>All items below: Sean directs, Growth Engineer executes, Sean reviews before publish</em></td></tr>
+        <tr><td><span class="scope-num">1</span> Brand Book</td><td>Produce remaining screens using Figma + AI, iterate on agent drafts</td></tr>
+        <tr><td><span class="scope-num">2</span> Socials</td><td>Produce all content (video edits, carousels, demos), schedule across 8 platforms, track performance daily</td></tr>
+        <tr><td><span class="scope-num">3</span> UGC</td><td>Run creators through verification tools, coordinate deliverables, manage payments, track which creators to keep vs. cut</td></tr>
+        <tr><td><span class="scope-num">4</span> Launch Video</td><td>Post-production assistance — platform cuts, caption burns, export</td></tr>
+        <tr><td><span class="scope-num">5</span> Giveaways</td><td>Design contest assets, set up entry tracking, execute campaign</td></tr>
+        <tr><td><span class="scope-num">6</span> Physical</td><td>Design print-ready files, place orders, coordinate NYC deployment</td></tr>
+        <tr><td><span class="scope-num">7</span> SEO/AEO</td><td>Write landing pages, blog posts, implement keyword strategy</td></tr>
+        <tr><td><span class="scope-num">9</span> App Store</td><td>Design screenshots, write ASO copy, run PPO tests, prep Product Hunt listing</td></tr>
+        <tr><td><span class="scope-num">10</span> Paid</td><td>Manage $5K/month Meta spend, produce ad variants, optimize daily, run TikTok Spark Ads</td></tr>
+        <tr><td><span class="scope-num">12</span> Press</td><td>Build journalist list, draft pitches, build press kit, coordinate launch outreach</td></tr>
+      </table>
+      <div class="skills-list">
+        <span class="skill-chip">Meta Ads Manager</span>
+        <span class="skill-chip">CapCut / video editing</span>
+        <span class="skill-chip">Canva / Figma</span>
+        <span class="skill-chip">Claude / AI tools</span>
+        <span class="skill-chip">Basic coding (can use Claude Code)</span>
+        <span class="skill-chip">Copywriting</span>
+        <span class="skill-chip">ASO / SEO</span>
+        <span class="skill-chip">Analytics</span>
+        <span class="skill-chip">Startup hustle</span>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Strengths</h4>
+        <ul>
+          <li><strong>No gaps.</strong> Every scope has a clear owner. Content production AND campaign management in one person.</li>
+          <li><strong>Both people are engineers.</strong> Matches your "engineers + Claude > creatives" principle.</li>
+          <li><strong>Growth Engineer can build their own tools</strong> when the automation engineer is busy — no blocking.</li>
+          <li><strong>This is the Austin Lau model applied to Tryps.</strong> One technical person doing growth marketing with AI tools.</li>
+          <li><strong>100+ viral attempts/month is achievable</strong> because one person owns both making and distributing content.</li>
+          <li><strong>Jackson's Meta expert is additive, not required.</strong> Growth Engineer handles $5K/month; bring in the expert when you scale to $20K+.</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Risks</h4>
+        <ul>
+          <li>Growth Engineer role is very broad — finding someone who can produce video AND run Meta ads AND write SEO content is a unicorn</li>
+          <li>Risk of spreading thin across 10 scopes (mitigated by AI tools and automation engineer's infrastructure)</li>
+          <li>If this person is mediocre at production, you still might need a dedicated content person later</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="cost-bar">
+    <span class="cost-label">Est. Monthly</span>
+    <span class="cost-value">$7-9K</span>
+    <span class="cost-note">Engineer ~$3-4K, Growth Engineer ~$4-5K (broader scope commands more)</span>
+  </div>
+</div>
+
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="context-box">
+  <h2>Side-by-Side Comparison</h2>
+  <table class="comparison-table">
+    <tr>
+      <th style="width:30%">Dimension</th>
+      <th style="width:23%">A: Engineer + Operator</th>
+      <th style="width:23%">B: Engineer + Producer</th>
+      <th style="width:23%">C: Engineer + Growth Eng</th>
+    </tr>
+    <tr>
+      <td><strong>Content production volume</strong></td>
+      <td class="partial">Medium (operator produces some, but focus is campaign management)</td>
+      <td class="check">High (producer's entire job is making assets)</td>
+      <td class="check">High (growth engineer produces + distributes)</td>
+    </tr>
+    <tr>
+      <td><strong>Campaign management (Meta, ASO, SEO)</strong></td>
+      <td class="check">Strong (operator has marketing experience)</td>
+      <td class="dash">Weak (nobody owns this full-time)</td>
+      <td class="check">Strong (growth engineer owns end-to-end)</td>
+    </tr>
+    <tr>
+      <td><strong>100+ viral attempts/month</strong></td>
+      <td class="partial">Possible but tight</td>
+      <td class="check">Achievable (producer cranks assets)</td>
+      <td class="check">Achievable (growth engineer cranks + distributes)</td>
+    </tr>
+    <tr>
+      <td><strong>"Engineers, not designers" principle</strong></td>
+      <td class="partial">Half — operator may think like a marketer, not engineer</td>
+      <td class="partial">Half — producer may lean creative, not technical</td>
+      <td class="check">Full — both people are technical, both use AI as multiplier</td>
+    </tr>
+    <tr>
+      <td><strong>Dependency between roles</strong></td>
+      <td class="partial">High — operator blocked until engineer builds tools</td>
+      <td class="partial">Medium — producer can use existing tools while engineer builds</td>
+      <td class="check">Low — growth engineer can build their own tools with Claude Code</td>
+    </tr>
+    <tr>
+      <td><strong>Hiring difficulty</strong></td>
+      <td class="check">Easy — clear, common profiles</td>
+      <td class="check">Easy — production talent is plentiful</td>
+      <td class="partial">Medium — "technical marketer who can also produce content" is rarer</td>
+    </tr>
+    <tr>
+      <td><strong>Works without Jackson's Meta expert</strong></td>
+      <td class="check">Yes — operator runs ads</td>
+      <td class="dash">No — need someone to manage ad spend</td>
+      <td class="check">Yes — growth engineer runs ads</td>
+    </tr>
+    <tr>
+      <td><strong>Monthly cost</strong></td>
+      <td>$6-8K</td>
+      <td>$5-7K</td>
+      <td>$7-9K</td>
+    </tr>
+  </table>
+</div>
+
+<!-- RECOMMENDATION -->
+<div class="rec-box">
+  <h2>Recommendation: Option C</h2>
+  <p><strong>Two engineers under Sean.</strong> One builds the machine (AI & Automation Engineer — likely already hired). One runs growth end-to-end (Growth Engineer — the Austin Lau role). Both are AI-native. Both can use Claude Code. Neither is a traditional designer or traditional marketer.</p>
+  <p>The Growth Engineer is the harder hire but the higher leverage. This person turns Sean's creative direction into 100+ distributed pieces per month, manages $5K in ad spend, writes ASO and SEO copy, and tracks what's working — all using AI tools as a multiplier. When the automation engineer's infrastructure is ready, the growth engineer runs even faster on it.</p>
+  <p>If the Growth Engineer unicorn proves hard to find, <strong>fall back to Option A</strong> — it's the safest split with the clearest role boundaries.</p>
+</div>
+
+<div class="context-box" style="border-color: #D1CBC5;">
+  <h2>The Full Org at Launch</h2>
+  <table class="comparison-table">
+    <tr>
+      <th>Person</th>
+      <th>Role</th>
+      <th>Type</th>
+      <th>Monthly Cost</th>
+    </tr>
+    <tr style="background:#FFF8F0;">
+      <td><strong>Sean DeFaria</strong></td>
+      <td>Creative Director — calls shots, reviews, approves, manages relationships</td>
+      <td>Contractor (existing)</td>
+      <td>$5,000 (M1) + $5,000 (M2)</td>
+    </tr>
+    <tr>
+      <td><strong>AI & Automation Engineer</strong></td>
+      <td>Builds tools, workflows, agent infra, dashboards</td>
+      <td>Contractor (likely hired)</td>
+      <td>$3-4K</td>
+    </tr>
+    <tr>
+      <td><strong>Growth Engineer</strong></td>
+      <td>Produces content, runs campaigns, manages distribution</td>
+      <td>Contractor (hiring)</td>
+      <td>$4-5K</td>
+    </tr>
+    <tr style="background:#F0FDF4;">
+      <td><strong>AI Agents</strong></td>
+      <td>Pablo (design), Don (research), Rio (video) — draft production</td>
+      <td>Paperclip agents</td>
+      <td>~$50-100 (API costs)</td>
+    </tr>
+    <tr style="background:#F0FDF4;">
+      <td><strong>Jackson's Meta Expert</strong></td>
+      <td>Advisor/consultant on paid acquisition strategy (optional, brings when scaling past $20K)</td>
+      <td>External</td>
+      <td>TBD</td>
+    </tr>
+    <tr style="font-weight:600; background:#FAFAF8;">
+      <td colspan="3"><strong>Total Brand & GTM Monthly Burn (people)</strong></td>
+      <td><strong>$12-14K</strong></td>
+    </tr>
+  </table>
+  <p style="font-size:13px; color:#6B6560; margin-top:12px;">+ $330-690/mo software + $5K/mo Meta ad spend + ~$4K/mo creator payments = <strong>~$22-24K/month total GTM spend</strong></p>
+</div>
+
+</div>
+</body>
+</html>

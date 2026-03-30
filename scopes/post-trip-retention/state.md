@@ -3,7 +3,7 @@ id: post-trip-retention
 status: specced
 assignee: nadeem
 clickup_ids: ["86e0emu4g"]
-criteria: 0/39
+criteria: 0/31
 blockers: []
 last_updated: 2026-03-26
 updated_by: jake

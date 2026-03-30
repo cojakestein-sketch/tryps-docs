@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand & GTM — What the Team is Building</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #F9FAFB; color: #3D3530; padding: 48px; }
+
+  .slide { max-width: 1400px; margin: 0 auto; }
+
+  .label { font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #D9071C; margin-bottom: 8px; }
+  h1 { font-size: 36px; font-weight: 800; margin-bottom: 28px; color: #3D3530; }
+
+  .stats { display: flex; gap: 40px; margin-bottom: 36px; }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num { font-family: 'Space Mono', monospace; font-size: 28px; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: 12px; color: #9B9590; margin-top: 4px; }
+  .stat-red .stat-num { color: #D9071C; }
+  .stat-blue .stat-num { color: #2B5F83; }
+  .stat-green .stat-num { color: #2D6B4F; }
+  .stat-orange .stat-num { color: #E8913A; }
+  .stat-gray .stat-num { color: #9B9590; }
+
+  .layer-label { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #9B9590; margin-bottom: 12px; margin-top: 8px; padding-left: 4px; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+
+  .card { background: white; border-radius: 14px; padding: 20px 24px; border: 1px solid #EDE4D8; position: relative; overflow: hidden; min-height: 110px; display: flex; flex-direction: column; justify-content: space-between; }
+
+  .card-num { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .card-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+  .card-status { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+
+  .progress-bar { height: 3px; border-radius: 2px; background: #F3F0EC; margin-top: 12px; position: relative; }
+  .progress-fill { height: 100%; border-radius: 2px; position: absolute; left: 0; top: 0; }
+
+  /* Status colors */
+  .status-progress .card-num { color: #D9071C; }
+  .status-progress .card-status { color: #2B5F83; }
+  .status-progress .progress-fill { background: #2B5F83; }
+
+  .status-specced .card-num { color: #D9071C; }
+  .status-specced .card-status { color: #2D6B4F; }
+  .status-specced .progress-fill { background: #2D6B4F; }
+
+  .status-needs-spec .card-num { color: #D9071C; }
+  .status-needs-spec .card-status { color: #E8913A; }
+  .status-needs-spec .progress-fill { background: #E8913A; }
+
+  .status-not-started .card-num { color: #D9071C; }
+  .status-not-started .card-status { color: #9B9590; }
+  .status-not-started .progress-fill { background: #D1CBC5; }
+
+  .card-owner { font-size: 11px; color: #9B9590; margin-top: 4px; }
+
+  .footer { margin-top: 32px; font-size: 12px; color: #9B9590; display: flex; justify-content: space-between; align-items: center; }
+  .footer-left { display: flex; gap: 24px; }
+  .footer-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .dot-blue { background: #2B5F83; }
+  .dot-green { background: #2D6B4F; }
+  .dot-orange { background: #E8913A; }
+  .dot-gray { background: #D1CBC5; }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="label">B &middot; Brand & Go-to-Market</div>
+  <h1>What the Team is Building</h1>
+
+  <div class="stats">
+    <div class="stat stat-red">
+      <span class="stat-num">13</span>
+      <span class="stat-label">Active scopes</span>
+    </div>
+    <div class="stat stat-blue">
+      <span class="stat-num">4</span>
+      <span class="stat-label">In progress</span>
+    </div>
+    <div class="stat stat-green">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Specced & ready</span>
+    </div>
+    <div class="stat stat-orange">
+      <span class="stat-num">2</span>
+      <span class="stat-label">Needs spec</span>
+    </div>
+    <div class="stat stat-gray">
+      <span class="stat-num">4</span>
+      <span class="stat-label">Not started</span>
+    </div>
+  </div>
+
+  <!-- CREATIVE LAYER -->
+  <div class="layer-label">Creative</div>
+  <div class="grid">
+    <div class="card status-progress">
+      <div>
+        <div class="card-num">01</div>
+        <div class="card-title">Brand Book</div>
+        <div class="card-status">In Progress</div>
+        <div class="card-owner">Sean &middot; 13 MUST screens by Apr 2</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:35%;"></div></div>
+    </div>
+    <div class="card status-progress">
+      <div>
+        <div class="card-num">02</div>
+        <div class="card-title">Socials</div>
+        <div class="card-status">In Progress</div>
+        <div class="card-owner">Sean &middot; 3-week content calendar drafted</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:25%;"></div></div>
+    </div>
+    <div class="card status-progress">
+      <div>
+        <div class="card-num">03</div>
+        <div class="card-title">UGC Program</div>
+        <div class="card-status">In Progress</div>
+        <div class="card-owner">Sean &middot; Strategy + criteria docs done, list building next</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:30%;"></div></div>
+    </div>
+    <div class="card status-progress">
+      <div>
+        <div class="card-num">04</div>
+        <div class="card-title">Launch Video</div>
+        <div class="card-status">In Progress</div>
+        <div class="card-owner">Sean &middot; Treatment written, pre-production next</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:20%;"></div></div>
+    </div>
+    <div class="card status-specced">
+      <div>
+        <div class="card-num">05</div>
+        <div class="card-title">Giveaways</div>
+        <div class="card-status">Specced</div>
+        <div class="card-owner">Sean &middot; 3 concepts defined, mechanic TBD</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+    </div>
+    <div class="card status-specced">
+      <div>
+        <div class="card-num">06</div>
+        <div class="card-title">Physical Presence</div>
+        <div class="card-status">Specced</div>
+        <div class="card-owner">Sean &middot; NYC plan ready, orders by Apr 7</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+    </div>
+  </div>
+
+  <!-- DISTRIBUTION LAYER -->
+  <div class="layer-label">Distribution</div>
+  <div class="grid">
+    <div class="card status-needs-spec">
+      <div>
+        <div class="card-num">07</div>
+        <div class="card-title">SEO / GEO / AEO</div>
+        <div class="card-status">Needs Spec</div>
+        <div class="card-owner">GTM team &middot; Landing page + 3-5 keyword pages</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+    </div>
+    <div class="card status-needs-spec">
+      <div>
+        <div class="card-num">08</div>
+        <div class="card-title">Referrals & Viral Loops</div>
+        <div class="card-status">Needs Spec</div>
+        <div class="card-owner">GTM team &middot; Trip invite + deep links + dense seeding</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+    </div>
+    <div class="card status-specced">
+      <div>
+        <div class="card-num">09</div>
+        <div class="card-title">App Store & Product Hunt</div>
+        <div class="card-status">Specced</div>
+        <div class="card-owner">Sean + GTM &middot; Video treatment + screenshot plan done</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:10%;"></div></div>
+    </div>
+    <div class="card status-not-started">
+      <div>
+        <div class="card-num">10</div>
+        <div class="card-title">Paid Acquisition</div>
+        <div class="card-status">Not Started</div>
+        <div class="card-owner">GTM team &middot; $5K/mo Meta + TikTok Spark Ads</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+    </div>
+    <div class="card status-not-started">
+      <div>
+        <div class="card-num">11</div>
+        <div class="card-title">Email & Lifecycle</div>
+        <div class="card-status">Not Started</div>
+        <div class="card-owner">GTM team &middot; Launch blast + onboarding drip</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+    </div>
+  </div>
+
+  <!-- OPERATIONS LAYER -->
+  <div class="layer-label">Operations</div>
+  <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
+    <div class="card status-not-started">
+      <div>
+        <div class="card-num">12</div>
+        <div class="card-title">Press & Partnerships</div>
+        <div class="card-status">Not Started</div>
+        <div class="card-owner">GTM team &middot; Journalist list + press kit + launch outreach</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+    </div>
+    <div class="card status-not-started">
+      <div>
+        <div class="card-num">13</div>
+        <div class="card-title">Analytics & Operations</div>
+        <div class="card-status">Not Started</div>
+        <div class="card-owner">GTM Infra Eng &middot; Dashboards, automation, LangFuse</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <span><span class="footer-dot dot-blue"></span>In progress</span>
+      <span><span class="footer-dot dot-green"></span>Specced & ready</span>
+      <span><span class="footer-dot dot-orange"></span>Needs spec</span>
+      <span><span class="footer-dot dot-gray"></span>Not started</span>
+    </div>
+    <span>Brand & GTM &middot; Updated March 30, 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
