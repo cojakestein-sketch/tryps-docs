@@ -7,8 +7,8 @@ wave: 1
 dependencies: [brand-design-system]
 clickup_ids: ["86e0emu7g", "86e0f948t"]
 criteria_count: 57
-criteria_done: 0
-last_updated: 2026-03-21
+criteria_done: 48
+last_updated: 2026-03-28
 links:
   design: ./design.md
   testing: ./testing.md
@@ -61,13 +61,13 @@ iMessage is acquisition. The app is retention. The agent is the "holy shit" mome
 
 - [x] **SC-2.** `✅ TESTED` Everyone in the group chat is automatically part of the trip. No signup, no app download, no email. Verified by: 4 people in group chat, none have the app -> add Tryps number -> all 4 appear as trip members on the backend, linked by phone number.
 
-- [ ] **SC-3.** `🔨 IMPLEMENTED` If someone downloads the app later, all the data from the group chat is already there, expenses, activities, flights, everything. Verified by: Jake texts "$80 for Uber" and "let's do Nobu Friday" in group chat -> downloads app -> opens trip -> sees the expense and the activity.
+- [x] **SC-3.** `✅ TESTED` If someone downloads the app later, all the data from the group chat is already there, expenses, activities, flights, everything. Verified by: Jake texts "$80 for Uber" and "let's do Nobu Friday" in group chat -> downloads app -> opens trip -> sees the expense and the activity.
 
 - [x] **SC-4.** `✅ TESTED` A person added to the iMessage group joins the trip automatically. Verified by: trip has 4 members -> add Sarah to iMessage group -> Sarah appears as trip member within 10 seconds.
 
 - [x] **SC-5.** `✅ TESTED` A person who leaves the iMessage group leaves the trip. Verified by: Sarah leaves group chat -> Sarah removed from trip members within 10 seconds.
 
-- [ ] **SC-6.** `🔨 IMPLEMENTED` Early in onboarding, the agent prompts each person to take the trip vibe quiz. If Linq supports native polling, the vibe quiz runs directly in iMessage. If not, the agent sends a deep link into the app or asks the vibe questions as individual text prompts (e.g., "beach or mountains?" -> user replies "beach"). Verified by: new group with 4 members -> within first 5 minutes, each member receives a vibe quiz prompt -> completing it (in-chat or via app) saves their vibe profile to the trip.
+- [x] **SC-6.** `✅ TESTED` Early in onboarding, the agent prompts each person to take the trip vibe quiz. If Linq supports native polling, the vibe quiz runs directly in iMessage. If not, the agent sends a deep link into the app or asks the vibe questions as individual text prompts (e.g., "beach or mountains?" -> user replies "beach"). Verified by: new group with 4 members -> within first 5 minutes, each member receives a vibe quiz prompt -> completing it (in-chat or via app) saves their vibe profile to the trip.
 
 ### Expense Tracking via Text
 
@@ -77,7 +77,7 @@ iMessage is acquisition. The app is retention. The agent is the "holy shit" mome
 
 - [x] **SC-9.** `✅ TESTED` A user texts a custom split and the agent handles it. Verified by: Jake texts "I paid $90 for dinner, split between me Sarah and Tom" -> agent confirms -> expense split 3 ways at $30 each, other group members excluded.
 
-- [ ] **SC-10.** `🔨 IMPLEMENTED` A user sends a receipt photo and the agent extracts the expense. Verified by: Jake sends a photo of a $67.50 restaurant receipt -> agent parses total -> confirms "got it, $67.50. who's splitting?" -> Jake replies "everyone" -> expense logged split equally.
+- [x] **SC-10.** `✅ TESTED` A user sends a receipt photo and the agent extracts the expense. Verified by: Jake sends a photo of a $67.50 restaurant receipt -> agent parses total -> confirms "got it, $67.50. who's splitting?" -> Jake replies "everyone" -> expense logged split equally.
 
 ### Voting & Polls via Text
 
@@ -99,7 +99,7 @@ iMessage is acquisition. The app is retention. The agent is the "holy shit" mome
 
 - [x] **SC-18.** `✅ TESTED` A user asks who's going. Verified by: Sarah texts "who's going?" -> agent responds with the participant list.
 
-- [ ] **SC-19.** `🔨 IMPLEMENTED` A user pastes a link and the agent captures it. Verified by: Jake pastes an Airbnb listing URL -> agent extracts name, dates, price -> adds to trip as accommodation option -> confirms in chat.
+- [x] **SC-19.** `✅ TESTED` A user pastes a link and the agent captures it. Verified by: Jake pastes an Airbnb listing URL -> agent extracts name, dates, price -> adds to trip as accommodation option -> confirms in chat.
 
 ### Proactive Agent Behavior — Daily Facilitator Model
 
@@ -107,7 +107,7 @@ The agent's proactive behavior follows a daily facilitator cadence, not an event
 
 **Reactive confirmations (expenses, votes, queries) still happen immediately.** The daily cadence applies to proactive outreach only.
 
-- [ ] **SC-20.** `🔨 IMPLEMENTED` The agent sends ~one proactive check-in per day to the group chat, summarizing where planning stands and making specific asks for what's needed next. Verified by: trip is at level 3 (stay not picked) -> agent sends a single message to the group: "stay is the big one right now. I found 3 options, want me to throw them up for a vote?" -> message includes what's needed and a concrete next step -> no second proactive message for ~24 hours.
+- [x] **SC-20.** `✅ TESTED` The agent sends ~one proactive check-in per day to the group chat, summarizing where planning stands and making specific asks for what's needed next. Now includes trip card preview link (jointryps.com/trip/{id}) with OG image showing trip cover, name, dates, people count. Verified by: trip is at level 3 (stay not picked) -> agent sends a single message to the group: "stay is the big one right now. I found 3 options, want me to throw them up for a vote?" -> message includes what's needed and a concrete next step -> no second proactive message for ~24 hours.
 
 - [ ] **SC-21.** `⏳ NOT IMPLEMENTED` The daily check-in calls out specific people by name when they're blocking progress. Verified by: poll needs votes from Sarah and Mike -> daily check-in includes "Sarah, Mike, still need your votes on the dinner spot" -> other group members are not nagged about something they've already done.
 
@@ -117,7 +117,7 @@ The agent's proactive behavior follows a daily facilitator cadence, not an event
 
 - [ ] **SC-24.** `⏳ NOT IMPLEMENTED` The agent nudges the group when planning has stalled. Verified by: no trip-related activity in the group for 3+ days -> agent sends a single nudge that includes what's needed next (e.g., "3 days since anyone's touched this trip. still need to pick dates, want me to throw up a vote?") -> does NOT nudge again for at least 3 more days.
 
-- [ ] **SC-25.** `🔨 IMPLEMENTED` The agent's daily check-ins are driven by the trip completeness level system. It knows what stage the group is in, what the next level requires, and sets realistic bite-sized asks to get there. Verified by: trip is at level 2 (dates locked, no stay) -> agent's daily message focuses on accommodation, not activities -> trip advances to level 3 -> next day's message shifts to the new priority. The agent never asks for everything at once.
+- [x] **SC-25.** `✅ TESTED` The agent's daily check-ins are driven by the trip completeness level system. It knows what stage the group is in, what the next level requires, and sets realistic bite-sized asks to get there. Verified by: trip is at level 2 (dates locked, no stay) -> agent's daily message focuses on accommodation, not activities -> trip advances to level 3 -> next day's message shifts to the new priority. The agent never asks for everything at once.
 
 ### Agent Personality & Jennifer Test
 
@@ -151,7 +151,7 @@ The agent's proactive behavior follows a daily facilitator cadence, not an event
 
 ### Edge Cases & Error States
 
-- [ ] **SC-38.** `🔨 IMPLEMENTED` A group chat with only 2 people (plus the Tryps number). Verified by: add Tryps number to a 2-person chat -> agent handles it via 1:1 messages to each person (Linq requires 3+ for groups).
+- [x] **SC-38.** `✅ TESTED` A group chat with only 2 people (plus the Tryps number). Verified by: add Tryps number to a 2-person chat -> agent handles it via 1:1 messages to each person (Linq requires 3+ for groups).
 
 - [x] **SC-39.** `✅ TESTED` The agent can't parse what someone said. Verified by: Jake texts "asdfjkl random nonsense" -> agent does NOT respond. It stays quiet on messages it doesn't understand.
 
@@ -165,7 +165,7 @@ The agent's proactive behavior follows a daily facilitator cadence, not an event
 
 - [x] **SC-44.** `✅ TESTED` If the trip owner leaves the iMessage group, trip ownership transfers to another member automatically. Verified by: trip owner Jake leaves group chat -> ownership transfers to Sarah -> agent confirms to group.
 
-- [ ] **SC-45.** `⏳ NOT IMPLEMENTED` A user texts the Tryps number in a 1:1 DM (no group). The agent responds as a personal assistant: shows active trips, lets them query balances, offers to create a new trip. Verified by: Jake texts "hey" to Tryps number directly -> agent shows Jake's 3 active trips -> Jake texts "what do I owe across everything?" -> agent responds with balances per trip.
+- [x] **SC-45.** `✅ TESTED` A user texts the Tryps number in a 1:1 DM (no group). The agent responds as a personal assistant, can create trips, query balances, and help plan. Auto-registers new users. No more "create a trip in the app" dead-end. Verified by: Jake texts "hey" to Tryps number directly -> agent shows Jake's 3 active trips -> Jake texts "what do I owe across everything?" -> agent responds with balances per trip.
 
 - [x] **SC-46.** `✅ TESTED` A user can undo or correct the last agent action via text. Verified by: Jake texts "$45 Uber" -> agent confirms -> Jake texts "actually $35" -> agent updates expense to $35 -> confirms -> app shows $35.
 
@@ -175,11 +175,11 @@ The agent's proactive behavior follows a daily facilitator cadence, not an event
 
 - [x] **SC-48.** `✅ TESTED` The agent does NOT send walls of text. No message exceeds 6 lines. No more than 3 messages in a row. Verified by: run through all agent response types -> check line counts and message counts.
 
-- [ ] **SC-49.** `🔨 IMPLEMENTED` The agent does NOT announce every background action. If it's silently logging or processing, it stays quiet unless confirmation is needed. Verified by: agent processes 5 link scrapes -> only confirms the ones that resulted in added content.
+- [x] **SC-49.** `✅ TESTED` The agent does NOT announce every background action. If it's silently logging or processing, it stays quiet unless confirmation is needed. Verified by: agent processes 5 link scrapes -> only confirms the ones that resulted in added content.
 
 - [ ] **SC-50.** `⏳ NOT IMPLEMENTED` Non-trip-members do NOT see trip data. Verified by: outsider texts the Tryps number asking "what's the plan for Miami?" -> agent does not reveal trip details.
 
-- [ ] **SC-51.** `🔨 IMPLEMENTED` The iMessage group and the trip membership are always in sync. Verified by: remove a participant in-app -> they are removed from the iMessage group (or agent stops tracking them and DMs explanation) -> add someone to iMessage group -> they appear in the trip.
+- [x] **SC-51.** `✅ TESTED` The iMessage group and the trip membership are always in sync. Participant added/removed events from Linq handled with guards against double-removal and stale data. Verified by: remove a participant in-app -> they are removed from the iMessage group (or agent stops tracking them and DMs explanation) -> add someone to iMessage group -> they appear in the trip.
 
 ### Trip Completeness Levels & Recommendations
 
@@ -187,15 +187,15 @@ The agent's proactive behavior follows a daily facilitator cadence, not an event
 
 - [x] **SC-53.** `✅ TESTED` A trip completeness level system exists that tracks where a trip is in the planning process. Each level represents a concrete milestone (e.g., level 1 = location + dates + name, level 2 = flights aligned, level 3 = stay picked, etc. up to level 10 = fully planned trip). Verified by: create a trip and progress through planning stages -> trip level advances as milestones are hit -> level is visible to users in the app -> agent's daily check-ins reference what's needed for the next level. **The exact level definitions are a design deliverable — see design.md.**
 
-- [ ] **SC-54.** `🚫 BLOCKED` The agent surfaces activity recommendations from the recommendations engine (scope 8) in iMessage when contextually relevant. Verified by: someone texts "what should we do in Bali?" -> agent pulls personalized recommendations from Agent Intelligence -> responds with 2-3 top suggestions with brief reasons (e.g., "based on your group's vibe: volcano hike, Seminyak beach day, Ubud rice terrace walk") -> recommendations match what the app would show.
+- [ ] **SC-54.** `🚫 BLOCKED — Rizwan to test (agent intelligence/memory scope)` The agent surfaces activity recommendations from the recommendations engine (scope 8) in iMessage when contextually relevant. Verified by: someone texts "what should we do in Bali?" -> agent pulls personalized recommendations from Agent Intelligence -> responds with 2-3 top suggestions with brief reasons (e.g., "based on your group's vibe: volcano hike, Seminyak beach day, Ubud rice terrace walk") -> recommendations match what the app would show.
 
-- [ ] **SC-55.** `🚫 BLOCKED` The agent's daily check-in can include activity recommendations when the trip's completeness level calls for it. Verified by: trip is at the "add activities" level -> daily check-in includes "here are a few ideas based on your group's vibe" with 2-3 personalized recommendations -> user can add them by replying.
+- [ ] **SC-55.** `🚫 BLOCKED — Rizwan to test (agent intelligence/memory scope)` The agent's daily check-in can include activity recommendations when the trip's completeness level calls for it. Verified by: trip is at the "add activities" level -> daily check-in includes "here are a few ideas based on your group's vibe" with 2-3 personalized recommendations -> user can add them by replying.
 
 ### Cross-Scope Coordination
 
-- [ ] **SC-56.** `🚫 BLOCKED` ⚠️ **COORDINATION REQUIRED (scope 8).** Agent Intelligence generates vote-on-behalf batch DMs and the iMessage Agent delivers them. The DM delivery pipeline — how scope 8 triggers a DM send through scope 7's Linq infrastructure — must be designed jointly by Asif and Rizwan before either side implements. Verified by: a shared interface spec exists defining how Agent Intelligence requests DM delivery, and both teams have signed off on it.
+- [ ] **SC-56.** `🚫 BLOCKED — Rizwan to test (agent intelligence/memory scope)` ⚠️ **COORDINATION REQUIRED (scope 8).** Agent Intelligence generates vote-on-behalf batch DMs and the iMessage Agent delivers them. The DM delivery pipeline — how scope 8 triggers a DM send through scope 7's Linq infrastructure — must be designed jointly by Asif and Rizwan before either side implements. Verified by: a shared interface spec exists defining how Agent Intelligence requests DM delivery, and both teams have signed off on it.
 
-- [ ] **SC-57.** `🚫 BLOCKED` ⚠️ **COORDINATION REQUIRED (scope 8).** When a user replies to a vote-on-behalf batch DM (e.g., "switch D to yes"), the iMessage Agent parses it and routes the override to Agent Intelligence's vote engine. The parsing logic and routing contract must be defined jointly. Verified by: user replies to batch DM with a vote change -> iMessage Agent recognizes it as a vote override (not a new message) -> routes to vote engine -> vote updated -> agent confirms.
+- [ ] **SC-57.** `🚫 BLOCKED — Rizwan to test (agent intelligence/memory scope)` ⚠️ **COORDINATION REQUIRED (scope 8).** When a user replies to a vote-on-behalf batch DM (e.g., "switch D to yes"), the iMessage Agent parses it and routes the override to Agent Intelligence's vote engine. The parsing logic and routing contract must be defined jointly. Verified by: user replies to batch DM with a vote change -> iMessage Agent recognizes it as a vote override (not a new message) -> routes to vote engine -> vote updated -> agent confirms.
 
 ---
 
