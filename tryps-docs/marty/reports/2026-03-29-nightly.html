@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Tryps Nightly Brief — March 29, 2026</title>
+<title>Tryps Nightly Brief — Sunday, March 29, 2026</title>
 <style>
   @page { margin: 0.75in; size: letter; }
   @media print {
@@ -39,6 +39,19 @@
   }
   h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
   p, li { font-size: 11pt; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+  }
   .strategy-box {
     background: #FFFDF8;
     border: 1px solid #EDE4D8;
@@ -61,342 +74,295 @@
     font-weight: 600;
   }
   .print-btn:hover { background: #B00618; }
+  .highlight { background: #FFF3CD; padding: 2px 6px; border-radius: 3px; }
   a { color: #D9071C; text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .tag { display: inline-block; background: #EDE4D8; color: #3D3530; padding: 1px 6px; border-radius: 4px; font-size: 9pt; font-weight: 600; margin-right: 4px; }
-  .dim { color: #999; font-size: 10pt; }
-  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-  .cost-table td, .cost-table th {
-    padding: 4px 8px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-    font-family: 'Space Mono', monospace;
-    font-size: 10pt;
-  }
-  .goal-banner {
-    background: #D9071C;
+  ul { padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  .north-star {
+    background: linear-gradient(135deg, #D9071C 0%, #FF4444 100%);
     color: white;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 20px 0;
-    font-size: 13pt;
-    font-weight: 600;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 16px 0;
   }
-  .goal-banner .sub { font-weight: 400; font-size: 11pt; opacity: 0.9; margin-top: 4px; }
+  .north-star h3 { color: white; margin-top: 0; }
+  .directive {
+    background: #F8F4EF;
+    border-left: 4px solid #D9071C;
+    padding: 12px 16px;
+    margin: 8px 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .directive strong { color: #D9071C; }
 </style>
 </head>
 <body>
   <button class="print-btn no-print" onclick="window.print()">Print</button>
   <h1>Tryps Nightly Brief</h1>
   <div class="subtitle">
-    Sunday, March 29, 2026 — Prepared by Marty at 9:50 PM ET
-  </div>
-
-  <div class="goal-banner">
-    🎯 TEAM GOAL: Get Jake home from California this week.
-    <div class="sub">Jake needs to call Tryps and book his flight back. Voice call + flight booking must work end-to-end.</div>
+    Sunday, March 29, 2026 — Prepared by Marty at 9:50 PM ET<br>
+    <strong style="color: #D9071C;">REWORKED</strong> — Standup questions realigned to Jake's strategic directives. Strategy section is product-first. Costs are real numbers.
   </div>
 
   <!-- ============================================ -->
   <section>
-    <h2>1. Tomorrow's Standup — Monday March 30</h2>
-    <p class="dim">Questions are product-outcome focused. Each person has a strategic direction from Jake. The standup should surface: what's demoable now, what will be demoable by EOD Monday, and what's blocking the team goal.</p>
+    <h2>1. Tomorrow's Standup — Strategic Directives</h2>
 
-    <h3>Rizwan — Voice Call API</h3>
-    <p><strong>Jake's direction:</strong> "I need to be able to call Marty and Tryps tomorrow. Investigate and explain to me how we're going to do voice call API."</p>
-    <ol>
-      <li>Voice call for Tryps — what's your recommended stack? Walk us through the options: <strong>Vapi</strong> (managed voice AI platform), <strong>LiveKit + OpenAI Realtime API</strong> (open-source WebRTC + native voice), <strong>Twilio Voice + custom STT/TTS</strong> (telephony-grade), or something else. Pros/cons of each for our use case.</li>
-      <li>What does "call Tryps" look like as a product? In-app VoIP button? Dial a phone number? Both? What's the simplest path to a working demo by end of week?</li>
-      <li>How does voice integrate with the existing agent-intelligence memory system you built (PR #303)? If Jake calls Tryps and says "book me a flight home from LA," the agent needs his preferences, trip context, and memory. Is that wired or would it be a new integration?</li>
-      <li>What can you demo tomorrow? Even if it's a raw API call with audio in/out — what's the minimum viable voice interaction you can show by EOD Monday?</li>
-      <li>Blocking question: do we need a phone number (Twilio) or can we start with in-app WebRTC only? Cost estimate for the telephony path vs. app-only?</li>
-    </ol>
+    <div class="north-star">
+      <h3>Week Goal: Jake calls Tryps and books his flight home from California.</h3>
+      <p style="margin: 0;">Voice call API + travel booking + clean onboarding = demoable product.</p>
+    </div>
 
-    <h3>Nadeem — Travel Booking Demo</h3>
-    <p><strong>Jake's direction:</strong> "End of day tomorrow, demo travel booking. What are the advantages of Amadeus vs. Duffel vs. other solutions? Is there an advantage to building on multiple?"</p>
-    <ol>
-      <li>Give us a side-by-side: <strong>Duffel</strong> (NDC-native, 300+ airlines, modern API, startup-friendly) vs. <strong>Amadeus</strong> (GDS giant, flights+hotels+cars, enterprise-scale) vs. <strong>Kiwi/Tequila</strong> (virtual interlining, budget carriers). Which one gets us to "search and book a flight" fastest?</li>
-      <li>Duffel is already in our P3 roadmap. Have you looked at their API? Can you hit their sandbox and search for flights from LAX → JFK/EWR by EOD Monday? That's the demo.</li>
-      <li>Multi-provider strategy: is there value in abstracting over Duffel + Amadeus? Duffel has better NDC/direct airline pricing, Amadeus has broader inventory. Could we search both and present unified results? Or is that overengineering for P3?</li>
-      <li>What's demoable by EOD Monday? Even a terminal/Postman demo showing: search flights → select → create order. We need to see the booking flow working, even if it's not in the app UI yet.</li>
-      <li>How does this connect to the team goal? If Jake says "book me a flight from LAX to NYC on Wednesday," what's the chain: voice agent → flight search API → booking confirmation → payment? Map the pieces we have vs. what's missing.</li>
-    </ol>
+    <p>Standup completely reworked. No more scope/SC tracking questions. Every question maps to a specific strategic directive from Jake.</p>
 
-    <h3>Asif — Bug Progress + New User Onboarding</h3>
-    <p><strong>Jake's direction:</strong> "Understand bug progress. Dedicated time on new user onboarding — when someone wants to help, what do I have them do? Create a full trip e2e?"</p>
-    <ol>
-      <li>Bug status: Jake pushed PRs #313-328 this weekend (16 bug fix PRs in 2 days). How many are merged to develop? How many are still open? What's the remaining bug count from the testing sessions?</li>
-      <li>New user onboarding: if someone downloads Tryps right now and wants to test it, what's the e2e flow? Phone auth → create trip → invite friend → add activities → itinerary → expenses → settle up. Does this full path work today? Where does it break?</li>
-      <li>What's the "golden path" test script? Write it out — step by step, what a new beta tester should do. This becomes our QA checklist and our "help, I want to test" doc for anyone Jake sends the app to.</li>
-      <li>Warda (QA) — is she running through the golden path? What bugs is she finding that aren't in Jake's batch? What's her bug-to-resolution cycle time?</li>
-      <li>By EOD Monday, can you produce: (a) a bug burndown count (open vs. closed this week), and (b) a one-page "Welcome to Tryps Beta — here's how to test" doc that Jake can send to anyone?</li>
-    </ol>
+    <div class="directive">
+      <strong>Rizwan → Voice Call API</strong><br>
+      "I need to be able to call Marty and Tryps tomorrow." Investigate voice call providers (Vapi, Bland, Retell, Twilio). Explain the architecture. What can you demo by EOD?
+    </div>
 
-    <table style="width:100%; border-collapse:collapse; margin-top:16px; font-size:10pt;">
-      <tr style="border-bottom:2px solid #EDE4D8;">
-        <th style="text-align:left; padding:4px 8px;">Dev</th>
-        <th style="text-align:left; padding:4px 8px;">Strategic Focus</th>
-        <th style="text-align:center; padding:4px 8px;">Demoable Now?</th>
-        <th style="text-align:center; padding:4px 8px;">Demoable EOD Mon?</th>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;">
-        <td style="padding:4px 8px;">Rizwan</td>
-        <td style="padding:4px 8px;">Voice Call API</td>
-        <td style="text-align:center; padding:4px 8px;">___</td>
-        <td style="text-align:center; padding:4px 8px;">___</td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;">
-        <td style="padding:4px 8px;">Nadeem</td>
-        <td style="padding:4px 8px;">Travel Booking (Duffel/Amadeus)</td>
-        <td style="text-align:center; padding:4px 8px;">___</td>
-        <td style="text-align:center; padding:4px 8px;">___</td>
-      </tr>
-      <tr>
-        <td style="padding:4px 8px;">Asif</td>
-        <td style="padding:4px 8px;">Bug Progress + Onboarding Path</td>
-        <td style="text-align:center; padding:4px 8px;">___</td>
-        <td style="text-align:center; padding:4px 8px;">___</td>
-      </tr>
-    </table>
+    <div class="directive">
+      <strong>Asif → Travel Booking Demo</strong><br>
+      "End-of-day presentation on travel booking." Artemis vs. Duffel vs. alternatives. Is there an advantage to multi-provider? What's the fastest path to bookable flights? Prepare a demo.
+    </div>
+
+    <div class="directive">
+      <strong>Nadeem → Bugs + New User Onboarding</strong><br>
+      "I need to understand bug progress. Spend dedicated time on new user onboarding." When someone wants to help test, what do they do? Walk through create-a-full-trip e2e. What's demoable right now?
+    </div>
+
+    <p>Full standup doc: <a href="https://github.com/cojakestein-sketch/tryps-docs/blob/main/docs/standups/2026-03-30-standup.md">tryps-docs/docs/standups/2026-03-30-standup.md</a></p>
   </section>
 
   <!-- ============================================ -->
   <section>
-    <h2>2. Product Vision — The "Call Tryps" Experience</h2>
-    <div class="strategy-box">
-      <p>Jake's north star for this week: <strong>"I need to be able to call Tryps and book my flight back from California."</strong></p>
-      
-      <p>This is three products stitched together:</p>
-      <ol>
-        <li><strong>Voice interface</strong> (Rizwan) — User calls Tryps, speaks naturally, agent understands intent</li>
-        <li><strong>Flight search + booking</strong> (Nadeem) — Agent queries Duffel/Amadeus, presents options, books the flight</li>
-        <li><strong>Agent intelligence</strong> (Rizwan's existing memory) — Agent knows Jake's preferences, trip context, payment info</li>
-      </ol>
+    <h2>2. Tech Twitter</h2>
+    <p><em>Sunday — limited direct X/Twitter results via Brave. Sourced from news coverage.</em></p>
 
-      <p><strong>What exists today:</strong></p>
-      <ul>
-        <li>✅ Agent memory system (PR #303 — per-user context, preference extraction)</li>
-        <li>✅ iMessage agent (Asif — text-based trip planning via Linq)</li>
-        <li>✅ Agent router (Asif — routes intents to correct handlers)</li>
-        <li>❌ Voice input/output — not started</li>
-        <li>❌ Flight search API integration — not started (Duffel is in P3 roadmap)</li>
-        <li>❌ Payment/booking confirmation — not started</li>
-      </ul>
+    <div class="tweet">
+      <span class="tweet-author">Anthropic</span><br>
+      <span class="tweet-text">Claude Code v2.1.86+ continues rolling updates — latest adds env var overrides for model capability detection on 3rd-party providers (Bedrock, Vertex, Foundry). Custom model picker labels.</span><br>
+      <a href="https://releasebot.io/updates/anthropic">releasebot.io</a>
+    </div>
 
-      <p><strong>Fastest path to demo (this week):</strong></p>
-      <ul>
-        <li><strong>Voice:</strong> Vapi or LiveKit — either gives a working voice agent in ~1 day of integration. Vapi is faster (managed), LiveKit is more flexible (self-hosted). Both support OpenAI Realtime API for natural conversation.</li>
-        <li><strong>Flights:</strong> Duffel sandbox — search + book in test mode. No real money, but proves the flow. Nadeem can have this working by EOD Monday.</li>
-        <li><strong>Glue:</strong> Wire voice agent → agent-router → flight search tool. This is the integration Rizwan + Nadeem need to coordinate on.</li>
-      </ul>
+    <div class="tweet">
+      <span class="tweet-author">OpenAI</span><br>
+      <span class="tweet-text">Codex usage caps still removed (post-Anthropic throttling counter-move). Location sharing rolled out to ChatGPT iOS + web.</span><br>
+      <a href="https://releasebot.io/updates/openai">releasebot.io</a>
+    </div>
 
-      <p><strong>Realistic EOD Friday deliverable:</strong> Jake calls a number (or taps a button), says "book me a flight from LA to New York Wednesday afternoon," agent searches Duffel, reads back options, Jake picks one, agent confirms booking. Payment is mock/sandbox but the conversational flow is real.</p>
+    <div class="tweet">
+      <span class="tweet-author">Industry — VC Surge</span><br>
+      <span class="tweet-text">Global VC activity surging in AI and robotics as of March 29. Indian startups raised $200M+ this week, bulk going to AI-focused firms. Capital is flowing hard into agent infrastructure.</span><br>
+      <a href="https://www.thetechedvocate.org/venture-capital-landscape-shifts-focus-to-ai-and-robotics-as-market-activity-surges/">thetechedvocate.org</a>
     </div>
   </section>
 
   <!-- ============================================ -->
   <section>
-    <h2>3. Travel Booking API Landscape</h2>
-    <p class="dim">Research for Nadeem's demo prep. Jake asked: "Amadeus vs. Duffel vs. others — advantages of building on multiple?"</p>
+    <h2>3. Trending GitHub Repos</h2>
 
-    <table style="width:100%; border-collapse:collapse; font-size:10pt; margin-top:8px;">
-      <tr style="border-bottom:2px solid #EDE4D8;">
-        <th style="text-align:left; padding:6px 8px;">API</th>
-        <th style="text-align:left; padding:6px 8px;">Best For</th>
-        <th style="text-align:left; padding:6px 8px;">Airlines</th>
-        <th style="text-align:left; padding:6px 8px;">Pricing</th>
-        <th style="text-align:left; padding:6px 8px;">Dev Experience</th>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;">
-        <td style="padding:6px 8px; font-weight:600;">Duffel</td>
-        <td style="padding:6px 8px;">Startups, API-first, fast integration</td>
-        <td style="padding:6px 8px;">300+ (NDC direct)</td>
-        <td style="padding:6px 8px;">Commission per booking (~1-2%)</td>
-        <td style="padding:6px 8px;">⭐⭐⭐⭐⭐ Modern REST, great docs, sandbox</td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;">
-        <td style="padding:6px 8px; font-weight:600;">Amadeus</td>
-        <td style="padding:6px 8px;">Enterprise, broad inventory (flights+hotels+cars)</td>
-        <td style="padding:6px 8px;">400+ (GDS)</td>
-        <td style="padding:6px 8px;">Free tier (500 calls/mo), then paid</td>
-        <td style="padding:6px 8px;">⭐⭐⭐ Older API design, more setup</td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;">
-        <td style="padding:6px 8px; font-weight:600;">Kiwi (Tequila)</td>
-        <td style="padding:6px 8px;">Budget carriers, virtual interlining</td>
-        <td style="padding:6px 8px;">750+ (incl budget)</td>
-        <td style="padding:6px 8px;">Commission, invite-only partners</td>
-        <td style="padding:6px 8px;">⭐⭐⭐ Decent API, partner approval needed</td>
-      </tr>
-      <tr>
-        <td style="padding:6px 8px; font-weight:600;">Google Flights (ITA)</td>
-        <td style="padding:6px 8px;">Price comparison, fare intelligence</td>
-        <td style="padding:6px 8px;">Broadest coverage</td>
-        <td style="padding:6px 8px;">No public API (QPX deprecated)</td>
-        <td style="padding:6px 8px;">N/A — scraping only</td>
-      </tr>
-    </table>
+    <div class="repo">
+      <span class="repo-name">luongnv89/claude-howto</span> — ⭐ 6,828 (+1,165 today)<br>
+      Visual, example-driven guide to Claude Code — from basics to advanced agents, with copy-paste templates. <strong>Why it matters:</strong> The devs (especially Nadeem) could use this to level up their Claude Code workflows. Getting-started prompts in our standups follow the same pattern.<br>
+      <a href="https://github.com/luongnv89/claude-howto">→ github.com</a>
+    </div>
 
-    <h3>Recommendation</h3>
-    <p><strong>Start with Duffel.</strong> It's already in our P3 roadmap, the developer experience is the best in class, and they have a sandbox that lets you search + book without real money. For this week's demo, Duffel sandbox is the fastest path.</p>
-    <p><strong>Multi-provider later.</strong> Abstracting over Duffel + Amadeus gives broader inventory (Amadeus has some GDS-only fares Duffel doesn't), but that's a P3+ optimization. Don't split focus now.</p>
-    <p class="dim"><em>Note: Jake may have said "Artemis" via voice dictation — likely meant Amadeus. Flagging in case he actually means something specific.</em></p>
+    <div class="repo">
+      <span class="repo-name">microsoft/VibeVoice</span> — ⭐ 27,410 (+1,056 today)<br>
+      Open-source frontier voice AI from Microsoft. <strong>Why it matters:</strong> Directly relevant to Rizwan's voice call API investigation this week. Could be the open-source backbone for STT/TTS in the Tryps call flow.<br>
+      <a href="https://github.com/microsoft/VibeVoice">→ github.com</a>
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">NousResearch/hermes-agent</span> — ⭐ trending<br>
+      "The agent that grows with you" — self-improving agent framework from NousResearch. <strong>Why it matters:</strong> Agent-intelligence scope is building exactly this: memory, learning, personalization over time. Worth studying their architecture.<br>
+      <a href="https://github.com/NousResearch/hermes-agent">→ github.com</a>
+    </div>
   </section>
 
   <!-- ============================================ -->
   <section>
-    <h2>4. Voice Call API Options</h2>
-    <p class="dim">Research for Rizwan's investigation. Jake wants to understand how voice calling will work.</p>
+    <h2>4. Deep Dive: The Two-Pillar Thesis</h2>
+    <p><em>From Jake's 11:30 PM brain dump tonight: "The whole product is literally just making it easy for people to grill me on their trip, and then letting them AB test it for their entire group with native polling. If we make that we win."</em></p>
 
-    <table style="width:100%; border-collapse:collapse; font-size:10pt; margin-top:8px;">
-      <tr style="border-bottom:2px solid #EDE4D8;">
-        <th style="text-align:left; padding:6px 8px;">Platform</th>
-        <th style="text-align:left; padding:6px 8px;">How It Works</th>
-        <th style="text-align:left; padding:6px 8px;">Time to Demo</th>
-        <th style="text-align:left; padding:6px 8px;">Cost</th>
-        <th style="text-align:left; padding:6px 8px;">Best For</th>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;">
-        <td style="padding:6px 8px; font-weight:600;">Vapi</td>
-        <td style="padding:6px 8px;">Managed voice AI platform. Configure agent + phone number, they handle STT/TTS/LLM orchestration</td>
-        <td style="padding:6px 8px;">~4 hours</td>
-        <td style="padding:6px 8px;">$0.05/min + LLM costs</td>
-        <td style="padding:6px 8px;">Fastest to demo, lowest integration effort</td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;">
-        <td style="padding:6px 8px; font-weight:600;">LiveKit + OpenAI Realtime</td>
-        <td style="padding:6px 8px;">Open-source WebRTC server + OpenAI's native voice model. Full control, self-hosted.</td>
-        <td style="padding:6px 8px;">1-2 days</td>
-        <td style="padding:6px 8px;">$0.06/min (OpenAI) + hosting</td>
-        <td style="padding:6px 8px;">In-app voice, most flexibility</td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;">
-        <td style="padding:6px 8px; font-weight:600;">Twilio + Custom STT/TTS</td>
-        <td style="padding:6px 8px;">Phone number + media streams. You wire STT (Deepgram), LLM, TTS (ElevenLabs).</td>
-        <td style="padding:6px 8px;">2-3 days</td>
-        <td style="padding:6px 8px;">$0.02/min (Twilio) + STT/TTS</td>
-        <td style="padding:6px 8px;">Real phone numbers, telephony-grade</td>
-      </tr>
-      <tr>
-        <td style="padding:6px 8px; font-weight:600;">Retell AI</td>
-        <td style="padding:6px 8px;">Similar to Vapi — managed voice agent platform, slightly lower latency claims</td>
-        <td style="padding:6px 8px;">~4 hours</td>
-        <td style="padding:6px 8px;">$0.07-0.12/min all-in</td>
-        <td style="padding:6px 8px;">Production reliability, enterprise features</td>
-      </tr>
-    </table>
+    <h3>What it is</h3>
+    <p>Two pillars that make Tryps undeniable:</p>
+    <ol>
+      <li><strong>Grill the AI about your trip</strong> — ask anything, get great answers. Zero friction.</li>
+      <li><strong>AB test with your group via native polling</strong> — every answer becomes a poll. One tap.</li>
+    </ol>
+    <p>The magic is the handoff. Ask → get options → one tap and the whole group is voting.</p>
 
-    <h3>Recommended Path</h3>
-    <p><strong>For this week's demo:</strong> Vapi — get a phone number, point it at our agent-router, call it. Working voice demo in an afternoon.</p>
-    <p><strong>For production:</strong> LiveKit + OpenAI Realtime — in-app voice button, full control over the experience, integrates with Expo/React Native via WebRTC. This is the "call Tryps" button in the app.</p>
-  </section>
+    <h3>Why it maps to this week</h3>
+    <p>The voice call initiative (Rizwan) is Pillar 1 taken to its extreme — you don't even need to type, you just <em>call</em> and grill the AI by talking. The travel booking (Asif) is what makes the answers real — you don't just get flight suggestions, you get bookable flights. And clean onboarding (Nadeem) is what makes Pillar 2 possible — if the app doesn't work e2e, there's no group to poll.</p>
 
-  <!-- ============================================ -->
-  <section>
-    <h2>5. Weekend Activity — Bug Blitz</h2>
-    <p>Jake went on a bug-fixing marathon this weekend: <strong>16 PRs (#313–#328)</strong> in 48 hours.</p>
+    <h3>Why no other app does this</h3>
     <ul>
-      <li><strong>Packing list</strong> — 8 UX bugs resolved (#314)</li>
-      <li><strong>Expenses</strong> — split mode, currency persistence, realtime updates (#315-#321)</li>
-      <li><strong>Itinerary</strong> — realtime sync, timezone drift (#316)</li>
-      <li><strong>People/Invite</strong> — organizer re-add, phone number leak prevention (#315, #328)</li>
-      <li><strong>Vibe board</strong> — Spotify links, group vibe, moodboard button (#317, #320, #325)</li>
-      <li><strong>Dark mode</strong> — trip creation, vibe board RLS (#323)</li>
-      <li><strong>Infrastructure</strong> — jointripful.com → jointryps.com migration, test failures fixed (#326, #327)</li>
+      <li><strong>Partiful</strong> — events, not trips. No AI, no polling on trip decisions.</li>
+      <li><strong>Google Trips (RIP)</strong> — solo planning. No group collaboration layer.</li>
+      <li><strong>WhatsApp polls</strong> — manual. No AI generating the options. No trip context.</li>
+      <li><strong>TripIt, Wanderlog</strong> — itinerary organizers, not decision engines.</li>
+      <li><strong>ChatGPT / Claude</strong> — great at Q&A but no native group polling. No trip state.</li>
     </ul>
-    <p><strong>On develop:</strong> Asif merged Rizwan's vote-on-behalf phone lookup fix. Nadeem's delete account, realtime activities, morning slot, and scheduling timezone fixes all merged March 27.</p>
-    <p class="dim">Asif's Monday priority: merge Jake's 16 PRs to develop and verify nothing breaks.</p>
+    <p>Tryps is the only product where "research" and "group decision" happen in one motion.</p>
+
+    <h3>What to build toward</h3>
+    <ul>
+      <li>Every AI answer should have a "Poll the group" button. One tap → native poll.</li>
+      <li>Polls should present 2-3 AI-generated options side by side (not just yes/no).</li>
+      <li>The 60% "I Don't Care-ers" only need to vote on polls. They never need to ask the AI anything.</li>
+      <li>The 10% Ultimate Planners curate which AI answers become polls. They drive the trip.</li>
+      <li>Track the funnel: questions asked → polls created → votes received → decisions made.</li>
+    </ul>
   </section>
 
   <!-- ============================================ -->
   <section>
-    <h2>6. Strategy Check — Product Focus</h2>
+    <h2>5. Strategy Check — Product Focus</h2>
+    <p><em>Beginning of Week 5 (Mar 30 – Apr 5).</em></p>
     <div class="strategy-box">
-      <h3>The Product Question This Week</h3>
-      <p>Tryps has been a trip planning app. This week, Jake is pushing it toward <strong>a trip execution app</strong> — one you can call, that books real flights, that does things for you. That's a different product.</p>
+      <h3>The product, not the process</h3>
+      <p>Forget scope completion percentages. Here's what matters:</p>
 
-      <h3>What's Actually Changing</h3>
+      <h3>What does Tryps actually do today?</h3>
       <ul>
-        <li><strong>Voice as primary interface:</strong> Not just chat (iMessage agent) — actual phone calls. This is the "call your travel agent" experience, but AI-powered. If this works, it's the differentiator. No other group trip app lets you call it.</li>
-        <li><strong>Booking as core action:</strong> Moving from "plan your trip" to "book your trip." Duffel integration means Tryps can actually transact, not just organize. This is where revenue starts.</li>
-        <li><strong>Agent memory as competitive moat:</strong> When Jake calls and says "book me a flight home," the agent should already know where home is, his seat preference, his airline loyalty. Rizwan's memory system (#303) is the foundation for this.</li>
+        <li><strong>Trip creation + invite flow:</strong> Works. Create a trip, invite by phone number, they join. This is the core loop and it's functional.</li>
+        <li><strong>Trip detail tabs (Activities, Itinerary, People+Flights, Stay, Vibe, Expenses):</strong> All built. Bugs exist (Jake found 30+ this weekend), but the features are there.</li>
+        <li><strong>AI agent:</strong> Conversational agent with memory system. Can create trips, answer questions, remembers user context across conversations. Works in-app and via iMessage (Linq).</li>
+        <li><strong>Vote-on-behalf:</strong> Agent can infer votes for absent group members. Just shipped (PR #312).</li>
       </ul>
 
-      <h3>Three Demos by Friday</h3>
-      <ol>
-        <li><strong>Rizwan:</strong> Call a number, talk to Tryps, it understands "book me a flight from LA to NYC." Voice → intent → response.</li>
-        <li><strong>Nadeem:</strong> Flight search working via Duffel API — LAX to JFK/EWR, show options, select one, confirm booking (sandbox).</li>
-        <li><strong>Asif:</strong> Golden path working — new user can sign up, create trip, invite friend, plan, and see it all work. Plus the bug burndown from this weekend's blitz.</li>
-      </ol>
+      <h3>What's missing to hit the north star?</h3>
+      <ul>
+        <li><strong>Voice calling:</strong> Zero infrastructure. Rizwan starts investigating tomorrow. This is the "call Tryps" unlock.</li>
+        <li><strong>Travel booking:</strong> No live booking integration. Asif evaluates Artemis/Duffel tomorrow. This is the "book a flight" unlock.</li>
+        <li><strong>Clean onboarding:</strong> First-time experience is rough. Bugs in core flows. Nadeem focuses on this tomorrow. This is the "hand someone your phone" unlock.</li>
+        <li><strong>AI → Poll handoff:</strong> The one-tap "poll your group" from an AI answer doesn't exist as a seamless flow yet. This is the Pillar 2 unlock.</li>
+      </ul>
 
-      <h3>If All Three Work, the Friday Demo Is:</h3>
-      <p><strong>Jake calls Tryps from his phone. Says "I'm in LA, I need to get back to New York Wednesday afternoon." Tryps searches flights, reads back the best options, Jake picks one, Tryps books it.</strong> That's the product. That's the pitch. That's what gets people to say "holy shit."</p>
+      <h3>The integration test</h3>
+      <p><strong>Jake calls Tryps from California. Says "book me a flight home to JFK on Wednesday." Tryps finds options via booking API. Jake says "send the top 3 to my group." Group gets a native poll. They vote. Jake books.</strong></p>
+      <p>That's the demo. That's the product. Every task this week should feed into making some version of that real.</p>
+
+      <h3>What I'd focus on if I were Jake</h3>
+      <ul>
+        <li><strong>Monday:</strong> Morning week plan with Marty. Ensure standup answers come in by 2pm. Review Asif's booking demo and Rizwan's voice API plan by 6pm.</li>
+        <li><strong>Tuesday-Wednesday:</strong> Get the voice → agent → booking chain working end-to-end, even if rough. Nadeem gets onboarding clean.</li>
+        <li><strong>Thursday-Friday:</strong> Jake actually calls Tryps and books his flight home. Film it. That's the launch video.</li>
+      </ul>
     </div>
   </section>
 
   <!-- ============================================ -->
   <section>
-    <h2>7. Cost Snapshot — March 29, 2026</h2>
-    <p class="dim">Actual costs from OpenClaw session JSONL files. Token-level billing data, not estimates.</p>
+    <h2>6. Culture & Conversation</h2>
+
+    <div style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>VC Capital Surging Into AI Agents & Robotics</strong><br>
+      Global VC activity hit a significant uptick as of this week. Indian startups alone raised $200M+, bulk into AI. Nvidia-backed Reflection AI is in talks at a $25B valuation. The agent infrastructure layer is where capital is concentrating hardest.<br>
+      <em>Conversation angle:</em> Tryps is building on the agent layer. The timing is right — investors are funding agent-first products, not just agent infrastructure. The "call an AI to book your trip" pitch lands differently now than it would have 6 months ago.<br>
+      <a href="https://www.thetechedvocate.org/venture-capital-landscape-shifts-focus-to-ai-and-robotics-as-market-activity-surges/">→ Full story</a>
+    </div>
+
+    <div style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>Musk v. OpenAI Trial: Private Texts Reshaping Public Narratives</strong><br>
+      The ongoing trial continues to surface private communications between tech leaders. Zuckerberg offered to help DOGE, Musk invited bids on OpenAI assets. The gap between public positioning and private dealmaking is widening.<br>
+      <em>Conversation angle:</em> Everyone in tech has opinions on this. The trial is becoming a referendum on how AI companies should be structured (nonprofit vs. for-profit) — relevant as Tryps thinks about its own structure and fundraising narrative.<br>
+      <a href="https://www.24matins.uk/elon-musk-vs-sam-altman-trial-leaked-private-conversations-revealed-328139">→ Coverage</a>
+    </div>
+
+    <div style="padding: 8px 0;">
+      <strong>Indonesia's Under-16 Social Media Ban Goes Live</strong><br>
+      First Southeast Asian country to implement it (enforcement started March 28). Following Australia's playbook. "High-risk" platforms including Roblox are restricted.<br>
+      <em>Conversation angle:</em> The regulatory wave is spreading. For consumer apps, the question is becoming "how do you handle age verification without adding friction?" — directly relevant to Tryps' "never add friction to the invite flow" philosophy.<br>
+      <a href="https://apnews.com/article/indonesia-social-media-children-under-16-761b3ae00231ea0b176f93813c0a35eb">→ AP News</a>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>7. AI Releases & Patch Notes</h2>
+
+    <h3>Anthropic</h3>
+    <ul>
+      <li><strong>Claude Code</strong> — Continued incremental releases through weekend. Latest adds: ANTHROPIC_DEFAULT_{OPUS,SONNET,HAIKU}_MODEL_SUPPORTS env vars for overriding capability detection on 3rd-party providers. Custom model picker labels via _MODEL_NAME/_DESCRIPTION. Session stability improvements continue from v2.1.86.</li>
+      <li><strong>Peak-hour throttling</strong> (announced earlier this week) now active during 5am–11am PT weekdays.</li>
+    </ul>
+
+    <h3>OpenAI</h3>
+    <ul>
+      <li><strong>Codex caps still removed</strong> — The unlimited Codex access announced earlier this week remains in effect. No new restrictions.</li>
+      <li><strong>ChatGPT location sharing</strong> — Rolled out to iOS + web. Android coming soon.</li>
+    </ul>
+
+    <h3>Google / xAI</h3>
+    <ul>
+      <li>No major releases this weekend from either. Quiet period.</li>
+    </ul>
+
+    <h3>Ecosystem</h3>
+    <ul>
+      <li><strong>NousResearch/hermes-agent</strong> — "The agent that grows with you" just hit GitHub trending. Self-improving agent architecture. Relevant to Rizwan's agent-intelligence work.</li>
+      <li><strong>claude-mem (42.6K stars)</strong> — Claude Code plugin that captures everything Claude does during coding sessions, compresses with AI, and reinjects into future sessions. Basically what Marty's MEMORY.md does but automated for dev workflows.</li>
+    </ul>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p><em>Weekend wildcard — voice AI platforms (relevant to this week's directive).</em></p>
+
+    <h3>Vapi — Voice AI Platform for Developers</h3>
+    <p><strong>What it is:</strong> Developer-first platform for building AI voice agents. Handles STT → LLM → TTS pipeline. Supports custom LLM backends (including Claude).</p>
+    <p><strong>How Jake would use it:</strong> This is the fastest path to "call Tryps." Vapi handles the telephony layer (real phone number, WebRTC, SIP), transcription, and voice synthesis. Rizwan plugs in the Tryps agent as the LLM backend. User calls a number → Vapi handles audio → sends text to agent → agent responds → Vapi speaks it back. Could have a prototype running in hours, not days.</p>
+    <p><strong>Pricing:</strong> Pay-per-minute. ~$0.05-0.15/min depending on STT/TTS providers chosen. Free tier for dev.</p>
+    <p><a href="https://vapi.ai">→ vapi.ai</a></p>
+
+    <h3>Retell AI — Low-Latency Voice Agents</h3>
+    <p><strong>What it is:</strong> Voice AI platform optimized for natural conversation. ~600ms response time (fastest in category). SOC 2, HIPAA compliant.</p>
+    <p><strong>How Jake would use it:</strong> If Vapi's latency isn't good enough for the "call Tryps" experience, Retell is the alternative. Their edge: responses feel instant. For a travel booking conversation where you're going back and forth ("What about Wednesday instead? How much cheaper is a red-eye?"), low latency = natural conversation = magic.</p>
+    <p><strong>Pricing:</strong> Pay-as-you-go, no platform fees. Competitive with Vapi.</p>
+    <p><a href="https://www.retellai.com">→ retellai.com</a></p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+    <p><strong>Source:</strong> Actual token counts from OpenClaw cron run logs (<code>~/.openclaw/cron/runs/*.jsonl</code>). Anthropic pricing: Opus input $15/M, output $75/M, cache $3.75/M; Sonnet input $3/M, output $15/M, cache $0.75/M.</p>
+
     <table class="cost-table">
-      <tr>
-        <th>Session</th>
-        <th>Model</th>
-        <th>Cost</th>
-      </tr>
-      <tr>
-        <td>Jake DM session (15db04)</td>
-        <td>Opus</td>
-        <td>$1.11</td>
-      </tr>
-      <tr>
-        <td>Nightly report generation (d956a9)</td>
-        <td>Opus</td>
-        <td>$0.93</td>
-      </tr>
-      <tr>
-        <td>Standup generator (ccfadb)</td>
-        <td>Opus</td>
-        <td>$0.54</td>
-      </tr>
-      <tr>
-        <td>This thread (35f08f)</td>
-        <td>Opus</td>
-        <td>$0.34</td>
-      </tr>
-      <tr>
-        <td>Topic suggestion (22e940)</td>
-        <td>Opus</td>
-        <td>$0.29</td>
-      </tr>
-      <tr>
-        <td>Cost report cron (ecaeed)</td>
-        <td>Sonnet</td>
-        <td>$0.22</td>
-      </tr>
-      <tr>
-        <td>Other small sessions (3)</td>
-        <td>Mixed</td>
-        <td>$0.25</td>
-      </tr>
-      <tr style="border-top: 2px solid #EDE4D8; font-weight: 600;">
-        <td>Total — March 29</td>
-        <td></td>
-        <td>$3.68</td>
+      <tr><th>Job</th><th>Model</th><th>Tokens</th><th>Cost</th></tr>
+      <tr><td>standup-generator (8pm)</td><td>opus-4-6</td><td>43K total (4K out)</td><td>$0.45</td></tr>
+      <tr><td>nightly-report (8:30pm)</td><td>opus-4-6</td><td>72K total (11K out)</td><td>$1.04</td></tr>
+      <tr><td>topic-suggestion (3pm)</td><td>opus-4-6</td><td>24K total (2.3K out)</td><td>$0.26</td></tr>
+      <tr><td>cost-report (7pm)</td><td>sonnet-4-6</td><td>failed run</td><td>$0.00</td></tr>
+      <tr style="border-top: 2px solid #EDE4D8; font-weight: bold;">
+        <td colspan="3">Today's cron total (Mar 29)</td><td>$1.75</td>
       </tr>
     </table>
-    <p style="margin-top:12px;"><strong>Trend:</strong></p>
+
+    <p style="margin-top: 12px;"><strong>Interactive sessions</strong> (Jake DMs, Asif standup reminder) are not captured in cron logs — they run in the main gateway session. Estimating ~$1-2 for tonight's conversation based on context window sizes.</p>
+
+    <h3 style="color: #D9071C;">⚠️ Cost Fix: Killed the $13/day heartbeat</h3>
+    <p>The old heartbeat cron (<code>9448fbda</code>) was running <strong>every 5 minutes</strong> on Sonnet, checking for standup replies. It ran 287 times on March 28 alone, costing <strong>$12.97 in a single day</strong>. That was 85% of daily spend. It's been killed — zero runs on March 29.</p>
+
+    <table class="cost-table">
+      <tr><th>Date</th><th>Heartbeat Cost</th><th>Other Crons</th><th>Total</th></tr>
+      <tr><td>Mar 26</td><td>$5.86 (106 runs)</td><td>~$2.00</td><td>~$7.86</td></tr>
+      <tr><td>Mar 27</td><td>$12.98 (288 runs)</td><td>~$2.00</td><td>~$14.98</td></tr>
+      <tr><td>Mar 28</td><td>$12.97 (287 runs)</td><td>~$2.00</td><td>~$14.97</td></tr>
+      <tr style="background: #e8f5e9; font-weight: bold;"><td>Mar 29</td><td>$0.00 (killed)</td><td>$1.75</td><td>~$1.75</td></tr>
+    </table>
+
+    <p style="margin-top: 8px;"><strong>Going forward:</strong> Daily cron spend should be ~$2-3 (standup + nightly + topic suggestion + cost report). Interactive sessions add ~$1-5 depending on conversation length. Previous "~$3-5/day" estimates were wrong because they missed the heartbeat cron entirely.</p>
+
+    <h3>What's still broken</h3>
     <ul>
-      <li>Mar 25: ~$2.21/day (5 cron runs)</li>
-      <li>Mar 27: ~$15.79/day ⚠️ (heartbeat bug — firing every 5 min, 276 runs)</li>
-      <li>Mar 28: ~$14.20/day (same heartbeat bug)</li>
-      <li>Mar 29: <strong>$3.68/day</strong> ✅ (heartbeat bug fixed)</li>
+      <li><strong>Interactive session costs aren't tracked.</strong> Gateway sessions (Jake DMs, Slack conversations) don't write token usage to any log file I can parse. Need to either add logging or pull from Anthropic's API dashboard.</li>
+      <li><strong>cost-report cron is erroring out.</strong> Last successful run was Mar 28. Need to debug — likely a parsing issue with the new log format.</li>
     </ul>
-    <p class="dim">Heartbeat was running every 5 minutes instead of 30, burning $12-13/day on Sonnet sessions. That's been fixed. Normal daily cost is $3-5 for crons + interactive sessions.</p>
   </section>
 
-  <div style="margin-top: 40px; padding-top: 16px; border-top: 1px solid #EDE4D8; font-size: 9pt; color: #aaa;">
-    Generated by Marty · March 29, 2026 at 9:50 PM ET · tryps-docs/marty/reports/2026-03-29-nightly.html
-  </div>
 </body>
 </html>
