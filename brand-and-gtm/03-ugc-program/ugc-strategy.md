@@ -204,6 +204,119 @@ These 13 creators represent what we're looking for. The team should find more pe
 
 ---
 
+## 5. Brand Ambassador Program
+
+### Overview
+
+Separate from the 80-creator launch blitz, Tryps will run an exclusive Brand Ambassador Program. This is the premium tier — a small number of creators who represent the brand on an ongoing basis, not a one-off campaign.
+
+**Structure:** 4 ambassadors at a time. Each ambassador produces 1 Instagram collab post per month, staggered so one goes live each week. 3-month commitment per ambassador cycle.
+
+**How it's different from the launch creators:**
+
+| | Launch Creators (80) | Brand Ambassadors (4) |
+|---|---|---|
+| Purpose | Volume — make Tryps feel everywhere | Brand — define what Tryps looks and feels like |
+| Commitment | One-time (repost + optional video) | 3-month retainer, 1 collab post/month |
+| Content type | Their style, light integration | Satirical/personality-driven content with Tryps-branded thumbnails |
+| Compensation | $50-500 one-time | $1,000-3,000/month retainer + perks |
+| Scouting | Broad outreach, 300-person list | Hand-picked for brand fit, aesthetic, and cultural influence |
+
+### Ambassador Profile
+
+The ideal Tryps ambassador has a cult following, not just a follower count. They set the tone for their audience. Reference creators: @fibula, @discolines, @brookeaverick, @passthatpuss.
+
+**Selection criteria beyond follower count:**
+- Engagement rate above 3% (Instagram) or 5% (TikTok)
+- Real conversations in their comments — followers asking questions, tagging friends
+- Content that already includes travel, friend groups, or social lifestyle without being paid to post it
+- High production value on thumbnails and editing, but authentic and funny in the video itself
+- Audience demographics match Tryps core user (18-30, US-based)
+- Has done 1-3 brand partnerships before but isn't oversaturated
+
+### Content Format
+
+Each ambassador creates 1 collab post per month (appears on both the ambassador's grid and @tryps). The content is a satirical, personality-driven video explaining how Tryps has changed the way they plan trips — similar in tone to [this example](https://www.instagram.com/p/DWXWAP9Dl24/).
+
+**Key requirements:**
+- The creator chooses the concept. Sean provides concept ideas and direction, but the creator owns the creative.
+- Each video thumbnail has a Tryps-branded aesthetic that looks good on both the creator's feed and the @tryps grid.
+- No screen recordings or screenshots of the app. If showing the product, it's filmed by a friend while the creator holds their phone and walks through it. Must feel like a friend filming a friend.
+
+**Content calendar (monthly, staggered):**
+
+| Week | Ambassador |
+|------|-----------|
+| Week 1 | Ambassador A posts collab |
+| Week 2 | Ambassador B posts collab |
+| Week 3 | Ambassador C posts collab |
+| Week 4 | Ambassador D posts collab |
+
+This gives @tryps one piece of premium branded content per week, every week, for the duration of the program.
+
+### Compensation
+
+**Monthly retainer:** $1,000-3,000/month depending on the creator's reach and engagement. Quality over quantity — it's better to pay more for 4 creators with real cultural influence than to spread the budget across 20 mediocre ones.
+
+**Milestone bonus:** $500 bonus when an ambassador hits a sign-up milestone through their unique referral link. Clean, predictable, no per-unit tracking needed.
+
+**Perks:**
+- Merch and care packages
+- Paid trips — Tryps funds a trip for the ambassador and their friends (also generates content)
+- Event invites and content retreats
+- Early access to new features
+- "Founding Ambassador" status
+
+**Quarterly budget (4 ambassadors):**
+- Retainers: $12,000-36,000/quarter
+- Milestone bonuses: up to $2,000/quarter (capped)
+- Trips/perks: variable
+- Total: ~$15,000-40,000/quarter depending on tier
+
+### Contract & Operations
+
+**Contract:** 3-month commitment. Includes content deliverables, usage rights (Tryps gets perpetual license to repurpose for organic and paid), category exclusivity (no competing travel apps), FTC disclosure requirements, 2 rounds of revisions per content piece, and termination clause.
+
+**Legal:** Use a template (Creators Legal, ~$100-200) and have a lawyer review once ($500-800). Reuse for all ambassadors.
+
+**Onboarding (per ambassador):**
+1. Brand packet — visual guidelines, messaging pillars, content examples, what not to say
+2. 30-minute kickoff call — walk through brand, brainstorm content angles for their audience
+3. Shared asset folder — logos, product screenshots, demo videos, their unique referral link
+4. Product access — ambassador must actually use Tryps in a real group chat
+
+**Content approval workflow:**
+- Ambassador submits content plan at start of month (bullet points per post)
+- Draft submitted 5 business days before post date
+- Sean reviews within 48 hours
+- Ambassador has 48 hours for revisions (2 rounds max)
+- Final approval within 24 hours
+
+**Payment:** Monthly invoices, paid via ACH or PayPal. W-9 collected before first payment. 1099-NEC issued at year-end.
+
+**Tracking:** Google Sheet with columns for ambassador, month, retainer, bonus, total, invoice status, payment date. Referral links via Dub.co or Short.io.
+
+**Time commitment for Sean:** ~5-8 hours/week across all 4 ambassadors.
+
+### Affiliate Tracking
+
+Each ambassador gets a unique referral link (e.g., tryps.co/ref/ambassadorname) via Dub.co or Short.io. Tracks clicks and sign-ups. Milestone bonuses paid based on monthly sign-up totals — no per-unit math, just "hit 100 sign-ups, get $500."
+
+Full per-sign-up affiliate payouts deferred until Tryps monetizes. Ambassadors are told upfront: "When Tryps has revenue, you'll be first in line for rev share."
+
+### Scouting Timeline
+
+Ambassadors are scouted separately from the 300-person launch list. Sean identifies and approaches candidates starting in Week 3 of the launch campaign (mid-May), with the first ambassador cycle beginning June 2026.
+
+| Phase | Timing | Action |
+|-------|--------|--------|
+| Scouting | May 12-30 | Identify 10-15 candidates, evaluate against criteria |
+| Outreach | June 1-14 | Personal DMs to top 6-8 candidates |
+| Close | June 15-30 | Sign 4 ambassadors, onboard, send brand packets |
+| Cycle 1 | July - September | First 3-month ambassador cycle |
+
+---
+
 *Deliverable for sean.md Milestone 1, UGC Program Item 3: "4-page deliverable outlining complete targeting and outreach strategy."*
 
-*Last updated: March 27, 2026*
+*Last updated: March 30, 2026*

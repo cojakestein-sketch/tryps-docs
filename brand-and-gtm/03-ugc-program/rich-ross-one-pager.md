@@ -90,6 +90,12 @@ Even one recognizable name from Rich's world changes the trajectory of launch we
 
 Rich isn't asking anyone for a favor. He's bringing them a brand deal with a product their audience would actually use.
 
+### Beyond Launch: The Ambassador Program
+
+After launch week, Tryps runs an exclusive Brand Ambassador Program — 4 creators on $1-3K/month retainers producing premium collab content for @tryps every week. 3-month cycles. Merch, paid trips, founding ambassador status.
+
+This is the premium tier. If anyone in Rich's network is too big for a one-off launch post but would be perfect as an ongoing face of the brand, the ambassador program is where they'd fit. Higher pay, deeper relationship, real creative partnership.
+
 ---
 
 ## Notes for Jake
