@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tryps — Deep Dives for Rich Ross</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D9071C; --red-dark: #B00618; --red-light: #E85050;
+    --white: #FFFFFF; --off-white: #F9FAFB;
+    --slate: #1A1A1A; --slate-warm: #3D3530;
+    --g100: #F3F4F6; --g200: #E5E7EB; --g300: #D1D5DB; --g400: #9CA3AF; --g500: #6B7280;
+    --green: #2D6B4F; --gold: #E8913A; --blue: #3478F6; --agent-green: #2D8B5E;
+    --amber: #F5B740; --amber-light: #FEF3E0; --amber-dark: #D4851A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+  body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; color: var(--slate); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+  .slide {
+    min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column;
+    justify-content: center; padding: 56px 64px 48px; position: relative;
+  }
+  .slide-alt { background: var(--off-white); }
+  .slide-red { background: var(--red); color: var(--white); }
+
+  .logo {
+    position: absolute; top: 20px; left: 28px; width: 32px; height: 32px; border-radius: 8px; z-index: 10;
+    background: var(--red); display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800; color: white; letter-spacing: -0.5px;
+  }
+
+  h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; }
+  h2 { font-size: 38px; font-weight: 700; line-height: 1.15; letter-spacing: -1px; margin-bottom: 10px; }
+  h3 { font-size: 22px; font-weight: 600; }
+  p, li { font-size: 17px; line-height: 1.5; }
+  .mono { font-family: 'Space Mono', monospace; }
+  .label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--red); margin-bottom: 6px; }
+  .accent { color: var(--red); }
+  .muted { color: var(--g500); }
+
+  .nav { position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 5px; }
+  .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--g300); cursor: pointer; transition: all 0.3s; border: none; }
+  .nav-dot.active { background: var(--red); transform: scale(1.5); }
+  .ctr { position: fixed; bottom: 16px; right: 16px; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--g400); z-index: 100; }
+
+  /* Stat blocks */
+  .stats { display: flex; gap: 32px; margin: 16px 0; }
+  .st .sn { font-family: 'Space Mono', monospace; font-size: 36px; font-weight: 700; color: var(--red); line-height: 1; }
+  .st .sl { font-size: 11px; color: var(--g400); margin-top: 2px; }
+
+  /* Cards */
+  .card { background: var(--white); border-radius: 12px; padding: 20px; border: 1px solid var(--g200); }
+  .card-red { background: var(--red); color: white; border: none; }
+  .card h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .card p { font-size: 13px; line-height: 1.5; opacity: 0.85; }
+
+  /* Phase timeline */
+  .timeline { display: flex; gap: 12px; margin-top: 16px; }
+  .phase { flex: 1; border-radius: 12px; padding: 16px; border: 1px solid var(--g200); background: var(--white); position: relative; }
+  .phase-num { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; color: var(--red); margin-bottom: 4px; }
+  .phase h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .phase p { font-size: 12px; color: var(--g500); line-height: 1.4; }
+  .phase-active { border-color: var(--red); border-width: 2px; background: rgba(217,7,28,0.02); }
+
+  /* Scene cards for launch video */
+  .scene { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--g100); }
+  .scene:last-child { border-bottom: none; }
+  .scene-num { font-family: 'Space Mono', monospace; font-size: 28px; font-weight: 700; color: var(--red); opacity: 0.3; line-height: 1; min-width: 40px; }
+  .scene-body h4 { font-size: 14px; font-weight: 700; }
+  .scene-body p { font-size: 12px; color: var(--g500); line-height: 1.4; margin-top: 2px; }
+
+  /* Flow steps */
+  .flow { display: flex; gap: 8px; align-items: center; margin: 12px 0; flex-wrap: wrap; }
+  .flow-step { background: var(--off-white); border: 1px solid var(--g200); border-radius: 10px; padding: 10px 16px; font-size: 13px; font-weight: 600; text-align: center; flex: 1; min-width: 120px; }
+  .flow-step.active { background: var(--red); color: white; border-color: var(--red); }
+  .flow-arrow { font-size: 18px; color: var(--g300); flex-shrink: 0; }
+
+  /* Gradient bar for launch video */
+  .gradient-bar {
+    height: 48px; border-radius: 12px; margin: 16px 0;
+    background: linear-gradient(90deg, #E8E8E8 0%, #E8E8E8 30%, #D9071C 50%, #D9071C 65%, #4A90D9 75%, #F5C542 85%, #2D8B5E 100%);
+    display: flex; align-items: center; position: relative; overflow: hidden;
+  }
+  .gradient-label {
+    position: absolute; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+
+  /* Ask box */
+  .ask-box {
+    background: var(--red); color: white; border-radius: 12px; padding: 18px 24px; margin-top: 16px;
+  }
+  .ask-box p { font-size: 15px; font-weight: 600; opacity: 1; }
+  .ask-box .ask-sub { font-size: 12px; opacity: 0.8; margin-top: 4px; font-weight: 400; }
+
+  /* Reach table */
+  .reach-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  .reach-table th { text-align: left; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--g400); padding: 8px 12px; border-bottom: 2px solid var(--g200); }
+  .reach-table td { padding: 10px 12px; border-bottom: 1px solid var(--g100); }
+  .reach-table .mono { font-weight: 700; color: var(--red); }
+
+  @media (max-width: 500px) {
+    .slide { padding: 32px 20px; }
+    h1 { font-size: 28px; } h2 { font-size: 24px; }
+    .stats { flex-direction: column; gap: 16px; }
+    .timeline { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+<div class="ctr" id="ctr"></div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: UGC PROGRAM DEEP-DIVE -->
+<!-- ============================================================ -->
+<section class="slide slide-alt" id="s0">
+  <div class="logo">T</div>
+  <div class="label">03 &middot; Creator Program</div>
+  <h2 style="font-size: 32px; max-width: 700px;">Find our people. Make them the face of Tryps.<br><span class="accent">Then flood the feed.</span></h2>
+
+  <div class="stats">
+    <div class="st"><div class="sn">2-4</div><div class="sl">Ambassadors (medium-macro)</div></div>
+    <div class="st"><div class="sn">80</div><div class="sl">Creators for launch blitz</div></div>
+    <div class="st"><div class="sn">120+</div><div class="sl">Pieces of content in 3 weeks</div></div>
+    <div class="st"><div class="sn">5-8M</div><div class="sl">Projected impressions</div></div>
+  </div>
+
+  <!-- Two-column: Ambassadors + Blitz -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px;">
+    <!-- Priority 1: Ambassadors -->
+    <div class="card" style="border-left: 3px solid var(--red);">
+      <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--red); margin-bottom: 6px;">Priority 1 &mdash; Ambassador Program</div>
+      <h4>2-4 medium-macro creators become the face of Tryps</h4>
+      <p style="margin-top: 6px;">Scouted from Jake's college orbit. Collaborative posts on @jointryps explaining how the app changed how they travel. $1-3K/month retainers, 3-month cycles. These aren't ads &mdash; they're partnerships.</p>
+      <div style="margin-top: 10px; display: flex; gap: 8px;">
+        <span style="background: rgba(217,7,28,0.06); color: var(--red); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Collab posts</span>
+        <span style="background: rgba(217,7,28,0.06); color: var(--red); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">$1-3K/mo</span>
+        <span style="background: rgba(217,7,28,0.06); color: var(--red); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">3-month cycles</span>
+      </div>
+    </div>
+    <!-- Priority 2: Blitz -->
+    <div class="card" style="border-left: 3px solid var(--blue);">
+      <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue); margin-bottom: 6px;">Priority 2 &mdash; Launch Blitz</div>
+      <h4>80 creators repost on Stories during launch week</h4>
+      <p style="margin-top: 6px;"><strong>40 reposts</strong> for the launch video. <strong>80 reposts</strong> for the giveaway video (priority). Two tiers: 10-15 mid-tier (50K-500K) for credibility, 65-70 micro (10K-50K) for volume. All hitting at once = algorithm saturation.</p>
+      <div style="margin-top: 10px; display: flex; gap: 8px;">
+        <span style="background: rgba(52,120,246,0.06); color: var(--blue); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">$8K budget</span>
+        <span style="background: rgba(52,120,246,0.06); color: var(--blue); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">~$100/creator avg</span>
+        <span style="background: rgba(52,120,246,0.06); color: var(--blue); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Day 1 simultaneity</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content feel -->
+  <div style="margin-top: 12px; background: var(--white); border: 1px solid var(--g200); border-radius: 12px; padding: 16px 20px; display: flex; gap: 24px; align-items: center;">
+    <div style="flex-shrink: 0;">
+      <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--g400); margin-bottom: 4px;">What the content looks like</div>
+      <p style="font-size: 14px; font-weight: 600; max-width: 500px;">"I added Tryps to my group chat and now we're going to Vegas. It was <em>easy</em>."</p>
+    </div>
+    <div style="font-size: 12px; color: var(--g500); border-left: 1px solid var(--g200); padding-left: 20px;">
+      Organic discovery energy. Filmed by a friend, not a tripod. The creator walks through adding the Tryps contact to their group chat, shows the trip getting planned, and reacts. GRWM-style or walk-and-talk. It should feel like they found something and want to show it off &mdash; not like they're reading a brief.
+    </div>
+  </div>
+
+  <!-- Ask for Rich -->
+  <div class="ask-box">
+    <p>The Ask: Does Rich know creators or talent managers who'd want a paid brand deal with a travel startup their audience would actually use?</p>
+    <div class="ask-sub">One recognizable name from Rich's world changes the trajectory of launch week. Even better: talent agency introductions (WME, CAA, UTA influencer divisions) open doors that cold DMs can't. If someone is too big for a one-off, the Ambassador Program is the premium tier &mdash; deeper relationship, real creative partnership.</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: LAUNCH VIDEO — "TEXT TRYPS. GO WHILE YOU CAN." -->
+<!-- ============================================================ -->
+<section class="slide" id="s1">
+  <div class="logo">T</div>
+  <div class="label">04 &middot; Launch Video</div>
+  <h2 style="font-size: 34px; max-width: 800px;">Jake walks through NYC.<br>Everyone else is suffering.<br><span class="accent">He has Tryps.</span></h2>
+  <p style="font-size: 15px; color: var(--g500); max-width: 650px; margin-bottom: 8px;">Dollar Shave Club meets AllState Mayhem. 90 seconds. One continuous walk. One pitch. Chaos everywhere except in Jake's pocket.</p>
+
+  <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; margin-top: 8px;">
+    <!-- Left: Gag beats -->
+    <div>
+      <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--g400); margin-bottom: 8px;">The Gag Beats</div>
+
+      <div class="scene">
+        <div class="scene-num">01</div>
+        <div class="scene-body">
+          <h4>The Cabo Guys</h4>
+          <p>A group of guys huddled around one phone, stressed. Jake: <em>"These guys booked flights to Cabo. That's it. No hotel. Nothing else planned. They leave tomorrow."</em></p>
+        </div>
+      </div>
+
+      <div class="scene">
+        <div class="scene-num">02</div>
+        <div class="scene-body">
+          <h4>The Stoop Friends</h4>
+          <p>Friends sitting on a stoop on a beautiful Saturday. Not going anywhere. Jake: <em>"They've been trying to plan a trip to Europe since October."</em></p>
+        </div>
+      </div>
+
+      <div class="scene">
+        <div class="scene-num">03</div>
+        <div class="scene-body">
+          <h4>The Nepo Girl</h4>
+          <p>A girl on the sidewalk yelling at her mom on the phone, trying to get her to plan the trip for her. Jake walks right past.</p>
+        </div>
+      </div>
+
+      <div class="scene">
+        <div class="scene-num">04</div>
+        <div class="scene-body">
+          <h4>The Old-School Traveler</h4>
+          <p>Someone on a bench, phone on speaker, tinny hold music playing. Been waiting on a travel agent for 45 minutes. Jake doesn't even need to say anything.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Specs + ending + gradient -->
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <!-- Specs -->
+      <div class="card" style="border-top: 3px solid var(--red);">
+        <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--red); margin-bottom: 8px;">Production Specs</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <div><div class="mono" style="font-size: 22px; font-weight: 700; color: var(--red);">90s</div><div style="font-size: 10px; color: var(--g400);">Hero cut</div></div>
+          <div><div class="mono" style="font-size: 22px; font-weight: 700; color: var(--red);">$5K</div><div style="font-size: 10px; color: var(--g400);">Budget</div></div>
+          <div><div class="mono" style="font-size: 22px; font-weight: 700; color: var(--red);">1 day</div><div style="font-size: 10px; color: var(--g400);">Guerrilla NYC shoot</div></div>
+          <div><div class="mono" style="font-size: 22px; font-weight: 700; color: var(--red);">30s/15s</div><div style="font-size: 10px; color: var(--g400);">Platform cuts</div></div>
+        </div>
+      </div>
+
+      <!-- The ending -->
+      <div class="card" style="background: var(--slate-warm); color: white; border: none;">
+        <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.5; margin-bottom: 6px;">The Ending</div>
+        <p style="font-size: 14px; font-weight: 600; opacity: 1;">Jake reveals that while this entire commercial was being shot, he texted Tryps and booked a real trip.</p>
+        <p style="font-size: 13px; opacity: 0.8; margin-top: 6px;">A cab pulls up. He gets in. He sticks his head out the window and yells one final line at the camera as the cab drives away.</p>
+        <div style="margin-top: 12px; padding: 10px 16px; background: rgba(217,7,28,0.9); border-radius: 8px; text-align: center;">
+          <div style="font-size: 18px; font-weight: 800; letter-spacing: -0.5px;">Text Tryps. Go while you can.</div>
+        </div>
+      </div>
+
+      <!-- Tone -->
+      <div style="font-size: 12px; color: var(--g500); background: var(--off-white); border-radius: 8px; padding: 12px 16px; border: 1px solid var(--g200);">
+        <strong style="color: var(--slate);">Tone:</strong> The writing does the heavy lifting. Jake is dry, confident, cracks a few jokes — but the real comedy comes from what's happening around him. Every person he passes is suffering through the old way. Jake is the only calm one.
+      </div>
+    </div>
+  </div>
+
+  <!-- Ask for Rich -->
+  <div class="ask-box" style="margin-top: 12px;">
+    <p>The Ask: Does Rich know a comedy director who's done walk-and-talk with timed visual gags?</p>
+    <div class="ask-sub">Not looking to replace Sean as director. Looking for someone who's done this format and can sharpen the script, the blocking, and the gag timing. Sean directs or creative produces alongside Rich's recommendation. Also: talent for the gag beats (non-speaking roles that sell a moment), and distribution contacts once the video is done.</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: GIVEAWAY CAMPAIGN -->
+<!-- ============================================================ -->
+<section class="slide slide-alt" id="s2">
+  <div class="logo">T</div>
+  <div class="label">05 &middot; Giveaway Campaign</div>
+  <h2 style="font-size: 32px; max-width: 700px;">Win your dream trip.<br><span class="accent">You + 3 friends. Flights + Airbnb. On Tryps.</span></h2>
+
+  <div class="stats">
+    <div class="st"><div class="sn">$3-5K</div><div class="sl">Prize value</div></div>
+    <div class="st"><div class="sn">4</div><div class="sl">Friends fly together</div></div>
+    <div class="st"><div class="sn">50-120K</div><div class="sl">Projected unique reach</div></div>
+    <div class="st"><div class="sn">3</div><div class="sl">Entries per person</div></div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 4px;">
+    <!-- Left: Mechanic -->
+    <div>
+      <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--g400); margin-bottom: 10px;">Entry Mechanic &mdash; 3 actions, 3 entries</div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="card" style="display: flex; gap: 12px; align-items: center; padding: 14px 18px;">
+          <div class="mono" style="font-size: 24px; font-weight: 700; color: var(--red); opacity: 0.3;">1</div>
+          <div>
+            <h4 style="font-size: 14px;">Tag 3 friends</h4>
+            <p style="font-size: 12px;">Comment your dream destination + tag the 3 friends you'd bring. Entry #1.</p>
+          </div>
+        </div>
+        <div class="card" style="display: flex; gap: 12px; align-items: center; padding: 14px 18px;">
+          <div class="mono" style="font-size: 24px; font-weight: 700; color: var(--red); opacity: 0.3;">2</div>
+          <div>
+            <h4 style="font-size: 14px;">Repost on Story</h4>
+            <p style="font-size: 12px;">Share the giveaway post to your Story tagging @jointryps. Entry #2.</p>
+          </div>
+        </div>
+        <div class="card" style="display: flex; gap: 12px; align-items: center; padding: 14px 18px;">
+          <div class="mono" style="font-size: 24px; font-weight: 700; color: var(--red); opacity: 0.3;">3</div>
+          <div>
+            <h4 style="font-size: 14px;">Text Tryps</h4>
+            <p style="font-size: 12px;">Click the link in bio &rarr; opens iMessage with a pre-filled text to Tryps. Send it. Entry #3.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 12px; font-size: 12px; color: var(--g500); background: var(--white); border-radius: 8px; padding: 12px 16px; border: 1px solid var(--g200);">
+        <strong style="color: var(--slate);">Why this works:</strong> Every entry is a product demo. The comment names a destination + a friend group. The Story repost puts Tryps in front of their entire follower base. The iMessage text gets them into the product. One person's entry can cascade through an entire friend group.
+      </div>
+    </div>
+
+    <!-- Right: Content engine + timeline -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <!-- Content engine -->
+      <div class="card" style="border-top: 3px solid var(--gold);">
+        <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 8px;">The Content Engine &mdash; 4 Waves</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; gap: 8px; align-items: baseline;">
+            <span class="mono" style="font-size: 12px; font-weight: 700; color: var(--gold); min-width: 20px;">W1</span>
+            <div><div style="font-size: 13px; font-weight: 600;">Giveaway announcement video</div><div style="font-size: 11px; color: var(--g500);">Produced video drops on @jointryps. 80 creators repost on Stories.</div></div>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: baseline;">
+            <span class="mono" style="font-size: 12px; font-weight: 700; color: var(--gold); min-width: 20px;">W2</span>
+            <div><div style="font-size: 13px; font-weight: 600;">User entries</div><div style="font-size: 11px; color: var(--g500);">Hundreds of comments + Story reposts from real friend groups naming real destinations. Free social proof.</div></div>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: baseline;">
+            <span class="mono" style="font-size: 12px; font-weight: 700; color: var(--gold); min-width: 20px;">W3</span>
+            <div><div style="font-size: 13px; font-weight: 600;">Winner reveal</div><div style="font-size: 11px; color: var(--g500);">Produced announcement video. Winner picked at random, sent on their trip. The clip that travels.</div></div>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: baseline;">
+            <span class="mono" style="font-size: 12px; font-weight: 700; color: var(--gold); min-width: 20px;">W4</span>
+            <div><div style="font-size: 13px; font-weight: 600;">The trip itself</div><div style="font-size: 11px; color: var(--g500);">Tryps plans the trip. The group goes. They document it. Weeks of authentic content.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projected reach -->
+      <div class="card">
+        <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--g400); margin-bottom: 8px;">Projected Reach (Organic Only)</div>
+        <table class="reach-table">
+          <thead>
+            <tr><th>Metric</th><th>Estimate</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Entries (groups)</td><td class="mono">500+</td></tr>
+            <tr><td>Friends tagged &amp; notified</td><td class="mono">1,500-2,000</td></tr>
+            <tr><td>Story reposts</td><td class="mono">800-1,000</td></tr>
+            <tr><td style="font-weight: 700;">Total unique accounts reached</td><td class="mono" style="font-size: 16px;">50K-120K</td></tr>
+          </tbody>
+        </table>
+        <div style="font-size: 11px; color: var(--g500);">Before paid amplification, press coverage, or influencer involvement.</div>
+      </div>
+
+      <!-- Timeline -->
+      <div style="display: flex; gap: 6px;">
+        <div style="flex: 1; background: var(--white); border: 1px solid var(--g200); border-radius: 8px; padding: 10px; text-align: center;">
+          <div class="mono" style="font-size: 11px; font-weight: 700; color: var(--red);">Apr 14</div>
+          <div style="font-size: 10px; color: var(--g500); margin-top: 2px;">Announce</div>
+        </div>
+        <div style="flex: 2; background: rgba(217,7,28,0.04); border: 1px solid rgba(217,7,28,0.12); border-radius: 8px; padding: 10px; text-align: center;">
+          <div class="mono" style="font-size: 11px; font-weight: 700; color: var(--red);">Apr 14-28</div>
+          <div style="font-size: 10px; color: var(--g500); margin-top: 2px;">Entries open (2 weeks)</div>
+        </div>
+        <div style="flex: 1; background: var(--white); border: 1px solid var(--g200); border-radius: 8px; padding: 10px; text-align: center;">
+          <div class="mono" style="font-size: 11px; font-weight: 700; color: var(--red);">May 2</div>
+          <div style="font-size: 10px; color: var(--g500); margin-top: 2px;">Reveal + Launch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ask for Rich -->
+  <div class="ask-box" style="margin-top: 12px;">
+    <p>The Ask: Help Jake go on a media run.</p>
+    <div class="ask-sub">Does Rich know segment producers, journalists, or podcast hosts who'd cover a "startup gives away a free trip" story? The winner reveal video is built to be a segment &mdash; a group of friends finding out they won their dream trip. One morning show placement or one podcast feature turns 50K organic reach into 500K. The goal: position this as a recurring format, not a one-off giveaway. Rich opens the doors, Jake does the press tour.</div>
+  </div>
+</section>
+
+<script>
+// Navigation dots + counter
+const slides = document.querySelectorAll('.slide');
+const nav = document.getElementById('nav');
+const ctr = document.getElementById('ctr');
+slides.forEach((s, i) => {
+  const d = document.createElement('button');
+  d.className = 'nav-dot';
+  d.onclick = () => s.scrollIntoView({ behavior: 'smooth' });
+  nav.appendChild(d);
+});
+const labels = ['UGC Program', 'Launch Video', 'Giveaway'];
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const i = [...slides].indexOf(e.target);
+      document.querySelectorAll('.nav-dot').forEach((d, j) => d.classList.toggle('active', j === i));
+      ctr.textContent = `${i + 1} / ${slides.length}  ${labels[i] || ''}`;
+    }
+  });
+}, { threshold: 0.5 });
+slides.forEach(s => observer.observe(s));
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  const active = [...slides].findIndex(s => s.getBoundingClientRect().top >= -100 && s.getBoundingClientRect().top < window.innerHeight / 2);
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); slides[Math.min(active + 1, slides.length - 1)]?.scrollIntoView({ behavior: 'smooth' }); }
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); slides[Math.max(active - 1, 0)]?.scrollIntoView({ behavior: 'smooth' }); }
+});
+</script>
+</body>
+</html>
