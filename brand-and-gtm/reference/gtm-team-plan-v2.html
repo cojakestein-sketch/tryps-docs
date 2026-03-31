@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tryps GTM Team — Scopes, Sprint & Roles</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #F9FAFB; color: #3D3530; line-height: 1.6; padding: 40px 20px; }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  .label { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #D9071C; margin-bottom: 6px; }
+  h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px; }
+  .subtitle { font-size: 14px; color: #6B6560; margin-bottom: 36px; }
+  .section-divider { height: 1px; background: #EDE4D8; margin: 40px 0; }
+
+  /* Scope cards */
+  .scopes-box { background: white; border: 1px solid #EDE4D8; border-radius: 14px; padding: 28px; margin-bottom: 32px; }
+  .scopes-box h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .scopes-box .scopes-sub { font-size: 13px; color: #6B6560; margin-bottom: 20px; }
+  .layer-label { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #9B9590; margin-bottom: 10px; margin-top: 20px; }
+  .layer-label:first-of-type { margin-top: 0; }
+  .scope-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 8px; }
+  .scope-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .scope-card { background: #FAFAF8; border-radius: 10px; padding: 14px; border: 1px solid #F3F0EC; }
+  .scope-num { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; color: #D9071C; }
+  .scope-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .scope-owner { font-size: 11px; color: #9B9590; }
+  .scope-status { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; display: inline-block; padding: 1px 6px; border-radius: 4px; margin-top: 6px; }
+  .status-progress { background: #DBEAFE; color: #1E40AF; }
+  .status-specced { background: #D1FAE5; color: #065F46; }
+  .status-needs-spec { background: #FEF3C7; color: #92400E; }
+  .status-not-started { background: #F3F0EC; color: #6B6560; }
+  .scope-key { font-size: 12px; color: #6B6560; margin-top: 4px; }
+
+  /* Org chart */
+  .org-box { background: white; border: 1px solid #EDE4D8; border-radius: 14px; padding: 24px; margin-bottom: 32px; }
+  .org-box h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+  .org-chart { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .org-node { padding: 10px 20px; border-radius: 10px; text-align: center; font-size: 13px; }
+  .org-jake { background: #FEE2E2; border: 1px solid #D9071C; font-weight: 600; }
+  .org-sean { background: #FEF3C7; border: 1px solid #F59E0B; font-weight: 600; }
+  .org-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .org-eng1 { background: #DBEAFE; border: 1px solid #3B82F6; }
+  .org-eng2 { background: #D1FAE5; border: 1px solid #10B981; }
+  .org-agents { background: #F3F0EC; border: 1px solid #D1CBC5; font-size: 11px; color: #6B6560; }
+  .org-line { width: 1px; height: 12px; background: #D1CBC5; }
+  .org-note { font-size: 11px; color: #9B9590; text-align: center; margin-top: 12px; }
+
+  /* Sprint section */
+  .sprint-box { background: white; border: 2px solid #D9071C; border-radius: 14px; padding: 28px; margin-bottom: 32px; }
+  .sprint-box h2 { font-size: 20px; font-weight: 700; color: #D9071C; margin-bottom: 4px; }
+  .sprint-box .sprint-sub { font-size: 13px; color: #6B6560; margin-bottom: 20px; }
+
+  .sprint-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .sprint-table th { text-align: left; padding: 8px 10px; border-bottom: 2px solid #EDE4D8; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #6B6560; }
+  .sprint-table td { padding: 10px; border-bottom: 1px solid #F3F0EC; vertical-align: top; }
+  .sprint-table tr:last-child td { border-bottom: none; }
+  .sprint-num { font-family: 'Space Mono', monospace; font-size: 12px; color: #D9071C; font-weight: 700; }
+  .sprint-owner { font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 600; display: inline-block; }
+  .owner-growth { background: #D1FAE5; color: #065F46; }
+  .owner-infra { background: #DBEAFE; color: #1E40AF; }
+  .sprint-scope { font-family: 'Space Mono', monospace; font-size: 10px; color: #9B9590; }
+  .sprint-done { font-size: 12px; color: #6B6560; font-style: italic; }
+
+  .not-sprint { background: #FAFAF8; border-radius: 10px; padding: 16px; margin-top: 16px; font-size: 12px; color: #6B6560; }
+  .not-sprint strong { color: #3D3530; }
+
+  .success-box { display: flex; gap: 16px; margin-top: 20px; }
+  .success-card { flex: 1; background: #FAFAF8; border-radius: 10px; padding: 16px; }
+  .success-card h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .success-card p { font-size: 13px; }
+  .success-growth h4 { color: #10B981; }
+  .success-infra h4 { color: #3B82F6; }
+
+  /* Role cards */
+  .role-card { background: white; border-radius: 14px; border: 1px solid #EDE4D8; margin-bottom: 32px; overflow: hidden; }
+  .role-header { padding: 24px 28px 20px; }
+  .role-label { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+  .label-1 { color: #10B981; }
+  .label-2 { color: #3B82F6; }
+  .role-header h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .role-header .one-liner { font-size: 14px; color: #6B6560; }
+
+  .role-body { padding: 0 28px 28px; }
+  .section { margin-bottom: 24px; }
+  .section:last-child { margin-bottom: 0; }
+  .section h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #6B6560; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid #F3F0EC; }
+  .section p { font-size: 14px; margin-bottom: 8px; }
+  .section ul { font-size: 14px; padding-left: 20px; }
+  .section li { margin-bottom: 6px; }
+
+  .week-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .week-card { background: #FAFAF8; border-radius: 10px; padding: 16px; font-size: 13px; }
+  .week-label { font-family: 'Space Mono', monospace; font-size: 11px; color: #9B9590; margin-bottom: 6px; }
+  .week-card p { margin-bottom: 4px; }
+
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill { font-size: 11px; padding: 4px 10px; border-radius: 999px; background: #F3F0EC; color: #6B6560; }
+  .skill-must { background: #3D3530; color: white; }
+
+  .anti-list { background: #FEF2F2; border-radius: 10px; padding: 16px; font-size: 13px; }
+  .anti-list strong { color: #991B1B; }
+  .anti-list ul { padding-left: 16px; margin-top: 6px; }
+
+  .hire-box { background: #F0FDF4; border-radius: 10px; padding: 16px; font-size: 13px; }
+  .hire-box strong { color: #065F46; }
+
+  .audition-box { background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 10px; padding: 16px; font-size: 13px; margin-bottom: 16px; }
+  .audition-box strong { color: #92400E; }
+
+  .cost-bar { padding: 16px 28px; background: #FAFAF8; border-top: 1px solid #EDE4D8; display: flex; align-items: center; gap: 16px; }
+  .cost-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #6B6560; }
+  .cost-value { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; }
+  .cost-1 { color: #10B981; }
+  .cost-2 { color: #3B82F6; }
+  .cost-note { font-size: 12px; color: #9B9590; }
+
+  .ref-box { background: white; border: 1px solid #EDE4D8; border-radius: 14px; padding: 24px; margin-bottom: 32px; }
+  .ref-box h2 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .ref-link { display: block; font-size: 13px; color: #2B5F83; margin-bottom: 6px; text-decoration: none; }
+  .ref-link:hover { text-decoration: underline; }
+  .ref-desc { font-size: 12px; color: #9B9590; margin-left: 16px; margin-bottom: 10px; }
+
+  /* Budget */
+  .budget-box { background: white; border: 1px solid #EDE4D8; border-radius: 14px; padding: 24px; margin-bottom: 32px; }
+  .budget-box h2 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .budget-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .budget-table th { text-align: left; padding: 8px; border-bottom: 2px solid #EDE4D8; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #6B6560; }
+  .budget-table td { padding: 8px; border-bottom: 1px solid #F3F0EC; }
+  .budget-total { background: #FAFAF8; font-weight: 600; }
+
+  .footer { margin-top: 32px; font-size: 12px; color: #9B9590; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="label">Brand & Go-to-Market</div>
+  <h1>GTM Team Plan</h1>
+  <p class="subtitle">The 13 scopes we're building, the team building them, and what "done" looks like in 2 weeks. Review doc for Jake + Sean.</p>
+
+  <!-- 13 SCOPES -->
+  <div class="scopes-box">
+    <h2>The 13 Scopes</h2>
+    <p class="scopes-sub">Everything we're building for Brand & GTM, organized in 3 layers. Launch: May 2, 2026.</p>
+
+    <div class="layer-label">Creative — Sean-directed</div>
+    <div class="scope-grid">
+      <div class="scope-card">
+        <span class="scope-num">01</span>
+        <div class="scope-title">Brand Book</div>
+        <div class="scope-owner">Sean</div>
+        <span class="scope-status status-progress">In Progress</span>
+        <div class="scope-key">13 MUST screens in Figma by Apr 2</div>
+      </div>
+      <div class="scope-card">
+        <span class="scope-num">02</span>
+        <div class="scope-title">Socials</div>
+        <div class="scope-owner">Sean + Growth Eng</div>
+        <span class="scope-status status-progress">In Progress</span>
+        <div class="scope-key">8 platforms, 5 posts/wk on 3 primary</div>
+      </div>
+      <div class="scope-card">
+        <span class="scope-num">03</span>
+        <div class="scope-title">UGC Program</div>
+        <div class="scope-owner">Sean + Infra Eng</div>
+        <span class="scope-status status-progress">In Progress</span>
+        <div class="scope-key">80 creators engaged, 25 retained</div>
+      </div>
+      <div class="scope-card">
+        <span class="scope-num">04</span>
+        <div class="scope-title">Launch Video</div>
+        <div class="scope-owner">Sean</div>
+        <span class="scope-status status-progress">In Progress</span>
+        <div class="scope-key">60-sec hero film, 4 platform cuts</div>
+      </div>
+      <div class="scope-card">
+        <span class="scope-num">05</span>
+        <div class="scope-title">Giveaways</div>
+        <div class="scope-owner">Sean</div>
+        <span class="scope-status status-specced">Specced</span>
+        <div class="scope-key">Contest mechanic: text Tryps + post screenshot</div>
+      </div>
+      <div class="scope-card">
+        <span class="scope-num">06</span>
+        <div class="scope-title">Physical Presence</div>
+        <div class="scope-owner">Sean</div>
+        <span class="scope-status status-specced">Specced</span>
+        <div class="scope-key">NYC: posters, stickers, film cameras</div>
+      </div>
+    </div>
+
+    <div class="layer-label">Distribution — GTM team</div>
+    <div class="scope-grid">
+      <div class="scope-card">
+        <span class="scope-num">07</span>
+        <div class="scope-title">SEO / GEO / AEO</div>
+        <div class="scope-owner">Jake + Growth Eng + Infra Eng</div>
+        <span class="scope-status status-needs-spec">Needs Spec</span>
+        <div class="scope-key">Landing page, 3-5 keyword pages, schema markup, AI citation</div>
+      </div>
+      <div class="scope-card">
+        <span class="scope-num">08</span>
+        <div class="scope-title">Referrals & Viral Loops</div>
+        <div class="scope-owner">Jake (strategy) + Product (build)</div>
+        <span class="scope-status status-needs-spec">Needs Spec</span>
+        <div class="scope-key">Trip invite OG cards, Branch deep links, dense seeding</div>
+      </div>
+      <div class="scope-card">
+        <span class="scope-num">09</span>
+        <div class="scope-title">App Store & Product Hunt</div>
+        <div class="scope-owner">Growth Eng + Sean</div>
+        <span class="scope-status status-specced">Specced</span>
+        <div class="scope-key">15-30 sec video, 5 screenshots, ASO, PH May 2</div>
+      </div>
+      <div class="scope-card">
+        <span class="scope-num">10</span>
+        <div class="scope-title">Paid Acquisition</div>
+        <div class="scope-owner">Growth Eng + Sean (creative)</div>
+        <span class="scope-status status-not-started">Not Started</span>
+        <div class="scope-key">$5K/mo Meta, TikTok Spark Ads, post-launch</div>
+      </div>
+      <div class="scope-card">
+        <span class="scope-num">11</span>
+        <div class="scope-title">Email & Lifecycle</div>
+        <div class="scope-owner">Infra Eng (setup) + Growth Eng (copy)</div>
+        <span class="scope-status status-not-started">Not Started</span>
+        <div class="scope-key">Waitlist capture, launch blast, onboarding drip</div>
+      </div>
+    </div>
+
+    <div class="layer-label">Operations — GTM infra engineer</div>
+    <div class="scope-grid scope-grid-2">
+      <div class="scope-card">
+        <span class="scope-num">12</span>
+        <div class="scope-title">Press & Partnerships</div>
+        <div class="scope-owner">Growth Eng (research) + Jake (sends)</div>
+        <span class="scope-status status-not-started">Not Started</span>
+        <div class="scope-key">Journalist list, press kit, launch pitches</div>
+      </div>
+      <div class="scope-card">
+        <span class="scope-num">13</span>
+        <div class="scope-title">Analytics & Operations</div>
+        <div class="scope-owner">Infra Eng</div>
+        <span class="scope-status status-not-started">Not Started</span>
+        <div class="scope-key">n8n workflows, dashboards, LangFuse, Slack alerts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORG CHART -->
+  <div class="org-box">
+    <h2>The Team</h2>
+    <div class="org-chart">
+      <div class="org-node org-jake">Jake Stein — Founder<br><span style="font-weight:400;font-size:11px;">Sets priorities, reviews strategy, leads SEO + referral strategy</span></div>
+      <div class="org-line"></div>
+      <div class="org-node org-sean">Sean DeFaria — Creative Director<br><span style="font-weight:400;font-size:11px;">Calls shots on creative, reviews content, owns creator relationships</span></div>
+      <div class="org-line"></div>
+      <div class="org-row">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div class="org-node org-eng2">GTM Growth Engineer<br><span style="font-weight:400;font-size:11px;">Makes things: content, clips, copy, ads</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div class="org-node org-eng1">GTM Infrastructure Engineer<br><span style="font-weight:400;font-size:11px;">Builds systems: tools, workflows, dashboards</span></div>
+          <div class="org-node org-agents">AI Agents (Pablo, Don, Rio)<br>Draft production</div>
+        </div>
+      </div>
+    </div>
+    <p class="org-note">Sean is a creative advisor, not a gate. GTM hires can ship without approval — they loop Sean in when creative input helps. Sean sees all deliverables.</p>
+  </div>
+
+  <!-- SPRINT -->
+  <div class="sprint-box">
+    <h2>10 Things We Ship in 2 Weeks</h2>
+    <p class="sprint-sub">Every item has a verifiable "done" test. This is the sprint between hire date and launch prep.</p>
+
+    <table class="sprint-table">
+      <tr>
+        <th style="width:30px;">#</th>
+        <th>Deliverable</th>
+        <th style="width:90px;">Owner</th>
+        <th style="width:70px;">Scope</th>
+        <th>Done when...</th>
+      </tr>
+      <tr>
+        <td><span class="sprint-num">1</span></td>
+        <td><strong>15-sec product demo clip</strong> — screen-record the Tryps app, edit with text overlays, transitions, and branded elements into a polished product demo. Reference: @claudeai on X, Partiful's App Store video.</td>
+        <td><span class="sprint-owner owner-growth">Growth</span></td>
+        <td><span class="sprint-scope">09 App Store</span></td>
+        <td class="sprint-done">A clip exists that Jake and Sean both say "yes, this is the bar." This is the audition.</td>
+      </tr>
+      <tr>
+        <td><span class="sprint-num">2</span></td>
+        <td><strong>App Store copy</strong> — title (30 chars), subtitle (30 chars), description (4000 chars), keyword field.</td>
+        <td><span class="sprint-owner owner-growth">Growth</span></td>
+        <td><span class="sprint-scope">09 App Store</span></td>
+        <td class="sprint-done">Copy is live in App Store Connect and approved by Apple.</td>
+      </tr>
+      <tr>
+        <td><span class="sprint-num">3</span></td>
+        <td><strong>10 social content pieces</strong> — polished screen recordings with text overlays, carousels, or clip edits using brand direction. Scheduled in Buffer.</td>
+        <td><span class="sprint-owner owner-growth">Growth</span></td>
+        <td><span class="sprint-scope">02 Socials</span></td>
+        <td class="sprint-done">10 posts visible in Buffer queue, approved by Sean.</td>
+      </tr>
+      <tr>
+        <td><span class="sprint-num">4</span></td>
+        <td><strong>Landing page copy + design</strong> — jointryps.com with clear value prop, "text Tryps" demo, download CTA, email capture.</td>
+        <td><span class="sprint-owner owner-growth">Growth</span></td>
+        <td><span class="sprint-scope">07 SEO</span></td>
+        <td class="sprint-done">New page is live, loads fast, email capture works.</td>
+      </tr>
+      <tr>
+        <td><span class="sprint-num">5</span></td>
+        <td><strong>Ad-hoc design tasks</strong> — link preview card for trip invites, logo finalization, any blocking design needs from product or Sean.</td>
+        <td><span class="sprint-owner owner-growth">Growth</span></td>
+        <td><span class="sprint-scope">Various</span></td>
+        <td class="sprint-done">Each task marked done by requester.</td>
+      </tr>
+      <tr>
+        <td><span class="sprint-num">6</span></td>
+        <td><strong>Social scheduling connected</strong> — Buffer or Metricool set up across all 8 platforms (TikTok, IG, X, YouTube, Facebook, LinkedIn, Snapchat, Pinterest). Auto-repost configured.</td>
+        <td><span class="sprint-owner owner-infra">Infra</span></td>
+        <td><span class="sprint-scope">02 Socials</span></td>
+        <td class="sprint-done">Post one test post from Buffer, verify it appears on all 8 platforms.</td>
+      </tr>
+      <tr>
+        <td><span class="sprint-num">7</span></td>
+        <td><strong>Meta pixel + Loops + email capture</strong> — Meta tracking pixel firing on jointryps.com with conversion events (app install, trip created). Loops email platform configured with welcome email. Waitlist form capturing emails on landing page.</td>
+        <td><span class="sprint-owner owner-infra">Infra</span></td>
+        <td><span class="sprint-scope">10, 11</span></td>
+        <td class="sprint-done">Submit email on site, receive welcome email within 1 min. Meta Events Manager shows pixel firing.</td>
+      </tr>
+      <tr>
+        <td><span class="sprint-num">8</span></td>
+        <td><strong>Creator tool recommendation</strong> — trial Stormy AI, Modash, and HypeAuditor. Run Sean's creator criteria through each. Deliver a 1-page written comparison with pros, cons, and pick.</td>
+        <td><span class="sprint-owner owner-infra">Infra</span></td>
+        <td><span class="sprint-scope">03 UGC</span></td>
+        <td class="sprint-done">1-page rec delivered to Sean + Jake. Sean agrees with the pick.</td>
+      </tr>
+      <tr>
+        <td><span class="sprint-num">9</span></td>
+        <td><strong>Affiliate links + Branch</strong> — jointryps.com/go/{creator} redirect pages live. Branch SDK deployed (coordinated with Asif). Click tracking verified end-to-end.</td>
+        <td><span class="sprint-owner owner-infra">Infra</span></td>
+        <td><span class="sprint-scope">03, 08</span></td>
+        <td class="sprint-done">Click a /go/ link, verify iMessage opens pre-filled with Tryps number. Branch dashboard shows the click.</td>
+      </tr>
+      <tr>
+        <td><span class="sprint-num">10</span></td>
+        <td><strong>App Store keyword tracking + Slack alerts</strong> — ASO.dev configured with initial keyword targets for Tryps. n8n automation wired so new App Store reviews auto-post to a Slack channel. UTM naming convention doc shared with team so every link we create is trackable.</td>
+        <td><span class="sprint-owner owner-infra">Infra</span></td>
+        <td><span class="sprint-scope">09, 13</span></td>
+        <td class="sprint-done">ASO.dev shows keyword rankings for "group trip planner." A test App Store review appears in Slack automatically. UTM doc is in shared drive.</td>
+      </tr>
+    </table>
+
+    <div class="not-sprint">
+      <strong>Not in this sprint:</strong> Paid ad campaigns (post-launch, after organic content proves what works). Press pitches (launch week, not before). Looker Studio dashboards (weeks 3-4, no data to track yet). Remotion video templates (weeks 3-4, after Growth Eng establishes the manual clip pattern). Final App Store video (waiting on stable app flows from product team).
+    </div>
+
+    <div class="success-box">
+      <div class="success-card success-growth">
+        <h4>Growth Engineer — day 14 test</h4>
+        <p>They've produced content that is <strong>fast, high quality, and aligned with Jake and Sean's vision.</strong> The 15-sec demo clip is the proof.</p>
+      </div>
+      <div class="success-card success-infra">
+        <h4>Infra Engineer — day 14 test</h4>
+        <p>All 8 platforms connected, Meta pixel firing, emails capturing, creator tool recommended, and <strong>Sean can see the system working.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REFERENCE CONTENT -->
+  <div class="ref-box">
+    <h2>Content Style References</h2>
+    <p style="font-size:13px;color:#6B6560;margin-bottom:12px;">This is the quality bar for product demo clips. Polished screen recordings with text overlays, transitions, and branded elements. Not raw screen captures.</p>
+    <a class="ref-link" href="https://x.com/claudeai/status/2036503582166393240" target="_blank">@claudeai — Claude Code auto mode demo (6.9M views)</a>
+    <p class="ref-desc">Screen recording with text overlays and clean transitions layered on top. Short copy. Product-first, but polished.</p>
+    <a class="ref-link" href="https://x.com/claudeai/status/2036850783526719610" target="_blank">@claudeai — Work tools on mobile demo (7.2M views)</a>
+    <p class="ref-desc">Same style. Screen recording + branded text and motion graphics over the capture. This is the bar for Tryps social + App Store content.</p>
+    <p style="font-size:13px;color:#6B6560;margin-top:8px;">Also reference: <strong>Partiful's App Store video</strong> — polished app demo with overlays, transitions, and feature callouts. This is the target for our App Store listing.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ROLE 1: GROWTH ENGINEER -->
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-label label-1">Role 1 — Hiring Now</div>
+      <h2>GTM Growth Engineer</h2>
+      <p class="one-liner">Makes things: content, clips, copy, ads. The person Jake and Sean point at whatever needs producing.</p>
+    </div>
+    <div class="role-body">
+
+      <div class="audition-box">
+        <strong>The audition:</strong> Screen-record any app on your phone. Edit it into a polished 15-sec product demo clip with text overlays and clean transitions. Attach it to your proposal. If you skip this, we skip your proposal.
+      </div>
+
+      <div class="section">
+        <h3>The Job</h3>
+        <p>You're not a specialist. You're the person who makes things happen across the entire brand and go-to-market operation. One week you're screen-recording the app and cutting polished 15-sec demos with text overlays and transitions. The next you're writing App Store copy. The week after that you're managing Meta ad spend and flagging which UGC clips are winning.</p>
+        <p>The core skill: you can screen-record a mobile app and produce a polished product demo clip in under 30 minutes — with text callouts, clean transitions, and branded elements layered on top. Not raw recordings. Think @claudeai on Twitter or Partiful's App Store video. If you can do that, everything else follows from the same muscle.</p>
+      </div>
+
+      <div class="section">
+        <h3>Scopes You Touch</h3>
+        <p style="font-size:13px;color:#6B6560;">
+          <strong>02</strong> Socials (produce content) · <strong>07</strong> SEO (write landing page + blog copy) · <strong>09</strong> App Store (own copy, screenshots, video, PPO tests, PH launch) · <strong>10</strong> Paid (manage $5K/mo Meta spend, create ad variants) · <strong>11</strong> Email (write launch blast + drip copy) · <strong>12</strong> Press (build journalist list, draft pitches)
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>What You'll Do</h3>
+        <div class="week-grid">
+          <div class="week-card">
+            <div class="week-label">Week 1</div>
+            <p>Screen-record app, produce polished 15-sec demo clip (audition)</p>
+            <p>Ad-hoc design: landing page, link previews, logo</p>
+            <p>Draft App Store copy (title, subtitle, description)</p>
+            <p>First 5 social posts from Sean's direction</p>
+          </div>
+          <div class="week-card">
+            <div class="week-label">Week 2</div>
+            <p>5 more social posts, scheduled in Buffer</p>
+            <p>3 SEO landing page copy drafts</p>
+            <p>Launch email blast copy</p>
+            <p>Journalist target list (50 contacts)</p>
+            <p>Product Hunt draft listing</p>
+          </div>
+          <div class="week-card">
+            <div class="week-label">Launch Week</div>
+            <p>Publish across all platforms</p>
+            <p>Coordinate PH upvote rally</p>
+            <p>Send launch email blast</p>
+            <p>Monitor + flag what's working</p>
+          </div>
+          <div class="week-card">
+            <div class="week-label">Post-Launch</div>
+            <p>Manage $5K/mo Meta ad spend</p>
+            <p>Create ad variants from winning UGC</p>
+            <p>Run Apple PPO A/B tests</p>
+            <p>100+ content pieces per month</p>
+            <p>Weekly performance report</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Required Skills</h3>
+        <div class="skills-grid">
+          <span class="skill skill-must">Screen recording + polished video editing</span>
+          <span class="skill skill-must">Claude / AI tools (daily user)</span>
+          <span class="skill skill-must">Can write (copy, emails, landing pages)</span>
+          <span class="skill skill-must">Fast learner (new tool every week)</span>
+          <span class="skill">Meta Ads Manager</span>
+          <span class="skill">CapCut / DaVinci Resolve</span>
+          <span class="skill">Canva / Figma basics</span>
+          <span class="skill">ASO experience</span>
+          <span class="skill">SEO fundamentals</span>
+          <span class="skill">Claude Code (can run basic scripts)</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>This Person Is NOT</h3>
+        <div class="anti-list">
+          <strong>Not a strategist.</strong> The strategy is set. They execute what Sean and Jake direct.
+          <ul>
+            <li>Not building infrastructure or automation (that's the Infra Engineer)</li>
+            <li>Not a designer from scratch (uses AI + templates + screen recordings)</li>
+            <li>Not managing influencer relationships (Sean owns those)</li>
+            <li>Not a specialist in one channel — they work across many</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Application Questions</h3>
+        <div class="hire-box">
+          <strong>1.</strong> Screen-record any app on your phone (15-30 seconds), edit it into a polished product demo clip with text overlays and transitions, and attach it. This is the audition. If you skip this, we skip your proposal.<br><br>
+          <strong>2.</strong> Tell me about the last time you used AI tools to produce marketing output 10x faster than the traditional way. Be specific.<br><br>
+          <strong>3.</strong> Describe your daily AI development setup. What's in your terminal?
+        </div>
+      </div>
+
+    </div>
+    <div class="cost-bar">
+      <span class="cost-label">Est. Rate</span>
+      <span class="cost-value cost-1">$3-5K/mo</span>
+      <span class="cost-note">30-40 hrs/week, $30-50/hr depending on experience</span>
+    </div>
+  </div>
+
+  <!-- ROLE 2: INFRA ENGINEER -->
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-label label-2">Role 2 — Hiring Now</div>
+      <h2>GTM Infrastructure Engineer</h2>
+      <p class="one-liner">Builds every system, workflow, and tool the brand and go-to-market org runs on. The Asif of GTM. Founding role.</p>
+    </div>
+    <div class="role-body">
+
+      <div class="section">
+        <h3>The Job</h3>
+        <p>You're the person who makes everyone else faster. Sean says "I need to publish across 8 platforms." You set up Buffer, connect the accounts, build the auto-repost workflows, and hand him a dashboard. The Growth Engineer says "I need 50 ad variants from this UGC clip." You build the Recharm pipeline and Figma plugin that lets them do it in 5 minutes.</p>
+        <p>This is a founding role. You're not filling a seat — you're building the entire marketing infrastructure from zero. If you do this well, you grow with the company.</p>
+      </div>
+
+      <div class="section">
+        <h3>Scopes You Touch</h3>
+        <p style="font-size:13px;color:#6B6560;">
+          <strong>02</strong> Socials (scheduling + automation) · <strong>03</strong> UGC (creator tools + affiliate links) · <strong>07</strong> SEO (schema markup + landing page builds) · <strong>08</strong> Referrals (Branch + tracking) · <strong>09</strong> App Store (ASO tools + PPO config) · <strong>10</strong> Paid (pixel + ad variant pipeline) · <strong>11</strong> Email (Loops setup) · <strong>13</strong> Analytics (all dashboards, automation, observability)
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>What You'll Build</h3>
+        <div class="week-grid">
+          <div class="week-card">
+            <div class="week-label">Week 1</div>
+            <p>Buffer/Metricool across 8 platforms</p>
+            <p>Meta pixel + conversion events</p>
+            <p>Loops + waitlist email capture</p>
+            <p>ASO.dev setup</p>
+          </div>
+          <div class="week-card">
+            <div class="week-label">Week 2</div>
+            <p>Creator tool trial + recommendation</p>
+            <p>Branch SDK + affiliate redirect pages</p>
+            <p>n8n automation: App Store review → Slack</p>
+            <p>UTM naming convention doc</p>
+          </div>
+          <div class="week-card">
+            <div class="week-label">Weeks 3-4</div>
+            <p>Remotion template for product demos</p>
+            <p>Figma ad variant plugin</p>
+            <p>Schema markup on jointryps.com</p>
+            <p>3-5 SEO landing page builds</p>
+            <p>Looker Studio dashboard</p>
+          </div>
+          <div class="week-card">
+            <div class="week-label">Ongoing</div>
+            <p>LangFuse for agent observability</p>
+            <p>Fix broken workflows</p>
+            <p>New automations as needs emerge</p>
+            <p>Investor-ready cost tracking</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>The Stack</h3>
+        <p style="font-size:13px;color:#6B6560;">Buffer, Metricool, CapCut, Remotion, Canva, Branch, AppsFlyer, Loops, Meta Ads Manager, ASO.dev, Ahrefs, n8n, Looker Studio, LangFuse, Slack.</p>
+      </div>
+
+      <div class="section">
+        <h3>Required Skills</h3>
+        <div class="skills-grid">
+          <span class="skill skill-must">Python or TypeScript</span>
+          <span class="skill skill-must">n8n or Make</span>
+          <span class="skill skill-must">Claude Code / AI tools (daily)</span>
+          <span class="skill skill-must">API integrations</span>
+          <span class="skill skill-must">Web dev basics (HTML/CSS)</span>
+          <span class="skill">Remotion</span>
+          <span class="skill">Branch / deep linking</span>
+          <span class="skill">Figma plugin development</span>
+          <span class="skill">Google Looker Studio</span>
+          <span class="skill">Marketing tool experience</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>This Person Is NOT</h3>
+        <div class="anti-list">
+          <strong>Not a content creator.</strong> They build systems that let other people make things fast.
+          <ul>
+            <li>Not writing copy or editing video</li>
+            <li>Not managing day-to-day ad spend</li>
+            <li>Not talking to influencers or journalists</li>
+            <li>Not a short-term gig — this is a founding role</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Application Questions</h3>
+        <div class="hire-box">
+          <strong>1.</strong> Describe your daily development setup. What's in your terminal? Show me your Claude Code, Cursor, or similar AI workflow.<br><br>
+          <strong>2.</strong> Tell me about a time you wired together 3+ tools or APIs into an automated workflow. What was the trigger, what happened in the middle, what was the output?
+        </div>
+      </div>
+
+    </div>
+    <div class="cost-bar">
+      <span class="cost-label">Est. Rate</span>
+      <span class="cost-value cost-2">$3-4K/mo</span>
+      <span class="cost-note">30-40 hrs/week, $25-40/hr depending on location</span>
+    </div>
+  </div>
+
+  <!-- BUDGET -->
+  <div class="budget-box">
+    <h2>Monthly GTM Budget</h2>
+    <table class="budget-table">
+      <tr><th>Item</th><th>Monthly</th></tr>
+      <tr><td>Sean DeFaria — Creative Director</td><td>$5,000</td></tr>
+      <tr><td>GTM Growth Engineer</td><td>$3,000-5,000</td></tr>
+      <tr><td>GTM Infrastructure Engineer</td><td>$3,000-4,000</td></tr>
+      <tr><td>AI Agents (Pablo, Don, Rio)</td><td>~$50-100</td></tr>
+      <tr class="budget-total"><td>People subtotal</td><td>$11,000-14,000</td></tr>
+      <tr><td>Software stack (Buffer, CapCut, Canva, Loops, etc.)</td><td>$330-690</td></tr>
+      <tr><td>Meta ad spend</td><td>$5,000</td></tr>
+      <tr><td>Creator payments (spread over 2 months)</td><td>~$2,000-4,000</td></tr>
+      <tr class="budget-total"><td><strong>Total monthly GTM burn</strong></td><td><strong>$20,000-25,000</strong></td></tr>
+    </table>
+  </div>
+
+  <div class="footer">Brand & GTM Team Plan v2 — Updated March 31, 2026</div>
+
+</div>
+</body>
+</html>
