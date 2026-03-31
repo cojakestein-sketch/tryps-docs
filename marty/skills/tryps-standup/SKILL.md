@@ -72,14 +72,34 @@ For each active dev, write exactly **3 questions**:
 - Questions should be answerable in 2 minutes via Wispr Flow voice dump
 - Be firm but not mean — no accusatory phrasing, no shaming
 
-### 4. Generate the SC & Bug Snapshot Table
+### 4. Generate the Hero Numbers & SC/Bug Snapshot
 
-| Team Member | Scope | Total SC | SC Done (Dev) | SC Passed QA (Andreas) | Open Bugs |
-|-------------|-------|----------|---------------|------------------------|-----------|
+**Hero numbers go at the very top of the standup, right after the title.** These are the first thing everyone sees — big, impossible to ignore.
 
-Pre-fill Team Member, Scope, Total SC, and any numbers from Asif's nightly report. Leave unknown columns blank for devs to fill.
+**How to calculate:**
+- Sum all SC Done across devs (from Asif's nightly report + yesterday's answers + scope state.md frontmatter)
+- Sum all Total SC across devs
+- Get bugs fixed / total bugs from Asif's nightly report
+- If a dev hasn't reported their SC count, show `???` and call them out
 
-> **Note to Asif:** Provide bug count + QA numbers the night before each standup so this table is pre-filled.
+**Format in the document:**
+
+```
+# [SC_DONE] / [SC_TOTAL] SUCCESS CRITERIA DONE — [BUGS_FIXED] / [BUGS_TOTAL] BUGS FIXED
+
+> **SC:** Asif [X]/57 | Rizwan [X]/61 | Nadeem [X]/48 *(call out anyone who hasn't reported)*
+> **Bugs:** [X] fixed (waiting QA verify) | [X] remaining | [X] blocked
+> *Source: Asif, [time/date of report]*
+```
+
+**Then the per-dev table:**
+
+| Team Member | Scope | Total SC | SC Done (Dev) | SC Passed QA (Andreas) | Bugs Fixed / Total |
+|-------------|-------|----------|---------------|------------------------|--------------------|
+
+Pre-fill from Asif's nightly report. Leave unknown columns blank for devs to fill.
+
+> **Note to Asif:** Provide SC counts + bug numbers the night before each standup so the hero numbers and table are pre-filled.
 
 ### 5. Write the Standup Document
 
@@ -99,6 +119,14 @@ type: standup
 
 ---
 
+# [SC_DONE] / [SC_TOTAL] SUCCESS CRITERIA DONE — [BUGS_FIXED] / [BUGS_TOTAL] BUGS FIXED
+
+> **SC:** Asif [X]/57 | Rizwan [X]/61 | Nadeem [X]/48 *(call out anyone who hasn't reported)*
+> **Bugs:** [X] fixed (waiting QA verify) | [X] remaining | [X] blocked
+> *Source: Asif, [time/date of report]*
+
+---
+
 ## Jake's Missions for the Team Today
 
 > These are the things Jake cares about TODAY. Everything you do should connect back to one of these.
@@ -115,11 +143,11 @@ type: standup
 
 ## SC & Bug Snapshot
 
-| Team Member | Scope | Total SC | SC Done (Dev) | SC Passed QA (Andreas) | Open Bugs |
-|-------------|-------|----------|---------------|------------------------|-----------|
-| [Dev] | [scope] | **[X]** | ___ / [X] | ___ / ___ | ___ |
+| Team Member | Scope | Total SC | SC Done (Dev) | SC Passed QA (Andreas) | Bugs Fixed / Total |
+|-------------|-------|----------|---------------|------------------------|--------------------|
+| [Dev] | [scope] | **[X]** | ___ / [X] | ___ / ___ | — |
 
-> **Asif:** Provide bug count + QA numbers the night before each standup so this table is pre-filled.
+> **Asif:** Provide SC + bug numbers the night before each standup so the hero numbers and this table are pre-filled.
 
 ---
 
