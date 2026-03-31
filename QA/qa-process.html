@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QA at Tryps</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D9071C; --red-dark: #B00618; --red-light: #E85050;
+    --white: #FFFFFF; --off-white: #F9FAFB;
+    --slate: #1A1A1A; --slate-warm: #3D3530;
+    --g100: #F3F4F6; --g200: #E5E7EB; --g300: #D1D5DB; --g400: #9CA3AF; --g500: #6B7280;
+    --green: #2D6B4F; --gold: #E8913A; --blue: #3478F6;
+    --amber: #F5B740; --amber-light: #FEF3E0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+  body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; color: var(--slate); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+  .slide {
+    min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column;
+    justify-content: center; padding: 64px 80px 48px; position: relative;
+  }
+  .slide-alt { background: var(--off-white); }
+  .slide-red { background: var(--red); color: var(--white); }
+  .slide-dark { background: var(--slate); color: var(--white); }
+
+  h1 { font-size: 56px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; }
+  h2 { font-size: 38px; font-weight: 700; line-height: 1.15; letter-spacing: -1px; margin-bottom: 12px; }
+  h3 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+  p, li { font-size: 17px; line-height: 1.6; }
+  .mono { font-family: 'Space Mono', monospace; }
+  .label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--red); margin-bottom: 8px; }
+  .label-white { color: rgba(255,255,255,0.6); }
+  .accent { color: var(--red); }
+  .muted { color: var(--g500); }
+
+  .nav { position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 5px; }
+  .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--g300); cursor: pointer; transition: all 0.3s; border: none; }
+  .nav-dot.active { background: var(--red); transform: scale(1.5); }
+  .ctr { position: fixed; bottom: 16px; right: 16px; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--g400); z-index: 100; }
+
+  .title { text-align: center; align-items: center; }
+  .title h1 { font-size: 72px; color: var(--red); letter-spacing: -3px; }
+  .title .tagline { font-size: 22px; color: var(--g500); margin-top: 8px; }
+  .title .ctx { font-size: 13px; color: var(--g400); margin-top: 36px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 24px; }
+
+  .card {
+    background: var(--white); border-radius: 16px; padding: 28px;
+    border: 1px solid var(--g200); box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  }
+  .card-dark {
+    background: rgba(255,255,255,0.06); border-radius: 16px; padding: 28px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .card h3 { font-size: 18px; margin-bottom: 12px; }
+  .card p, .card li { font-size: 15px; line-height: 1.5; }
+  .card-dark h3 { color: var(--white); }
+  .card-dark p, .card-dark li { color: rgba(255,255,255,0.75); }
+
+  .stat { text-align: center; }
+  .stat-num { font-size: 56px; font-weight: 800; letter-spacing: -2px; line-height: 1; }
+  .stat-label { font-size: 14px; color: var(--g500); margin-top: 6px; font-weight: 500; }
+  .stat-num.red { color: var(--red); }
+  .stat-num.green { color: var(--green); }
+  .stat-num.blue { color: var(--blue); }
+  .stat-num.white { color: var(--white); }
+
+  .flow { display: flex; align-items: center; gap: 0; margin-top: 32px; flex-wrap: wrap; justify-content: center; }
+  .flow-step {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 20px 16px; min-width: 140px;
+  }
+  .flow-icon {
+    width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center;
+    justify-content: center; font-size: 24px; margin-bottom: 10px; font-weight: 700;
+  }
+  .flow-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .flow-step p { font-size: 12px; color: var(--g500); line-height: 1.3; max-width: 130px; }
+  .flow-arrow { font-size: 24px; color: var(--g300); margin: 0 4px; padding-top: 0; }
+
+  .fi-red { background: rgba(217,7,28,0.1); color: var(--red); }
+  .fi-blue { background: rgba(52,120,246,0.1); color: var(--blue); }
+  .fi-green { background: rgba(45,107,79,0.1); color: var(--green); }
+  .fi-amber { background: var(--amber-light); color: var(--gold); }
+  .fi-slate { background: var(--g100); color: var(--slate); }
+
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0; padding-left: 20px; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
+  .card-dark ul li::before { background: rgba(255,255,255,0.3); }
+
+  .severity-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--g100); }
+  .severity-row:last-child { border-bottom: none; }
+  .sev-badge { padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; min-width: 36px; text-align: center; }
+  .sev-p1 { background: #FEE2E2; color: #991B1B; }
+  .sev-p2 { background: var(--amber-light); color: #92400E; }
+  .sev-p3 { background: #E0F2FE; color: #075985; }
+</style>
+</head>
+<body>
+
+<!-- Nav dots -->
+<nav class="nav" id="nav"></nav>
+<div class="ctr" id="ctr"></div>
+
+<!-- SLIDE 1: Title -->
+<section class="slide title" data-name="Title">
+  <div class="label">QA PROCESS</div>
+  <h1>QA at Tryps</h1>
+  <p class="tagline">1 tester. Same hours as devs. Test yesterday's build today.</p>
+  <p class="ctx mono">April 2026 &mdash; 78 bugs tracked &bull; 35 fixed &bull; 166 success criteria</p>
+</section>
+
+<!-- SLIDE 2: The Loop -->
+<section class="slide slide-alt" data-name="The Loop">
+  <div class="label">DAILY CYCLE</div>
+  <h2>The Loop</h2>
+  <p class="muted" style="max-width:640px;">Dev builds by end of day. QA tests yesterday's build the next morning. Bugs filed in ClickUp. Devs fix. QA verifies. Repeat.</p>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-icon fi-blue">1</div>
+      <h4>Dev Fixes</h4>
+      <p>Pick bug from ClickUp, fix, PR, merge to develop</p>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+      <div class="flow-icon fi-red">2</div>
+      <h4>TestFlight Build</h4>
+      <p>Asif creates build from develop at end of day</p>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+      <div class="flow-icon fi-green">3</div>
+      <h4>QA Tests</h4>
+      <p>Next morning: update TestFlight, run test cases, file bugs</p>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+      <div class="flow-icon fi-amber">4</div>
+      <h4>Verify Fixes</h4>
+      <p>Re-test "Ready for Testing" tickets. Pass &rarr; Ready for Prod</p>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+      <div class="flow-icon fi-slate">5</div>
+      <h4>Standup</h4>
+      <p>QA reports: tested, passed, failed, blocked</p>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-top:40px;">
+    <div class="card">
+      <div class="severity-row"><span class="sev-badge sev-p1">P1</span><span>Crash / data loss / blocked flow &mdash; <strong>same day fix</strong></span></div>
+      <div class="severity-row"><span class="sev-badge sev-p2">P2</span><span>Broken feature, workaround exists &mdash; <strong>this week</strong></span></div>
+      <div class="severity-row"><span class="sev-badge sev-p3">P3</span><span>Cosmetic / minor &mdash; <strong>backlog</strong></span></div>
+    </div>
+    <div class="card">
+      <h3>Bug Lifecycle</h3>
+      <ul>
+        <li>QA finds bug &rarr; ClickUp sub-ticket</li>
+        <li>Dev fixes &rarr; moves to "Ready for Testing"</li>
+        <li>QA verifies &rarr; "Ready for Production"</li>
+        <li>Still broken? &rarr; back to "To Do" with note</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Test Case Files</h3>
+      <p>QA writes a test case file per module <strong>before</strong> testing. Every scenario listed, marked pass/fail. The file is the source of truth for what's tested.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: Team & Ownership -->
+<section class="slide slide-dark" data-name="Team">
+  <div class="label label-white">TEAM & OWNERSHIP</div>
+  <h2>Who Does What</h2>
+
+  <div class="grid-3" style="margin-top:24px;">
+    <div class="card-dark">
+      <h3>QA Tester (New Hire)</h3>
+      <ul>
+        <li>Test app + iMessage daily</li>
+        <li>Write test case files per module</li>
+        <li>File bugs in ClickUp with screen recordings</li>
+        <li>Verify fixes on TestFlight</li>
+        <li>Participate in daily standup</li>
+      </ul>
+      <p style="margin-top:12px;font-size:13px;color:rgba(255,255,255,0.4);">3-4 hrs/day &bull; $20-25/hr &bull; Upwork</p>
+    </div>
+    <div class="card-dark">
+      <h3>Asif (Dev Lead / QA Owner)</h3>
+      <ul>
+        <li>Owns QA process end-to-end</li>
+        <li>Creates TestFlight builds at EOD</li>
+        <li>Triages P1 bugs immediately</li>
+        <li>Reviews QA output in standup</li>
+        <li>Hires and trains QA team</li>
+      </ul>
+    </div>
+    <div class="card-dark">
+      <h3>Dev Team</h3>
+      <ul>
+        <li>Nadeem: app UI bugs</li>
+        <li>Asif: iMessage / backend bugs</li>
+        <li>Rizwan: agent intelligence bugs</li>
+        <li>Pick from ClickUp "To Do"</li>
+        <li>Move to "Ready for Testing" when done</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top:24px;">
+    <div class="card-dark">
+      <h3>ClickUp Structure</h3>
+      <p>One <strong>main ticket per module</strong> (Expenses, Packing, People, etc.). All related bugs as <strong>sub-tickets</strong> underneath. Total count = main tickets only.</p>
+    </div>
+    <div class="card-dark">
+      <h3>Tools</h3>
+      <p>TestFlight (builds) &bull; ClickUp (bugs) &bull; Slack (P1 alerts) &bull; GitHub (read-only) &bull; iPhone 12+ (own device) &bull; iOS screen recording</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: Metrics -->
+<section class="slide" data-name="Metrics">
+  <div class="label">TARGETS</div>
+  <h2>Metrics We Track</h2>
+
+  <div class="grid-3" style="margin-top:32px;">
+    <div class="card stat">
+      <div class="stat-num red">78</div>
+      <div class="stat-label">Total Bugs Identified</div>
+    </div>
+    <div class="card stat">
+      <div class="stat-num green">35</div>
+      <div class="stat-label">Fixed (Tested Internally)</div>
+    </div>
+    <div class="card stat">
+      <div class="stat-num blue">43</div>
+      <div class="stat-label">Remaining</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top:32px;">
+    <div class="card">
+      <h3>Weekly Metrics (QA in Standup)</h3>
+      <ul>
+        <li><strong>Test cases written</strong> &mdash; file per module before testing</li>
+        <li><strong>Test cases passed / failed</strong> &mdash; marked in the file</li>
+        <li><strong>Bugs found today</strong> &mdash; new ClickUp tickets</li>
+        <li><strong>Bugs verified today</strong> &mdash; moved to "Ready for Prod"</li>
+        <li><strong>Bug-in vs bug-out ratio</strong> &mdash; must trend downward</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Regression Policy</h3>
+      <ul>
+        <li>Regressions are <strong>auto-P1</strong></li>
+        <li>Tagged "regression" in ClickUp</li>
+        <li>Dev who introduced it owns the fix</li>
+        <li>3 regressions in same module &rarr; mandatory code review</li>
+        <li>P1 regressions require root cause note</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;text-align:center;">
+    <p class="muted" style="font-size:14px;">Hiring plan: 1 QA tester now &rarr; train for 1 week &rarr; evaluate adding 2nd tester at week 3</p>
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const nav = document.getElementById('nav');
+  const ctr = document.getElementById('ctr');
+  slides.forEach((s, i) => {
+    const d = document.createElement('button');
+    d.className = 'nav-dot'; d.onclick = () => s.scrollIntoView({behavior:'smooth'});
+    nav.appendChild(d);
+  });
+  const dots = nav.querySelectorAll('.nav-dot');
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        const i = [...slides].indexOf(e.target);
+        dots.forEach((d,j) => d.classList.toggle('active', j===i));
+        ctr.textContent = `${i+1} / ${slides.length}`;
+      }
+    });
+  }, {threshold: 0.5});
+  slides.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
