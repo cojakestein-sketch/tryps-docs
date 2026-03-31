@@ -20,7 +20,7 @@ last_updated: 2026-03-23
 
 | Service | What It Does | Pricing / Free Tier | Auth | Status | Action Owner | Notes |
 |---------|-------------|---------------------|------|--------|-------------|-------|
-| **Duffel** | Flight search + book + ticket for 300+ airlines | Pay-per-booking (commission on ticket price) | API key (OAuth 2.0) | investigating | Dev | Primary flight provider. Supports search, booking, ticketing, seat selection, baggage. Sandbox available for testing. |
+| **Duffel** | Flight search + book + ticket for 300+ airlines | Pay-per-booking (commission on ticket price) | API key (Bearer token) | **integrated** | Rizwan | Sandbox integrated. `search_flights` and `book_flight` tools wired into iMessage agent via `_shared/duffel.ts`. Agent demo at `agent-demo/app/flight-booking/`. Token: `duffel_test_...` in Supabase secrets. |
 | **Amadeus** | Flight search (backup), hotel search | 500 free calls/month (self-service), paid tiers | API key + secret | investigating | Dev | Already have credentials in Supabase env. `search-hotels` edge function exists but unused. Evaluate as flight backup. |
 | **AeroDataBox** | Flight number lookup (existing) | 300 free calls/month (RapidAPI) | RapidAPI key | **integrated** | — | Already working in add-flight.tsx. Lookup by flight number + date. Keep as utility alongside Duffel search. |
 
