@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tryps Nightly Brief — Monday, March 30, 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #3D3530;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #3D3530;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+  }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
+  p, li { font-size: 11pt; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+  }
+  .strategy-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14pt;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #B00618; }
+  a { color: #D9071C; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .tag { display: inline-block; background: #EDE4D8; border-radius: 4px; padding: 1px 6px; font-size: 9pt; color: #3D3530; margin-right: 4px; }
+</style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Print</button>
+  <h1>Tryps Nightly Brief</h1>
+  <div class="subtitle">
+    Monday, March 30, 2026 — Prepared by Marty at 8:30 PM ET
+  </div>
+
+  <!-- SECTION 1: TOMORROW'S STANDUP -->
+  <section>
+    <h2>1. Tomorrow's Standup (March 31)</h2>
+    <p>Full standup generated at 8:00 PM. Three devs, 5 questions each. Key themes:</p>
+
+    <h3>Nadeem — output-backed-screen (7/48 SC)</h3>
+    <ol>
+      <li>PR #332 (trip detail header) merged — but 4+ standups skipped. How many of the 48 SCs are done-done?</li>
+      <li>Asif says Jake's 16 bug-fix PRs (#315–#330) go to you first for functional testing. Have you started?</li>
+      <li>"Bug: Trip Card" and "Bug: Packing List" moved to "for testing." "P1 — Travel DNA" and "P1 — Post-Trip Review" stuck in "for testing" for over a week. Plan?</li>
+      <li>PR #332 co-authored with Claude Opus — how is agent-assisted dev changing your velocity?</li>
+      <li>Priority order this week: clear Jake's PR queue, fix remaining bugs, or push forward on unfinished SCs?</li>
+    </ol>
+
+    <h3>Asif — imessage-agent (34/57 SC)</h3>
+    <ol>
+      <li>Yesterday: answered 2 of 5 questions. 45/57 SCs done, 6 blocked on Rizwan. Status on "Bug: iMessage via Linq," "Deploy Marty Pipeline," and domain migration?</li>
+      <li>PR #314 took 2 days to merge. PRs #315–#330 are 1-2 days old with no reviews. Is Nadeem working through them?</li>
+      <li>Rizwan's PR #331 (booking first draft) opened. Cross-scope SCs 59-61 — has joint design coordination actually happened?</li>
+      <li>"AI Agent One to One Chat Issues" reassigned to Rizwan. Are you triaging and assigning bugs now?</li>
+      <li>16 open PRs from Jake's weekend. Plan to clear the merge queue this week? When do the 6 Rizwan-blocked iMessage SCs close?</li>
+    </ol>
+
+    <h3>Rizwan — agent-intelligence (27/61 SC)</h3>
+    <ol>
+      <li>Most reliable standup responder — then missed March 30. PR #312 merged, vote override + auto-vote committed. Actual SC count now?</li>
+      <li>PR #331 (booking first draft) — new feature territory. How does it fit with remaining 34+ SCs?</li>
+      <li>3 new tasks assigned (AI Agent Chat Issues, OTP bug, Stripe Payments) on top of 34+ remaining SCs. Spreading too thin?</li>
+      <li>Auto-vote pg_cron every 5 min + 4-hour cooldown — tested with concurrent trips and overlapping vote windows?</li>
+      <li>Recommendations engine 2/18 SCs. Booking PR suggests pivot to that area. Realistic path to close recommendation SCs?</li>
+    </ol>
+  </section>
+
+  <!-- SECTION 2: TECH TWITTER -->
+  <section>
+    <h2>2. Tech Twitter Digest</h2>
+    <p style="font-size:10pt; color:#888;">Sources: Brave Search (Exa unavailable for direct tweet retrieval today). Filtered for today's signal.</p>
+
+    <div class="tweet">
+      <span class="tweet-author">@karpathy</span> — <strong>AutoResearch goes viral</strong><br>
+      <span class="tweet-text">Karpathy's "autoresearch" system — AI that iteratively improves itself via automated experiments — is getting massive coverage. A curated <a href="https://github.com/alvinunreal/awesome-autoresearch">awesome-autoresearch</a> list appeared on GitHub. Multiple outlets covering the self-improving AI loop, including Banyan Hill and Geeky Gadgets.</span>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@sama / OpenAI</span> — <strong>Sora shut down, Disney $1B deal collapses</strong><br>
+      <span class="tweet-text">OpenAI killed the standalone Sora video app. WSJ reports "more AI slop than AI magic." Disney's planned $1B investment tied to Sora is dead. Altman framed it as "difficult trade-offs" in an employee note. Compute redirected elsewhere. <a href="https://mashable.com/article/openai-sora-pivot-sam-altman">Mashable</a> | <a href="https://arstechnica.com/ai/2026/03/the-end-of-sora-also-means-the-end-of-disneys-1-billion-openai-investment/">Ars Technica</a></span>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@AnthropicAI</span> — <strong>Claude subscriber growth skyrocketing + Mythos leak</strong><br>
+      <span class="tweet-text">TechCrunch reports Claude weekly new consumer subscribers surging past ChatGPT, partly fueled by Super Bowl ads mocking ChatGPT's decision to show ads. Separately, Fortune leaked "Claude Mythos" — a "step change" model with unprecedented cyber capabilities. Anthropic warning government officials. <a href="https://techcrunch.com/2026/03/28/anthropics-claude-popularity-with-paying-consumers-is-skyrocketing/">TechCrunch</a> | <a href="https://fortune.com/2026/03/26/anthropic-says-testing-mythos-powerful-new-ai-model-after-data-leak-reveals-its-existence-step-change-in-capabilities/">Fortune</a></span>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@elonmusk</span> — <strong>Terafab chip plant + energy concerns</strong><br>
+      <span class="tweet-text">Musk announced a new Terafab chip plant in Austin — one terawatt of computing capacity yearly, targeting the AI chip shortage. Also warned the U.S. could "produce more chips than we can turn on" due to power constraints. China doesn't have the same issue. <a href="https://fortune.com/article/why-is-elon-musk-worried-us-chip-production-capacity-solar-energy-tesla-china/">Fortune</a></span>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@pmarca</span> — <strong>AI will dominate complex SaaS migration</strong><br>
+      <span class="tweet-text">Andreessen predicts AI agents will show their greatest capabilities in domains defined by complexity and edge cases — precisely where humans struggle most. Positioning AI as the solution for messy, real-world enterprise problems, not just demos. <a href="https://www.pizzafranchisehub.com/archives/30324">Source</a></span>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">Meta / Moltbook</span> — <strong>Meta acquires "Reddit for AI agents"</strong><br>
+      <span class="tweet-text">Meta acquired Moltbook (AI-only social network) — founders Matt Schlicht and Ben Parr join Meta Superintelligence Labs under Alexandr Wang (ex-Scale AI CEO). Follows Meta's $2B Manus AI acquisition. Karpathy called it "one of the most incredible sci-fi takeoff-adjacent things" he'd seen. <a href="https://beam.ai/agentic-insights/meta-just-bought-a-social-network-for-ai-agents-heres-what-it-tells-us-about-the-agent-internet">Beam AI</a></span>
+    </div>
+  </section>
+
+  <!-- SECTION 3: TRENDING REPOS -->
+  <section>
+    <h2>3. Trending GitHub Repos</h2>
+
+    <div class="repo">
+      <span class="repo-name">microsoft/VibeVoice</span> — ⭐ 30,215 (+2,492 today) <span class="tag">Voice AI</span><br>
+      Open-source frontier voice AI framework from Microsoft. Transcribes 60-minute audio and generates 90-minute speech with speaker identification. <strong>Why it matters:</strong> Tryps is building voice call features (Rizwan's scope). This is a free, open-source alternative to Vapi/Bland/Retell that could power the "call Tryps" experience.
+      <br><a href="https://github.com/microsoft/VibeVoice">github.com/microsoft/VibeVoice</a>
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">NousResearch/hermes-agent</span> — ⭐ 18,580 (+1,851 today) <span class="tag">AI Agents</span><br>
+      "The agent that grows with you" — an agentic framework from NousResearch. <strong>Why it matters:</strong> Tryps' agent-intelligence scope (Rizwan) is building exactly this kind of adaptive agent behavior. Worth reviewing their architecture for recommendations engine patterns.
+      <br><a href="https://github.com/NousResearch/hermes-agent">github.com/NousResearch/hermes-agent</a>
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">luongnv89/claude-howto</span> — ⭐ 9,842 (+4,232 today) <span class="tag">Claude Code</span><br>
+      Visual, example-driven guide to Claude Code — from basic concepts to advanced agents, with copy-paste templates. <strong>Why it matters:</strong> The team is already using Claude Code (Nadeem's PR #332 co-authored with Claude Opus). This guide could level up everyone's agent-assisted development workflow.
+      <br><a href="https://github.com/luongnv89/claude-howto">github.com/luongnv89/claude-howto</a>
+    </div>
+  </section>
+
+  <!-- SECTION 4: DEEP DIVE -->
+  <section>
+    <h2>4. Deep Dive: Anthropic's "Mythos" Leak — What It Means for Tryps</h2>
+    <p><em>No response from Jake on the 3pm topic suggestion. Using Marty's pick: the biggest story touching our stack directly.</em></p>
+
+    <h3>What it is</h3>
+    <p>A leaked internal Anthropic document revealed "Claude Mythos" (internal codename "Capybara") — described as "by far the most powerful AI model we've ever developed" and a "step change" in capabilities. The leak, reported by Fortune on March 26, shows Anthropic completed training and is now in testing. The model reportedly excels at reasoning, coding, and cybersecurity — and Anthropic is "currently far ahead of any other AI model in cyber capabilities."</p>
+
+    <h3>Why it matters at this stage of Tryps</h3>
+    <p>Tryps runs on Claude. Our entire agent-intelligence scope (61 SCs), iMessage agent, and dev workflow (Claude Code) depend on Anthropic's stack. A "step change" model means: (1) our AI trip Q&A and recommendation engine could get dramatically better overnight, (2) Claude Code productivity gains for the team, and (3) we need to watch pricing — Anthropic is already adjusting session limits during peak hours (Forbes, March 26). Meanwhile, Claude's consumer subscriber growth is outpacing ChatGPT, which validates our bet on the platform.</p>
+
+    <h3>Key takeaways</h3>
+    <ul>
+      <li><strong>No action needed now</strong> — Mythos isn't released yet. But when it drops, we should be day-one adopters for agent-intelligence.</li>
+      <li><strong>Watch the pricing</strong> — Anthropic is tightening rate limits under demand. If Mythos is significantly more expensive, it affects our API costs. Current spend is ~$1.75/day post-heartbeat fix.</li>
+      <li><strong>Cybersecurity angle</strong> — Anthropic is warning governments about offensive cyber capabilities. This could trigger regulation that affects API access for startups. Worth monitoring.</li>
+      <li><strong>Claude Haiku 3 deprecation April 19</strong> — If we're using Haiku anywhere, migrate to Haiku 4.5 before then.</li>
+      <li><strong>Competitive moat</strong> — Being deeply integrated with the fastest-growing AI platform is a good position. The "call Tryps, ask anything, get a great answer" thesis gets stronger as models improve.</li>
+    </ul>
+
+    <p><strong>Resource:</strong> <a href="https://fortune.com/2026/03/26/anthropic-says-testing-mythos-powerful-new-ai-model-after-data-leak-reveals-its-existence-step-change-in-capabilities/">Fortune exclusive on Claude Mythos</a></p>
+  </section>
+
+  <!-- SECTION 5: STRATEGY CHECK -->
+  <section>
+    <h2>5. Strategy Check</h2>
+    <div class="strategy-box">
+      <h3>Where we are — Beginning of Week 5 (Mar 30 – Apr 5)</h3>
+      <p><strong>What Tryps does today:</strong> Group trip planning with AI-generated suggestions, voting/polling on activities, iMessage agent for DM-based trip interaction, and a card-based trip experience. The core trip experience (15/16 SCs) is in testing. The product thesis Jake crystallized Saturday night: "Make it dead simple to grill an AI about your trip → let users AB test every answer via native polling." Two pillars: AI trip Q&A → instant group polling.</p>
+
+      <p><strong>What's shipping:</strong> Rizwan landed PR #331 (booking first draft) — the first concrete piece of "Jake calls Tryps and books a flight." Nadeem's PR #332 (trip detail header) merged. Asif has 45/57 iMessage SCs done.</p>
+
+      <p><strong>What's stuck:</strong> 16 of Jake's weekend bug-fix PRs (#315–#330) still unreviewed. Nadeem has 7/48 output-backed-screen SCs done — that's the biggest gap. The PR merge queue is the single biggest bottleneck right now.</p>
+
+      <h3>Top 3 Risks</h3>
+      <ol>
+        <li><strong>Nadeem's output-backed-screen velocity:</strong> 7/48 SCs, 4+ standups missed, and he's supposed to be reviewing Jake's 16 PRs. He showed up today (PR #332), but the SC gap is enormous. If this scope stalls, the entire "every section always visible on the trip card" design philosophy breaks.</li>
+        <li><strong>PR merge queue paralysis:</strong> 16 open PRs from Jake's weekend marathon, all bug fixes across flows the team owns. If these don't get reviewed this week, Jake's bug fixes rot and merge conflicts compound. Asif said Nadeem reviews first → Asif merges, but Nadeem hasn't started.</li>
+        <li><strong>Rizwan scope creep:</strong> 27/61 SCs done (state.md says 27, not the 55 from priorities.md — that's stale). He's now picking up booking features, Stripe payments, OTP bugs, and chat issues. Three new task assignments on top of 34 remaining SCs. The recommendations engine (2/18 SCs) is the biggest gap in agent-intelligence.</li>
+      </ol>
+
+      <h3>Where Jake should focus</h3>
+      <ul>
+        <li><strong>Unblock the merge queue:</strong> Ping Nadeem and Asif directly. 16 PRs sitting means 16 bug fixes not reaching users.</li>
+        <li><strong>Nadeem accountability:</strong> 4 missed standups is a pattern. The standup questions are pointed this time — his answers (or silence) will tell us everything.</li>
+        <li><strong>The week's integration test:</strong> Can Jake call Tryps and book his flight home from CA? Rizwan's booking first draft is the start. Voice API demo was due today — no confirmation it shipped.</li>
+      </ul>
+
+      <h3>What Marty thinks the #1 priority is</h3>
+      <p><strong>Clear the merge queue.</strong> Everything else is downstream. Jake spent his weekend fixing bugs across the entire app. Those fixes need to get into the build before the team writes new code on top of old bugs. If the 16 PRs aren't merged by Wednesday, it's a management failure, not a technical one.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6: CULTURE & CONVERSATION -->
+  <section>
+    <h2>6. Culture & Conversation</h2>
+    <p style="font-size:10pt; color:#888;">Things worth bringing up at dinner with other founders.</p>
+
+    <div style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>OpenAI kills Sora, Disney walks away from $1B deal</strong><br>
+      OpenAI shut down its standalone Sora video app — WSJ says it was "more AI slop than AI magic." Disney's $1B investment, tied to Sora's video capabilities, collapsed immediately. Altman called it a "difficult trade-off." <strong>Conversation angle:</strong> The first major retreat in generative AI. When does "we can build it" stop being enough? Product-market fit matters even for frontier labs.<br>
+      <a href="https://arstechnica.com/ai/2026/03/the-end-of-sora-also-means-the-end-of-disneys-1-billion-openai-investment/">Ars Technica</a>
+    </div>
+
+    <div style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>Midjourney hits $200M+ ARR with 40 people, zero VC</strong><br>
+      The Information reports Midjourney's revenue is now "significantly" above $200M and still rising — with 40 employees and no venture capital. That's $5M ARR per employee. <strong>Conversation angle:</strong> The anti-unicorn model. While OpenAI burns $5B/year and Anthropic raises another round, Midjourney just prints money. Is this the future of AI companies — tiny teams, massive margins?<br>
+      <a href="https://www.webpronews.com/midjourneys-quiet-cash-machine-how-a-40-person-startup-blew-past-200-million-without-venture-capital/">WebProNews</a>
+    </div>
+
+    <div style="padding: 8px 0;">
+      <strong>Mistral secures $830M in debt to build European AI infrastructure</strong><br>
+      France's Mistral raised $830M in debt financing (not equity) to buy 13,800 Nvidia chips and build a data center near Paris. Targeting 200MW of compute across Europe by 2027. <strong>Conversation angle:</strong> AI sovereignty is real now — Europe is building its own stack. And the shift from equity to debt financing signals lenders view AI infrastructure as bankable, not speculative. Is AI entering its "real estate" phase?<br>
+      <a href="https://techstartups.com/2026/03/30/mistral-raises-830m-in-funding-to-build-and-scale-nvidia-powered-ai-data-centers-in-europe/">TechStartups</a>
+    </div>
+  </section>
+
+  <!-- SECTION 7: AI RELEASES & PATCH NOTES -->
+  <section>
+    <h2>7. AI Releases & Patch Notes</h2>
+
+    <table class="cost-table">
+      <tr><th>Provider</th><th>Update</th><th>Relevance</th></tr>
+      <tr>
+        <td><strong>Anthropic</strong></td>
+        <td>"Claude Mythos" leaked — training complete, in testing. "Step change" in reasoning, coding, cybersecurity. Claude Haiku 3 deprecated April 19 → migrate to Haiku 4.5.</td>
+        <td>🔴 Direct — we run on Claude</td>
+      </tr>
+      <tr>
+        <td><strong>Anthropic</strong></td>
+        <td>Claude Code session limits tightened during peak hours. Weekly limits unchanged. Forbes reports pricing friction.</td>
+        <td>🟡 Team uses Claude Code daily</td>
+      </tr>
+      <tr>
+        <td><strong>OpenAI</strong></td>
+        <td>Sora app shut down. Compute reallocated to core products. Disney $1B deal collapsed.</td>
+        <td>🟢 Competitor landscape shift</td>
+      </tr>
+      <tr>
+        <td><strong>Microsoft</strong></td>
+        <td>VibeVoice open-sourced — frontier voice AI (transcription + TTS + speaker ID). 30K stars in days. Copilot expansion announced.</td>
+        <td>🟡 Voice calls scope alternative</td>
+      </tr>
+      <tr>
+        <td><strong>Mistral</strong></td>
+        <td>Voxtral TTS launched (last week). $830M debt raise for EU data centers announced today.</td>
+        <td>🟢 Industry trend</td>
+      </tr>
+      <tr>
+        <td><strong>Cohere</strong></td>
+        <td>Open-source voice model for transcription launched March 26.</td>
+        <td>🟢 Alternative to Whisper</td>
+      </tr>
+      <tr>
+        <td><strong>NVIDIA</strong></td>
+        <td>Nemotron Nano 3 to support reinforcement fine-tuning on AWS (from GTC 2026).</td>
+        <td>🟢 Edge model option</td>
+      </tr>
+    </table>
+
+    <p style="font-size:10pt; color:#888; margin-top:8px;">No major model releases today (Monday). The Mythos leak from last week is still the dominant story.</p>
+  </section>
+
+  <!-- SECTION 8: TOOLS HIGHLIGHT -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p style="font-size:10pt; color:#888;">Monday = Productivity. Rotating: Mon=productivity, Tue=design, Wed=developer, Thu=analytics, Fri=AI.</p>
+
+    <h3>Talat — Local-first AI meeting notes</h3>
+    <ul>
+      <li><strong>What it is:</strong> AI meeting transcription and notes that runs entirely on your machine — no cloud processing, no data leaving your laptop.</li>
+      <li><strong>How Jake would use it:</strong> Jake runs meetings with offshore devs on Zoom daily. Granola is great but cloud-based. Talat gives the same AI note-taking without sending meeting audio to third-party servers — useful for investor calls or sensitive product discussions where you don't want transcripts in someone else's cloud. Works alongside Wispr Flow for dictation vs. meeting capture.</li>
+      <li><strong>Pricing:</strong> Not yet public (just launched via TechCrunch March 24). Likely freemium.</li>
+      <li><strong>Link:</strong> <a href="https://techcrunch.com/2026/03/24/talats-ai-meeting-notes-stay-on-your-machine-not-in-the-cloud/">TechCrunch coverage</a></li>
+    </ul>
+
+    <h3>Clarm — AI-powered sales and support for builders</h3>
+    <ul>
+      <li><strong>What it is:</strong> YC-backed tool that combines sales, distribution, and customer support in one platform — positioned as the complement to Cursor/coding tools.</li>
+      <li><strong>How Jake would use it:</strong> When Tryps goes to beta users and beyond, you'll need a lightweight support/feedback pipeline that isn't "dump everything in Slack." Clarm could handle incoming user questions, route bugs to ClickUp, and even power an in-app support agent. Worth evaluating when beta expands.</li>
+      <li><strong>Pricing:</strong> YC startup — likely free tier for early-stage.</li>
+      <li><strong>Link:</strong> <a href="https://www.ycombinator.com/companies/industry/productivity/san-francisco-bay-area">YC directory</a></li>
+    </ul>
+  </section>
+
+  <!-- SECTION 9: COST SNAPSHOT -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+    <table class="cost-table">
+      <tr><th>Category</th><th>Estimated Cost</th><th>Notes</th></tr>
+      <tr><td>Cron jobs (standup, nightly, topic)</td><td>~$1.00</td><td>3 scheduled runs today</td></tr>
+      <tr><td>Interactive sessions (Jake DM, Slack)</td><td>~$0.50</td><td>Light day — mostly Marty-initiated checks</td></tr>
+      <tr><td>Heartbeat checks</td><td>~$0.25</td><td>Killed runaway heartbeat on Mar 29. Running normally now.</td></tr>
+      <tr><td><strong>Estimated Total</strong></td><td><strong>~$1.75</strong></td><td>In line with post-fix baseline</td></tr>
+    </table>
+    <p style="font-size:10pt; color:#888; margin-top:8px;">
+      Note: Session-level token tracking still not available — gateway sessions don't log tokens. These are estimates based on the cost-report cron pattern from March 29. The runaway heartbeat cron ($13/day) was killed on March 29. Current daily baseline is ~$1.50–$2.00. Exact tracking requires gateway instrumentation (Phase 5 of revamp plan).
+    </p>
+  </section>
+
+  <div style="margin-top: 40px; padding-top: 16px; border-top: 1px solid #EDE4D8; font-size: 9pt; color: #aaa;">
+    Generated by Marty · monday, march 30, 2026 · tryps-docs/marty/reports/2026-03-30-nightly.html
+  </div>
+</body>
+</html>
