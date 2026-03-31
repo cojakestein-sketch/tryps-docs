@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tryps Launch Video Treatment v2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: letter;
+    margin: 0.75in 0.85in;
+  }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page-break { page-break-before: always; }
+    .no-break { page-break-inside: avoid; }
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-size: 11px;
+    line-height: 1.55;
+    color: #3D3530;
+    background: #fff;
+    padding: 48px 56px;
+    max-width: 8.5in;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 3px solid #D9071C;
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #D9071C;
+    letter-spacing: -0.5px;
+    margin-bottom: 2px;
+  }
+
+  .header .subtitle {
+    font-size: 15px;
+    font-weight: 600;
+    color: #3D3530;
+    margin-bottom: 14px;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px 24px;
+    font-size: 10px;
+    color: #6B5E54;
+  }
+
+  .meta-grid span {
+    font-weight: 600;
+    color: #3D3530;
+  }
+
+  /* Sections */
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #D9071C;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+    margin-bottom: 14px;
+  }
+
+  h3 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #3D3530;
+    margin-top: 18px;
+    margin-bottom: 6px;
+  }
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  /* Feature table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 10px;
+  }
+
+  thead th {
+    background: #3D3530;
+    color: #fff;
+    font-weight: 600;
+    text-align: left;
+    padding: 6px 10px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  tbody td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #EDE4D8;
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(even) {
+    background: #FDFAF6;
+  }
+
+  .priority-must { color: #D9071C; font-weight: 700; }
+  .priority-should { color: #E8913A; font-weight: 600; }
+  .priority-nice { color: #6B5E54; font-weight: 500; }
+
+  /* Scene cards */
+  .scene {
+    background: #FDFAF6;
+    border-left: 3px solid #D9071C;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    page-break-inside: avoid;
+  }
+
+  .scene-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  .scene-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #D9071C;
+  }
+
+  .scene-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: #6B5E54;
+    background: #EDE4D8;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .scene-location {
+    font-size: 10px;
+    color: #6B5E54;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+
+  .scene p {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .dialogue {
+    background: #fff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 8px 0;
+    font-style: italic;
+    color: #3D3530;
+    border: 1px solid #EDE4D8;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .stage-direction {
+    font-size: 10px;
+    color: #6B5E54;
+    font-style: italic;
+  }
+
+  .sean-note {
+    background: #FFF8ED;
+    border: 1px dashed #E8913A;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 10px;
+    color: #6B5E54;
+  }
+
+  .sean-note strong {
+    color: #E8913A;
+  }
+
+  /* Logline box */
+  .logline {
+    background: #3D3530;
+    color: #F5EADB;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  /* Script section */
+  .script-block {
+    background: #FDFAF6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  .script-block .speaker {
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #D9071C;
+    margin-bottom: 10px;
+  }
+
+  .script-block .line {
+    margin-bottom: 6px;
+  }
+
+  .script-block .line em {
+    color: #6B5E54;
+    font-size: 10px;
+  }
+
+  .script-block .line q {
+    quotes: "\201C" "\201D";
+    font-style: normal;
+    color: #3D3530;
+  }
+
+  /* Decision boxes */
+  .decisions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .decision {
+    background: #fff;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 10px 14px;
+    page-break-inside: avoid;
+  }
+
+  .decision strong {
+    font-size: 10px;
+    color: #D9071C;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .decision p {
+    font-size: 10px;
+    color: #6B5E54;
+    margin-bottom: 0;
+  }
+
+  /* End card */
+  .end-card {
+    background: #D9071C;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 24px;
+    margin: 20px 0;
+  }
+
+  .end-card .logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+
+  .end-card .tagline {
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.9;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 32px;
+    padding-top: 12px;
+    border-top: 1px solid #EDE4D8;
+    font-size: 9px;
+    color: #6B5E54;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Lists */
+  ul {
+    padding-left: 16px;
+    margin-bottom: 8px;
+  }
+
+  li {
+    margin-bottom: 3px;
+    font-size: 11px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Tryps Launch Video Treatment v2</h1>
+  <div class="subtitle">"The Travel Agent in Your Group Chat"</div>
+  <div class="meta-grid">
+    <div>Prepared by: <span>Jake Stein</span></div>
+    <div>For: <span>Sean DeFaria</span></div>
+    <div>Date: <span>March 31, 2026</span></div>
+    <div>Runtime: <span>60-90 seconds</span></div>
+    <div>Location: <span>New York City</span></div>
+    <div>Status: <span>Draft</span></div>
+  </div>
+</div>
+
+<!-- LOGLINE -->
+<div class="logline">
+  Tryps is the travel agent in your group chat. You can book flights, hotels, and activities directly in iMessage. This video shows what travel planning looks like today &mdash; chaotic, scattered, or nonexistent &mdash; and what it looks like with Tryps: effortless, everywhere, and actually fun.
+</div>
+
+<!-- FEATURES TABLE -->
+<h2>Features to Show</h2>
+<table>
+  <thead>
+    <tr><th>#</th><th>Feature</th><th>How It's Shown</th><th>Priority</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>iMessage agent</td><td>Texting Tryps to book flights, hotels, activities</td><td class="priority-must">Must have</td></tr>
+    <tr><td>2</td><td>Group polling</td><td>People physically voting while iMessage poll runs</td><td class="priority-must">Must have</td></tr>
+    <tr><td>3</td><td>Multi-device access</td><td>Old phone, Apple Watch, flip phone &mdash; all red</td><td class="priority-must">Must have</td></tr>
+    <tr><td>4</td><td>Mobile app (itinerary)</td><td>College girls using app on-trip at a legit NYC spot</td><td class="priority-must">Must have</td></tr>
+    <tr><td>5</td><td>Traveler DNA / profile</td><td>Tryps remembers preferences, builds travel identity</td><td class="priority-should">Should have</td></tr>
+    <tr><td>6</td><td>App integrations</td><td>Connects to Airbnb, Uber, Booking.com, etc.</td><td class="priority-should">Should have</td></tr>
+    <tr><td>7</td><td>Explore tab</td><td>See where friends traveled, countries, post-trip reviews</td><td class="priority-should">Should have</td></tr>
+    <tr><td>8</td><td>Friend recs</td><td>Get recs from travelers for your next destination</td><td class="priority-nice">Nice to have</td></tr>
+  </tbody>
+</table>
+
+<!-- SCENE-BY-SCENE -->
+<h2>Scene-by-Scene Treatment</h2>
+
+<div class="scene">
+  <div class="scene-header">
+    <div class="scene-title">Cold Open &mdash; The Line</div>
+    <div class="scene-time">0:00 &ndash; 0:05</div>
+  </div>
+  <div class="scene-location">NYC exterior &mdash; apartment stoop or brownstone stairs</div>
+  <p>Jake, walking, straight to camera. No intro, no logo, no setup.</p>
+  <div class="dialogue">"Tryps is the travel agent in your group chat. You can book flights, hotels, and activities &mdash; directly in iMessage."</div>
+  <p class="stage-direction">Quick, confident, Dollar Shave Club energy. He's already walking. The video is already moving.</p>
+</div>
+
+<div class="scene">
+  <div class="scene-header">
+    <div class="scene-title">Beat 1 &mdash; The Unpaid Travel Agent</div>
+    <div class="scene-time">0:05 &ndash; 0:18</div>
+  </div>
+  <div class="scene-location">Apartment stoop / stairs outside a building</div>
+  <p>Jake gestures to a group of friends on the stairs. One person &mdash; the designated planner &mdash; has their laptop open with a Google Doc, a Notion page, a ChatGPT window, AND a Google Spreadsheet all visible. They look stressed. The rest are on their phones, not helping.</p>
+  <div class="dialogue">"Today, every friend group has this person. The unpaid travel agent. They run a Google Doc, a Notion page, a spreadsheet, and a ChatGPT window &mdash; all at the same time &mdash; just to get their friends to agree on a hotel."</div>
+  <p class="stage-direction">The planner looks up at Jake, exhausted. Jake keeps walking.</p>
+  <div class="dialogue">"And when the group still shows up late? This person resents all of them."</div>
+</div>
+
+<div class="scene">
+  <div class="scene-header">
+    <div class="scene-title">Beat 2 &mdash; Tryps That Never Happened</div>
+    <div class="scene-time">0:18 &ndash; 0:25</div>
+  </div>
+  <div class="scene-location">Different stoop or park bench, same neighborhood</div>
+  <p>Jake pans to another group of friends sitting around doing nothing. Above them, a sign/banner reads:</p>
+  <div style="text-align:center; font-weight:700; font-size:14px; color:#D9071C; margin:10px 0;">"TRYPS THAT NEVER HAPPENED"</div>
+  <div class="dialogue">"Or... this trip never happens. Nobody took the role. Too hard to coordinate. Another one for the graveyard."</div>
+  <p class="stage-direction">Beat. Jake shrugs.</p>
+  <div class="dialogue">"We fixed both of these."</div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="scene">
+  <div class="scene-header">
+    <div class="scene-title">Beat 3 &mdash; Polling</div>
+    <div class="scene-time">0:25 &ndash; 0:35</div>
+  </div>
+  <div class="scene-location">NYC sidewalk or park &mdash; open space with a small group</div>
+  <p>A group of 5-6 people standing together. Jake walks up on them mid-decision. They're physically raising their hands &mdash; actually voting &mdash; while simultaneously, we see a close-up of an iMessage poll running on one of their phones.</p>
+  <p>The physical vote and the digital poll match. Three hands up in real life, three votes on screen.</p>
+  <div class="dialogue">"Tryps has native polling built into the group chat. Your friends actually make decisions. In real time. No more 'I'm down for whatever.'"</div>
+  <div class="sean-note">
+    <strong>For Sean:</strong> This is the money shot. The physical-digital mirror should feel fun and slightly absurd &mdash; people theatrically raising hands while phones buzz with votes. Could lean comedic (someone raising both hands, someone voting the opposite of what they said out loud).
+  </div>
+</div>
+
+<div class="scene">
+  <div class="scene-header">
+    <div class="scene-title">Beat 4 &mdash; However You Get To Us</div>
+    <div class="scene-time">0:35 &ndash; 0:45</div>
+  </div>
+  <div class="scene-location">NYC street, quick cuts across multiple spots</div>
+  <p>Quick montage. Different people, different devices &mdash; all contacting Tryps. <strong>Every device is RED</strong> (red phone case, red flip phone, red landline, red Apple Watch band).</p>
+  <ul>
+    <li>Someone CALLING Tryps on a <strong>red rotary phone</strong> on a street corner</li>
+    <li>Someone texting from a <strong>red flip phone</strong></li>
+    <li>Someone checking their <strong>red Apple Watch</strong></li>
+    <li>Someone typing the number digit by digit on a <strong>red candy bar phone</strong></li>
+  </ul>
+  <div class="dialogue">"Tryps is available where you already are."</div>
+  <p class="stage-direction">No other dialogue. Just the montage. The red devices pop against the muted NYC street. Every phone is red. Nothing else is.</p>
+</div>
+
+<div class="scene">
+  <div class="scene-header">
+    <div class="scene-title">Beat 5 &mdash; The App on the Trip</div>
+    <div class="scene-time">0:45 &ndash; 0:55</div>
+  </div>
+  <div class="scene-location">A genuinely cool NYC spot &mdash; NOT Times Square. West Village courtyard, Bushwick rooftop, Studio 151 vibes, Brooklyn local favorite.</div>
+  <p>A group of college-age girls (obviously tourists, having the time of their lives) at a spot that is decidedly NOT a tourist trap. No line. No crowds. A cool, real NYC spot.</p>
+  <div class="dialogue">"These girls are visiting New York. But instead of spending their whole trip waiting in line at Times Square &mdash; they're here."</div>
+  <p class="stage-direction">Quick shot of the Tryps mobile app on one of their phones showing the itinerary.</p>
+  <div class="dialogue">"Because Tryps knew they'd like this place."</div>
+</div>
+
+<div class="scene">
+  <div class="scene-header">
+    <div class="scene-title">Beat 6 &mdash; Traveler DNA</div>
+    <div class="scene-time">0:55 &ndash; 1:05</div>
+  </div>
+  <div class="scene-location">Same spot or new NYC corner &mdash; cafe or walking</div>
+  <p>Close-up of phone screen showing the Tryps travel profile &mdash; Traveler DNA. Past trips, preferences, a profile building itself.</p>
+  <div class="dialogue">"Tryps gets to know you. It remembers what you liked last time &mdash; builds your Traveler DNA. And it connects to the apps you already use."</div>
+  <p class="stage-direction">Quick flash of app logos (Airbnb, Uber, Booking.com). Not a feature demo &mdash; just a visual flash. The point lands in 2 seconds.</p>
+</div>
+
+<div class="scene">
+  <div class="scene-header">
+    <div class="scene-title">Beat 7 &mdash; Explore / Friend Travel</div>
+    <div class="scene-time">1:05 &ndash; 1:15</div>
+  </div>
+  <div class="scene-location">Same or new &mdash; wherever the energy is</div>
+  <p>Phone screen showing the Explore tab: friends' countries visited, activities, post-trip reviews.</p>
+  <div class="dialogue">"See where your friends have actually been. Not Instagram posts &mdash; real reviews. Real recs. So when you go to Barcelona, you're going to the place your friend found &mdash; not the place TripAdvisor told you about."</div>
+</div>
+
+<div class="scene">
+  <div class="scene-header">
+    <div class="scene-title">Ending</div>
+    <div class="scene-time">1:15 &ndash; 1:25</div>
+  </div>
+  <div class="scene-location">NYC street</div>
+  <p>Jake stops walking. Turns to camera.</p>
+  <div class="dialogue">"Tryps. The travel agent in your group chat."</div>
+  <p class="stage-direction">A cab pulls up. Jake gets in. Through the window, one last line &mdash; or just a look. The cab drives off.</p>
+</div>
+
+<div class="end-card">
+  <div class="logo">Tryps</div>
+  <div class="tagline">Text us. Go while you can.</div>
+</div>
+
+<!-- DECISIONS FOR SEAN -->
+<div class="page-break"></div>
+
+<h2>Decisions for Sean</h2>
+
+<div class="decisions">
+  <div class="decision">
+    <strong>1. Jake on camera vs. voiceover?</strong>
+    <p>This draft has Jake walking and talking on camera. Could also work as VO over vignettes (never on screen). Sean's call.</p>
+  </div>
+  <div class="decision">
+    <strong>2. "Tryps That Never Happened" sign?</strong>
+    <p>Physical banner (funnier) vs. post-produced text (cleaner) vs. chalkboard sign.</p>
+  </div>
+  <div class="decision">
+    <strong>3. Polling beat staging?</strong>
+    <p>This is the money shot. How many people? How theatrical? Does someone vote wrong? Change their vote?</p>
+  </div>
+  <div class="decision">
+    <strong>4. Location for Beat 5?</strong>
+    <p>Needs a genuinely cool spot that reads as "real NYC." Studio 151, Lucien, Bushwick rooftop, West Village courtyard. Sean's pick.</p>
+  </div>
+  <div class="decision">
+    <strong>5. Do Beats 6 & 7 stay?</strong>
+    <p>Traveler DNA and Explore are important but slow the pace. 60s cut might drop them for a separate product video.</p>
+  </div>
+</div>
+
+<!-- PLATFORM CUTS -->
+<h2>Platform Cuts</h2>
+<table>
+  <thead>
+    <tr><th>Cut</th><th>Runtime</th><th>What's In</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Hero (YouTube, website)</td><td>80-90s</td><td>All 7 beats + ending</td></tr>
+    <tr><td>TikTok / Reels</td><td>30-45s</td><td>Cold open + Beat 1 + Beat 3 (polling) + Beat 4 (red devices) + ending</td></tr>
+    <tr><td>Pre-roll</td><td>15s</td><td>Cold open + Beat 4 (red devices montage) + end card</td></tr>
+  </tbody>
+</table>
+
+<!-- FULL SCRIPT -->
+<h2>Full Script</h2>
+<p style="font-size:10px; color:#6B5E54; margin-bottom:12px;">~230 words. At natural, confident pace: 75-85 seconds.</p>
+
+<div class="script-block">
+  <div class="speaker">Jake (walking, to camera)</div>
+
+  <div class="line"><q>Tryps is the travel agent in your group chat. You can book flights, hotels, and activities &mdash; directly in iMessage.</q></div>
+
+  <div class="line"><em>(gestures to stoop group)</em></div>
+
+  <div class="line"><q>Today, every friend group has this person. The unpaid travel agent. They run a Google Doc, a Notion page, a spreadsheet, and a ChatGPT window &mdash; all at the same time &mdash; just to get their friends to agree on a hotel.</q></div>
+
+  <div class="line"><em>(planner looks up, exhausted)</em></div>
+
+  <div class="line"><q>And when the group still shows up late? This person resents all of them.</q></div>
+
+  <div class="line"><em>(walks to next group, under the banner)</em></div>
+
+  <div class="line"><q>Or &mdash; this trip never happens. Nobody took the role. Too hard to coordinate. Another one for the graveyard.</q></div>
+
+  <div class="line"><em>(shrugs)</em></div>
+
+  <div class="line"><q>We fixed both of these.</q></div>
+
+  <div class="line"><em>(walks up on group physically voting)</em></div>
+
+  <div class="line"><q>Tryps has native polling built into the group chat. Your friends actually make decisions. In real time. No more "I'm down for whatever."</q></div>
+
+  <div class="line"><em>(quick cuts &mdash; red devices montage)</em></div>
+
+  <div class="line"><q>Tryps is available where you already are.</q></div>
+
+  <div class="line"><em>(walks past college girls at cool spot)</em></div>
+
+  <div class="line"><q>These girls are visiting New York. But instead of spending their whole trip in line at Times Square &mdash; they're here. Because Tryps knew they'd like this place.</q></div>
+
+  <div class="line"><em>(phone close-up &mdash; Traveler DNA)</em></div>
+
+  <div class="line"><q>Tryps gets to know you. It remembers what you liked last time. Builds your Traveler DNA. Connects to the apps you already use.</q></div>
+
+  <div class="line"><em>(phone close-up &mdash; Explore tab)</em></div>
+
+  <div class="line"><q>See where your friends have actually been. Real reviews. Real recs. So when you go to Barcelona, you're going to the place your friend found &mdash; not the place TripAdvisor told you about.</q></div>
+
+  <div class="line"><em>(stops, turns to camera)</em></div>
+
+  <div class="line"><q>Tryps. The travel agent in your group chat.</q></div>
+
+  <div class="line"><em>(cab pulls up, Jake gets in, drives away)</em></div>
+</div>
+
+<div class="end-card">
+  <div class="logo">Tryps</div>
+  <div class="tagline">Text us. Go while you can.</div>
+</div>
+
+<!-- PRODUCTION NOTES -->
+<h2>Production Notes</h2>
+
+<h3>Tone</h3>
+<p>Dollar Shave Club meets Anthony Bourdain. Jake is dry, confident, walking with purpose. The comedy is observational &mdash; pointing at real absurdities of trip planning, not slapstick. The warmth comes from the product actually working and people actually having a good time.</p>
+
+<h3>Key Visual Motifs</h3>
+<ul>
+  <li><strong>Red devices (Beat 4)</strong> &mdash; Every phone/device that touches Tryps is red. Everything else is NYC-neutral. Direct callback to "However You Get To Us" concept.</li>
+  <li><strong>Physical-digital mirror (Beat 3)</strong> &mdash; People voting in real life while iMessage polls run. The most creative beat.</li>
+  <li><strong>Real vs. tourist NYC (Beat 5)</strong> &mdash; Where tourists go vs. where Tryps sends you. Needs a genuinely cool location.</li>
+</ul>
+
+<h3>Budget</h3>
+<p>~$5,000 for a 1-day guerrilla NYC shoot. Red devices need sourcing (cases are cheap, rotary phone is prop rental or thrift). "Tryps That Never Happened" banner is a print shop job ($50-100).</p>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>DeFaria LLC + Tryps &mdash; March 2026</span>
+  <span>CONFIDENTIAL &mdash; Draft v2</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tryps — Rich Ross</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D9071C; --red-dark: #B00618; --red-light: #E85050;
+    --white: #FFFFFF; --off-white: #F9FAFB;
+    --slate: #1A1A1A; --slate-warm: #3D3530;
+    --g100: #F3F4F6; --g200: #E5E7EB; --g300: #D1D5DB; --g400: #9CA3AF; --g500: #6B7280;
+    --green: #2D6B4F; --gold: #E8913A; --blue: #3478F6; --agent-green: #2D8B5E;
+    --amber: #F5B740; --amber-light: #FEF3E0; --amber-dark: #D4851A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+  body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; color: var(--slate); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+  .slide {
+    min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column;
+    justify-content: center; padding: 64px 64px 48px; position: relative;
+  }
+  .slide-alt { background: var(--off-white); }
+  .slide-red { background: var(--red); color: var(--white); }
+
+  /* Logo */
+  .logo {
+    position: absolute; top: 20px; left: 28px; width: 32px; height: 32px; border-radius: 8px; z-index: 10;
+    background: url('logo.png') center/cover;
+  }
+  .title-logo {
+    width: 72px; height: 72px; border-radius: 16px; margin-bottom: 24px;
+    background: url('logo.png') center/cover;
+  }
+
+  h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; }
+  h2 { font-size: 38px; font-weight: 700; line-height: 1.15; letter-spacing: -1px; margin-bottom: 10px; }
+  h3 { font-size: 22px; font-weight: 600; }
+  p, li { font-size: 17px; line-height: 1.5; }
+  .mono { font-family: 'Space Mono', monospace; }
+  .label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--red); margin-bottom: 6px; }
+  .accent { color: var(--red); }
+  .muted { color: var(--g500); }
+
+  .nav { position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 5px; }
+  .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--g300); cursor: pointer; transition: all 0.3s; border: none; }
+  .nav-dot.active { background: var(--red); transform: scale(1.5); }
+  .ctr { position: fixed; bottom: 16px; right: 16px; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--g400); z-index: 100; }
+
+  /* Title */
+  .title { text-align: center; align-items: center; }
+  .title h1 { font-size: 80px; color: var(--red); letter-spacing: -3px; }
+  .title .tagline { font-size: 22px; color: var(--g500); margin-top: 4px; }
+  .title .ctx { font-size: 13px; color: var(--g400); margin-top: 36px; }
+
+  /* Chat */
+  .chat { width: 360px; flex-shrink: 0; background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 2px 24px rgba(0,0,0,0.06); border: 1px solid var(--g200); }
+  .ch-h { background: var(--off-white); padding: 12px 14px; border-bottom: 1px solid var(--g200); text-align: center; }
+  .ch-h b { font-size: 14px; } .ch-h small { font-size: 10px; color: var(--g400); display: block; margin-top: 1px; }
+  .ch-b { padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
+  .m { display: flex; gap: 5px; align-items: flex-end; max-width: 82%; }
+  .m.r { margin-left: auto; flex-direction: row-reverse; }
+  .m.l { margin-right: auto; }
+  .av { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: white; }
+  .mc { display: flex; flex-direction: column; gap: 1px; }
+  .mn { font-size: 9px; font-weight: 600; color: var(--g400); padding-left: 3px; }
+  .mb { padding: 7px 12px; border-radius: 16px; font-size: 13px; line-height: 1.35; }
+  .m.r .mb { background: var(--blue); color: white; border-bottom-right-radius: 4px; }
+  .m.l .mb { background: var(--g100); color: var(--slate); border-bottom-left-radius: 4px; }
+  .m.t .mb { background: rgba(217,7,28,0.05); border: 1px solid rgba(217,7,28,0.08); border-bottom-left-radius: 4px; }
+
+  /* Polls */
+  .poll { display: flex; flex-direction: column; gap: 4px; padding: 3px 0 3px 28px; }
+  .pp { display: flex; align-items: center; gap: 6px; border-radius: 999px; padding: 6px 8px 6px 14px; font-size: 12px; font-weight: 600; }
+  .pp.e { background: var(--amber-light); color: var(--amber-dark); }
+  .pp.v { background: var(--amber); color: white; }
+  .pp .pt { flex: 1; } .pp .pv { font-size: 10px; opacity: 0.7; }
+  .pp .pc { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--amber-dark); flex-shrink: 0; }
+  .pp.v .pc { background: var(--amber-dark); }
+
+  /* Link preview */
+  .link-preview {
+    margin: 4px 0 4px 28px; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--g200); max-width: 280px; background: var(--white);
+  }
+  .lp-img { height: 100px; background: linear-gradient(135deg, #e8d5b7, #c9b896); display: flex; align-items: center; justify-content: center; }
+  .lp-img span { font-size: 32px; }
+  .lp-body { padding: 10px 12px; }
+  .lp-body b { font-size: 13px; display: block; }
+  .lp-body small { font-size: 11px; color: var(--g400); }
+  .lp-meta { display: flex; gap: 6px; align-items: center; padding: 6px 12px; border-top: 1px solid var(--g200); }
+  .lp-av { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid white; }
+  .lp-av:not(:first-child) { margin-left: -8px; }
+  .lp-meta span { font-size: 10px; color: var(--g400); }
+
+  /* Org */
+  .org-top { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .oc { padding: 8px 14px; border-radius: 8px; text-align: center; min-width: 90px; }
+  .oc b { font-size: 12px; display: block; } .oc small { font-size: 9px; opacity: 0.6; }
+  .oc-emp { background: var(--slate); color: white; }
+  .oc-ai { background: var(--agent-green); color: white; }
+  .oc-ptr { border: 1.5px solid var(--red); }
+  .oc-hire { border: 1.5px dashed var(--blue); }
+  .oc-ad { border: 1.5px dashed var(--g300); }
+  .vline { width: 1px; height: 12px; background: var(--g300); margin: 4px auto; }
+
+  /* Stack */
+  .arch { display: flex; gap: 24px; margin-top: 20px; align-items: flex-start; }
+  .arch-col { flex: 1; text-align: center; }
+  .arch-col h3 { font-size: 22px; font-weight: 800; margin-bottom: 2px; }
+  .arch-col p { font-size: 12px; color: var(--g500); }
+  .arch-col .arch-box { margin-top: 12px; border-radius: 12px; overflow: hidden; border: 2px solid; min-height: 200px; display: flex; align-items: center; justify-content: center; }
+  .arch-col .arch-box img { width: 100%; height: auto; display: block; }
+  .arch-col .arch-box .placeholder { padding: 20px; font-size: 13px; color: var(--g400); }
+  .arch-bridge { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding-top: 40px; }
+  .arch-bridge span { font-size: 10px; font-weight: 800; letter-spacing: 1px; color: var(--g400); writing-mode: horizontal-tb; }
+  .arch-bridge .arrow { font-size: 18px; color: var(--g300); }
+
+  /* Scope cards */
+  .scopes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+  .sc { background: var(--white); border-radius: 10px; padding: 14px 16px; border: 1px solid var(--g200); border-left: 3px solid var(--g200); }
+  .sc b { font-size: 13px; display: block; }
+  .sc .ss { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+  .sc .sm { font-size: 10px; color: var(--g400); margin-top: 2px; }
+  .sc .bar { height: 3px; border-radius: 2px; background: var(--g200); margin-top: 6px; overflow: hidden; }
+  .sc .bar div { height: 100%; border-radius: 2px; }
+  .sc.s-t { border-left-color: var(--gold); } .sc.s-t .ss { color: var(--gold); } .sc.s-t .bar div { background: var(--gold); }
+  .sc.s-p { border-left-color: var(--blue); } .sc.s-p .ss { color: var(--blue); } .sc.s-p .bar div { background: var(--blue); }
+  .sc.s-s { border-left-color: var(--agent-green); } .sc.s-s .ss { color: var(--agent-green); }
+  .sc.s-n { border-left-color: var(--g300); } .sc.s-n .ss { color: var(--g400); }
+
+  /* RTW */
+  .rtw { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+  .rc { padding: 22px; border-radius: 12px; }
+  .rc-p { background: var(--red); color: white; grid-column: 1 / -1; }
+  .rc-s { background: var(--off-white); border: 1px solid var(--g200); }
+  .rc h4 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .rc p { font-size: 13px; line-height: 1.5; opacity: 0.85; }
+
+  .stats { display: flex; gap: 32px; margin: 16px 0; }
+  .st .sn { font-family: 'Space Mono', monospace; font-size: 32px; font-weight: 700; color: var(--red); line-height: 1; }
+  .st .sl { font-size: 11px; color: var(--g400); margin-top: 2px; }
+
+  /* Deep-dive slide styles (Sean's slides) */
+  .card { background: var(--white); border-radius: 12px; padding: 20px; border: 1px solid var(--g200); }
+  .card-red { background: var(--red); color: white; border: none; }
+  .card h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .card p { font-size: 13px; line-height: 1.5; opacity: 0.85; }
+
+  .scene { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--g100); }
+  .scene:last-child { border-bottom: none; }
+  .scene-num { font-family: 'Space Mono', monospace; font-size: 28px; font-weight: 700; color: var(--red); opacity: 0.3; line-height: 1; min-width: 40px; }
+  .scene-body h4 { font-size: 14px; font-weight: 700; }
+  .scene-body p { font-size: 12px; color: var(--g500); line-height: 1.4; margin-top: 2px; }
+
+  .ask-box { background: var(--red); color: white; border-radius: 12px; padding: 18px 24px; margin-top: 16px; }
+  .ask-box p { font-size: 15px; font-weight: 600; opacity: 1; }
+  .ask-box .ask-sub { font-size: 12px; opacity: 0.8; margin-top: 4px; font-weight: 400; }
+
+  .reach-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  .reach-table th { text-align: left; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--g400); padding: 8px 12px; border-bottom: 2px solid var(--g200); }
+  .reach-table td { padding: 10px 12px; border-bottom: 1px solid var(--g100); }
+  .reach-table .mono { font-weight: 700; color: var(--red); }
+
+  @media (max-width: 500px) {
+    .slide { padding: 32px 20px; }
+    h1 { font-size: 28px; } h2 { font-size: 24px; }
+    .arch { flex-direction: column; }
+    .scopes { grid-template-columns: 1fr; }
+    .rtw { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+<div class="ctr" id="ctr"></div>
+
+<!-- S1: TITLE -->
+<section class="slide title" id="s0">
+  <div class="title-logo"></div>
+  <h1>tryps</h1>
+  <p class="tagline">Your group's travel agent — in your iMessage</p>
+  <p class="ctx">jointryps.com</p>
+</section>
+
+<!-- S2: WHAT IS TRYPS -->
+<section class="slide" id="s1">
+  <div class="logo"></div>
+  <div style="display: flex; gap: 40px; align-items: center; width: 100%;">
+    <div style="flex: 1; min-width: 0;">
+      <div class="label">What is Tryps?</div>
+      <h2 style="font-size: 34px;">In one chat, your group<br>books their entire trip.</h2>
+      <p style="font-size: 15px; color: var(--g500); margin-top: 10px; max-width: 360px;">
+        Add the Tryps number to your group chat. It captures what your group wants, runs natural polls, and books on your behalf.
+      </p>
+      <div style="margin-top: 24px; background: var(--off-white); border: 1px solid var(--g200); border-radius: 12px; padding: 16px 24px; display: inline-block;">
+        <p style="font-size: 11px; color: var(--g400);">Try it live — text this number:</p>
+        <p style="font-family: 'Space Mono', monospace; font-size: 32px; font-weight: 700; color: var(--red); margin-top: 4px;">+1 917 745 3624</p>
+      </div>
+    </div>
+    <div class="chat">
+      <div class="ch-h"><b>Europe Trip 2026</b><small>Sarah, Mike, Lisa, Tryps</small></div>
+      <div class="ch-b">
+        <div class="m l"><div class="av" style="background:#9B59B6;">S</div><div class="mc"><div class="mn">Sarah</div><div class="mb">hey everyone! looking to go on a trip to Europe this summer</div></div></div>
+        <div class="m l t"><div class="av" style="background:var(--red);font-size:8px;font-weight:800;">T</div><div class="mc"><div class="mn" style="color:var(--red);">Tryps</div><div class="mb">Love that. Where are you thinking?</div></div></div>
+        <div class="poll">
+          <div class="pp e" style="width:50%;"><span class="pt">London</span><span class="pv">1</span><div class="pc"></div></div>
+          <div class="pp v" style="width:80%;"><span class="pt">Greece</span><span class="pv">3</span><div class="pc"></div></div>
+          <div class="pp e" style="width:40%;"><span class="pt">Paris</span><div class="pc"></div></div>
+          <div class="pp e" style="width:50%;"><span class="pt">Barcelona</span><div class="pc"></div></div>
+        </div>
+        <div class="m l"><div class="av" style="background:#3498DB;">M</div><div class="mc"><div class="mn">Mike</div><div class="mb">Greece 100%</div></div></div>
+        <div class="m r"><div class="mc"><div class="mb">Greece too!</div></div></div>
+        <div class="m l"><div class="av" style="background:#E67E22;">L</div><div class="mc"><div class="mn">Lisa</div><div class="mb">Greece works</div></div></div>
+        <div class="m l t"><div class="av" style="background:var(--red);font-size:8px;font-weight:800;">T</div><div class="mc"><div class="mn" style="color:var(--red);">Tryps</div><div class="mb">Greece it is. When works?</div></div></div>
+        <div class="poll">
+          <div class="pp e" style="width:40%;"><span class="pt">July</span><span class="pv">1</span><div class="pc"></div></div>
+          <div class="pp v" style="width:75%;"><span class="pt">August</span><span class="pv">3</span><div class="pc"></div></div>
+          <div class="pp e" style="width:45%;"><span class="pt">September</span><div class="pc"></div></div>
+        </div>
+        <div class="m l"><div class="av" style="background:#3498DB;">M</div><div class="mc"><div class="mb">August</div></div></div>
+        <div class="m r"><div class="mc"><div class="mb">Aug!</div></div></div>
+        <div class="m l t"><div class="av" style="background:var(--red);font-size:8px;font-weight:800;">T</div><div class="mc"><div class="mn" style="color:var(--red);">Tryps</div><div class="mb">August in Greece. I'll pull flights and stays for the group.</div></div></div>
+        <!-- Link preview -->
+        <div class="link-preview">
+          <div class="lp-img"><span>🗺️</span></div>
+          <div class="lp-body"><b>greece trip 2026 | Tryps</b><small>jointryps.com</small></div>
+          <div class="lp-meta">
+            <div class="lp-av" style="background:#9B59B6;"></div>
+            <div class="lp-av" style="background:#3498DB;"></div>
+            <div class="lp-av" style="background:#E67E22;"></div>
+            <span>4 people going</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S3: PROBLEM / SOLUTION -->
+<section class="slide slide-alt" id="s2">
+  <div class="logo"></div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 1100px;">
+    <div>
+      <div class="label">The Problem</div>
+      <h2 style="font-size: 30px;">Trip planning happens in iMessage. <span class="accent">Nothing acts on it.</span></h2>
+      <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+        <div style="padding: 12px 16px; border-radius: 8px; background: white; border: 1px solid var(--g200);">
+          <div style="font-size: 14px; font-weight: 600;">Plans get buried in 200+ messages</div>
+          <div style="font-size: 12px; color: var(--g500); margin-top: 2px;">Dates, prices, preferences — scattered and lost</div>
+        </div>
+        <div style="padding: 12px 16px; border-radius: 8px; background: white; border: 1px solid var(--g200);">
+          <div style="font-size: 14px; font-weight: 600;">One person becomes the unpaid travel agent</div>
+          <div style="font-size: 12px; color: var(--g500); margin-top: 2px;">6+ apps, zero integration, all on one person</div>
+        </div>
+        <div style="padding: 12px 16px; border-radius: 8px; background: white; border: 1px solid var(--g200);">
+          <div style="font-size: 14px; font-weight: 600;">Trips die in the group chat</div>
+          <div style="font-size: 12px; color: var(--g500); margin-top: 2px;">"We should totally go" never becomes "we're going"</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-left: 1px solid var(--g200); padding-left: 40px;">
+      <div class="label" style="color: var(--agent-green);">The Solution</div>
+      <h2 style="font-size: 30px;">An agent in your iMessage that <span style="color: var(--agent-green);">does it all.</span></h2>
+      <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+        <div style="padding: 12px 16px; border-radius: 8px; background: rgba(52,120,246,0.04); border: 1px solid rgba(52,120,246,0.12);">
+          <div style="font-size: 14px; font-weight: 600;"><span class="mono" style="color: var(--blue); font-weight: 700; margin-right: 6px;">1</span> Captures</div>
+          <div style="font-size: 12px; color: var(--g500); margin-top: 2px;">Reads intent from natural conversation</div>
+        </div>
+        <div style="padding: 12px 16px; border-radius: 8px; background: rgba(217,7,28,0.03); border: 1px solid rgba(217,7,28,0.10);">
+          <div style="font-size: 14px; font-weight: 600;"><span class="mono" style="color: var(--red); font-weight: 700; margin-right: 6px;">2</span> Facilitates</div>
+          <div style="font-size: 12px; color: var(--g500); margin-top: 2px;">Runs polls, steers group toward decisions</div>
+        </div>
+        <div style="padding: 12px 16px; border-radius: 8px; background: rgba(45,139,94,0.04); border: 1px solid rgba(45,139,94,0.12);">
+          <div style="font-size: 14px; font-weight: 600;"><span class="mono" style="color: var(--agent-green); font-weight: 700; margin-right: 6px;">3</span> Books</div>
+          <div style="font-size: 12px; color: var(--g500); margin-top: 2px;">Flights, stays, activities — on the group's behalf</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4: BUSINESS MODEL -->
+<section class="slide" id="s3">
+  <div class="logo"></div>
+  <div class="label">Business Model</div>
+  <h2 style="font-size: 28px; max-width: 800px;">In exchange for being where you are, facilitating your trip, and booking on your behalf — we earn a 1% booking fee.</h2>
+  <div style="display: flex; flex-direction: column; align-items: center; margin-top: 24px; gap: 20px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; max-width: 1000px;">
+      <!-- PRODUCT -->
+      <div>
+        <div style="padding: 20px; background: var(--off-white); border-radius: 12px 12px 0 0; border: 1px solid var(--g200); border-top: 3px solid var(--blue); border-bottom: none;">
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue); margin-bottom: 6px;">Product</div>
+          <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">The app + iMessage</h4>
+          <p style="font-size: 12px; color: var(--g500); line-height: 1.5;">Native app for itinerary, expenses, and trip details. iMessage via Linq for natural language trip creation and group polling.</p>
+        </div>
+        <div style="border: 1px solid var(--g200); border-top: none; border-radius: 0 0 12px 12px; background: var(--white); padding: 14px 16px;">
+          <div style="background: var(--red); border-radius: 8px; padding: 10px 12px; color: white; margin-bottom: 8px;">
+            <div style="font-size: 10px; font-weight: 700; opacity: 0.7;">UPCOMING</div>
+            <div style="font-size: 13px; font-weight: 700; margin-top: 2px;">Greece Trip 2026</div>
+            <div style="font-size: 10px; opacity: 0.8; margin-top: 1px;">Aug 2 – 16 · 4 going</div>
+          </div>
+          <div style="display: flex; gap: 6px; font-size: 9px; font-weight: 600; color: var(--g500); margin-bottom: 6px;">
+            <span style="background: var(--g100); padding: 3px 8px; border-radius: 4px; color: var(--red); border-bottom: 2px solid var(--red);">Activities</span>
+            <span style="background: var(--g100); padding: 3px 8px; border-radius: 4px;">Itinerary</span>
+            <span style="background: var(--g100); padding: 3px 8px; border-radius: 4px;">People</span>
+            <span style="background: var(--g100); padding: 3px 8px; border-radius: 4px;">Stay</span>
+          </div>
+          <div style="font-size: 10px; display: flex; flex-direction: column; gap: 4px;">
+            <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--g100);"><span style="font-weight: 600;">Beach day</span><span style="color: var(--g400);">Aug 4</span></div>
+            <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--g100);"><span style="font-weight: 600;">Sunset sailing</span><span style="color: var(--g400);">Aug 6</span></div>
+            <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span style="font-weight: 600;">Old Town tour</span><span style="color: var(--g400);">Aug 8</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- AGENTS -->
+      <div>
+        <div style="padding: 20px; background: var(--off-white); border-radius: 12px 12px 0 0; border: 1px solid var(--g200); border-top: 3px solid var(--agent-green); border-bottom: none;">
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--agent-green); margin-bottom: 6px;">Agents</div>
+          <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">AI that executes</h4>
+          <p style="font-size: 12px; color: var(--g500); line-height: 1.5;">Duffel for flights, X-402 for agent-to-API payments, memory that learns preferences over time. The group approves — the agent books.</p>
+        </div>
+        <div style="border: 1px solid var(--g200); border-top: none; border-radius: 0 0 12px 12px; background: rgba(45,139,94,0.03); padding: 14px 16px;">
+          <div style="font-size: 11px; text-align: left; display: flex; flex-direction: column; gap: 5px;">
+            <div style="background: var(--g100); border-radius: 10px; padding: 6px 10px; font-size: 11px; max-width: 85%;">book us flights to Greece in August</div>
+            <div style="background: rgba(45,139,94,0.08); border-radius: 10px; padding: 6px 10px; font-size: 11px; border: 1px solid rgba(45,139,94,0.15); max-width: 90%;">
+              <div style="font-weight: 700; color: var(--agent-green); font-size: 10px; margin-bottom: 2px;">Agent</div>
+              Found 3 options. Best: JetBlue $847/person, Aug 2-16. Book for the group?
+            </div>
+            <div style="background: var(--blue); color: white; border-radius: 10px; padding: 6px 10px; font-size: 11px; margin-left: auto; max-width: 50%; text-align: right;">book it</div>
+          </div>
+        </div>
+      </div>
+      <!-- FACILITATOR -->
+      <div>
+        <div style="padding: 20px; background: var(--off-white); border-radius: 12px 12px 0 0; border: 1px solid var(--g200); border-top: 3px solid var(--red); border-bottom: none;">
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--red); margin-bottom: 6px;">Facilitator</div>
+          <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Steers the group</h4>
+          <p style="font-size: 12px; color: var(--g500); line-height: 1.5;">Runs polls, nudges stragglers, resolves decision paralysis. Three layers — iMessage, app, agents — one coordination engine.</p>
+        </div>
+        <div style="border: 1px solid var(--g200); border-top: none; border-radius: 0 0 12px 12px; background: rgba(217,7,28,0.02); padding: 14px 16px;">
+          <div style="font-size: 10px; font-weight: 700; color: var(--red); margin-bottom: 6px;">Where should we go?</div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="display: flex; align-items: center; gap: 6px;"><div style="flex: 1; background: var(--amber); border-radius: 999px; padding: 5px 10px; font-size: 11px; font-weight: 600; color: white;">Greece<span style="float: right; opacity: 0.8; font-size: 10px;">3</span></div></div>
+            <div style="display: flex; align-items: center; gap: 6px;"><div style="flex: 1; background: var(--amber-light); border-radius: 999px; padding: 5px 10px; font-size: 11px; font-weight: 600; color: var(--amber-dark);">Barcelona<span style="float: right; opacity: 0.7; font-size: 10px;">1</span></div></div>
+            <div style="display: flex; align-items: center; gap: 6px;"><div style="flex: 1; background: var(--amber-light); border-radius: 999px; padding: 5px 10px; font-size: 11px; font-weight: 600; color: var(--amber-dark);">London<span style="float: right; opacity: 0.7; font-size: 10px;">1</span></div></div>
+          </div>
+          <div style="font-size: 9px; color: var(--g400); margin-top: 6px; text-align: center;">3 of 4 voted</div>
+        </div>
+      </div>
+    </div>
+    <div style="background: var(--red); color: white; border-radius: 14px; padding: 20px 0; text-align: center; width: 100%; max-width: 1000px;">
+      <div style="font-family: 'Space Mono', monospace; font-size: 48px; font-weight: 700; line-height: 1;">1%</div>
+      <p style="font-size: 14px; opacity: 0.85; margin-top: 4px;">booking fee on flights & stays</p>
+    </div>
+  </div>
+</section>
+
+<!-- S5: SCOPES — linked to tryps-docs/scopes/{id}/spec.md -->
+<section class="slide slide-alt" id="s6">
+  <div class="logo"></div>
+  <div class="label">A &middot; Product Deep Dive</div>
+  <h2>What the Team is Building</h2>
+  <p style="font-size: 15px; color: var(--g500); margin-bottom: 16px; max-width: 700px;">9 scopes covering the full product — from core trip experience and iMessage agent to booking, payments, and post-trip retention. Shipping to App Store by May 2.</p>
+  <div class="scopes">
+    <!-- scopes/core-trip-experience/spec.md -->
+    <div class="sc s-t"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">01</span><b>Core Trip Experience</b><div class="ss">Testing</div><div class="sm">Nadeem &middot; 15/16</div><div class="bar"><div style="width:94%;"></div></div></div>
+    <!-- scopes/imessage-agent/spec.md -->
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">02</span><b>iMessage Agent</b><div class="ss">In Progress</div><div class="sm">Asif &middot; 34/57</div><div class="bar"><div style="width:60%;"></div></div></div>
+    <!-- scopes/agent-intelligence/spec.md -->
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">03</span><b>Agent Intelligence</b><div class="ss">In Progress</div><div class="sm">Rizwan &middot; 55/61</div><div class="bar"><div style="width:90%;"></div></div></div>
+    <!-- scopes/travel-booking/spec.md (includes payments SC-59-70) -->
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">04</span><b>Travel Booking & Payments</b><div class="ss">In Progress</div><div class="sm">Asif + Rizwan &middot; 0/70</div><div class="bar"><div style="width:0%;"></div></div></div>
+    <!-- scopes/beta-user-feedback/ (no spec needed) -->
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">05</span><b>Beta & User Feedback</b><div class="ss">In Progress</div><div class="sm">Jake &middot; ongoing</div></div>
+    <!-- scopes/group-decision-making/spec.md -->
+    <div class="sc s-s"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">06</span><b>Group Decision-Making</b><div class="ss">Specced</div><div class="sm">Rizwan &middot; 0/14</div></div>
+    <!-- scopes/post-trip-retention/spec.md -->
+    <div class="sc s-s"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">07</span><b>Post-Trip & Retention</b><div class="ss">Specced</div><div class="sm">Nadeem &middot; 0/31</div></div>
+    <!-- scopes/travel-identity/spec.md (DNA 25 + Connectors 25) -->
+    <div class="sc s-s"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">08</span><b>Travel Identity</b><div class="ss">Specced</div><div class="sm">Nadeem &middot; 0/50</div></div>
+    <!-- scopes/onboarding-teaching/spec.md -->
+    <div class="sc s-s"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">09</span><b>Onboarding & Teaching</b><div class="ss">Specced</div><div class="sm">Nadeem &middot; 0/14</div></div>
+  </div>
+</section>
+
+<!-- S7: B — BRAND & GTM SCOPES -->
+<section class="slide slide-alt" id="s7">
+  <div class="logo"></div>
+  <div class="label" style="color: var(--blue);">B &middot; Brand & Go-to-Market</div>
+  <h2>What the Team is Building</h2>
+  <p style="font-size: 15px; color: var(--g500); margin-bottom: 16px; max-width: 700px;">13 scopes across creative, distribution, and operations. Sean DeFaria directs. Two engineers + AI agents execute. Goal: 100+ viral attempts per month at launch.</p>
+  <!-- Creative layer -->
+  <div style="font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--g400); margin-bottom: 6px;">Creative</div>
+  <div class="scopes">
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">01</span><b>Brand Book</b><div class="ss">In Progress</div><div class="sm">Visual identity and brand rules — the source of truth for how Tryps looks and feels</div><div class="bar"><div style="width:35%;"></div></div></div>
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">02</span><b>Socials</b><div class="ss">In Progress</div><div class="sm">Organic content across 8 platforms — 100+ pieces/month driving awareness</div><div class="bar"><div style="width:25%;"></div></div></div>
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">03</span><b>UGC Program</b><div class="ss">In Progress</div><div class="sm">50 creators tested, top 25 retained — the content supply chain for launch</div><div class="bar"><div style="width:30%;"></div></div></div>
+    <div class="sc s-p"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">04</span><b>Launch Video</b><div class="ss">In Progress</div><div class="sm">60-sec hero film — the emotional anchor for launch day</div><div class="bar"><div style="width:20%;"></div></div></div>
+    <div class="sc s-s"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">05</span><b>Giveaways</b><div class="ss">Specced</div><div class="sm">Contest campaigns where every entry is a product demo disguised as content</div></div>
+    <div class="sc s-s"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">06</span><b>Physical Presence</b><div class="ss">Specced</div><div class="sm">NYC street marketing — posters, stickers, branded film cameras</div></div>
+  </div>
+  <!-- Distribution layer -->
+  <div style="font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--g400); margin-bottom: 6px; margin-top: 10px;">Distribution</div>
+  <div class="scopes">
+    <div class="sc s-n"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">07</span><b>SEO / GEO / AEO</b><div class="ss">Needs Spec</div><div class="sm">Search and AI engine visibility — make Tryps the answer when people ask</div></div>
+    <div class="sc s-n"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">08</span><b>Referrals & Viral Loops</b><div class="ss">Needs Spec</div><div class="sm">Make every trip invite a beautiful ad — the Partiful growth model</div></div>
+    <div class="sc s-s"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">09</span><b>App Store & Product Hunt</b><div class="ss">Specced</div><div class="sm">Storefront optimization — video, screenshots, keywords, PH launch</div></div>
+    <div class="sc" style="border-left-color: var(--g300);"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">10</span><b>Paid Acquisition</b><div class="ss" style="color: var(--g400);">Not Started</div><div class="sm">$5K/mo Meta ads + TikTok Spark Ads — amplify what's working organically</div></div>
+    <div class="sc" style="border-left-color: var(--g300);"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">11</span><b>Email & Lifecycle</b><div class="ss" style="color: var(--g400);">Not Started</div><div class="sm">Launch blast and onboarding drip — convert installs to active users</div></div>
+  </div>
+  <!-- Operations layer -->
+  <div style="font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--g400); margin-bottom: 6px; margin-top: 10px;">Operations</div>
+  <div class="scopes" style="grid-template-columns: 1fr 1fr;">
+    <div class="sc" style="border-left-color: var(--g300);"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">12</span><b>Press & Partnerships</b><div class="ss" style="color: var(--g400);">Not Started</div><div class="sm">Launch coverage + post-launch co-marketing with travel brands</div></div>
+    <div class="sc" style="border-left-color: var(--g300);"><span class="mono" style="font-size: 20px; font-weight: 700; color: var(--red); display: block; margin-bottom: 2px;">13</span><b>Analytics & Operations</b><div class="ss" style="color: var(--g400);">Not Started</div><div class="sm">Dashboards, automation workflows, and cost tracking powering everything</div></div>
+  </div>
+  <div style="margin-top: 10px; font-size: 11px; color: var(--g400); border-top: 1px solid var(--g200); padding-top: 8px; text-align: right;">
+    <span class="mono" style="color: var(--red); font-weight: 700;">Launch: May 2, 2026</span>
+  </div>
+</section>
+
+<!-- S7b: DEEP-DIVE — UGC PROGRAM (#03) -->
+<section class="slide slide-alt" id="s7b">
+  <div class="logo"></div>
+  <div class="label">03 &middot; Creator Program</div>
+  <h2 style="font-size: 32px; max-width: 700px;">Find our people. Make them the face of Tryps.<br><span class="accent">Then flood the feed.</span></h2>
+
+  <div class="stats">
+    <div class="st"><div class="sn">2-4</div><div class="sl">Ambassadors (medium-macro)</div></div>
+    <div class="st"><div class="sn">80</div><div class="sl">Creators for launch blitz</div></div>
+    <div class="st"><div class="sn">120+</div><div class="sl">Pieces of content in 3 weeks</div></div>
+    <div class="st"><div class="sn">5-8M</div><div class="sl">Projected impressions</div></div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px;">
+    <div class="card" style="border-left: 3px solid var(--red);">
+      <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--red); margin-bottom: 6px;">Priority 1 &mdash; Ambassador Program</div>
+      <h4>2-4 medium-macro creators become the face of Tryps</h4>
+      <p style="margin-top: 6px;">Scouted from Jake's college orbit. Collaborative posts on @jointryps explaining how the app changed how they travel. $1-3K/month retainers, 3-month cycles. These aren't ads &mdash; they're partnerships.</p>
+      <div style="margin-top: 10px; display: flex; gap: 8px;">
+        <span style="background: rgba(217,7,28,0.06); color: var(--red); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Collab posts</span>
+        <span style="background: rgba(217,7,28,0.06); color: var(--red); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">$1-3K/mo</span>
+        <span style="background: rgba(217,7,28,0.06); color: var(--red); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">3-month cycles</span>
+      </div>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--blue);">
+      <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue); margin-bottom: 6px;">Priority 2 &mdash; Launch Blitz</div>
+      <h4>80 creators repost on Stories during launch week</h4>
+      <p style="margin-top: 6px;"><strong>40 reposts</strong> for the launch video. <strong>80 reposts</strong> for the giveaway video (priority). Two tiers: 10-15 mid-tier (50K-500K) for credibility, 65-70 micro (10K-50K) for volume. All hitting at once = algorithm saturation.</p>
+      <div style="margin-top: 10px; display: flex; gap: 8px;">
+        <span style="background: rgba(52,120,246,0.06); color: var(--blue); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">$8K budget</span>
+        <span style="background: rgba(52,120,246,0.06); color: var(--blue); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">~$100/creator avg</span>
+        <span style="background: rgba(52,120,246,0.06); color: var(--blue); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Day 1 simultaneity</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 12px; background: var(--white); border: 1px solid var(--g200); border-radius: 12px; padding: 16px 20px; display: flex; gap: 24px; align-items: center;">
+    <div style="flex-shrink: 0;">
+      <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--g400); margin-bottom: 4px;">What the content looks like</div>
+      <p style="font-size: 14px; font-weight: 600; max-width: 500px;">"I added Tryps to my group chat and now we're going to Vegas. It was <em>easy</em>."</p>
+    </div>
+    <div style="font-size: 12px; color: var(--g500); border-left: 1px solid var(--g200); padding-left: 20px;">
+      Organic discovery energy. Filmed by a friend, not a tripod. The creator walks through adding the Tryps contact to their group chat, shows the trip getting planned, and reacts. It should feel like they found something and want to show it off &mdash; not like they're reading a brief.
+    </div>
+  </div>
+
+</section>
+
+<!-- S7c: DEEP-DIVE — LAUNCH VIDEO (#04) -->
+<section class="slide" id="s7c">
+  <div class="logo"></div>
+  <div class="label">04 &middot; Launch Video</div>
+  <h2 style="font-size: 34px; max-width: 800px;">Jake walks through NYC.<br>Everyone else is suffering.<br><span class="accent">He has Tryps.</span></h2>
+  <p style="font-size: 15px; color: var(--g500); max-width: 650px; margin-bottom: 8px;">Dollar Shave Club meets AllState Mayhem. 90 seconds. One continuous walk. One pitch. Chaos everywhere except in Jake's pocket.</p>
+
+  <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; margin-top: 8px;">
+    <div>
+      <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--g400); margin-bottom: 8px;">The Gag Beats</div>
+      <div class="scene"><div class="scene-num">01</div><div class="scene-body"><h4>The Cabo Guys</h4><p>A group of guys huddled around one phone, stressed. Jake: <em>"These guys booked flights to Cabo. That's it. No hotel. Nothing else planned. They leave tomorrow."</em></p></div></div>
+      <div class="scene"><div class="scene-num">02</div><div class="scene-body"><h4>The Stoop Friends</h4><p>Friends sitting on a stoop on a beautiful Saturday. Not going anywhere. Jake: <em>"They've been trying to plan a trip to Europe since October."</em></p></div></div>
+      <div class="scene"><div class="scene-num">03</div><div class="scene-body"><h4>The Nepo Girl</h4><p>A girl on the sidewalk yelling at her mom on the phone, trying to get her to plan the trip for her. Jake walks right past.</p></div></div>
+      <div class="scene"><div class="scene-num">04</div><div class="scene-body"><h4>The Old-School Traveler</h4><p>Someone on a bench, phone on speaker, tinny hold music playing. Been waiting on a travel agent for 45 minutes. Jake doesn't even need to say anything.</p></div></div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div class="card" style="border-top: 3px solid var(--red);">
+        <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--red); margin-bottom: 8px;">Production Specs</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <div><div class="mono" style="font-size: 22px; font-weight: 700; color: var(--red);">90s</div><div style="font-size: 10px; color: var(--g400);">Hero cut</div></div>
+          <div><div class="mono" style="font-size: 22px; font-weight: 700; color: var(--red);">$5K</div><div style="font-size: 10px; color: var(--g400);">Budget</div></div>
+          <div><div class="mono" style="font-size: 22px; font-weight: 700; color: var(--red);">1 day</div><div style="font-size: 10px; color: var(--g400);">Guerrilla NYC shoot</div></div>
+          <div><div class="mono" style="font-size: 22px; font-weight: 700; color: var(--red);">30s/15s</div><div style="font-size: 10px; color: var(--g400);">Platform cuts</div></div>
+        </div>
+      </div>
+      <div class="card" style="background: var(--slate-warm); color: white; border: none;">
+        <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.5; margin-bottom: 6px;">The Ending</div>
+        <p style="font-size: 14px; font-weight: 600; opacity: 1;">Jake reveals that while this entire commercial was being shot, he texted Tryps and booked a real trip.</p>
+        <p style="font-size: 13px; opacity: 0.8; margin-top: 6px;">A cab pulls up. He gets in. He sticks his head out the window and yells one final line at the camera as the cab drives away.</p>
+        <div style="margin-top: 12px; padding: 10px 16px; background: rgba(217,7,28,0.9); border-radius: 8px; text-align: center;">
+          <div style="font-size: 18px; font-weight: 800; letter-spacing: -0.5px;">Text Tryps. Go while you can.</div>
+        </div>
+      </div>
+      <div style="font-size: 12px; color: var(--g500); background: var(--off-white); border-radius: 8px; padding: 12px 16px; border: 1px solid var(--g200);">
+        <strong style="color: var(--slate);">Tone:</strong> The writing does the heavy lifting. Jake is dry, confident, cracks a few jokes — but the real comedy comes from what's happening around him. Every person he passes is suffering through the old way. Jake is the only calm one.
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- S7d: DEEP-DIVE — GIVEAWAY (#05) -->
+<section class="slide slide-alt" id="s7d">
+  <div class="logo"></div>
+  <div class="label">05 &middot; Giveaway Campaign</div>
+  <h2 style="font-size: 32px; max-width: 700px;">Win your dream trip.<br><span class="accent">You + 3 friends. Flights + Airbnb. On Tryps.</span></h2>
+
+  <div class="stats">
+    <div class="st"><div class="sn">$3-5K</div><div class="sl">Prize value</div></div>
+    <div class="st"><div class="sn">4</div><div class="sl">Friends fly together</div></div>
+    <div class="st"><div class="sn">50-120K</div><div class="sl">Projected unique reach</div></div>
+    <div class="st"><div class="sn">3</div><div class="sl">Entries per person</div></div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 4px;">
+    <div>
+      <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--g400); margin-bottom: 10px;">Entry Mechanic &mdash; 3 actions, 3 entries</div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="card" style="display: flex; gap: 12px; align-items: center; padding: 14px 18px;">
+          <div class="mono" style="font-size: 24px; font-weight: 700; color: var(--red); opacity: 0.3;">1</div>
+          <div><h4 style="font-size: 14px;">Tag 3 friends</h4><p style="font-size: 12px;">Comment your dream destination + tag the 3 friends you'd bring. Entry #1.</p></div>
+        </div>
+        <div class="card" style="display: flex; gap: 12px; align-items: center; padding: 14px 18px;">
+          <div class="mono" style="font-size: 24px; font-weight: 700; color: var(--red); opacity: 0.3;">2</div>
+          <div><h4 style="font-size: 14px;">Repost on Story</h4><p style="font-size: 12px;">Share the giveaway post to your Story tagging @jointryps. Entry #2.</p></div>
+        </div>
+        <div class="card" style="display: flex; gap: 12px; align-items: center; padding: 14px 18px;">
+          <div class="mono" style="font-size: 24px; font-weight: 700; color: var(--red); opacity: 0.3;">3</div>
+          <div><h4 style="font-size: 14px;">Text Tryps</h4><p style="font-size: 12px;">Click the link in bio &rarr; opens iMessage with a pre-filled text to Tryps. Send it. Entry #3.</p></div>
+        </div>
+      </div>
+      <div style="margin-top: 12px; font-size: 12px; color: var(--g500); background: var(--white); border-radius: 8px; padding: 12px 16px; border: 1px solid var(--g200);">
+        <strong style="color: var(--slate);">Why this works:</strong> Every entry is a product demo. The comment names a destination + a friend group. The Story repost puts Tryps in front of their entire follower base. The iMessage text gets them into the product.
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div class="card" style="border-top: 3px solid var(--gold);">
+        <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 8px;">The Content Engine &mdash; 4 Waves</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; gap: 8px; align-items: baseline;"><span class="mono" style="font-size: 12px; font-weight: 700; color: var(--gold); min-width: 20px;">W1</span><div><div style="font-size: 13px; font-weight: 600;">Giveaway announcement video</div><div style="font-size: 11px; color: var(--g500);">Produced video drops on @jointryps. 80 creators repost on Stories.</div></div></div>
+          <div style="display: flex; gap: 8px; align-items: baseline;"><span class="mono" style="font-size: 12px; font-weight: 700; color: var(--gold); min-width: 20px;">W2</span><div><div style="font-size: 13px; font-weight: 600;">User entries</div><div style="font-size: 11px; color: var(--g500);">Hundreds of comments + Story reposts from real friend groups. Free social proof.</div></div></div>
+          <div style="display: flex; gap: 8px; align-items: baseline;"><span class="mono" style="font-size: 12px; font-weight: 700; color: var(--gold); min-width: 20px;">W3</span><div><div style="font-size: 13px; font-weight: 600;">Winner reveal</div><div style="font-size: 11px; color: var(--g500);">Produced announcement video. The clip that travels.</div></div></div>
+          <div style="display: flex; gap: 8px; align-items: baseline;"><span class="mono" style="font-size: 12px; font-weight: 700; color: var(--gold); min-width: 20px;">W4</span><div><div style="font-size: 13px; font-weight: 600;">The trip itself</div><div style="font-size: 11px; color: var(--g500);">Tryps plans the trip. The group goes. They document it. Weeks of authentic content.</div></div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--g400); margin-bottom: 8px;">Projected Reach (Organic Only)</div>
+        <table class="reach-table">
+          <thead><tr><th>Metric</th><th>Estimate</th></tr></thead>
+          <tbody>
+            <tr><td>Entries (groups)</td><td class="mono">500+</td></tr>
+            <tr><td>Friends tagged &amp; notified</td><td class="mono">1,500-2,000</td></tr>
+            <tr><td>Story reposts</td><td class="mono">800-1,000</td></tr>
+            <tr><td style="font-weight: 700;">Total unique accounts reached</td><td class="mono" style="font-size: 16px;">50K-120K</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display: flex; gap: 6px;">
+        <div style="flex: 1; background: var(--white); border: 1px solid var(--g200); border-radius: 8px; padding: 10px; text-align: center;">
+          <div class="mono" style="font-size: 11px; font-weight: 700; color: var(--red);">Apr 14</div><div style="font-size: 10px; color: var(--g500); margin-top: 2px;">Announce</div>
+        </div>
+        <div style="flex: 2; background: rgba(217,7,28,0.04); border: 1px solid rgba(217,7,28,0.12); border-radius: 8px; padding: 10px; text-align: center;">
+          <div class="mono" style="font-size: 11px; font-weight: 700; color: var(--red);">Apr 14-28</div><div style="font-size: 10px; color: var(--g500); margin-top: 2px;">Entries open (2 weeks)</div>
+        </div>
+        <div style="flex: 1; background: var(--white); border: 1px solid var(--g200); border-radius: 8px; padding: 10px; text-align: center;">
+          <div class="mono" style="font-size: 11px; font-weight: 700; color: var(--red);">May 2</div><div style="font-size: 10px; color: var(--g500); margin-top: 2px;">Reveal + Launch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- S8: THE TEAM (moved after product + GTM to show "what we built with this") -->
+<section class="slide slide-alt" id="s8">
+  <div class="logo"></div>
+  <div class="label">The Team</div>
+  <h2>This is how we're building it.</h2>
+
+  <div class="org-top" style="margin-top: 16px;">
+    <div class="oc oc-emp"><b>Jake Stein</b><small>Founder & CEO</small></div>
+    <div class="oc oc-ai"><b>Marty</b><small>Open Claw</small></div>
+  </div>
+  <div class="vline"></div>
+  <div style="display: flex; gap: 32px; justify-content: center;">
+    <!-- Product & Engineering -->
+    <div style="flex: 1; max-width: 420px;">
+      <div style="text-align: center; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--red); padding: 5px 12px; background: rgba(217,7,28,0.05); border-radius: 6px; margin-bottom: 8px;">Product & Engineering</div>
+      <div class="org-top">
+        <div class="oc oc-emp"><b>Asif Raza</b><small>Head of Engineering</small></div>
+        <span style="font-size: 11px; color: var(--g400); font-weight: 600;">+</span>
+        <div class="oc oc-ptr" style="padding: 5px 10px;"><b style="font-size: 10px;">Linq</b><small>iMessage Partner</small></div>
+      </div>
+      <div class="vline"></div>
+      <div class="org-top">
+        <div class="oc oc-emp"><b>Nadeem</b><small>Developer</small></div>
+        <div class="oc oc-emp"><b>Rizwan</b><small>Agent Layer</small></div>
+      </div>
+      <div style="width: 1px; height: 10px; border-left: 1.5px dashed var(--g300); margin: 3px auto;"></div>
+      <div class="org-top">
+        <div class="oc oc-ad" style="padding: 5px 8px;"><b style="font-size: 10px;">Arsalan</b><small>Design</small></div>
+        <div class="oc oc-ad" style="padding: 5px 8px;"><b style="font-size: 10px;">Krishna</b><small>Design</small></div>
+        <div class="oc oc-ad" style="padding: 5px 8px;"><b style="font-size: 10px;">Andreas</b><small>QA</small></div>
+        <div class="oc oc-ad" style="padding: 5px 8px;"><b style="font-size: 10px;">Warda</b><small>QA</small></div>
+      </div>
+    </div>
+    <div style="width: 1px; background: var(--g200);"></div>
+    <!-- Distribution & GTM -->
+    <div style="flex: 1; max-width: 300px;">
+      <div style="text-align: center; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--blue); padding: 5px 12px; background: rgba(52,120,246,0.05); border-radius: 6px; margin-bottom: 8px;">Distribution & GTM</div>
+      <div class="org-top">
+        <div class="oc oc-ptr" style="padding: 5px 10px;"><b style="font-size: 10px;">Defaria LLC</b><small>Creative Director</small></div>
+      </div>
+      <div class="vline"></div>
+      <div class="org-top">
+        <div class="oc oc-hire"><b>Infra Engineer</b><small>Hiring</small></div>
+        <div class="oc oc-hire"><b>Growth Engineer</b><small>Hiring</small></div>
+      </div>
+      <div style="width: 1px; height: 10px; border-left: 1.5px dashed var(--g300); margin: 3px auto;"></div>
+      <div class="org-top">
+        <div class="oc oc-ai" style="padding: 5px 8px;"><b style="font-size: 10px;">Pablo</b><small>Design Agent</small></div>
+        <div class="oc oc-ai" style="padding: 5px 8px;"><b style="font-size: 10px;">Don</b><small>Research Agent</small></div>
+        <div class="oc oc-ai" style="padding: 5px 8px;"><b style="font-size: 10px;">Rio</b><small>Video Agent</small></div>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; gap: 14px; justify-content: center; margin-top: 16px; font-size: 10px; color: var(--g400);">
+    <span><span style="display:inline-block;width:12px;height:8px;background:var(--slate);border-radius:2px;vertical-align:middle;"></span> Employee</span>
+    <span><span style="display:inline-block;width:12px;height:8px;border:1.5px dashed var(--g300);border-radius:2px;vertical-align:middle;"></span> Ad Hoc</span>
+    <span><span style="display:inline-block;width:12px;height:8px;border:1.5px solid var(--red);border-radius:2px;vertical-align:middle;"></span> Partner</span>
+    <span><span style="display:inline-block;width:12px;height:8px;background:var(--agent-green);border-radius:2px;vertical-align:middle;"></span> AI</span>
+    <span><span style="display:inline-block;width:12px;height:8px;border:1.5px dashed var(--blue);border-radius:2px;vertical-align:middle;"></span> Hiring</span>
+  </div>
+</section>
+
+<!-- S9: NEXT STEPS -->
+<section class="slide slide-red" id="s9">
+  <div class="logo" style="filter: brightness(10);"></div>
+  <div style="display: flex; gap: 48px; margin-top: 28px;">
+    <div style="flex: 1;">
+      <h2 style="font-size: 36px; margin-bottom: 24px;">Where We're Headed</h2>
+      <div style="display: flex; gap: 12px; margin-bottom: 20px;"><span class="mono" style="font-size: 32px; font-weight: 700; opacity: 0.2;">01</span><div><h3 style="font-size: 18px;">Ship core product</h3><p style="font-size: 14px; opacity: 0.85;">Core trip experience in testing. iMessage agent and intelligence close behind.</p></div></div>
+      <div style="display: flex; gap: 12px; margin-bottom: 20px;"><span class="mono" style="font-size: 32px; font-weight: 700; opacity: 0.2;">02</span><div><h3 style="font-size: 18px;">Brand launch & GTM</h3><p style="font-size: 14px; opacity: 0.85;">Launch video, giveaway, UGC creators, ambassador program. May 2 launch.</p></div></div>
+      <div style="display: flex; gap: 12px; margin-bottom: 20px;"><span class="mono" style="font-size: 32px; font-weight: 700; opacity: 0.2;">03</span><div><h3 style="font-size: 18px;">Prove the viral loop</h3><p style="font-size: 14px; opacity: 0.85;">One text = everyone experiences it. Partiful playbook for travel.</p></div></div>
+      <div style="display: flex; gap: 12px;"><span class="mono" style="font-size: 32px; font-weight: 700; opacity: 0.2;">04</span><div><h3 style="font-size: 18px;">MIT in the fall</h3><p style="font-size: 14px; opacity: 0.85;">Building from campus. Engaging the MIT ecosystem.</p></div></div>
+    </div>
+    <div style="flex: 1; border-left: 1px solid rgba(255,255,255,0.15); padding-left: 40px;">
+      <h2 style="font-size: 36px; margin-bottom: 24px;">Questions for You</h2>
+      <div style="display: flex; gap: 12px; margin-bottom: 20px;"><span class="mono" style="font-size: 32px; font-weight: 700; opacity: 0.2;">01</span><div><h3 style="font-size: 18px;">MIT ecosystem</h3><p style="font-size: 14px; opacity: 0.85;">How can I engage the MIT ecosystem to support Tryps? What resources, programs, or intros would be most valuable?</p></div></div>
+      <div style="display: flex; gap: 12px; margin-bottom: 20px;"><span class="mono" style="font-size: 32px; font-weight: 700; opacity: 0.2;">02</span><div><h3 style="font-size: 18px;">Fundraising timing</h3><p style="font-size: 14px; opacity: 0.85;">We're bootstrapping as long as possible. When is the right time to start taking seed or strategic investor meetings?</p></div></div>
+      <div style="display: flex; gap: 12px;"><span class="mono" style="font-size: 32px; font-weight: 700; opacity: 0.2;">03</span><div><h3 style="font-size: 18px;">Network activation</h3><p style="font-size: 14px; opacity: 0.85;">What gaps do you see? Who from the McKinsey or broader MIT network would be helpful to activate?</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S11: CLOSE -->
+<section class="slide title" id="s10">
+  <div class="title-logo"></div>
+  <h1 style="font-size: 64px; color: var(--red);">tryps</h1>
+  <p class="tagline">Text your trip into existence.</p>
+  <div style="margin-top: 32px; color: var(--g400); font-size: 13px;">
+    <p>Jake Stein</p>
+    <p style="margin-top: 2px;">jake@jointryps.com · steinjp@mit.edu</p>
+    <p style="margin-top: 2px;">jointryps.com</p>
+  </div>
+</section>
+
+<script>
+const S=document.querySelectorAll('.slide'),N=document.getElementById('nav'),C=document.getElementById('ctr');
+S.forEach((_,i)=>{const d=document.createElement('button');d.className='nav-dot';d.onclick=()=>S[i].scrollIntoView({behavior:'smooth'});N.appendChild(d);});
+const D=document.querySelectorAll('.nav-dot');let c=0;
+S.forEach(s=>new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const i=[...S].indexOf(e.target);c=i;D.forEach((d,j)=>d.classList.toggle('active',j===i));C.textContent=`${i+1} / ${S.length}`;const r=e.target.classList.contains('slide-red');D.forEach(d=>d.style.background=r?'rgba(255,255,255,0.15)':'');D[i].style.background='var(--red)';C.style.color=r?'rgba(255,255,255,0.25)':'';}});},{threshold:0.5}).observe(s));
+document.addEventListener('keydown',e=>{if(['ArrowDown','ArrowRight',' '].includes(e.key)){e.preventDefault();if(c<S.length-1)S[c+1].scrollIntoView({behavior:'smooth'});}if(['ArrowUp','ArrowLeft'].includes(e.key)){e.preventDefault();if(c>0)S[c-1].scrollIntoView({behavior:'smooth'});}});
+</script>
+</body>
+</html>
