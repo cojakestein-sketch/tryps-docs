@@ -1,12 +1,12 @@
 ---
 name: tryps-standup
-description: Generate tomorrow's standup document with 5 personalized questions per dev
+description: Generate tomorrow's standup document with 3 targeted questions per dev — what, how to verify, and Marty's question
 user-invocable: true
 ---
 
 # Daily Standup Generator
 
-Generate tomorrow's standup document with 5 personalized questions per active dev. Questions are specific, scope-aware, and build on prior answers. The goal is to maximize what Marty learns from each dev's limited time.
+Generate tomorrow's standup document with 3 targeted questions per active dev. Questions are specific, scope-aware, and build on prior answers. The goal is to maximize what Marty learns from each dev's limited time while keeping the ask small enough that devs actually answer.
 
 ## Steps
 
@@ -200,7 +200,7 @@ git push origin main
 ### 6. Post to Slack
 
 Post to #martydev:
-> "Tomorrow's standup is ready: [link to file on GitHub]. 5 questions each for [names]. Answer by 2pm standup."
+> "Tomorrow's standup is ready: [link to file on GitHub]. 3 questions each for [names]. Answer by 2pm standup."
 
 ### 7. Learn from Answers (Post-Standup)
 

@@ -1,6 +1,6 @@
 ---
 name: nightly-report
-description: Generate Jake's printable nightly brief with standup, tech twitter, GitHub trending, deep dive, strategy check, and cost snapshot
+description: Generate Jake's printable nightly brief with standup, tech twitter, GitHub trending, deep dive, strategy check, mission progress, CS 101, and cost snapshot
 user-invocable: true
 ---
 
@@ -12,11 +12,11 @@ Generate a printable HTML nightly brief for Jake. Runs at 8:30pm ET after the st
 
 ### Section 1: Tomorrow's Standup
 - Read the standup doc that was just generated at 8pm (`tryps-docs/docs/standups/YYYY-MM-DD-standup.md` for tomorrow's date)
-- Include all 5 questions per dev, formatted cleanly
+- Include all 3 questions per dev, formatted cleanly
 
 ### Section 2: Tech Twitter Digest
-- **Primary:** Use Exa Search via AgentCash x402 (`POST https://stableenrich.dev/api/exa/search`, $0.01/call) for neural search of today's tweets
-- **Fallback:** Use Brave Search API if Exa is unavailable
+- **Method:** Use Exa Search via AgentCash x402 (`POST https://stableenrich.dev/api/exa/search`, $0.01/call) with the `category: "tweet"` filter for reliable tweet retrieval
+- **DO NOT** use `site:x.com` in the query string — this is unreliable and causes scraping failures. Use the `category` parameter instead.
 - Accounts to track:
   - `@stakejein` (Jake's account — surface any posts with engagement)
   - `@karpathy` (AI research)
@@ -26,10 +26,10 @@ Generate a printable HTML nightly brief for Jake. Runs at 8:30pm ET after the st
   - `@AnthropicAI` (Claude / our stack)
   - `@OpenAI` (competitor landscape)
 
-- Exa search queries (run via AgentCash fetch):
+- Exa search queries (run via `mcp__agentcash__fetch`):
   ```json
   POST https://stableenrich.dev/api/exa/search
-  {"query": "karpathy site:x.com", "numResults": 5, "startPublishedDate": "YYYY-MM-DDT00:00:00Z", "type": "neural"}
+  {"query": "karpathy", "category": "tweet", "numResults": 5, "startPublishedDate": "YYYY-MM-DDT00:00:00Z"}
   ```
   Repeat for each account. ~$0.07 total for all 7 accounts.
 
@@ -37,7 +37,7 @@ Generate a printable HTML nightly brief for Jake. Runs at 8:30pm ET after the st
 - No editorialization — just surface the posts with context
 - Aim for 5-10 posts total across all accounts
 
-**Note:** twit.sh (previously planned) was deprecated as of March 2026. Exa neural search provides comparable coverage with direct links.
+**Note:** twit.sh was deprecated March 2026. Exa `category: "tweet"` is the canonical method. Do NOT fall back to Brave Search — if Exa fails, report the failure in this section so Jake can debug.
 
 ### Section 3: Trending GitHub Repos
 - Use Brave Search or `gh` CLI to find today's trending repos
@@ -109,11 +109,71 @@ Generate a printable HTML nightly brief for Jake. Runs at 8:30pm ET after the st
 - Rotate categories: Mon=productivity, Tue=design, Wed=developer, Thu=analytics, Fri=AI/automation, Weekend=wildcard
 
 ### Section 9: Cost Snapshot
-- Parse OpenClaw session logs from today (`~/.openclaw/logs/`)
-- Calculate approximate API cost based on token usage × Anthropic pricing
-- Break down by session initiator (Jake DM, Asif DM, cron job, etc.)
-- Format: `Total: $X.XX | Jake: $X.XX | Asif: $X.XX | Crons: $X.XX`
-- If log parsing fails, note "Cost tracking not yet configured — see Phase 5 of revamp plan"
+- **Use exact token counts from cron logs, not estimates.** Parse `~/.openclaw/cron/runs/*.jsonl` for today's runs:
+  ```bash
+  today=$(date -u +%Y-%m-%d)
+  for f in ~/.openclaw/cron/runs/*.jsonl; do
+    job=$(basename "$f" .jsonl)
+    grep "\"finished\"" "$f" | grep "$today" | python3 -c "
+  import sys, json
+  total_cost = 0
+  for line in sys.stdin:
+    d = json.loads(line)
+    u = d.get('usage', {})
+    model = d.get('model', 'claude-opus-4-6')
+    inp = u.get('input_tokens', 0)
+    out = u.get('output_tokens', 0)
+    tot = u.get('total_tokens', 0)
+    ctx = tot - inp - out
+    if 'opus' in model:
+      cost = (inp * 15 + out * 75 + ctx * 3.75) / 1_000_000
+    else:
+      cost = (inp * 3 + out * 15 + ctx * 0.75) / 1_000_000
+    total_cost += cost
+  print(f'{job}: \${total_cost:.2f} ({tot:,} total tokens)')
+  "
+  done
+  ```
+- **Token → Cost mapping (Anthropic, May 2025):**
+  - Opus 4.6: $15/1M input, $75/1M output, $3.75/1M cached context
+  - Sonnet 4.6: $3/1M input, $15/1M output, $0.75/1M cached context
+- Break down by: nightly report, standup generator, topic suggestion, cost report, DM sessions
+- DM sessions: estimate from `~/.openclaw/logs/` gateway logs (count unique sessions × avg cost)
+- **Do NOT use placeholder estimates like "~$1.00".** If logs are unavailable for a category, say "No log data" — don't guess.
+- Format as a table with Category, Cost, Tokens, Notes columns
+- Alert thresholds: Daily > $15 → warning, Single session > $5 → flag, Weekly > $50 → escalate to Jake DM
+
+### Section 10: Mission Progress
+- Read Jake's Missions from today's standup doc (`tryps-docs/docs/standups/YYYY-MM-DD-standup.md`)
+- For each mission, report what moved today:
+  - Check GitHub for merged PRs, new commits, opened PRs related to the mission
+  - Check ClickUp for task status changes
+  - Check standup answers for dev commitments related to the mission
+  - Check Slack #martydev for relevant updates
+- Format per mission:
+  - **Mission title** (from standup)
+  - **What moved:** Concrete evidence (PR numbers, ClickUp task IDs, commits)
+  - **What didn't:** If nothing moved, say so plainly
+  - **Verdict:** PROGRESS / STALLED / NO DATA
+- This section connects the daily work back to what Jake actually cares about. If devs are doing work that doesn't map to any mission, call that out too.
+- **Source:** For now, missions come from the standup doc. When the team dashboard is live, switch to reading from that instead.
+
+### Section 11: CS 101 — Jake's Daily Lesson
+- One foundational computer science concept per night, explained in plain language
+- **Audience:** Jake — non-CS background, runs a tech company, needs to understand what his team is building and why
+- **Tone:** Like a smart friend explaining over coffee. No jargon-explaining-jargon. Use analogies to real-world things Jake knows (restaurants, travel, group chats).
+- **Structure:**
+  - **What it is** (2-3 sentences, dead simple)
+  - **Why it matters for Tryps** (1-2 sentences connecting it to something real in the codebase or infrastructure)
+  - **The "aha" moment** (one sentence that makes it click)
+- **Topic rotation — bottom-up through the stack:**
+  1. **Hardware layer** (weeks 1-2): Binary, CPU, RAM, storage, what happens when you turn a computer on, what a chip actually does
+  2. **OS & networking** (weeks 3-4): Processes, ports, SSH, DNS, HTTP, what "the cloud" actually is, what a server does
+  3. **Dev fundamentals** (weeks 5-6): What is a .env file, what is an API, what is a database, what is a migration, what is a commit, what is a branch
+  4. **Your stack** (weeks 7-8): What Supabase is actually doing, what Expo does, what edge functions are, what a webhook is, what TypeScript compiles to
+- **Topic selection:** Pick the next topic in the rotation. If a dev is working on something that connects to a concept (e.g., Rizwan deploying edge functions → explain what edge functions are), prioritize that.
+- **Length:** 2-3 paragraphs max. This gets printed — keep it tight.
+- **Examples of good topics:** "What is RAM and why does your phone get slow", "What SSH actually does when you type that command", "What happens when you open the Tryps app — every step from tap to screen", "What a .env file is and why you never commit it"
 
 ## Output Format: Printable HTML
 
@@ -254,7 +314,19 @@ The HTML must be:
 
   <section>
     <h2>9. Cost Snapshot</h2>
-    <!-- Cost table -->
+    <!-- Cost table with exact token counts from cron logs -->
+  </section>
+
+  <section>
+    <h2>10. Mission Progress</h2>
+    <!-- Per-mission: what moved, what didn't, verdict -->
+  </section>
+
+  <section>
+    <h2>11. CS 101</h2>
+    <div class="strategy-box">
+      <!-- Today's concept: what it is, why it matters for Tryps, the aha moment -->
+    </div>
   </section>
 </body>
 </html>
