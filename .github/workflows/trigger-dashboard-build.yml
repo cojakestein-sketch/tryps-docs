@@ -1,0 +1,48 @@
+name: Trigger Dashboard Build
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: dashboard-build
+  cancel-in-progress: false
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Check out tryps-docs
+        uses: actions/checkout@v4
+        with:
+          path: tryps-docs
+
+      - name: Check out tryps-exec-dashboard
+        uses: actions/checkout@v4
+        with:
+          repository: cojakestein-sketch/tryps-exec-dashboard
+          token: ${{ secrets.EXEC_DASHBOARD_PAT }}
+          path: tryps-exec-dashboard
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run build
+        working-directory: tryps-exec-dashboard
+        run: npm run build
+
+      - name: Commit and push docs/data.json
+        working-directory: tryps-exec-dashboard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data.json
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "chore: rebuild data.json from tryps-docs@${{ github.sha }}"
+          git push
