@@ -14,7 +14,7 @@ Brand/GTM in `brand-and-gtm/`. Voice Calls + Customer Service deferred post-laun
 | # | ID | Title | Status | Assignee | SC | Notes |
 |---|-----|-------|--------|----------|-----|-------|
 | 01 | [[core-trip-experience/objective|core-trip-experience]] | Core Trip Experience | **testing** | nadeem | 15/16 | OBS folded in |
-| 02 | [[imessage-agent/objective|imessage-agent]] | iMessage Agent | **in-progress** | asif | 34/57 | |
+| 02 | [[imessage-agent/objective|imessage-agent]] | iMessage Agent | **done** | asif | 51/57 | 6 blocked on scope 8 |
 | 03 | [[agent-intelligence/objective|agent-intelligence]] | Agent Intelligence | **in-progress** | rizwan | 55/61 | |
 | 04 | [[travel-booking/objective|travel-booking]] | Travel Booking & Payments | **in-progress** | asif, rizwan | 0/70 | Payments absorbed (SC-59–70) |
 | 05 | [[beta-user-feedback/objective|beta-user-feedback]] | Beta & User Feedback | **in-progress** | jake | — | Ongoing |
@@ -27,7 +27,7 @@ Brand/GTM in `brand-and-gtm/`. Voice Calls + Customer Service deferred post-laun
 
 | ID | Title | Notes |
 |----|-------|-------|
-| voice-calls | Voice Calls | Spec exists (14 SC). Depends on iMessage Agent + Agent Intelligence. |
+| voice-calls | Voice Calls | **Done** — Tryps agent + Marty voice both live. 14/14 SC. |
 | customer-service-triaging | Customer Service & Triaging | Needs spec. Manual triaging pre-launch. |
 | output-backed-screen | Output-Backed Screen | Folded into Core Trip Experience. |
 | payments-infrastructure | Payments Infrastructure | Absorbed into Travel Booking (SC-59–70). |

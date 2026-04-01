@@ -1,12 +1,12 @@
 ---
 id: imessage-agent
-status: in-progress
+status: done
 assignee: asif
 clickup_ids: ["86e0emu7g", "86e0f948t"]
-criteria: 34/57
-blockers: []
-last_updated: 2026-03-26
-updated_by: jake
+criteria: 51/57
+blockers: [SC-54/55 (recommendations, scope 8), SC-56/57 (DM pipeline, scope 8)]
+last_updated: 2026-04-02
+updated_by: asif
 review_status: reviewed
 ---
 
