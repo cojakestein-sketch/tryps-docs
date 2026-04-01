@@ -1,7 +1,8 @@
 # Slack Standup Auto-Sync
 
 > Marty prompt. Post standup questions to Slack, watch for replies, update the standup doc automatically.
-> Run this each morning after the standup doc exists at ~/tryps-docs/standups/YYYY-MM-DD-standup.md
+> Run this each morning after the standup doc exists at `~/tryps-docs/docs/standups/YYYY-MM-DD-standup.md`
+> Slack `/mission` intake is a separate flow. Route that to the `tryps-mission-sync` skill, not this prompt.
 
 ## TODAY ONLY (March 26)
 
@@ -23,7 +24,7 @@ Skip to Step 1b (post to #martydev only), then go to Step 2.
 
 ### Step 1a: Post to #brand (C0AP2B9J5PU)
 
-Read today's standup doc at ~/tryps-docs/standups/YYYY-MM-DD-standup.md. Find the sections for:
+Read today's standup doc at `~/tryps-docs/docs/standups/YYYY-MM-DD-standup.md`. Find the sections for:
 - "Jake — Brand & GTM" — post Jake's brand questions
 - "Sean — Brand & GTM" — post Sean's questions
 
@@ -99,7 +100,7 @@ When you find a new reply from someone other than yourself:
    - Keep their voice, substance, and specifics — don't sanitize or corporate-ify it
 
 5. **Update the standup doc:**
-   - Open ~/tryps-docs/standups/YYYY-MM-DD-standup.md
+   - Open `~/tryps-docs/docs/standups/YYYY-MM-DD-standup.md`
    - Find the exact placeholder: `[Dev answers here]` or `[Sean answers here]` or `[Jake answers here]`
    - Replace ONLY that placeholder with their answer
    - Do NOT touch any other part of the file
@@ -108,7 +109,7 @@ When you find a new reply from someone other than yourself:
    ```bash
    cd ~/tryps-docs
    git pull origin main
-   git add standups/YYYY-MM-DD-standup.md
+   git add docs/standups/YYYY-MM-DD-standup.md
    git commit -m "standup: update [name]'s answers from Slack ([date])"
    git push origin main
    ```
@@ -131,7 +132,7 @@ Once all answers are in (or at end of day), post to #martydev:
 ```
 Standup sync complete for [date].
 - [X]/[total] people answered
-- Doc updated: ~/tryps-docs/standups/YYYY-MM-DD-standup.md
+- Doc updated: `~/tryps-docs/docs/standups/YYYY-MM-DD-standup.md`
 - [Names who haven't answered yet, if any]
 ```
 
