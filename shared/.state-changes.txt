@@ -1,0 +1,7 @@
+Status changes detected at 2026-04-01 22:30 UTC:
+Previous:
+| imessage-agent | iMessage Agent | in-progress | asif | 34/57 | 34/57 implemented |
+| voice-calls | Voice Calls | specced | asif | — | Spec exists, not started |
+Current:
+| imessage-agent | iMessage Agent | done | asif | 51/57 |  |
+| voice-calls | Voice Calls | done | asif | — |  |
