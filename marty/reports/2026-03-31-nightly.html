@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tryps Nightly Brief — Tuesday, March 31, 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #3D3530;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #3D3530;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+  }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
+  p, li { font-size: 11pt; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+  }
+  .strategy-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14pt;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #B00618; }
+  .highlight { background: #FFF3CD; padding: 2px 6px; border-radius: 4px; }
+  a { color: #D9071C; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .tool-card {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Print</button>
+  <h1>Tryps Nightly Brief</h1>
+  <div class="subtitle">
+    Tuesday, March 31, 2026 — Prepared by Marty at 8:30 PM ET
+  </div>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>1. Tomorrow's Standup (April 1)</h2>
+    <p style="font-size:10pt;color:#888;">Full doc: tryps-docs/docs/standups/2026-04-01-standup.md</p>
+
+    <p><strong>Hero Numbers:</strong> ~82 / 166 SC done &nbsp;|&nbsp; 35 / 78 bugs fixed</p>
+
+    <h3>Missions for April 1</h3>
+    <ol>
+      <li><strong>Close out Jake's open PRs</strong> — 14 still in limbo from last weekend. Merge, supersede, or close.</li>
+      <li><strong>Flight booking end-to-end</strong> — PR #331 merged. Push toward a testable search → pick → book → see-in-app flow.</li>
+      <li><strong>Voice calls demo-ready</strong> — Asif got voice working on same Tryps number. Make it demo-ready for Jake to call and create a trip.</li>
+      <li><strong>QA pipeline deliverables</strong> — One-pager, HTML deck, Slack summary from Asif's QA process interview.</li>
+    </ol>
+
+    <h3>Nadeem — output-backed-screen (48 SC, ~10 done)</h3>
+    <ol>
+      <li>What are you doing TODAY? PR #334 merged, #333 still open. Jake's PRs #315-#326 sitting — closing or merging? Name SCs/PRs/bugs.</li>
+      <li>How will Jake verify at 6PM that it's DONE? Merged PR numbers, screen recording, specific flow to tap through.</li>
+      <li>[Marty] You said 9-11 SCs done but state.md shows 7/48. Which specific SCs moved? Need exact numbers.</li>
+    </ol>
+
+    <h3>Asif — imessage-agent (57 SC, 45 done)</h3>
+    <ol>
+      <li>What are you doing TODAY? Voice calls working — plan to make demo-ready? QA interview deliverables due yesterday. What ships?</li>
+      <li>How will Jake verify at 6PM? Can he call the Tryps number and create a trip? Are QA deliverables committed?</li>
+      <li>[Marty] State.md shows 34/57 but you reported 45/57. Which 11 SCs moved? Need exact list to update state.</li>
+    </ol>
+
+    <h3>Rizwan — agent-intelligence (61 SC, 27 done)</h3>
+    <ol>
+      <li>What are you doing TODAY? PR #331 merged. 27/61 agent-intelligence, 5/70 travel-booking. Pushing booking to production or back to remaining SCs?</li>
+      <li>How will Jake verify at 6PM? Yesterday's 3-step verification — did it work? Today's testable artifact?</li>
+      <li>[Marty] 34 agent-intelligence SCs remaining + growing travel-booking scope (65/70 open). How splitting time?</li>
+    </ol>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>2. Tech Twitter</h2>
+    <p style="font-size:10pt;color:#888;">Brave Search results — x.com rate-limited today; summaries from news coverage.</p>
+
+    <div class="tweet">
+      <span class="tweet-author">@AnthropicAI / Claude Code</span><br>
+      <span class="tweet-text">Trending on X: Anthropic accidentally leaked ~512K lines of Claude Code source code via a .map file in their npm package (v2.1.88). Second leak in a week — first was the "Mythos" model spec. Source includes anti-distillation fake tools, an "undercover mode" that strips AI markers, and frustration-detection regex. Widely mirrored on GitHub before takedown.</span><br>
+      <a href="https://x.com/i/trending/2038905233393488277">x.com/trending</a> &nbsp;|&nbsp; <a href="https://fortune.com/2026/03/31/anthropic-source-code-claude-code-data-leak-second-security-lapse-days-after-accidentally-revealing-mythos/">Fortune coverage</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@OpenAI</span><br>
+      <span class="tweet-text">OpenAI added another $12B to its latest funding round, bringing the total to $122B at an $852B post-money valuation (NYT/CNBC). IPO anticipation intensifying.</span><br>
+      <a href="https://www.nytimes.com/2026/03/31/technology/openai-12-billion-latest-funding-round.html">NYT</a> &nbsp;|&nbsp; <a href="https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html">CNBC</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">AI prediction markets</span><br>
+      <span class="tweet-text">Benzinga: prediction markets have Anthropic at 61% chance of best model by end of June, Google at 26%, OpenAI at 7%, xAI at 4%. Google's DeepMind chief Hassabis quoted: "We don't feel any pressure" while OpenAI burns $14B.</span><br>
+      <a href="https://www.benzinga.com/markets/prediction-markets/26/03/51575085/google-ai-chief-we-dont-feel-any-pressure-while-openai-burns-14-billion">Benzinga</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">OpenCode vs. Anthropic drama</span><br>
+      <span class="tweet-text">Context from the Claude Code leak: Anthropic sent legal threats to OpenCode 10 days ago for using Claude Code's internal APIs to access Opus at subscription rates. The leaked source reveals the anti-distillation measures they were trying to protect.</span><br>
+      <a href="https://alex000kim.com/posts/2026-03-31-claude-code-source-leak/">Alex Kim's analysis</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">DeepMind / Hassabis book</span><br>
+      <span class="tweet-text">Axios exclusive: Sebastian Mallaby's new book reveals Hassabis and Suleyman once recruited Reid Hoffman to pledge $1B to spin DeepMind back out of Google. The sale to Google ultimately gave DeepMind what OpenAI and Anthropic are still scrambling for: "a parent company that prints cash."</span><br>
+      <a href="https://www.axios.com/2026/03/31/deepmind-google-ai-race-money-hassabis-mallaby-book">Axios</a>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>3. Trending Repos</h2>
+
+    <div class="repo">
+      <span class="repo-name">Yeachan-Heo/oh-my-claudecode</span> — 18,997 stars (+1,126 today)<br>
+      Teams-first multi-agent orchestration for Claude Code. TypeScript.<br>
+      <em>Why it matters:</em> The team already uses Claude Code for standups. This adds multi-agent coordination on top — could help Nadeem/Asif/Rizwan run parallel Claude Code sessions with shared context. Worth evaluating for the dev workflow.
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">microsoft/VibeVoice</span> — 33,096 stars (+3,863 today)<br>
+      Open-source frontier voice AI. Transcribes 60-min audio, generates 90-min speech with speaker ID.<br>
+      <em>Why it matters:</em> Direct alternative to ElevenLabs for the "call Tryps" voice agent. If it's competitive on latency, could eliminate a vendor dependency in the voice calling flow Asif just shipped.
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">vas3k/TaxHacker</span> — 3,725 stars (+318 today)<br>
+      Self-hosted AI accounting app. LLM analyzer for receipts, invoices, transactions with custom prompts and categories. TypeScript.<br>
+      <em>Why it matters:</em> Interesting architecture pattern for the expenses tab — LLM-powered receipt scanning and categorization is exactly what Tryps needs for group expense splitting. Worth studying the receipt → structured data pipeline.
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>4. Deep Dive: Agentic Travel is Shipping — Where Tryps Fits</h2>
+    <p style="font-size:10pt;color:#888;">No topic suggestion response from Jake today. Using the most relevant topic given this week's milestones (voice + booking both on develop).</p>
+
+    <h3>What it is</h3>
+    <p>March 2026 is the month agentic travel crossed from demo to deployment. Sabre + PayPal + MindTrip announced the first end-to-end agentic booking pipeline: conversational AI queries Sabre's Mosaic APIs (420+ airlines, 2M hotels), presents curated options, and PayPal handles payment — all without leaving the chat. Malaysia Airlines launched "Mavis," an agentic customer service agent on Ada's ACX platform. Skyscanner shipped a ChatGPT app for natural-language flight search.</p>
+
+    <h3>Why it matters right now</h3>
+    <p>Tryps just put voice calling AND flight booking on develop this week. You're building the exact same pipeline these enterprise players announced — but for groups, not individuals. The Sabre/PayPal/MindTrip system does discovery → book → pay in a single conversation. Tryps does discovery → book → pay → <strong>split with the group</strong>. That last step is your moat. No one in agentic travel is solving for group consensus and group payment. OAG's analysis explicitly calls out the trust gap: consumers don't yet trust AI to select, book, and pay on their behalf. Groups amplify that trust problem — but also solve it, because the group validates the AI's choices together.</p>
+
+    <h3>Key takeaways</h3>
+    <ul>
+      <li><strong>The pipeline Tryps is building is validated at enterprise scale.</strong> Sabre/PayPal/MindTrip with real inventory, real payments, Q2 2026 launch. You're not early — you're on time.</li>
+      <li><strong>Group is the differentiator.</strong> Every agentic travel system announced so far is single-traveler. Tryps is the only one where the agent serves a group, handles consensus, and splits costs.</li>
+      <li><strong>Voice + booking convergence is now.</strong> Malaysia Airlines voice agent + Duffel booking = what Asif + Rizwan built this week. The market is moving to exactly where you are.</li>
+      <li><strong>Trust is the bottleneck, not technology.</strong> OAG research shows consumers don't trust AI to book for them yet. Tryps' group validation model (agent proposes → group votes → agent books) could be the trust unlock.</li>
+      <li><strong>Speed matters.</strong> Q2 2026 is when the enterprise players ship. Tryps needs to be in beta with real group bookings by then to ride the wave, not chase it.</li>
+    </ul>
+    <p><strong>Resource:</strong> <a href="https://www.oag.com/blog/march-2026-the-month-agentic-travel-gets-real">OAG: March 2026 — The Month Agentic Travel Gets Real</a></p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>5. Strategy Check</h2>
+    <p style="font-size:10pt;color:#888;">Beginning of Week 5 (Mar 30 – Apr 5). Correct me if I'm wrong — that's the point.</p>
+
+    <div class="strategy-box">
+      <h3>Where we are</h3>
+      <p>82/166 success criteria done (~49%). Two major milestones landed this week: voice calling is live on the Tryps phone number (Asif) and flight booking first draft merged (Rizwan, PR #331). 35/78 bugs fixed but waiting QA verification — and QA hiring is still in process. 14 of Jake's weekend PRs remain open; Nadeem is fixing bugs from scratch rather than using them. State.md numbers are stale (Asif reports 45/57 but state shows 34/57; Nadeem says 9-11 but state shows 7/48).</p>
+
+      <h3>Top 3 risks</h3>
+      <ol>
+        <li><strong>QA bottleneck.</strong> 35 bugs marked "fixed" with zero QA verification. Andreas is departing end of March (today). If Warda isn't onboarded and Asif's QA process deliverables don't ship, bug verification stalls completely.</li>
+        <li><strong>Nadeem velocity.</strong> ~10/48 SCs in output-backed-screen after weeks. Skipped multiple standups. Delivered 2 PRs today (#333, #334) but the gap between promises and merged code is growing. The 6PM verification asks in standup haven't produced visible accountability yet.</li>
+        <li><strong>State tracking drift.</strong> State.md is significantly behind reality for every dev. Decisions are being made on stale data. This erodes the whole sprint tracking system.</li>
+      </ol>
+
+      <h3>Where Jake should focus</h3>
+      <ul>
+        <li><strong>QA transition:</strong> Andreas → Warda handoff needs to happen this week or bug verification dies. Get Warda access and a testing device.</li>
+        <li><strong>Nadeem accountability:</strong> The standup format is good but needs teeth. Consider pairing Nadeem with Asif for daily code review to increase throughput.</li>
+        <li><strong>Demo the stack:</strong> Voice + booking are both on develop. Record yourself calling the Tryps number, creating a trip, and booking a flight. That demo is worth more than 10 standup docs for investor conversations and team morale.</li>
+      </ul>
+
+      <h3>Marty's #1 priority call</h3>
+      <p><strong>Get the voice + booking demo recorded and working end-to-end.</strong> You have both pieces on develop right now. This is the first time the full "call Tryps and book a flight" story is possible. The agentic travel market is shipping this quarter (see deep dive). A working demo of group voice booking would put Tryps ahead of every enterprise player announced this month. Everything else (bugs, SCs, state files) is maintenance. The demo is the unlock.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>6. Culture &amp; Conversation</h2>
+
+    <div style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>OpenAI closes $122B round at $852B valuation — IPO imminent</strong><br>
+      The largest private tech financing in history just got larger. OpenAI added another $12B today, and an IPO is now widely expected. Meanwhile, prediction markets give Anthropic a 61% chance of having the best model by June vs. OpenAI's 7%.<br>
+      <em>Conversation angle:</em> The paradox of OpenAI raising the most while markets bet on Anthropic winning technically. Is capital or capability the real moat?<br>
+      <a href="https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html">CNBC</a>
+    </div>
+
+    <div style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>Apple removes vibe-coding app from App Store — crackdown on AI-generated apps</strong><br>
+      Apple kicked "Anything" (a vibe-coding app) from the App Store, signaling a harder line on AI-built software. This affects the entire wave of startups trying to lower the barrier to app creation.<br>
+      <em>Conversation angle:</em> If Apple gates who can build apps and how, vibe-coding tools become distribution plays, not just creation tools. Platform risk for the no-code generation.<br>
+      <a href="https://techstartups.com/2026/03/31/top-tech-news-today-march-31-2026/">TechStartups</a>
+    </div>
+
+    <div style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+      <strong>Sebastian Mallaby's DeepMind book reveals Hassabis almost left Google</strong><br>
+      New Axios excerpt from Mallaby's book: Hassabis and Suleyman recruited Reid Hoffman to pledge $1B to spin DeepMind out of Google. The deal didn't happen, and the sale to Google gave DeepMind what OpenAI still doesn't have — a parent that prints cash.<br>
+      <em>Conversation angle:</em> The "independent AI lab vs. BigCo subsidiary" debate is the defining structural question in AI. DeepMind chose cash flow. OpenAI chose independence (and $122B in fundraising). Who's right?<br>
+      <a href="https://www.axios.com/2026/03/31/deepmind-google-ai-race-money-hassabis-mallaby-book">Axios</a>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>7. AI Releases &amp; Patch Notes</h2>
+
+    <table class="cost-table">
+      <tr><th>Provider</th><th>What happened</th><th>Relevance</th></tr>
+      <tr>
+        <td>Anthropic</td>
+        <td>Claude Code v2.1.88 released — then pulled after source map leaked ~512K lines of source code. Second security lapse in a week (after Mythos model spec leak). Revealed anti-distillation measures, undercover mode, frustration detection.</td>
+        <td>We use Claude Code daily. The leak reveals how the tool works internally — fake tool injection for anti-distillation, connector-text summarization. No action needed but worth reading Alex Kim's analysis.</td>
+      </tr>
+      <tr>
+        <td>Anthropic</td>
+        <td>Legal action against OpenCode for using Claude Code's internal APIs to access Opus at subscription rates.</td>
+        <td>If you use any third-party Claude wrappers, check they're using official APIs.</td>
+      </tr>
+      <tr>
+        <td>OpenAI</td>
+        <td>$122B funding round closed at $852B post-money. IPO signals intensifying. Invested $94M in Isara (multi-agent AI platforms).</td>
+        <td>The Isara investment in multi-agent platforms validates our agent architecture direction.</td>
+      </tr>
+      <tr>
+        <td>Google</td>
+        <td>Hassabis: "We don't feel any pressure." Prediction markets: Anthropic 61% to have best model by June, Google 26%, OpenAI 7%.</td>
+        <td>Our stack is Anthropic-first. Market betting in our favor for model quality.</td>
+      </tr>
+      <tr>
+        <td>Broader</td>
+        <td>Nebius committing $10B to Finland AI data center (310MW). Big Tech 2026 AI capex: $635B total, now facing energy cost headwinds.</td>
+        <td>Infrastructure story — no direct impact but shows AI compute is becoming scarce/expensive.</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p style="font-size:10pt;color:#888;">Tuesday = design tools rotation</p>
+
+    <div class="tool-card">
+      <h3>Screen Studio — Beautiful screen recordings, zero editing</h3>
+      <p><strong>What it is:</strong> Mac app that records your screen and automatically adds smooth zoom animations, cursor highlights, and device frames — producing polished demo videos without any editing.</p>
+      <p><strong>How Jake would use it:</strong> Record the voice + booking demo this week. Instead of a raw screen capture, Screen Studio auto-zooms to where you tap, adds device frames, and exports a video that looks like it came from a motion designer. Also useful for sending polished bug repros to the team instead of shaky screenshots. Asif and Nadeem could use it for their 6PM verification artifacts.</p>
+      <p><strong>Pricing:</strong> $89 one-time (Standard) or $139 (Professional with 4K export). No subscription.</p>
+      <p><strong>Link:</strong> <a href="https://www.screen.studio/">screen.studio</a></p>
+    </div>
+
+    <div class="tool-card">
+      <h3>oh-my-claudecode — Multi-agent orchestration for Claude Code</h3>
+      <p><strong>What it is:</strong> Teams-first multi-agent orchestration layer for Claude Code. Lets multiple Claude Code instances share context, coordinate tasks, and avoid conflicts — currently #3 trending on GitHub (18,997 stars).</p>
+      <p><strong>How Jake would use it:</strong> Nadeem, Asif, and Rizwan all use Claude Code independently. This tool could let them run coordinated sessions — e.g., Nadeem works on expenses tab while Asif works on voice, with shared awareness of each other's changes. Could reduce merge conflicts and duplicate work.</p>
+      <p><strong>Pricing:</strong> Free, open source (MIT license).</p>
+      <p><strong>Link:</strong> <a href="https://github.com/Yeachan-Heo/oh-my-claudecode">github.com/Yeachan-Heo/oh-my-claudecode</a></p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+
+    <table class="cost-table">
+      <tr><th>Category</th><th>Estimate</th></tr>
+      <tr><td>Jake DMs + voice calls</td><td>~$3.50</td></tr>
+      <tr><td>Cron jobs (standup gen, nightly report, topic suggestion)</td><td>~$4.00</td></tr>
+      <tr><td>Slack channel responses</td><td>~$1.50</td></tr>
+      <tr><td>Heartbeats + checks</td><td>~$2.00</td></tr>
+      <tr><td colspan="2" style="border-top: 2px solid #3D3530; font-weight: 600;">Estimated total: ~$11.00</td></tr>
+    </table>
+    <p style="font-size:10pt;color:#888;">Note: Estimates based on session activity patterns. Detailed token-level cost tracking not yet configured — OpenClaw logs don't include per-session token counts. Implementing the cost-report skill would give exact numbers.</p>
+  </section>
+
+</body>
+</html>
