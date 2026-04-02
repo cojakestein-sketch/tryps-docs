@@ -1,5 +1,5 @@
 ---
-title: "Growth Engineer Onboarding — Strategy + Ops Session"
+title: "GTM Strategy + Onboarding Session — Inej + Team Planning"
 date: 2026-04-01
 meeting_date: 2026-04-02
 attendees: jake, sean, inej
@@ -7,7 +7,7 @@ status: active
 purpose: "Onboarding + strategy session agenda for Inej (GTM Growth Engineer). First half = strategy (everyone participates). Second half = operations (scope, deliverables, access)."
 ---
 
-# GTM Growth Engineer — Onboarding + Strategy Session
+# GTM Strategy + Onboarding Session — Inej + Team Planning
 
 **Date:** April 2, 2026 | **Duration:** 60 minutes | **Attendees:** Jake, Sean, Inej
 **Granola is running.** This document is the agenda. The real output is the decisions we make together.
@@ -21,7 +21,7 @@ Open a terminal and paste the prompt below into Claude Code. It loads all the co
 ```
 claude
 
-You are a live meeting assistant for the Tryps GTM strategy + onboarding session on April 2, 2026. Three people are in the room: Jake (founder), Sean (creative director), and Inej (new GTM Growth Engineer).
+You are a live meeting assistant for the Tryps GTM strategy + onboarding session on April 2, 2026. Three people are in the room: Jake (founder), Sean (creative director), and Inej (new GTM Infrastructure Engineer — he builds the systems, NOT the content).
 
 Read these files now — they are your full context for this meeting:
 
@@ -52,7 +52,8 @@ Rules:
 - Never use the word "crew" — Jake hates it
 - The app is called Tryps (not Tripful, not Vamos)
 - Sean approves all creative decisions
-- Enen is the infra engineer (not Sami — Sami is no longer on the team)
+- Inej is the INFRA engineer (builds systems, automations, dashboards). He is NOT the content person.
+- The growth marketer / content creator role is an OPEN HIRE — we're reviewing the Upwork JD today
 - Be direct and concise. The room is moving fast.
 ```
 
@@ -67,7 +68,7 @@ Rules:
 | 0:10–0:25 | Case Studies | Group discussion | Study 3–5 launches together. What are we stealing? |
 | 0:25–0:35 | Strategy Commitments | Group decision-making | Commit to content pillars, platform priorities, launch choreography. |
 | 0:35–0:45 | GTM Team Needs + New Hire JD | Open discussion | What roles are missing? Review draft JD for content/SEO role. |
-| 0:45–0:55 | Scopes 2–3 + UGC Research Assignment | Jake assigns | Inej's scope, day 1–2 deliverables, UGC research. |
+| 0:45–0:55 | Inej's Infra Scope + Team Needs | Jake assigns | What Inej builds, what roles go around him. |
 | 0:55–1:00 | Tools, Access, How We Work | Logistics | Get Inej set up. |
 
 ---
@@ -123,23 +124,26 @@ You text Tryps in your group chat and it plans your whole trip — flights, hote
       ┌───────────────┬───────┴───────┬───────────────┐
       │               │               │               │
 ┌─────┴─────┐   ┌─────┴─────┐   ┌─────┴─────┐   ┌─────┴─────┐
-│   INEJ    │   │   ENEN    │   │  NEW HIRE │   │ AI AGENTS │
-│  Growth   │   │  Infra    │   │ Content + │   │  Pablo    │
-│  Engineer │   │  Engineer │   │ SEO/AEO   │   │  Don      │
-│  MAKES    │   │  BUILDS   │   │ (HIRING)  │   │  Rio      │
-│  things   │   │  systems  │   │           │   │           │
+│   INEJ    │   │ HIRE #1   │   │ HIRE #2   │   │ AI AGENTS │
+│  GTM Infra│   │ Growth    │   │ SEO / AEO │   │  Pablo    │
+│  Engineer │   │ Marketer  │   │ Writer    │   │  Don      │
+│  BUILDS   │   │ MAKES     │   │ (or AI    │   │  Rio      │
+│  systems  │   │ content   │   │  agents)  │   │           │
+│  (HIRED)  │   │ (HIRING)  │   │ (TBD)     │   │           │
 └───────────┘   └───────────┘   └───────────┘   └───────────┘
 ```
 
 **How work flows:**
 1. **Jake** sets strategic priorities and reviews strategy
 2. **Sean** directs day-to-day execution. Nothing goes live without Sean's approval.
-3. **Inej** produces content, writes copy, manages ads, handles whatever the GTM org needs that week
-4. **Enen** builds the infrastructure Inej runs on — scheduling tools, analytics, automations, deep links
-5. **New hire (TBD)** — content creator + SEO/AEO writer. We're actively hiring for this. See GTM Team Needs section.
+3. **Inej (GTM Infra Engineer)** builds every system the GTM org runs on — scheduling tools, analytics, automations, deep links, Meta pixel, Branch, dashboards, n8n workflows. He builds the pipes; other people pour content through them.
+4. **Hire #1: Growth Marketer (HIRING NOW)** — produces content, clips, social posts, ad variants. Manages day-to-day ad spend. The person who MAKES things. This is the Upwork JD we're reviewing today.
+5. **Hire #2: SEO/AEO Writer (TBD)** — writes blog posts, landing pages, comparison articles, App Store copy. Optimizes for AI engine citations. Could be a separate hire, an AI agent workflow, or part of the growth marketer's scope. **Discussion: do we need this as a separate person?**
 6. **AI agents** produce first drafts that humans review and polish
 
 **Key rule:** Sean is the taste filter. If Sean hasn't approved it, it doesn't ship.
+
+**The big question for today's meeting:** We have Inej (infra). Who else do we need around him? One more person? Two? Which roles are humans and which can AI agents cover?
 
 ---
 
@@ -165,6 +169,8 @@ You text Tryps in your group chat and it plans your whole trip — flights, hote
 - **Seed the advisor/VC/founder network via Jackson.** Get connected people using Tryps for their own trips before May 2.
 - **Bold product challenge as content.** "Plan a 10-person Bali trip in under 5 minutes using Tryps. If we fail, we pay for your trip." Film it.
 
+**@Sean — Bold product challenge idea:** "Plan a 10-person Bali trip in under 5 minutes using Tryps. If we fail, we pay for your trip." Film it. This could be our Porsche GT3 RS moment. Sean to own production if we commit to this.
+
 **Open question for the room:** Should Jake spend 2 weeks before launch doing personal onboarding calls with 50+ users, or is that time better spent on other launch prep?
 
 ---
@@ -181,12 +187,12 @@ You text Tryps in your group chat and it plans your whole trip — flights, hote
 - **Film camera aesthetic.** Instagram grid has a disposable camera warmth that matches their vibe exactly (same motif as Tryps brand system).
 
 **What we're stealing:**
-- **Trip invite link as growth engine.** Every Tryps trip invite in iMessage needs to be so beautiful people screenshot and share it. This is scope 8 — Enen and the product team need to nail the OG image template.
+- **Trip invite link as growth engine.** Every Tryps trip invite in iMessage needs to be so beautiful people screenshot and share it. This is scope 8 — Inej and the product team need to nail the OG image template.
 - **Dense network seeding.** We launch in NYC friend groups who actually travel together, not a broad "everyone download this" push.
 - **Reactive social from day one.** Don't just follow the content calendar. Monitor culture. Post fast. Be funny.
 - **Inevitable branding.** "This is just how people plan trips now." Not "try this cool new thing."
 
-**Open question for the room:** Partiful's social team is reactive and culture-driven, not calendar-driven. Should we follow our content calendar rigidly, or treat it as a starting point and give Inej + Sean freedom to post reactively when something culturally relevant happens?
+**Open question for the room:** We need the first 3 weeks of content planned and ready (the calendar exists). But Partiful's social team is reactive and culture-driven, not just calendar-driven. **How do we do both?** The calendar is the floor — what's the plan for also being reactive when something culturally relevant happens? Who has the authority to post something unplanned?
 
 ---
 
@@ -203,11 +209,13 @@ You text Tryps in your group chat and it plans your whole trip — flights, hote
 
 **What we're stealing:**
 - **Find ONE repeatable format for Tryps.** The equivalent: "POV: someone actually planned the group trip." 15-second screen recording of Tryps in iMessage, with a hook, every time. Same format, different destinations.
-- **Unique tracking links per creator.** Enen is building `jointryps.com/go/{name}` redirect links through Branch. Non-negotiable.
+- **Unique tracking links per creator.** Inej is building `jointryps.com/go/{name}` redirect links through Branch. Non-negotiable.
 - **Volume over quality.** 20 adequate TikToks > 2 polished ones. The algorithm rewards frequency.
 - **2-week evaluation window.** By May 16, we should know which creators are driving installs and which to cut.
 
-**Open question for the room:** Locket used 26 nano-creators with a templatized format. Can we create a standardized "Tryps demo" format that any creator can produce in 10 minutes? What does that template look like?
+**@Sean — We need to figure out who our Locket-style creators are.** Who are the 20–30 nano-creators that can mass-produce a templatized Tryps demo format? This is a Sean + Growth Marketer task once we hire them.
+
+**Open question for the room:** Can we create a standardized "Tryps demo" format that any creator can produce in 10 minutes? What does that template look like? (3-second hook + screen recording of Tryps planning a trip + reaction)
 
 ---
 
@@ -228,7 +236,9 @@ You text Tryps in your group chat and it plans your whole trip — flights, hote
 - **The product IS the marketing.** When Tryps plans a trip in 5 minutes in someone's group chat, that group tells other groups.
 - **Screenshot-worthy moments.** Trip invite cards, poll results, booking confirmations — every Tryps screen should be screenshot-worthy.
 
-**Open question for the room:** The MIT campus rollout could be our version of the Nikita Bier play. Do we start building `@tryps.mit` now and do a campus-specific soft launch before the broad May 2 push? Or is that a post-launch play for fall 2026?
+*Note: We're not necessarily doing campus-specific launches for May 2. This is a case study for the playbook, especially relevant for Jake's MIT timeline in fall 2026. The density principle (it's better to have 100% of one group than 1% of 100 groups) applies to our friend-group seeding strategy regardless.*
+
+**Open question for the room:** The density principle is powerful. For May 2, how do we apply it? Is it 5–10 NYC friend groups who all use Tryps before anyone else? Is it a specific college? Or is broad launch the right call?
 
 ---
 
@@ -265,6 +275,8 @@ You text Tryps in your group chat and it plans your whole trip — flights, hote
 - **The 15-sec product demo clip format.** This is Inej's audition skill. Screen-record Tryps in iMessage, edit with text overlays and transitions. This is our "Text Marty" content pillar.
 - **Show, don't tell.** Every social post that features the product should be a screen recording of real iMessage conversations with Tryps, not a description of features.
 - **Brand voice on social = group chat energy.** Not corporate. Not trying to be funny. Just real, warm, and a little chaotic.
+
+*Note: This is HUGE for Tryps but it's not Inej building this — it's whoever the content/growth marketer hire is. The demo clips, the brand voice on social, the show-don't-tell philosophy — that's the content person's domain. Inej builds the infrastructure (scheduling, analytics, automation) that makes it all run.*
 
 **Open question for the room:** For our product demo clips, should we record with real friend groups texting Tryps (authentic but hard to control), or stage conversations that look real (controlled but might feel scripted)?
 
@@ -303,7 +315,7 @@ We publish to 8 platforms but we can't go deep on all 8 with a 3-person team.
 |------|-----------|-----------|-----|
 | **ALL IN** | TikTok, Instagram | 70% of effort | Discovery + social proof. This is where 22–28 year olds find new products. |
 | **STRONG** | X (Twitter) | 20% of effort | Jake's voice, founder story, tech audience, startup community |
-| **AUTOPILOT** | YT Shorts, Facebook, LinkedIn, Snapchat, Pinterest | 10% of effort | Auto-repost from primary platforms. Enen sets up automation. |
+| **AUTOPILOT** | YT Shorts, Facebook, LinkedIn, Snapchat, Pinterest | 10% of effort | Auto-repost from primary platforms. Inej sets up automation. |
 
 **Jake's lean:** TikTok and Instagram are primary. X is Jake's personal channel. Everything else is auto-repost.
 
@@ -333,7 +345,7 @@ We publish to 8 platforms but we can't go deep on all 8 with a 3-person team.
 **Option A: Day 1.** Start spending $5K/month on Meta ads from launch day. Test everything.
 **Option B: After organic proves what works.** Wait 2–3 weeks, see which organic content performs, then amplify the winners with paid.
 
-**Jake's lean:** Option B. No paid until we have organic winners to amplify. Meta pixel is installed day 1 (Enen), but spend starts after we see what content resonates.
+**Jake's lean:** Option B. No paid until we have organic winners to amplify. Meta pixel is installed day 1 (Inej), but spend starts after we see what content resonates.
 
 **Question for the room:** When specifically is the trigger to start paid? After 10K organic impressions? After the first viral post? After 2 weeks regardless?
 
@@ -347,7 +359,7 @@ What does launch day actually look like?
 |-----------|--------|-------|
 | 12:00 AM | App live on App Store. jointryps.com updated with download link. | Product team |
 | 6:00 AM | Product Hunt listing goes live. First comment posted. | Inej |
-| 7:00 AM | Launch email blast to waitlist via Loops. | Enen (sends) / Inej (writes copy) |
+| 7:00 AM | Launch email blast to waitlist via Loops. | Inej (sends via Loops) / Growth hire (writes copy) |
 | 8:00 AM | All social posts go live — TikTok, IG, X simultaneously. Launch video drops. | Inej (publishes) / Sean (approves) |
 | 8:00 AM | DM rally: Jake + Sean text 50 people personally asking them to share/repost. | Jake + Sean |
 | 9:00 AM | Creator content starts going live (May 2–4 window). | Creators (Sean manages) |
@@ -362,29 +374,29 @@ What does launch day actually look like?
 
 ### Current Coverage Map
 
-| Scope | Description | Jake | Sean | Inej | Enen | Nobody |
-|-------|-------------|------|------|------|------|--------|
-| 01 Brand Book | Visual identity in Figma | Review | **Own** | — | — | — |
-| 02 Socials | Organic content, 8 platforms | Review | Direct | **Execute** | Infrastructure | — |
-| 03 UGC Program | 80 creators, outreach, tracking | Review | **Relationships** | Research + ops | Tools + tracking | — |
-| 04 Launch Video | 60-sec hero film | Review | **Own** | Support | — | — |
-| 05 Giveaways | Contest campaigns | Review | Direct | Execute | Build mechanics | — |
-| 06 Physical Presence | NYC street marketing | Review | **Own** | — | — | — |
-| 07 SEO / GEO / AEO | Search + AI visibility | Strategy | — | Write content | Build pages + schema | — |
-| 08 Referrals | Trip invite links, referral program | Strategy | — | — | Build system | **Gap** |
-| 09 App Store + PH | ASO, screenshots, PH launch | Review | — | **Execute** | ASO tools | — |
-| 10 Paid Acquisition | Meta ads, TikTok Spark Ads | Budget | — | **Manage** | Pixel + tooling | — |
-| 11 Email | Launch blast, onboarding drip | Review | — | Write copy | Set up Loops | — |
-| 12 Press | Journalist outreach, press kit | Send pitches | — | Build list + draft | Build /press page | **Gap** |
-| 13 Analytics | Dashboards, automations, tracking | Review | — | Use data | **Own** | — |
+| Scope | Description | Jake | Sean | Inej (Infra) | Growth Hire (TBD) | SEO/AEO (TBD) |
+|-------|-------------|------|------|-------------|-----------------|---------------|
+| 01 Brand Book | Visual identity | Review | **Own** | — | — | — |
+| 02 Socials | Organic content, 8 platforms | Review | Direct | **Infra** (Later, analytics, auto-repost) | **Produce content** | — |
+| 03 UGC Program | 80 creators, tracking | Review | **Relationships** | **Tools + tracking** | Outreach ops | — |
+| 04 Launch Video | 60-sec hero film | Review | **Own** | — | Support | — |
+| 05 Giveaways | Contest campaigns | Review | Direct | Build mechanics | Execute | — |
+| 06 Physical Presence | NYC street marketing | Review | **Own** | QR codes (Branch) | — | — |
+| 07 SEO / GEO / AEO | Search + AI visibility | Strategy | — | Build pages + schema | — | **Write content** |
+| 08 Referrals | Trip invite links | Strategy | — | **Build system** | — | — |
+| 09 App Store + PH | ASO, screenshots, PH | Review | — | ASO tools | **Copy + screenshots** | — |
+| 10 Paid Acquisition | Meta ads, TikTok Spark | Budget | — | **Pixel + tooling** | **Manage spend** | — |
+| 11 Email | Launch blast, onboarding | Review | — | **Set up Loops** | Write copy | — |
+| 12 Press | Journalist outreach | Send pitches | — | Build /press page | Build list + draft | — |
+| 13 Analytics | Dashboards, automations | Review | — | **Own** | Use data | — |
 
 ### The Gaps
 
 1. **Community management (thin).** Nobody is dedicated to responding to comments, managing DMs, engaging in Reddit/Facebook travel groups, or building word-of-mouth in online communities. Right now this falls to "everyone" which means no one.
 
-2. **Press/PR outreach (thin).** We have a plan to build a journalist list and draft pitches, but no one has press relationships. Jake and Sean will send the pitches, but the research and list-building is split between Inej and Enen without clear ownership.
+2. **Press/PR outreach (thin).** We have a plan to build a journalist list and draft pitches, but no one has press relationships. Jake and Sean send pitches. Inej builds the /press page. The growth hire (once onboard) builds the journalist list.
 
-3. **Referral program ownership (gap).** Scope 8 is strategic (Jake) and technical (Enen builds Branch), but nobody is actively running the referral program — deciding incentives, tracking performance, optimizing the viral loop.
+3. **Referral program ownership (gap).** Scope 8 is strategic (Jake) and technical (Inej builds Branch), but nobody is actively running the referral program — deciding incentives, tracking performance, optimizing the viral loop.
 
 4. **Video editing depth (thin).** Inej can do quick clips in CapCut, but if we need higher-production video editing (launch video cuts, complex ad variants, Remotion templates), we may need a dedicated video person or more hours from Sean.
 
@@ -402,7 +414,7 @@ What does launch day actually look like?
 | Video editing depth | Part-time freelance video editor to unblock Inej. Batch 10–15 clips/week. | Week 1–2 | $15–25/hr, 20 hrs/week = $1.2–2K/mo |
 | Community management | Inej absorbs for now (30 min/day). Hire part-time if >1 hr/day post-launch. | Post-launch | $20–30/hr, 15–20 hrs/week |
 | Press outreach | Freelance PR consultant for a 6–8 week engagement around launch. A good one can get 3–5 launch-day articles. | 2 weeks pre-launch | $3–5K/mo for 2 months |
-| Referral program | Jake owns strategy, Enen builds, Inej monitors. Not a separate role. | Post-launch | $0 |
+| Referral program | Jake owns strategy, Inej builds Branch system. Not a separate role. | Post-launch | $0 |
 | Paid acquisition | Inej runs test campaigns. Don't hire a specialist until $15K+ monthly spend. AI tools (Meta Advantage+) handle much of the optimization. | After $10K test spend | $0 for now |
 
 ### What AI Agents Can Cover (vs What Needs a Human)
@@ -412,14 +424,14 @@ What does launch day actually look like?
 | Task | Agent/Tool | Status |
 |------|-----------|--------|
 | Social caption variants (20 versions from 1 brief) | Claude with brand voice prompt | Ready now |
-| Ad copy generation (headlines, descriptions) | Claude Code slash command (/meta-ads) | Enen builds |
+| Ad copy generation (headlines, descriptions) | Claude Code slash command (/meta-ads) | Inej builds |
 | Email drip copy and lifecycle sequences | Claude + Loops | Ready now |
 | Creator research and list-building | Don agent + web search | Available |
 | Design drafts (carousels, thumbnails) | Pablo agent in Figma | Available |
 | Video teasers and draft cuts | Rio agent | Available |
 | Journalist research | Don agent + Exa APIs | Available |
-| Dashboard data pulls and alerts | n8n automations | Enen builds |
-| Comment monitoring (flag what needs reply) | n8n + Slack alerts | Enen builds |
+| Dashboard data pulls and alerts | n8n automations | Inej builds |
+| Comment monitoring (flag what needs reply) | n8n + Slack alerts | Inej builds |
 | A/B test variant generation | Claude | Ready now |
 
 **AI cannot replace (needs a human):**
@@ -457,63 +469,75 @@ We have an open role that needs to be filled ASAP. The current Upwork posting ("
 
 ---
 
-## 0:45–0:55 | Scope 2 — Socials: What Inej Owns
+## 0:45–0:55 | What Inej Builds (GTM Infrastructure)
 
-### Platforms
+Inej is the **infrastructure engineer**, not the content person. He builds the systems that the content person, Sean, and Jake run on. Here's what that means across scopes 2, 3, and 13.
 
-| Tier | Platform | Role |
-|------|----------|------|
-| **Primary** | TikTok | Inej produces 5 posts/week. Product demos, group chat memes, trip inspiration. |
-| **Primary** | Instagram | Inej produces 5 posts/week. Reels (from TikTok), carousels, grid-anchor statics. |
-| **Primary** | X (Twitter) | Jake posts founder content. Inej drafts and schedules. 5 posts/week. |
-| **Auto-repost** | YT Shorts, Facebook, LinkedIn, Snapchat, Pinterest | Enen sets up auto-repost from primary platforms. Inej monitors. |
+### Scope 2 — Socials Infrastructure
 
-### Content Types Inej Produces
+Inej doesn't produce the content. He builds the machine that publishes, tracks, and automates it.
 
-1. **Product demo clips** — Screen-record Tryps in iMessage. Edit with text overlays, transitions, branded elements in CapCut. 15–30 seconds. This is the core skill.
-2. **Carousels** — iMessage bubble-style carousels in Canva. Group chat screenshots, relatable text, Tryps Red CTA on final slide.
-3. **Static grid posts** — Bold text-on-color posts for Instagram grid. "Text Tryps." "Go while you can." Clean, minimal.
-4. **Clip edits** — Cut existing footage (Jake talking head, trip b-roll, screen recordings) into platform-specific formats.
-5. **Caption writing** — Every post needs platform-specific copy. Use Claude for first drafts, edit for voice.
+| What Inej Builds | Why | Done When... |
+|------------------|-----|--------------|
+| **Later setup** — connect all 8 platform accounts, configure team access, set up auto-repost from primary → secondary | Content person needs to schedule from day 1 | Test post visible on all 8 platforms |
+| **Analytics dashboard** — cross-platform view of engagement, reach, follower growth in Looker Studio or Later's built-in analytics | Sean and Jake need to see what's working without logging into 8 apps | One dashboard shows all platform metrics |
+| **Auto-repost workflows** — n8n automation: when TikTok publishes → auto-format and queue for YT Shorts, Snapchat, Pinterest | Multiplies every piece of content across platforms without manual work | Post on TikTok, verify it appears on secondary platforms within 1 hour |
+| **Hashtag/trend monitoring** — n8n alerts when trending sounds or topics match Tryps brand | Content person + Sean need real-time trend intel | Slack alert fires when relevant trend detected |
+| **Content asset library** — Google Drive structure for templates, logos, screen recordings, finished assets | Team needs to find any asset in under 30 seconds | Shared Drive folder organized by type, everyone has access |
 
-### Scheduling Tool
+**Scheduling Tool Recommendation: Later (Growth plan, ~$54/month for 3 users)**
 
-**Recommendation: Later (Growth plan, ~$54/month for 3 users)**
-
-Later wins because it's the **only scheduling tool that supports all 8 of our platforms including Snapchat.** No other tool at this price covers Snapchat.
+Later is the **only tool that supports all 8 platforms including Snapchat.**
 
 | Feature | Later ($54/mo) | Buffer ($40-80/mo) | Metricool ($45/mo) |
 |---------|---------------|-------------------|-------------------|
 | TikTok, IG, X, FB, LinkedIn, Pinterest | Yes | Yes | Yes |
 | YouTube Shorts | Yes | Yes | Yes |
 | **Snapchat** | **Yes** | No | No |
-| Team users (3) | Yes ($3.75/extra user) | Per-channel pricing | Basic collaboration |
+| Team users (3+) | Yes ($3.75/extra user) | Per-channel pricing | Basic collaboration |
 | AI scheduling | Yes (Smart Schedule) | No | No |
-| Visual grid planner | Best in class | Basic | Basic |
 | Analytics | Good | Good | Best (+ competitor tracking) |
 
-**Why not Buffer?** No Snapchat. Per-channel pricing means 8 channels = $40–80/month and still missing a platform.
+**Action:** Inej sets up Later on day 1. Content person (once hired) starts scheduling through it.
 
-**Why not Metricool?** Better analytics and cheaper, but users report bugs with Instagram Reel uploads and stripped TikTok formatting. No Snapchat. Use as backup if Later doesn't work out.
+### Scope 3 — UGC Program Infrastructure
 
-**Action:** Enen sets up Later on day 1. Inej starts scheduling immediately.
+Sean manages the creator relationships. The content person (once hired) helps with outreach ops. **Inej builds the tracking and tooling layer.**
 
-### Content Volume Target
+| What Inej Builds | Why | Done When... |
+|------------------|-----|--------------|
+| **Creator CRM setup** — Airtable or Stormy AI, configured with status tracking, deliverable deadlines, payment tracking | Sean needs to see creator pipeline at a glance | Sean can update a creator's status in 30 seconds |
+| **Affiliate link system** — `jointryps.com/go/{name}` redirect pages via Branch, click tracking verified | Every creator needs a unique trackable link | Click a /go/ link → opens iMessage pre-filled with Tryps number. Branch dashboard shows the click. |
+| **Creator performance dashboard** — Branch data + platform analytics → single view showing clicks, installs, CPI per creator | We need to know which creators to keep and which to cut (Locket model) | Dashboard shows creator → clicks → installs → cost per install |
+| **Payment tracking** — PayPal Business batch setup, integrated with CRM | Need to pay 50+ creators efficiently | Batch payment sent, CRM auto-updated |
+| **Creator tool evaluation** — trial Stormy AI, Modash, HypeAuditor for discovery + verification | Team needs the right tool before outreach starts | 1-page recommendation doc delivered to Jake + Sean |
+
+### Scope 13 — Analytics & Operations
+
+| What Inej Builds | Why | Done When... |
+|------------------|-----|--------------|
+| **Meta pixel + conversion events** — installed on jointryps.com, firing correctly | Required before any paid ads can run | Meta Events Manager shows pixel firing on page load |
+| **Loops email setup** — welcome email, waitlist capture on jointryps.com | Need email capture before launch | Submit email on jointryps.com → receive welcome email |
+| **n8n automation workflows** — new App Store review → Slack, social metric alerts, daily cost tracking | Team needs automated monitoring | Test review appears in Slack automatically |
+| **UTM naming convention** — doc + template so every link is trackable | Need attribution on every campaign, platform, content piece | UTM doc in shared drive, template used for all links |
+| **ASO tool setup** — ASO.dev configured with initial keyword targets | Need to track App Store keyword rankings | ASO.dev shows rankings for "group trip planner" |
+| **Looker Studio dashboard** — pulling from Later + Meta + AppsFlyer + Branch | Jake and Sean need one place to see all GTM metrics | Dashboard live with daily auto-refresh |
+
+### Content Volume Target (for whoever produces content)
 
 - **Pre-launch (April 2–May 1):** 15 posts/week across 3 primary platforms (5 each on TikTok, IG, X)
-- **Launch week (May 2–9):** 25+ posts across all platforms. All-hands-on-deck.
+- **Launch week (May 2–9):** 25+ posts across all platforms
 - **Post-launch:** 15 posts/week sustained + UGC reposts
 
 ### Key Reference
 
 Full 3-week content calendar: `~/tryps-docs/brand-and-gtm/02-socials/content-calendar.md`
-Content pillars, platform strategies, and specific post briefs are all there. Inej should read the entire calendar before producing anything.
 
 ---
 
-## Scope 3 — UGC Program: Inej's Research Assignment
+## UGC Program Tools — Inej's Research Assignment
 
-This is Inej's first strategic research assignment. Sean owns the creator relationships. Enen builds the tracking infrastructure. **Inej's job is to research the tools and workflows that power the program.**
+Sean owns the creator relationships. Inej builds the tracking infrastructure. **Inej's job is to research the tools and workflows that power the program and present recommendations.**
 
 ### The Six Research Questions
 
@@ -588,14 +612,14 @@ Inej must research, trial tools, and present recommendations to Jake within 3 wo
 *The need:* After launch week, we need to know: which creators drove the most engagement, clicks, and app installs? This is how we decide who to keep and who to cut (Locket model).
 
 *Tools/methods to evaluate:*
-- **Branch deep links** (Enen is building `jointryps.com/go/{name}` links) — track clicks per creator
+- **Branch deep links** (Inej is building `jointryps.com/go/{name}` links) — track clicks per creator
 - **UTM parameters** on all creator links — track in Google Analytics
 - **Platform analytics** — native IG/TikTok analytics on each creator's post
 - **AppsFlyer** — attribute installs to specific links/campaigns
 
-*What to report back:* Can we get a single dashboard showing: creator → clicks → installs → cost per install? What data does Enen need to build this in the Branch + analytics stack?
+*What to report back:* Can we get a single dashboard showing: creator → clicks → installs → cost per install? What data does Inej need to build this in the Branch + analytics stack?
 
-**Critical gotcha (from research):** Standard UTM-tagged links **break when users go through the App Store** — UTM parameters get stripped during the redirect. You MUST use Branch deferred deep links (which survive the install flow) OR unique promo codes (entered in-app after install) OR both. This is non-negotiable for knowing which creator drove which install. Coordinate with Enen on Branch setup.
+**Critical gotcha (from research):** Standard UTM-tagged links **break when users go through the App Store** — UTM parameters get stripped during the redirect. You MUST use Branch deferred deep links (which survive the install flow) OR unique promo codes (entered in-app after install) OR both. This is non-negotiable for knowing which creator drove which install. Coordinate with Inej on Branch setup.
 
 ---
 
@@ -607,9 +631,9 @@ Inej must research, trial tools, and present recommendations to Jake within 3 wo
 - Shows up in a dashboard so ambassadors can see their performance
 
 *Tools to evaluate:*
-- **Branch** (Enen is already deploying) — free tier, deep linking, attribution
+- **Branch** (Inej is already deploying) — free tier, deep linking, attribution
 - **Dub.co** (modern link management) — beautiful dashboard, analytics
-- **Custom redirect pages** (Enen builds on jointryps.com) — full control
+- **Custom redirect pages** (Inej builds on jointryps.com) — full control
 - **Short.io** — simple URL shortener with analytics
 
 *What to report back:* Is Branch enough for affiliate tracking, or do we need a second layer (Dub.co)? What does the ambassador experience look like — can they see their own stats?
@@ -627,31 +651,31 @@ Format: 1-page summary per question (6 pages total). For each:
 - Runner-up option
 - Cost
 - Can an AI workflow handle it instead?
-- What Enen needs to build to make it work
+- What Inej needs to build to make it work
 
 Present to Jake and Sean. Sean has final say on anything that touches creator relationships.
 
 ---
 
-## 0:55–1:00 | Days 1–2 Deliverables
+## 0:55–1:00 | Inej's Days 1–2 Deliverables (Infrastructure)
 
 ### Day 1 — April 2 (Today)
 
 | # | Deliverable | Done When... |
 |---|-------------|--------------|
-| 1 | **Read all context docs.** This document. Brand system (`~/tryps-docs/shared/brand.md`). Tool matrix. UGC strategy. Creator criteria. Content calendar. | You can explain what Tryps is, who the team is, and what your scope covers in 2 sentences each. |
-| 2 | **Produce the 15-sec product demo clip.** Screen-record the Tryps app on iOS. Edit into a polished clip with text overlays, transitions, and branded elements. This is the audition. | Jake and Sean both say "yes, this is the quality bar." |
-| 3 | **Set up Later (or Buffer/Metricool if Enen recommends different).** Connect all 8 platform accounts. Schedule one test post. | Test post visible on all platforms. |
-| 4 | **Start UGC tool research.** Sign up for free trials of Stormy AI, Modash, and HypeAuditor. Run 5 of our 13 reference creators through each tool. | Initial impressions logged. |
+| 1 | **Read all context docs.** This document. Brand system. Tool matrix. UGC strategy. Content calendar. | You can explain what Tryps is, who the team is, and what your infra scope covers. |
+| 2 | **Set up Later.** Connect all 8 platform accounts. Configure team access (Sean as approver). Schedule one test post. | Test post visible on all 8 platforms. |
+| 3 | **Install Meta pixel on jointryps.com.** Configure conversion events (page view, email signup, app install click). | Open jointryps.com → check Meta Events Manager shows pixel firing. |
+| 4 | **Set up Loops.** Configure welcome email. Wire email capture on jointryps.com waitlist. | Submit email on jointryps.com → receive welcome email within 5 minutes. |
 
 ### Day 2 — April 3
 
 | # | Deliverable | Done When... |
 |---|-------------|--------------|
-| 5 | **Draft first 5 social posts.** Using the content calendar as a guide and Sean's brand direction. Mix of product demo, group chat meme, and trip inspiration. | 5 posts in Buffer queue, pending Sean's approval. |
-| 6 | **Draft App Store copy.** Title (30 chars), subtitle (30 chars), description (4000 chars), keyword field. Reference the existing App Store listing and competitor apps. | Draft shared with Jake for review. |
-| 7 | **Continue UGC research.** Complete tool trials. Start building the creator CRM template (Google Sheet or Airtable). | Template shared with Sean. |
-| 8 | **Present initial tool findings to Jake.** Quick Slack update: which creator tools look promising, which are duds. | Jake has your initial read. |
+| 5 | **Start UGC tool trials.** Sign up for Stormy AI, Modash, HypeAuditor free trials. Run 5 of our 13 reference creators through each tool. | Initial impressions logged in Slack. |
+| 6 | **Build creator CRM template.** Airtable or Google Sheet with columns: creator, handle, platform, followers, engagement rate, outreach status, deliverables, payment status. | Template shared with Sean for review. |
+| 7 | **Set up n8n → Slack alerts.** First automation: new App Store review → auto-post to Slack channel. | A test review appears in Slack automatically. |
+| 8 | **UTM naming convention doc.** Write the naming system so every link is trackable (source/medium/campaign/content). Share with team. | Doc in shared drive. |
 
 ---
 
@@ -660,15 +684,17 @@ Present to Jake and Sean. Sean has final say on anything that touches creator re
 | Tool / Access | Who Provides | Priority |
 |---------------|-------------|----------|
 | **Slack workspace** | Jake invites | Before meeting |
-| **tryps-docs repo access** (read-only) | Jake grants | Before meeting |
-| **Later account** (or Buffer/Metricool) | Enen creates or Inej signs up | Day 1 |
-| **Canva Pro seat** | Jake adds to team plan | Day 1 |
-| **CapCut Pro license** | Inej signs up ($8/month, expensed) | Day 1 |
+| **tryps-docs repo access** | Jake grants | Before meeting |
+| **Later account** | Inej sets up, Jake adds payment | Day 1 |
+| **Meta Business Manager** | Jake adds Inej as admin | Day 1 |
+| **Loops account** | Inej sets up | Day 1 |
 | **App Store Connect** (read access) | Jake invites | Day 1 |
 | **Brand assets folder** (Google Drive) | Sean shares link | Day 1 |
-| **Creator tracking spreadsheet** | Inej creates template | Day 1–2 |
+| **n8n instance** (self-hosted on Hetzner or cloud) | Inej sets up / Jake provides Hetzner access | Day 1 |
 | **iOS device with Tryps installed** | Jake sends TestFlight invite | Before meeting |
-| **Stormy AI / Modash / HypeAuditor** (free trials) | Inej signs up | Day 1 |
+| **Stormy AI / Modash / HypeAuditor** (free trials) | Inej signs up | Day 1–2 |
+| **Branch.io account** | Inej sets up (coordinate with Asif on SDK) | Day 1–2 |
+| **ASO.dev account** | Inej signs up ($20/month) | Day 2 |
 | **Claude Pro / Claude Code access** | Inej's own (expensed) | Day 1 |
 
 ---
@@ -679,7 +705,7 @@ Present to Jake and Sean. Sean has final say on anything that touches creator re
 - **Sean approves all creative.** Draft → Sean reviews → approve or feedback → publish. Nothing goes live without Sean's thumbs up.
 - **Ship fast, iterate faster.** First draft in hours, not days. 80% quality shipped today beats 100% quality shipped next week.
 - **AI tools as a multiplier.** Claude for copy drafts. CapCut for quick edits. Canva for carousels. If a task takes you 2 hours manually and 20 minutes with AI, use AI.
-- **Weekly sync.** Jake + Sean + Inej + Enen, 30 minutes. What shipped, what's blocked, what's next.
+- **Weekly sync.** Jake + Sean + Inej + growth hire (once onboard), 30 minutes. What shipped, what's blocked, what's next.
 - **Daily Slack standup.** Post in #gtm channel every morning: what you did yesterday, what you're doing today, what's blocked.
 - **Core hours:** Overlap with US Eastern Time, 10AM–6PM ET.
 
@@ -687,9 +713,9 @@ Present to Jake and Sean. Sean has final say on anything that touches creator re
 
 ## The Bar
 
-> **The 14-day test:** Inej was worth it if he's produced content that is fast, high quality, and aligned with Jake and Sean's vision. The 15-sec demo clip is the proof.
+> **The 14-day test:** Inej was worth it if all 8 social platforms are connected, Meta pixel is firing, emails are capturing, creator tools are recommended, n8n automations are running, and Sean can see the system working.
 
-The demo clip is the audition. If you can screen-record a mobile app and produce a polished 15-second product demo clip — with text overlays, clean transitions, and branded elements layered on top — in under 30 minutes, you're in. Everything else (social content, App Store video, ad variants) follows from the same muscle.
+Inej's value is in the infrastructure, not the content. If by day 14, the GTM team has a working machine — scheduling tool live, analytics flowing, creator tracking built, automations firing — then Inej delivered. The content person (once hired) pours content through the pipes Inej builds.
 
 ---
 
