@@ -1,5 +1,0 @@
-Status changes detected at 2026-04-02 14:00 UTC:
-Previous:
-| group-decision-making | Group Decision-Making | in-progress | rizwan | 0/25 | Spec expanded: emoji voting + participant awareness (11 new SC) |
-Current:
-| group-decision-making | Group Decision-Making | in-progress | rizwan | 0/25 | 0/25 implemented |
