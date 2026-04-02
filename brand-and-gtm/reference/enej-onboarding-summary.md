@@ -13,21 +13,21 @@ Enej grasps the core mechanics of Tryps — iMessage-native, AI agent plans grou
 
 ## 2. Scope Ownership Map
 
-| # | Scope | Owner | Enej's Role | Confidence |
-|---|-------|-------|-------------|------------|
-| 01 | Brand Book | Sean | Hands-off | High |
-| 02 | Socials | Sean (creative) | Infra — scheduling, analytics, auto-repost | High |
-| 03 | UGC Program | Sean (relationships) | Tools — creator CRM, Branch links, performance dashboard | High |
-| 04 | Launch Video | Sean | Hands-off | High |
-| 05 | Giveaways | Sean | Build contest mechanics | Medium |
-| 06 | Physical Presence | Sean (design) | QR codes via Branch | High |
-| 07 | SEO / GEO / AEO | Enej + TBD writer | Schema markup, page builds — NOT content writing | High |
-| 08 | Referrals & Viral Loops | Enej | Own — Branch deep links, referral tracking | High |
-| 09 | App Store & Product Hunt | Enej | ASO tools setup, keyword tracking | High |
-| 10 | Paid Acquisition | Enej + Growth Marketer | Meta pixel install + tooling (Growth Marketer runs spend) | High |
-| 11 | Email & Lifecycle | Enej | Own — Loops setup, email capture, drip sequences | High |
-| 12 | Press & Partnerships | Sean | Build /press page only | High |
-| 13 | Analytics & Operations | Enej | Own — n8n automations, dashboards, Slack alerts, UTM system | High |
+| #   | Scope                    | Owner                  | Enej's Role                                                 | Confidence |
+| --- | ------------------------ | ---------------------- | ----------------------------------------------------------- | ---------- |
+| 01  | Brand Book               | Sean                   | Hands-off                                                   | High       |
+| 02  | Socials                  | Sean (creative)        | Infra — scheduling, analytics, auto-repost                  | High       |
+| 03  | UGC Program              | Sean (relationships)   | Tools — creator CRM, Branch links, performance dashboard    | High       |
+| 04  | Launch Video             | Sean                   | Hands-off                                                   | High       |
+| 05  | Giveaways                | Sean                   | Build contest mechanics                                     | Medium     |
+| 06  | Physical Presence        | Sean (design)          | QR codes via Branch                                         | High       |
+| 07  | SEO / GEO / AEO          | Enej + TBD writer      | Schema markup, page builds — NOT content writing            | High       |
+| 08  | Referrals & Viral Loops  | Enej                   | Own — Branch deep links, referral tracking                  | High       |
+| 09  | App Store & Product Hunt | Enej                   | ASO tools setup, keyword tracking                           | High       |
+| 10  | Paid Acquisition         | Enej + Growth Marketer | Meta pixel install + tooling (Growth Marketer runs spend)   | High       |
+| 11  | Email & Lifecycle        | Enej                   | Own — Loops setup, email capture, drip sequences            | High       |
+| 12  | Press & Partnerships     | Sean                   | Build /press page only                                      | High       |
+| 13  | Analytics & Operations   | Enej                   | Own — n8n automations, dashboards, Slack alerts, UTM system | High       |
 
 ---
 
@@ -47,15 +47,15 @@ Enej grasps the core mechanics of Tryps — iMessage-native, AI agent plans grou
 - **GHL (GoHighLevel)** — recommended as **internal GTM CRM** (not in the product). Worth trialing as a replacement for scattered Google Sheets tracking across creator pipeline, press contacts, and outreach. Flag for Jake to evaluate.
 
 ### Tools Enej adds that are missing from the matrix
-| Tool | Purpose | Urgency |
-|------|---------|---------|
-| **ManyChat** | Auto-DM replies on Instagram/TikTok ("comment TRYPS to get early access") | High — before launch |
-| **Dub.co** | Link management and affiliate tracking (Wispr Flow uses this) | High — before creators go live |
-| **PostHog** | A/B testing + product analytics (integrates with Supabase) | Medium — week 2 |
-| **Mention.com or Brand24** | Social mention monitoring → n8n → Slack | Medium |
-| **AppFollow** | Competitor App Store monitoring | Low — post-launch |
-| **Instantly.ai** | Cold email (flagged — may not fit consumer GTM model, discuss with Jake) | Low |
-| **Amazon SES** | Sending infrastructure if Loops becomes expensive at scale | Low — post-launch |
+| Tool                       | Purpose                                                                   | Urgency                        |
+| -------------------------- | ------------------------------------------------------------------------- | ------------------------------ |
+| **ManyChat**               | Auto-DM replies on Instagram/TikTok ("comment TRYPS to get early access") | High — before launch           |
+| **Dub.co**                 | Link management and affiliate tracking (Wispr Flow uses this)             | High — before creators go live |
+| **PostHog**                | A/B testing + product analytics (integrates with Supabase)                | Medium — week 2                |
+| **Mention.com or Brand24** | Social mention monitoring → n8n → Slack                                   | Medium                         |
+| **AppFollow**              | Competitor App Store monitoring                                           | Low — post-launch              |
+| **Instantly.ai**           | Cold email (flagged — may not fit consumer GTM model, discuss with Jake)  | Low                            |
+| **Amazon SES**             | Sending infrastructure if Loops becomes expensive at scale                | Low — post-launch              |
 
 ### What's still missing
 - **A/B testing for landing page** — depends on what jointryps.com is built on. Ask Jake/Asif today.
@@ -65,25 +65,25 @@ Enej grasps the core mechanics of Tryps — iMessage-native, AI agent plans grou
 
 ## 4. Case Study Infrastructure Assessment
 
-| Playbook | Infra Required | Priority |
-|----------|---------------|----------|
-| **Locket** (26 creators, 52 videos/day) | Creator CRM, Branch link per creator, performance dashboard (views → 3s retention → clicks → installs → CPI), automated underperformer alerts, payment tracking | **#1 — Tryps is executing this** |
-| **Partiful** (product invite = growth loop) | Beautiful OG image generation per trip invite, Branch deep links on every invite, viral loop tracking (invite sent → friend downloaded) | **#2 — core to Tryps product** |
-| **Wispr Flow** (affiliate program via Dub) | Dub.co affiliate links, ambassador dashboard, referral tracking, monthly payout tracking | **#3 — scope 8** |
-| **Gas/Nikita Bier** (campus-by-campus rollout) | Private Instagram accounts per campus, coordinated launch automation, geofenced download tracking | **#4 — if college strategy confirmed** |
-| **BeReal** (ambassador program) | Referral tracking, payment per referral, campus activation tracking | **#5 — post-launch** |
+| Playbook                                       | Infra Required                                                                                                                                                  | Priority                               |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| **Locket** (26 creators, 52 videos/day)        | Creator CRM, Branch link per creator, performance dashboard (views → 3s retention → clicks → installs → CPI), automated underperformer alerts, payment tracking | **#1 — Tryps is executing this**       |
+| **Partiful** (product invite = growth loop)    | Beautiful OG image generation per trip invite, Branch deep links on every invite, viral loop tracking (invite sent → friend downloaded)                         | **#2 — core to Tryps product**         |
+| **Wispr Flow** (affiliate program via Dub)     | Dub.co affiliate links, ambassador dashboard, referral tracking, monthly payout tracking                                                                        | **#3 — scope 8**                       |
+| **Gas/Nikita Bier** (campus-by-campus rollout) | Private Instagram accounts per campus, coordinated launch automation, geofenced download tracking                                                               | **#4 — if college strategy confirmed** |
+| **BeReal** (ambassador program)                | Referral tracking, payment per referral, campus activation tracking                                                                                             | **#5 — post-launch**                   |
 
 ---
 
 ## 5. Week 1 Workplan
 
-| Day | Date | Primary Deliverable | Done When... |
-|-----|------|-------------------|--------------|
-| 1 | Wed Apr 2 | Get all access. Audit what exists. Write UTM naming convention doc. | Jake has given Enej access to: social accounts, jointryps.com, Meta Business Manager, any existing tool subscriptions. UTM doc shared in Slack. |
-| 2 | Thu Apr 3 | Set up Metricool across all 8 platforms. Configure Meta pixel on jointryps.com. | Test post appears on all 8 platforms from Metricool. Meta Events Manager shows pixel firing on jointryps.com. |
-| 3 | Fri Apr 4 | Set up Loops + email capture form on jointryps.com. Configure SPF/DKIM/DMARC. Start domain warmup. | Submit email on jointryps.com → receive welcome email in inbox (not spam). |
-| 4 | Mon Apr 7 | Trial Stormy AI, Modash, HypeAuditor. Build creator CRM template (Google Sheet). Set up Branch account. | 1-page tool recommendation doc delivered to Sean + Jake. Creator CRM template ready for Sean to start populating. |
-| 5 | Tue Apr 8 | Build first n8n → Slack automation (App Store review alert). Set up ManyChat on Instagram. Write UTM structure for creator links. | Test review appears in Slack automatically. ManyChat fires a test DM. Creator Branch links template ready. |
+| Day | Date      | Primary Deliverable                                                                                                               | Done When...                                                                                                                                    |
+| --- | --------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Wed Apr 2 | Get all access. Audit what exists. Write UTM naming convention doc.                                                               | Jake has given Enej access to: social accounts, jointryps.com, Meta Business Manager, any existing tool subscriptions. UTM doc shared in Slack. |
+| 2   | Thu Apr 3 | Set up Metricool across all 8 platforms. Configure Meta pixel on jointryps.com.                                                   | Test post appears on all 8 platforms from Metricool. Meta Events Manager shows pixel firing on jointryps.com.                                   |
+| 3   | Fri Apr 4 | Set up Loops + email capture form on jointryps.com. Configure SPF/DKIM/DMARC. Start domain warmup.                                | Submit email on jointryps.com → receive welcome email in inbox (not spam).                                                                      |
+| 4   | Mon Apr 7 | Trial Stormy AI, Modash, HypeAuditor. Build creator CRM template (Google Sheet). Set up Branch account.                           | 1-page tool recommendation doc delivered to Sean + Jake. Creator CRM template ready for Sean to start populating.                               |
+| 5   | Tue Apr 8 | Build first n8n → Slack automation (App Store review alert). Set up ManyChat on Instagram. Write UTM structure for creator links. | Test review appears in Slack automatically. ManyChat fires a test DM. Creator Branch links template ready.                                      |
 
 **Content calendar starts April 11 — all scheduling infrastructure must be live by end of Day 2.**
 
@@ -91,12 +91,12 @@ Enej grasps the core mechanics of Tryps — iMessage-native, AI agent plans grou
 
 ## 6. Team Composition Recommendation
 
-| Role | Status | What They Need to Do |
-|------|--------|---------------------|
-| **Enej** (GTM Infra) | Hired | Build all systems, automations, dashboards, tracking |
-| **Growth Marketer** | HIRE NOW — urgent | Video-native, TikTok-first, fast editor. Must produce 15 posts/week across 3 platforms. Non-negotiable skills: CapCut/Premiere, short-form product demos, basic SEO writing, social calendar management. Content calendar starts April 11. |
-| **Sean** | Hired | Creative direction, creator relationships, content approval |
-| **SEO/AEO Writer** | TBD | AI agents (Don) can draft. A human needs to edit for accuracy and brand voice. Options: (1) include in Growth Marketer scope, (2) separate part-time contractor, (3) AI agents with Enej's n8n pipeline. Recommend: include in Growth Marketer scope at launch, hire specialist post-launch if needed. |
+| Role                 | Status            | What They Need to Do                                                                                                                                                                                                                                                                                   |
+| -------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Enej** (GTM Infra) | Hired             | Build all systems, automations, dashboards, tracking                                                                                                                                                                                                                                                   |
+| **Growth Marketer**  | HIRE NOW — urgent | Video-native, TikTok-first, fast editor. Must produce 15 posts/week across 3 platforms. Non-negotiable skills: CapCut/Premiere, short-form product demos, basic SEO writing, social calendar management. Content calendar starts April 11.                                                             |
+| **Sean**             | Hired             | Creative direction, creator relationships, content approval                                                                                                                                                                                                                                            |
+| **SEO/AEO Writer**   | TBD               | AI agents (Don) can draft. A human needs to edit for accuracy and brand voice. Options: (1) include in Growth Marketer scope, (2) separate part-time contractor, (3) AI agents with Enej's n8n pipeline. Recommend: include in Growth Marketer scope at launch, hire specialist post-launch if needed. |
 
 **Enej's view:** The Growth Marketer is the most urgent hire. Without them, Sean is making all content alone on top of managing 80 creator relationships. That breaks before May 2.
 
