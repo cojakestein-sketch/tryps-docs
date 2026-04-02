@@ -5,7 +5,7 @@
 
 ## Goal
 
-Take the mission text from Slack, find the latest standup doc, and update the `## Jake's Missions for the Team Today` section. This is mission intake, not standup Q&A.
+Take the mission text from Slack and update the **canonical missions file** at `~/tryps-docs/shared/missions.md`. Standups REFERENCE this file — never store missions inside standup docs.
 
 ## Inputs
 
@@ -16,20 +16,23 @@ Take the mission text from Slack, find the latest standup doc, and update the `#
 ## Instructions
 
 1. Read the command text after `/mission`
-2. Find the most recent file in `~/tryps-docs/docs/standups/` unless the text names a specific date
-3. Open the target standup and locate `## Jake's Missions for the Team Today`
-4. If the command names a mission number, update that mission in place
-5. If the text clearly matches an existing mission, rewrite that mission instead of adding a duplicate
-6. Otherwise append a new `### Mission N: ...` entry as the next mission number
-7. Keep the wording concise and outcome-oriented
-8. Commit only the standup file and push to `main`
+2. Open `~/tryps-docs/shared/missions.md`
+3. If the text clearly matches an existing mission, update that mission in place
+4. Otherwise append a new `### Mission N: ...` entry under `## Active Missions` as the next number
+5. Keep the wording concise and outcome-oriented
+6. Update the `Last updated:` date in the frontmatter
+7. Commit and push
+
+## Important: Standup Generation
+
+When generating standups, **read missions from `shared/missions.md`** — do NOT rewrite or invent new missions. The standup `## Jake's Missions` section should reference the canonical list, not replace it. Ops-level items (PR backlog, bug burndown) go under `## Ops Missions` separately.
 
 ## Commit
 
 ```bash
 cd ~/tryps-docs
-git add docs/standups/YYYY-MM-DD-standup.md
-git commit -m "mission: sync Slack mission to standup (YYYY-MM-DD)"
+git add shared/missions.md
+git commit -m "mission: [added|updated] Mission N — [title]"
 git push origin main
 ```
 
@@ -37,10 +40,10 @@ git push origin main
 
 Reply with:
 
-- The standup file updated
 - Whether the mission was added or updated
-- The final mission title
+- The final mission title and number
+- Current active mission count
 
 Example:
 
-> Mission captured. Updated `docs/standups/2026-04-01-standup.md`. Added `Mission 8: Launch Beta by Friday`.
+> Mission captured. Added `Mission 8: Founder Presence Optimization` to shared/missions.md. 10 active missions.
