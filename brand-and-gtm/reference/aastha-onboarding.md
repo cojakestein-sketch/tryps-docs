@@ -81,52 +81,183 @@ We've broken Scope 7 into specific needs. For each one, you'll evaluate whether 
 
 ---
 
-## Week 1 Focus: Founder Entity Fix + AEO Baseline
+## 30-Day Workplan
 
-Your first 7 days are focused on exactly two things. Everything else waits.
-
-### Track 1: Fix the Jake Stein Problem
-
-Right now, the wrong Jake Stein dominates every platform. Your job is to create the "Jake Stein = Tryps" association everywhere that matters.
-
-**Platforms to fix (in priority order):**
-1. **Crunchbase** — Create Tryps company profile + Jake Stein as founder
-2. **LinkedIn** — Audit Jake's current profile. Draft updated headline/about/experience that strongly associates Jake ↔ Tryps ↔ MIT. (Jake will make the actual edits — you draft + recommend.)
-3. **AngelList / Wellfound** — Create or claim profile
-4. **Product Hunt** — Create maker profile for Jake, prep Tryps listing
-5. **Enrichment platforms** — Submit corrections to Apollo, Clearbit, ZoomInfo so the right Jake Stein appears in enrichment lookups
-6. **Google** — Assess what it takes to get "Jake Stein Tryps" returning correct results on page 1
-
-**Deliverable:** An entity audit document — every platform searched, what's currently wrong, what you fixed, what needs Jake's action, and what needs more time.
-
-### Track 2: AEO Baseline Audit
-
-Before we can improve AI visibility, we need to know where we stand.
-
-**What this looks like:**
-1. Query 50+ prompts across 6-7 AI platforms (ChatGPT, Perplexity, Gemini, Google AI Overviews, Claude, Grok, Copilot). Document every response. Screenshot the ones that matter.
-2. For each query: who gets cited? What sources are linked? Does Tryps appear? What vocabulary does the AI use for the category?
-3. Competitive analysis: what are Splitwise, TripIt, Wanderlog, Partiful, Google Trips doing that we're not? What schema do they have? What content gets cited?
-4. Set up a monitoring tool (HubSpot AEO Grader is free — start there, or recommend something better) so we can track changes over time.
-
-**Deliverable:** A baseline visibility report with: share-of-voice data, gap map (where we don't appear but should), competitor comparison, and a prioritized 90-day roadmap.
+We launch May 2. You have 30 days. Here's what each week looks like, with verifiable deliverables at every checkpoint.
 
 ---
 
-## 7-Day Success Criteria
+### Week 1: Baseline + Retrieval Audit + Entity Fix
+
+Two parallel tracks. Everything else waits until these are done.
+
+**Track A — AEO Baseline Audit**
+
+Run a statistically significant set of prompts across ChatGPT Search, Perplexity, Gemini, Google AI Overviews, Claude, Grok, and Copilot. For each query, document:
+- Which brands get cited and from which sources (Reddit, listicles, directories, blogs, etc.)
+- What sub-queries the AI breaks the answer into (itinerary planning, coordination, expenses, flights, etc.)
+- What vocabulary and category language the AI uses
+- Whether Tryps appears — and if not, what would need to be true for it to appear
+
+Also audit jointryps.com for:
+- AI crawler access (are GPTBot, ClaudeBot, PerplexityBot allowed in robots.txt?)
+- Content extractability (can AI engines pull clear answers from the page?)
+- Schema coverage (what structured data exists today, if any?)
+- Internal linking structure
+
+**Track B — Founder Entity Fix (The Jake Stein Problem)**
+
+Searching "Jake Stein" on Google, ChatGPT, Apollo, Clearbit, or any enrichment tool returns the wrong person — Jake Stein the CEO of Common Paper (legal tech, YC, Philadelphia). Our Jake — founder of Tryps, MIT fall 2026 — is invisible. Fix this.
+
+Platforms to fix, in priority order:
+1. **Crunchbase** — Create Tryps company profile + Jake Stein as founder
+2. **LinkedIn** — Audit Jake's current profile. Draft updated headline, about section, and experience entry that strongly associates Jake ↔ Tryps ↔ MIT. Jake will make the actual edits — you draft and recommend.
+3. **AngelList / Wellfound** — Create or claim profile
+4. **Product Hunt** — Create maker profile for Jake, prep Tryps listing
+5. **Enrichment platforms** — Submit corrections to Apollo, Clearbit, ZoomInfo
+6. **Google** — Assess what it takes to get "Jake Stein Tryps" returning correct results on page 1
+
+**Week 1 Deliverables:**
+
+| # | Deliverable | How Jake verifies it |
+|---|------------|---------------------|
+| 1 | **AEO baseline report** — 50+ prompts queried across 6+ AI platforms, responses documented, competitors mapped, sources identified | Jake can read the report and see the data |
+| 2 | **Entity audit document** — every platform searched, current state documented, what you fixed, what needs Jake's action | Jake can read the document |
+| 3 | **Crunchbase profile live** — Tryps listed, Jake Stein as founder | Jake searches Crunchbase and finds it |
+| 4 | **3+ profiles created or corrected** — AngelList, Product Hunt, at least one enrichment platform correction submitted | Screenshots or links proving submission |
+| 5 | **LinkedIn draft delivered** — updated headline, about, experience. Ready for Jake to copy-paste. | Jake can read the draft |
+| 6 | **Monitoring tool set up** — free or paid tier tracking AI visibility, access shared to Jake | Jake can see the dashboard |
+| 7 | **jointryps.com crawler audit** — robots.txt, extractability, schema gaps documented | Jake can read the audit |
+| 8 | **Tool recommendation** — for each of the 8 needs, what tool you recommend, what you already have, what we need to buy, with costs | Jake can read the recommendation |
+
+---
+
+### Week 2: Entity Sync + Answer-First Structure
+
+Now that you know where we stand, start fixing how the web describes Tryps.
+
+**Entity & brand consistency:**
+- Align brand and founder descriptions across all platforms — Crunchbase, Product Hunt, LinkedIn, Apollo, Clearbit, AngelList, App Store. Every platform should describe Tryps the same way using the same language.
+- Implement `sameAs` references linking Jake's profiles, Tryps profiles, and jointryps.com together. This is how AI engines learn entities are the same thing.
+- Continue enrichment platform corrections from Week 1 (these take time to propagate).
+
+**Site structure for AI extraction:**
+- Restructure key pages on jointryps.com into extractable blocks — clear answer-first format, comparison sections, FAQ sections. AI engines cite pages that give direct answers in the first paragraph, not pages that bury the answer below the fold.
+- Write / clean up JSON-LD schema: Organization, SoftwareApplication, Person (founder), FAQ, HowTo. Enej will deploy these — you write the markup and hand it to him.
+
+**Founder presence buildout:**
+- Jake's LinkedIn content cadence — draft first 2 posts. Founder voice, building-in-public, group travel observations. Jake approves and posts.
+- Personal site or bio page recommendation — do we need jakeste.in or similar?
+
+**Week 2 Deliverables:**
+
+| # | Deliverable | How Jake verifies it |
+|---|------------|---------------------|
+| 1 | **Entity consistency audit** — every platform shows same description, same links, same language | Jake spot-checks 5 platforms |
+| 2 | **JSON-LD schema package** — ready for Enej to deploy. Organization, SoftwareApplication, Person, FAQ at minimum | Jake can read the JSON-LD files |
+| 3 | **Answer-first page restructure plan** — which pages get restructured and how, with before/after examples | Jake can read the plan |
+| 4 | **2 LinkedIn post drafts** for Jake | Jake can read and approve |
+| 5 | **90-day roadmap finalized** — updated based on Week 1 findings, with month-by-month milestones | Jake can read the roadmap |
+
+---
+
+### Week 3: Source-Layer Buildout
+
+You've mapped the gaps. You've fixed the entity layer. Now start building the content and authority signals that AI engines actually cite.
+
+**Content for AI citation:**
+- Build 1 Deep Research Page (DRP) brief — targeting the #1 priority prompt cluster from the baseline audit (e.g., "best app for planning a group trip"). 2,000+ words, comparison tables, step-by-step, FAQ section. AI drafts from your brief; you edit and optimize at the passage level.
+- Build 3-5 AEO Support Page (ASP) briefs — template-driven, targeting long-tail prompts (e.g., "how to split costs on a bachelorette trip"). 800-1,500 words each.
+- Build comparison pages: "Tryps vs Splitwise," "Tryps vs TripIt," "best apps for group travel 2026."
+
+**Authority & outreach:**
+- Build journalist target list — 25 contacts covering travel tech, consumer apps, MIT/college startup.
+- Write press kit — one-pager, founder bio, product screenshots, brand assets.
+- First 5 editorial pitches sent to travel/tech publications.
+- Submit to 10+ directories (AlternativeTo, G2, SaaSHub, Capterra, GetApp, etc.)
+
+**Community presence:**
+- Identify relevant community threads (Reddit, Quora, HackerNews) where group travel questions already exist. Participate selectively where it's authentic — not spam.
+
+**Week 3 Deliverables:**
+
+| # | Deliverable | How Jake verifies it |
+|---|------------|---------------------|
+| 1 | **1 DRP published or in final review** (or brief + AI draft ready for Jake review) | Jake can read the page |
+| 2 | **3-5 ASP briefs built, at least 2 published** | Jake can read the pages |
+| 3 | **1-2 comparison pages live** ("Tryps vs X") | Jake can see them on the site |
+| 4 | **Press kit delivered** — one-pager, founder bio, screenshots, assets | Jake can read the kit |
+| 5 | **25-person journalist list** with contact info and pitch angle per person | Jake can read the list |
+| 6 | **5 editorial pitches sent** | Jake can see the emails/outreach log |
+| 7 | **10+ directory submissions** | Screenshots or confirmation links |
+| 8 | **App Store copy draft** — title, subtitle, description, keywords | Jake can read the draft |
+
+---
+
+### Week 4: SOV Measurement + Optimization Loop
+
+Measure what moved. Double down on what's working. Fix what isn't.
+
+**Share-of-voice tracking:**
+- Re-run the baseline prompt set from Week 1 across all 7 AI platforms. Compare citation rates. What changed? Where did Tryps start appearing? Where are we still invisible?
+- Monitor how Tryps is described — are AI engines using our language or making up their own? Sentiment check.
+- Track which content pages are getting cited vs. ignored.
+
+**Optimization:**
+- Run 1 structured AEO experiment — pick one variable (e.g., adding FAQ schema to a specific page) and measure whether AI citation changes for target prompts. Document the setup, the change, and the result.
+- Page-format experiments — what structures get extracted vs. ignored? Feed findings back into content strategy.
+- Update DRPs and ASPs based on what the data shows.
+
+**Ongoing cadence setup:**
+- Establish the monthly rhythm: 1 DRP, 5-10 ASPs, 10 editorial pitches, 1 AEO experiment, monthly SOV report.
+- First monthly executive summary delivered — share-of-voice delta from baseline, entity fix status, content pipeline status, what's working, what's not, priorities for month 2.
+
+**Week 4 Deliverables:**
+
+| # | Deliverable | How Jake verifies it |
+|---|------------|---------------------|
+| 1 | **SOV comparison report** — Week 1 baseline vs. Week 4, showing movement per prompt cluster | Jake can read the report |
+| 2 | **1 AEO experiment documented** — setup, change, result, finding | Jake can read the experiment |
+| 3 | **Entity fix status check** — re-search "Jake Stein" everywhere, document what changed | Jake can see the before/after |
+| 4 | **Monthly executive summary** — overall program status, wins, gaps, month 2 priorities | Jake can read the summary |
+| 5 | **Ongoing cadence documented** — monthly deliverables, tools, process, who does what | Jake can read the process doc |
+
+---
+
+### Monthly Deliverables (Ongoing After Week 4)
+
+This is the standard output we expect from this role on an ongoing monthly basis.
+
+| Category | Deliverable | Cadence |
+|----------|------------|---------|
+| **Content** | Deep Research Pages (DRPs) | 1-2 / month |
+| | AEO Support Pages (ASPs) | 5-10 / month |
+| | On-page AEO optimization | Ongoing |
+| **Authority** | Editorial / PR pitches | 10 / month |
+| | Directory submissions & maintenance | Ongoing |
+| **Measurement** | Share-of-voice report (7 AI platforms) | Monthly |
+| | AEO experiments | 1 / month |
+| | Sentiment & error detection | Monthly |
+| | Executive summary | Monthly |
+| **Founder** | LinkedIn drafts for Jake | 4-8 / month |
+| | Entity monitoring & corrections | Ongoing |
+
+---
+
+## 7-Day Success Criteria (Week 1 Checkpoint)
 
 These are the specific, verifiable results I'll evaluate at the end of your first week. You either did them or you didn't.
 
 | # | Success criteria | How I verify it |
 |---|-----------------|-----------------|
-| 1 | **Entity audit document delivered** — every platform listed above searched, current state documented, actions taken or recommended | I can read the document |
-| 2 | **Crunchbase profile live** — Tryps listed, Jake Stein listed as founder | I search Crunchbase and find it |
-| 3 | **3+ profiles created or corrected** — AngelList, Product Hunt, and at least one enrichment platform (Apollo/Clearbit/ZoomInfo correction submitted) | Screenshots or links proving submission |
-| 4 | **LinkedIn draft delivered** — updated headline, about section, and experience entry for Jake. Ready for Jake to copy-paste. | I can read the draft |
-| 5 | **AEO baseline report delivered** — 50+ prompts queried across 6+ AI platforms, responses documented, competitors analyzed | I can read the report and see the data |
-| 6 | **Monitoring tool set up** — at least a free tier tool tracking our AI visibility, with access shared to Jake | I can see the dashboard |
-| 7 | **90-day roadmap draft** — prioritized plan for what we attack in months 1-3 across all 8 needs, with tool recommendations and budget | I can read the roadmap |
-| 8 | **Tool recommendation delivered** — for each of the 8 needs above, tell me: what tool you recommend, what you already have access to, and what we need to buy | I can read the recommendation |
+| 1 | **AEO baseline report delivered** — 50+ prompts, 6+ AI platforms, responses documented | I can read the report and see the data |
+| 2 | **Crunchbase profile live** — Tryps listed, Jake Stein as founder | I search Crunchbase and find it |
+| 3 | **3+ profiles created or corrected** — AngelList, Product Hunt, enrichment correction | Screenshots or links |
+| 4 | **LinkedIn draft delivered** — headline, about, experience for Jake | I can read it |
+| 5 | **Entity audit document** — every platform searched, status documented | I can read it |
+| 6 | **Monitoring tool set up** — tracking AI visibility, access shared to me | I can see the dashboard |
+| 7 | **jointryps.com crawler + schema audit** — robots.txt, extractability, gaps | I can read it |
+| 8 | **Tool recommendation** — for each of the 8 needs, recommended tool + cost + what you already have | I can read it |
 
 ---
 
@@ -180,6 +311,9 @@ Answer all 8 in this Slack thread. Take your time — these aren't a quiz, they'
 
 ## The Bar
 
-In 7 days, I should be able to look at verifiable deliverables and know whether this engagement is working. The entity audit and AEO baseline are the proof. If those are sharp, specific, and actionable, we're in business. If they're vague or generic, we have a problem.
+**Week 1:** I should be able to look at 8 verifiable deliverables and know whether this engagement is working. The entity audit and AEO baseline are the proof. If those are sharp, specific, and actionable, we're in business. If they're vague or generic, we have a problem.
+
+**Week 4:** By end of month, we should have: a measurable SOV baseline with before/after data, the Jake Stein entity problem meaningfully improved, schema deployed on jointryps.com, at least 1 DRP and several ASPs live, press outreach in motion, and a documented monthly cadence I can hold you to.
+
 
 Welcome aboard. Read the docs, answer the questions, and let's get to work.
