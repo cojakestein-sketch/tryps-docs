@@ -1,5 +1,5 @@
-Status changes detected at 2026-04-02 18:00 UTC:
+Status changes detected at 2026-04-02 18:30 UTC:
 Previous:
-| voice-calls | Voice Calls | done | asif | 14/14 | Tryps agent + Marty voice both live |
+| group-decision-making | Group Decision-Making | in-progress | asif, rizwan | 5/25 | SC-15,18,19,20,24 done (Asif — emoji voting + participant awareness) |
 Current:
-| voice-calls | Voice Calls | done | asif | — |  |
+| group-decision-making | Group Decision-Making | in-progress | rizwan | 0/25 | 0/25 implemented |
