@@ -9,7 +9,7 @@ updated: 2026-04-02
 
 # SEO / GEO / AEO
 
-> Make Tryps the answer when anyone — human or AI — asks how to plan a group trip.
+> Make Tryps the answer when anyone — human or AI — asks how to plan a group trip. Not just "what's the best app" queries, but the actual trip planning prompts: "help me plan a trip to Italy with my family," "how do I coordinate travel with 6 friends," "we're trying to plan a bachelorette trip." Tryps should surface naturally as the tool to use.
 
 ## Context
 
