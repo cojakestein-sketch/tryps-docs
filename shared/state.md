@@ -1,7 +1,7 @@
 # Tryps State
 
 > Auto-generated from scope state.md frontmatter. Do not edit manually.
-> Last updated: 2026-04-02 22:30 UTC
+> Last updated: 2026-04-02 23:00 UTC
 
 ## Scope Status
 
@@ -11,7 +11,7 @@
 | beta-user-feedback | Beta & User Feedback | in-progress | jake | 0/0 | In progress |
 | core-trip-experience | Core Trip Experience | testing | nadeem | 15/16 | Bug testing in progress |
 | customer-service-triaging | Customer Service & Triaging | needs-spec | jake | 0/0 | Jake to spec |
-| group-decision-making | Group Decision-Making | in-progress | rizwan | 0/25 | 0/25 implemented |
+| group-decision-making | Group Decision-Making | in-progress | rizwan | 5/25 | 5/25 implemented |
 | imessage-agent | iMessage Agent | done | asif | 51/57 |  |
 | onboarding-teaching | Onboarding & Teaching | specced | nadeem | 0/14 | Spec exists, not started |
 | output-backed-screen | Output-Backed Screen | in-progress | nadeem | 7/48 | 7/48 implemented |
