@@ -22,8 +22,8 @@
 A user must be able to book flights, hotels, activities, and transport — for themselves or on behalf of someone else in the group. This is the core value prop and the #1 thing blocking the team goal. Nothing matters more.
 
 ### Mission 2: Onboarding Flow with Emoji Voting — Group Facilitation Engine
-**Owner:** TBD (needs spec) | **Created:** Apr 2 | **Status:** Needs spec — [Issue #341](https://github.com/cojakestein-sketch/tryps/issues/341)
-The agent should guide new groups through trip planning using native emoji reactions as a voting mechanism. Example: "react to vote: thumbs-up = late summer, !! = early spring, heart = winter, fire = custom date." This IS the group facilitation engine — it's how Tryps shepherds a group from a blank trip to a planned one without any single person doing the work. Ties directly to the `group-decision-making` scope (14 SC, specced, assigned to Rizwan). The agent must also be contextually aware of who's in the chat (Issue #341 — no "send them the link" when they're already here). Spec this next.
+**Owner:** Rizwan (lead), Asif (Linq API) | **Created:** Apr 2 | **Status:** Specced — 25 SC in `group-decision-making/spec.md`
+Spec complete. 11 new SC added (SC-15–25) covering: participant awareness (agent knows who's in the chat — fixes Issue #341), emoji voting via Apple iOS tapback reactions, flexible tally with criticality-based timeout, vote prediction for built-out profiles, and immediate facilitation → booking transition. Priority: SC-15–16 first (live bug), then SC-18–20 (emoji voting core). Feeds directly into Mission 1 (Book All Travel). [Issue #341](https://github.com/cojakestein-sketch/tryps/issues/341)
 
 ### Mission 3: Customer Interviews — How Do We Present the Product?
 **Owner:** Asif + Jake | **Created:** Apr 1 | **Status:** Pipeline live at marty.jointryps.com/interview

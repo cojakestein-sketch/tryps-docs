@@ -13,9 +13,17 @@ You need to produce a single, polished document that serves as both onboarding m
 
 **Tryps** is a group travel planning app launching May 2, 2026. The core product is an AI travel agent in iMessage — you text it, and it plans your trip with your friend group. Think "Partiful but for travel."
 
-**Inej (the GTM Growth Engineer)** is the second GTM hire (after Sami, the Infra Engineer who started April 3). He is a flexible, AI-native operator — not a specialist. He makes content, runs ads, writes copy, handles ASO, does whatever the GTM org needs. Sean directs, he executes. The core audition skill: screen-record a mobile app and produce a polished 15-sec demo clip with text overlays and transitions in under 30 minutes.
+**Inej (the GTM Growth Engineer)** is a flexible, AI-native operator — not a specialist. He makes content, runs ads, writes copy, handles ASO, does whatever the GTM org needs. Sean directs, he executes. The core audition skill: screen-record a mobile app and produce a polished 15-sec demo clip with text overlays and transitions in under 30 minutes.
 
-**The bigger question:** Now that we know what Inej does, what are the remaining GTM team needs? What other roles do we need to fill? What gaps exist between Jake + Sean + Sami + Inej and a fully operational GTM machine? This meeting should surface those answers.
+**The GTM org is now 4 roles + Sean.** We've identified and are hiring for all of them:
+1. **Enen** (Infra Engineer) — builds systems and automation
+2. **Inej** (Growth Engineer) — makes visual content and runs campaigns
+3. **GEO/AEO Specialist** (hiring, posted on Upwork April 2) — AI visibility, schema, entity optimization, landing page, press outreach, founder presence
+4. **Sean** — Creative Director, calls all shots
+
+The GEO/AEO specialist is a critical new role. Their job is to make Tryps show up when people ask AI to help plan a trip. Right now, asking ChatGPT or Perplexity about group trip planning doesn't surface Tryps at all. This person also fixes our founder entity problem (searching "Jake Stein" returns the wrong person everywhere). They own scopes 07 (SEO/GEO/AEO), 12 (Press & Partnerships), 11 (Email copy), 09 (App Store copy/ASO), plus founder presence and landing page optimization.
+
+**Key boundary for Inej to understand:** Inej makes the visual content (clips, social posts, screenshots, ad variants). The GEO/AEO person handles written/strategic content (research pages, schema, press pitches, App Store copy, LinkedIn drafts for Jake). Inej does NOT need to worry about SEO, schema markup, AI visibility, or press outreach — that's the other person's lane.
 
 **Two mottos that define everything we do:**
 1. **"We are taking over and controlling the media."** — Every piece of content, every platform, every ad, every creator post is about owning the narrative. We don't participate in media. We control it.
@@ -24,8 +32,9 @@ You need to produce a single, polished document that serves as both onboarding m
 **Team:**
 - **Jake** — Founder, product. Sets priorities.
 - **Sean DeFaria** — Creative Director. Calls shots on everything creative. Reviews and approves before anything goes live. Manages creator/influencer relationships.
-- **Sami** — GTM Infra Engineer (started April 3). Builds systems: Buffer, Meta pixel, n8n automations, dashboards, Branch deep links.
+- **Enen** — GTM Infra Engineer (replaced Sami who departed). Builds systems: Buffer, Meta pixel, n8n automations, dashboards, Branch deep links, Loops email flows, Remotion templates.
 - **Inej** — GTM Growth Engineer (new hire, being onboarded tomorrow). Makes things: content, clips, App Store copy, social posts, ad variants, landing pages.
+- **GEO/AEO Specialist** — (hiring now, posted on Upwork April 2). Owns AI visibility, schema markup, entity optimization, landing page optimization, press outreach, founder presence. NOT a content writer — builds content briefs, AI drafts from briefs, they edit and optimize. See `~/tryps-docs/brand-and-gtm/reference/upwork-digital-presence-strategist.md` for full role definition and `~/tryps-docs/brand-and-gtm/07-seo-geo-aeo/objective.md` for full scope.
 
 ## Required Reading — Load These Files
 
@@ -36,7 +45,9 @@ Read ALL of these before doing anything:
 @~/tryps-docs/brand-and-gtm/reference/gtm-roles-final.html — Detailed role cards for both GTM hires
 @~/tryps-docs/brand-and-gtm/reference/gtm-2week-sprint.md — 10 deliverables for first sprint
 @~/tryps-docs/brand-and-gtm/reference/upwork-growth-engineer-v2.md — The Upwork job posting (what we told candidates)
-@~/tryps-docs/brand-and-gtm/reference/sami-onboarding-prompt.md — Sami's onboarding for reference on format/structure
+@~/tryps-docs/brand-and-gtm/reference/sami-onboarding-prompt.md — Previous infra engineer onboarding for reference on format/structure
+@~/tryps-docs/brand-and-gtm/reference/upwork-digital-presence-strategist.md — GEO/AEO Specialist role definition (so Inej understands the other operator role)
+@~/tryps-docs/brand-and-gtm/07-seo-geo-aeo/objective.md — Full SEO/GEO/AEO scope (so Inej knows what's NOT his lane)
 @~/tryps-docs/brand-and-gtm/02-socials/objective.md — Scope 2 objectives
 @~/tryps-docs/brand-and-gtm/03-ugc-program/objective.md — Scope 3 objectives
 @~/tryps-docs/brand-and-gtm/03-ugc-program/ugc-strategy.md — Full UGC targeting & outreach strategy
@@ -69,7 +80,9 @@ For each brand launch studied, extract:
 7. What can Tryps steal and adapt?
 
 Also research:
-- **GTM team structures for consumer app launches** — What does a lean, effective GTM team look like for a pre-seed/seed consumer app launching in 2026? Beyond founder + creative director + infra engineer + growth engineer, what roles are typically needed? Content editor? Community manager? Paid acquisition specialist? PR person? What can be covered by AI agents vs humans?
+- **GTM team structures for consumer app launches** — What does a lean, effective GTM team look like for a pre-seed/seed consumer app launching in 2026? We've already scoped the team as: Creative Director (Sean) + Infra Engineer (Enen) + Growth Engineer (Inej) + GEO/AEO Specialist (hiring). Validate this structure against what other successful launches had. What are we missing? What's overkill?
+
+**NOTE:** A comprehensive consumer app launch research report already exists at `~/tryps-docs/brand-and-gtm/reference/consumer-app-launch-research.md` covering Wispr Flow, Partiful, Locket, BeReal, Gas (Nikita Bier), Poke AI, and Claude AI. READ THIS FIRST before deploying research agents — don't duplicate work. Focus new research on anything not already covered.
 
 ### Step 2: Audit the GTM Tool Matrix (Scopes 2-3 Only)
 
@@ -116,7 +129,12 @@ Not a product explainer. Just enough for Inej to pitch it in a sentence: "You te
 
 ### 3. The GTM Team (org chart)
 
-Jake → Sean (Creative Director, approves everything) → Growth Engineer + Sami (Infra Engineer). Show who does what, who approves what, how work flows.
+Jake → Sean (Creative Director, approves everything) → 3 operators:
+- **Enen** (Infra Engineer) — systems, automation, dashboards, tool wiring
+- **Inej** (Growth Engineer) — visual content, clips, social posts, ad variants
+- **GEO/AEO Specialist** (hiring) — AI visibility, schema, entity optimization, landing page, press, founder presence
+
+Show who does what, who approves what, how work flows. Make the boundaries between the 3 operator roles crystal clear — especially between Inej (visual content) and the GEO/AEO person (written/strategic content + technical SEO). Include a table showing which of the 13 GTM scopes each person owns.
 
 ### 4. Case Studies: How the Best Brands Launched (from research) — DISCUSSION SECTION
 
@@ -151,18 +169,32 @@ This is where the meeting gets concrete. After discussing the case studies, Jake
 
 Frame each as a decision card with the options, Jake's current lean, and space for the room to debate and commit. Granola will capture the final decisions.
 
-### 6. GTM Team Needs — What Roles Are We Still Missing? — DISCUSSION SECTION
+### 6. GTM Team — The Full Org and How It Works — DISCUSSION SECTION
 
-Now that we know what Inej does, map out the full GTM org and identify the gaps. This section should answer: **what does the complete GTM team need to look like to control the media for this launch?**
+The GTM org is now fully scoped with 3 operator roles under Sean. This section should make it concrete for Inej: here's your lane, here's what's NOT your lane, here's how the 3 operators coordinate.
 
 Structure:
-1. **Current coverage map** — table of all 13 scopes showing who covers what today (Jake / Sean / Sami / Inej / nobody)
-2. **The gaps** — which scopes or capabilities have no owner or thin coverage? Be specific. Examples might include: dedicated paid acquisition person, community manager, PR/press outreach, video editor, someone to manage the App Store listing ongoing, someone to run the Product Hunt launch day.
-3. **Role recommendations** — For each gap, recommend: (a) is this a new hire, (b) can an existing person absorb it, (c) can an AI agent handle it, or (d) can we skip it for launch and add later?
-4. **Discussion question:** "If we could hire one more person before May 2, what role would have the highest impact?"
-5. **Inej's input** — explicitly ask Inej during the meeting: "Now that you've seen the full scope, what do you think is missing? What roles have you seen on GTM teams that we don't have?"
+1. **Full coverage map** — table of all 13 scopes showing who covers what:
 
-This should be informed by the research on how other brands structured their GTM teams.
+| # | Scope | Sean | Enen (Infra) | Inej (Growth) | GEO/AEO Specialist |
+|---|-------|------|-------------|---------------|-------------------|
+| 01 | Brand Book | Owner | | | |
+| 02 | Socials | Approves | Scheduling infra | **Content production** | |
+| 03 | UGC Program | Relationships | Tracking tools | Content variants | |
+| 04 | Launch Video | Director | | Clip editing | |
+| 05 | Giveaways | Strategy | Mechanics/tools | Creative assets | |
+| 06 | Physical Presence | Decisions | | | |
+| 07 | SEO/GEO/AEO | | Schema deploy | | **Full owner** |
+| 08 | Referrals | | Branch/deep links | | |
+| 09 | App Store/PH | Approves | ASO tools | **Screenshots/video** | **Copy/keywords** |
+| 10 | Paid Acquisition | | Meta pixel | **Ad variants/management** | Landing page optimization |
+| 11 | Email & Lifecycle | | Loops flows | | **Copy/strategy** |
+| 12 | Press & Partnerships | | | | **Full owner** |
+| 13 | Analytics & Ops | | **Full owner** | | AI visibility reporting |
+
+2. **The key boundary** — Inej makes visual things. The GEO/AEO person makes written/strategic things and handles technical SEO. Enen wires everything together. When in doubt: if it's a clip, graphic, or social post → Inej. If it's a research page, press pitch, schema markup, or landing page copy → GEO/AEO. If it's a dashboard, automation, or tool integration → Enen.
+3. **What's still thin** — Paid acquisition (scope 10) is split between Inej (ad variants) and GEO/AEO person (landing page). No dedicated paid specialist. Community management is nobody's job yet. These are the only real gaps — discuss whether to add later or absorb.
+4. **Discussion question for the room:** "Does this coverage make sense? What feels like it's falling through the cracks?"
 
 ### 7. Scope 2 — Socials: What Inej Owns
 
@@ -249,7 +281,7 @@ Structure the document so Jake can walk through it in this order during the meet
 | 0:05-0:10 | The GTM Team | Jake presents | Who does what. Where Inej fits. |
 | 0:10-0:25 | Case Studies | Group discussion | Study 3-5 launches together. What are we stealing? Granola captures notes. |
 | 0:25-0:35 | Strategy Commitments | Group decision-making | Commit to content pillars, platform priorities, launch choreography. Everyone weighs in. |
-| 0:35-0:45 | GTM Team Needs | Open discussion | What roles are missing? What does Inej think we need? What can agents cover? |
+| 0:35-0:45 | GTM Team — Full Org | Present + discuss | 3 operator roles explained. Inej's lane vs GEO/AEO person's lane vs Enen's lane. Coverage map. What's thin. |
 | 0:45-0:55 | Scopes 2-3 + UGC Research Assignment | Jake assigns | Inej's specific scope, day 1-2 deliverables, UGC research questions. |
 | 0:55-1:00 | Tools, Access, How We Work | Logistics | Get Inej set up. |
 

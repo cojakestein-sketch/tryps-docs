@@ -11,7 +11,7 @@
 | beta-user-feedback | Beta & User Feedback | in-progress | jake | 0/0 | In progress |
 | core-trip-experience | Core Trip Experience | testing | nadeem | 15/16 | Bug testing in progress |
 | customer-service-triaging | Customer Service & Triaging | needs-spec | jake | 0/0 | Jake to spec |
-| group-decision-making | Group Decision-Making | specced | rizwan | 0/14 | Spec exists, not started |
+| group-decision-making | Group Decision-Making | in-progress | rizwan | 0/25 | Spec expanded: emoji voting + participant awareness (11 new SC) |
 | imessage-agent | iMessage Agent | done | asif | 51/57 |  |
 | onboarding-teaching | Onboarding & Teaching | specced | nadeem | 0/14 | Spec exists, not started |
 | output-backed-screen | Output-Backed Screen | in-progress | nadeem | 7/48 | 7/48 implemented |
@@ -23,6 +23,6 @@
 
 ## Summary
 
-- **13 scopes** total: 2 done, 4 in-progress, 1 testing, 4 specced, 1 needs-spec, 1 not-started
+- **13 scopes** total: 2 done, 5 in-progress, 1 testing, 3 specced, 1 needs-spec, 1 not-started
 - **10 with criteria progress**, 3 need criteria
 - **11 assigned to devs**, 2 assigned to jake
