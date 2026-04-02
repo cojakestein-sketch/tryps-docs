@@ -49,7 +49,12 @@ Generate tomorrow's standup document with 3 targeted questions per active dev. Q
 
 ### 2. Write Jake's Missions
 
-Before generating questions, write **Jake's Missions for the Team Today** — 2-4 missions that define what Jake cares about that day. These come from:
+Before generating questions, check if Jake has **pinned missions** in the standup doc:
+- Look for `pinned_missions: true` in the frontmatter OR `<!-- JAKE-PINNED` comments in the file
+- **If pinned missions exist: DO NOT overwrite them.** Keep Jake's missions section exactly as-is. Skip to Step 3.
+- **If no pinned missions exist:** Generate missions as described below.
+
+When generating missions (no pinned missions found), write **Jake's Missions for the Team Today** — 2-4 missions that define what Jake cares about that day. These come from:
 - Yesterday's standup context
 - What's most urgent based on ClickUp/GitHub
 - Any strategic priorities from `tryps-docs/shared/priorities.md`

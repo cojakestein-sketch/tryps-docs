@@ -15,9 +15,11 @@ Everything related to Tryps brand, go-to-market, and launch lives here.
 | Person | Role | Scope |
 |--------|------|-------|
 | **Sean DeFaria** | Creative Director | Calls shots, reviews, approves, manages relationships |
-| **GTM Infrastructure Engineer** | Systems builder | Tools, workflows, automation, dashboards, agent infra |
-| **GTM Growth Engineer** | Flexible operator | Content, ads, ASO, SEO, email — whatever's needed that week |
+| **Enen** | GTM Infra Engineer | Tools, workflows, automation, dashboards, agent infra |
+| **Inej** | GTM Growth Engineer | Visual content, clips, ads, social posts, screen recordings |
+| **TBD** | Digital Presence Strategist | SEO/AEO, founder presence, press/outreach, long-form content, email copy |
 | **AI Agents** (Pablo, Don, Rio) | Draft production | Design, research, video drafts |
+| **AutoResearchClaw** | AI research engine | AEO baseline audits, competitive analysis, content drafts, share-of-voice monitoring |
 
 ## 13 Scopes (3 layers)
 
@@ -57,6 +59,7 @@ Everything related to Tryps brand, go-to-market, and launch lives here.
 | `reference/gtm-roles-final.html` | Final role definitions for the 2 GTM hires |
 | `reference/gtm-scopes-slide.html` | Visual slide of all 13 scopes with status |
 | `reference/gtm-team-options.html` | Team structure options (A/B/C analysis) |
+| `reference/upwork-digital-presence-strategist.md` | Role definition + Upwork post for the SEO/AEO/founder presence hire |
 | `sean.md` | Sean's contract — source of truth for M1/M2 deliverables |
 
 ## For Sean
