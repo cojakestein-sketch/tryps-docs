@@ -42,7 +42,7 @@ You own making Tryps discoverable when people ask AI or search engines about gro
 | **Sean** | Creative Director | Brand, creative direction, creator relationships |
 | **Enej** | GTM Infra Engineer | Builds systems — automations, dashboards, Meta pixel, email flows, schema deployment |
 | **You (Aastha)** | GEO/AEO Specialist | AI visibility strategy, content briefs, entity optimization, schema markup, press outreach, landing page optimization, founder presence |
-| **Growth Engineer** | Not yet hired | Will make visual content — clips, social posts, ad variants, screen recordings |
+| **Growth Engineer** | **Not yet hired** | Will make visual content — clips, social posts, ad variants, screen recordings. Role exists but unfilled. |
 
 **Your lane:** Strategy, written/structured content, technical SEO, entity management, outreach. You build content briefs and optimize AI-drafted content — you don't write everything from scratch. You don't make video, graphics, or social posts. You don't build automations or dashboards.
 
