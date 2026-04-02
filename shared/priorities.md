@@ -1,20 +1,25 @@
 # Current Priorities
 
-> Updated: 2026-03-26
+> Updated: 2026-04-03
 
 ## This Week
 
-- **Nadeem** — Output-Backed Screen (48 SC, overview tab in progress) + bug fixes (78 open)
-- **Asif** — iMessage Agent (57 SC, 34/57 QA passing) + Vercel deploy + vCard
-- **Rizwan** — Agent Intelligence (61 SC, 55/61 ready for QA) + cross-scope interfaces with Asif
+- **Asif** — iMessage Agent (done, 51/57), Voice Calls (done, 14/14), Group Decision-Making (5/25), bug fixes (68/78 fixed, 10 remaining)
+- **Nadeem** — Core Trip Experience (15/16) + Output-Backed Screen (7/48) + bug fixes
+- **Rizwan** — Agent Intelligence (27/61) + Travel Booking (5/70) + Group Decision-Making (shared)
+
+## Bugs
+
+- **Total:** 78 | **Fixed:** 68 | **Remaining:** 10
+- Asif fixed 10 today (April 3)
 
 ## Cross-Scope Coordination
 
 - **Asif + Rizwan** — SC-59/60/61 interface session (DM delivery, vote override routing, rate limiter)
-- **Nadeem + Rizwan** — Maestro E2E test ownership (who writes which YAML flows)
+- **Asif + Jake** — Customer interview pipeline (marty.jointryps.com/interview)
 
 ## Jake's Focus
 
-- Spec sessions for: group-decision-making, travel-identity, onboarding-teaching, customer-service-triaging
-- Company brain / state pipeline (this plan)
+- Customer interviews — execute pipeline, 5+ interviews
+- Merge PR backlog (14 open, failing CI)
 - Brand & GTM with Sean

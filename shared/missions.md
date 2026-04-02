@@ -83,4 +83,4 @@ These were identified by Marty from repo/Slack activity — not Jake's direct mi
 
 - Merge PR Backlog (14 open, failing CI)
 - Unblock Rizwan SC-59-61 (Asif + Rizwan design session)
-- Bug Burn-Down (20 remaining of 78)
+- Bug Burn-Down (10 remaining of 78 — 68 fixed)
