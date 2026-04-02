@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tryps Nightly Brief — Wednesday, April 1, 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #3D3530;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #3D3530;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+  }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
+  p, li { font-size: 11pt; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+  }
+  .cost-table th { font-weight: 600; color: #3D3530; }
+  .strategy-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .alert-box {
+    background: #FFF5F5;
+    border: 1px solid #D9071C;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-size: 10pt;
+    color: #B00618;
+  }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14pt;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #B00618; }
+  .verdict { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10pt; font-weight: 600; }
+  .verdict-progress { background: #E6F4EA; color: #1B7A3D; }
+  .verdict-stalled { background: #FFF3E0; color: #E65100; }
+  .verdict-nodata { background: #F5F5F5; color: #888; }
+  a { color: #D9071C; }
+</style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Print</button>
+  <h1>Tryps Nightly Brief</h1>
+  <div class="subtitle">
+    Wednesday, April 1, 2026 — Prepared by Marty at 8:30 PM ET<br>
+    D-1: April 2 is tomorrow.
+  </div>
+
+  <!-- SECTION 1: STANDUP -->
+  <section>
+    <h2>1. Tomorrow's Standup</h2>
+    <p>Standup doc generated at 8pm: <a href="https://github.com/cojakestein-sketch/tryps-docs/blob/main/docs/standups/2026-04-02-standup.md">2026-04-02-standup.md</a></p>
+
+    <h3>Nadeem — output-backed-screen (48 SC, 11 done)</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> — 20 bugs remain, which specific bugs by ClickUp ID/name?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> — PR numbers merged, flows to tap on TestFlight, or bug count reduction?</li>
+      <li><strong>Marty's Q:</strong> PR #333 (domain consolidation) overlaps with Jake's #326. Both open, both failing CI. Who owns resolving this — are you rebasing or should one be closed?</li>
+    </ol>
+
+    <h3>Asif — imessage-agent (57 SC, 51 done) + Customer Interviews</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> — Active ClickUp: iMessage via Linq (in progress), domain migration (for testing), P2 iMessage (for testing). Which close today?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> — How many customer interviews completed with transcripts? URL/path to check? Are the 14 stale PRs getting reviewed?</li>
+      <li><strong>Marty's Q:</strong> SC-59-61 sync with Rizwan — DM delivery pipeline and vote routing. 3+ standups flagging this. 30-min sync + shared interface doc today?</li>
+    </ol>
+
+    <h3>Rizwan — agent-intelligence (61 SC, 27 done)</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> — 27/61 for 3 days. SC-57 (NLP doc) and SC-58 (routing doc) closing yesterday — did they? What's today?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> — Doc links, merged PRs, or deployed endpoints?</li>
+      <li><strong>Marty's Q:</strong> Recommendations at 2/18 — no scraping pipeline. Can you build it or does it need a separate task? Is recs parked or being worked around?</li>
+    </ol>
+  </section>
+
+  <!-- SECTION 2: TECH TWITTER -->
+  <section>
+    <h2>2. Tech Twitter</h2>
+    <div class="alert-box">
+      ⚠️ <strong>Exa Search unavailable — AgentCash balance is $0.</strong> Cannot retrieve tweets via the canonical method (stableenrich.dev/api/exa/search). Per policy, not falling back to Brave Search. Jake: fund AgentCash wallet to restore this section. Run <code>npx agentcash@latest fund</code> or deposit at agentcash.dev.
+    </div>
+  </section>
+
+  <!-- SECTION 3: TRENDING REPOS -->
+  <section>
+    <h2>3. Trending GitHub Repos</h2>
+
+    <div class="repo">
+      <p><span class="repo-name">anthropics/claude-code</span></p>
+      <p>Claude Code is an agentic coding tool in your terminal — understands your codebase, handles git workflows, executes tasks through natural language. Trending #1 today after the source code leak.</p>
+      <p><strong>Why it matters:</strong> We use Claude Code daily. The source leak exposed internal patterns (fake tools, frustration detection, undercover mode). Worth reading the breakdown to understand what's under the hood of our primary coding tool. Also: a supply-chain attack hit npm during the leak window (malicious axios RAT) — verify your installs.</p>
+    </div>
+
+    <div class="repo">
+      <p><span class="repo-name">microsoft/VibeVoice</span> — ⭐ 34,419 (+1,685 today)</p>
+      <p>Open-source frontier voice AI from Microsoft. Python-based.</p>
+      <p><strong>Why it matters:</strong> Tryps voice agent uses ElevenLabs. VibeVoice is an open-source alternative worth tracking — could reduce voice costs long-term, especially for customer interview pipeline and hyper care agent.</p>
+    </div>
+
+    <div class="repo">
+      <p><span class="repo-name">google-research/timesfm</span> — ⭐ 12,088 (+380 today)</p>
+      <p>Time Series Foundation Model from Google Research for time-series forecasting.</p>
+      <p><strong>Why it matters:</strong> Tangential, but relevant for future analytics — forecasting trip booking patterns, seasonal demand, or expense predictions. Not urgent but interesting for P3 data features.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4: DEEP DIVE -->
+  <section>
+    <h2>4. Deep Dive: Brand Positioning for Group Travel</h2>
+    <p><em>Topic suggested at 3pm — no response from Jake, so proceeding with the suggested topic. Prepping for Thursday's brand meeting with Sean + Sami.</em></p>
+
+    <div class="strategy-box">
+      <h3>What It Is</h3>
+      <p>Brand positioning is the specific mental real estate you own in your customer's head. For Tryps, the question isn't "are we a travel app?" — it's "when someone thinks 'I need to plan a group trip,' do they think Tryps?" The framework that matters at this stage is <strong>subcategorization</strong>: don't try to own "travel" (Expedia, Google). Own a subcategory so tightly that you ARE the category.</p>
+
+      <h3>Why It Matters Now</h3>
+      <p>Thursday you're sitting with Sean and Sami. The Path to the Plane deck quantified the revenue model. Voice + booking just hit develop. But the <em>story</em> — the 10-second pitch that makes someone download — isn't locked yet. "Partiful for trips" is a comp, not a position. You need a position that works in App Store copy, on a website hero, in Sean's launch video, and when Jackson pitches VCs.</p>
+
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><strong>Pick ONE differentiator, not five.</strong> "The app that plans your group trip for you" > "collaborative AI-powered travel planning for groups with expense splitting and itinerary management." Your 60/30/10 traveler split is the insight — the 60% who don't care IS the position: "The trip that plans itself."</li>
+        <li><strong>Category entry vs. creation:</strong> You're subcategorizing, not creating. The category "group trip planning" exists. You own the agent-first version of it. That's the right move for a startup without $10M to educate a market.</li>
+        <li><strong>Test the positioning in Thursday's meeting:</strong> Ask Sean and Sami: "If a friend asked you what Tryps is, what's the one sentence?" If they can't say it without hesitating, the positioning isn't sticky enough.</li>
+        <li><strong>The Partiful parallel is powerful but limiting.</strong> Partiful works because everyone knows what a party is. "Partiful for trips" assumes trips have the same social energy. They do in your 10% planner segment — but the 60% need a different hook: "Someone else does it for you."</li>
+        <li><strong>Output for Thursday:</strong> Walk out with: (1) a one-sentence positioning statement, (2) a three-word tagline candidate, (3) agreement on whether the hero message leads with "group" or "AI agent."</li>
+      </ul>
+
+      <p><strong>Resource:</strong> <a href="https://www.metabrand.digital/guides/startup-branding-guide/brand-positioning">Metabrand: Brand Positioning for Startups (2026 framework)</a></p>
+    </div>
+  </section>
+
+  <!-- SECTION 5: STRATEGY CHECK -->
+  <section>
+    <h2>5. Strategy Check</h2>
+    <div class="strategy-box">
+      <h3>Where We Are — Mid-Week 5 (Mar 30 – Apr 5)</h3>
+      <p>D-Day is tomorrow. Two scopes are done (iMessage Agent, Voice Calls). Core Trip Experience is in testing. But the numbers tell a different story than "almost there": <strong>105/407 SCs done across all scopes (26%)</strong>. The 14 stale PRs all failing CI are a brick wall — nothing can merge until CI is fixed. Today: 2 PRs merged (#335, #339 by Nadeem), but the backlog didn't shrink meaningfully.</p>
+      <p>Voice agent is live and impressive — Jake demoed it today. Customer interview pipeline is live at marty.jointryps.com/interview. But zero interviews actually completed today despite "5 today" being the goal.</p>
+
+      <h3>Top 3 Risks</h3>
+      <ol>
+        <li><strong>CI is broken on 13+ PRs.</strong> Jake's entire weekend bug-fix batch (#315-#328) can't merge. This is the single biggest blocker. If nobody owns fixing CI, we're shipping nothing tomorrow.</li>
+        <li><strong>Rizwan stuck at 27/61 for 4 days.</strong> The SC-59-61 sync with Asif hasn't happened despite being flagged in every standup. Recommendations at 2/18 with no scraping pipeline. Agent intelligence is the signature scope — it can't stall indefinitely.</li>
+        <li><strong>Customer interviews: 0/5 completed.</strong> Pipeline is "ready" but no interviews ran. If this pattern continues, the customer feedback loop doesn't exist by April 2.</li>
+      </ol>
+
+      <h3>Where Jake Should Focus</h3>
+      <ul>
+        <li><strong>Unblock CI.</strong> Either personally fix the CI failures on #315-#328, or assign Nadeem/Asif to triage and close/rebase the stale ones. This is hours of work, not days.</li>
+        <li><strong>Force the Asif-Rizwan sync.</strong> DM them both: "30 minutes, today, interface doc by EOD. Not optional." This has been the top blocker for a week.</li>
+        <li><strong>Run the first customer interview yourself.</strong> Don't wait for a perfect pipeline. Call someone, ask the 4 stock questions, prove the model works. Then scale it.</li>
+      </ul>
+
+      <h3>Marty's #1 Priority Call</h3>
+      <p><strong>Fix CI and merge the PR backlog.</strong> Everything else — bug fixes, customer interviews, brand positioning — depends on code actually shipping. 14 open PRs sitting there for 3+ days is not a review problem, it's a CI problem. Fix CI → merge the batch → unblock bug testing → have something real to show on D-Day.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6: CULTURE & CONVERSATION -->
+  <section>
+    <h2>6. Culture &amp; Conversation</h2>
+
+    <h3>Q1 2026 VC Funding Hits $297B — The AI Capital War</h3>
+    <p>Crunchbase published today: Q1 2026 global startup funding hit $297B, up 150%+ YoY. Four AI labs captured 64% of it. OpenAI alone closed $122B at an $852B valuation. The conversation angle: this isn't a bubble — it's infrastructure spending. The comparison is telecom in the '90s, not pets.com. For Tryps: the AI agent layer IS the moat, and investors are treating "AI-native" as a category premium.</p>
+    <p><a href="https://techcrunch.com/2026/04/01/startup-funding-shatters-all-records-in-q1/">TechCrunch</a> · <a href="https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/">Crunchbase</a></p>
+
+    <h3>Claude Code Source Leak via npm</h3>
+    <p>Anthropic accidentally shipped a source map in the Claude Code npm package on March 31, exposing the full source. A security researcher found it, and within hours someone published a fork (openclaude) making it work with OpenAI/Gemini/Ollama. Separately, a supply-chain attack injected a malicious axios package during the window. The conversation angle: open-source vs. proprietary AI tooling is getting settled by accident. Also a real security lesson — your npm dependencies are an attack surface.</p>
+    <p><a href="https://venturebeat.com/technology/claude-codes-source-code-appears-to-have-leaked-heres-what-we-know">VentureBeat</a> · <a href="https://www.theregister.com/2026/03/31/anthropic_claude_code_source_code/">The Register</a></p>
+
+    <h3>Oracle Lays Off 20-30K While Pouring Into AI</h3>
+    <p>Oracle cut up to 30,000 workers in a 6AM email blitz — while simultaneously expanding AI/cloud infrastructure. The pattern: Big Tech is reallocating headcount to data centers. This is the "AI replaces jobs" story with a twist — it's not replacing knowledge workers yet, it's replacing the humans who support the old business while funding the new one. Relevant for any conversation about hiring, team structure, or Jake's "Upwork and Automate" thesis.</p>
+    <p><a href="https://techstartups.com/2026/03/31/oracle-layoffs-30000-jobs-cut-in-6-a-m-email-blitz-as-ai-spending-drains-cash/">Tech Startups</a></p>
+  </section>
+
+  <!-- SECTION 7: AI RELEASES -->
+  <section>
+    <h2>7. AI Releases &amp; Patch Notes</h2>
+    <div class="alert-box">
+      ⚠️ <strong>Exa Search unavailable (AgentCash $0).</strong> Cannot poll provider blogs/X feeds reliably without Exa. Falling back to Brave Search results.
+    </div>
+
+    <table class="cost-table" style="margin-top: 16px;">
+      <tr><th>Provider</th><th>What</th><th>Relevance</th></tr>
+      <tr>
+        <td>Anthropic</td>
+        <td><strong>Claude Code source leak via npm source map</strong> (Mar 31). Exposed full codebase. Anthropic patched within hours. Malicious axios RAT briefly in npm during the window.</td>
+        <td>We use Claude Code daily. Verify your install: <code>npm ls axios</code>. No new model release today.</td>
+      </tr>
+      <tr>
+        <td>OpenAI</td>
+        <td><strong>$122B funding round closed.</strong> $852B valuation. $2B/month revenue. Nearly 1B weekly active users. Codex (terminal coding agent) trending on GitHub.</td>
+        <td>Codex is a competitor to Claude Code. Worth trying. The funding validates AI infrastructure spend.</td>
+      </tr>
+      <tr>
+        <td>Google</td>
+        <td>No major release today. Gemini 3.1 Pro (Feb 2026) remains latest — 1M context, 77.1% ARC-AGI-2.</td>
+        <td>N/A today.</td>
+      </tr>
+      <tr>
+        <td>xAI</td>
+        <td>No release today. Last notable: $20B Series E in January 2026.</td>
+        <td>N/A today.</td>
+      </tr>
+      <tr>
+        <td>Open Source</td>
+        <td><strong>openclaude</strong> — Fork of leaked Claude Code source, shimmed to work with OpenAI/Gemini/DeepSeek/Ollama. 786 lines changed. Trending on GitHub.</td>
+        <td>Interesting as a cost-saving option — run Claude Code workflows against cheaper models. Legally gray.</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- SECTION 8: TOOLS HIGHLIGHT -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p><em>Wednesday = Developer Tools</em></p>
+
+    <div class="strategy-box">
+      <h3>Retell AI — Voice Agent Platform</h3>
+      <p><strong>What it is:</strong> A platform for building, deploying, and managing AI voice agents for phone call automation — inbound and outbound.</p>
+      <p><strong>How Jake would use it:</strong> The customer interview pipeline (Mission 4) currently uses ElevenLabs for voice. Retell AI is purpose-built for multi-turn phone conversations with dynamic flows — handling objections, scheduling, confirming details. It could replace the custom voice agent wiring for interviews AND become the production voice layer for the hyper care agent (Mission 7). It handles the hard parts: interruption handling, latency optimization, conversation state management.</p>
+      <p><strong>Pricing:</strong> Pay-per-minute. Free tier for testing. Enterprise starts at ~$0.07/min for voice + LLM. Cheaper than ElevenLabs for high-volume conversational use cases.</p>
+      <p><strong>Link:</strong> <a href="https://www.retellai.com">retellai.com</a></p>
+    </div>
+
+    <div class="strategy-box" style="margin-top: 16px;">
+      <h3>Linear — Product Development System</h3>
+      <p><strong>What it is:</strong> A project management tool built for engineering teams with agent/automation integrations.</p>
+      <p><strong>How Jake would use it:</strong> ClickUp works, but Jake's biggest frustration is visibility — "I can't see everything in one place." Linear's opinionated cycles + triage workflow maps perfectly to the standup → sprint → ship cadence. It also has deep GitHub integration (auto-close issues on merge) and an API that Marty could use to replace the ClickUp curl gymnastics. The "unified dashboard" (Mission 1) might already exist in Linear.</p>
+      <p><strong>Pricing:</strong> Free for up to 250 issues. $8/user/month for standard. The team is 6 people — $48/month.</p>
+      <p><strong>Link:</strong> <a href="https://linear.app">linear.app</a></p>
+      <p><em>Note: This overlaps with ClickUp. Only worth switching if the visibility problem is real and ClickUp can't solve it. Not a "switch now" recommendation — a "look at this on Thursday" one.</em></p>
+    </div>
+  </section>
+
+  <!-- SECTION 9: COST SNAPSHOT -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+    <p><em>April 1, 2026 — from cron run logs</em></p>
+
+    <table class="cost-table">
+      <tr><th>Category</th><th>Cost</th><th>Tokens</th><th>Notes</th></tr>
+      <tr>
+        <td>Standup Generator</td>
+        <td>$0.59</td>
+        <td>50,357</td>
+        <td>Opus 4.6 — generated April 2 standup</td>
+      </tr>
+      <tr>
+        <td>Topic Suggestion</td>
+        <td>$0.27</td>
+        <td>27,876</td>
+        <td>Opus 4.6 — 3pm DM to Jake</td>
+      </tr>
+      <tr>
+        <td>Nightly Report (last night)</td>
+        <td>$1.15</td>
+        <td>79,633</td>
+        <td>Opus 4.6 — March 31 report</td>
+      </tr>
+      <tr>
+        <td>Cost Report</td>
+        <td>$0.00</td>
+        <td>0</td>
+        <td>No data (run may not have triggered)</td>
+      </tr>
+      <tr>
+        <td>Other Cron</td>
+        <td>$0.02</td>
+        <td>20,803</td>
+        <td>Sonnet 4.6 — misc job</td>
+      </tr>
+      <tr>
+        <td>DM Sessions</td>
+        <td colspan="3">No log data — gateway logs don't expose token counts per session</td>
+      </tr>
+      <tr style="font-weight: 600; border-top: 2px solid #3D3530;">
+        <td>TOTAL (Cron Only)</td>
+        <td>$2.03</td>
+        <td>178,669</td>
+        <td>Under daily threshold ($15)</td>
+      </tr>
+    </table>
+    <p style="font-size: 10pt; color: #888; margin-top: 8px;">Tonight's report cost will appear in tomorrow's snapshot. DM session costs (voice agent demo, Slack interactions) are not tracked in cron logs — need gateway-level metering.</p>
+  </section>
+
+  <!-- SECTION 10: MISSION PROGRESS -->
+  <section>
+    <h2>10. Mission Progress</h2>
+
+    <h3>Mission 1: Unified Dashboard View <span class="verdict verdict-progress">PROGRESS</span></h3>
+    <p><strong>What moved:</strong> Rizwan built and shipped the dashboard today per Nadeem's standup answer ("Rizwan already built this today — it's done"). No PR number identified — may have been committed directly to tryps-docs.</p>
+    <p><strong>What didn't:</strong> No evidence of the dashboard in GitHub PRs or merged code. Need to verify it exists and where.</p>
+
+    <h3>Mission 2: Feedback Mechanism <span class="verdict verdict-progress">PROGRESS</span></h3>
+    <p><strong>What moved:</strong> PR #335 (Nadeem — shake-to-feedback) merged today. This covers the "shake phone, attach screenshot, submit" channel.</p>
+    <p><strong>What didn't:</strong> Text keyword routing ("feedback:" to agent) and agent-prompted feedback collection — no evidence of work. Triage inbox for all feedback — not built.</p>
+
+    <h3>Mission 3: Book All Travel <span class="verdict verdict-stalled">STALLED</span></h3>
+    <p><strong>What moved:</strong> PR #331 (Rizwan booking first draft) merged yesterday. Flight search UI exists on develop.</p>
+    <p><strong>What didn't:</strong> No new PRs or commits today on booking. Hotels, activities, transport, "on behalf of" booking — all unstarted. 5/70 SCs done.</p>
+
+    <h3>Mission 4: Customer Interviews <span class="verdict verdict-stalled">STALLED</span></h3>
+    <p><strong>What moved:</strong> Pipeline is built — marty.jointryps.com/interview is live. Asif confirmed it works end-to-end.</p>
+    <p><strong>What didn't:</strong> Zero interviews completed. Goal was 5 today. No names or numbers received from Jake. Pipeline exists but hasn't been used.</p>
+
+    <h3>Mission 5: Close the Books <span class="verdict verdict-nodata">NO DATA</span></h3>
+    <p>Jake-only task. No visibility into financials or contractor payment status.</p>
+
+    <h3>Mission 6: QA Presentation <span class="verdict verdict-progress">PROGRESS</span></h3>
+    <p><strong>What moved:</strong> Asif shipped a QA process doc at tryps-docs/QA/qa-process.md with an HTML deck. Ready to present.</p>
+    <p><strong>What didn't:</strong> Unknown if Jake actually reviewed the presentation today.</p>
+
+    <h3>Mission 7: Hyper Care (Parked) <span class="verdict verdict-nodata">NO DATA</span></h3>
+    <p>Explicitly marked "NOT TODAY." Rizwan provided a thoughtful design in standup answers — trigger-based agent outreach, signal feedback loops, booking nudges. Good thinking, no deliverable needed yet.</p>
+
+    <h3>Non-Mission Work</h3>
+    <p>PR #339 (Nadeem — people tab fixes) merged. Not mapped to any mission — likely bug-fix work. The voice agent demo Jake ran today was impressive but isn't a discrete mission.</p>
+  </section>
+
+  <!-- SECTION 11: CS 101 -->
+  <section>
+    <h2>11. CS 101 — Jake's Daily Lesson</h2>
+    <div class="strategy-box">
+      <h3>What Is CI/CD? (And Why All Your PRs Keep Failing)</h3>
+
+      <p>CI stands for "Continuous Integration." When a developer pushes code, a robot automatically runs all the tests, checks the code style, and tries to build the app. If anything breaks, the PR gets a red X. That's what's happening to your 13 PRs right now — the robot tried to build them and something failed. CD ("Continuous Delivery") is the next step: if the robot says everything's green, the code automatically gets deployed. Think of it like a restaurant: CI is the health inspector checking every dish before it leaves the kitchen. CD is the waiter delivering it to the table.</p>
+
+      <p><strong>Why it matters for Tryps:</strong> Your 13 bug-fix PRs from the weekend all have red X marks because CI is failing. This doesn't necessarily mean YOUR code is broken — it could mean the tests themselves are outdated, a dependency changed, or the build environment has a problem. The fix might be 10 minutes of work, but until someone looks at the CI logs and figures out what's actually failing, nothing can merge. That's why "fix CI" is the #1 priority — it's the gatekeeper for everything.</p>
+
+      <p><strong>The "aha" moment:</strong> CI isn't testing your code — it's testing whether your code works <em>with everyone else's code</em>. That's why something you wrote alone on Saturday night might fail on Monday when it has to play nice with what Nadeem pushed on Sunday.</p>
+    </div>
+  </section>
+
+</body>
+</html>
