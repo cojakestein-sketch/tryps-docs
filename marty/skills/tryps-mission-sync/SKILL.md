@@ -1,5 +1,5 @@
 ---
-name: tryps-mission-sync
+name: mission
 description: Capture a Slack `/mission` command, update Jake's Missions in the latest standup doc, and commit the change
 user-invocable: true
 ---
