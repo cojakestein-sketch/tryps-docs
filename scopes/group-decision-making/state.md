@@ -3,7 +3,7 @@ id: group-decision-making
 status: in-progress
 assignee: rizwan
 clickup_ids: ["86e0emu5q"]
-criteria: 0/25
+criteria: 5/25
 blockers: ["Linq tapback reaction API investigation needed", "Vote timeout algorithm needs formal design doc", "Rate limiter interaction with SC-61 needs resolution"]
 last_updated: 2026-04-02
 updated_by: jake
