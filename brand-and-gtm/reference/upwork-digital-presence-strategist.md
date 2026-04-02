@@ -56,62 +56,71 @@ We're Tryps — a group travel planning app launching May 2, 2026. You add a tra
 
 We need someone who makes us discoverable. When someone asks ChatGPT "what's the best app for planning a group trip" — Tryps should be in the answer. When someone Googles our founder — the right Jake Stein should come up. When a journalist looks us up — every profile, directory, and data source should be accurate, current, and compelling.
 
-This is not traditional SEO. This is AI Engine Optimization (AEO), entity management, content strategy, and outreach. You'll use an AI research tool (AutoResearchClaw) to do the heavy analytical work — your job is to direct the research, write the content, and execute the outreach.
+This is not traditional SEO. This is AI Engine Optimization (AEO), entity management, landing page optimization, and technical content strategy. The core question you're solving: when someone asks ChatGPT "what's the best app for planning a group trip," does Tryps appear in the answer? Right now it doesn't.
 
-**What Week 1 looks like:**
+You'll use AI tools (including an autonomous research tool called AutoResearchClaw) to do the heavy analytical and drafting work. Your job is to direct the research, build the content briefs, implement schema markup, monitor AI visibility, and optimize our landing page — NOT to be a full-time writer. AI drafts content from your briefs; you edit, optimize, and publish.
 
-- Run a baseline audit: ask ChatGPT, Perplexity, Gemini, Google AI, Claude, and Grok the top 50 group travel queries. Document where Tryps appears (or doesn't) and who does.
-- Audit every Jake Stein + Tryps profile across the internet: Google, LinkedIn, Crunchbase, AngelList, Product Hunt, Instagram, X, Apollo, Clearbit. Document what's wrong or missing.
-- Fix the entity problem: update/create profiles so that "Jake Stein" + "Tryps" returns the correct person on every platform.
-- Start structured data: add Person, Organization, and SoftwareApplication schema to jointryps.com.
+**What Week 1 looks like (audit & baseline):**
 
-**What the first month looks like:**
+- Set up AI visibility monitoring (Otterly) across ChatGPT, Perplexity, Gemini, Google AI Overviews, Claude, Grok. Establish baseline share-of-voice for 50+ group travel prompts.
+- Entity audit: search "Jake Stein" and "Tryps" across Google, LinkedIn, Crunchbase, AngelList, Apollo, Clearbit. Document what's wrong or missing. (Right now, searching "Jake Stein" returns the wrong person everywhere — a different Jake Stein from a different company.)
+- Competitive audit: what schema, content structures, and authority signals do Splitwise, TripIt, Wanderlog, Partiful have? What are AI engines citing for group travel queries?
+- Landing page audit: review jointryps.com for AEO readiness — schema markup, content structure, OG tags, page speed, AI crawler accessibility.
+- Deliverable: baseline report with visibility scores, entity gap map, and prioritized 90-day roadmap.
 
-- Publish 1 Deep Research Page (2,000+ words, targeting a high-priority AI prompt cluster like "best group trip app 2026").
-- Publish 5-10 AEO Support Pages (800-1,500 words each, targeting long-tail queries).
-- Submit Tryps to 20+ directories (AlternativeTo, G2, Product Hunt, SaaSHub, etc.).
-- Build a journalist target list of 50 contacts (travel, tech, consumer apps, college/MIT).
-- Write press kit: one-pager, founder bio, product screenshots.
-- Draft App Store copy (title, subtitle, description, keywords).
-- Write launch email and welcome drip sequence.
-- Start LinkedIn content cadence for founder (1-2 posts/week, you draft, founder posts).
-- Deliver first monthly share-of-voice report: how often Tryps is cited across AI platforms.
+**What Week 2 looks like (foundation):**
+
+- Fix the entity problem: create/update Crunchbase, AngelList, Product Hunt, Apollo, Clearbit, ZoomInfo profiles so "Jake Stein + Tryps" resolves correctly everywhere.
+- Implement schema markup on jointryps.com: Organization, SoftwareApplication, Person (founder), FAQ. JSON-LD.
+- Landing page optimization: restructure copy into answer-first format, add FAQ sections, fix OG tags, optimize for conversion + AI citation.
+- Submit Tryps to first 10 directories (AlternativeTo, G2, SaaSHub, etc.)
+- Monitor which AI crawlers (GPTBot, ClaudeBot, PerplexityBot) are hitting our site.
+
+**What Weeks 3-4 look like (content pipeline + outreach):**
+
+- Build content briefs for first Deep Research Page and first 3-5 AEO Support Pages. AI drafts from briefs; you edit and optimize for passage-level citation.
+- First editorial pitches sent (5-10 targeted journalists/publications).
+- Press kit written. Journalist target list started (25 contacts).
+- LinkedIn content cadence for founder (you draft 2 posts/week, Jake posts).
+- App Store copy drafted. Email sequences drafted.
+- First monthly share-of-voice report delivered.
 
 **Ongoing:**
 
-- 1-2 Deep Research Pages per month.
-- 5-10 AEO Support Pages per month.
-- 10 editorial/PR pitches per month.
-- Monthly share-of-voice monitoring and reporting.
-- AEO experiments: structured tests to measure what content/technical changes improve AI citations.
-- Continuous profile and directory maintenance.
-- Weekly founder LinkedIn drafts.
-- Email lifecycle copy as needed.
+- 1-2 Deep Research Pages per month (you build the brief, AI drafts, you edit).
+- 5-10 AEO Support Pages per month (same workflow).
+- 10 editorial pitches per month.
+- Monthly share-of-voice monitoring, AEO experiments, and competitive tracking.
+- Landing page optimization: continuous copy, structure, and conversion improvements.
+- Entity and directory maintenance.
+- Founder LinkedIn drafts. Email copy as needed.
 
-**You are the right fit if:**
+**The actual skills we're hiring for (in order of importance):**
 
-- You understand AEO / GEO and can explain how AI engines decide what to cite. Not theoretically — you've done it.
-- You can write. Long-form research content, press pitches, App Store copy, email sequences, LinkedIn posts. Range matters more than specialization.
-- You've done entity management or reputation work: profile optimization, directory submissions, structured data, knowledge panel development.
-- You use AI tools as a multiplier. You'll be working with an AI research tool (AutoResearchClaw) that runs autonomous research loops — your job is to set the right questions, review the output, and turn findings into action.
-- You're comfortable with schema markup (schema.org, JSON-LD). You don't need to be a developer, but you need to know what structured data is and how to specify what gets implemented.
-- You can do outreach: press pitches, editorial relationship building, directory submissions. Not cold-email spam — targeted, thoughtful pitches.
+1. **AEO/GEO understanding.** You know how LLMs decide what to cite. You understand passage-level optimization, citation signals, and entity relationships. This is NOT traditional SEO — it's a different discipline.
+2. **Schema markup and structured data.** You can write and implement JSON-LD (FAQPage, Organization, Product, HowTo, Person). You don't need to be a backend engineer, but you need hands-on structured data experience.
+3. **Content strategy (not just writing).** You build content briefs that produce AI-citable content. You optimize at the passage level. You understand answer-first content structure. The actual drafting is AI-assisted.
+4. **Entity management.** You've fixed entity disambiguation problems — wrong person/company showing up in search or AI answers. You know how to claim and correct enrichment data sources.
+5. **Landing page optimization.** You can improve copy, structure, and conversion on a web landing page. Not design — content and structure.
+6. **AI tool fluency.** You use AI daily as a workflow multiplier. You'll work alongside AutoResearchClaw for research automation and Claude for content drafting.
+7. **Outreach.** Press pitches, editorial relationship building, directory submissions. Targeted, not spray-and-pray.
 
 **Nice to have:**
 
-- Experience with share-of-voice monitoring tools (Meridian, Profound, Otterly, or similar)
-- Ahrefs, Semrush, or similar SEO tool proficiency
+- Experience with Otterly, Profound, Frase, or similar AEO-specific tools
+- Ahrefs / Semrush proficiency
 - ASO (App Store Optimization) experience
-- Previous consumer app or startup experience
-- Understanding of enrichment data sources (Apollo, Clearbit, ZoomInfo) and how to correct them
 - PR/comms background
+- Previous consumer app or startup experience
+- Understanding of enrichment data platforms (Apollo, Clearbit, ZoomInfo)
 
 **This role is NOT:**
 
-- Visual content creation — we have a growth engineer for clips, graphics, and social posts
-- Systems/automation — we have an infra engineer for tool wiring and dashboards
-- Brand strategy — our creative director sets the direction
+- Visual content creation — we have a growth engineer (Inej) for clips, graphics, and social posts
+- Systems/automation — we have an infra engineer (Enen) for tool wiring and dashboards
+- Brand strategy — our creative director (Sean) sets the direction
 - Paid ads — campaign management is separate
+- Full-time writing — you build briefs and edit AI-drafted content, not write everything from scratch
 
 **Logistics:**
 
@@ -123,11 +132,11 @@ This is not traditional SEO. This is AI Engine Optimization (AEO), entity manage
 
 **To apply, answer all three:**
 
-1. Go to ChatGPT (or any AI) and ask: "What's the best app for planning a group trip with friends?" Screenshot the answer. Then tell me: if you were hired to make Tryps appear in that answer within 90 days, what would be your top 3 moves?
+1. Go to ChatGPT (or any AI) and ask: "What's the best app for planning a group trip with friends?" Screenshot the answer. Then tell me: if you were hired to make Tryps appear in that answer within 90 days, what would be your top 3 moves? Be specific — what content, what schema, what signals?
 
-2. Have you ever fixed an entity disambiguation problem (wrong person/company showing up in search results, AI answers, or enrichment tools)? Describe what you did. If not, describe how you would approach it.
+2. Have you ever fixed an entity disambiguation problem (wrong person/company showing up in search results, AI answers, or enrichment tools)? Describe what you did and what tools you used. If not, describe how you would approach it step by step.
 
-3. Send a writing sample: a long-form article, press pitch, or content piece you wrote that was designed to perform in search or earn citations. Explain what it was targeting and how it performed.
+3. Show me an example of schema markup you've implemented (JSON-LD preferred). Explain what it was for and whether it impacted search or AI visibility.
 
 ---
 
@@ -135,17 +144,20 @@ This is not traditional SEO. This is AI Engine Optimization (AEO), entity manage
 
 | Attribute | What we're looking for |
 |-----------|----------------------|
-| **Background** | SEO/content marketing + PR/comms hybrid. Someone who has done both content strategy AND outreach, not just one. |
+| **Background** | SEO evolving into AEO/GEO. Someone with traditional SEO foundation (3+ years) who has actively moved into AI engine optimization. Bonus: PR/outreach experience alongside content strategy. |
 | **Experience level** | 3-7 years. Senior enough to work autonomously, not so senior they're only strategic and won't execute. |
 | **AI fluency** | Uses AI tools daily. Comfortable with prompt engineering, AI research tools, and the concept of optimizing FOR AI systems (not just using them). |
-| **Writing quality** | Can write in multiple registers: authoritative research content, punchy press pitches, casual LinkedIn posts, precise App Store copy. |
+| **Technical comfort** | Can write JSON-LD schema markup. Understands structured data, robots.txt, sitemaps, AI crawler behavior. Not a developer, but technical enough to implement and spec technical changes. |
+| **Writing** | Can build content briefs and edit AI-drafted content to publication quality. Can write press pitches, LinkedIn posts, and App Store copy. This is a strategy/editing role, not a full-time writing role. |
 | **Geography** | Anywhere, but must overlap with US Eastern Time. |
 | **Rate** | $25-50/hr depending on experience and geography. Budget: ~$2,000-3,000/mo at 20-30 hrs/week. |
 
 ## Red Flags
 
-- "I do SEO" but means only backlink building or keyword stuffing
-- No understanding of AEO/GEO — this is the primary channel, not traditional SEO
-- Can't write — asks to see their actual writing, not a portfolio of client logos
-- Wants to manage a team or set strategy — we need execution
+- "I do SEO" but means only backlink building or keyword stuffing — this is AEO/GEO first
+- No schema markup experience — structured data implementation is 25% of this role
+- Can't explain how LLMs decide what to cite — this is the core competency
+- Treats AEO as "just write good content" — it requires technical optimization, entity management, and monitoring infrastructure
+- Wants to manage a team or set strategy only — we need hands-on execution
 - No AI tool fluency — if they don't use AI daily, they can't optimize for it
+- Only wants to write — this is a program management and editorial judgment role, not a content mill

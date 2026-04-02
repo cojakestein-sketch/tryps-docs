@@ -15,6 +15,21 @@ updated: 2026-04-02
 
 Two agencies (Meridian) scoped this work at $6,500/mo managed. We're doing it in-house with one person + AutoResearchClaw as a research/content multiplier. The Meridian proposals define what "good" looks like; we're replicating the output, not the cost structure.
 
+### What This Role Actually Is (Research-Validated)
+
+Based on real job postings (Stripe, Kraken, Experian) and agency breakdowns, AEO/GEO is:
+
+| Activity | % of time | What it means |
+|----------|-----------|---------------|
+| **Content strategy & optimization** | 40% | Building content briefs, structuring pages for AI citation (answer-first format, passage-level optimization), editorial judgment on AI-drafted content. NOT primarily writing — directing what gets written and how it's structured. |
+| **Technical implementation** | 25% | Schema markup (FAQPage, HowTo, Organization, Product), structured data, AI crawler optimization, site architecture for discoverability. Light dev — JSON-LD, not backend engineering. |
+| **Monitoring & analytics** | 20% | AI visibility tracking (Otterly $29/mo or Profound $499/mo), share-of-voice measurement, competitive monitoring, AI crawler behavior analysis on our site. |
+| **Entity & authority building** | 15% | Directory submissions, enrichment data corrections, profile optimization, editorial outreach. The Jake Stein problem lives here. |
+
+**Key insight from Kraken's AEO hire:** "This is not a writing role. This is a program management and editorial judgment role." The writing is AI-assisted (Claude drafts from briefs); this person builds the strategy, creates the briefs, implements schema, and monitors results.
+
+**Landing page optimization also lives here.** This person owns jointryps.com conversion optimization — copy, structure, schema, OG tags, and ensuring the landing page works for both human visitors and AI crawlers. Enen builds the technical infrastructure; this person owns what's on the page and how it performs.
+
 ### What Meridian Would Have Done (Reference)
 
 **Meridian SOW ($6,500/mo, 3 months):**
@@ -154,9 +169,20 @@ This person also owns making Jake Stein and Tryps look professional, legitimate,
 
 ## Additional Scopes This Role Owns
 
+### Scope 10 (partial): Landing Page Optimization
+
+This person owns jointryps.com as a conversion and discoverability surface. Enen builds the technical infrastructure; this person owns what's on the page.
+
+- [ ] Landing page copy, structure, and CTA optimization
+- [ ] AEO-optimized page structure (answer-first format, FAQ sections, schema markup)
+- [ ] OG tags and link preview optimization (how the page looks when shared)
+- [ ] Conversion tracking setup (coordinate with Enen on Meta pixel, Loops email capture)
+- [ ] A/B test copy variants
+- [ ] Ongoing optimization based on traffic, conversion, and AI citation data
+
 ### Scope 11: Email & Lifecycle (partial)
 
-This person writes the email copy and strategy. The Infra Engineer (Enen) builds the Loops workflows and technical implementation.
+This person builds the email strategy and writes copy. Enen builds the Loops workflows.
 
 - [ ] Launch announcement email
 - [ ] Welcome/onboarding drip sequence (3-5 emails)
@@ -173,7 +199,7 @@ This person writes the email copy and strategy. The Infra Engineer (Enen) builds
 
 ### Scope 09: App Store & Product Hunt (copy + ASO, partial)
 
-The research/writing side. Growth Engineer owns the visual side (screenshots, video).
+The research/copy side. Growth Engineer owns the visual side (screenshots, video).
 
 - [ ] App Store copy: title, subtitle, description, keywords
 - [ ] ASO keyword research and optimization
@@ -222,34 +248,82 @@ Our Jake Stein — Tryps founder, MIT fall 2026 — is essentially invisible. Th
 
 ---
 
-## Timeline
+## Timeline — What This Person Actually Does
 
-### Month 1: Foundation
+### Week 1: Audit & Baseline (the "learn everything" week)
 
-- Week 1: AutoResearchClaw baseline audit. Profile audit (Jake + Tryps). Keyword research.
-- Week 2: Competitive content analysis. First 5 ASPs drafted. All profiles updated.
-- Week 3: First DRP published. Schema markup implemented. Press kit written. Journalist list started.
-- Week 4: First AEO experiment. Email sequences drafted. 10 directory submissions. First monthly share-of-voice report.
+This is almost entirely monitoring, auditing, and setup — no content production yet.
+
+- [ ] **AI visibility baseline:** Run HubSpot's free AI Search Grader for Tryps. Set up Otterly ($29/mo) to start tracking brand mentions across ChatGPT, Perplexity, Gemini, Google AI Overviews, Claude, Grok.
+- [ ] **Prompt library v1:** Manually query all 7 AI platforms with the top 25 group travel prompts. Screenshot and document every response. Who gets cited? What sources? Where is Tryps? (AutoResearchClaw expands this to 200+ prompts in parallel.)
+- [ ] **Entity audit:** Search "Jake Stein" and "Tryps" across Google, LinkedIn, Crunchbase, AngelList, Apollo, Clearbit, AgentCash, Product Hunt. Document every wrong/missing/outdated entry. Score each platform.
+- [ ] **Landing page audit:** Review jointryps.com for AEO readiness — schema markup, content structure, OG tags, meta descriptions, mobile performance, AI crawler accessibility. Identify quick wins.
+- [ ] **Competitive audit:** What schema do Splitwise, TripIt, Wanderlog, Partiful use? What pages get cited by AI? What authority signals do they have that we don't?
+- [ ] **Deliverable:** Baseline report with visibility scores, gap map, and prioritized 90-day roadmap.
+
+### Week 2: Foundation (entity fixes + technical setup)
+
+The highest-ROI work is entity disambiguation and schema — these are the levers that directly influence AI citation.
+
+- [ ] **Fix the Jake Stein problem:** Create/update Crunchbase profile (Tryps + Jake as founder), AngelList/Wellfound, Product Hunt maker profile. Submit corrections to Apollo, Clearbit, ZoomInfo. Update LinkedIn headline/about to strongly associate "Jake Stein" ↔ "Tryps."
+- [ ] **Schema markup on jointryps.com:** Implement Organization, SoftwareApplication, Person (founder), FAQ schemas. JSON-LD. Coordinate with Enen on deployment.
+- [ ] **Landing page optimization pass:** Restructure jointryps.com copy into answer-first format. Ensure every key page has a clear H1, meta description, and FAQ section. OG tags correct. Page speed acceptable.
+- [ ] **AI crawler monitoring:** Check which AI bots (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) are hitting jointryps.com. Ensure robots.txt allows them. Check server logs.
+- [ ] **Directory submissions (batch 1):** Submit Tryps to first 10 directories (AlternativeTo, G2, SaaSHub, Capterra, GetApp, etc.)
+
+### Week 3: Content Pipeline + Outreach Kickoff
+
+Now that the foundation is in place, start producing content and building authority signals.
+
+- [ ] **First DRP brief:** Build a content brief for the #1 priority prompt cluster (e.g., "best app for planning a group trip"). Brief includes: target prompts, competitor analysis, content structure, schema plan, internal linking. AI drafts the page from the brief; this person edits.
+- [ ] **First 3-5 ASP briefs:** Template-driven briefs for long-tail prompts. AI drafts; this person reviews and optimizes for passage-level citation.
+- [ ] **Press kit:** One-pager, founder bio, product screenshots, brand assets package. Ready for outreach.
+- [ ] **Journalist list (first 25):** Travel tech, consumer apps, MIT/college startup, group travel verticals.
+- [ ] **LinkedIn content:** Draft first 2 posts for Jake's account. Founder voice, building-in-public, travel stories.
+- [ ] **App Store copy draft:** Title, subtitle, description, keywords. Coordinate with Inej on visual assets.
+
+### Week 4: First Results + Reporting
+
+- [ ] **First DRP published.** First 3-5 ASPs published. Schema live. Directories submitted.
+- [ ] **First AEO experiment:** Pick one variable (e.g., adding FAQ schema to landing page) and measure whether AI citation changes for target prompts.
+- [ ] **First share-of-voice report:** Compare to Week 1 baseline. What moved? What didn't?
+- [ ] **First editorial pitches sent (5-10).** Press kit attached. Targeted, not spray-and-pray.
+- [ ] **Email copy:** Draft launch email and welcome drip for Enen to build in Loops.
+- [ ] **Directory submissions (batch 2):** Next 10 directories.
+- [ ] **Landing page v2:** Based on baseline data, optimize copy, CTA placement, email capture.
 
 ### Month 2: Acceleration
 
-- DRP #2 published. 10 more ASPs. First editorial pitches sent. LinkedIn content cadence established. Product Hunt listing prepared. Email sequences live.
+- DRP #2 published. 5-10 more ASPs. Pitches ongoing (10/month). LinkedIn cadence established (2/week). Product Hunt listing drafted. Email sequences live. First editorial placements landing. Landing page conversion tracking active.
 
 ### Month 3: Optimization
 
-- DRP #3 published. 10 more ASPs. AEO experiments informing content strategy. Press outreach ongoing. Share-of-voice measurably improving. All systems running.
+- DRP #3 published. 5-10 more ASPs. AEO experiments informing strategy. Share-of-voice measurably improving. Entity disambiguation verified across platforms. Jake Stein problem resolved. Press relationships building. Landing page optimized based on data.
 
 ---
 
 ## Budget (In-House vs Agency)
 
+### Tooling Stack
+
+| Tool | Cost | What it does |
+|------|------|-------------|
+| Otterly AI | $29/mo (starter) | AI visibility tracking across ChatGPT, Perplexity, Google AI Overviews, Gemini. Share-of-voice monitoring. |
+| HubSpot AI Search Grader | Free | Quick baseline brand visibility check. |
+| Frase | $15/mo | Content briefs, answer-engine optimization, passage-level analysis. |
+| Ahrefs Lite | $99/mo | Keyword research, backlink analysis, competitive gaps. (Or Semrush $130/mo.) |
+| Screaming Frog | Free (up to 500 URLs) | Technical audits, schema validation. |
+| **Tool total** | **~$145/mo** | |
+
+### Cost Comparison
+
 | | Meridian (agency) | In-House |
 |---|---|---|
-| Monthly cost | $6,500/mo | ~$2,000-3,000/mo (contractor) |
+| Monthly cost | $6,500/mo | ~$2,000-3,000/mo (contractor at $25-40/hr, 20-30 hrs/week) |
 | Term | 3-6 months | Ongoing |
 | AutoResearchClaw | N/A | ~$50-100/mo (API costs) |
-| Tools (Ahrefs, ASO.dev) | N/A (their tools) | ~$100-200/mo |
-| **Total monthly** | **$6,500** | **~$2,500-3,500** |
-| **3-month total** | **$19,500** | **~$7,500-10,500** |
+| Tools | N/A (their tools) | ~$145/mo |
+| **Total monthly** | **$6,500** | **~$2,400-3,300** |
+| **3-month total** | **$19,500** | **~$7,200-9,900** |
 
-Savings: ~$9,000-12,000 over 3 months, plus you own the person, the process, and the institutional knowledge.
+Savings: ~$10-12K over 3 months, plus you own the person, the process, and the institutional knowledge. The agency stat is that managed programs see results in 59 days vs. 203 in-house — but that gap shrinks with AutoResearchClaw doing the research work and a person who has AEO experience (not learning from scratch).
