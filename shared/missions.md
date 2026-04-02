@@ -13,45 +13,55 @@
 
 ---
 
-## Active Missions
+## Today's Missions
 
-### Mission 1: Unified Dashboard View for Standup
-**Owner:** Rizwan + Nadeem | **Created:** Apr 1 | **Status:** Done (Rizwan built it)
-Single view where Jake can see SC progress, bug counts, PR status, blockers. Dashboard live at cojakestein-sketch.github.io/tryps-exec-dashboard/
+> These are the priorities RIGHT NOW. Ordered by importance.
 
-### Mission 2: Feedback Mechanism
-**Owner:** Nadeem + Asif | **Created:** Apr 1 | **Status:** Partial (shake-to-feedback shipped)
-Three channels: shake-to-feedback (done), text keyword `feedback:` to agent, agent-prompted collection. All feedback lands in one triage inbox for Jake.
-
-### Mission 3: Book All Travel — For Yourself or On Behalf
+### Mission 1: Book All Travel — End to End
 **Owner:** Rizwan + Asif | **Created:** Apr 1 | **Status:** In progress (PR #331)
-Flights, hotels, activities, transport — for yourself or on behalf of another traveler. Core value prop.
+A user must be able to book flights, hotels, activities, and transport — for themselves or on behalf of someone else in the group. This is the core value prop and the #1 thing blocking the team goal. Nothing matters more.
 
-### Mission 4: Customer Interviews
+### Mission 2: Onboarding Flow with Emoji Voting — Group Facilitation Engine
+**Owner:** TBD (needs spec) | **Created:** Apr 2 | **Status:** Needs spec — [Issue #341](https://github.com/cojakestein-sketch/tryps/issues/341)
+The agent should guide new groups through trip planning using native emoji reactions as a voting mechanism. Example: "react to vote: thumbs-up = late summer, !! = early spring, heart = winter, fire = custom date." This IS the group facilitation engine — it's how Tryps shepherds a group from a blank trip to a planned one without any single person doing the work. Ties directly to the `group-decision-making` scope (14 SC, specced, assigned to Rizwan). The agent must also be contextually aware of who's in the chat (Issue #341 — no "send them the link" when they're already here). Spec this next.
+
+### Mission 3: Customer Interviews — How Do We Present the Product?
 **Owner:** Asif + Jake | **Created:** Apr 1 | **Status:** Pipeline live at marty.jointryps.com/interview
-Automated interview pipeline. Jake provides name + phone, agent calls, runs interview, logs transcript. Goal: first 25 interviews.
+Not just running interviews — the bigger question is how do we actually present Tryps to people so they GET IT and want to use it? Automated interview pipeline is live. Jake provides name + phone, agent calls, runs interview, logs transcript. Goal: first 25 interviews. Every interview teaches us how to onboard better.
 
-### Mission 5: Close the Books
+### Mission 4: Close the Books
 **Owner:** Jake | **Created:** Apr 1 | **Status:** Open
-March financials, contractor payments, expenses reconciliation.
+March financials, contractor payments, expenses reconciliation. End of month housekeeping.
 
-### Mission 6: QA Presentation
-**Owner:** Asif | **Created:** Apr 1 | **Status:** Done (doc + HTML deck shipped at tryps-docs/QA/)
-Asif presents to Jake what QA (Andreas + Warda) is doing. Process, coverage, current state.
+---
 
-### Mission 7: Agent Context Awareness in Group Chats
+## Ongoing Missions
+
+> Missions from prior days that are in progress. Each has completion criteria.
+
+### Unified Dashboard View for Standup
+**Owner:** Rizwan + Nadeem | **Created:** Apr 1 | **Status:** Live (dashboard deployed)
+**How do we complete this?** Dashboard is live at cojakestein-sketch.github.io/tryps-exec-dashboard/ and auto-rebuilds on push. Complete when: (1) missions sync correctly from shared/missions.md, (2) SC/bug counts update automatically from state pipeline, (3) Jake can do his entire morning standup from this one page without opening Slack or GitHub.
+
+### Feedback Mechanism
+**Owner:** Nadeem + Asif | **Created:** Apr 1 | **Status:** Partial (shake-to-feedback shipped)
+**How do we complete this?** Three channels need to work: (1) shake-to-feedback in-app (done), (2) text `feedback:` keyword to Tryps agent routes to inbox, (3) agent proactively asks beta users for feedback. Complete when: all three channels land in one triage view Jake reviews daily. Feedback is tagged by user, screen, and severity.
+
+### QA System
+**Owner:** Asif (presenting to Jake) | **Created:** Apr 1 | **Status:** Ongoing — need report from Asif
+**How do we complete this?** Asif to present in today's standup: what QA (Andreas + Warda) is testing, what's the process, what's the coverage, what bugs are they finding. Complete when: Jake understands QA as a function and can track its output. Doc + HTML deck shipped at tryps-docs/QA/ — but Jake needs a live walkthrough.
+
+### Personalized Contact CRM
+**Owner:** Cameron / Brand + GTM team | **Created:** Apr 2 | **Status:** Open
+**How do we complete this?** Build a system where every person Jake/team talks to has a profile — who they are, what they care about, how they connect to Tryps. Feeds into customer interviews, outreach, and investor relations. This is a brand/GTM/product-head mission.
+
+### Founder Presence Optimization
+**Owner:** Jake / Brand + GTM team | **Created:** Apr 2 | **Status:** Open
+**How do we complete this?** Jake's personal brand and presence supports Tryps growth. Strategy for social, content, events, MIT network. This is a brand/GTM mission — Sean and the growth team own execution.
+
+### Agent Context Awareness in Group Chats
 **Owner:** Asif + Rizwan | **Created:** Apr 2 | **Status:** Open — [Issue #341](https://github.com/cojakestein-sketch/tryps/issues/341)
-Agent must know who's in the iMessage group chat. No "send them the link" when they're already here. Native emoji polling for votes.
-
-### Mission 8: Founder Presence Optimization
-**Owner:** Jake | **Created:** Apr 2 | **Status:** Open
-
-### Mission 9: Personalized Contact CRM
-**Owner:** TBD | **Created:** Apr 2 | **Status:** Open
-
-### Mission 10: Onboarding Flow with Emojis
-**Owner:** TBD | **Created:** Apr 2 | **Status:** Open
-React with emojis to vote on things, guiding the agent. Emoji-based onboarding that teaches users the interaction model.
+**How do we complete this?** Two fixes: (1) agent knows who's in the group chat and tailors responses — no "send them the link" when they're already here, (2) native emoji polling for dates/votes. This feeds directly into Mission 2 (onboarding flow). Complete when: tested in a real group chat where agent correctly identifies participants and uses emoji reactions for voting.
 
 ---
 
