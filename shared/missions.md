@@ -22,8 +22,8 @@
 A user must be able to book flights, hotels, activities, and transport — for themselves or on behalf of someone else in the group. This is the core value prop and the #1 thing blocking the team goal. Nothing matters more.
 
 ### Mission 2: Onboarding Flow with Emoji Voting — Group Facilitation Engine
-**Owner:** Rizwan (lead), Asif (Linq API) | **Created:** Apr 2 | **Status:** Specced — 25 SC in `group-decision-making/spec.md`
-Spec complete. 11 new SC added (SC-15–25) covering: participant awareness (agent knows who's in the chat — fixes Issue #341), emoji voting via Apple iOS tapback reactions, flexible tally with criticality-based timeout, vote prediction for built-out profiles, and immediate facilitation → booking transition. Priority: SC-15–16 first (live bug), then SC-18–20 (emoji voting core). Feeds directly into Mission 1 (Book All Travel). [Issue #341](https://github.com/cojakestein-sketch/tryps/issues/341)
+**Owner:** Rizwan (lead), Asif (Linq API) | **Created:** Apr 2 | **Status:** Emoji voting done (Asif), remaining SC in progress
+Emoji voting using Apple iOS tapback reactions is **implemented and working** (Asif). Spec complete with 25 SC in `group-decision-making/spec.md`. 11 new SC added (SC-15–25) covering: participant awareness, emoji voting, flexible tally with criticality-based timeout, vote prediction, and facilitation → booking transition. Remaining: SC-15–16 (participant awareness fix for Issue #341), vote prediction, and booking transition. [Issue #341](https://github.com/cojakestein-sketch/tryps/issues/341)
 
 ### Mission 3: Customer Interviews — How Do We Present the Product?
 **Owner:** Asif + Jake | **Created:** Apr 1 | **Status:** Pipeline live at marty.jointryps.com/interview
@@ -60,8 +60,8 @@ March financials, contractor payments, expenses reconciliation. End of month hou
 **How do we complete this?** Jake's personal brand and presence supports Tryps growth. Strategy for social, content, events, MIT network. This is a brand/GTM mission — Sean and the growth team own execution.
 
 ### Agent Context Awareness in Group Chats
-**Owner:** Asif + Rizwan | **Created:** Apr 2 | **Status:** Open — [Issue #341](https://github.com/cojakestein-sketch/tryps/issues/341)
-**How do we complete this?** Two fixes: (1) agent knows who's in the group chat and tailors responses — no "send them the link" when they're already here, (2) native emoji polling for dates/votes. This feeds directly into Mission 2 (onboarding flow). Complete when: tested in a real group chat where agent correctly identifies participants and uses emoji reactions for voting.
+**Owner:** Asif + Rizwan | **Created:** Apr 2 | **Status:** Partial — emoji voting done (Asif), participant awareness in progress
+**How do we complete this?** Two fixes: (1) agent knows who's in the group chat and tailors responses — no "send them the link" when they're already here (in progress), (2) ~~native emoji polling for dates/votes~~ **done** — emoji voting via Apple iOS tapback reactions implemented by Asif. Complete when: participant awareness is fixed and tested in a real group chat ([Issue #341](https://github.com/cojakestein-sketch/tryps/issues/341)).
 
 ---
 
