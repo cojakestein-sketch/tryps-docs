@@ -198,24 +198,53 @@ You text Tryps in your group chat and it plans your whole trip — flights, hote
 
 ### Locket — 26 Creators, 298M Views, CPM Under $1
 
-**The play:** Locket used just 26 nano-influencer accounts posting 52 templatized TikTok videos per day. Total result: 298 million views, 1.5M shares, 10M downloads in the first month. CPM under $1. They didn't hire big creators — they found a repeatable content format and had nano-creators mass-produce it. Same hooks repeated 400–800+ times across accounts.
+**The person:** Kyle Sanok (@ksanok10 on X), Growth Lead at Locket Labs. He tweeted: "Ran a painfully simple TikTok campaign. +170M impressions. +158K videos made. Under $500 spent." The full playbook is public across multiple sources.
 
-**What worked:**
-- **One format, infinite repetitions.** The format: 3-second selfie hook + text overlay + screen recording of app in use. Every video followed the same template. Creators just filled in the blanks.
-- **26 accounts, 52 videos/day.** Pure volume. Every Nth post goes viral on nano accounts, so you feed the algorithm. CPM under $1 because nano-creators are cheap ($25–75/video).
-- **Ruthless replacement.** Underperforming accounts got cut. Top performers got more budget. No sentimentality.
-- **One-off payment per video.** Not ongoing retainers. Pay per piece. Scale what works, kill what doesn't.
-- **Performance tracking per creator.** Unique links per creator. They knew exactly which creator drove which installs.
+**The numbers:**
+- 26 active accounts at any time (46 tested total, underperformers replaced ruthlessly)
+- 52 videos posted per day (2–3 per account)
+- 4,984 total videos produced
+- **298 million views**, 1.5M shares, 2.3M bookmarks
+- CPM consistently under $1
+
+**The exact content format (templatized):**
+1. **2–3 second close-up selfie** of creator (smiling, looking at camera)
+2. **Text overlay with emotional hook** (e.g., "Life after deleting Snap" — used 838 times. "I'm crying, my bf is so cute" — used 423 times)
+3. **Screen recording of the app** in action on their phone
+
+**Three dominant hook families they reused hundreds of times:**
+- "Life after deleting Snap" — 838 uses
+- "I'm crying, my [bf/mom] is so cute" — 423 uses
+- "POV" and "long distance" — 699 uses each
+
+**How they found creators:**
+- Targeted nano-influencers (under 50K followers) who were under-monetized
+- Paid a one-off fee per video (not ongoing retainers)
+- Scaled sourcing via 1stCollab (AI marketplace) — 13,000+ bids received
+- Top performer @kaias_lensss used the same hook dozens of times, consistently getting millions of views
+
+**How they scaled:**
+- Phase 1: External nano-influencers (one-off fees)
+- Phase 2: Internal team posting daily (Kyle himself built a 70K+ follower TikTok page — leading by example)
+- Phase 3: Scaled via 1stCollab to hundreds of new influencers per month with stringent content review
+- When a video gained momentum, they commissioned response videos to comments (free retargeting)
+
+**The key metric: 3-second watch time.** If 75–80% of viewers stay past 3 seconds, the format is viral-ready. This predicts which hooks will snowball.
 
 **What we're stealing:**
-- **Find ONE repeatable format for Tryps.** The equivalent: "POV: someone actually planned the group trip." 15-second screen recording of Tryps in iMessage, with a hook, every time. Same format, different destinations.
-- **Unique tracking links per creator.** Inej is building `jointryps.com/go/{name}` redirect links through Branch. Non-negotiable.
-- **Volume over quality.** 20 adequate TikToks > 2 polished ones. The algorithm rewards frequency.
-- **2-week evaluation window.** By May 16, we should know which creators are driving installs and which to cut.
+- **Find ONE repeatable format for Tryps.** The equivalent: "POV: someone actually planned the group trip." 3-second hook + screen recording of Tryps planning a trip in iMessage. Same format, different destinations, different hooks. Repeat hundreds of times.
+- **Pay per video, not retainers.** $50–100 per video. Kill underperformers after a few dozen posts. No sentimentality.
+- **Volume wins.** 52 videos/day across 26 accounts means statistical certainty of viral hits. Every Nth post on nano accounts gets algorithmic boost.
+- **Founder posts alongside creators.** Kyle ran his own TikTok page. Jake or the growth marketer should do the same — it motivates creators and adds legitimacy.
+- **Track 3-second watch time** as the key metric. Inej builds this into the analytics dashboard.
+
+**Also relevant: Nomadtable** — solo founder Jay manages ~60 creators through a single WhatsApp group. 44M monthly views, $65K/month revenue, bootstrapped. Pays $1–2 CPM (performance-based, not flat fees). His key insight: the founder posts alongside creators ("motivates them when they see the founder in the trenches").
 
 **@Sean — We need to figure out who our Locket-style creators are.** Who are the 20–30 nano-creators that can mass-produce a templatized Tryps demo format? This is a Sean + Growth Marketer task once we hire them.
 
-**Open question for the room:** Can we create a standardized "Tryps demo" format that any creator can produce in 10 minutes? What does that template look like? (3-second hook + screen recording of Tryps planning a trip + reaction)
+**Sources:** Kyle Sanok (@ksanok10), 1stCollab case study, Social Growth Engineers analysis + free hook dataset (socialgrowthengineers.com/resources/locket), Joseph Choi (@JosephKChoi) Nomadtable article.
+
+**Open question for the room:** What's our Locket hook? "Life after deleting Snap" worked for Locket because it was emotional and relatable. What's the Tryps equivalent? "POV: your group chat actually books the trip"? "I'm crying, my friends actually committed to dates"? We need to test 5–10 hooks fast and see which gets 75%+ 3-second watch time.
 
 ---
 
