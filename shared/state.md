@@ -1,7 +1,7 @@
 # Tryps State
 
 > Auto-generated from scope state.md frontmatter. Do not edit manually.
-> Last updated: 2026-04-02 17:30 UTC
+> Last updated: 2026-04-02 18:00 UTC
 
 ## Scope Status
 
@@ -19,7 +19,7 @@
 | post-trip-retention | Post-Trip & Retention | specced | nadeem | 0/31 | Spec exists, not started |
 | travel-booking | Travel Booking | in-progress | asif, rizwan | 5/70 | 5/70 implemented |
 | travel-identity | Travel Identity | specced | nadeem | 0/50 | Spec exists, not started |
-| voice-calls | Voice Calls | done | asif | 14/14 | Tryps agent + Marty voice both live |
+| voice-calls | Voice Calls | done | asif | — |  |
 
 ## Summary
 
