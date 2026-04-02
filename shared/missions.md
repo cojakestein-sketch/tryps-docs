@@ -22,8 +22,8 @@
 A user must be able to book flights, hotels, activities, and transport — for themselves or on behalf of someone else in the group. This is the core value prop and the #1 thing blocking the team goal. Nothing matters more.
 
 ### Mission 2: Onboarding Flow with Emoji Voting — Group Facilitation Engine
-**Owner:** Rizwan (lead), Asif (Linq API) | **Created:** Apr 2 | **Status:** Emoji voting done (Asif), remaining SC in progress
-Emoji voting using Apple iOS tapback reactions is **implemented and working** (Asif). Spec complete with 25 SC in `group-decision-making/spec.md`. 11 new SC added (SC-15–25) covering: participant awareness, emoji voting, flexible tally with criticality-based timeout, vote prediction, and facilitation → booking transition. Remaining: SC-15–16 (participant awareness fix for Issue #341), vote prediction, and booking transition. [Issue #341](https://github.com/cojakestein-sketch/tryps/issues/341)
+**Owner:** Rizwan (lead), Asif (Linq API) | **Created:** Apr 2 | **Status:** 5/25 SC done (Asif), remaining 20 in progress
+5 SC completed by Asif: **SC-15** (participant awareness — agent knows who's in chat), **SC-18** (emoji polls via tapback reactions), **SC-19** (flexible vote tally with criticality timeout), **SC-20** (low-stakes auto-apply, high-stakes confirmation), **SC-24** (never sends join links to existing participants). Remaining 20 SC: facilitation loop (SC-1–10), SC-16/17 (auto-enroll + referral detection), SC-21–23/25 (nudging, vote prediction, booking transition). [Issue #341](https://github.com/cojakestein-sketch/tryps/issues/341)
 
 ### Mission 3: Customer Interviews — How Do We Present the Product?
 **Owner:** Asif + Jake | **Created:** Apr 1 | **Status:** Pipeline live at marty.jointryps.com/interview

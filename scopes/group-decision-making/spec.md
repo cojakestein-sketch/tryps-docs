@@ -7,7 +7,7 @@ wave: 2
 dependencies: [imessage-agent, agent-intelligence]
 clickup_ids: ["86e0emu5q"]
 criteria_count: 25
-criteria_done: 0
+criteria_done: 5
 last_updated: 2026-04-02
 links:
   objective: ./objective.md
@@ -86,7 +86,7 @@ Without this, Tryps is a trip container. This is what makes it a travel agent. T
 
 ### Participant Awareness
 
-- [ ] **SC-15.** The agent knows who is in the group chat and addresses them by name. It never suggests sending a join link to someone already present. Verified by: create a trip in a group chat with Jake, Diego, and Sarah → agent's first message references the group → agent does not suggest sending anyone a join link or share a join URL for any participant.
+- [x] **SC-15.** `✅ DONE` The agent knows who is in the group chat and addresses them by name. It never suggests sending a join link to someone already present. Verified by: create a trip in a group chat with Jake, Diego, and Sarah → agent's first message references the group → agent does not suggest sending anyone a join link or share a join URL for any participant.
 
 - [ ] **SC-16.** When a trip is created in a group chat, all chat participants are automatically treated as trip members. Verified by: Jake texts "plan a trip to NYC" in a group chat with 3 others → trip is created with all 4 as members → no enrollment prompts are sent.
 
@@ -94,11 +94,11 @@ Without this, Tryps is a trip container. This is what makes it a travel agent. T
 
 ### Emoji Voting
 
-- [ ] **SC-18.** The agent proposes group decisions as emoji polls using Apple's default iOS tapback reactions. Each option maps to one emoji. The message format is self-explanatory. Verified by: agent needs to ask about dates → sends "when works best? react to vote: 👍 = July, ❤️ = August, ‼️ = September" → single message with clear emoji-to-option mapping.
+- [x] **SC-18.** `✅ DONE` The agent proposes group decisions as emoji polls using Apple's default iOS tapback reactions. Each option maps to one emoji. The message format is self-explanatory. Verified by: agent needs to ask about dates → sends "when works best? react to vote: 👍 = July, ❤️ = August, ‼️ = September" → single message with clear emoji-to-option mapping.
 
-- [ ] **SC-19.** The agent tallies emoji votes using a flexible timeout tied to the criticality matrix. Trips far out get longer windows; trips soon get shorter. Majority can trigger an early tally. Verified by: 4-person trip 2 weeks away, 3 of 4 vote within 1 hour → agent tallies and announces without waiting for the 4th. Same trip 4 months away → agent waits at least 24 hours before tallying.
+- [x] **SC-19.** `✅ DONE` The agent tallies emoji votes using a flexible timeout tied to the criticality matrix. Trips far out get longer windows; trips soon get shorter. Majority can trigger an early tally. Verified by: 4-person trip 2 weeks away, 3 of 4 vote within 1 hour → agent tallies and announces without waiting for the 4th. Same trip 4 months away → agent waits at least 24 hours before tallying.
 
-- [ ] **SC-20.** Low-stakes vote results (dates, destination, activities) auto-apply to the trip. High-stakes results (booking, payment) require explicit group confirmation. Verified by: date vote resolves to July → trip dates update automatically. Hotel vote resolves to Marriott → agent says "Marriott won — want me to book it?" and waits for confirmation.
+- [x] **SC-20.** `✅ DONE` Low-stakes vote results (dates, destination, activities) auto-apply to the trip. High-stakes results (booking, payment) require explicit group confirmation. Verified by: date vote resolves to July → trip dates update automatically. Hotel vote resolves to Marriott → agent says "Marriott won — want me to book it?" and waits for confirmation.
 
 - [ ] **SC-21.** Before the voting timeout expires, the agent nudges non-voters by name in the group chat. Verified by: 4-person trip, 3 vote within 4 hours, Sarah hasn't → agent sends "still waiting on Sarah — any preference?" in the group.
 
@@ -120,7 +120,7 @@ Without this, Tryps is a trip container. This is what makes it a travel agent. T
 
 - [ ] **SC-14.** The agent never asks the same person the same type of question in consecutive check-ins. Verified by: agent asks Jake about flight preferences on Monday → Tuesday's check-in does not ask Jake about flights again, even if he didn't respond.
 
-- [ ] **SC-24.** The agent never sends a join or invite link to someone already in the group chat. Verified by: create a trip in a group chat where Diego is a participant → at no point does the agent say "send Diego the link" or share a join URL for Diego.
+- [x] **SC-24.** `✅ DONE` The agent never sends a join or invite link to someone already in the group chat. Verified by: create a trip in a group chat where Diego is a participant → at no point does the agent say "send Diego the link" or share a join URL for Diego.
 
 - [ ] **SC-25.** The agent never auto-votes on behalf of a user in their first few interactions with Tryps. Verified by: new user (no profile data, first trip) is in a group → vote poll is sent → agent does NOT predict or auto-fill their vote.
 
