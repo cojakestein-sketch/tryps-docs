@@ -1,70 +1,144 @@
 ---
 title: "Social Account Warm-Up Playbook"
 date: 2026-04-03
-owner: enej
-reviewers: sean, jake
+owner: sean
+contributors: enej, jake
 status: active
 launch_date: 2026-05-02
+start_date: 2026-04-04
 ---
 
 # Social Account Warm-Up Playbook
 
 ## Executive Summary
 
-We have 29 days until launch (May 2). Our brand accounts on Instagram, TikTok, and X are new or nearly new. All three platforms aggressively flag new accounts that spike activity — posting 5x/week from a cold account will get us shadowbanned before launch week.
+We have 28 days until launch (May 2). Our brand accounts on Instagram, TikTok, and X are new or nearly new. All three platforms aggressively flag new accounts that spike activity — posting 5x/week from a cold account will get us shadowbanned before launch week.
 
 **The fix:** A structured warm-up that mimics real human behavior. Browse before posting. Engage before broadcasting. Ramp slowly.
 
 **Key constraints:**
 
-| Platform | Warm-up needed | Days available | Margin | Risk |
-|----------|---------------|----------------|--------|------|
-| Instagram | 21 days | 29 | 8 days | HIGH — tightest window |
-| TikTok | 7-10 days | 29 | 19-22 days | MEDIUM — most forgiving |
-| X | 14 days | 29 | 15 days | LOW — least aggressive |
+| Platform | Warm-up needed | Days available | Margin | Risk | Owner |
+|----------|---------------|----------------|--------|------|-------|
+| Instagram | 21 days | 28 | 7 days | HIGH — tightest window | Sean |
+| Facebook | Same as IG (shared Meta trust) | 28 | 7 days | HIGH — same Meta system | Sean |
+| TikTok | 7-10 days | 28 | 18-21 days | MEDIUM — most forgiving | Enej |
+| X | 14 days | 28 | 14 days | LOW — least aggressive | Enej |
 
-**Three things that must happen today (April 3):**
+**Sean owns all Meta platforms (Instagram + Facebook).** He already handles the accounts and is logged in. Enej owns TikTok and X warm-up. Enej sets up Metricool when each platform is ready.
 
-1. Enej spends 15 min browsing travel content on @tryps Instagram (likes only, no posts, no follows)
-2. Enej spends 20 min watching travel TikToks from @tryps account (likes + follows, no posts)
-3. Jake or Enej logs into @tryps on X, scrolls 5 min, likes 1-2 tweets (nothing else)
+**Three things that must happen tomorrow (April 4, Day 1):**
 
-**Three rules for the next 10 days:**
+1. Sean spends 15 min browsing travel content on @tryps Instagram — likes only, no posts, no follows, no DMs
+2. Enej spends 20 min watching travel TikToks from @tryps account — likes + follows, no posts
+3. Enej logs into @tryps on X, scrolls 5 min, likes 1-2 tweets — nothing else
 
-1. No scheduling tools (Metricool) on Instagram until April 13. Post natively from phone.
-2. No links in any tweet until April 13.
-3. No feed posts on Instagram until April 8 at the earliest. Stories first.
+**Four rules for the next 10 days:**
 
-**The content calendar starts April 11.** Instagram will be on day 8 of warm-up — tight but workable if we start today. If we delay even 3 days, the calendar launches on an under-warmed account and we risk shadowban during the most important pre-launch window.
+1. No scheduling tools (Metricool) on Instagram until April 14. Post natively from phone.
+2. No links in any tweet until April 14.
+3. No feed posts on Instagram until April 9 at the earliest. Stories first.
+4. No feed posts on Facebook until Instagram has its first feed post.
 
-**Seed followers:** We need 50 followers by April 7 and 100 by April 11. Jake asks 20 friends + team + advisors to follow @tryps this week. An account with 0 followers posting content looks fake.
+**The content calendar starts April 11.** Instagram will be on day 7 of warm-up — tight but workable if Sean starts April 4. If we delay even 2-3 days, the calendar launches on an under-warmed account and we risk shadowban during the most important pre-launch window.
+
+**Seed followers:** We need 50 followers by April 8 and 100 by April 11. Jake asks 20 friends + team + advisors to follow @tryps this week. An account with 0 followers posting content looks fake.
 
 ---
 
-## What To Do Today — April 3
+## Profile Setup Checklist (Complete Before Day 1)
+
+This must be done before any warm-up activity begins. Sean handles IG + FB. Enej handles TikTok + X.
+
+### Instagram (@tryps)
+
+| Setting | Value | Notes |
+|---------|-------|-------|
+| Profile photo | `tryps-pfp-1080.png` | In `brand-and-gtm/02-socials/` |
+| Username | @tryps | Confirm this is claimed |
+| Display name | Tryps | Not "Tryps - Travel App" |
+| Bio | "your friends are waiting." + one line about what Tryps is | Keep it short. No emojis. Sean writes final copy. |
+| Website link | jointryps.com | Not a linktree — direct to site |
+| Account type | **Creator account** (not Business) | Creator gets full music library for Reels. Business accounts are restricted on sounds. Switch from Business to Creator if needed. |
+| Account visibility | **Public** | Must be public from day 1. Private accounts can't build algorithmic trust. |
+| Contact info | Hide email/phone from profile | Don't want DM spam from bots |
+| Cross-link | Add TikTok handle in bio or link section | |
+| Category | Travel / Lifestyle | Shows below display name on Creator accounts |
+
+### Facebook (@tryps or Tryps page)
+
+| Setting | Value | Notes |
+|---------|-------|-------|
+| Page type | Business page (not personal profile) | Required for scheduling tools and ads later |
+| Profile photo | Same `tryps-pfp-1080.png` | Consistent with IG |
+| Cover photo | Can use X banner or a travel photo | Sean decides |
+| Page bio / About | Same messaging as IG bio | |
+| Website link | jointryps.com | |
+| CTA button | "Learn More" → jointryps.com | Or "Send Message" if we want Messenger |
+| Cross-link | Link to Instagram account | Meta connects these for cross-posting |
+| Instagram connection | Connect IG account to FB page in Meta Business Suite | Required for cross-posting and for Metricool to manage both |
+
+### TikTok (@tryps)
+
+| Setting | Value | Notes |
+|---------|-------|-------|
+| Profile photo | Same `tryps-pfp-1080.png` | |
+| Username | @tryps | Confirm claimed |
+| Display name | Tryps | |
+| Bio | Short — "the trip your group chat actually takes" or similar | Sean approves copy |
+| Website link | jointryps.com | |
+| Account type | **Creator account** (not Business) | Business accounts lose access to commercial sound library and trending sounds. This matters for Reels/TikTok content. |
+| Cross-link | Add IG handle | |
+
+### X (@tryps)
+
+| Setting | Value | Notes |
+|---------|-------|-------|
+| Profile photo | Same `tryps-pfp-1080.png` | |
+| Header image | `tryps-x-banner-gradient.png` | In `brand-and-gtm/02-socials/` |
+| Username | @tryps | Confirm claimed |
+| Display name | Tryps | |
+| Bio | Short, group-chat energy. "the trip your group chat actually takes. launching may 2." | Sean approves copy |
+| Website link | jointryps.com | |
+| Pinned tweet | First tweet once posted (day 6-7) | |
+| Location | New York, NY | |
+
+**Sean approves all bio copy before profiles go live.** Enej sets up TikTok and X profiles, sends screenshots to Sean for approval before any warm-up activity begins.
+
+---
+
+## Day 1 Actions — April 4
 
 | Action | Platform | Who | Time |
 |--------|----------|-----|------|
-| Complete profile (photo, bio, jointryps.com link) | All 3 | Enej | 10 min |
-| Browse travel content on Explore, like 5-8 posts, save 1-2 | IG | Enej | 15 min |
+| Complete IG profile (see checklist above) | IG | Sean | 10 min |
+| Browse travel content on Explore, like 5-8 posts, save 1-2 | IG | Sean | 15 min |
+| Complete FB page (see checklist above) | FB | Sean | 10 min |
+| Connect IG to FB page in Meta Business Suite | FB | Sean | 5 min |
+| Browse FB travel groups, like 3-5 posts | FB | Sean | 10 min |
+| Complete TikTok profile (see checklist above) | TikTok | Enej | 10 min |
 | Watch TikToks for 25 min (full watch, don't rapid-scroll) | TikTok | Enej | 25 min |
 | Like 10-15 travel/trip-planning TikToks | TikTok | Enej | included |
-| Follow 15-20 travel-related US creators | TikTok | Enej | included |
+| Follow 15-20 travel-related US creators on TikTok | TikTok | Enej | included |
 | Save 5 trending sounds from TikTok Creative Center | TikTok | Enej | 5 min |
-| Log in, scroll 5 min, like 1-2 posts from travel/tech accounts | X | Enej | 5 min |
+| Complete X profile (see checklist above) | X | Enej | 10 min |
+| Log in to X, scroll 5 min, like 1-2 travel/tech posts | X | Enej | 5 min |
 | DM 20 friends/team/advisors asking them to follow @tryps on IG | All | Jake | 10 min |
+| Jake follows @tryps from personal IG, likes first Story when posted | IG | Jake | 2 min |
 
-**Total: ~45 min for Enej, ~10 min for Jake.**
+**Total: ~50 min for Sean, ~55 min for Enej, ~12 min for Jake.**
 
-**DO NOT do any of these today:** Post to feed (any platform). Follow anyone on Instagram. Send DMs on any platform. Use Metricool or any scheduling tool.
+**DO NOT do any of these on Day 1:** Post to feed (any platform). Follow anyone on Instagram. Send DMs on any platform. Use Metricool or any scheduling tool.
 
 ---
 
-## Instagram Warm-Up (21 Days)
+## Instagram Warm-Up (21 Days) — Sean Owns
 
 Instagram is the highest risk. Meta flags new accounts aggressively. The algorithm now weights engagement signals as: shares > saves > comments > likes. Accounts that rush warm-up in under 5 days show 73% higher shadowban rates.
 
-### Phase 1: Days 1-3 (Apr 3-5) — Silent Browsing
+**Sean does all Instagram warm-up activity from his phone, logged into the @tryps account.** This keeps the device, IP, and behavior pattern consistent. Do not log in from multiple devices during the first 2 weeks.
+
+### Phase 1: Days 1-3 (Apr 4-6) — Silent Browsing
 
 The algorithm has zero data on us. We're building a behavioral profile.
 
@@ -81,7 +155,9 @@ The algorithm has zero data on us. We're building a behavioral profile.
 
 Instagram uses this browsing behavior to decide what niche the account belongs to. Browse travel content, group trip content, lifestyle content — this trains the algorithm to categorize @tryps correctly.
 
-### Phase 2: Days 4-7 (Apr 6-9) — First Interactions
+**Specifically browse/engage with:** Content from our 13 reference creators (Grace Donner, Hailey Schulvitz, Lily Rudder, Ella Rose McFadden, Eddie Rosenthal, etc.). Like their posts. This builds our interest graph in exactly the right niche and warms up the algorithm to associate @tryps with this creator segment.
+
+### Phase 2: Days 4-7 (Apr 7-10) — First Interactions
 
 | Action | Daily limit |
 |--------|------------|
@@ -92,15 +168,19 @@ Instagram uses this browsing behavior to decide what niche the account belongs t
 | Feed posts | 1 total this phase (day 5-7) |
 | DM | 0 |
 
-**First Story:** Day 4 or 5. Something simple — behind-the-scenes, "something's coming," a quick shot of the team working.
+**First Story (Apr 7 or 8):** Something simple — behind-the-scenes, "something's coming," a quick shot of the team working. Sean posts natively from phone.
 
-**First feed post:** Day 5-7. Self-introduction or a simple travel-related image. Not a product demo. Not promotional. Just establishing that this is a real account that posts real things.
+**First feed post (Apr 9-10):** Self-introduction or a simple travel-related image. Not a product demo. Not promotional. Just establishing that this is a real account that posts real things.
 
 **Comment quality matters.** "Nice!" or a fire emoji doesn't count. Write actual sentences: "this spot looks insane, where is that?" or "the way you edited this is so clean." The algorithm can tell the difference.
 
-### Phase 3: Days 8-14 (Apr 10-16) — Build Cadence
+**Follow the reference creators.** Start following our 13 reference creators during this phase (a few per day, not all at once). Engage with their content genuinely.
 
-This is when the content calendar starts (April 11). We're on day 8-9 of warm-up — still ramping.
+**Jake's personal account:** Jake should like and comment on @tryps posts from his personal IG during this phase. This signals to the algorithm that real, established accounts are engaging with @tryps. Ask Sean, team members, and close friends to do the same.
+
+### Phase 3: Days 8-14 (Apr 11-17) — Build Cadence
+
+This is when the content calendar starts (April 11). We're on day 7-8 of warm-up — still ramping.
 
 | Action | Daily/weekly limit |
 |--------|-------------------|
@@ -113,9 +193,9 @@ This is when the content calendar starts (April 11). We're on day 8-9 of warm-up
 
 **Content mix this week:** Images and carousels. Introduce Reels mid-week. Save the heavy product demo Reels for Phase 4.
 
-**Still posting natively from phone.** Do not connect Metricool until day 10-14 (April 13-17).
+**Still posting natively from phone.** Do not connect Metricool until day 10-14 (April 14-18).
 
-### Phase 4: Days 15-21 (Apr 17-23) — Full Warm-Up
+### Phase 4: Days 15-21 (Apr 18-24) — Full Warm-Up
 
 | Action | Daily/weekly limit |
 |--------|-------------------|
@@ -126,11 +206,11 @@ This is when the content calendar starts (April 11). We're on day 8-9 of warm-up
 | Follows | 10-20/day |
 | Hashtags per post | 5-10 |
 
-**Metricool is safe now.** Connect it and start scheduling, but still mix in native posts.
+**Metricool is safe now.** Enej connects it and starts scheduling, but Sean still mixes in native posts (especially Stories).
 
 Test different formats: carousels, Reels, collabs. See what gets saves and shares (not just likes).
 
-### Phase 5: Days 22-29 (Apr 24-May 1) — Launch Cadence
+### Phase 5: Days 22-28 (Apr 25-May 1) — Launch Cadence
 
 | Action | Daily/weekly limit |
 |--------|-------------------|
@@ -154,6 +234,7 @@ Full content calendar in effect. Launch countdown content. Behind-the-scenes. Pr
 - Using a scheduling tool before day 10 (Meta detects API-based posting on new accounts)
 - Engagement from accounts that don't follow you right after posting (looks like a pod)
 - Switching between multiple IP addresses or devices
+- Logging in from multiple devices in the first 2 weeks
 
 **Hard ceilings (never exceed, any week):**
 - 150 likes/hour
@@ -165,13 +246,56 @@ Full content calendar in effect. Launch countdown content. Behind-the-scenes. Pr
 
 ---
 
-## TikTok Warm-Up (7-10 Days)
+## Facebook Warm-Up — Sean Owns
+
+Facebook and Instagram share the same Meta trust system. If the IG account is connected to the FB page (which it should be from day 1), warm-up activity on IG partially warms FB too. But FB still needs its own activity.
+
+Facebook is a **secondary platform** for Tryps — we're cross-posting from IG, not creating FB-native content. But the page needs to look alive before we start cross-posting, or Meta will flag the sudden spike.
+
+### Days 1-7 (Apr 4-10) — Establish the Page
+
+| Action | Daily limit | Notes |
+|--------|------------|-------|
+| Complete page setup (profile, cover, about, CTA) | Day 1 | See checklist above |
+| Connect IG account to FB page | Day 1 | In Meta Business Suite |
+| Browse 2-3 travel-related FB groups | 5-10 min/day | Don't post in them yet |
+| Like 3-5 posts in travel groups | Daily | Genuine engagement |
+| Share 1 post to the page (a travel article, a meme, something on-brand) | Day 3-4 | Not promotional |
+| Invite friends to like the page | Day 4-5 | Ask 10-15 people |
+
+### Days 8-14 (Apr 11-17) — Light Content
+
+| Action | Limit |
+|--------|-------|
+| Cross-post 1-2 IG posts to FB | Per week |
+| Share 1-2 travel articles or group chat memes | Per week |
+| Respond to any comments | Same day |
+
+### Days 15+ (Apr 18+) — Cross-Post Cadence
+
+| Action | Limit |
+|--------|-------|
+| Cross-post from IG | 3-4/week (auto via Metricool once connected) |
+| Captions | Slightly longer than IG — FB audience reads more |
+| FB Groups | Can start posting in travel planning groups with genuine value (not spam) |
+
+### Facebook — What to Know
+
+- FB is less aggressive about shadowbanning than IG, but they share the same Meta Business Suite trust signals
+- Don't create the FB page and immediately blast 10 posts — it looks like a bot page
+- FB Groups are a potential distribution channel post-launch (travel planning groups, group trip groups) but don't spam them pre-launch
+- Cross-posting from IG is the primary content strategy — FB-native content is not a priority
+- If someone comments on the FB page, respond. An active page with zero comment responses looks abandoned.
+
+---
+
+## TikTok Warm-Up (7-10 Days) — Enej Owns
 
 TikTok is the most forgiving platform. The algorithm is content-first — even 0-follower accounts can go viral. But "newborn shadowban" is real: accounts that post immediately get reach-throttled, sometimes permanently.
 
 The warm-up is less about "looking real" and more about training the algorithm to show our content to the right audience. Every video we watch during warm-up teaches TikTok what niche we're in.
 
-### Day 1-2 (Apr 3-4) — Browse Only
+### Days 1-2 (Apr 4-5) — Browse Only
 
 | Action | Daily limit |
 |--------|------------|
@@ -184,7 +308,7 @@ The warm-up is less about "looking real" and more about training the algorithm t
 
 **Be specific with browsing.** Don't watch random viral content. Watch: group trip planning videos, travel hack content, destination reveals, travel vlogs, trip coordination content. This trains the algorithm to categorize us correctly.
 
-### Day 3 (Apr 5) — First Post
+### Day 3 (Apr 6) — First Post
 
 Post a 15-second intro video. Not promotional, not polished. Just "who we are and what you'll see here."
 
@@ -193,10 +317,11 @@ Post a 15-second intro video. Not promotional, not polished. Just "who we are an
 - 2 relevant hashtags (not 4+)
 - Post at 2-4 PM ET
 - After posting: spend 30 min replying to every comment and engaging with similar creators
+- **Sean approves the video before posting**
 
 **Target: 150-250 views in first 24 hours.** If you cross 400, it's breaking out of the test pool.
 
-### Days 4-7 (Apr 6-9) — Build
+### Days 4-7 (Apr 7-10) — Build
 
 | Action | Daily limit |
 |--------|------------|
@@ -209,7 +334,9 @@ Day 4: Duet or Stitch a saved clip (links your content graph to theirs). Day 5: 
 
 **No links, no CTAs, no promotional language in your first 10 videos.** TikTok flags this from new accounts.
 
-### Days 8-14 (Apr 10-16) — Daily Posting
+**All TikTok content goes through Sean for approval before posting.** Send draft via Slack or DM, get thumbs up, then post natively.
+
+### Days 8-14 (Apr 11-17) — Daily Posting
 
 | Action | Daily limit |
 |--------|------------|
@@ -220,9 +347,9 @@ Day 4: Duet or Stitch a saved clip (links your content graph to theirs). Day 5: 
 
 Keep videos 15-30 seconds. Shorter clips have higher completion rates, and completion rate is the #1 trust signal for new accounts. Avoid highly produced content — the algorithm interprets professional editing from a new account as potential spam.
 
-**Can connect Metricool by day 7 (April 10).** TikTok doesn't penalize scheduled posts through official API partners.
+**Can connect Metricool by day 7 (April 11).** TikTok doesn't penalize scheduled posts through official API partners.
 
-### Days 15+ (Apr 17+) — Full Cadence
+### Days 15+ (Apr 18+) — Full Cadence
 
 1-2 videos/day. Longer content OK (30-60 seconds). Trending sounds. Pre-launch teasers. Start introducing links cautiously.
 
@@ -242,11 +369,11 @@ Keep videos 15-30 seconds. Shorter clips have higher completion rates, and compl
 
 ---
 
-## X (Twitter) Warm-Up (14 Days)
+## X (Twitter) Warm-Up (14 Days) — Enej Owns
 
 X is the most lenient platform but still flags new accounts that act like bots. The key principle: **variety in behavior.** A real person doesn't perform the same actions in the same order every day. Mix it up.
 
-### Days 1-3 (Apr 3-5) — Silent Observation
+### Days 1-3 (Apr 4-6) — Silent Observation
 
 | Action | Daily limit |
 |--------|------------|
@@ -258,7 +385,7 @@ X is the most lenient platform but still flags new accounts that act like bots. 
 
 Just establish baseline "logged in and browsing" behavioral signal.
 
-### Days 4-5 (Apr 6-7) — Light Engagement
+### Days 4-5 (Apr 7-8) — Light Engagement
 
 | Action | Daily limit |
 |--------|------------|
@@ -271,7 +398,7 @@ Just establish baseline "logged in and browsing" behavioral signal.
 
 **Visit profiles before following.** Bots follow without viewing profiles — X can detect this.
 
-### Days 6-7 (Apr 8-9) — First Tweet
+### Days 6-7 (Apr 9-10) — First Tweet
 
 | Action | Daily limit |
 |--------|------------|
@@ -285,7 +412,9 @@ Just establish baseline "logged in and browsing" behavioral signal.
 
 First tweet should be authentic. Something about travel or group trips. Not promotional. Examples: "building the thing your group chat needs" or "the group chat has planned 47 trips. taken 2."
 
-### Days 8-14 (Apr 10-16) — Build Rhythm
+**Sean approves tweet copy before posting.**
+
+### Days 8-14 (Apr 11-17) — Build Rhythm
 
 | Action | Daily limit |
 |--------|------------|
@@ -299,9 +428,9 @@ First tweet should be authentic. Something about travel or group trips. Not prom
 
 Start threads mid-week. Threads get algorithmic favor in 2026. Still no DMs.
 
-**Can connect Metricool by day 7-10 (April 10-13).**
+**Can connect Metricool by day 7-10 (April 11-14).**
 
-### Days 15+ (Apr 17+) — Full Cadence
+### Days 15+ (Apr 18+) — Full Cadence
 
 2-3 tweets/day. Links OK. Can use scheduling tool. First cautious DMs (only to people who engaged with you first). Full content calendar in effect.
 
@@ -318,15 +447,18 @@ Start threads mid-week. Threads get algorithmic favor in 2026. Still no DMs.
 
 ## Scheduling Tool Timing
 
-| Platform | Post natively until... | Metricool safe from... |
-|----------|----------------------|----------------------|
-| Instagram | April 13 (day 10) | April 13 at earliest |
-| TikTok | April 10 (day 7) | April 10 |
-| X | April 10 (day 7) | April 10 |
+| Platform | Post natively until... | Metricool safe from... | Who connects |
+|----------|----------------------|----------------------|-------------|
+| Instagram | April 14 (day 10) | April 14 at earliest | Enej |
+| Facebook | April 14 (same as IG) | April 14 | Enej |
+| TikTok | April 11 (day 7) | April 11 | Enej |
+| X | April 11 (day 7) | April 11 | Enej |
 
-**Do not connect Metricool to Instagram before April 13.** Meta detects API-based posting on new accounts. TikTok and X are less sensitive.
+**Do not connect Metricool to Instagram before April 14.** Meta detects API-based posting on new accounts. TikTok and X are less sensitive.
 
 After connecting Metricool, still mix in native posts (especially Stories on Instagram). Scheduling tools that use official OAuth/API are safe: Metricool, Later, Buffer, Hootsuite, Sprout Social. Anything that requires your password (not OAuth) is dangerous.
+
+**Instagram and Facebook must be connected to the same Meta Business Suite** before Metricool links to either. Sean should do this on day 1.
 
 ---
 
@@ -334,16 +466,18 @@ After connecting Metricool, still mix in native posts (especially Stories on Ins
 
 An account with 0 followers doing lots of activity looks suspicious. The ratio between activity level and follower count matters.
 
-**Target: 50 followers by April 7, 100 by April 11.**
+**Target: 50 followers by April 8, 100 by April 11.**
 
-| Source | Followers | Who asks |
-|--------|-----------|----------|
-| Jake's friends + personal network | 20 | Jake DMs this week |
-| Sean's contacts | 10 | Sean |
-| Team members (Asif, Nadeem, Rizwan, Andreas, Cameron, Enej) | 6 | Jake tells team |
-| Jackson + advisor network | 10-15 | Jake asks Jackson |
-| Reference creators (warm contacts) | 5-10 | Sean |
-| **Total** | **50-60** | |
+| Source | Followers | Who asks | When |
+|--------|-----------|----------|------|
+| Jake's friends + personal network | 20 | Jake DMs this week | Apr 4-5 |
+| Sean's contacts | 10 | Sean | Apr 4-5 |
+| Team members (Asif, Nadeem, Rizwan, Andreas, Cameron, Enej) | 6 | Jake tells team in Slack | Apr 4 |
+| Jackson + advisor network | 10-15 | Jake asks Jackson | Apr 4-5 |
+| Reference creators (warm contacts) | 5-10 | Sean | Apr 7-10 |
+| **Total** | **50-60** | | |
+
+**Jake's personal accounts:** Jake should follow @tryps from his personal IG, TikTok, and X. Like and comment on @tryps posts when they go live. This signals to the algorithm that real, established accounts are engaging. Ask other team members to do the same.
 
 This is not growth hacking. This is making the account look real before the content calendar starts. Do NOT buy followers — accounts that purchase followers have a 92% ban rate.
 
@@ -355,11 +489,11 @@ The 3-week content calendar starts April 11 (Week 1: THE TEASE).
 
 | Calendar week | Warm-up day (IG) | What's safe |
 |---------------|-----------------|-------------|
-| Apr 11-17 (Week 1) | Days 8-14 | 2-3 feed posts/week. Stories daily. No scheduling tool yet. Scale back calendar to 3 posts/platform this week instead of 5. |
-| Apr 18-24 (Week 2) | Days 15-21 | 3-4 posts/week. Metricool connected mid-week. Ramp up to near-full cadence. |
-| Apr 25-May 1 (Week 3) | Days 22-28 | Full 5/week. Launch countdown. All systems go. |
+| Apr 11-17 (Week 1) | Days 7-13 | 2-3 feed posts/week. Stories daily. No scheduling tool yet. Scale back calendar to 3 posts/platform this week instead of 5. |
+| Apr 18-24 (Week 2) | Days 14-20 | 3-4 posts/week. Metricool connected. Ramp up to near-full cadence. |
+| Apr 25-May 1 (Week 3) | Days 21-27 | Full 5/week. Launch countdown. All systems go. |
 
-**Recommendation:** Scale Week 1 of the content calendar from 5 posts/platform to 3 posts/platform. Pick the strongest 3 from each platform's Week 1 lineup. This keeps us within safe warm-up limits on Instagram while still executing the calendar.
+**Recommendation:** Scale Week 1 of the content calendar from 5 posts/platform to 3 posts/platform on IG and TikTok. Pick the strongest 3 from each platform's Week 1 lineup. This keeps us within safe warm-up limits on Instagram while still executing the calendar. Sean decides which 3 to keep.
 
 Suggested cuts for Week 1 (keep the strongest, cut the filler):
 
@@ -375,11 +509,13 @@ Suggested cuts for Week 1 (keep the strongest, cut the filler):
 
 **X — keep all 5.** X warm-up is faster and tweets are low-risk. Full calendar is fine.
 
+**Facebook — cross-post the 3 best-performing IG posts from that week.** No FB-native content in Week 1.
+
 ---
 
 ## Daily Action Limits — Quick Reference
 
-### Instagram
+### Instagram (Sean)
 
 | Action | Week 1 | Week 2 | Week 3+ |
 |--------|--------|--------|---------|
@@ -390,7 +526,15 @@ Suggested cuts for Week 1 (keep the strongest, cut the filler):
 | Stories/day | 0, then 1-3 | 1-3 | 3-5 |
 | DMs/day | 0 | 0-5 | 5-10 |
 
-### TikTok
+### Facebook (Sean)
+
+| Action | Week 1 | Week 2 | Week 3+ |
+|--------|--------|--------|---------|
+| Page posts/week | 1-2 (shares, not original) | 2-3 (cross-posts from IG) | 3-4 (auto cross-post) |
+| Group engagement | Browse + like only | Browse + like + occasional comment | Can post in groups with genuine value |
+| Friend invites to page | 10-15 total | Done | Done |
+
+### TikTok (Enej)
 
 | Action | Week 1 | Week 2 | Week 3+ |
 |--------|--------|--------|---------|
@@ -400,7 +544,7 @@ Suggested cuts for Week 1 (keep the strongest, cut the filler):
 | Videos/day | 0, then 1 | 1 | 1-2 |
 | Hashtags/post | 2 | 2-4 | 2-4 |
 
-### X
+### X (Enej)
 
 | Action | Week 1 | Week 2 | Week 3+ |
 |--------|--------|--------|---------|
@@ -415,16 +559,18 @@ Suggested cuts for Week 1 (keep the strongest, cut the filler):
 
 ## Milestones
 
-| Milestone | Instagram | TikTok | X |
-|-----------|-----------|--------|---|
-| First post | Day 5-7 (Apr 8-10) | Day 3 (Apr 5) | Day 6-7 (Apr 8-9) |
-| First link allowed | Day 7+ | After 10th video | Day 10-14 |
-| First DM allowed | Day 14+ | N/A | Day 14-21 |
-| Metricool safe | Day 10-14 (Apr 13-17) | Day 7 (Apr 10) | Day 7-10 (Apr 10-13) |
-| Full warm-up complete | Day 21 (Apr 24) | Day 7-14 (Apr 10-17) | Day 14-21 (Apr 17-24) |
-| Full posting cadence | Day 22+ (Apr 25+) | Day 15+ (Apr 18+) | Day 15+ (Apr 18+) |
-| 50 followers target | Apr 7 | — | — |
-| 100 followers target | Apr 11 | — | — |
+| Milestone | Instagram (Sean) | Facebook (Sean) | TikTok (Enej) | X (Enej) |
+|-----------|-----------|----------|--------|---|
+| Day 1 | Apr 4 | Apr 4 | Apr 4 | Apr 4 |
+| First Story/share | Apr 7-8 | Apr 7 (share an article) | N/A | N/A |
+| First feed post | Apr 9-10 | Apr 9-10 (cross-post from IG) | Apr 6 | Apr 9-10 |
+| First link allowed | Apr 11+ | Apr 11+ | After 10th video | Apr 14 |
+| First DM allowed | Apr 18+ | N/A | N/A | Apr 18-25 |
+| Metricool safe | Apr 14 | Apr 14 | Apr 11 | Apr 11 |
+| Full warm-up complete | Apr 25 | Apr 25 | Apr 11-18 | Apr 18-25 |
+| Full posting cadence | Apr 26+ | Apr 26+ | Apr 19+ | Apr 19+ |
+| 50 followers target | Apr 8 | N/A | N/A | N/A |
+| 100 followers target | Apr 11 | N/A | N/A | N/A |
 
 ---
 
@@ -432,13 +578,17 @@ Suggested cuts for Week 1 (keep the strongest, cut the filler):
 
 | Task | Owner | Cadence |
 |------|-------|---------|
-| Daily warm-up engagement (likes, comments, browsing) | Enej | Daily, 30-45 min |
-| Native posting from phone (weeks 1-2 on IG) | Enej | Per schedule above |
+| Instagram warm-up (browsing, liking, commenting, Stories, posting) | **Sean** | Daily, 15-30 min |
+| Facebook page setup + warm-up | **Sean** | Daily, 10 min |
+| TikTok warm-up (browsing, liking, posting) | **Enej** | Daily, 30-45 min |
+| X warm-up (browsing, liking, tweeting) | **Enej** | Daily, 15-20 min |
+| All content approval before posting | **Sean** | Ongoing — nothing ships without Sean's thumbs up |
 | Content creation (what gets posted) | Growth hire (TBD) / Sean directs | Per content calendar |
-| Seed follower outreach | Jake | This week (one-time) |
-| Metricool setup + connection | Enej | April 10-13 |
-| Monitor for shadowban signals | Enej | Daily check |
-| Approve all content before posting | Sean | Ongoing |
+| Seed follower outreach | **Jake** | This week (one-time) |
+| Jake's personal accounts engage with @tryps | **Jake** | When @tryps posts, like + comment from personal |
+| Metricool setup + connection (all platforms) | **Enej** | Apr 11 (TikTok/X), Apr 14 (IG/FB) |
+| Monitor for shadowban signals | **Enej** (TikTok/X), **Sean** (IG/FB) | Daily check |
+| Cross-post IG content to FB | **Enej** (via Metricool once connected) | Automated after Apr 14 |
 
 ---
 
@@ -446,13 +596,30 @@ Suggested cuts for Week 1 (keep the strongest, cut the filler):
 
 Check these signals daily:
 
-**Instagram:** Post a Story with a poll or question sticker. If zero non-followers see it, you may be restricted. Check Insights — if reach drops to 0 for non-followers, investigate.
+**Instagram (Sean checks):** Post a Story with a poll or question sticker. If zero non-followers see it, you may be restricted. Check Insights — if reach drops to 0 for non-followers, investigate.
 
-**TikTok:** Check Analytics. If 0% of views come from FYP and 100% from "Personal Profile" or "Following," you are shadowbanned.
+**Facebook (Sean checks):** Check page Insights. If post reach drops to near-zero, the page may be restricted. FB is less aggressive than IG but shares the same Meta trust system.
 
-**X:** Search for your own tweets while logged out. If they don't appear in search results, you may be restricted.
+**TikTok (Enej checks):** Check Analytics. If 0% of views come from FYP and 100% from "Personal Profile" or "Following," you are shadowbanned.
 
-**If shadowbanned:** Stop all activity for 24-48 hours. Delete any content that might have triggered it (banned hashtags, links posted too early). Resume at lower activity levels. Minor bans clear in 2-7 days.
+**X (Enej checks):** Search for your own tweets while logged out. If they don't appear in search results, you may be restricted.
+
+**If shadowbanned on any platform:** Stop all activity for 24-48 hours. Delete any content that might have triggered it (banned hashtags, links posted too early). Resume at lower activity levels. Minor bans clear in 2-7 days. Immediately flag in Slack — Jake and Sean need to know.
+
+---
+
+## Account Type: Creator vs Business — Why This Matters
+
+Both Instagram and TikTok offer Business and Creator account types. **Use Creator accounts on both platforms.**
+
+**Why not Business:**
+- Business accounts on TikTok lose access to the full commercial sound library — you can't use trending sounds, which kills reach on a platform driven by audio trends
+- Business accounts on Instagram historically had lower organic reach (Meta pushes them toward paid)
+- Creator accounts get full analytics, full music library, and better algorithmic treatment for organic content
+
+**When to switch to Business:** Only if/when we need Instagram Shopping, advanced ad tools, or API features that require a Business account. For launch, Creator is the right call.
+
+**Facebook is the exception** — FB pages are inherently Business entities. There's no "Creator page" equivalent that matters here.
 
 ---
 
