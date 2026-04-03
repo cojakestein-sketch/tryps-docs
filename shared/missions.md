@@ -3,7 +3,7 @@
 > Canonical source of truth for Jake's active missions.
 > Marty reads this file when generating standups and nightly reports.
 > Add missions here (or via `/mission` in Slack). Do NOT edit missions inside standup docs.
-> Last updated: 2026-04-02
+> Last updated: 2026-04-03
 
 ---
 
@@ -17,21 +17,25 @@
 
 > These are the priorities RIGHT NOW. Ordered by importance.
 
-### Mission 1: Book All Travel — End to End
-**Owner:** Rizwan + Asif | **Created:** Apr 1 | **Status:** In progress (PR #331)
-A user must be able to book flights, hotels, activities, and transport — for themselves or on behalf of someone else in the group. This is the core value prop and the #1 thing blocking the team goal. Nothing matters more.
+### Mission 1: Fix iMessage Bugs from QA
+**Owner:** Asif | **Created:** Apr 3 | **Status:** In progress
+QA team (Sarfraz + Amaan) found 13 new iMessage bugs today. Asif is working through all iMessage-related issues logged by QA. Priority: resolve all agent response, voting, and trip creation bugs surfaced during testing.
 
-### Mission 2: Onboarding Flow with Emoji Voting — Group Facilitation Engine
-**Owner:** Rizwan (lead), Asif (Linq API) | **Created:** Apr 2 | **Status:** 5/25 SC done (Asif), remaining 20 in progress
-5 SC completed by Asif: **SC-15** (participant awareness — agent knows who's in chat), **SC-18** (emoji polls via tapback reactions), **SC-19** (flexible vote tally with criticality timeout), **SC-20** (low-stakes auto-apply, high-stakes confirmation), **SC-24** (never sends join links to existing participants). Remaining 20 SC: facilitation loop (SC-1–10), SC-16/17 (auto-enroll + referral detection), SC-21–23/25 (nudging, vote prediction, booking transition). [Issue #341](https://github.com/cojakestein-sketch/tryps/issues/341)
+### Mission 2: App Bug Fixes + Real-Time Data Updates
+**Owner:** Nadeem | **Created:** Apr 3 | **Status:** In progress
+Nadeem is fixing open bugs in the app (5 sent back to todo by Zain today) and focusing on real-time data updates across the trip app — activities, expenses, people, and itinerary should reflect changes instantly without refresh.
 
-### Mission 3: Customer Interviews — How Do We Present the Product?
+### Mission 3: Flight Booking + Third-Party Integration
+**Owner:** Rizwan | **Created:** Apr 3 | **Status:** In progress
+Rizwan is focused on completing the Duffel flight booking flow and third-party integration for hotels, rides, and other travel services. This is the core booking pipeline that enables end-to-end trip planning.
+
+### Mission 4: Customer Interviews — How Do We Present the Product?
 **Owner:** Asif + Jake | **Created:** Apr 1 | **Status:** Pipeline live at marty.jointryps.com/interview
-Not just running interviews — the bigger question is how do we actually present Tryps to people so they GET IT and want to use it? Automated interview pipeline is live. Jake provides name + phone, agent calls, runs interview, logs transcript. Goal: first 25 interviews. Every interview teaches us how to onboard better.
+Automated interview pipeline is live. Jake provides name + phone, agent calls, runs interview, logs transcript. Goal: first 25 interviews.
 
-### Mission 4: Close the Books
+### Mission 5: Close the Books
 **Owner:** Jake | **Created:** Apr 1 | **Status:** Open
-March financials, contractor payments, expenses reconciliation. End of month housekeeping.
+March financials, contractor payments, expenses reconciliation.
 
 ---
 
