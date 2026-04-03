@@ -1,13 +1,13 @@
 # Tryps State
 
 > Auto-generated from scope state.md frontmatter. Do not edit manually.
-> Last updated: 2026-04-03 21:30 UTC
+> Last updated: 2026-04-04 00:00 UTC
 
 ## Scope Status
 
 | ID | Title | Status | Assignee | Criteria | Notes |
 |----|-------|--------|----------|----------|-------|
-| agent-intelligence | Agent Intelligence | in-progress | rizwan | 27/61 | 27/61 implemented |
+| agent-intelligence | Agent Intelligence | in-progress | rizwan | 29/61 | 29/61 implemented |
 | beta-user-feedback | Beta & User Feedback | in-progress | jake | 0/0 | In progress |
 | core-trip-experience | Core Trip Experience | testing | nadeem | 15/16 | Bug testing in progress |
 | customer-service-triaging | Customer Service & Triaging | needs-spec | jake | 0/0 | Jake to spec |
