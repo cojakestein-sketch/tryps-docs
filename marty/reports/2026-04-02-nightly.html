@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tryps Nightly Brief — April 2, 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #3D3530;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #3D3530;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+  }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
+  h4 { font-size: 11pt; font-weight: 600; margin-top: 12px; margin-bottom: 4px; }
+  p, li { font-size: 11pt; }
+  ul { padding-left: 20px; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Courier New', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Courier New', monospace;
+    font-size: 10pt;
+  }
+  .cost-table th { font-weight: 600; color: #3D3530; }
+  .strategy-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .edu-box {
+    background: #F8FAFF;
+    border: 1px solid #D8E4ED;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14pt;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #B00618; }
+  .verdict { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 10pt; }
+  .verdict-progress { background: #E8F5E9; color: #2E7D32; }
+  .verdict-stalled { background: #FFF3E0; color: #E65100; }
+  .verdict-nodata { background: #F5F5F5; color: #757575; }
+  a { color: #D9071C; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .alert { background: #FFF3E0; border-left: 4px solid #FF9800; padding: 8px 12px; margin: 8px 0; font-size: 10pt; }
+</style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Print</button>
+  <h1>Tryps Nightly Brief</h1>
+  <div class="subtitle">
+    Thursday, April 2, 2026 — Prepared by Marty at 8:30 PM ET
+  </div>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>1. Tomorrow's Standup</h2>
+    <p><strong>Date:</strong> April 3, 2026 &nbsp;|&nbsp; <strong>Hero numbers:</strong> ~82/166 SC done, 68/78 bugs fixed</p>
+
+    <h3>Jake's Missions for April 3</h3>
+    <ol>
+      <li><strong>Ship Bugs, Not Features — Clear the QA Backlog.</strong> 22 tasks in "for testing" with no QA owner since Andreas left. Nadeem has 3 bug buckets in progress. Asif has 6 new iMessage bugs in "to do."</li>
+      <li><strong>iMessage Feedback Loop — Make It Bulletproof.</strong> Rizwan's #feedback → GitHub pipeline is live (PR #347 merged). Asif pushed emoji-based pooling/voting. Verify end-to-end in production.</li>
+      <li><strong>Domain Migration — Close PR #333.</strong> Open 3 days with a merge conflict. PR #328 (phone number leak) also still open.</li>
+    </ol>
+
+    <h3>Nadeem — output-backed-screen (48 SC)</h3>
+    <ol>
+      <li>What are you doing TODAY? Merged 3 PRs yesterday — but PR #333 still open with merge conflict, plus 3 bug buckets in progress. What specific PRs/SCs/bugs are shipping?</li>
+      <li>How will Jake verify at 6PM? Merged PR numbers, screen recording, or specific screen to tap through.</li>
+      <li>[Marty] You didn't answer Tuesday's standup. State.md is missing. Which specific SCs beyond the original 7 are done? List SC numbers.</li>
+    </ol>
+
+    <h3>Asif — imessage-agent (57 SC)</h3>
+    <ol>
+      <li>What are you doing TODAY? Emoji-based pooling/voting pushed, 6 new bugs assigned. Group decision-making at 5/25. Priority today?</li>
+      <li>How will Jake verify at 6PM? Which bugs will have PRs merged? Can Jake test emoji voting in iMessage?</li>
+      <li>[Marty] You reported 45/57 on March 30 but state.md never updated. Group-decision jumped to 5/25 — which SCs specifically?</li>
+    </ol>
+
+    <h3>Rizwan — agent-intelligence (61 SC)</h3>
+    <ol>
+      <li>What are you doing TODAY? PR #347 merged, feedback pipeline live. OTP failing in ClickUp. Plan today?</li>
+      <li>How will Jake verify at 6PM? Can he text #feedback and see a GitHub issue? What else to test?</li>
+      <li>[Marty] 27/61 agent-intelligence, 5/70 travel-booking as of March 30. Where do your SC numbers actually stand?</li>
+    </ol>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>2. Tech Twitter</h2>
+    <div class="alert">⚠️ Exa Search unavailable — AgentCash balance is $0.00. Used Brave Search as fallback. Tweet-level granularity is limited. Jake: fund AgentCash or tell Marty to skip this section.</div>
+
+    <div class="tweet">
+      <span class="tweet-author">SpaceX / @elonmusk</span><br>
+      <span class="tweet-text">SpaceX filed confidentially for IPO with the SEC on April 1. Targeting $1.75 trillion valuation at June listing — would be the largest IPO ever. Fueled by Starlink's 9.2M subscribers and xAI merger.</span><br>
+      <a href="https://www.reuters.com/business/aerospace-defense/spacex-registers-take-rocket-maker-public-blockbuster-ipo-bloomberg-news-reports-2026-04-01/" target="_blank">Reuters →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@AnthropicAI</span><br>
+      <span class="tweet-text">Claude Code source code accidentally shipped in a release. Contained blueprints for a "Tamagotchi coding assistant" and always-on agent. Anthropic issued DMCA takedowns. No customer data exposed. Planned rollout window in code: April 1-7.</span><br>
+      <a href="https://www.theguardian.com/technology/2026/apr/01/anthropic-claudes-code-leaks-ai" target="_blank">Guardian →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">@AnthropicAI (Platform)</span><br>
+      <span class="tweet-text">Retiring 1M token context window beta for Claude Sonnet 4.5 and Sonnet 4 on April 30. Sonnet 4.6 now has native 1M context. Also: Claude Haiku 3 retirement on April 19 — migrate to Haiku 4.5.</span><br>
+      <a href="https://releasebot.io/updates/anthropic" target="_blank">Releasebot →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">India AI / Sarvam AI</span><br>
+      <span class="tweet-text">India's Sarvam AI raising $300-350M at $1.5B valuation — building a domestic competitor to US/China AI leaders.</span><br>
+      <a href="https://www.bloomberg.com/news/articles/2026-04-02/india-ai-startup-sarvam-raises-funds-at-1-5-billion-valuation" target="_blank">Bloomberg →</a>
+    </div>
+
+    <div class="tweet">
+      <span class="tweet-author">Cisco / RSA Conference</span><br>
+      <span class="tweet-text">Cisco unveiled Zero Trust architecture for AI agents at RSA 2026 — trusted identities, runtime guardrails, and SOC tooling for multi-agent systems. Directly relevant to anyone running autonomous agents.</span><br>
+      <a href="https://www.efficientlyconnected.com/cisco-targets-security-gaps-in-the-rise-of-agentic-ai-workforces/" target="_blank">Source →</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>3. Trending GitHub Repos</h2>
+
+    <div class="repo">
+      <span class="repo-name">Yeachan-Heo/oh-my-codex</span> — ⭐ 11,653 (+2,867 today)<br>
+      <strong>What:</strong> Plugin framework for OpenAI Codex CLI — hooks, agent teams, HUDs, and extensions.<br>
+      <strong>Why it matters:</strong> Shows the ecosystem building around agentic coding tools. If Tryps scales its agent layer, interop with Codex/Claude Code ecosystems is where the developer community is heading.
+      <br><a href="https://github.com/Yeachan-Heo/oh-my-codex" target="_blank">GitHub →</a>
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">siddharthvaddem/openscreen</span> — ⭐ 15,814 (+2,573 today)<br>
+      <strong>What:</strong> Free, open-source screen recording with auto-zoom, motion blur cursors, webcam overlays, auto-captions. Alternative to Screen Studio ($90).<br>
+      <strong>Why it matters:</strong> Jake and the team need demo recordings for investors, App Store screenshots, and beta feedback. Free Screen Studio alternative = no excuses for not recording demos.
+      <br><a href="https://github.com/siddharthvaddem/openscreen" target="_blank">GitHub →</a>
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">asgeirtj/system_prompts_leaks</span> — trending<br>
+      <strong>What:</strong> Extracted system prompts from ChatGPT (GPT-5.4), Claude (Opus 4.6, Claude Code), Gemini (3.1 Pro), Grok (4.2), Perplexity, and more.<br>
+      <strong>Why it matters:</strong> System prompt design patterns from the frontier labs. Useful reference for Tryps' agent intelligence prompts. Also: a reminder that your system prompts will leak.
+      <br><a href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank">GitHub →</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>4. Deep Dive: Jake's CS Crash Course</h2>
+    <p><em>Jake requested a "GIANT technical education section" tonight. Here are the topics he picked, plus Marty's extras. Grab a coffee — this is the meaty one.</em></p>
+
+    <!-- Topic 1: CI/CD -->
+    <div class="edu-box">
+      <h3>4a. CI/CD — Continuous Integration / Continuous Deployment</h3>
+
+      <h4>What it is</h4>
+      <p>CI/CD is an automated assembly line for code. When a developer pushes code to GitHub, a robot (called a "runner") grabs that code, runs every test in the codebase, checks for lint errors, and — if everything passes — automatically builds the app and deploys it. "Continuous Integration" means every code change gets tested <em>immediately</em> when it's pushed. "Continuous Deployment" means passing code gets shipped to users <em>without a human pressing a button</em>.</p>
+
+      <h4>How it works at Tryps</h4>
+      <p>When Nadeem opens a PR on GitHub, GitHub Actions (our CI) kicks off. It installs all 560+ npm packages, runs our 1,379 tests, and checks TypeScript types. If anything fails, the PR gets a red ❌ and can't be merged. When the PR is merged to <code>develop</code>, a separate workflow could (in theory) run <code>eas update</code> to push an OTA update to every phone running Tryps.</p>
+      <p>Right now, Tryps has CI (tests run on PRs) but not full CD (deploys are still manual via <code>eas build</code> and <code>eas update</code>). That's normal for a pre-launch app — you want a human in the loop before shipping to TestFlight.</p>
+
+      <h4>The "aha" moment</h4>
+      <p>CI/CD is the reason you can trust a merge. Without it, merging code is like crossing your fingers. With it, a robot has already verified the code works before it ever touches the main branch.</p>
+
+      <h4>Key terms</h4>
+      <ul>
+        <li><strong>Pipeline:</strong> The sequence of steps (install → test → build → deploy)</li>
+        <li><strong>Runner:</strong> The computer that executes the pipeline (GitHub gives you free ones)</li>
+        <li><strong>Green build:</strong> All tests passed — safe to merge</li>
+        <li><strong>Red build:</strong> Something broke — PR is blocked</li>
+        <li><strong>OTA update:</strong> Push a code change to users' phones without going through the App Store (Expo's <code>eas update</code>)</li>
+      </ul>
+    </div>
+
+    <!-- Topic 2: SDKs -->
+    <div class="edu-box">
+      <h3>4b. SDKs — Software Development Kits</h3>
+
+      <h4>What it is</h4>
+      <p>An SDK is a toolbox that someone else built so you don't have to. When Supabase gives you <code>@supabase/supabase-js</code>, that's an SDK — it contains pre-built functions like <code>supabase.auth.signIn()</code> and <code>supabase.from('trips').select()</code>. Instead of writing raw HTTP requests to Supabase's servers, you call these neat little functions. The SDK handles the ugly networking stuff under the hood.</p>
+
+      <h4>SDKs Tryps uses right now</h4>
+      <ul>
+        <li><strong>Expo SDK 54:</strong> The big one. Gives us camera, push notifications, location, haptics, file system access — basically everything that makes a phone app feel like a phone app instead of a website.</li>
+        <li><strong>Supabase JS SDK:</strong> Database queries, authentication, realtime subscriptions, file uploads</li>
+        <li><strong>Stripe SDK:</strong> Payment processing (coming in P2)</li>
+        <li><strong>Duffel SDK:</strong> Flight search and booking (coming in P3)</li>
+        <li><strong>ElevenLabs SDK:</strong> Text-to-speech for the agent voice</li>
+      </ul>
+
+      <h4>The "aha" moment</h4>
+      <p>An SDK is like hiring someone who already knows how to talk to a specific service. You say "sign this user in," and the SDK translates that into the exact HTTP requests, headers, tokens, and error handling that the service expects. Without SDKs, every developer would have to read 200-page API docs and write boilerplate networking code for every single service they integrate.</p>
+
+      <h4>SDK vs API</h4>
+      <p>An <strong>API</strong> is the restaurant's menu — it tells you what you can order. An <strong>SDK</strong> is the waiter — it takes your order, brings it to the kitchen, and brings back the food. You <em>could</em> walk into the kitchen yourself (raw API calls), but the waiter (SDK) makes life much easier.</p>
+    </div>
+
+    <!-- Topic 3: CLIs vs MCPs -->
+    <div class="edu-box">
+      <h3>4c. CLIs vs MCPs — Two Ways Machines Talk to Services</h3>
+
+      <h4>CLI: Command Line Interface</h4>
+      <p>A CLI is a program you type commands into. When Asif types <code>gh pr list</code>, he's using the GitHub CLI. When you type <code>eas build</code>, that's the Expo CLI. CLIs are designed for humans — you read the output on screen, decide what to do next, and type the next command.</p>
+
+      <h4>MCP: Model Context Protocol</h4>
+      <p>MCP is a new standard (Anthropic created it) that lets AI agents talk to services the same way CLIs let humans talk to services — but structured for machines, not humans. Instead of an AI reading text output and parsing it (fragile), MCP sends and receives structured JSON data with clear schemas.</p>
+
+      <h4>The key difference</h4>
+      <table class="cost-table">
+        <tr><th></th><th>CLI</th><th>MCP</th></tr>
+        <tr><td><strong>Designed for</strong></td><td>Humans</td><td>AI agents</td></tr>
+        <tr><td><strong>Input</strong></td><td>Text commands</td><td>Structured JSON</td></tr>
+        <tr><td><strong>Output</strong></td><td>Human-readable text</td><td>Machine-readable JSON</td></tr>
+        <tr><td><strong>Error handling</strong></td><td>Print error message</td><td>Typed error codes</td></tr>
+        <tr><td><strong>Discovery</strong></td><td><code>--help</code> flag</td><td>Schema auto-discovery</td></tr>
+        <tr><td><strong>Example</strong></td><td><code>gh pr list</code></td><td>MCP server: list_prs()</td></tr>
+      </table>
+
+      <h4>Why this matters for Tryps</h4>
+      <p>Marty uses MCPs to talk to Supabase, and CLIs for GitHub and ClickUp. The direction the industry is heading: every service will eventually have an MCP server alongside its CLI and API. Tryps' iMessage agent (Rizwan's work) already acts as a kind of MCP — it receives structured intents from users and routes them to the right backend function.</p>
+
+      <h4>The "aha" moment</h4>
+      <p>CLIs and MCPs solve the same problem (talk to a service) for different audiences. CLIs are like giving a human a phone to call the restaurant. MCPs are like giving a robot a direct line to the kitchen's order system. Same food gets made — but the robot path is faster, more reliable, and doesn't need to interpret a human voice.</p>
+    </div>
+
+    <!-- Topic 4: RAM / Memory / Disk -->
+    <div class="edu-box">
+      <h3>4d. RAM vs Disk vs Cache — Where Data Lives</h3>
+
+      <h4>The analogy</h4>
+      <p>Think of your computer as a kitchen:</p>
+      <ul>
+        <li><strong>RAM (Random Access Memory)</strong> = the counter space. Fast to reach, limited space. Everything you're actively cooking sits here. When you close the kitchen (shut down), the counter gets wiped clean.</li>
+        <li><strong>Disk (SSD/Hard Drive)</strong> = the pantry. Huge capacity, slower to access. Your recipes, ingredients inventory, everything permanent lives here. Survives a power outage.</li>
+        <li><strong>CPU Cache</strong> = the spice rack right next to the stove. Tiny, but the absolute fastest thing to grab. The CPU keeps its most-used data here.</li>
+        <li><strong>Cloud/Database</strong> = the restaurant supply warehouse across town. Massive capacity, but you need to drive there (network latency).</li>
+      </ul>
+
+      <h4>Speed comparison</h4>
+      <table class="cost-table">
+        <tr><th>Type</th><th>Speed</th><th>Size</th><th>Survives reboot?</th></tr>
+        <tr><td>CPU Cache</td><td>~1 nanosecond</td><td>~64 MB</td><td>No</td></tr>
+        <tr><td>RAM</td><td>~100 nanoseconds</td><td>8-64 GB</td><td>No</td></tr>
+        <tr><td>SSD</td><td>~100 microseconds</td><td>256 GB - 4 TB</td><td>Yes</td></tr>
+        <tr><td>Network (DB)</td><td>~1-100 milliseconds</td><td>Unlimited</td><td>Yes</td></tr>
+      </table>
+      <p>That's a 1,000,000x speed difference between cache and network. This is why "loading" exists.</p>
+
+      <h4>How this shows up in Tryps</h4>
+      <p>When a user opens a trip, the app first checks RAM (React state — instant). If the trip isn't in RAM, it checks the local cache (AsyncStorage — fast). If not cached, it hits Supabase over the network (slow). That's why the first load of a trip takes a beat, but switching back to it is instant — it's already in RAM.</p>
+
+      <h4>The "aha" moment</h4>
+      <p>Every "loading spinner" you see in any app is the moment it's reaching from the fast counter (RAM) to the slow pantry (disk) or the distant warehouse (network). Good apps minimize this by keeping smart copies of data at each level.</p>
+    </div>
+
+    <!-- Marty's extras -->
+    <div class="edu-box">
+      <h3>4e. DNS — How "jointryps.com" Becomes a Server</h3>
+
+      <h4>What it is</h4>
+      <p>DNS (Domain Name System) is the phone book of the internet. When you type "jointryps.com" into a browser, your computer doesn't know where that is. It asks a DNS server: "Hey, what's the IP address for jointryps.com?" The DNS server responds: "That's 76.76.21.21" (a Vercel server). Now your browser knows where to send the request.</p>
+
+      <h4>The chain</h4>
+      <ol>
+        <li>You type <code>jointryps.com</code></li>
+        <li>Your computer asks your router's DNS</li>
+        <li>Router asks your ISP's DNS</li>
+        <li>ISP asks a root DNS server → ".com" DNS server → Cloudflare (our DNS provider)</li>
+        <li>Cloudflare says "jointryps.com = 76.76.21.21"</li>
+        <li>Your browser connects to that IP address</li>
+      </ol>
+      <p>This whole chain takes about 20-100 milliseconds. It's cached for hours, so the second visit is instant.</p>
+
+      <h4>Why Tryps cares</h4>
+      <p>Remember PR #333 (the domain consolidation)? That PR is migrating every reference from <code>jointripful.com</code> to <code>jointryps.com</code>. Both domains have DNS records pointing to the same servers, but deep links (<code>tripful://</code>), email "from" addresses, and API endpoints all need to match. A DNS misconfiguration means "jointryps.com" stops working for everyone, instantly.</p>
+    </div>
+
+    <div class="edu-box">
+      <h3>4f. What Happens When You Run <code>npm install</code></h3>
+
+      <h4>The journey</h4>
+      <ol>
+        <li><strong>Read <code>package.json</code>:</strong> This file lists every dependency Tryps needs (Expo, Supabase, React Navigation, etc.) — there are ~120 direct dependencies.</li>
+        <li><strong>Resolve the dependency tree:</strong> Each of those 120 packages has its <em>own</em> dependencies. npm figures out every package needed, recursively. Tryps ends up with ~560 packages total.</li>
+        <li><strong>Check <code>package-lock.json</code>:</strong> This file pins exact versions. It ensures every developer and every CI runner gets the <em>exact same</em> code. Without it, Nadeem might get v2.3.1 of a library while Asif gets v2.3.2, and bugs appear on one machine but not the other.</li>
+        <li><strong>Download from npm registry:</strong> npm fetches each package as a .tgz archive from registry.npmjs.org (or a cache).</li>
+        <li><strong>Extract to <code>node_modules/</code>:</strong> All 560 packages get extracted into a <code>node_modules</code> folder. This folder is typically 500MB-1GB for a React Native project. It's the heaviest thing in the repo (and it's <em>never</em> committed to git).</li>
+        <li><strong>Run postinstall scripts:</strong> Some packages run setup scripts after install (Expo does this to link native modules).</li>
+      </ol>
+
+      <h4>The "aha" moment</h4>
+      <p><code>npm install</code> is like ordering ingredients for a recipe. <code>package.json</code> is the recipe, <code>package-lock.json</code> is the exact brand and size of every ingredient, and <code>node_modules</code> is your fridge full of ingredients. You never share your fridge — you share the recipe and let everyone stock their own.</p>
+    </div>
+
+    <div class="edu-box">
+      <h3>4g. OAuth — How "Sign In with Google" Works</h3>
+
+      <h4>The problem</h4>
+      <p>Tryps wants to access Jake's Google Calendar (to create standup events). But Jake shouldn't give Tryps his Google password. OAuth is the protocol that solves this: "Let an app access your stuff without giving it your password."</p>
+
+      <h4>The dance (simplified)</h4>
+      <ol>
+        <li><strong>Tryps</strong> says to <strong>Google</strong>: "Jake wants to let me see his calendar."</li>
+        <li><strong>Google</strong> shows <strong>Jake</strong> a consent screen: "Tryps wants access to your Calendar. Allow?"</li>
+        <li><strong>Jake</strong> clicks "Allow."</li>
+        <li><strong>Google</strong> gives <strong>Tryps</strong> two tokens:
+          <ul>
+            <li><strong>Access token:</strong> A temporary pass (expires in ~1 hour) that lets Tryps read/write the calendar.</li>
+            <li><strong>Refresh token:</strong> A permanent pass that lets Tryps get new access tokens without bothering Jake again.</li>
+          </ul>
+        </li>
+        <li>Tryps stores both tokens securely. Every hour, it uses the refresh token to get a fresh access token.</li>
+      </ol>
+
+      <h4>Why this matters</h4>
+      <p>Every time Marty creates a calendar event or reads your email, he's using an OAuth access token. When you see "gog auth error" in the logs, it means the access token expired and the refresh token couldn't renew it (usually because Google revoked it for security). The fix: Jake re-authorizes via the consent screen, which issues new tokens.</p>
+
+      <h4>The "aha" moment</h4>
+      <p>OAuth is a valet key for your digital life. You're not giving Tryps the master key to your Google account — you're giving it a limited key that only opens specific doors (Calendar, Gmail) and can be revoked any time.</p>
+    </div>
+
+    <div class="edu-box">
+      <h3>4h. Database Indexing — Why Some Queries Are Instant and Others Take Forever</h3>
+
+      <h4>The analogy</h4>
+      <p>Imagine a library with 100,000 books. If you want "The Great Gatsby," you have two options:</p>
+      <ul>
+        <li><strong>No index:</strong> Start at shelf 1, check every book. On average, you'll check 50,000 books before finding it. (This is a "full table scan.")</li>
+        <li><strong>With index:</strong> Check the card catalog, which tells you it's on shelf 47, position 12. Two lookups. Done. (This is an "index lookup.")</li>
+      </ul>
+
+      <h4>In Supabase/PostgreSQL</h4>
+      <p>The <code>trips</code> table might have 10,000 rows eventually. When you query <code>SELECT * FROM trips WHERE id = 'abc123'</code>, PostgreSQL uses the primary key index to find it in microseconds. But if you query <code>SELECT * FROM trips WHERE destination LIKE '%Barcelona%'</code> without an index on <code>destination</code>, it scans every single row.</p>
+
+      <h4>The tradeoff</h4>
+      <p>Indexes make reads fast but writes slower (every INSERT also has to update the index). It's like maintaining the card catalog — every time you add a book, you also update the catalog. Worth it for columns you search often; wasteful for columns you rarely filter by.</p>
+
+      <h4>The "aha" moment</h4>
+      <p>When the app feels slow loading trips, it's almost never the network — it's usually a missing database index causing PostgreSQL to read thousands of rows instead of jumping straight to the one it needs.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>5. Strategy Check</h2>
+    <p><em>Mid-week 5 (Mar 30 – Apr 5). Marty's understanding — correct me if I'm wrong.</em></p>
+    <div class="strategy-box">
+      <h4>Where we are</h4>
+      <p>82 of 166 success criteria done (~49%). 68 of 78 bugs fixed (87%). Two scopes done (iMessage Agent, Voice Calls). Five in progress. But the numbers are stale — only Nadeem answered Tuesday's standup. Asif and Rizwan are dark on reporting, though both are shipping code (PRs #347, #348 merged yesterday). The QA backlog is the real problem: 22 tasks in "for testing" with no QA owner since Andreas left March 31.</p>
+
+      <h4>Top 3 Risks</h4>
+      <ol>
+        <li><strong>QA gap is the #1 risk.</strong> 22 tasks unverified. Warda is listed as AI QA but hasn't appeared in standups, GitHub, or ClickUp. If these "done" tasks have bugs, they'll surface at launch and we won't know until users find them.</li>
+        <li><strong>SC numbers are stale and unreliable.</strong> Nobody updated state.md in 3+ days. Marty is tracking estimates, not actuals. This makes sprint planning meaningless.</li>
+        <li><strong>Output-backed-screen (Nadeem) is at 7/48.</strong> This is the biggest scope with the most remaining work, and it's barely started. At Nadeem's current velocity (~3-5 SCs/day on focused bug sprints), 41 remaining SCs is 8-14 more days of work.</li>
+      </ol>
+
+      <h4>Where Jake should focus</h4>
+      <ul>
+        <li><strong>QA:</strong> Either activate Warda with explicit daily assignments, or designate one dev (Asif?) as QA lead for the sprint. 22 "for testing" items is a pile that only grows.</li>
+        <li><strong>Standup compliance:</strong> 1 of 3 devs answered Tuesday. The brain can't think if devs don't feed it data. Consider: no standup answer = no ClickUp task assignment tomorrow.</li>
+        <li><strong>Customer interviews:</strong> The interview pipeline (marty.jointryps.com/interview) is set up. Get 5+ interviews this week while the product is fresh enough to change based on feedback.</li>
+      </ul>
+
+      <h4>Marty's #1 priority</h4>
+      <p><strong>Close the QA gap.</strong> Shipping features without verification is the startup equivalent of running with scissors. The 10 remaining bugs + 22 unverified "done" items = 32 potential production issues. Fix the process before you ship the product.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>6. Culture & Conversation</h2>
+
+    <div style="padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
+      <h4>SpaceX Files for the Largest IPO in History</h4>
+      <p>SpaceX filed confidentially with the SEC on April 1, targeting a $1.75 trillion valuation for a June listing. Starlink has 9.2M subscribers. The xAI merger rolled Grok into the SpaceX entity. This could raise $80B+.</p>
+      <p><strong>Conversation angle:</strong> "What does it mean when a space company is worth more than every bank? And what happens to the private market when the biggest unicorn exits?"</p>
+      <p><a href="https://www.reuters.com/business/aerospace-defense/spacex-registers-take-rocket-maker-public-blockbuster-ipo-bloomberg-news-reports-2026-04-01/">Reuters →</a></p>
+    </div>
+
+    <div style="padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
+      <h4>Anthropic Accidentally Leaks Claude Code Source</h4>
+      <p>A Claude Code release accidentally included internal source code — revealing plans for a Tamagotchi-style coding companion and an always-on background agent. Anthropic issued DMCA takedowns within hours. No customer data involved.</p>
+      <p><strong>Conversation angle:</strong> "The most interesting part isn't the leak — it's what it revealed about where Anthropic is headed. Always-on agents that build a persistent relationship with a developer. Sound familiar?" (It's literally what Marty does.)</p>
+      <p><a href="https://www.theguardian.com/technology/2026/apr/01/anthropic-claudes-code-leaks-ai">Guardian →</a></p>
+    </div>
+
+    <div style="padding: 10px 0;">
+      <h4>Cisco Goes All-In on Zero Trust for AI Agents</h4>
+      <p>At RSA Conference 2026, Cisco launched a full Zero Trust framework specifically for autonomous AI agents — identity management, runtime guardrails, and SOC integration. First major enterprise security play for the agentic era.</p>
+      <p><strong>Conversation angle:</strong> "If you're building agents that can book flights and spend money, who's responsible when they go rogue? Cisco is betting that 'Zero Trust for AI' is going to be as big as Zero Trust for cloud was."</p>
+      <p><a href="https://www.efficientlyconnected.com/cisco-targets-security-gaps-in-the-rise-of-agentic-ai-workforces/">Source →</a></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>7. AI Releases & Patch Notes</h2>
+
+    <table class="cost-table">
+      <tr><th>Provider</th><th>What Changed</th><th>Relevance</th></tr>
+      <tr>
+        <td><strong>Anthropic</strong></td>
+        <td>Retiring 1M context beta for Sonnet 4.5 + Sonnet 4 on April 30. Sonnet 4.6 gets native 1M. Haiku 3 retirement April 19.</td>
+        <td>We run on Opus 4.6 (200K context). No impact, but good to know the model lineup is consolidating.</td>
+      </tr>
+      <tr>
+        <td><strong>Anthropic</strong></td>
+        <td>Claude Code: bare mode for scripted -p calls, channel-based permission relays, voice mode fixes, plugin freshness improvements.</td>
+        <td>Bare mode is useful for our coding-agent skill — cleaner scripted invocations.</td>
+      </tr>
+      <tr>
+        <td><strong>Anthropic</strong></td>
+        <td>Source code accidentally shipped in Claude Code release. Tamagotchi coding companion + always-on agent blueprints spotted.</td>
+        <td>Confirms Anthropic is building persistent agent companions — competitive validation for Marty's architecture.</td>
+      </tr>
+      <tr>
+        <td><strong>Samsung</strong></td>
+        <td>Expanding generative AI to mid-tier and budget smartphones in 2026.</td>
+        <td>More devices capable of on-device AI = larger addressable market for AI-integrated apps like Tryps.</td>
+      </tr>
+      <tr>
+        <td><strong>Runway</strong></td>
+        <td>Launched $10M venture fund for early-stage AI/media startups.</td>
+        <td>Potential funding source if Tryps' agent + travel content play resonates.</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p><em>Thursday = analytics category</em></p>
+
+    <div class="strategy-box">
+      <h4>OpenScreen — Free Screen Recording for Demos</h4>
+      <p><strong>What it is:</strong> Open-source Screen Studio alternative with auto-zoom, motion blur cursors, webcam overlays, and auto-captions. Cross-platform (Mac/Windows/Linux). 15,800+ GitHub stars and trending today.</p>
+      <p><strong>How Jake would use it:</strong> Record polished Tryps demos for investor decks, App Store preview videos, and beta user onboarding walkthroughs. Auto-zoom follows the cursor so the viewer always sees what matters. Auto-captions mean the demo works on mute (LinkedIn, Twitter). No watermarks, no subscription.</p>
+      <p><strong>Pricing:</strong> Free. Open source. No catch.</p>
+      <p><strong>Link:</strong> <a href="https://github.com/siddharthvaddem/openscreen" target="_blank">github.com/siddharthvaddem/openscreen</a></p>
+    </div>
+
+    <div class="strategy-box">
+      <h4>Crossnode — Package Agent Automations Into Client Services</h4>
+      <p><strong>What it is:</strong> A platform that lets you wrap AI agent automations into client-facing, billable services. Trending on Product Hunt in the automation category.</p>
+      <p><strong>How Jake would use it:</strong> If Tryps ever offers "concierge trip planning" as a premium service, Crossnode could package the agent's itinerary-building workflow into a customer-facing product with billing built in. Think: "Pay $20 and our agent plans your entire Barcelona trip."</p>
+      <p><strong>Pricing:</strong> Check their site — likely usage-based.</p>
+      <p><strong>Link:</strong> <a href="https://www.producthunt.com/categories/automation" target="_blank">Product Hunt / Automation →</a></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+    <p><em>April 2, 2026 (ET day)</em></p>
+
+    <table class="cost-table">
+      <tr><th>Category</th><th>Cost</th><th>Tokens</th><th>Notes</th></tr>
+      <tr>
+        <td>Standup Generator (Apr 2 run)</td>
+        <td>$0.50</td>
+        <td>46,997</td>
+        <td>Opus 4.6 — generated Apr 3 standup doc</td>
+      </tr>
+      <tr>
+        <td>Topic Suggestion (Apr 2 run)</td>
+        <td>~$0.47</td>
+        <td>27,546</td>
+        <td>Opus 4.6 — brand book topic DM</td>
+      </tr>
+      <tr>
+        <td>Nightly Report (this session)</td>
+        <td>In progress</td>
+        <td>~89K so far</td>
+        <td>Opus 4.6 — this report</td>
+      </tr>
+      <tr>
+        <td>Cost Report Cron</td>
+        <td>$0.00</td>
+        <td>0</td>
+        <td>Timed out 3 days in a row — needs debugging</td>
+      </tr>
+      <tr>
+        <td>DM / Interactive Sessions</td>
+        <td>No log data</td>
+        <td>—</td>
+        <td>Gateway logs not parseable from cron context</td>
+      </tr>
+      <tr style="font-weight: 600; border-top: 2px solid #3D3530;">
+        <td>Estimated Daily Total</td>
+        <td>~$3-5</td>
+        <td>—</td>
+        <td>Excludes DM sessions + this report's final cost</td>
+      </tr>
+    </table>
+
+    <div class="alert">⚠️ <strong>Cost Report cron has timed out 3 consecutive days</strong> (Mar 31, Apr 1, Apr 2). It's hitting the 120s execution limit. Needs investigation — likely trying to parse too many session files.</div>
+    <p style="font-size: 10pt; color: #888;">Rates: Opus 4.6 — $15/1M input, $75/1M output, $3.75/1M cache. Sonnet 4.6 — $3/1M input, $15/1M output, $0.75/1M cache.</p>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>10. Mission Progress</h2>
+
+    <h3>Mission 1: Ship Bugs, Not Features — Clear the QA Backlog</h3>
+    <p><strong>What moved:</strong> Nadeem merged PR #348 (vibe tab fixes + Apple Music RSS) and PR #339 (people tab fixes). Bug count went from ~58 to 68/78 fixed over the past few days. 3 bug buckets now assigned to Nadeem (Trip Details Header, Vibe Tab, Itinerary Tab).</p>
+    <p><strong>What didn't:</strong> The "for testing" queue (22 items) didn't shrink — nobody is verifying. Warda hasn't appeared in any activity logs.</p>
+    <p><span class="verdict verdict-progress">PROGRESS</span> on fixing — <span class="verdict verdict-stalled">STALLED</span> on verifying</p>
+
+    <h3>Mission 2: iMessage Feedback Loop — Make It Bulletproof</h3>
+    <p><strong>What moved:</strong> Rizwan's PR #347 merged (iMessage feedback sandbox — #feedback → GitHub pipeline). Asif pushed emoji-based pooling/voting on iMessage. Group decision-making went from 0/25 to 5/25.</p>
+    <p><strong>What didn't:</strong> No evidence of end-to-end production testing. Pipeline built but not verified in production.</p>
+    <p><span class="verdict verdict-progress">PROGRESS</span></p>
+
+    <h3>Mission 3: Domain Migration — Close PR #333</h3>
+    <p><strong>What moved:</strong> 12 of Jake's old batch PRs (#315-#326) were closed without merge — they were superseded. Cleanup happened.</p>
+    <p><strong>What didn't:</strong> PR #333 is still open with a merge conflict. Nadeem said he'd resolve it tomorrow. PR #328 (phone number leak) also still open.</p>
+    <p><span class="verdict verdict-stalled">STALLED</span></p>
+  </section>
+
+  <!-- ============================================================ -->
+  <section>
+    <h2>11. CS 101 — Jake's Daily Lesson</h2>
+    <div class="strategy-box">
+      <h4>What Is a Port? (And Why "Port 3000" Keeps Coming Up)</h4>
+      <p>When your computer connects to the internet, it's not just connecting to "a server" — it's connecting to a specific <em>door</em> on that server. These doors are called <strong>ports</strong>. There are 65,535 of them on every computer.</p>
+      <p>Think of it like an office building. The building has one street address (that's the IP address — like 178.156.176.44, Marty's server). But inside, there are thousands of office suites. Suite 80 is where the web server sits (HTTP). Suite 443 is the secure web server (HTTPS). Suite 22 is SSH (the remote login tunnel). Suite 5432 is PostgreSQL (the database). When you type <code>https://jointryps.com</code>, your browser goes to the building at Vercel's IP address and walks into suite 443.</p>
+      <p><strong>Why it matters for Tryps:</strong> When Nadeem runs the Expo dev server, it starts on port 8081. When Supabase runs locally, it's on port 54321. If two services try to use the same port, one crashes — like two tenants fighting over the same office suite. When Marty's server runs OpenClaw, it listens on a port for Slack messages. That's why "port already in use" is one of the most common developer errors.</p>
+      <p><strong>The "aha" moment:</strong> A URL like <code>http://localhost:3000</code> means "talk to my own computer (localhost), door number 3000." Every running service picks a door. The internet is just millions of computers, each with thousands of numbered doors, all talking to each other.</p>
+    </div>
+  </section>
+
+  <div style="margin-top: 40px; padding-top: 16px; border-top: 1px solid #EDE4D8; font-size: 9pt; color: #aaa;">
+    Generated by Marty on April 2, 2026 at 8:30 PM ET. Report version: nightly-v11.
+  </div>
+</body>
+</html>
