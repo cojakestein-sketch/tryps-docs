@@ -92,7 +92,7 @@ Without intelligence, Tryps is a trip organizer. With it, Tryps is a travel agen
 
 - [ ] **SC-14.** Memory is per-user scoped — one user's memory is never accessible to or influenced by another user's data. Verified by: User A has memory signal "hates nightclubs" -> log in as User B -> query User B's memory -> User A's signal does not appear -> User B's recommendations are unaffected by User A's preferences.
 
-- [ ] **SC-15.** Users can view what the agent remembers about them via a screen in the app (behind Travel DNA). Verified by: navigate to agent memory screen -> screen shows structured list of what the agent knows: explicit preferences, learned behaviors, and trip history summary.
+- [x] **SC-15.** Users can view what the agent remembers about them via a screen in the app (behind Travel DNA). Verified by: navigate to agent memory screen -> screen shows structured list of what the agent knows: explicit preferences, learned behaviors, and trip history summary.
 
 - [ ] **SC-16.** More engagement produces richer memory — a Tier 4 user gets noticeably better recommendations and vote inference than a Tier 1 user. Verified by: Tier 1 user (vibe quiz only) and Tier 4 user (vibe + DNA + DM history + 3 past trips) both go to Barcelona -> compare recommendations -> Tier 4 user's recommendations are more specific and personalized.
 

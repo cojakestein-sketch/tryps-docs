@@ -4,9 +4,9 @@ status: in-progress
 assignee: rizwan
 clickup_ids: ["86e05v28h", "86e0ajhte"]
 clickup_status: in progress
-criteria: 27/61
+criteria: 29/61
 blockers: ["Cross-scope interfaces SC-59/60/61 need joint design with Asif"]
-last_updated: 2026-03-31
+last_updated: 2026-04-04
 updated_by: rizwan
 review_status: reviewed
 ---
@@ -15,10 +15,10 @@ review_status: reviewed
 
 ## Current State
 
-27 of 61 SC ready for QA as of 2026-03-31. Supabase local dev environment fully operational (130+ migrations passing). Three edge functions built and tested: **extract-memory-signals** (GPT-4o-mini for NLP extraction), **vote-on-behalf** (infers votes from preference profile), and **recommend-activities**. All supporting DB tables, triggers, and RPC functions are in place. Five DB triggers implemented. Test script passing 28/28 checks. Agent demo UI (Next.js) showcasing full pipeline + new flight booking chat demo (Duffel integration). Memory injection wired into iMessage agent via agent-router (#304). Vote override via DM reply and auto-vote on activities using Travel DNA shipped on `feat-flight-booking-101`.
+27 of 61 SC ready for QA as of 2026-03-31; 29 of 61 as of 2026-04-04. Supabase local dev environment fully operational (130+ migrations passing). Three edge functions built and tested: **extract-memory-signals** (GPT-4o-mini for NLP extraction), **vote-on-behalf** (infers votes from preference profile), and **recommend-activities**. All supporting DB tables, triggers, and RPC functions are in place. Five DB triggers implemented. Test script passing 28/28 checks. Agent demo UI (Next.js) showcasing full pipeline + new flight booking chat demo (Duffel integration). Memory injection wired into iMessage agent via agent-router (#304). Vote override via DM reply and auto-vote on activities using Travel DNA shipped on `feat-flight-booking-101`.
 
 **SCs ready (~27):**
-- Memory Architecture (12/17): SC-1, 2, 3, 4, 6, 7, 9, 10, 11, 12, 13, 14, 17
+- Memory Architecture (13/17): SC-1, 2, 3, 4, 6, 7, 9, 10, 11, 12, 13, 14, 15, 17
 - Vote-on-Behalf (10/15): SC-18, 19, 22, 23, 24, 25, 26, 28, 30, 53
 - Recommendations (2/18): SC-34, 37
 - Should NOT Happen (2/6): SC-53, 55
@@ -29,9 +29,10 @@ review_status: reviewed
 - SC-23: Vote override via DM reply (`cd60b49c`)
 - SC-24: Vote overrides stored as correction signals in memory (`cd60b49c`)
 - SC-26: Auto-vote on activities using Travel DNA + user memory (`3bbe2e91`)
+- SC-15: Agent memory screen built in app — `useAgentMemory` hook + `app/agent-memory.tsx`, entry point in Travel DNA My DNA tab (`2026-04-04`)
 
 **What's NOT done:**
-- Memory: SC-5 (cross-channel testing), SC-8 (Travel DNA extends memory), SC-15 (memory screen UI), SC-16 (tier quality comparison)
+- Memory: SC-5 (cross-channel testing), SC-8 (Travel DNA extends memory), SC-16 (tier quality comparison)
 - Vote-on-Behalf: SC-20/21 (batch DM delivery — blocked on SC-59), SC-27 (date votes), SC-29 (accommodation votes), SC-31/32 (all signals + accuracy over time)
 - Recommendations: 16/18 SCs remaining — biggest gap. Activity DB expansion, group filtering, feedback loops, UGC, social graph all open.
 - Should NOT Happen: SC-51/52/54/56 — need integration testing
@@ -58,7 +59,6 @@ Also deferred to post-April 2:
 - **Routing logic design doc (SC-58, BLOCKING, shared with scope 7):** When does the agent speak vs. stay silent? Needs 20+ examples, edge cases, and Jake review. Asif and Rizwan co-own.
 - **Cross-scope interfaces (SC-59-61, BLOCKING):** DM delivery pipeline, vote override routing, and rate limiting between scopes 7 and 8. Asif and Rizwan must jointly design before either implements.
 - Activity database: generic templates should cover ALL destinations (no zero-rec destinations). Specific activities for 50+ popular destinations. 1000+ specific activities target.
-- Agent memory screen design: proposed in design.md, needs designer assignment and Figma mockup.
 - Scraping pipeline: who builds the initial scrape? Rizwan owns the scope but may need support for data sourcing.
 
 ## What's Next
