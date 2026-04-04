@@ -40,7 +40,10 @@ Maps to tryps-docs workflow: SPEC → BUILD → VALIDATE → DONE
 | Nadeem | `95375710` | Dev (P1 — Core App) |
 | Ken | `95375711` | (Legacy ID — may need update) |
 | Rizwan | `48611515` | Dev (P3 — Agent Layer) |
-| Andreas | `95380391` | QA |
+| ~~Andreas~~ | `95380391` | ~~QA — departed~~ |
+| Aman Khan | TBD | QA |
+| Sarfaraz Ahmed | TBD | QA |
+| Zain Waheed | TBD | QA |
 | Marty | `95390289` | AI Agent |
 | Arslan | `102619517` | |
 | Krisna | `84754219` | |
@@ -107,11 +110,12 @@ npx clickup-cli comment TASK_ID "Update message"
 - **Specs:** Each ClickUp task should link to its `tryps-docs/scopes/{phase}/{scope}/spec.md`
 - **PRs:** GitHub PRs reference ClickUp task IDs in commit messages
 - **Marty:** Uses ClickUp API to read/update task status, post comments
-- **QA (Andreas):** Moves tasks to `for testing` → validates criteria → `done` or back to `in progress`
+- **QA (Aman, Sarfaraz, Zain):** Moves tasks to `for testing` → validates criteria → `done` or back to `in progress`
 
-## Hard Deadline
+## Hard Deadlines
 
-**Everything on this board must be DONE by April 2, 2026.**
+- **April 15, 2026** — App Store submitted
+- **April 30, 2026** — Launch ready (video shot, branding done, everything ready to go to market)
 
 ## Workflow
 
@@ -121,4 +125,4 @@ npx clickup-cli comment TASK_ID "Update message"
 4. Dev picks up, moves to `in progress`
 5. Dev ships PR, moves to `review`
 6. PR merged, moves to `for testing`
-7. Andreas validates criteria → `done` or back to `in progress` with failing notes
+7. QA team validates criteria → `done` or back to `in progress` with failing notes

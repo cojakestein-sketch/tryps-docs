@@ -53,7 +53,7 @@ March financials, contractor payments, expenses reconciliation.
 
 ### QA System
 **Owner:** Asif (presenting to Jake) | **Created:** Apr 1 | **Status:** Ongoing — need report from Asif
-**How do we complete this?** Asif to present in today's standup: what QA (Andreas + Warda) is testing, what's the process, what's the coverage, what bugs are they finding. Complete when: Jake understands QA as a function and can track its output. Doc + HTML deck shipped at tryps-docs/QA/ — but Jake needs a live walkthrough.
+**How do we complete this?** Asif to present in today's standup: what QA (Aman, Sarfaraz, Zain) is testing, what's the process, what's the coverage, what bugs are they finding. Complete when: Jake understands QA as a function and can track its output. Doc + HTML deck shipped at tryps-docs/QA/ — but Jake needs a live walkthrough.
 
 ### Personalized Contact CRM
 **Owner:** Cameron / Brand + GTM team | **Created:** Apr 2 | **Status:** Open
