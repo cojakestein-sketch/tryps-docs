@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tryps Nightly Brief — Friday, April 3, 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #3D3530;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #3D3530;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+  }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
+  h4 { font-size: 11pt; font-weight: 600; margin-top: 12px; }
+  p, li { font-size: 11pt; }
+  ul { padding-left: 20px; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+  }
+  .cost-table th { font-weight: 600; }
+  .strategy-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14pt;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #B00618; }
+  .verdict { font-weight: 700; }
+  .verdict-progress { color: #2D8A4E; }
+  .verdict-stalled { color: #D9071C; }
+  .verdict-nodata { color: #888; }
+  .warning { background: #FFF3CD; border: 1px solid #FFD95A; border-radius: 6px; padding: 10px; margin-top: 8px; font-size: 10pt; }
+</style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Print</button>
+  <h1>Tryps Nightly Brief</h1>
+  <div class="subtitle">
+    Friday, April 3, 2026 — Prepared by Marty at 8:30 PM ET<br>
+    End of Week 5 (Mar 30 – Apr 5) · 11 PRs merged this week · 2 open PRs going into the weekend
+  </div>
+
+  <!-- ====== SECTION 1: STANDUP ====== -->
+  <section>
+    <h2>1. Tomorrow's Standup</h2>
+    <p><strong>Standup doc generated for April 4.</strong> 3 questions per dev. Missions anchored to real progress.</p>
+
+    <h3>Nadeem — Output-Backed Screen + Core Trip Experience (64 SC)</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> PR #352 (itinerary cross-day drag-and-drop) merged. 10 bugs remain. PR #333 (domain consolidation) still open since March 31. What's the plan — specific bugs or SC numbers?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> Merged PRs, bug count reduction, specific screens to tap on TestFlight.</li>
+      <li><strong>Marty's question:</strong> "Bug: Itinerary Tab" and "Bug: Vibe Tab" in ClickUp marked "for testing" — are these from #348/#352, or separate? Need to map ClickUp → merged PRs.</li>
+    </ol>
+
+    <h3>Asif — iMessage Agent (57 SC) + Group Decision-Making (25 SC)</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> Emoji-based polling/voting shipped. 12+ iMessage bugs in ClickUp (JSON responses, polls not syncing, stays not reflected). Which of the 3 "in progress" items ship today?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> iMessage → create trip with activities + poll → open app → see everything reflected. Will that flow work?</li>
+      <li><strong>Marty's question:</strong> SC-59/60/61 sync with Rizwan — has it been scheduled? Also: April 2 standup went unanswered by you and Rizwan.</li>
+    </ol>
+
+    <h3>Rizwan — Agent Intelligence (61 SC) + Travel Booking (70 SC)</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> Merged SC-15 (memory screen) + expo-sensors fix. At 27/61 on agent-intelligence. Which SCs are you targeting — specific numbers?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> Merged PRs, specific screens, or API endpoints to hit.</li>
+      <li><strong>Marty's question:</strong> "Deploy Marty Memory System to Hetzner" and "P2 — Stripe Payments" in ClickUp — actively worked or parked behind agent-intelligence?</li>
+    </ol>
+  </section>
+
+  <!-- ====== SECTION 2: TECH TWITTER ====== -->
+  <section>
+    <h2>2. Tech Twitter</h2>
+    <div class="warning">
+      ⚠️ <strong>Exa Search unavailable</strong> — AgentCash balance is $0. Brave Search site:x.com returned 0 results (as expected per SKILL.md). Jake: fund AgentCash wallet to restore tweet retrieval (~$0.07/night).
+    </div>
+    <p style="margin-top: 12px;"><strong>What's buzzing based on news coverage:</strong></p>
+    <div class="tweet">
+      <span class="tweet-author">Anthropic</span> — Published groundbreaking interpretability research: Claude Sonnet 4.5 contains <strong>171 internal emotion-like representations</strong> (happiness, sadness, fear) within neuron clusters that activate in response to cues. <a href="https://www.anthropic.com/research/emotion-concepts-function">anthropic.com</a>
+    </div>
+    <div class="tweet">
+      <span class="tweet-author">OpenAI</span> — Acquired <strong>TBPN</strong> (Technology Business Programming Network), a founder-led tech talk show. First media company acquisition. <a href="https://openai.com/index/openai-acquires-tbpn/">openai.com</a>
+    </div>
+    <div class="tweet">
+      <span class="tweet-author">Pragmatic Engineer / Gergely Orosz</span> — Covered <strong>Zuckerberg returning to writing code</strong> after 20 years, shipping diffs to Meta's monorepo using Claude Code CLI. Garry Tan (YC) also coding again after 15 years. <a href="https://newsletter.pragmaticengineer.com/p/the-pulse-industry-leaders-return">pragmaticengineer.com</a>
+    </div>
+    <div class="tweet">
+      <span class="tweet-author">Claude Code</span> — Source code <strong>accidentally leaked March 31</strong>. Debate ongoing: accident, incompetence, or best PR stunt in AI history? Also shipped new release: <code>--bare</code> mode, <code>--channels</code> permission relay, MCP tool persistence override (500K chars). <a href="https://github.com/anthropics/claude-code/releases">github.com</a>
+    </div>
+  </section>
+
+  <!-- ====== SECTION 3: TRENDING REPOS ====== -->
+  <section>
+    <h2>3. Trending GitHub Repos</h2>
+
+    <div class="repo">
+      <span class="repo-name">Yeachan-Heo/oh-my-codex</span> — ⭐ 14,103 (+3,047 today)<br>
+      <span class="tweet-text">Hooks, agent teams, HUDs, and extensions for Codex. Think "oh-my-zsh but for AI coding agents." TypeScript.</span><br>
+      <strong>Why it matters:</strong> If we ever layer Codex into the dev workflow, this is the ecosystem forming around it. Shows how fast the agent-tooling layer is growing.
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">siddharthvaddem/openscreen</span> — ⭐ 18,175 (+2,771 today)<br>
+      <span class="tweet-text">Free, open-source screen recording with polished demos. No subscriptions, no watermarks, commercial use OK. TypeScript.</span><br>
+      <strong>Why it matters:</strong> Free Screen Studio alternative. Could use this for Tryps demo videos, TestFlight walkthroughs, or Sean's launch content — zero cost.
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">onyx-dot-app/onyx</span> — ⭐ 23,256 (+1,852 today)<br>
+      <span class="tweet-text">Open-source AI chat platform with advanced features, works with every LLM. Python.</span><br>
+      <strong>Why it matters:</strong> Self-hosted AI chat that could power internal tools or customer-facing support. Relevant if Tryps ever builds a support agent beyond iMessage.
+    </div>
+  </section>
+
+  <!-- ====== SECTION 4: DEEP DIVE ====== -->
+  <section>
+    <h2>4. Deep Dive: QA Strategy Without a Dedicated QA Person</h2>
+    <p><em>Topic from Marty's 3pm suggestion — no response from Jake, so going with this one.</em></p>
+
+    <h4>What It Is</h4>
+    <p>A QA strategy for early-stage startups that don't have (and can't justify) a full-time QA engineer. Instead of one person owning all testing, you distribute QA responsibility across the team with lightweight processes, automation, and clear ownership of "done" criteria. The goal: ship confidently without a gatekeeper bottleneck.</p>
+
+    <h4>Why It Matters Right Now</h4>
+    <p>Andreas left at the end of March. 22+ tasks are stuck in "for testing" with no QA owner. The team shipped 11 PRs this week, but <strong>zero</strong> tasks were marked "done" — everything piles up in the testing column. Warda is onboarding as AI QA, but the gap is real today. Without a strategy, the TestFlight build for customer interviews will have unknown quality.</p>
+
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>Make "done" mean "tested by someone who didn't write the code."</strong> Every PR that merges should have a QA checklist: the dev writes what to test, another person (or Warda) runs it. No exceptions.</li>
+      <li><strong>Adopt a "QA buddy" system.</strong> Nadeem tests Asif's work, Asif tests Rizwan's, Rizwan tests Nadeem's. Rotate weekly. Each dev owns 30 minutes of testing per day — it's part of the job, not extra.</li>
+      <li><strong>Automate the critical path first.</strong> The invite flow (phone → OTP → join trip) and the iMessage → app sync should have automated smoke tests. Playwright or Maestro (mobile) can cover these in under a day of setup. <a href="https://blog.greenroots.info/top-10-qa-automation-tools-for-startups-in-2026">Startup QA tools guide</a></li>
+      <li><strong>Close the ClickUp loop.</strong> Right now "for testing" is a graveyard. Define: if a task sits in "for testing" for 48 hours, the original dev is responsible for self-testing and moving it to done. Stale = owned by author.</li>
+      <li><strong>Warda's role: triage, not gatekeep.</strong> AI QA should focus on exploratory testing (finding new bugs), not blocking releases. Use her to stress-test edge cases the devs won't think of — multi-user, offline, weird phone numbers, emoji-heavy inputs.</li>
+    </ul>
+
+    <h4>One Action for Monday</h4>
+    <p>Have Asif define a QA handoff template in ClickUp: when a task moves to "for testing," the dev must fill in (1) what changed, (2) how to test it, (3) what could break. If those fields are empty, it bounces back to "in progress."</p>
+  </section>
+
+  <!-- ====== SECTION 5: STRATEGY CHECK ====== -->
+  <section>
+    <h2>5. Strategy Check</h2>
+    <div class="strategy-box">
+      <h4>Where We Are — End of Week 5</h4>
+      <p>Velocity is strong: <strong>11 PRs merged this week</strong>, the best since launch sprint. iMessage Agent (51/57) and Voice Calls (14/14) are done. Core Trip Experience is in testing (15/16). Agent Intelligence pushed to 29/61 with SC-15 and the sensors fix. But the "last mile" problem is real — nothing gets marked done because there's no QA process closing the loop.</p>
+
+      <p><strong>Standup adoption is failing.</strong> 1 out of 6 possible standup answers this week. Devs are shipping code but not communicating. This makes it impossible to track commitments or calibrate missions.</p>
+
+      <h4>Top 3 Risks</h4>
+      <ol>
+        <li><strong>QA vacuum:</strong> 22 tasks in "for testing," 0 moved to "done" all week. Andreas is gone, Warda is onboarding. Customer interview quality depends on TestFlight — and right now nobody is verifying the build works end-to-end.</li>
+        <li><strong>SC-59/60/61 blocker:</strong> The Asif+Rizwan interface session (DM delivery, vote override, rate limiter) has been "needed" for 5+ standups. It's blocking 6 of Asif's SCs and Rizwan's progress on group-decision-making. If it doesn't happen this weekend, those SCs don't ship this sprint.</li>
+        <li><strong>PRs #333 and #328 going stale:</strong> Both open since March 31. #333 (domain consolidation) has a merge conflict. #328 (phone number leak) is Jake's own PR. Going into the weekend unreviewed means they'll be 5+ days old by Monday.</li>
+      </ol>
+
+      <h4>Where Jake Should Focus</h4>
+      <ul>
+        <li><strong>QA process decision:</strong> Either own the "for testing" backlog yourself this weekend, assign Warda to clear it, or implement the buddy system from the deep dive. The 22-task pile-up is the single biggest blocker to a clean TestFlight.</li>
+        <li><strong>Standup format:</strong> The doc-based approach isn't working. Consider switching to: voice memo via Wispr (devs record 2 min, Marty transcribes) or Slack thread (lower friction than git commit). Something has to change — 1/6 compliance is a data blackout.</li>
+        <li><strong>Push the SC-59/60/61 session:</strong> Text both Asif and Rizwan directly. This is the kind of thing that won't happen unless Jake makes it happen.</li>
+      </ul>
+
+      <h4>What Marty Thinks the #1 Priority Is</h4>
+      <p><strong>Clear the "for testing" backlog.</strong> Everything else — new SCs, new features, customer interviews — depends on having a working, verified app. We have 22 tasks that might be done but nobody's checked. That's 22 potential demo-breakers sitting in limbo. Fix the QA loop and everything downstream gets unblocked.</p>
+    </div>
+  </section>
+
+  <!-- ====== SECTION 6: CULTURE & CONVERSATION ====== -->
+  <section>
+    <h2>6. Culture &amp; Conversation</h2>
+
+    <h4>SpaceX Targets $2T+ IPO Valuation</h4>
+    <p>Bloomberg reported SpaceX is pitching prospective investors on a <strong>$2 trillion+ valuation</strong> for what could be the largest IPO in history. For context, that's bigger than Amazon's current market cap. <strong>Conversation angle:</strong> "Is Musk's DOGE exposure a liability or does it not matter when you own the rocket monopoly?" <a href="https://www.bloomberg.com/news/articles/2026-04-02/spacex-is-said-to-target-more-than-2-trillion-valuation-in-ipo">Bloomberg</a></p>
+
+    <h4>Anthropic: "Claude Has Emotions"</h4>
+    <p>Anthropic's interpretability team published research showing Claude Sonnet 4.5 contains <strong>171 internal representations that function analogously to human emotions</strong> — happiness, sadness, fear — within clusters of artificial neurons. Not "real" emotions, but functional analogs that shape model behavior. <strong>Conversation angle:</strong> "If AI models have emotion-like states that affect their outputs, should we be designing for their 'mood'?" <a href="https://www.wired.com/story/anthropic-claude-research-functional-emotions/">Wired</a></p>
+
+    <h4>Microsoft: $10B Japan AI Investment</h4>
+    <p>Microsoft unveiled a <strong>4-year, $10 billion package for Japan</strong> — AI infrastructure, cybersecurity, and training 1 million engineers by 2030. Partners include SoftBank. Sakura Internet (Japanese cloud) stock jumped 20%. <strong>Conversation angle:</strong> "Big tech is buying entire countries' AI infrastructure now. What happens when a nation's compute layer is owned by one American company?" <a href="https://www.reuters.com/business/media-telecom/microsoft-invest-10-billion-japan-ai-cyber-defence-expansion-2026-04-03/">Reuters</a></p>
+  </section>
+
+  <!-- ====== SECTION 7: AI RELEASES ====== -->
+  <section>
+    <h2>7. AI Releases &amp; Patch Notes</h2>
+
+    <table class="cost-table">
+      <tr><th>Provider</th><th>What Changed</th><th>Relevance</th></tr>
+      <tr>
+        <td><strong>Anthropic</strong></td>
+        <td>
+          • Retiring 1M token context window beta for Sonnet 4.5/4 on <strong>April 30</strong><br>
+          • Raised max_tokens cap for large content/code generation<br>
+          • Published emotion-concept interpretability research
+        </td>
+        <td>1M context retirement may affect long-context workflows. Check if any Tryps agent prompts rely on it.</td>
+      </tr>
+      <tr>
+        <td><strong>Claude Code</strong></td>
+        <td>
+          • <code>--bare</code> flag for scripted -p calls (skips hooks/LSP/plugins)<br>
+          • <code>--channels</code> permission relay (approve tools from phone)<br>
+          • MCP tool result persistence up to 500K chars<br>
+          • Fixed multi-session OAuth refresh conflicts<br>
+          • Fixed Write/Edit/Read on files outside project root<br>
+          • Memory filenames now clickable; skills sorted alphabetically
+        </td>
+        <td>The <code>--bare</code> flag is huge for CI/CD pipelines. Phone-based permission relay could change how devs approve risky operations.</td>
+      </tr>
+      <tr>
+        <td><strong>OpenAI</strong></td>
+        <td>
+          • <strong>GPT-5-codex</strong> variant launched — optimized for agentic coding in Codex<br>
+          • Acquired TBPN (tech talk show) — first media company acquisition<br>
+          • Codex: agent network graph representation, exec server improvements
+        </td>
+        <td>GPT-5-codex vs Claude Code is the new IDE war. Worth tracking for dev productivity comparison.</td>
+      </tr>
+      <tr>
+        <td><strong>Google</strong></td>
+        <td>No major releases today</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>xAI</strong></td>
+        <td>Grok 4.20 full model still in training; API access coming</td>
+        <td>—</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ====== SECTION 8: TOOLS HIGHLIGHT ====== -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p><em>Friday = AI &amp; Automation</em></p>
+
+    <h3>OpenScreen — Free Screen Recording for Demos</h3>
+    <p><strong>What it is:</strong> Open-source Screen Studio alternative. Creates polished demo videos with no watermarks, no subscriptions, free for commercial use.</p>
+    <p><strong>How Jake would use it:</strong> Record TestFlight walkthroughs to share with beta users and investors instead of raw screen recordings. Sean could use it for social content — the output looks professional without editing. Also useful for bug reports: devs can screen-record the issue and attach it to ClickUp tasks instead of describing the problem in text.</p>
+    <p><strong>Pricing:</strong> Free, forever. Open source (MIT).</p>
+    <p><strong>Link:</strong> <a href="https://github.com/siddharthvaddem/openscreen">github.com/siddharthvaddem/openscreen</a> — 18,175 stars, trending #4 on GitHub today.</p>
+
+    <h3>Oh-My-Codex (OmX) — Extensions for Coding Agents</h3>
+    <p><strong>What it is:</strong> "Oh-my-zsh for Codex" — adds hooks, agent teams, HUDs, and plugins to OpenAI's Codex agent.</p>
+    <p><strong>How Jake would use it:</strong> If the team adopts Codex alongside Claude Code, OmX lets you configure multi-agent coding teams, add custom hooks for PR templates, and get real-time HUD overlays showing what the agent is doing. Could complement the spec-and-build pipeline.</p>
+    <p><strong>Pricing:</strong> Free, open source. TypeScript.</p>
+    <p><strong>Link:</strong> <a href="https://github.com/Yeachan-Heo/oh-my-codex">github.com/Yeachan-Heo/oh-my-codex</a> — 14,103 stars, #1 trending on GitHub today.</p>
+  </section>
+
+  <!-- ====== SECTION 9: COST SNAPSHOT ====== -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+    <table class="cost-table">
+      <tr><th>Category</th><th>Cost</th><th>Tokens</th><th>Notes</th></tr>
+      <tr>
+        <td>Standup Generator</td>
+        <td>$0.52</td>
+        <td>42,727</td>
+        <td>1 run, Opus 4.6</td>
+      </tr>
+      <tr>
+        <td>Topic Suggestion</td>
+        <td>$0.20</td>
+        <td>25,779</td>
+        <td>1 run, Opus 4.6</td>
+      </tr>
+      <tr>
+        <td>Nightly Report</td>
+        <td><em>in progress</em></td>
+        <td>—</td>
+        <td>This session (Opus 4.6)</td>
+      </tr>
+      <tr>
+        <td>Heartbeat / DM Sessions</td>
+        <td>No log data</td>
+        <td>—</td>
+        <td>Gateway logs not parsed</td>
+      </tr>
+      <tr style="font-weight: 600; border-top: 2px solid #3D3530;">
+        <td>Cron Total (excl. this report)</td>
+        <td>$0.72</td>
+        <td>68,506</td>
+        <td>2 cron runs today</td>
+      </tr>
+    </table>
+    <p style="font-size: 10pt; color: #888; margin-top: 8px;">Rates: Opus 4.6 = $15/1M in, $75/1M out, $3.75/1M cached. Only cron run logs available — DM/heartbeat sessions not included.</p>
+  </section>
+
+  <!-- ====== SECTION 10: MISSION PROGRESS ====== -->
+  <section>
+    <h2>10. Mission Progress</h2>
+
+    <h4>Mission 1: Fix iMessage Bugs from QA</h4>
+    <p><strong>Owner:</strong> Asif | <strong>What moved:</strong> Asif committed emoji-based polling/voting on iMessage yesterday. Fixed 10 bugs today (bug count 68→78 fixed). Merged Nadeem and Rizwan's PRs as reviewer. | <strong>What didn't:</strong> 13 new iMessage bugs from QA today — net bug count may have stayed flat or increased. No standup answer to confirm specific items closed. | <span class="verdict verdict-progress">PROGRESS</span></p>
+
+    <h4>Mission 2: App Bug Fixes + Real-Time Data Updates</h4>
+    <p><strong>Owner:</strong> Nadeem | <strong>What moved:</strong> Merged PR #352 (itinerary tab fixes, cross-day drag-and-drop). 10 bugs remain from 78 total. | <strong>What didn't:</strong> PR #333 (domain consolidation) still open since March 31 with merge conflict. No standup answer. | <span class="verdict verdict-progress">PROGRESS</span></p>
+
+    <h4>Mission 3: Flight Booking + Third-Party Integration</h4>
+    <p><strong>Owner:</strong> Rizwan | <strong>What moved:</strong> Merged PR #350 (expo-sensors crash fix) and PR #351 (SC-15 agent memory screen). Travel booking at 5/70. | <strong>What didn't:</strong> No travel booking PRs merged. Agent intelligence at 29/61 (up from 27). Stale SC numbers — Rizwan promised EOD update but didn't deliver. | <span class="verdict verdict-progress">PROGRESS</span> (on agent-intelligence, not on booking)</p>
+
+    <h4>Mission 4: Customer Interviews</h4>
+    <p><strong>Owner:</strong> Asif + Jake | <strong>What moved:</strong> Pipeline live at marty.jointryps.com/interview. | <strong>What didn't:</strong> No confirmation of interviews actually conducted today. | <span class="verdict verdict-nodata">NO DATA</span></p>
+
+    <h4>Mission 5: Close the Books</h4>
+    <p><strong>Owner:</strong> Jake | <strong>What moved:</strong> No data. | <strong>What didn't:</strong> No updates on March financials. | <span class="verdict verdict-nodata">NO DATA</span></p>
+
+    <h4>SC-59/60/61 Interface Session (Ops Mission)</h4>
+    <p><strong>Owner:</strong> Asif + Rizwan | <strong>What moved:</strong> Nothing. | <strong>What didn't:</strong> Still unscheduled after 5+ standups. Blocking 6 Asif SCs and Rizwan's group-decision-making progress. | <span class="verdict verdict-stalled">STALLED</span></p>
+
+    <h4>Unmapped Work</h4>
+    <p>Rizwan's PR #351 (agent memory screen) maps to Agent Intelligence but not directly to any of today's missions. PR #350 (expo-sensors) was a crash fix — defensive, not mission-aligned. Both valuable, but neither moves the booking needle.</p>
+  </section>
+
+  <!-- ====== SECTION 11: CS 101 ====== -->
+  <section>
+    <h2>11. CS 101 — Jake's Daily Lesson</h2>
+    <div class="strategy-box">
+      <h3>What Is DNS? (And What Happens When Someone Types jointryps.com)</h3>
+
+      <p>When you type <strong>jointryps.com</strong> into a browser, your computer has no idea where that is. It's like saying "take me to Jake's apartment" — you need an address first. DNS (Domain Name System) is the internet's phone book. It translates human-readable names like <code>jointryps.com</code> into IP addresses like <code>76.76.21.93</code> — the actual "street address" of the server where Tryps lives.</p>
+
+      <p>Here's what happens in ~100 milliseconds when someone opens Tryps:</p>
+      <ol>
+        <li>Browser asks your Wi-Fi router: "Where is jointryps.com?"</li>
+        <li>Router doesn't know, so it asks your ISP's DNS server (like Verizon or Google's 8.8.8.8)</li>
+        <li>ISP asks the <strong>.com registry</strong>: "Who handles jointryps.com?"</li>
+        <li>Registry says: "Ask Vercel's nameservers" (because that's where Tryps' DNS is configured)</li>
+        <li>Vercel's nameserver responds: "jointryps.com lives at 76.76.21.93"</li>
+        <li>Browser connects to that IP → Tryps loads</li>
+      </ol>
+
+      <p><strong>Why it matters for Tryps:</strong> When Nadeem's PR #333 consolidated all <code>jointripful.com</code> references to <code>jointryps.com</code>, DNS is what makes sure both domains eventually reach the same server. The deep link scheme (<code>tripful://</code>) works differently — that's handled by the phone's OS, not DNS — but the web landing pages, OG images, and the invite link all depend on DNS resolving correctly. If DNS is misconfigured, every invite link is broken.</p>
+
+      <p><strong>The "aha" moment:</strong> DNS is why a domain costs money — you're paying for a permanent entry in the internet's phone book that says "this name belongs to this server." Change your server? Just update the phone book entry. That's what a "DNS propagation" is: waiting for every copy of the phone book worldwide to get the update.</p>
+    </div>
+  </section>
+
+</body>
+</html>
