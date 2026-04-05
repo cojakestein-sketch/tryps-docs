@@ -18,3 +18,13 @@ Rationale: ClickUp has API, better views, team already familiar.
 Context: Phase-based planning was creating artificial sequencing.
 Decision: Restructure into 13 flat capability areas, sequence by dependency.
 Rationale: Each scope independently testable, no artificial phase gates.
+
+## [2026-03-27] Coordination/facilitation lives in Asif's scopes
+Context: Jake defined April 2 gate — agent advances trip from creation to complete trip card.
+Decision: Coordination layer is not a new scope — it lives inside Asif's existing iMessage agent scopes.
+Rationale: The facilitation behavior (proactive sequencing, consensus building) extends the agent, not replaces it.
+
+## [2026-03-27] Voice agent API evaluation started
+Context: Jake wants concierge calling on the Tryps number — same capabilities as text, via voice.
+Decision: Evaluate Vapi, Bland, Retell, Twilio Voice AI. Criteria: latency, tool calling, cost, integration with existing agent memory.
+Rationale: Voice is a new modality for the same agent brain. Must plug into trip snapshot + memory system.
