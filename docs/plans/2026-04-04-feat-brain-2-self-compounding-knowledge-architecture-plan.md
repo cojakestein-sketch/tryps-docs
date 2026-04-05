@@ -369,14 +369,14 @@ The daily files feed the wiki. The wiki feeds the brainscan. The brainscan feeds
 **Convention:** Follows the same gated write-back pattern as `/compound`. Never auto-commits.
 
 **Phase 2 acceptance criteria:**
-- [ ] `shared/INDEX.md` exists with file listing, quick reference, and "what to load when" routing
-- [ ] CLAUDE.md updated to @import INDEX.md + state.md + missions.md (instead of 5 files)
-- [ ] Default session context reduced from ~1500 to ~200 lines
-- [ ] `marty/wiki/` directory exists with 6 initial articles + INDEX.md
-- [ ] Marty's HEARTBEAT.md updated with post-standup wiki compilation step
-- [ ] `/brain compile` command exists and can process standup transcripts, meeting notes, research dumps
-- [ ] `/brain compile` proposes filing locations with diffs, requires confirmation
-- [ ] All indexes auto-update when new content is filed
+- [x] `shared/INDEX.md` exists with file listing, quick reference, and "what to load when" routing
+- [x] CLAUDE.md updated to @import INDEX.md + state.md + missions.md (instead of 5 files)
+- [x] Default session context reduced from ~1500 to ~200 lines
+- [x] `marty/wiki/` directory exists with 5 initial articles + INDEX.md
+- [x] Marty's HEARTBEAT.md updated with post-standup wiki compilation step + Friday brain health check
+- [x] `/brain compile` command exists and can process standup transcripts, meeting notes, research dumps
+- [x] `/brain compile` proposes filing locations with diffs, requires confirmation
+- [x] All indexes auto-update when new content is filed
 
 ---
 

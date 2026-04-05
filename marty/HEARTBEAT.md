@@ -36,6 +36,12 @@ Format:
    - `updated_by` — set to `marty`
 4. Regenerate `shared/state.md` by reading all 12 scope state.md frontmatter values
 5. Commit and push with message: `chore: sync state from standup answers (YYYY-MM-DD)`
+6. Append observations to relevant `marty/wiki/` articles:
+   - Team velocity patterns → `team-patterns.md`
+   - New bugs or bug patterns → `bug-taxonomy.md`
+   - Decisions mentioned → `decisions-log.md`
+   - Cross-scope blockers → `scope-intelligence.md`
+7. Append to `shared/log.md`: `## [YYYY-MM-DD] ingest | Standup sync — [brief summary]`
 
 **Manual fallback:** Until this automation is running, any session can run:
 > Read the latest standup. Extract SC counts, status changes, and blockers from each dev's answers. Update the corresponding scopes/*/state.md frontmatter. Regenerate shared/state.md by aggregating all 12 scope state.md files. Commit and push.
@@ -53,6 +59,16 @@ Post to #standup:
 > **Still open:** [remaining PRs]
 > **Blocked for tomorrow:** [needs attention]
 > **ClickUp:** [completed today, remaining this week]
+
+## Friday Brain Health Check (14:00 ET, before brainscan)
+
+1. Run `/brain-lint auto-fix` — resolve orphans, sync redundancies, regenerate indexes
+2. Recompile `shared/gotchas.md` from all feedback source files
+3. Compile `marty/wiki/` articles — deduplicate, synthesize, trim to <100 lines each
+4. Update `marty/wiki/INDEX.md` with current line counts and dates
+5. Generate health report and post score + key findings to #martydev
+6. Append to `shared/log.md`: `## [YYYY-MM-DD] lint | Health score: XX/100 — [findings]`
+7. If health score < 80: flag specific issues for Jake review
 
 ## Weekly (Friday 17:00 ET)
 - Weekly metrics: PRs merged, bugs fixed, tasks completed
