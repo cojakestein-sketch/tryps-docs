@@ -178,3 +178,23 @@ The brain improves through the Friday calibration loop:
 Over time, the brain's model of the organization gets tighter. The questions get sharper. The insights get more non-obvious. The Friday briefs get more useful.
 
 The ultimate measure: Jake spends less time figuring out what's going on and more time making strategic decisions.
+
+---
+
+## Brain 2.0 (2026-04-05)
+
+Brain 1.0 was read-only. Brain 2.0 adds a compounding loop — based on [Karpathy's LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
+
+**Three Layers:**
+1. **Raw Sources** (immutable) — standups, specs, marty/memory, plans, interviews
+2. **The Wiki** (LLM-maintained) — shared/*.md, marty/wiki/*.md, memory/*.md
+3. **The Schema** (co-evolved) — CLAUDE.md, brain.md, AGENTS.md, commands/
+
+**Three Operations:**
+- **Ingest** (`/brain-compile`, `/compound`) — raw input → structured wiki entries
+- **Query** (normal sessions) — read INDEX.md → drill into relevant pages → good answers filed back
+- **Lint** (`/brain-lint`) — health check, staleness detection, auto-fix, score tracking
+
+**Key Files:** `shared/INDEX.md` (routing), `shared/log.md` (timeline), `shared/gotchas.md` (compiled rules)
+
+**Full plan:** [[2026-04-04-feat-brain-2-self-compounding-knowledge-architecture-plan|Brain 2.0 Plan]]

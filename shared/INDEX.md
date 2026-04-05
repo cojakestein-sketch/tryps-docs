@@ -18,7 +18,7 @@
 | [[log\|log.md]] | Append-only brain changelog | 2026-04-05 | 24 |
 | [[decisions\|decisions.md]] | Key decisions log | 2026-03-25 | 21 |
 | [[cross-scope-dependencies\|cross-scope-dependencies.md]] | Scope interaction map | 2026-03-30 | 98 |
-| [[brand-strategy\|brand-strategy.md]] | Brand strategy deep dive | 2026-03-25 | 479 |
+| [[brand-strategy\|brand-strategy.md]] | Brand strategy deep dive (Layer 1 raw source, exempt from 200-line cap) | 2026-03-25 | 479 |
 | [[scope-audit-2026-03-30\|scope-audit-2026-03-30.md]] | Point-in-time scope audit | 2026-03-30 | 146 |
 | [[observations\|observations.md]] | Misc observations | 2026-03-18 | 9 |
 
