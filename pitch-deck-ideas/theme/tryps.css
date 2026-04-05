@@ -1,0 +1,210 @@
+/* @theme tryps */
+
+@import 'default';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --tryps-dark: #0f1923;
+  --tryps-blue: #1a73e8;
+  --tryps-accent: #e94560;
+  --tryps-gray: #f8f9fa;
+  --tryps-text: #1a1a1a;
+  --tryps-muted: #6b7280;
+}
+
+section {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #ffffff;
+  color: var(--tryps-text);
+  padding: 60px 80px;
+  font-size: 28px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* --- Cover / Lead slides --- */
+section.lead {
+  background: var(--tryps-dark);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 80px;
+}
+
+section.lead h1 {
+  color: #ffffff;
+  font-size: 3em;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.3em;
+}
+
+section.lead h2 {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+section.lead p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8em;
+}
+
+/* --- Section divider slides --- */
+section.section {
+  background: var(--tryps-dark);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 100px;
+}
+
+section.section h1 {
+  color: #ffffff;
+  font-size: 2.4em;
+  font-weight: 700;
+  border: none;
+}
+
+section.section p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9em;
+}
+
+/* --- Default headings --- */
+h1 {
+  color: var(--tryps-dark);
+  font-weight: 700;
+  font-size: 1.8em;
+  letter-spacing: -0.02em;
+  border-bottom: none;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  color: var(--tryps-dark);
+  font-weight: 600;
+  font-size: 1.2em;
+  letter-spacing: -0.01em;
+  margin-top: 0.8em;
+  margin-bottom: 0.3em;
+}
+
+h3 {
+  color: var(--tryps-muted);
+  font-weight: 500;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Body text --- */
+p {
+  color: var(--tryps-text);
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+
+/* --- Bullets --- */
+ul, ol {
+  font-size: 0.85em;
+  line-height: 1.7;
+}
+
+li {
+  margin-bottom: 0.3em;
+}
+
+/* --- Bold as accent --- */
+strong {
+  color: var(--tryps-accent);
+  font-weight: 600;
+}
+
+/* --- Blockquotes for callouts --- */
+blockquote {
+  border-left: 4px solid var(--tryps-blue);
+  background: var(--tryps-gray);
+  padding: 20px 28px;
+  border-radius: 0 8px 8px 0;
+  margin: 1em 0;
+  font-size: 0.85em;
+}
+
+blockquote p {
+  color: var(--tryps-text);
+}
+
+/* --- Tables --- */
+table {
+  font-size: 0.7em;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background: var(--tryps-dark);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 16px;
+  text-align: left;
+}
+
+td {
+  padding: 8px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tr:nth-child(even) td {
+  background: var(--tryps-gray);
+}
+
+/* --- Slide numbers --- */
+section::after {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--tryps-muted);
+  content: attr(data-marpit-pagination) ' / ' attr(data-marpit-pagination-total);
+}
+
+section.lead::after,
+section.section::after {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Inverted text slides --- */
+section.invert {
+  background: var(--tryps-dark);
+  color: #ffffff;
+}
+
+section.invert h1 {
+  color: #ffffff;
+}
+
+section.invert strong {
+  color: var(--tryps-accent);
+}
+
+/* --- Stat/number highlight slides --- */
+section.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+section.stat h1 {
+  font-size: 4em;
+  font-weight: 800;
+  color: var(--tryps-blue);
+  margin-bottom: 0.1em;
+}
+
+section.stat p {
+  font-size: 1.1em;
+  color: var(--tryps-muted);
+}
