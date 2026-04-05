@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tryps Nightly Brief — Saturday, April 4, 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #3D3530;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #3D3530;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+  }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
+  h4 { font-size: 11pt; font-weight: 600; margin-top: 12px; }
+  p, li { font-size: 11pt; }
+  ul { padding-left: 20px; }
+  ol { padding-left: 20px; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+  }
+  .cost-table th { font-weight: 600; }
+  .strategy-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14pt;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #B00618; }
+  .verdict { font-weight: 700; }
+  .verdict-progress { color: #2D8A4E; }
+  .verdict-stalled { color: #D9071C; }
+  .verdict-nodata { color: #888; }
+  .warning { background: #FFF3CD; border: 1px solid #FFD95A; border-radius: 6px; padding: 10px; margin-top: 8px; font-size: 10pt; }
+  .alert { background: #F8D7DA; border: 1px solid #F5C6CB; border-radius: 6px; padding: 10px; margin-top: 8px; font-size: 10pt; }
+  code { font-family: 'Space Mono', monospace; font-size: 10pt; background: #f5f0eb; padding: 2px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Print</button>
+  <h1>Tryps Nightly Brief</h1>
+  <div class="subtitle">
+    Saturday, April 4, 2026 — Prepared by Marty at 8:30 PM ET<br>
+    End of Week 5 (Mar 30 – Apr 5) · 2 open PRs · No new merges today · April 4 standup: unanswered
+  </div>
+
+  <!-- ====== SECTION 1: STANDUP ====== -->
+  <section>
+    <h2>1. Tomorrow's Standup</h2>
+    <p><strong>Standup doc generated for April 5.</strong> 3 questions per dev. SC numbers are stale — devs flagged to self-report.</p>
+
+    <h3>Nadeem — Output-Backed Screen + Core Trip Experience (64 SC)</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> You merged PR #352 (cross-day drag-and-drop itinerary) on April 3. You have 5 bugs in "for testing" (Trip Card, Trip Details Header, Packing List, Vibe Tab, Itinerary Tab) and PR #333 (domain consolidation) still open since March 31. What's the plan today?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> Merged PR numbers, bugs moved to "done," specific screens to tap through on TestFlight.</li>
+      <li><strong>Marty's question:</strong> Your 5 "for testing" bugs — are these waiting on QA, or do any need additional code changes? I need to know whether these are blocked on QA capacity or dev work.</li>
+    </ol>
+
+    <h3>Asif — iMessage Agent (57 SC) + Group Decision-Making (25 SC)</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> ClickUp shows 16 iMessage bugs in "to do" and 3 "in progress" (Payment Details, AI Logs Percentage, iMessage JSON format). Activities, polls, and stays added via iMessage are not reflected in the app. Which bugs ship today?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> Jake's test: send an iMessage to the agent → create a trip → open the app → see everything. Will that end-to-end flow work by tonight?</li>
+      <li><strong>Marty's question:</strong> The April 2 AND April 4 standups went unanswered by you. Is there a workflow issue, or are these getting missed? Also: has the SC-59/60/61 interface session with Rizwan been scheduled?</li>
+    </ol>
+
+    <h3>Rizwan — Agent Intelligence (61 SC) + Travel Booking (70 SC)</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> You merged SC-15 (agent memory screen) and the expo-sensors crash fix on April 3. You're at 27/61 on agent-intelligence — number hasn't moved in days. Which specific SC numbers are you targeting today to break past 30?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> Merged PRs with SC numbers, specific screens/flows to check.</li>
+      <li><strong>Marty's question:</strong> ClickUp has "Deploy Marty Memory System," "P2 — Stripe Payments," and "Group Decision-Making — Facilitation Engine" all in "to do." Are they parked behind agent-intelligence? And on SC-59/60/61 with Asif — what's blocking it?</li>
+    </ol>
+  </section>
+
+  <!-- ====== SECTION 2: TECH TWITTER ====== -->
+  <section>
+    <h2>2. Tech Twitter</h2>
+    <div class="alert">
+      <strong>⚠️ Exa Search unavailable.</strong> AgentCash balance is $0 — all 7 Exa tweet queries failed with INSUFFICIENT_BALANCE. This has been the case for 4 consecutive nightly reports. Jake: fund the AgentCash wallet or this section stays dead. See <code>npx agentcash@latest fund</code> for deposit instructions.
+    </div>
+    <p style="margin-top: 12px; color: #888; font-size: 10pt;">Per skill instructions: not falling back to Brave Search for tweets. Exa <code>category: "tweet"</code> is the canonical method.</p>
+  </section>
+
+  <!-- ====== SECTION 3: TRENDING REPOS ====== -->
+  <section>
+    <h2>3. Trending GitHub Repos</h2>
+
+    <div class="repo">
+      <p><span class="repo-name">Yeachan-Heo/oh-my-codex</span> — ⭐ 15,618 (+1,789 today)</p>
+      <p>Plugin framework for OpenAI Codex: hooks, agent teams, HUDs, multi-agent orchestration. TypeScript.</p>
+      <p><strong>Why it matters:</strong> If you're using Codex for any coding tasks, this adds the coordination layer that's missing out of the box. Same pattern as oh-my-zsh but for AI coding agents. Could be useful if the team adopts Codex alongside Claude Code.</p>
+    </div>
+
+    <div class="repo">
+      <p><span class="repo-name">onyx-dot-app/onyx</span> — ⭐ 24,229 (+1,197 today)</p>
+      <p>Open-source AI platform — chat with advanced features that works with every LLM. Python.</p>
+      <p><strong>Why it matters:</strong> Self-hostable AI chat platform with RAG, connectors, and multi-LLM support. If Tryps ever needs an internal knowledge base or customer-facing AI chat beyond the iMessage agent, this is the open-source option to watch.</p>
+    </div>
+
+    <div class="repo">
+      <p><span class="repo-name">siddharthvaddem/openscreen</span> — ⭐ 19,779 (+1,591 today)</p>
+      <p>Free, open-source screen recording with polished demos. No watermarks, no subscriptions. An alternative to Screen Studio. TypeScript.</p>
+      <p><strong>Why it matters:</strong> Free demo recording for the team. When you need polished app walkthroughs for investors or beta users, this replaces the $89/year Screen Studio license. Could be useful for customer interview prep and TestFlight demo videos.</p>
+    </div>
+  </section>
+
+  <!-- ====== SECTION 4: DEEP DIVE ====== -->
+  <section>
+    <h2>4. Deep Dive: Anthropic Just Cut Off Claude Subscriptions for Third-Party Agents</h2>
+    <div class="strategy-box">
+      <p><strong>What happened:</strong> As of today (April 4, 2026 at 3 PM ET), Anthropic no longer allows Claude subscription credits to be used through third-party tools like OpenClaw, Claude Code via harnesses, or any non-first-party integration. This was announced by Anthropic yesterday and covered by VentureBeat, MLQ.ai, and updated on the OpenClaw docs. Users can still use Claude via these tools, but must purchase "Extra Usage" bundles — subscription credits no longer apply.</p>
+
+      <p><strong>Why it matters for Tryps right now:</strong> Marty (me) runs on Claude Opus 4.6 through OpenClaw. The dev team uses Claude Code as their primary coding tool. This policy change means the flat-rate subscription model is over for our workflow — every Claude call through OpenClaw and Claude Code now draws from pay-as-you-go "Extra Usage" instead of the subscription. Costs could increase significantly depending on usage patterns. Anthropic is offering a one-time credit equivalent to one month's subscription and up to 30% discount on pre-purchased usage bundles, valid until April 17.</p>
+
+      <p><strong>Key takeaways:</strong></p>
+      <ul>
+        <li><strong>Immediate action:</strong> Check if we're on API keys (already pay-per-token) or subscription routing. If subscription, claim the one-time credit before April 17 and pre-purchase a usage bundle at the 30% discount.</li>
+        <li><strong>Cost modeling:</strong> Track this week's Marty + Claude Code usage carefully. If the daily burn exceeds $15, we need to evaluate model routing — Sonnet 4.6 for routine tasks, Opus only for complex work.</li>
+        <li><strong>Competitive context:</strong> OpenAI just raised $122B and is rolling out GPT-5.4 mini to free users. Google released Gemma 4 under Apache 2.0. Anthropic may be tightening revenue capture as competition intensifies.</li>
+        <li><strong>No panic needed:</strong> If we're already on API keys (which we are for Marty's OpenClaw setup), this change has zero impact on our workflow. It mainly affects people who were using their $20/month Claude Pro subscription through OpenClaw.</li>
+      </ul>
+
+      <p><strong>Resource:</strong> <a href="https://docs.openclaw.ai/providers/anthropic">OpenClaw Anthropic Provider Docs</a> — updated with billing notes on the change.</p>
+    </div>
+  </section>
+
+  <!-- ====== SECTION 5: STRATEGY CHECK ====== -->
+  <section>
+    <h2>5. Strategy Check</h2>
+    <div class="strategy-box">
+      <h3>Where We Are — End of Week 5 (Sat Apr 4)</h3>
+      <p>13 scopes total: 2 done (iMessage Agent, Voice Calls), 5 in-progress, 1 testing, 3 specced, 1 needs-spec, 1 not-started. Headline: <strong>~82/166 SC done (49%)</strong>, 68/78 bugs fixed (but ClickUp shows 31 new "to do" items — the bug count is growing faster than the tracker).</p>
+      <p>April 4 was a quiet day. No PRs merged. No standup answers (second consecutive day — Asif has missed both). PR #333 (domain consolidation) and PR #328 (phone number leak) are going into the weekend unreviewed. The last merged PRs were Nadeem's #352 and Rizwan's #351/#350 on April 3.</p>
+
+      <h3>Top 3 Risks</h3>
+      <ol>
+        <li><strong>QA vacuum is the single biggest bottleneck.</strong> 12+ tasks stuck in "for testing" with no QA owner since Andreas left. Warda was supposed to take over but hasn't surfaced in any visible activity. Bugs get fixed but never verified and closed. This creates a false sense of progress — SC counts go up but nothing is actually shippable.</li>
+        <li><strong>SC-59/60/61 (Asif + Rizwan interface session) is now 5+ standups stalled.</strong> DM delivery pipeline, vote override routing, rate limiter. Blocks 6 of Asif's SCs and Rizwan's group-decision-making progress. Tomorrow's standup frames it as "happens today or gets de-scoped." It probably needs to be de-scoped.</li>
+        <li><strong>Standup participation is broken.</strong> 1/6 answers this week (only Rizwan on April 3, and late). Asif has now missed 2 consecutive standups. The standup doc format may not be working for the team's workflow — they're shipping code but ignoring the coordination tool.</li>
+      </ol>
+
+      <h3>Where Jake Should Focus</h3>
+      <ul>
+        <li><strong>QA: Make a decision.</strong> Is Warda doing QA? If not, who is? The "for testing" backlog will only grow. Either assign QA explicitly or change the process so devs self-verify.</li>
+        <li><strong>Customer interviews:</strong> Pipeline is live but no interviews confirmed. This week is supposed to be "interviews start" — get the first 5 scheduled.</li>
+        <li><strong>PR #333 and #328:</strong> Both are going into a second weekend unreviewed. #333 is a branding blocker (every "Tripful" reference hurts the demo). Either review them Sunday or assign to Asif.</li>
+      </ul>
+
+      <h3>What Marty Thinks the #1 Priority Is</h3>
+      <p><strong>The QA gap.</strong> Everything else is fixable with time — more PRs, more SCs, more bug fixes. But without a verification layer, we don't actually know if any of it works. The customer interview pipeline is live but meaningless if the app breaks when a real user touches it. Fix QA first, then demo with confidence.</p>
+    </div>
+  </section>
+
+  <!-- ====== SECTION 6: CULTURE & CONVERSATION ====== -->
+  <section>
+    <h2>6. Culture &amp; Conversation</h2>
+
+    <h4>1. One Year After "Liberation Day" — What the Tariffs Actually Did to Tech</h4>
+    <p>CNBC and Politico published major retrospectives this week on the anniversary of Trump's April 2025 tariff wave. The Politico piece is particularly good: "When the World Stops Syncing" argues that the trade war didn't just raise prices — it may have broken the global standards system that lets technologies like Bluetooth work everywhere. Companies are now modeling geopolitical risk as a first-order engineering constraint, not just a supply chain one.</p>
+    <p><strong>Conversation angle:</strong> "The tariffs didn't just make things more expensive — they might have broken the system that lets different countries' tech talk to each other."</p>
+    <p><a href="https://www.politico.com/news/magazine/2026/04/02/bluetooth-trump-tariffs-technology-trade-00852860">Politico: When the World Stops Syncing</a></p>
+
+    <h4>2. OpenAI Closes $122 Billion at $852B Valuation — Retail Investors Get In</h4>
+    <p>OpenAI closed the largest private funding round in history: $122B at an $852B valuation, putting it on par with Berkshire Hathaway. Notable: $3B came from retail investors — OpenAI isn't public yet but is letting non-institutional money in, a signal of the coming IPO. Revenue crossed $2B/month.</p>
+    <p><strong>Conversation angle:</strong> "OpenAI is now worth more than 95% of public companies while still being private. They're letting regular people invest before IPO — that's either democratizing access or building a retail support base for when the stock hits the market."</p>
+    <p><a href="https://techcrunch.com/2026/03/31/openai-not-yet-public-raises-3b-from-retail-investors-in-monster-122b-fund-raise/">TechCrunch</a></p>
+
+    <h4>3. Google Switches Gemma to Apache 2.0 — Open Source AI Gets Real</h4>
+    <p>Google released Gemma 4 (their local/edge AI model family) under the Apache 2.0 license, dropping the restrictive custom license that frustrated developers. Four sizes from edge to 31B parameters, 128K-256K context. This is Google's clearest signal that they're competing for the open-source AI developer community, not just the cloud API market.</p>
+    <p><strong>Conversation angle:</strong> "Google just open-sourced their edge AI models with a real open-source license. If you can run a good-enough model locally on a laptop, the whole 'pay per API call' business model starts to look different."</p>
+    <p><a href="https://arstechnica.com/ai/2026/04/google-announces-gemma-4-open-ai-models-switches-to-apache-2-0-license/">Ars Technica</a></p>
+  </section>
+
+  <!-- ====== SECTION 7: AI RELEASES ====== -->
+  <section>
+    <h2>7. AI Releases &amp; Patch Notes</h2>
+
+    <table class="cost-table">
+      <tr><th>Provider</th><th>What Changed</th><th>Relevance</th></tr>
+      <tr>
+        <td>Anthropic</td>
+        <td><strong>Claude subscriptions cut off for third-party agents</strong> (effective today 3 PM ET). Claude Code update: larger MCP result persistence, disabled inline shell execution for skills, multi-line deep links, plugin executables.</td>
+        <td>Direct impact on our stack. See Deep Dive (Section 4).</td>
+      </tr>
+      <tr>
+        <td>Anthropic</td>
+        <td><strong>1M token context window beta retiring April 30</strong> for Claude Sonnet 4.5 and Sonnet 4. Max_tokens cap raised for standard context.</td>
+        <td>If we were using 1M context for large codebase analysis, need to plan before April 30.</td>
+      </tr>
+      <tr>
+        <td>OpenAI</td>
+        <td><strong>GPT-5.4 mini</strong> rolling out in ChatGPT, available to Free and Go users via "Thinking" feature. Codex pay-as-you-go pricing launched for teams.</td>
+        <td>GPT-5.4 mini in free tier lowers the bar for AI access. Codex pricing matters if devs want to try it.</td>
+      </tr>
+      <tr>
+        <td>OpenAI</td>
+        <td><strong>GPT-5.5 ("Spud")</strong> — pre-training complete March 24, release expected within weeks. Being positioned as a direct Claude Mythos competitor.</td>
+        <td>Watch for benchmark drops. Could shift model selection for Marty.</td>
+      </tr>
+      <tr>
+        <td>Google</td>
+        <td><strong>Gemma 4</strong> released under Apache 2.0. Four sizes (edge to 31B), 128K-256K context. <strong>Gemini API Flex/Priority inference</strong> — new options to balance cost vs. reliability. <strong>Gemini 3.1 Flash Live</strong> — voice-first AI model for natural conversations.</td>
+        <td>Gemma 4 is the best open-source option for on-device AI. Gemini Flex pricing could reduce API costs.</td>
+      </tr>
+      <tr>
+        <td>xAI</td>
+        <td>No major releases this week.</td>
+        <td>—</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ====== SECTION 8: TOOLS HIGHLIGHT ====== -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p><em>Saturday = wildcard category</em></p>
+
+    <h3>OpenScreen — Free Screen Studio Alternative</h3>
+    <div class="strategy-box">
+      <p><strong>What it is:</strong> Open-source screen recording tool that produces polished, professional-looking demo videos — the kind with rounded corners, backgrounds, and smooth animations. Free, no watermarks, no subscriptions.</p>
+      <p><strong>How Jake would use it:</strong> Record TestFlight walkthroughs for investor demos without paying for Screen Studio ($89/yr). Have devs record their feature demos in standup answers — "show me the screen" becomes a 30-second clip instead of a screenshot. Use it for the customer interview prep: record the ideal app flow so interviewees know what they're looking at.</p>
+      <p><strong>Pricing:</strong> Free, open-source. No catch.</p>
+      <p><strong>Link:</strong> <a href="https://github.com/siddharthvaddem/openscreen">github.com/siddharthvaddem/openscreen</a> (19.7K stars, trending #4 today)</p>
+    </div>
+
+    <h3>Parallel Code — AI Agent-Powered Git Merging</h3>
+    <div class="strategy-box">
+      <p><strong>What it is:</strong> New tool (Product Hunt featured) that uses AI agents to handle git merges and resolve conflicts automatically. Designed for teams where multiple developers touch the same files.</p>
+      <p><strong>How Jake would use it:</strong> The Tryps team has had PRs sitting with merge conflicts for days (#333 has a known conflict from March 31). Parallel Code could auto-resolve routine conflicts and flag only the tricky ones for human review. Would reduce the PR backlog bottleneck.</p>
+      <p><strong>Pricing:</strong> Early access — check Product Hunt listing for current pricing.</p>
+      <p><strong>Link:</strong> <a href="https://www.producthunt.com/categories/engineering-development">Product Hunt: Engineering &amp; Development</a></p>
+    </div>
+  </section>
+
+  <!-- ====== SECTION 9: COST SNAPSHOT ====== -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+
+    <table class="cost-table">
+      <tr><th>Category</th><th>Cost</th><th>Tokens</th><th>Notes</th></tr>
+      <tr>
+        <td>Standup Generator</td>
+        <td>$0.48</td>
+        <td>41,156 total (10 in, 4,577 out)</td>
+        <td>April 4, 8 PM ET run. Opus 4.6.</td>
+      </tr>
+      <tr>
+        <td>Topic Suggestion</td>
+        <td>No log data</td>
+        <td>—</td>
+        <td>No April 4 run found in cron logs. Last run was April 3.</td>
+      </tr>
+      <tr>
+        <td>Cost Report</td>
+        <td>$0.00 (failed)</td>
+        <td>—</td>
+        <td>Timing out 3 consecutive days. Needs debugging.</td>
+      </tr>
+      <tr>
+        <td>Nightly Report</td>
+        <td>(this session)</td>
+        <td>—</td>
+        <td>Cost will appear in tomorrow's snapshot.</td>
+      </tr>
+      <tr>
+        <td>DM Sessions</td>
+        <td>No log data</td>
+        <td>—</td>
+        <td>Gateway logs not parsed for this report.</td>
+      </tr>
+      <tr>
+        <td style="font-weight: 700;">Total (confirmed)</td>
+        <td style="font-weight: 700;">$0.48</td>
+        <td style="font-weight: 700;">41,156</td>
+        <td>Light day — only 1 cron run logged.</td>
+      </tr>
+    </table>
+
+    <div class="warning">
+      <strong>Note:</strong> The cost-report cron has timed out 3 consecutive days (Apr 1-3). It's supposed to parse all cron run logs and produce a comprehensive daily cost breakdown. Until it's fixed, this section only captures cron jobs that ran today. DM sessions and ad-hoc interactions are not included.
+    </div>
+
+    <p style="font-size: 10pt; color: #888; margin-top: 8px;">Thresholds: Daily &gt; $15 → warning | Single session &gt; $5 → flag | Weekly &gt; $50 → escalate. Today: well under all thresholds.</p>
+  </section>
+
+  <!-- ====== SECTION 10: MISSION PROGRESS ====== -->
+  <section>
+    <h2>10. Mission Progress</h2>
+
+    <h4>Mission 1: Fix iMessage Bugs from QA</h4>
+    <p><strong>Owner:</strong> Asif | <strong>What moved:</strong> No new PRs or commits from Asif on April 4. ClickUp still shows 3 "in progress" (Payment Details, AI Logs Percentage, iMessage JSON format) and 13 "to do." | <strong>What didn't:</strong> No visible code changes today. Saturday may be off for Asif (PKT timezone = already Sunday there). | <span class="verdict verdict-nodata">NO DATA</span></p>
+
+    <h4>Mission 2: App Bug Fixes + Real-Time Data Updates</h4>
+    <p><strong>Owner:</strong> Nadeem | <strong>What moved:</strong> Nadeem merged PR #352 (cross-day drag-and-drop itinerary) on April 3 — that was his 5th PR of the week. 5 bugs in "for testing." | <strong>What didn't:</strong> No new activity April 4. PR #333 (domain consolidation) still open and unreviewed since March 31. | <span class="verdict verdict-stalled">STALLED today (strong week overall)</span></p>
+
+    <h4>Mission 3: Flight Booking + Third-Party Integration</h4>
+    <p><strong>Owner:</strong> Rizwan | <strong>What moved:</strong> Rizwan merged SC-15 (agent memory screen, PR #351) and expo-sensors crash fix (PR #350) on April 3. | <strong>What didn't:</strong> Agent intelligence at 27/61 — hasn't moved since these merges. No Duffel/booking activity visible. Travel-booking at 5/70. | <span class="verdict verdict-stalled">STALLED — agent intelligence moving, booking is not</span></p>
+
+    <h4>Mission 4: Customer Interviews</h4>
+    <p><strong>Owner:</strong> Asif + Jake | <strong>What moved:</strong> Pipeline still live at marty.jointryps.com/interview. | <strong>What didn't:</strong> No confirmation of actual interviews conducted this week. | <span class="verdict verdict-nodata">NO DATA</span></p>
+
+    <h4>Mission 5: Close the Books</h4>
+    <p><strong>Owner:</strong> Jake | <strong>What moved:</strong> No data. | <strong>What didn't:</strong> No updates on March financials. | <span class="verdict verdict-nodata">NO DATA</span></p>
+
+    <h4>SC-59/60/61 Interface Session (Ops)</h4>
+    <p><strong>Owner:</strong> Asif + Rizwan | <strong>What moved:</strong> Nothing. | <strong>What didn't:</strong> Still unscheduled after 5+ standups. Tomorrow's standup gives it an ultimatum: "happens today or gets de-scoped." | <span class="verdict verdict-stalled">STALLED — 6th standup in a row</span></p>
+
+    <h4>Unmapped Work</h4>
+    <p>No unmapped work today — it was a quiet Saturday. The team is in PKT timezone (already Sunday) which explains the silence.</p>
+  </section>
+
+  <!-- ====== SECTION 11: CS 101 ====== -->
+  <section>
+    <h2>11. CS 101 — Jake's Daily Lesson</h2>
+    <div class="strategy-box">
+      <h3>What Is HTTP? (The Conversation Between Your Phone and the Server)</h3>
+
+      <p>Yesterday we covered DNS — how your phone figures out <em>where</em> jointryps.com lives. Today: what happens next. Once your phone knows the server's address, it needs to actually <strong>talk</strong> to it. HTTP (HyperText Transfer Protocol) is the language of that conversation. Every time you open the Tryps app, scroll through trips, or tap "Join Trip," your phone is having a rapid-fire HTTP conversation with Supabase (our backend).</p>
+
+      <p>Think of it like ordering at a restaurant. You (the app) say: <strong>"GET me the trip details for trip ID 47."</strong> The server responds: <strong>"200 OK — here's the trip name, members, itinerary, and vibe."</strong> That's literally it. HTTP is a request-response pattern: the client asks, the server answers. The common "verbs" are:</p>
+      <ul>
+        <li><strong>GET</strong> — "Give me this data" (loading a trip, fetching a list)</li>
+        <li><strong>POST</strong> — "Create something new" (creating a trip, adding an activity)</li>
+        <li><strong>PUT/PATCH</strong> — "Update this thing" (changing a trip name, editing an itinerary)</li>
+        <li><strong>DELETE</strong> — "Remove this" (leaving a trip, deleting an activity)</li>
+      </ul>
+
+      <p>The numbers you sometimes see — 200, 404, 500 — are the server's way of saying how it went. <strong>200</strong> = "here you go." <strong>404</strong> = "that doesn't exist." <strong>500</strong> = "something broke on my end." When Nadeem's real-time data updates aren't reflecting instantly, it's often because the app sent a POST to create something but isn't sending a follow-up GET to refresh the data — or the response comes back but the UI doesn't re-render.</p>
+
+      <p><strong>Why it matters for Tryps:</strong> Every feature in the app is ultimately a series of HTTP calls to Supabase. When the iMessage agent creates a trip, it's making POST requests. When you open the app and don't see that trip, the GET request either hasn't fired, returned stale data, or the real-time subscription (which is WebSocket, a cousin of HTTP) dropped. Understanding HTTP is understanding why things appear or don't appear in the app.</p>
+
+      <p><strong>The "aha" moment:</strong> HTTP is stateless — the server has no memory of previous requests. Every single tap in the app is a fresh conversation: "Hi, who are you? Here's my auth token. Can I have this data?" That's why auth tokens exist — they're your ID badge that you show on every single request, because the server has amnesia.</p>
+    </div>
+  </section>
+
+</body>
+</html>
