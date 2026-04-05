@@ -16,3 +16,8 @@
 ## [2026-04-05] init | Phase 3 — wiki sync added to Marty's sync-tryps-docs.sh
 ## [2026-04-05] init | Phase 3 — brain-health-history.md created for weekly score tracking
 ## [2026-04-05] init | Phase 3 — 3a already exists (Supabase agent memory), 3b dropped (gotchas != agent voice)
+## [2026-04-05] init | Phase 4 — scope-tracker.base dashboard (bases core plugin)
+## [2026-04-05] init | Phase 4 — team-org.canvas + brain-architecture.canvas
+## [2026-04-05] init | Phase 4 — 5 Templater templates (scope-state, memory-entry, standup, session-log, wiki-article)
+## [2026-04-05] init | Phase 4 — weekly-retro.md Marp deck
+## [2026-04-05] init | Phase 4 — sc-velocity.html Chart.js dashboard (scope bars, donut, bug burn-down)

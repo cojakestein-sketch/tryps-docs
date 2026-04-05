@@ -1,0 +1,95 @@
+{
+  "nodes": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 300,
+      "y": -80,
+      "width": 400,
+      "height": 50,
+      "text": "# Brain 2.0 Architecture"
+    },
+    {
+      "id": "raw-sources",
+      "type": "text",
+      "x": 0,
+      "y": 20,
+      "width": 280,
+      "height": 200,
+      "color": "4",
+      "text": "## Layer 1: Raw Sources\n*Immutable \u2014 LLM reads, never modifies*\n\n- `standups/` transcripts\n- `scopes/*/spec.md`\n- `marty/memory/*.md`\n- `docs/plans/`\n- Slack threads\n- Customer interviews"
+    },
+    {
+      "id": "wiki",
+      "type": "text",
+      "x": 360,
+      "y": 20,
+      "width": 280,
+      "height": 200,
+      "color": "5",
+      "text": "## Layer 2: The Wiki\n*LLM-maintained \u2014 Jake reads*\n\n- `shared/*.md` (state, missions, gotchas)\n- `shared/INDEX.md` (routing)\n- `shared/log.md` (timeline)\n- `marty/wiki/*.md` (intelligence)\n- `memory/*.md` (per-session)"
+    },
+    {
+      "id": "schema",
+      "type": "text",
+      "x": 720,
+      "y": 20,
+      "width": 280,
+      "height": 200,
+      "color": "1",
+      "text": "## Layer 3: The Schema\n*Co-evolved \u2014 tells LLM how to maintain*\n\n- `CLAUDE.md` (global rules)\n- `shared/brain.md` (philosophy)\n- `marty/AGENTS.md` (Marty\u2019s schema)\n- `~/.claude/commands/` (operations)"
+    },
+    {
+      "id": "ingest",
+      "type": "text",
+      "x": 80,
+      "y": 300,
+      "width": 200,
+      "height": 80,
+      "color": "6",
+      "text": "### Ingest\n`/brain-compile`\n`/compound`\nMarty post-standup"
+    },
+    {
+      "id": "query",
+      "type": "text",
+      "x": 400,
+      "y": 300,
+      "width": 200,
+      "height": 80,
+      "color": "6",
+      "text": "### Query\nNormal Claude sessions\nGood answers filed back"
+    },
+    {
+      "id": "lint",
+      "type": "text",
+      "x": 720,
+      "y": 300,
+      "width": 200,
+      "height": 80,
+      "color": "6",
+      "text": "### Lint\n`/brain-lint`\nMarty Friday cron\nHealth score tracking"
+    },
+    {
+      "id": "loop",
+      "type": "text",
+      "x": 300,
+      "y": 440,
+      "width": 400,
+      "height": 60,
+      "color": "3",
+      "text": "**Compounding Loop:** Ingest makes it richer \u2192 Query makes it smarter \u2192 Lint makes it healthier"
+    }
+  ],
+  "edges": [
+    {"id": "e1", "fromNode": "raw-sources", "toNode": "ingest", "fromSide": "bottom", "toSide": "top", "label": "feeds"},
+    {"id": "e2", "fromNode": "ingest", "toNode": "wiki", "fromSide": "top", "toSide": "bottom", "label": "writes to"},
+    {"id": "e3", "fromNode": "wiki", "toNode": "query", "fromSide": "bottom", "toSide": "top", "label": "reads from"},
+    {"id": "e4", "fromNode": "query", "toNode": "wiki", "fromSide": "top", "toSide": "bottom", "label": "files back"},
+    {"id": "e5", "fromNode": "lint", "toNode": "wiki", "fromSide": "left", "toSide": "right", "label": "heals"},
+    {"id": "e6", "fromNode": "schema", "toNode": "lint", "fromSide": "bottom", "toSide": "top", "label": "guides"},
+    {"id": "e7", "fromNode": "schema", "toNode": "ingest", "fromSide": "bottom", "toSide": "right", "label": "guides"},
+    {"id": "e8", "fromNode": "ingest", "toNode": "loop", "fromSide": "bottom", "toSide": "left"},
+    {"id": "e9", "fromNode": "query", "toNode": "loop", "fromSide": "bottom", "toSide": "top"},
+    {"id": "e10", "fromNode": "lint", "toNode": "loop", "fromSide": "bottom", "toSide": "right"}
+  ]
+}
