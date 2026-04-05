@@ -12,3 +12,7 @@
 ## [2026-04-05] init | Created marty/wiki/ — 5 articles (team-patterns, bug-taxonomy, decisions-log, scope-intelligence, process-learnings)
 ## [2026-04-05] init | Updated CLAUDE.md imports — INDEX.md + state.md + missions.md (was 5 files)
 ## [2026-04-05] init | Updated HEARTBEAT.md — post-standup wiki sync + Friday brain health check
+## [2026-04-05] init | Phase 3 — Marty Friday brain-lint cron deployed (0 18 * * 5 on Hetzner)
+## [2026-04-05] init | Phase 3 — wiki sync added to Marty's sync-tryps-docs.sh
+## [2026-04-05] init | Phase 3 — brain-health-history.md created for weekly score tracking
+## [2026-04-05] init | Phase 3 — 3a already exists (Supabase agent memory), 3b dropped (gotchas != agent voice)

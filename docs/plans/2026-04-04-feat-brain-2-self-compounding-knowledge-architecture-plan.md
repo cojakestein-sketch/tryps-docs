@@ -433,13 +433,13 @@ The daily files feed the wiki. The wiki feeds the brainscan. The brainscan feeds
 **Health score tracking:** Marty appends the weekly score to `marty/wiki/brain-health-history.md` — a simple date + score + findings log. Over time, this shows whether the brain is getting healthier or degrading.
 
 **Phase 3 acceptance criteria:**
-- [ ] Per-user knowledge base structure defined in t4 agent directory
-- [ ] At least one user KB compiled from real conversation data
-- [ ] iMessage agent system prompt reads from gotchas.md (not hardcoded rules)
-- [ ] New gotcha filed via /compound is available to agent on next restart
-- [ ] Marty runs brain-lint every Friday automatically
-- [ ] Brain health score tracked weekly in marty/wiki/brain-health-history.md
-- [ ] Health score posted to #martydev with key findings
+- [x] Per-user knowledge base — ALREADY EXISTS in t4 as database-backed agent memory (useAgentMemory.ts, Supabase preferences/behaviors/corrections, loaded into agent prompt as userContext)
+- [x] At least one user KB compiled from real conversation data — existing system handles this at runtime
+- ~~[ ] iMessage agent system prompt reads from gotchas.md~~ — DROPPED: gotchas.md is for Claude/Marty sessions, not the user-facing iMessage agent. Agent voice/tone rules belong in t4's system prompt.
+- ~~[ ] New gotcha filed via /compound is available to agent on next restart~~ — DROPPED (see above)
+- [x] Marty runs brain-lint every Friday automatically — cron set: `0 18 * * 5` (14:00 ET)
+- [x] Brain health score tracked weekly in marty/wiki/brain-health-history.md
+- [x] Health score posted to #martydev with key findings — brain-lint-cron.sh handles this
 
 ---
 
