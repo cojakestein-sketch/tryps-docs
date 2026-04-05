@@ -7,9 +7,10 @@ views:
         path: scopes
         includeSubfolders: true
     filters:
-      - field: file.name
-        operator: is
-        value: state
+      and:
+        - field: file.name
+          operator: is
+          value: state
     fields:
       - field: id
         width: 160

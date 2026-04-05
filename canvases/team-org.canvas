@@ -1,143 +1,28 @@
 {
-  "nodes": [
-    {
-      "id": "jake",
-      "type": "text",
-      "x": 400,
-      "y": 0,
-      "width": 250,
-      "height": 80,
-      "color": "1",
-      "text": "## Jake Stein\nFounder / Product"
-    },
-    {
-      "id": "cameron",
-      "type": "text",
-      "x": 700,
-      "y": 0,
-      "width": 250,
-      "height": 80,
-      "color": "4",
-      "text": "## Cameron Carlson\nHead of Product (eval)"
-    },
-    {
-      "id": "asif",
-      "type": "text",
-      "x": 100,
-      "y": 160,
-      "width": 250,
-      "height": 100,
-      "color": "5",
-      "text": "## Asif\nLead Dev\n- iMessage Agent (51/57) \u2705\n- Voice Calls \u2705\n- Bug fixes"
-    },
-    {
-      "id": "nadeem",
-      "type": "text",
-      "x": 400,
-      "y": 160,
-      "width": 250,
-      "height": 100,
-      "color": "5",
-      "text": "## Nadeem\nDev\n- Core Trip (15/16)\n- Output-Backed (7/48)\n- Bug fixes"
-    },
-    {
-      "id": "rizwan",
-      "type": "text",
-      "x": 700,
-      "y": 160,
-      "width": 250,
-      "height": 100,
-      "color": "5",
-      "text": "## Rizwan\nDev \u2014 Agent Layer\n- Agent Intelligence (29/61)\n- Travel Booking (5/70)\n- Group Decision-Making"
-    },
-    {
-      "id": "qa-team",
-      "type": "text",
-      "x": 250,
-      "y": 340,
-      "width": 300,
-      "height": 80,
-      "color": "6",
-      "text": "## QA Team\nAman Khan \u00b7 Sarfaraz Ahmed \u00b7 Zain Waheed"
-    },
-    {
-      "id": "marty",
-      "type": "text",
-      "x": 600,
-      "y": 340,
-      "width": 250,
-      "height": 80,
-      "color": "3",
-      "text": "## Marty\nAI Agent (Hetzner)\nPR review, state sync, brain-lint"
-    },
-    {
-      "id": "sean",
-      "type": "text",
-      "x": 0,
-      "y": 500,
-      "width": 220,
-      "height": 80,
-      "color": "2",
-      "text": "## Sean DeFaria\nCreative Director"
-    },
-    {
-      "id": "abdullah",
-      "type": "text",
-      "x": 260,
-      "y": 500,
-      "width": 220,
-      "height": 80,
-      "color": "2",
-      "text": "## Abdullah Malik\nContent/Video/Logo"
-    },
-    {
-      "id": "enej",
-      "type": "text",
-      "x": 520,
-      "y": 500,
-      "width": 220,
-      "height": 80,
-      "color": "2",
-      "text": "## Enej Stanovnik\nGTM Infra Engineer"
-    },
-    {
-      "id": "arun",
-      "type": "text",
-      "x": 780,
-      "y": 500,
-      "width": 220,
-      "height": 80,
-      "color": "2",
-      "text": "## Arun\nSEO/GEO/AEO"
-    },
-    {
-      "id": "dev-label",
-      "type": "text",
-      "x": -80,
-      "y": 170,
-      "width": 120,
-      "height": 40,
-      "text": "**Dev Team**"
-    },
-    {
-      "id": "gtm-label",
-      "type": "text",
-      "x": -80,
-      "y": 510,
-      "width": 60,
-      "height": 40,
-      "text": "**GTM**"
-    }
-  ],
-  "edges": [
-    {"id": "e1", "fromNode": "jake", "toNode": "asif", "fromSide": "bottom", "toSide": "top"},
-    {"id": "e2", "fromNode": "jake", "toNode": "nadeem", "fromSide": "bottom", "toSide": "top"},
-    {"id": "e3", "fromNode": "jake", "toNode": "rizwan", "fromSide": "bottom", "toSide": "top"},
-    {"id": "e4", "fromNode": "jake", "toNode": "sean", "fromSide": "bottom", "toSide": "top", "color": "2"},
-    {"id": "e5", "fromNode": "asif", "toNode": "qa-team", "fromSide": "bottom", "toSide": "top", "label": "QA reports to"},
-    {"id": "e6", "fromNode": "asif", "toNode": "rizwan", "fromSide": "right", "toSide": "left", "label": "SC-59/60/61", "color": "1"},
-    {"id": "e7", "fromNode": "sean", "toNode": "abdullah", "fromSide": "right", "toSide": "left"},
-    {"id": "e8", "fromNode": "sean", "toNode": "enej", "fromSide": "right", "toSide": "left"},
-    {"id": "e9", "fromNode": "sean", "toNode": "arun", "fromSide": "right", "toSide": "left"}
-  ]
+	"nodes":[
+		{"id":"jake","type":"text","text":"## Jake Stein\nFounder / Product","x":400,"y":0,"width":250,"height":80,"color":"1"},
+		{"id":"cameron","type":"text","text":"## Cameron Carlson\nHead of Product (eval)","x":700,"y":0,"width":250,"height":80,"color":"4"},
+		{"id":"asif","type":"text","text":"## Asif\nLead Dev\n- iMessage Agent (51/57) ✅\n- Voice Calls ✅\n- Bug fixes","x":100,"y":160,"width":250,"height":100,"color":"5"},
+		{"id":"nadeem","type":"text","text":"## Nadeem\nDev\n- Core Trip (15/16)\n- Output-Backed (7/48)\n- Bug fixes","x":400,"y":160,"width":250,"height":100,"color":"5"},
+		{"id":"rizwan","type":"text","text":"## Rizwan\nDev — Agent Layer\n- Agent Intelligence (29/61)\n- Travel Booking (5/70)\n- Group Decision-Making","x":700,"y":160,"width":250,"height":100,"color":"5"},
+		{"id":"qa-team","type":"text","text":"## QA Team\nAman Khan · Sarfaraz Ahmed · Zain Waheed","x":250,"y":340,"width":300,"height":80,"color":"6"},
+		{"id":"marty","type":"text","text":"## Marty\nAI Agent (Hetzner)\nPR review, state sync, brain-lint","x":600,"y":340,"width":250,"height":80,"color":"3"},
+		{"id":"sean","type":"text","text":"## Sean DeFaria\nCreative Director","x":0,"y":500,"width":220,"height":80,"color":"2"},
+		{"id":"abdullah","type":"text","text":"## Abdullah Malik\nContent/Video/Logo","x":260,"y":500,"width":220,"height":80,"color":"2"},
+		{"id":"enej","type":"text","text":"## Enej Stanovnik\nGTM Infra Engineer","x":520,"y":500,"width":220,"height":80,"color":"2"},
+		{"id":"arun","type":"text","text":"## Arun\nSEO/GEO/AEO","x":780,"y":500,"width":220,"height":80,"color":"2"},
+		{"id":"dev-label","type":"text","text":"**Dev Team**","x":-80,"y":170,"width":120,"height":40},
+		{"id":"gtm-label","type":"text","text":"**GTM**","x":-80,"y":510,"width":60,"height":70}
+	],
+	"edges":[
+		{"id":"e1","fromNode":"jake","fromSide":"bottom","toNode":"asif","toSide":"top"},
+		{"id":"e2","fromNode":"jake","fromSide":"bottom","toNode":"nadeem","toSide":"top"},
+		{"id":"e3","fromNode":"jake","fromSide":"bottom","toNode":"rizwan","toSide":"top"},
+		{"id":"e4","fromNode":"jake","fromSide":"bottom","toNode":"sean","toSide":"top","color":"2"},
+		{"id":"e5","fromNode":"asif","fromSide":"bottom","toNode":"qa-team","toSide":"top","label":"QA reports to"},
+		{"id":"e6","fromNode":"asif","fromSide":"right","toNode":"rizwan","toSide":"left","color":"1","label":"SC-59/60/61"},
+		{"id":"e7","fromNode":"sean","fromSide":"right","toNode":"abdullah","toSide":"left"},
+		{"id":"e8","fromNode":"sean","fromSide":"right","toNode":"enej","toSide":"left"},
+		{"id":"e9","fromNode":"sean","fromSide":"right","toNode":"arun","toSide":"left"}
+	]
 }
