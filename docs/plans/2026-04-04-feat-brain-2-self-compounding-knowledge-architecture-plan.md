@@ -241,16 +241,16 @@ The wiki's history. Every ingest, query-filed-back, lint pass, and significant e
 **Why (Karpathy):** "The log gives you a timeline of the wiki's evolution and helps the LLM understand what's been done recently."
 
 **Phase 1 acceptance criteria:**
-- [ ] `/brain-lint` runs and produces a health report with score
-- [ ] `/brain-lint auto-fix` syncs redundant copies and adds orphans to index
-- [ ] `/compound` proposes filing session learnings with diffs
-- [ ] `/compound` updates MEMORY.md when new files are created
-- [ ] `/compound` appends to `shared/log.md` after filing
-- [ ] `shared/gotchas.md` exists, compiled from all 23 feedback files
-- [ ] Gotchas organized by topic, deduplicated, with last-compiled timestamp
-- [ ] `shared/log.md` exists with parseable prefix format
-- [ ] `/brain-lint` can regenerate gotchas.md from source feedback files
-- [ ] `/brain-lint` appends to log.md after running
+- [x] `/brain-lint` runs and produces a health report with score
+- [x] `/brain-lint auto-fix` syncs redundant copies and adds orphans to index
+- [x] `/compound` proposes filing session learnings with diffs
+- [x] `/compound` updates MEMORY.md when new files are created
+- [x] `/compound` appends to `shared/log.md` after filing
+- [x] `shared/gotchas.md` exists, compiled from all 20 feedback files
+- [x] Gotchas organized by topic, deduplicated, with last-compiled timestamp
+- [x] `shared/log.md` exists with parseable prefix format
+- [x] `/brain-lint` can regenerate gotchas.md from source feedback files
+- [x] `/brain-lint` appends to log.md after running
 
 ---
 
