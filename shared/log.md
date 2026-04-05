@@ -21,3 +21,4 @@
 ## [2026-04-05] init | Phase 4 — 5 Templater templates (scope-state, memory-entry, standup, session-log, wiki-article)
 ## [2026-04-05] init | Phase 4 — weekly-retro.md Marp deck
 ## [2026-04-05] init | Phase 4 — sc-velocity.html Chart.js dashboard (scope bars, donut, bug burn-down)
+## [2026-04-05] lint | Health score: 62/100 — 6 stale files, 3 orphans, brand drift, brand-strategy 479 lines

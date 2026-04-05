@@ -15,7 +15,7 @@
 | [[team\|team.md]] | Team roster + contacts | 2026-03-26 | 131 |
 | [[gotchas\|gotchas.md]] | Behavioral rules for all agents | 2026-04-05 | 49 |
 | [[brain\|brain.md]] | Brain philosophy + strategy model | 2026-03-26 | 180 |
-| [[log\|log.md]] | Append-only brain changelog | 2026-04-05 | 9 |
+| [[log\|log.md]] | Append-only brain changelog | 2026-04-05 | 24 |
 | [[decisions\|decisions.md]] | Key decisions log | 2026-03-25 | 21 |
 | [[cross-scope-dependencies\|cross-scope-dependencies.md]] | Scope interaction map | 2026-03-30 | 98 |
 | [[brand-strategy\|brand-strategy.md]] | Brand strategy deep dive | 2026-03-25 | 479 |

@@ -12,6 +12,7 @@
 | [[decisions-log\|decisions-log.md]] | Significant decisions with context | 20 | 2026-04-05 |
 | [[scope-intelligence\|scope-intelligence.md]] | Cross-scope observations, risks | 25 | 2026-04-05 |
 | [[process-learnings\|process-learnings.md]] | What's working/not in workflow | 25 | 2026-04-05 |
+| [[brain-health-history\|brain-health-history.md]] | Weekly health scores from /brain-lint | 8 | 2026-04-05 |
 
 ## Maintenance
 

@@ -5,4 +5,4 @@
 
 | Date | Score | Top Finding |
 |------|-------|-------------|
-| 2026-04-05 | — | Initial setup (no lint run yet) |
+| 2026-04-05 | 62 | 6 stale files, 3 orphans, brand drift (color + font), brand-strategy.md 479 lines |
