@@ -16,6 +16,13 @@ Your travel life in one place. Travel DNA quiz, connector wallet (airlines, stay
 
 Travel Identity feeds the agent intelligence layer. Without knowing who you are as a traveler (home airport, preferences, loyalty numbers), the agent can't personalize recommendations or facilitate effectively.
 
+## Related Scopes
+
+- [[agent-intelligence/objective|Agent Intelligence]] — Travel DNA feeds vote-on-behalf and recommendations
+- [[imessage-agent/objective|iMessage Agent]] — agent nudges users to complete their profile
+- [[travel-booking/objective|Travel Booking]] — loyalty numbers and passport data auto-apply at booking
+- [[post-trip-retention/objective|Post-Trip & Retention]] — favorite activities feed back into the travel profile
+
 ## Success Looks Like
 
 - Travel DNA quiz complete and integrated

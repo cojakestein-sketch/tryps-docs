@@ -27,7 +27,9 @@ Voice is the most natural way to plan travel. The Tryps number already handles t
 
 A stranger calls the Tryps number, talks to the agent for 90 seconds, and has a trip created with a link texted to them. An existing user calls about their Barcelona trip and gets restaurant recommendations in 30 seconds. Everything from the call shows up in the app for other trip members.
 
-## Dependencies
+## Related Scopes
 
-- iMessage Agent (shared agent brain, phone number infrastructure)
-- Agent Intelligence (recommendation and memory systems)
+- [[imessage-agent/objective|iMessage Agent]] — shared agent brain, phone number infrastructure
+- [[agent-intelligence/objective|Agent Intelligence]] — recommendation and memory systems
+- [[travel-booking/objective|Travel Booking]] — voice can trigger flight/hotel searches
+- [[core-trip-experience/objective|Core Trip Experience]] — voice-created trips sync to the app

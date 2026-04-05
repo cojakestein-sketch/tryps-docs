@@ -16,6 +16,13 @@ How groups align on what to do. Voting on destinations, dates, and activities. N
 
 This is the core of the "facilitation engine" thesis. Tryps doesn't make taste choices — it steers the group toward decisions. Without voting, notifications, and facilitation, Tryps is just a trip container.
 
+## Related Scopes
+
+- [[imessage-agent/objective|iMessage Agent]] — voting and facilitation surface through iMessage
+- [[agent-intelligence/objective|Agent Intelligence]] — vote-on-behalf uses agent intelligence to proxy votes
+- [[core-trip-experience/objective|Core Trip Experience]] — voting UI lives within the trip card
+- [[onboarding-teaching/objective|Onboarding & Teaching]] — guided planning cadence is a teaching moment
+
 ## Success Looks Like
 
 - All voting flows working (destination, date, activity)

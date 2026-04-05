@@ -4,6 +4,8 @@
 >
 > April 2026 · Plane reading edition · ~30 min
 > Compiled from Marty's nightly lessons + new material
+>
+> **See also:** [[obsidian-101-for-jake-stein]] · [[shared/state|Tryps State]] · [[scopes/INDEX|All Scopes]]
 
 ---
 

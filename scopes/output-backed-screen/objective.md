@@ -96,6 +96,14 @@ This is also the key to making iMessage-first feel complete. Non-app users see t
 - **Wave 2:** Build the app overview (inline editing + draggable itinerary), build infographic generation pipeline, integrate with agent daily check-ins
 - **Wave 3:** Celebration moment (confetti), post-trip freeze/handoff, QA pass
 
+## Related Scopes
+
+- [[core-trip-experience/objective|Core Trip Experience]] — the trip data this view renders
+- [[imessage-agent/objective|iMessage Agent]] — infographic sent via iMessage, daily check-in integration
+- [[agent-intelligence/objective|Agent Intelligence]] — agent-driven milestone completion
+- [[group-decision-making/objective|Group Decision-Making]] — voting progress feeds milestone completion
+- [[travel-booking/objective|Travel Booking]] — bookings fill in the "flights" and "stay" sections
+
 ## Reference
 
 - Jake's sketch: `sketch-card-stack.png` (early thinking — the final form is an overview, not a card stack)

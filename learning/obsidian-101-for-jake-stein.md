@@ -3,6 +3,8 @@
 > Everything you need to know to actually use Obsidian, not just store files in it.
 >
 > April 2026 · 10 min read
+>
+> **See also:** [[cs-101-for-jake-stein]] · [[shared/state|Tryps State]] · [[scopes/INDEX|All Scopes]]
 
 ---
 

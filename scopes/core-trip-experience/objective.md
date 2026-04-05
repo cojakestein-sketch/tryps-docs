@@ -16,6 +16,15 @@ Creating, managing, and visualizing trips — plus expense tracking. This is the
 
 This is the app skeleton. Every other scope builds on top of a working trip experience. If core flows don't work, nothing else matters.
 
+## Related Scopes
+
+- [[output-backed-screen/objective|Output-Backed Screen]] — builds on top of this; the glanceable trip view
+- [[group-decision-making/objective|Group Decision-Making]] — voting and facilitation live within the trip experience
+- [[onboarding-teaching/objective|Onboarding & Teaching]] — tooltips and teaching moments on trip screens
+- [[travel-booking/objective|Travel Booking]] — bookings populate trip data (flights, stays, activities)
+- [[payments-infrastructure/objective|Payments Infrastructure]] — expense flows depend on payment processing
+- [[web-client/objective|Web Client]] — mirrors the mobile trip experience on the web
+
 ## Success Looks Like
 
 - All 19 core flows QA validated

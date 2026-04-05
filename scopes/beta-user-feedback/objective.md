@@ -16,6 +16,13 @@ Get real users testing Tryps and build the feedback loop that turns their experi
 
 The product only gets better with real usage data. We need users in the app before April 2 — not after — so we can catch issues and validate that the experience works.
 
+## Related Scopes
+
+- [[core-trip-experience/objective|Core Trip Experience]] — feedback validates core flows
+- [[imessage-agent/objective|iMessage Agent]] — agent can proactively ask for feedback
+- [[onboarding-teaching/objective|Onboarding & Teaching]] — first-run issues surface through beta testing
+- [[post-trip-retention/objective|Post-Trip & Retention]] — post-trip reviews are a feedback mechanism
+
 ## Success Looks Like
 
 - Active TestFlight users providing feedback

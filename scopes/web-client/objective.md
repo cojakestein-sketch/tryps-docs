@@ -58,6 +58,13 @@ Partiful model: one URL does everything. `jointryps.com/trip/bali-2026` works fo
 - MCP server / AI distribution
 - Travel DNA shareable card (separate scope, post-launch)
 
+## Related Scopes
+
+- [[core-trip-experience/objective|Core Trip Experience]] — web mirrors the mobile trip experience
+- [[onboarding-teaching/objective|Onboarding & Teaching]] — web is an onboarding channel for non-app users
+- [[travel-identity/objective|Travel Identity]] — Travel DNA / profile accessible on web
+- [[brand-and-gtm/README|Brand & GTM]] — landing page creative lives in brand-and-gtm
+
 ## Dependencies
 - Landing page spec from Sean (`brand-and-gtm/10-website/spec.md`) — for the marketing shell
 - Supabase RPC expansion — `get_trip_preview()` currently returns counts only, needs full read-only data

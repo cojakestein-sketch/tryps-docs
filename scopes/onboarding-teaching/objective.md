@@ -16,6 +16,13 @@ First-run experience, tooltips, and guided moments that make Tryps instantly obv
 
 Two things must click instantly: (1) there's an app behind the agent, and (2) just communicate your vibe and Tryps handles the rest. If the first experience is confusing, users drop before they ever see the value.
 
+## Related Scopes
+
+- [[imessage-agent/objective|iMessage Agent]] — first 60-second iMessage experience
+- [[core-trip-experience/objective|Core Trip Experience]] — in-app tooltips live on trip screens
+- [[travel-identity/objective|Travel Identity]] — Travel DNA quiz is part of onboarding
+- [[web-client/objective|Web Client]] — web onboarding for non-app users
+
 ## Success Looks Like
 
 - First 60-second iMessage experience is clear and compelling
