@@ -93,7 +93,7 @@ Action items for sean:
 
 ### 5. Giveaways Planning
 
-- [ ] Concept(s) defined and aligned with launch + UGC plans
+- [x] Concept(s) defined and aligned with launch + UGC plans
 - [ ] Integration with UGC program strategy documented
 - [ ] Mechanic/selection process written (how to enter, how winners chosen, how fulfilled)
 - [ ] Rough budget for prizes and fulfillment outlined
