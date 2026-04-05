@@ -1,16 +1,22 @@
 views:
   - type: table
     name: Scope Tracker
+    filters:
+      and:
+        - file.name.contains("state")
+    order:
+      - file.name
+      - id
+      - status
+      - assignee
+      - criteria
+      - last_updated
+    sort: []
     source:
       type: folder
       config:
         path: scopes
         includeSubfolders: true
-    filters:
-      and:
-        - field: file.name
-          operator: is
-          value: state
     fields:
       - field: id
         width: 160
@@ -22,6 +28,3 @@ views:
         width: 100
       - field: last_updated
         width: 120
-    sort:
-      - field: status
-        order: asc
