@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computer Science 101 for Jake Stein</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none !important; }
+    .chapter { page-break-before: always; }
+    .chapter:first-of-type { page-break-before: avoid; }
+    h2 { page-break-after: avoid; }
+    .lesson-box { page-break-inside: avoid; }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7.5in;
+    margin: 0 auto;
+    padding: 48px 24px;
+    color: #3D3530;
+    line-height: 1.65;
+    background: #FFFDF8;
+  }
+
+  /* ---- COVER ---- */
+  .cover {
+    text-align: center;
+    padding: 80px 0 60px;
+    border-bottom: 3px solid #D9071C;
+    margin-bottom: 48px;
+  }
+  .cover h1 {
+    font-size: 36pt;
+    font-weight: 700;
+    color: #D9071C;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .cover .subtitle {
+    font-size: 14pt;
+    color: #3D3530;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .cover .meta {
+    font-size: 10pt;
+    color: #888;
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* ---- TOC ---- */
+  .toc {
+    background: #F5EADB;
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+  }
+  .toc h2 {
+    font-size: 16pt;
+    font-weight: 700;
+    color: #3D3530;
+    margin-bottom: 16px;
+    border: none;
+    padding: 0;
+  }
+  .toc-section {
+    margin-bottom: 16px;
+  }
+  .toc-section h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #D9071C;
+    margin-bottom: 6px;
+  }
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    columns: 2;
+    column-gap: 24px;
+  }
+  .toc li {
+    font-size: 10.5pt;
+    padding: 3px 0;
+    break-inside: avoid;
+  }
+  .toc li a {
+    color: #3D3530;
+    text-decoration: none;
+    border-bottom: 1px solid #EDE4D8;
+  }
+  .toc li a:hover { color: #D9071C; }
+  .toc li .ch-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 9pt;
+    color: #D9071C;
+    margin-right: 4px;
+  }
+
+  /* ---- CHAPTERS ---- */
+  .chapter {
+    margin-bottom: 48px;
+    padding-top: 16px;
+  }
+  .chapter-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+    color: #D9071C;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  h2 {
+    font-size: 18pt;
+    font-weight: 700;
+    color: #3D3530;
+    margin-bottom: 4px;
+    line-height: 1.25;
+  }
+  h2 .h2-sub {
+    display: block;
+    font-size: 11pt;
+    font-weight: 500;
+    color: #888;
+    margin-top: 4px;
+  }
+  h3 {
+    font-size: 12pt;
+    font-weight: 600;
+    color: #3D3530;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+  p { font-size: 11pt; margin-bottom: 12px; }
+  li { font-size: 11pt; margin-bottom: 6px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  strong { font-weight: 600; }
+
+  .lesson-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+
+  .tryps-box {
+    background: #FFF5F5;
+    border-left: 4px solid #D9071C;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+  .tryps-box .label {
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+
+  .aha-box {
+    background: #E6F4EA;
+    border-left: 4px solid #2D6B4F;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+  .aha-box .label {
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #2D6B4F;
+    margin-bottom: 4px;
+  }
+
+  .analogy {
+    background: #F0EBFF;
+    border-left: 4px solid #6B4FC7;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+  .analogy .label {
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6B4FC7;
+    margin-bottom: 4px;
+  }
+
+  code {
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+    background: #f5f0eb;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #B00618;
+  }
+
+  .code-block {
+    background: #2B2520;
+    color: #F5EADB;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 12px 0;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+  .code-block .comment { color: #888; }
+  .code-block .keyword { color: #E85050; }
+  .code-block .string { color: #2D8A4E; }
+  .code-block .number { color: #E8913A; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #EDE4D8;
+    margin: 32px 0;
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 13pt;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(217,7,28,0.3);
+    z-index: 100;
+  }
+  .print-btn:hover { background: #B00618; }
+
+  .part-divider {
+    text-align: center;
+    padding: 40px 0 24px;
+    margin-top: 24px;
+  }
+  .part-divider h2 {
+    font-size: 12pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .part-divider p {
+    font-size: 10pt;
+    color: #888;
+  }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid #D9071C;
+    font-size: 9pt;
+    color: #aaa;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">Print / Save PDF</button>
+
+<!-- ============================================================ -->
+<!-- COVER -->
+<!-- ============================================================ -->
+<div class="cover">
+  <h1>Computer Science 101<br>for Jake Stein</h1>
+  <div class="subtitle">Everything you need to know about how software works,<br>explained through the lens of Tryps.</div>
+  <div class="meta">
+    April 2026 &middot; Plane reading edition &middot; ~30 min<br>
+    Compiled from Marty's nightly lessons + new material
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TABLE OF CONTENTS -->
+<!-- ============================================================ -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+
+  <div class="toc-section">
+    <h3>Part I &mdash; The Basics</h3>
+    <ol>
+      <li><span class="ch-num">01</span> <a href="#ch1">What Is a Computer, Actually?</a></li>
+      <li><span class="ch-num">02</span> <a href="#ch2">RAM vs. Storage</a></li>
+      <li><span class="ch-num">03</span> <a href="#ch3">The Terminal & CLI</a></li>
+      <li><span class="ch-num">04</span> <a href="#ch4">What Is Code?</a></li>
+      <li><span class="ch-num">05</span> <a href="#ch5">JSON: The Universal Language of Data</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-section">
+    <h3>Part II &mdash; The Internet</h3>
+    <ol start="6">
+      <li><span class="ch-num">06</span> <a href="#ch6">DNS: The Internet's Phone Book</a></li>
+      <li><span class="ch-num">07</span> <a href="#ch7">HTTP: How Your Phone Talks to the Server</a></li>
+      <li><span class="ch-num">08</span> <a href="#ch8">Ports: The Numbered Doors</a></li>
+      <li><span class="ch-num">09</span> <a href="#ch9">APIs: How Software Talks to Software</a></li>
+      <li><span class="ch-num">10</span> <a href="#ch10">Webhooks: Reverse APIs</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-section">
+    <h3>Part III &mdash; The Tryps Stack</h3>
+    <ol start="11">
+      <li><span class="ch-num">11</span> <a href="#ch11">Frontend vs. Backend</a></li>
+      <li><span class="ch-num">12</span> <a href="#ch12">The Tryps Stack: Expo, TypeScript, Supabase</a></li>
+      <li><span class="ch-num">13</span> <a href="#ch13">React Native & Why It Matters</a></li>
+      <li><span class="ch-num">14</span> <a href="#ch14">TypeScript: JavaScript with Guardrails</a></li>
+      <li><span class="ch-num">15</span> <a href="#ch15">Databases: Tables, Rows, and SQL</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-section">
+    <h3>Part IV &mdash; Building & Shipping</h3>
+    <ol start="16">
+      <li><span class="ch-num">16</span> <a href="#ch16">Git: Version Control</a></li>
+      <li><span class="ch-num">17</span> <a href="#ch17">CI/CD: The Robot Gatekeeper</a></li>
+      <li><span class="ch-num">18</span> <a href="#ch18">The App Store Pipeline</a></li>
+      <li><span class="ch-num">19</span> <a href="#ch19">Environment Variables & Secrets</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-section">
+    <h3>Part V &mdash; Security & Auth</h3>
+    <ol start="20">
+      <li><span class="ch-num">20</span> <a href="#ch20">Authentication: Proving Who You Are</a></li>
+      <li><span class="ch-num">21</span> <a href="#ch21">OAuth: The Valet Key</a></li>
+      <li><span class="ch-num">22</span> <a href="#ch22">Encryption & HTTPS</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-section">
+    <h3>Part VI &mdash; Performance & Scale</h3>
+    <ol start="23">
+      <li><span class="ch-num">23</span> <a href="#ch23">Database Indexing</a></li>
+      <li><span class="ch-num">24</span> <a href="#ch24">Caching: Why Things Are Fast (or Stale)</a></li>
+      <li><span class="ch-num">25</span> <a href="#ch25">Real-Time Data: WebSockets & Subscriptions</a></li>
+      <li><span class="ch-num">26</span> <a href="#ch26">Rate Limiting</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-section">
+    <h3>Part VII &mdash; Infrastructure</h3>
+    <ol start="27">
+      <li><span class="ch-num">27</span> <a href="#ch27">Servers, Cloud, and Serverless</a></li>
+      <li><span class="ch-num">28</span> <a href="#ch28">MCP: The New Way Tools Talk to AI</a></li>
+      <li><span class="ch-num">29</span> <a href="#ch29">AI Agents: How Marty Works</a></li>
+      <li><span class="ch-num">30</span> <a href="#ch30">Putting It All Together: The Life of a Tryps Invite</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART I: THE BASICS -->
+<!-- ============================================================ -->
+<div class="part-divider">
+  <h2>Part I</h2>
+  <p>The Basics</p>
+</div>
+
+<!-- CH 1 -->
+<div class="chapter" id="ch1">
+  <div class="chapter-num">Chapter 01</div>
+  <h2>What Is a Computer, Actually?
+    <span class="h2-sub">The four things every computer does</span>
+  </h2>
+
+  <p>Every computer &mdash; your MacBook, your iPhone, Marty's Hetzner server, the machines running Supabase &mdash; does exactly four things:</p>
+  <ol>
+    <li><strong>Input:</strong> Takes in data (keyboard, touchscreen, network request, iMessage)</li>
+    <li><strong>Storage:</strong> Saves data for later (SSD, database, file system)</li>
+    <li><strong>Processing:</strong> Transforms data (runs your code, does math, makes decisions)</li>
+    <li><strong>Output:</strong> Sends results somewhere (screen, API response, push notification)</li>
+  </ol>
+  <p>That's it. Every feature in Tryps &mdash; from creating a trip to sending a poll to booking a flight &mdash; is a combination of those four operations happening millions of times per second.</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>A computer is a very fast, very obedient, very literal assistant. It will do exactly what you tell it, millions of times per second, and never get tired. But it has zero judgment &mdash; if you tell it to do something stupid, it will do it stupidly, very fast. That's why bugs exist: the computer did exactly what the code said, and the code was wrong.</p>
+  </div>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>When a user taps "Join Trip" on an invite link: <strong>Input</strong> = the tap. <strong>Processing</strong> = the app checks if the user is authenticated, adds them to the trip in the database. <strong>Storage</strong> = the new membership is saved in Supabase. <strong>Output</strong> = the trip screen loads with their name in the member list. Every single screen in the app is this loop running over and over.</p>
+  </div>
+</div>
+
+<!-- CH 2 -->
+<div class="chapter" id="ch2">
+  <div class="chapter-num">Chapter 02</div>
+  <h2>RAM vs. Storage
+    <span class="h2-sub">Why your phone gets slow when you have 47 apps open</span>
+  </h2>
+
+  <p>Your computer has two kinds of memory, and they do very different jobs:</p>
+
+  <p><strong>Storage (SSD/hard drive)</strong> is like a filing cabinet. It holds everything permanently &mdash; your apps, your photos, your databases. When you turn the computer off and back on, everything in storage is still there. Your iPhone has 128GB or 256GB of this. It's big but relatively slow.</p>
+
+  <p><strong>RAM (Random Access Memory)</strong> is like your desk. It holds whatever you're actively working on right now. It's extremely fast &mdash; 100x faster than storage &mdash; but it's temporary. When you close an app or restart your phone, everything in RAM disappears. Your iPhone has about 6GB of this.</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>You're planning a group trip. Your filing cabinet (storage) has every trip document you've ever made &mdash; hundreds of folders. But your desk (RAM) can only hold maybe 10 folders open at once. When you need a new folder, you have to put one back in the cabinet to make room. That's what your phone does when it "kills" a background app &mdash; it's clearing desk space.</p>
+  </div>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>When the Tryps app loads your trip, it pulls data from Supabase (storage &mdash; the database on a server) into your phone's RAM. That's why the first load is slower than scrolling around after &mdash; the data is already on your "desk." When the app crashes on older phones, it's often because RAM ran out: too many images, too many trip members, too much data held in memory at once. Marty's Hetzner server has 16GB of RAM &mdash; enough to hold many conversations in memory simultaneously.</p>
+  </div>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>When someone says "the database is slow," they usually mean data is being read from storage (disk) instead of RAM (cache). When someone says "the app is slow," they usually mean too much is loaded into RAM and the phone is struggling to process it all. Same word ("slow"), completely different problems, completely different fixes.</p>
+  </div>
+</div>
+
+<!-- CH 3 -->
+<div class="chapter" id="ch3">
+  <div class="chapter-num">Chapter 03</div>
+  <h2>The Terminal & CLI
+    <span class="h2-sub">Why developers type instead of click</span>
+  </h2>
+
+  <p>A <strong>CLI (Command Line Interface)</strong> is a text-based way to talk to your computer. Instead of clicking icons and menus (that's a GUI &mdash; Graphical User Interface), you type commands. The Terminal app on your Mac is where you access the CLI.</p>
+
+  <p>Why would anyone prefer typing over clicking? Three reasons:</p>
+  <ol>
+    <li><strong>Speed:</strong> Typing <code>git push</code> is faster than clicking through 5 menus</li>
+    <li><strong>Automation:</strong> You can chain commands together and run them on a schedule (that's how Marty's cron jobs work)</li>
+    <li><strong>Power:</strong> Many things simply can't be done with a GUI &mdash; there's no "button" to SSH into Marty's server, but <code>ssh openclaw@178.156.176.44</code> gets you there instantly</li>
+  </ol>
+
+  <div class="code-block">
+    <span class="comment"># Things you do in the terminal every day:</span><br>
+    git status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># see what files changed</span><br>
+    git push &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># send code to GitHub</span><br>
+    npx expo start &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># run the Tryps app locally</span><br>
+    ssh openclaw@178.156.176.44 <span class="comment"># connect to Marty's server</span><br>
+    npx clickup-cli create ... &nbsp;<span class="comment"># create a ClickUp task</span>
+  </div>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>Claude Code is a CLI tool &mdash; you talk to Claude by typing in the terminal. Marty runs entirely via CLI commands on the Hetzner server &mdash; there's no GUI. When you type <code>/browse</code> or <code>/ship</code>, those are CLI commands that trigger skills. The entire dev workflow &mdash; writing code, testing, committing, deploying &mdash; happens in the terminal.</p>
+  </div>
+</div>
+
+<!-- CH 4 -->
+<div class="chapter" id="ch4">
+  <div class="chapter-num">Chapter 04</div>
+  <h2>What Is Code?
+    <span class="h2-sub">Instructions for the very literal assistant</span>
+  </h2>
+
+  <p>Code is a set of instructions written in a programming language that tells the computer what to do. It's like a recipe: specific steps, in a specific order, with specific ingredients.</p>
+
+  <p>Here's a real piece of code that could exist in Tryps:</p>
+
+  <div class="code-block">
+    <span class="comment">// When someone joins a trip, notify all existing members</span><br>
+    <span class="keyword">async function</span> onMemberJoined(tripId, newMember) {<br>
+    &nbsp;&nbsp;<span class="keyword">const</span> trip = <span class="keyword">await</span> getTrip(tripId);<br>
+    &nbsp;&nbsp;<span class="keyword">const</span> members = trip.members.filter(m => m.id !== newMember.id);<br>
+    <br>
+    &nbsp;&nbsp;<span class="keyword">for</span> (<span class="keyword">const</span> member <span class="keyword">of</span> members) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">await</span> sendPushNotification(member.id, {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: <span class="string">`${newMember.name} joined ${trip.name}!`</span>,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body: <span class="string">`The group is now ${trip.members.length} people.`</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;});<br>
+    &nbsp;&nbsp;}<br>
+    }
+  </div>
+
+  <p>Reading this top to bottom: when someone joins, get the trip, get all the other members, then for each one, send a push notification. The computer reads this literally and executes each line in order.</p>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>Code is not math. It's not genius-level abstract thinking. It's <em>instructions</em>. Most bugs happen not because the logic is complex, but because the instructions didn't account for a situation. "What if the trip has zero other members? What if the member already joined twice? What if the push notification service is down?" Every bug is a missing instruction.</p>
+  </div>
+</div>
+
+<!-- CH 5 -->
+<div class="chapter" id="ch5">
+  <div class="chapter-num">Chapter 05</div>
+  <h2>JSON: The Universal Language of Data
+    <span class="h2-sub">How everything in Tryps gets passed around</span>
+  </h2>
+
+  <p>JSON (JavaScript Object Notation) is the format that nearly all modern software uses to pass data around. It looks like this:</p>
+
+  <div class="code-block">
+    {<br>
+    &nbsp;&nbsp;<span class="string">"trip_name"</span>: <span class="string">"Barcelona Summer 2026"</span>,<br>
+    &nbsp;&nbsp;<span class="string">"created_by"</span>: <span class="string">"Jake"</span>,<br>
+    &nbsp;&nbsp;<span class="string">"members"</span>: [<span class="string">"Jake"</span>, <span class="string">"Sean"</span>, <span class="string">"Cameron"</span>],<br>
+    &nbsp;&nbsp;<span class="string">"dates"</span>: {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"start"</span>: <span class="string">"2026-07-15"</span>,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"end"</span>: <span class="string">"2026-07-22"</span><br>
+    &nbsp;&nbsp;},<br>
+    &nbsp;&nbsp;<span class="string">"is_booked"</span>: <span class="keyword">false</span>,<br>
+    &nbsp;&nbsp;<span class="string">"member_count"</span>: <span class="number">3</span><br>
+    }
+  </div>
+
+  <p>It's just key-value pairs &mdash; labels on the left, values on the right. Values can be text (strings), numbers, true/false (booleans), lists (arrays), or nested objects. That's it. Every API, every database query, every piece of data flowing through Tryps is JSON.</p>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>When one of the iMessage bugs says "agent returns JSON instead of a human message" &mdash; that means the agent accidentally sent the raw data format instead of converting it to natural language first. The user sees <code>{"trip_name": "Barcelona"}</code> instead of "Your Barcelona trip is set for July 15-22!" The data is correct; the formatting step was missing.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART II: THE INTERNET -->
+<!-- ============================================================ -->
+<div class="part-divider">
+  <h2>Part II</h2>
+  <p>The Internet</p>
+</div>
+
+<!-- CH 6 -->
+<div class="chapter" id="ch6">
+  <div class="chapter-num">Chapter 06</div>
+  <h2>DNS: The Internet's Phone Book
+    <span class="h2-sub">What happens when someone types jointryps.com</span>
+  </h2>
+
+  <p>When you type <strong>jointryps.com</strong> into a browser, your computer has no idea where that is. It's like saying "take me to Jake's apartment" &mdash; you need an address first. DNS (Domain Name System) is the internet's phone book. It translates human-readable names like <code>jointryps.com</code> into IP addresses like <code>76.76.21.93</code> &mdash; the actual "street address" of the server where Tryps lives.</p>
+
+  <p>Here's what happens in ~100 milliseconds when someone opens Tryps:</p>
+  <ol>
+    <li>Browser asks your Wi-Fi router: "Where is jointryps.com?"</li>
+    <li>Router doesn't know, so it asks your ISP's DNS server (like Verizon or Google's 8.8.8.8)</li>
+    <li>ISP asks the <strong>.com registry</strong>: "Who handles jointryps.com?"</li>
+    <li>Registry says: "Ask Vercel's nameservers" (because that's where Tryps' DNS is configured)</li>
+    <li>Vercel's nameserver responds: "jointryps.com lives at 76.76.21.93"</li>
+    <li>Browser connects to that IP and Tryps loads</li>
+  </ol>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>When Nadeem's PR #333 consolidated all <code>jointripful.com</code> references to <code>jointryps.com</code>, DNS is what makes sure both domains eventually reach the same server. The deep link scheme (<code>tripful://</code>) works differently &mdash; that's handled by the phone's OS, not DNS &mdash; but the web landing pages, OG images, and the invite link all depend on DNS resolving correctly. If DNS is misconfigured, every invite link is broken.</p>
+  </div>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>DNS is why a domain costs money &mdash; you're paying for a permanent entry in the internet's phone book that says "this name belongs to this server." Change your server? Just update the phone book entry. That's what "DNS propagation" is: waiting for every copy of the phone book worldwide to get the update. It can take up to 48 hours because there are millions of copies.</p>
+  </div>
+</div>
+
+<!-- CH 7 -->
+<div class="chapter" id="ch7">
+  <div class="chapter-num">Chapter 07</div>
+  <h2>HTTP: How Your Phone Talks to the Server
+    <span class="h2-sub">The request-response conversation behind every tap</span>
+  </h2>
+
+  <p>Once your phone knows the server's address (thanks to DNS), it needs to actually <strong>talk</strong> to it. HTTP (HyperText Transfer Protocol) is the language of that conversation. Every time you open the Tryps app, scroll through trips, or tap "Join Trip," your phone is having a rapid-fire HTTP conversation with Supabase.</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>Think of it like ordering at a restaurant. You (the app) say: <strong>"GET me the trip details for trip ID 47."</strong> The server responds: <strong>"200 OK &mdash; here's the trip name, members, itinerary, and vibe."</strong> The client asks, the server answers. Always.</p>
+  </div>
+
+  <p>The common "verbs" are:</p>
+  <ul>
+    <li><strong>GET</strong> &mdash; "Give me this data" (loading a trip, fetching a member list)</li>
+    <li><strong>POST</strong> &mdash; "Create something new" (creating a trip, adding an activity)</li>
+    <li><strong>PUT/PATCH</strong> &mdash; "Update this thing" (changing a trip name, editing an itinerary item)</li>
+    <li><strong>DELETE</strong> &mdash; "Remove this" (leaving a trip, deleting an activity)</li>
+  </ul>
+
+  <p>The numbers you sometimes see &mdash; 200, 404, 500 &mdash; are the server's way of saying how it went:</p>
+  <ul>
+    <li><strong>200</strong> = "Here you go." (Success)</li>
+    <li><strong>401</strong> = "Who are you? Show me your auth token." (Unauthorized)</li>
+    <li><strong>404</strong> = "That doesn't exist." (Not found)</li>
+    <li><strong>500</strong> = "Something broke on my end." (Server error)</li>
+  </ul>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>When the iMessage agent creates a trip, it's making POST requests. When you open the app and don't see that trip, the GET request either hasn't fired, returned stale data, or the real-time subscription (WebSocket, a cousin of HTTP &mdash; see Chapter 25) dropped. When Nadeem's real-time data updates aren't reflecting, it's often because the app sent a POST to create something but isn't sending a follow-up GET to refresh, or the response came back but the UI didn't re-render.</p>
+  </div>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>HTTP is stateless &mdash; the server has no memory of previous requests. Every single tap in the app is a fresh conversation: "Hi, who are you? Here's my auth token. Can I have this data?" That's why auth tokens exist &mdash; they're your ID badge that you show on every single request, because the server has amnesia.</p>
+  </div>
+</div>
+
+<!-- CH 8 -->
+<div class="chapter" id="ch8">
+  <div class="chapter-num">Chapter 08</div>
+  <h2>Ports: The Numbered Doors
+    <span class="h2-sub">Why "Port 3000" keeps coming up in dev conversations</span>
+  </h2>
+
+  <p>When your computer connects to the internet, it's not just connecting to "a server" &mdash; it's connecting to a specific <em>door</em> on that server. These doors are called <strong>ports</strong>. There are 65,535 of them on every computer.</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>Think of a server as an office building. The building has one street address (that's the IP address &mdash; like 178.156.176.44, Marty's server). But inside, there are thousands of office suites. Suite 80 is the web server (HTTP). Suite 443 is the secure web server (HTTPS). Suite 22 is SSH (remote login). Suite 5432 is PostgreSQL (the database).</p>
+  </div>
+
+  <p>Common port numbers and what lives there:</p>
+  <ul>
+    <li><strong>80</strong> &mdash; HTTP (plain web traffic)</li>
+    <li><strong>443</strong> &mdash; HTTPS (encrypted web traffic)</li>
+    <li><strong>22</strong> &mdash; SSH (remote terminal access)</li>
+    <li><strong>5432</strong> &mdash; PostgreSQL (Supabase's database)</li>
+    <li><strong>3000</strong> &mdash; Common dev server port (Next.js, Express)</li>
+    <li><strong>8081</strong> &mdash; Expo dev server (React Native)</li>
+  </ul>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>When Nadeem runs the Expo dev server, it starts on port 8081. When Supabase runs locally, it's on port 54321. If two services try to use the same port, one crashes &mdash; like two tenants fighting over the same office suite. When Marty's server runs OpenClaw, it listens on a specific port for Slack messages. "Port already in use" is one of the most common developer errors.</p>
+  </div>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>A URL like <code>http://localhost:3000</code> means "talk to my own computer (localhost), door number 3000." Every running service picks a door. The internet is just millions of computers, each with thousands of numbered doors, all talking to each other through those doors.</p>
+  </div>
+</div>
+
+<!-- CH 9 -->
+<div class="chapter" id="ch9">
+  <div class="chapter-num">Chapter 09</div>
+  <h2>APIs: How Software Talks to Software
+    <span class="h2-sub">The contracts between services</span>
+  </h2>
+
+  <p>An <strong>API (Application Programming Interface)</strong> is a set of rules for how one piece of software can talk to another. It's a contract: "If you send me this kind of request, I'll send you back this kind of response."</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>Think of a restaurant menu. You don't walk into the kitchen and cook your own food. You look at the menu (the API documentation), pick what you want (make a request), and the kitchen (the server) sends it out (the response). You don't need to know how the chef made it &mdash; you just need to know what's available and how to order.</p>
+  </div>
+
+  <p>Tryps talks to a bunch of APIs:</p>
+  <ul>
+    <li><strong>Supabase API</strong> &mdash; Store and retrieve trip data, user profiles, itineraries</li>
+    <li><strong>Duffel API</strong> &mdash; Search and book flights</li>
+    <li><strong>Stripe API</strong> &mdash; Handle payments</li>
+    <li><strong>ElevenLabs API</strong> &mdash; Generate voice for the phone agent</li>
+    <li><strong>Apple Push Notification Service</strong> &mdash; Send push notifications to iPhones</li>
+    <li><strong>iMessage / Linq API</strong> &mdash; Send and receive iMessages</li>
+  </ul>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>When Rizwan says "Duffel is pending production approval," he means the Duffel API gave us a sandbox key (for testing with fake data) but hasn't given us a production key (for real flight bookings with real money). The code is ready; we're waiting for the API provider to let us through the door. Every third-party integration in Tryps is gated by API access.</p>
+  </div>
+</div>
+
+<!-- CH 10 -->
+<div class="chapter" id="ch10">
+  <div class="chapter-num">Chapter 10</div>
+  <h2>Webhooks: Reverse APIs
+    <span class="h2-sub">When the server calls you instead of you calling it</span>
+  </h2>
+
+  <p>Normal API calls work like this: you ask the server for something, it responds. But sometimes you need the server to tell <em>you</em> when something happens. That's a <strong>webhook</strong> &mdash; it's an API in reverse.</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>Normal API = you calling the restaurant to ask if your table is ready. Webhook = the restaurant calling <em>you</em> when the table is ready. Much more efficient &mdash; you don't have to keep calling every 5 minutes.</p>
+  </div>
+
+  <p>You give a service a URL (your "phone number") and say: "When X happens, send a message to this URL." The service then POSTs data to your URL whenever that event occurs.</p>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>When Stripe processes a payment, it sends a webhook to Tryps: "Payment succeeded for $247 from Jake." Tryps doesn't need to keep asking Stripe "did it work yet?" &mdash; Stripe proactively tells us. When someone sends an iMessage to the Tryps number (+1 917 745 3624), Linq sends a webhook to Marty's server with the message content. That's how the agent knows someone texted &mdash; it didn't read the iMessage directly, it received a webhook notification.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART III: THE TRYPS STACK -->
+<!-- ============================================================ -->
+<div class="part-divider">
+  <h2>Part III</h2>
+  <p>The Tryps Stack</p>
+</div>
+
+<!-- CH 11 -->
+<div class="chapter" id="ch11">
+  <div class="chapter-num">Chapter 11</div>
+  <h2>Frontend vs. Backend
+    <span class="h2-sub">The restaurant dining room vs. the kitchen</span>
+  </h2>
+
+  <p><strong>Frontend</strong> is everything the user sees and touches. The Tryps app screens, the buttons, the animations, the trip card layout &mdash; that's frontend. It runs on the user's device (their iPhone).</p>
+
+  <p><strong>Backend</strong> is everything that happens behind the scenes. The database, the authentication, the flight search, the agent logic &mdash; that's backend. It runs on servers somewhere in the cloud.</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p><strong>Frontend</strong> = the restaurant's dining room. The decor, the menu design, the table layout, the way the waiter presents the food. <strong>Backend</strong> = the kitchen. The recipes, the ingredient storage, the prep work, the cooking. A beautiful dining room with a terrible kitchen = a bad restaurant. A great kitchen with an ugly dining room = an underappreciated one.</p>
+  </div>
+
+  <p>In Tryps:</p>
+  <ul>
+    <li><strong>Nadeem</strong> works mostly on frontend (the app screens &mdash; output-backed screen, itinerary UI, vibe tab)</li>
+    <li><strong>Rizwan</strong> works mostly on backend (agent intelligence, recommendation engine, booking pipeline)</li>
+    <li><strong>Asif</strong> works across both (iMessage agent is backend logic that outputs to a frontend &mdash; the iMessage conversation)</li>
+  </ul>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>When a bug report says "the itinerary isn't showing" &mdash; it could be a frontend bug (the screen isn't rendering the data it already has) or a backend bug (the server isn't returning the data). The first step in any bug is figuring out which side broke. That's why the devs check "network requests" &mdash; they're looking at the boundary between frontend and backend to see where the data stopped flowing.</p>
+  </div>
+</div>
+
+<!-- CH 12 -->
+<div class="chapter" id="ch12">
+  <div class="chapter-num">Chapter 12</div>
+  <h2>The Tryps Stack
+    <span class="h2-sub">Expo + TypeScript + Supabase &mdash; what each piece does</span>
+  </h2>
+
+  <p>A "tech stack" is the combination of tools and technologies used to build an app. Here's what Tryps uses and why:</p>
+
+  <div class="lesson-box">
+    <h3>Expo</h3>
+    <p><strong>What it is:</strong> A framework built on top of React Native that makes it easier to build mobile apps for iOS and Android from a single codebase.</p>
+    <p><strong>Why Tryps uses it:</strong> Instead of writing the app twice (once in Swift for iPhone, once in Kotlin for Android), you write it once in JavaScript/TypeScript and Expo handles making it work on both platforms. It also handles the App Store build process, push notifications, camera access, and dozens of other native features.</p>
+    <p><strong>The tradeoff:</strong> Slightly less native performance than a pure Swift app, but 50-70% less development time. For a startup, speed wins.</p>
+  </div>
+
+  <div class="lesson-box">
+    <h3>TypeScript</h3>
+    <p><strong>What it is:</strong> JavaScript with types added &mdash; a way to catch bugs before the code runs (more in Chapter 14).</p>
+    <p><strong>Why Tryps uses it:</strong> JavaScript is the language of the web and React Native. TypeScript adds safety rails so you catch errors while writing code instead of when users hit them.</p>
+  </div>
+
+  <div class="lesson-box">
+    <h3>Supabase</h3>
+    <p><strong>What it is:</strong> An open-source backend-as-a-service. It gives you a PostgreSQL database, authentication, real-time subscriptions, file storage, and serverless functions &mdash; all managed for you.</p>
+    <p><strong>Why Tryps uses it:</strong> Instead of building and maintaining your own server, database, auth system, and file storage, Supabase handles all of that. The team can focus on trip features instead of infrastructure. It's like renting a fully furnished apartment instead of building a house from scratch.</p>
+  </div>
+</div>
+
+<!-- CH 13 -->
+<div class="chapter" id="ch13">
+  <div class="chapter-num">Chapter 13</div>
+  <h2>React Native & Why It Matters
+    <span class="h2-sub">One codebase, two app stores</span>
+  </h2>
+
+  <p><strong>React Native</strong> is a framework created by Facebook (Meta) that lets you build native mobile apps using JavaScript. "Native" means the app uses real iOS and Android components &mdash; it's not a website pretending to be an app.</p>
+
+  <p>The key idea: you write <strong>components</strong>. A component is a reusable building block &mdash; a button, a trip card, a member avatar, a poll widget. You compose these together to build screens.</p>
+
+  <div class="code-block">
+    <span class="comment">// A simplified Tryps trip card component</span><br>
+    <span class="keyword">function</span> TripCard({ trip }) {<br>
+    &nbsp;&nbsp;<span class="keyword">return</span> (<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;Card&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;TripImage source={trip.coverPhoto} /&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Title&gt;{trip.name}&lt;/Title&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DateRange start={trip.startDate} end={trip.endDate} /&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MemberAvatars members={trip.members} /&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/Card&gt;<br>
+    &nbsp;&nbsp;);<br>
+    }
+  </div>
+
+  <p>This same code produces a real iOS card on iPhones and a real Android card on Android phones. The framework translates the JavaScript into native UI elements for each platform.</p>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>The "output-backed screen" scope (Nadeem's 48 SCs) is essentially building React Native components that render data from the agent. Every screen in the app &mdash; trip details, itinerary, people tab, vibe tab &mdash; is a tree of React Native components receiving data from Supabase and displaying it. When Expo pushes an update, it can update the JavaScript bundle without going through the App Store &mdash; that's "over-the-air updates," one of Expo's killer features.</p>
+  </div>
+</div>
+
+<!-- CH 14 -->
+<div class="chapter" id="ch14">
+  <div class="chapter-num">Chapter 14</div>
+  <h2>TypeScript: JavaScript with Guardrails
+    <span class="h2-sub">Why the team uses TS instead of plain JS</span>
+  </h2>
+
+  <p><strong>JavaScript</strong> is the programming language that runs in browsers and React Native. It's flexible, fast to write, and everywhere. But it has a problem: it doesn't check your work until the code runs.</p>
+
+  <p><strong>TypeScript</strong> adds "types" &mdash; labels that tell the computer what kind of data something is. This lets it catch mistakes before the code ever runs.</p>
+
+  <div class="code-block">
+    <span class="comment">// JavaScript (no types &mdash; danger)</span><br>
+    <span class="keyword">function</span> addMember(trip, member) {<br>
+    &nbsp;&nbsp;trip.members.push(member); <span class="comment">// what if trip is null? what if members doesn't exist?</span><br>
+    }<br><br>
+    <span class="comment">// TypeScript (with types &mdash; safe)</span><br>
+    <span class="keyword">function</span> addMember(trip: Trip, member: Member): <span class="keyword">void</span> {<br>
+    &nbsp;&nbsp;trip.members.push(member); <span class="comment">// TS guarantees trip has a members array</span><br>
+    }
+  </div>
+
+  <p>The <code>: Trip</code> and <code>: Member</code> annotations tell TypeScript exactly what shape the data must have. If someone tries to call <code>addMember("hello", 42)</code>, TypeScript will catch it immediately &mdash; before the app runs, before users see a crash.</p>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>TypeScript doesn't run in production. It's a development tool. Before the app ships, TypeScript gets "compiled" into plain JavaScript (which is what actually runs on the phone). Think of it as spell-check: it catches errors while you're writing, but the final published document doesn't have red underlines in it.</p>
+  </div>
+</div>
+
+<!-- CH 15 -->
+<div class="chapter" id="ch15">
+  <div class="chapter-num">Chapter 15</div>
+  <h2>Databases: Tables, Rows, and SQL
+    <span class="h2-sub">Where all of Tryps' data actually lives</span>
+  </h2>
+
+  <p>A <strong>database</strong> is an organized collection of data. Tryps uses <strong>PostgreSQL</strong> (via Supabase) &mdash; a relational database, which means it stores data in <strong>tables</strong>, like spreadsheets.</p>
+
+  <div class="code-block">
+    <span class="comment">-- The "trips" table might look like this:</span><br><br>
+    id &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| destination &nbsp;| start_date | created_by<br>
+    -----------+----------------------+--------------+------------+-----------<br>
+    abc123 &nbsp;&nbsp;&nbsp;| Barcelona Summer &nbsp;&nbsp;&nbsp;| Barcelona &nbsp;&nbsp;| 2026-07-15 | jake_001<br>
+    def456 &nbsp;&nbsp;&nbsp;| Ski Trip &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Whistler &nbsp;&nbsp;&nbsp;| 2026-12-20 | sean_002<br>
+    ghi789 &nbsp;&nbsp;&nbsp;| Austin F1 Weekend &nbsp;&nbsp;| Austin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 2026-10-18 | cam_003
+  </div>
+
+  <p><strong>SQL (Structured Query Language)</strong> is how you ask the database questions:</p>
+
+  <div class="code-block">
+    <span class="comment">-- Get all trips Jake created</span><br>
+    <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> trips <span class="keyword">WHERE</span> created_by = <span class="string">'jake_001'</span>;<br><br>
+    <span class="comment">-- Count how many members each trip has</span><br>
+    <span class="keyword">SELECT</span> trip_id, <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> trip_members <span class="keyword">GROUP BY</span> trip_id;<br><br>
+    <span class="comment">-- Add a new activity</span><br>
+    <span class="keyword">INSERT INTO</span> activities (trip_id, name, date) <span class="keyword">VALUES</span> (<span class="string">'abc123'</span>, <span class="string">'Sagrada Familia'</span>, <span class="string">'2026-07-17'</span>);
+  </div>
+
+  <p><strong>Tables relate to each other.</strong> A <code>trips</code> table connects to a <code>trip_members</code> table connects to a <code>users</code> table. That's "relational" &mdash; the data forms a web of relationships.</p>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>Supabase gives us a PostgreSQL database with a nice dashboard for browsing tables. When Rizwan writes agent intelligence logic, he's writing queries that read from and write to these tables. When the app loads a trip, it's running SQL under the hood. Every bug that says "data not showing up" starts with checking: is the data actually in the table?</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART IV: BUILDING & SHIPPING -->
+<!-- ============================================================ -->
+<div class="part-divider">
+  <h2>Part IV</h2>
+  <p>Building & Shipping</p>
+</div>
+
+<!-- CH 16 -->
+<div class="chapter" id="ch16">
+  <div class="chapter-num">Chapter 16</div>
+  <h2>Git: Version Control
+    <span class="h2-sub">How the team works on the same code without breaking each other's work</span>
+  </h2>
+
+  <p><strong>Git</strong> is a system that tracks every change to every file in a project, like an infinitely detailed "Track Changes" for code. It lets multiple people work on the same codebase simultaneously without overwriting each other.</p>
+
+  <p>Key concepts:</p>
+  <ul>
+    <li><strong>Repository (repo):</strong> The project folder tracked by Git. Tryps lives in the <code>t4</code> repo on GitHub.</li>
+    <li><strong>Commit:</strong> A snapshot of changes. "I changed these 5 files, here's why." Every commit has a message and a unique ID.</li>
+    <li><strong>Branch:</strong> A parallel version of the code. The <code>develop</code> branch is the "current working version." Each developer creates their own branch (like <code>nadeem/itinerary-fixes</code>) to work in isolation.</li>
+    <li><strong>Merge:</strong> Combining a branch back into <code>develop</code>. "My feature is done, put it in the main codebase."</li>
+    <li><strong>Pull Request (PR):</strong> A formal request to merge. Other developers review the code before it gets merged. That's why you see "PR #352" in standups.</li>
+    <li><strong>Merge conflict:</strong> When two people changed the same lines and Git doesn't know which version to keep. Someone has to manually decide.</li>
+  </ul>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>PR #333 has been stuck for days because of a merge conflict &mdash; Nadeem and someone else changed the same file. The 14 stale PRs mean 14 sets of changes sitting in limbo, not in the app. When you hear "CI is failing," it means the automated checks that run on every PR found a problem. The <code>develop</code> branch is the source of truth &mdash; whatever's on <code>develop</code> is what gets built into the TestFlight app.</p>
+  </div>
+</div>
+
+<!-- CH 17 -->
+<div class="chapter" id="ch17">
+  <div class="chapter-num">Chapter 17</div>
+  <h2>CI/CD: The Robot Gatekeeper
+    <span class="h2-sub">Why all your PRs keep failing</span>
+  </h2>
+
+  <p><strong>CI</strong> stands for Continuous Integration. When a developer pushes code, a robot automatically runs all the tests, checks the code style, and tries to build the app. If anything breaks, the PR gets a red X.</p>
+
+  <p><strong>CD</strong> stands for Continuous Delivery/Deployment. If the robot says everything's green, the code automatically gets deployed.</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>CI is the health inspector checking every dish before it leaves the kitchen. CD is the waiter delivering it to the table. If the inspector finds a problem, the dish goes back to the chef &mdash; the customer never sees it.</p>
+  </div>
+
+  <p>The CI pipeline typically runs:</p>
+  <ol>
+    <li><strong>Lint:</strong> Are there any code style violations? (Like a spell-checker for code)</li>
+    <li><strong>Type check:</strong> Does the TypeScript compile without errors?</li>
+    <li><strong>Tests:</strong> Do all the automated tests pass?</li>
+    <li><strong>Build:</strong> Can the app actually be built into a working binary?</li>
+  </ol>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>Your 13 bug-fix PRs from the weekend all had red X marks because CI was failing. This doesn't necessarily mean YOUR code was broken &mdash; it could mean the tests themselves are outdated, a dependency changed, or the build environment has a problem. The fix might be 10 minutes of work, but until someone looks at the CI logs and figures out what's actually failing, nothing can merge.</p>
+  </div>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>CI isn't testing your code in isolation &mdash; it's testing whether your code works <em>with everyone else's code</em>. That's why something you wrote alone on Saturday night might fail on Monday when it has to play nice with what Nadeem pushed on Sunday.</p>
+  </div>
+</div>
+
+<!-- CH 18 -->
+<div class="chapter" id="ch18">
+  <div class="chapter-num">Chapter 18</div>
+  <h2>The App Store Pipeline
+    <span class="h2-sub">From code to a user's phone</span>
+  </h2>
+
+  <p>Getting an app from "code on a developer's laptop" to "installed on a user's iPhone" is a multi-step process. Here's the pipeline:</p>
+
+  <ol>
+    <li><strong>Write code</strong> &mdash; Developers write TypeScript in the t4 repo</li>
+    <li><strong>Build</strong> &mdash; Expo compiles the code into a native iOS binary (an .ipa file). This happens on Expo's build servers (EAS Build) because it requires macOS and Xcode.</li>
+    <li><strong>TestFlight</strong> &mdash; Apple's beta testing platform. The .ipa gets uploaded here. Beta testers (you, QA team) can install it immediately.</li>
+    <li><strong>App Review</strong> &mdash; Apple's human reviewers check the app for quality, security, and compliance. Takes 1-3 days. They can reject it.</li>
+    <li><strong>App Store</strong> &mdash; Once approved, the app is live. Users can download it.</li>
+  </ol>
+
+  <p><strong>Over-the-air (OTA) updates</strong> are the shortcut: Expo can push JavaScript changes directly to installed apps without going through the App Store. This means bug fixes can ship in minutes instead of days. But native code changes (new permissions, new native modules) still require a full App Store update.</p>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>The April 15 deadline is "App Store submitted" &mdash; that means the .ipa has been uploaded and is in Apple's review queue. If Apple rejects it (common reasons: crashes, broken features, missing privacy descriptions), the clock resets. That's why QA matters &mdash; every bug that makes it into the submission is a potential rejection. TestFlight is where the QA team (Aman, Sarfaraz, Zain) tests before submission.</p>
+  </div>
+</div>
+
+<!-- CH 19 -->
+<div class="chapter" id="ch19">
+  <div class="chapter-num">Chapter 19</div>
+  <h2>Environment Variables & Secrets
+    <span class="h2-sub">Why API keys don't go in the code</span>
+  </h2>
+
+  <p>An <strong>environment variable</strong> is a value stored outside the code that the code reads at runtime. Think of it as a config setting that changes depending on where the code is running.</p>
+
+  <p>Why not just put these values directly in the code?</p>
+  <ul>
+    <li><strong>Security:</strong> API keys, database passwords, and secrets should never be in code. Code lives on GitHub &mdash; if anyone can see the code, they can see the secrets.</li>
+    <li><strong>Flexibility:</strong> The Supabase URL is different for development (localhost) vs. production (cloud). Environment variables let the same code work in both places.</li>
+  </ul>
+
+  <div class="code-block">
+    <span class="comment"># In ~/.zshrc (your shell config):</span><br>
+    <span class="keyword">export</span> CLICKUP_API_KEY=<span class="string">"pk_12345..."</span><br>
+    <span class="keyword">export</span> SUPABASE_URL=<span class="string">"https://abc123.supabase.co"</span><br><br>
+    <span class="comment"># In code:</span><br>
+    <span class="keyword">const</span> supabase = createClient(process.env.SUPABASE_URL);
+  </div>
+
+  <p>The <code>.env</code> file is where environment variables live in a project. The <code>.gitignore</code> file tells Git to never upload <code>.env</code> to GitHub. If someone accidentally commits a secret, it's a security incident &mdash; the key needs to be immediately rotated (replaced with a new one).</p>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>Your ClickUp API key is in <code>~/.zshrc</code> as an environment variable. Marty's API keys are on the Hetzner server in environment variables. The Supabase keys, Stripe keys, Duffel keys &mdash; all stored as env vars, never in the code. When someone says "it works locally but not in production," the first thing to check is: are the environment variables set correctly in the production environment?</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART V: SECURITY & AUTH -->
+<!-- ============================================================ -->
+<div class="part-divider">
+  <h2>Part V</h2>
+  <p>Security & Auth</p>
+</div>
+
+<!-- CH 20 -->
+<div class="chapter" id="ch20">
+  <div class="chapter-num">Chapter 20</div>
+  <h2>Authentication: Proving Who You Are
+    <span class="h2-sub">Sessions, tokens, and why you stay logged in</span>
+  </h2>
+
+  <p><strong>Authentication (auth)</strong> is the process of proving you are who you claim to be. In the physical world, it's showing your ID. In the digital world, it's entering a password, tapping a magic link, or using Face ID.</p>
+
+  <p>Here's how Tryps auth works (simplified):</p>
+  <ol>
+    <li>User opens the app and enters their phone number</li>
+    <li>Supabase sends a one-time code via SMS (OTP &mdash; One Time Password)</li>
+    <li>User enters the code</li>
+    <li>Supabase verifies it matches, then sends back an <strong>auth token</strong> &mdash; a long, random string that proves "this person authenticated successfully"</li>
+    <li>The app stores this token securely on the phone</li>
+    <li>Every API request includes this token in the header: "Here's my proof, give me my data"</li>
+  </ol>
+
+  <p><strong>Authorization</strong> is different from authentication. Auth<em>entication</em> = "Who are you?" Auth<em>orization</em> = "What are you allowed to do?" You might be authenticated as Jake, but are you authorized to delete Sean's trip? That's a separate check.</p>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>The reason you stay logged into the Tryps app for weeks is that the auth token hasn't expired yet. When you suddenly get logged out, it's because the token expired (or Supabase rotated it). "Session management" is just the science of how long tokens last and when they get refreshed.</p>
+  </div>
+</div>
+
+<!-- CH 21 -->
+<div class="chapter" id="ch21">
+  <div class="chapter-num">Chapter 21</div>
+  <h2>OAuth: The Valet Key
+    <span class="h2-sub">How "Sign In with Google" works</span>
+  </h2>
+
+  <p>Tryps wants to access Jake's Google Calendar (to create standup events). But Jake shouldn't give Tryps his Google password. <strong>OAuth</strong> is the protocol that solves this: "Let an app access your stuff without giving it your password."</p>
+
+  <p>The dance (simplified):</p>
+  <ol>
+    <li><strong>Tryps</strong> says to <strong>Google</strong>: "Jake wants to let me see his calendar."</li>
+    <li><strong>Google</strong> shows <strong>Jake</strong> a consent screen: "Tryps wants access to your Calendar. Allow?"</li>
+    <li>Jake clicks "Allow."</li>
+    <li>Google gives Tryps two tokens:
+      <ul>
+        <li><strong>Access token:</strong> A temporary pass (expires in ~1 hour) that lets Tryps read/write the calendar</li>
+        <li><strong>Refresh token:</strong> A permanent pass that lets Tryps get new access tokens without bothering Jake again</li>
+      </ul>
+    </li>
+    <li>Tryps stores both tokens securely. Every hour, it uses the refresh token to get a fresh access token.</li>
+  </ol>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>OAuth is a valet key for your digital life. You're not giving Tryps the master key to your Google account &mdash; you're giving it a limited key that only opens specific doors (Calendar, Gmail) and can be revoked any time.</p>
+  </div>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>Every time Marty creates a calendar event or reads your email, he's using an OAuth access token. When you see "gog auth error" in the logs, it means the access token expired and the refresh token couldn't renew it (usually because Google revoked it for security). The fix: Jake re-authorizes via the consent screen, which issues new tokens.</p>
+  </div>
+</div>
+
+<!-- CH 22 -->
+<div class="chapter" id="ch22">
+  <div class="chapter-num">Chapter 22</div>
+  <h2>Encryption & HTTPS
+    <span class="h2-sub">Why the padlock in the URL bar matters</span>
+  </h2>
+
+  <p><strong>Encryption</strong> is the process of scrambling data so only the intended recipient can read it. When you see <code>https://</code> (note the "s") or a padlock icon in your browser, that means the connection between your device and the server is encrypted.</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>Imagine sending a postcard vs. a sealed letter. HTTP (no "s") is the postcard &mdash; anyone who handles it along the way can read it. HTTPS is the sealed letter &mdash; only you and the recipient can read the contents. The "seal" is a technology called TLS (Transport Layer Security).</p>
+  </div>
+
+  <p>Without HTTPS, anyone on the same Wi-Fi network (say, airport Wi-Fi) could intercept the data flowing between your phone and Supabase &mdash; including auth tokens, trip details, and payment information.</p>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>All Supabase connections are HTTPS by default &mdash; you don't need to configure anything. The Tryps website (jointryps.com on Vercel) gets free HTTPS certificates automatically. Stripe <em>requires</em> HTTPS &mdash; they won't process payments over an unencrypted connection. When you SSH into Marty's server, that connection is also encrypted (SSH is like HTTPS for terminal access).</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART VI: PERFORMANCE & SCALE -->
+<!-- ============================================================ -->
+<div class="part-divider">
+  <h2>Part VI</h2>
+  <p>Performance & Scale</p>
+</div>
+
+<!-- CH 23 -->
+<div class="chapter" id="ch23">
+  <div class="chapter-num">Chapter 23</div>
+  <h2>Database Indexing
+    <span class="h2-sub">Why some queries are instant and others take forever</span>
+  </h2>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>Imagine a library with 100,000 books. If you want "The Great Gatsby," you have two options:<br>
+    <strong>No index:</strong> Start at shelf 1, check every book. On average, you'll check 50,000 books before finding it. (This is a "full table scan.")<br>
+    <strong>With index:</strong> Check the card catalog, which tells you it's on shelf 47, position 12. Two lookups. Done. (This is an "index lookup.")</p>
+  </div>
+
+  <p>In PostgreSQL, the <code>trips</code> table might have 10,000 rows eventually. When you query <code>SELECT * FROM trips WHERE id = 'abc123'</code>, PostgreSQL uses the primary key index to find it in microseconds. But if you query <code>SELECT * FROM trips WHERE destination LIKE '%Barcelona%'</code> without an index on <code>destination</code>, it scans every single row.</p>
+
+  <p><strong>The tradeoff:</strong> Indexes make reads fast but writes slower (every INSERT also has to update the index). It's like maintaining the card catalog &mdash; every time you add a book, you also update the catalog. Worth it for columns you search often; wasteful for columns you rarely filter by.</p>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>When the app feels slow loading trips, it's almost never the network &mdash; it's usually a missing database index causing PostgreSQL to read thousands of rows instead of jumping straight to the one it needs. Adding an index is often a one-line fix that makes a query 1000x faster.</p>
+  </div>
+</div>
+
+<!-- CH 24 -->
+<div class="chapter" id="ch24">
+  <div class="chapter-num">Chapter 24</div>
+  <h2>Caching: Why Things Are Fast (or Stale)
+    <span class="h2-sub">The tradeoff between speed and freshness</span>
+  </h2>
+
+  <p>A <strong>cache</strong> is a temporary copy of data stored somewhere faster than the original source. Instead of fetching from the database every time, you check the cache first.</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>You look up a restaurant's hours online (slow &mdash; open browser, search, find the site). Then you write it on a sticky note on your desk (the cache). Next time you need the hours, you just glance at the sticky note (fast). But if the restaurant changes their hours, your sticky note is wrong &mdash; that's "stale cache."</p>
+  </div>
+
+  <p>Caching happens at every level:</p>
+  <ul>
+    <li><strong>Browser/app cache:</strong> Images and data stored on the phone so they don't re-download every time</li>
+    <li><strong>CDN (Content Delivery Network):</strong> Copies of your website stored on servers worldwide so users get a nearby copy (Vercel does this for jointryps.com)</li>
+    <li><strong>Database cache:</strong> Frequently-accessed queries stored in RAM so the database doesn't re-compute them</li>
+    <li><strong>DNS cache:</strong> Your router remembers "jointryps.com = 76.76.21.93" so it doesn't re-lookup every time</li>
+  </ul>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>When someone says "I added an activity but it's not showing up" &mdash; it might be a caching issue. The app has a cached version of the trip data and hasn't fetched the updated version. "Pull to refresh" is literally "throw away the cache and fetch fresh data." OG image previews in iMessage are cached aggressively &mdash; if you update the trip card image, existing previews might show the old one for hours or days.</p>
+  </div>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>There's a famous joke in computer science: "There are only two hard things &mdash; cache invalidation and naming things." Cache invalidation is deciding <em>when</em> to throw away the old copy and get a fresh one. Too soon = you lose the speed benefit. Too late = users see stale data. It's genuinely one of the hardest problems in software.</p>
+  </div>
+</div>
+
+<!-- CH 25 -->
+<div class="chapter" id="ch25">
+  <div class="chapter-num">Chapter 25</div>
+  <h2>Real-Time Data: WebSockets & Subscriptions
+    <span class="h2-sub">How the app updates without refreshing</span>
+  </h2>
+
+  <p>Normal HTTP is request-response: the app asks, the server answers, the conversation ends. But what if you want the server to tell you when something changes &mdash; instantly, without asking?</p>
+
+  <p><strong>WebSockets</strong> are a persistent, two-way connection between the app and the server. Unlike HTTP (which hangs up after each response), a WebSocket stays open. Either side can send a message at any time.</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>HTTP is like texting someone a question and waiting for a reply. WebSocket is like being on a phone call &mdash; the line stays open and either person can talk whenever they want.</p>
+  </div>
+
+  <p>Supabase offers <strong>real-time subscriptions</strong> built on WebSockets. You tell Supabase: "Notify me whenever the <code>trip_members</code> table changes for trip abc123." Then, when anyone joins or leaves that trip, Supabase immediately pushes the update to every connected client.</p>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>This is exactly what Nadeem's "real-time data updates" mission is about. When the iMessage agent adds an activity to a trip, every person with the Tryps app open should see it appear instantly &mdash; without pulling to refresh. That requires a WebSocket subscription on the activities table. When real-time isn't working, it's usually because: (1) the subscription wasn't set up for that table, (2) the WebSocket connection dropped (common on mobile with bad signal), or (3) the UI isn't listening for the update event.</p>
+  </div>
+</div>
+
+<!-- CH 26 -->
+<div class="chapter" id="ch26">
+  <div class="chapter-num">Chapter 26</div>
+  <h2>Rate Limiting
+    <span class="h2-sub">Why APIs say "slow down"</span>
+  </h2>
+
+  <p><strong>Rate limiting</strong> is a server's way of saying: "You're making too many requests. Slow down." It protects servers from being overwhelmed &mdash; whether by bugs, bots, or denial-of-service attacks.</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p>A nightclub with a bouncer who lets in 100 people per hour. Even if 500 people show up at once, the bouncer keeps the pace manageable. If you keep trying to push past, you get kicked out of line entirely (that's a "429 Too Many Requests" response).</p>
+  </div>
+
+  <p>Common rate limits you'll encounter:</p>
+  <ul>
+    <li><strong>Supabase:</strong> Free tier = 500 requests/second. Enough for now, could matter at scale.</li>
+    <li><strong>Stripe:</strong> 100 reads/second, 25 writes/second per API key</li>
+    <li><strong>Duffel:</strong> Limits vary by endpoint &mdash; flight search is expensive, so they limit it tightly</li>
+    <li><strong>Claude API:</strong> Token-per-minute limits based on your plan</li>
+  </ul>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>SC-61 (in the Asif+Rizwan interface session) is specifically about building a rate limiter for the iMessage agent. Without it, if someone sends 50 messages in a row, the agent would try to process all 50 simultaneously &mdash; burning tokens, hitting API limits, and potentially crashing. A rate limiter ensures the agent processes one message at a time (or one per second) and queues the rest.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART VII: INFRASTRUCTURE -->
+<!-- ============================================================ -->
+<div class="part-divider">
+  <h2>Part VII</h2>
+  <p>Infrastructure</p>
+</div>
+
+<!-- CH 27 -->
+<div class="chapter" id="ch27">
+  <div class="chapter-num">Chapter 27</div>
+  <h2>Servers, Cloud, and Serverless
+    <span class="h2-sub">Where code actually runs</span>
+  </h2>
+
+  <p>All code runs on a computer somewhere. The question is: whose computer?</p>
+
+  <div class="lesson-box">
+    <h3>Dedicated Server (Hetzner)</h3>
+    <p>A real, physical machine in a data center that you rent by the month. You have full control &mdash; install whatever you want, run whatever you want. Marty runs on a Hetzner server at IP 178.156.176.44. It's always on, always yours.</p>
+    <p><strong>Pros:</strong> Full control, predictable pricing, great for long-running processes (like an agent that needs to be available 24/7).</p>
+    <p><strong>Cons:</strong> You manage everything &mdash; updates, security, backups, scaling.</p>
+  </div>
+
+  <div class="lesson-box">
+    <h3>Cloud Platforms (AWS, Google Cloud, Vercel)</h3>
+    <p>Virtual machines or managed services that scale automatically. Vercel hosts jointryps.com &mdash; it handles traffic spikes, SSL certificates, CDN, and deployments automatically.</p>
+    <p><strong>Pros:</strong> Managed for you, scales with demand, pay-as-you-go.</p>
+    <p><strong>Cons:</strong> Can get expensive at scale, less control, vendor lock-in.</p>
+  </div>
+
+  <div class="lesson-box">
+    <h3>Serverless (Supabase Edge Functions)</h3>
+    <p>"Serverless" doesn't mean there are no servers &mdash; it means you don't think about them. You write a function, deploy it, and it runs when triggered. You only pay when it executes.</p>
+    <p><strong>Pros:</strong> Zero infrastructure to manage, scales to zero (no cost when idle), perfect for webhooks and API endpoints.</p>
+    <p><strong>Cons:</strong> Cold starts (first request after idle is slower), limited execution time, harder to debug.</p>
+  </div>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>Tryps uses all three: Hetzner for Marty (needs 24/7 uptime), Vercel for the website (needs global CDN and easy deploys), and Supabase for the backend (database + auth + edge functions). This is a very common pattern for startups &mdash; mix and match the right tool for each job.</p>
+  </div>
+</div>
+
+<!-- CH 28 -->
+<div class="chapter" id="ch28">
+  <div class="chapter-num">Chapter 28</div>
+  <h2>MCP: The New Way Tools Talk to AI
+    <span class="h2-sub">CLI vs. MCP and why it matters</span>
+  </h2>
+
+  <p>You asked about CLI vs. MCP &mdash; here's the difference:</p>
+
+  <p><strong>CLI (Command Line Interface)</strong> is a human typing commands to a computer. You type <code>git push</code>, the computer does it. It's been around since the 1960s.</p>
+
+  <p><strong>MCP (Model Context Protocol)</strong> is the new standard (created by Anthropic) for AI models to use tools. Instead of a human typing commands, an AI model sends structured requests to tools. Think of it as "CLI for AI."</p>
+
+  <div class="analogy">
+    <div class="label">Analogy</div>
+    <p><strong>CLI</strong> is like a person using a remote control &mdash; press buttons, see results. <strong>MCP</strong> is like giving a robot the remote control and teaching it what each button does. The robot can then use the TV on its own, without a human pressing each button.</p>
+  </div>
+
+  <p>In practice:</p>
+  <ul>
+    <li><strong>CLI:</strong> Jake types <code>npx clickup-cli create "Fix bug"</code> to create a task</li>
+    <li><strong>MCP:</strong> Claude Code calls the ClickUp MCP tool automatically: "Create a task called 'Fix bug' in list 901711582339"</li>
+  </ul>
+
+  <p>MCP is what lets Claude Code browse the web, read Figma files, interact with Chrome, and use Slack &mdash; all through structured tool calls instead of bash commands.</p>
+
+  <div class="tryps-box">
+    <div class="label">How this shows up in Tryps</div>
+    <p>Marty uses MCP tools to interact with Slack, GitHub, and ClickUp. When you see tools like <code>mcp__slack__slack_post_message</code> in Claude Code, that's MCP in action. The key insight: MCP makes AI agents dramatically more capable because they can use any tool that has an MCP adapter, just like a human can use any app that has a GUI.</p>
+  </div>
+</div>
+
+<!-- CH 29 -->
+<div class="chapter" id="ch29">
+  <div class="chapter-num">Chapter 29</div>
+  <h2>AI Agents: How Marty Works
+    <span class="h2-sub">The loop that makes an agent an agent</span>
+  </h2>
+
+  <p>An <strong>AI agent</strong> is an AI model that can take actions, not just generate text. The key difference between ChatGPT (a chatbot) and Marty (an agent) is the <strong>action loop</strong>:</p>
+
+  <ol>
+    <li><strong>Observe:</strong> Read the current state (Slack messages, GitHub PRs, ClickUp tasks)</li>
+    <li><strong>Think:</strong> Decide what to do based on instructions and context</li>
+    <li><strong>Act:</strong> Execute actions (post a message, create a standup, write a report)</li>
+    <li><strong>Observe again:</strong> Check if the action worked, adjust if needed</li>
+    <li>Repeat forever</li>
+  </ol>
+
+  <p>This is called the "agentic loop." Marty runs this loop on a schedule (cron jobs) and on demand (when you DM him on Slack).</p>
+
+  <div class="lesson-box">
+    <h3>What makes Marty work</h3>
+    <ul>
+      <li><strong>Runtime:</strong> OpenClaw on Hetzner server (always on)</li>
+      <li><strong>Model:</strong> Claude Opus 4.6 (for complex tasks), Sonnet 4.6 (for routine tasks)</li>
+      <li><strong>Tools:</strong> GitHub API, Slack API, ClickUp API, file system, bash commands</li>
+      <li><strong>Memory:</strong> Files in tryps-docs/shared/ that persist between conversations</li>
+      <li><strong>Triggers:</strong> Cron jobs (8pm standup, 8:30pm nightly report) + Slack DMs</li>
+    </ul>
+  </div>
+
+  <div class="aha-box">
+    <div class="label">The "aha" moment</div>
+    <p>The thing that makes agents powerful isn't the AI model &mdash; it's the tools. GPT-4 without tools is a chatbot. GPT-4 with tools (file system, APIs, browser) is an agent. The model is the brain; the tools are the hands. Marty's "intelligence" comes from Claude Opus, but his <em>usefulness</em> comes from being connected to your actual systems.</p>
+  </div>
+</div>
+
+<!-- CH 30 -->
+<div class="chapter" id="ch30">
+  <div class="chapter-num">Chapter 30</div>
+  <h2>Putting It All Together
+    <span class="h2-sub">The life of a Tryps invite link</span>
+  </h2>
+
+  <p>Let's trace what happens when someone sends a Tryps invite and a friend joins. Every chapter in this guide shows up:</p>
+
+  <div class="lesson-box">
+    <h3>Step 1: Jake creates a trip via iMessage</h3>
+    <p>Jake texts the Tryps number (+1 917 745 3624): "Create a Barcelona trip for July 15-22."</p>
+    <ul>
+      <li>The text arrives via Linq's <strong>webhook</strong> (Ch 10) to Marty's <strong>server</strong> (Ch 27) on a specific <strong>port</strong> (Ch 8)</li>
+      <li>Marty's <strong>agent loop</strong> (Ch 29) processes the message using <strong>MCP tools</strong> (Ch 28)</li>
+      <li>A <strong>POST request</strong> (Ch 7) sends <strong>JSON</strong> (Ch 5) to Supabase's <strong>API</strong> (Ch 9) over <strong>HTTPS</strong> (Ch 22)</li>
+      <li>Supabase writes the trip to the <strong>database</strong> (Ch 15) using <strong>SQL</strong></li>
+      <li>The agent generates an invite link: <code>https://jointryps.com/trip/abc123</code></li>
+    </ul>
+  </div>
+
+  <div class="lesson-box">
+    <h3>Step 2: The friend taps the invite link</h3>
+    <ul>
+      <li><strong>DNS</strong> (Ch 6) resolves <code>jointryps.com</code> to Vercel's IP address</li>
+      <li>The browser connects over <strong>HTTPS</strong> (Ch 22) &mdash; encrypted, secure</li>
+      <li>Vercel's <strong>CDN</strong> (Ch 24) serves the landing page from the nearest server</li>
+      <li>The page shows the trip card with an OG image (rendered <strong>server-side</strong>, Ch 11)</li>
+      <li>A deep link redirects to the Tryps app (or the App Store if not installed, Ch 18)</li>
+    </ul>
+  </div>
+
+  <div class="lesson-box">
+    <h3>Step 3: The friend joins the trip in the app</h3>
+    <ul>
+      <li>The app checks <strong>authentication</strong> (Ch 20) &mdash; is this person logged in? Auth token valid?</li>
+      <li>If not, the phone number + OTP flow runs (stored as <strong>environment variables</strong>, Ch 19)</li>
+      <li>A <strong>POST request</strong> (Ch 7) adds the friend to the <code>trip_members</code> table in the <strong>database</strong> (Ch 15)</li>
+      <li>Supabase's <strong>real-time subscription</strong> (Ch 25) pushes the update to everyone who has the trip open</li>
+      <li>The <strong>React Native</strong> component (Ch 13) re-renders the member list, written in <strong>TypeScript</strong> (Ch 14)</li>
+      <li>A push notification fires to all existing members</li>
+      <li>If the agent was rate-limited (Ch 26), it queues the notification</li>
+    </ul>
+  </div>
+
+  <div class="lesson-box">
+    <h3>Step 4: The code behind this was shipped through</h3>
+    <ul>
+      <li>A developer wrote the code in a <strong>Git branch</strong> (Ch 16)</li>
+      <li><strong>CI/CD</strong> (Ch 17) ran tests and verified it builds</li>
+      <li>The PR was reviewed, merged to <code>develop</code>, and built via <strong>Expo/EAS</strong> (Ch 18)</li>
+      <li>The build was uploaded to <strong>TestFlight</strong>, QA tested it, and it shipped to the <strong>App Store</strong> (Ch 18)</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <p>That's everything. Every chapter in this guide is a layer in the stack that makes Tryps work. You don't need to understand every layer deeply &mdash; but knowing they exist, what they do, and how they connect means you can have informed conversations with your dev team, ask better questions, and make better product decisions.</p>
+
+  <p>The most important thing a technical founder can do isn't write code &mdash; it's understand the system well enough to know where things break and why.</p>
+
+  <div class="aha-box">
+    <div class="label">Final "aha" moment</div>
+    <p>Software is layers of abstraction. DNS abstracts IP addresses. HTTP abstracts network connections. APIs abstract databases. React Native abstracts iOS and Android. Each layer hides complexity and exposes a simpler interface. When something breaks, it's usually at the boundary between two layers. Knowing the layers means knowing where to look.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer>
+  <p>CS 101 for Jake Stein &middot; April 2026 &middot; Compiled by Claude from Marty's nightly lessons</p>
+  <p style="margin-top: 4px;">Tryps &mdash; jointryps.com</p>
+</footer>
+
+</body>
+</html>
