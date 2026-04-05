@@ -10,9 +10,13 @@ owner: jake
 
 ## Overview
 
-Transform the Tryps brain from a read-only reference system into a self-improving knowledge base that compounds with every session. Based on Karpathy's LLM Knowledge Base architecture: raw data in, LLM compiles a wiki, every query makes the wiki better, periodic linting keeps it clean.
+Transform the Tryps brain from a read-only reference system into a **persistent, compounding artifact** — a self-improving knowledge base where the wiki gets richer with every source added and every question asked.
 
-**The core insight:** Agents that own their own knowledge layer don't need infinite context windows — they need good file organization and the ability to read their own indexes.
+Based directly on [Karpathy's LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): instead of rediscovering knowledge from scratch on every session (like RAG), the LLM incrementally builds and maintains a structured wiki. The knowledge is compiled once and kept current, not re-derived on every query.
+
+**The core insight:** "The tedious part of maintaining a knowledge base is not the reading or the thinking — it's the bookkeeping." LLMs handle maintenance cost near-zero. Humans curate sources, direct analysis, and ask the right questions. The LLM does everything else.
+
+**Applied to Tryps:** Obsidian is the IDE. Claude/Marty are the programmers. The wiki is the codebase. Jake curates and directs; the LLM maintains.
 
 **Evolves from:** [[2026-03-18-memory-architecture-brainstorm|Memory Architecture Brainstorm]] (approved), [[shared/brain|Brain 1.0 Philosophy]], [[2026-03-26-feat-company-brain-state-pipeline-plan|State Pipeline Plan]] (Move 2 outstanding).
 
@@ -39,60 +43,66 @@ Phase 4 (parallel)      → Obsidian: Dataview + Canvas + Templater + Marp + HTM
 
 ## Technical Approach
 
-### Architecture
+### Karpathy's Three Layers (Applied to Tryps)
 
 ```
-                    ┌────────────────────────┐
-                    │    RAW DATA SOURCES     │
-                    │  standups, PRs, Slack,  │
-                    │  specs, feedback, calls │
-                    └──────────┬─────────────┘
-                               │
-                    ┌──────────▼─────────────┐
-                    │   COMPILATION LAYER     │
-                    │  /brain compile         │
-                    │  /compound (session-end)│
-                    │  Marty post-standup     │
-                    └──────────┬─────────────┘
-                               │
-          ┌────────────────────┼────────────────────┐
-          │                    │                     │
-┌─────────▼──────────┐ ┌──────▼───────────┐ ┌──────▼───────────┐
-│  SHARED BRAIN      │ │  MARTY'S WIKI    │ │  AGENT KBs       │
-│  shared/            │ │  marty/wiki/     │ │  per-user prefs   │
-│  INDEX.md (router)  │ │  team-patterns   │ │  gotchas.md       │
-│  state.md (auto)    │ │  bug-taxonomy    │ │  per-scope KB     │
-│  gotchas.md (comp.) │ │  decisions-log   │ │                   │
-│  ...                │ │  INDEX.md        │ │                   │
-└─────────┬──────────┘ └──────┬───────────┘ └──────┬───────────┘
-          │                    │                     │
-          └────────────────────┼─────────────────────┘
-                               │
-                    ┌──────────▼─────────────┐
-                    │    LINTING LAYER        │
-                    │  /brain-lint            │
-                    │  Weekly Marty cron      │
-                    │  Staleness + drift +    │
-                    │  redundancy detection   │
-                    └──────────┬─────────────┘
-                               │
-                    ┌──────────▼─────────────┐
-                    │    QUERY LAYER          │
-                    │  CLAUDE.md @import      │
-                    │  INDEX.md → selective   │
-                    │  Obsidian Dataview      │
-                    │  CLI search tools       │
-                    └────────────────────────┘
+LAYER 1: RAW SOURCES (immutable — LLM reads, never modifies)
+├── standups/           — daily standup transcripts
+├── scopes/*/spec.md    — product specifications
+├── marty/memory/*.md   — daily logs from Marty
+├── docs/plans/         — strategic plans
+├── Slack threads, meeting notes, customer interviews
+└── Any new source: articles, research, voice memos
+
+LAYER 2: THE WIKI (LLM-maintained — Jake reads, LLM writes)
+├── shared/
+│   ├── index.md        — content-oriented catalog of everything
+│   ├── log.md          — append-only chronological record
+│   ├── state.md        — auto-generated scope progress (existing)
+│   ├── gotchas.md      — compiled behavioral rules by topic
+│   ├── missions.md     — daily focus (Jake writes this one)
+│   └── [topic pages]   — entity pages, concept pages, synthesis
+├── marty/wiki/
+│   ├── index.md        — Marty's wiki catalog
+│   ├── team-patterns.md
+│   ├── bug-taxonomy.md
+│   ├── decisions-log.md
+│   └── scope-intelligence.md
+└── ~/.claude/projects/-Users-jakestein/memory/
+    └── [individual memory files — the per-session knowledge layer]
+
+LAYER 3: THE SCHEMA (co-evolved — tells LLM how to maintain the wiki)
+├── ~/.claude/CLAUDE.md           — global schema: @imports, conventions, rules
+├── ~/tryps-docs/shared/brain.md  — brain philosophy + operations guide
+├── ~/tryps-docs/marty/AGENTS.md  — Marty's schema
+└── ~/.claude/commands/           — operation commands (ingest, lint, query)
 ```
+
+### Three Core Operations (from Karpathy)
+
+| Operation | What it does | Tryps implementation |
+|-----------|-------------|---------------------|
+| **Ingest** | New source → LLM reads → writes summary → updates index → updates relevant pages → appends to log | `/brain compile` (external sources) + `/compound` (session learnings) + Marty post-standup sync |
+| **Query** | Ask questions → LLM reads index → finds relevant pages → synthesizes answer → **files valuable answers back as new pages** | Normal Claude sessions. The key: good answers don't disappear into chat history — they compound. |
+| **Lint** | Health-check → contradictions, stale claims, orphan pages, missing cross-refs, data gaps | `/brain-lint` (manual) + Marty weekly cron (automated) |
+
+**The compounding loop:** Ingest makes the wiki richer. Query makes the wiki smarter (answers filed back). Lint makes the wiki healthier. Every interaction adds value.
+
+### Two Special Files (from Karpathy)
+
+**index.md** — content-oriented catalog. Every page listed with link, one-line summary, metadata. Organized by category. LLM reads index first to find relevant pages, then drills in. "This works surprisingly well at moderate scale (~100 sources, ~hundreds of pages) and avoids the need for embedding-based RAG infrastructure."
+
+**log.md** — append-only chronological record. Each entry starts with parseable prefix: `## [2026-04-05] ingest | Source Title`. Gives timeline of wiki evolution. Enables `grep "^## \[" log.md | tail -5` for last 5 entries.
 
 ### Key Design Decisions
 
-1. **Git-synced markdown stays.** No databases, no MCP memory servers. tryps-docs is the spine. (Per [[memory-architecture-report|Memory Architecture Report]] Pattern A.)
+1. **Git-synced markdown stays.** No databases, no MCP memory servers. tryps-docs is the spine. "The wiki is just a git repo of markdown files. You get version history, branching, and collaboration for free." (Per [[memory-architecture-report|Memory Architecture Report]] Pattern A.)
 2. **200-line caps.** MEMORY.md stays under 200 lines. INDEX.md under 50 lines. Individual wiki articles under 100 lines. (Per architecture report limits.)
 3. **Write-back is gated.** Sessions propose writes via `/compound`, Jake confirms. No auto-commit from sessions. (Per architecture report: reduces noise.)
-4. **One file per concern.** No mega-files. gotchas.md organized by topic sections, not 23 individual files. (Karpathy: "just a collection of .md files in a directory structure.")
-5. **LLM maintains the wiki.** Humans rarely edit compiled files directly. The LLM compiles, the linter cleans, humans correct via calibration. (Per brain.md: Friday brainscan calibration loop.)
-6. **Obsidian `bases` plugin over Dataview.** The `bases` core plugin is already enabled and provides structured data views from YAML frontmatter without installing community plugins. Use `bases` first; only install Dataview if `bases` is insufficient.
+4. **One file per concern.** Karpathy: "just a collection of .md files in a directory structure." gotchas.md organized by topic sections. Wiki articles per concept/entity.
+5. **LLM maintains the wiki, human rarely touches it.** "You never (or rarely) write the wiki yourself — the LLM writes and maintains all of it. You're in charge of sourcing, exploration, and asking the right questions." (Per brain.md: Friday brainscan calibration loop.)
+6. **Obsidian is the IDE.** "I have the LLM agent open on one side and Obsidian open on the other. The LLM makes edits based on our conversation, and I browse the results in real time." Use `bases` core plugin first for structured views; install Dataview only if insufficient.
+7. **log.md is sacred.** Append-only. Never edited, only appended. Every ingest, query, and lint pass gets logged. This is the wiki's history.
 
 ---
 
@@ -204,14 +214,43 @@ Phase 4 (parallel)      → Obsidian: Dataview + Canvas + Templater + Marp + HTM
 
 **Compilation process:** `/brain-lint` reads all `feedback_*.md` files, deduplicates, categorizes by topic, and regenerates gotchas.md. Individual feedback files remain as the source of truth (with `**Why:**` context) — gotchas.md is the compiled view.
 
+##### 1d. `shared/log.md` — append-only chronological record
+
+**File:** `~/tryps-docs/shared/log.md`
+
+The wiki's history. Every ingest, query-filed-back, lint pass, and significant event gets a single-line entry. Never edited, only appended. Parseable with grep.
+
+**Format:**
+```markdown
+# Brain Log
+
+> Append-only. Never edit existing entries. Parse: grep "^## \[" log.md | tail -10
+
+## [2026-04-05] init | Brain 2.0 initialized
+## [2026-04-05] ingest | Compiled 23 feedback memories into gotchas.md
+## [2026-04-05] lint | Health score: 72/100 — 3 stale files, 2 redundancies
+## [2026-04-05] compound | Session: brain infra — filed 4 decisions, 2 state changes
+## [2026-04-06] ingest | Standup 2026-04-06 — SC: agent-intelligence 31/61
+## [2026-04-07] query | "App Store blockers?" — filed as wiki/app-store-blockers.md
+```
+
+**Entry types:** `init`, `ingest`, `lint`, `compound`, `query`, `sync`, `fix`
+
+**Who appends:** `/compound`, `/brain compile`, `/brain-lint`, Marty post-standup. Every operation logs itself.
+
+**Why (Karpathy):** "The log gives you a timeline of the wiki's evolution and helps the LLM understand what's been done recently."
+
 **Phase 1 acceptance criteria:**
 - [ ] `/brain-lint` runs and produces a health report with score
 - [ ] `/brain-lint auto-fix` syncs redundant copies and adds orphans to index
 - [ ] `/compound` proposes filing session learnings with diffs
 - [ ] `/compound` updates MEMORY.md when new files are created
+- [ ] `/compound` appends to `shared/log.md` after filing
 - [ ] `shared/gotchas.md` exists, compiled from all 23 feedback files
 - [ ] Gotchas organized by topic, deduplicated, with last-compiled timestamp
+- [ ] `shared/log.md` exists with parseable prefix format
 - [ ] `/brain-lint` can regenerate gotchas.md from source feedback files
+- [ ] `/brain-lint` appends to log.md after running
 
 ---
 
@@ -596,10 +635,12 @@ Following Lex's approach: generate dynamic HTML with JS for sortable/filterable 
 
 ## Future Considerations
 
-- **Synthetic data + finetuning:** Karpathy's natural extrapolation — as the wiki grows, consider finetuning a model on it so it "knows" Tryps in its weights. This is post-launch territory.
-- **Ephemeral wiki for deep research:** Lex's pattern — generate a focused mini-KB for a specific topic, load into voice mode for a run. Could be useful for investor prep or strategic thinking sessions.
-- **Multi-agent wiki compilation:** Karpathy's vision of "a team of LLMs to automate the whole thing: iteratively construct an entire ephemeral wiki, lint it, loop a few times, then write a full report." This is the brainscan endgame.
+- **qmd for wiki search:** [qmd](https://github.com/tobi/qmd) is a local search engine for markdown with hybrid BM25/vector search and LLM re-ranking. Has both CLI (LLM shells out) and MCP server. Karpathy recommends it. At current scale (~100 files) index.md is sufficient, but as wiki grows past 200 pages, install qmd.
+- **Synthetic data + finetuning:** Karpathy's natural extrapolation — as the wiki grows, consider finetuning a model on it so it "knows" Tryps in its weights. Post-launch territory.
+- **Ephemeral wiki for deep research:** Lex's pattern — generate a focused mini-KB for a specific topic, load into voice mode for a run. Useful for investor prep or strategic thinking sessions.
+- **Multi-agent wiki compilation:** Karpathy: "every question to a frontier grade LLM spawns a team of LLMs to automate the whole thing: iteratively construct an entire ephemeral wiki, lint it, loop a few times, then write a full report. Way beyond a .decode()." This is the brainscan endgame.
 - **Cross-team brain:** When Tryps grows beyond 10 people, the brain needs access control. Who can read/write which wiki sections?
+- **Obsidian Web Clipper:** Browser extension for quickly converting web articles to markdown sources. Karpathy recommends for ingesting articles into raw/ collection.
 
 ---
 
@@ -610,6 +651,7 @@ Following Lex's approach: generate dynamic HTML with JS for sortable/filterable 
 | `~/.claude/commands/brain-lint.md` | 1 | Slash command |
 | `~/.claude/commands/compound.md` | 1 | Slash command |
 | `~/tryps-docs/shared/gotchas.md` | 1 | Compiled reference |
+| `~/tryps-docs/shared/log.md` | 1 | Append-only chronological record |
 | `~/tryps-docs/shared/INDEX.md` | 2 | Auto-maintained index |
 | `~/.claude/commands/brain-compile.md` | 2 | Slash command |
 | `~/tryps-docs/marty/wiki/INDEX.md` | 2 | Auto-maintained index |
@@ -648,9 +690,11 @@ Following Lex's approach: generate dynamic HTML with JS for sortable/filterable 
 - [[archive/docs/memory-architecture-report|Memory Architecture Report]] — Pattern A, 200-line caps, write-back gating
 
 ### External
-- Karpathy's LLM Knowledge Bases post (X, April 2 2026) — the architecture this plan implements
+- [Karpathy's LLM Wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — the canonical pattern this plan implements (three layers, three operations, index + log)
+- Karpathy's LLM Knowledge Bases post (X, April 2 2026) — the original tweet thread
 - Lex Fridman's response — interactive HTML outputs, mini-KB for voice mode, dynamic data visualization
 - jumperz thread — "agents that own their own knowledge layer do not need infinite context windows"
+- [qmd](https://github.com/tobi/qmd) — local markdown search engine (BM25/vector hybrid) recommended by Karpathy for larger wikis
 
 ### Related Work
 - State pipeline (shared/state.md auto-generation): implemented, running
