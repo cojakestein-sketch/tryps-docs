@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tryps Nightly Brief — April 5, 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  @media print {
+    body { font-size: 11pt; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #3D3530;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #D9071C;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #3D3530;
+    border-bottom: 1px solid #EDE4D8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+  }
+  h3 { font-size: 12pt; font-weight: 600; margin-top: 16px; }
+  p, li { font-size: 11pt; }
+  .tweet { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .tweet-author { font-weight: 600; }
+  .tweet-text { color: #555; }
+  .repo { padding: 6px 0; }
+  .repo-name { font-weight: 600; font-family: 'Space Mono', monospace; }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .cost-table td, .cost-table th {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-family: 'Space Mono', monospace;
+    font-size: 10pt;
+  }
+  .strategy-box {
+    background: #FFFDF8;
+    border: 1px solid #EDE4D8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D9071C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14pt;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #B00618; }
+  .verdict { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 10pt; }
+  .verdict-progress { background: #d4edda; color: #155724; }
+  .verdict-stalled { background: #fff3cd; color: #856404; }
+  .verdict-nodata { background: #f8d7da; color: #721c24; }
+  a { color: #D9071C; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Print</button>
+  <h1>Tryps Nightly Brief</h1>
+  <div class="subtitle">
+    Sunday, April 5, 2026 — Prepared by Marty at 8:30 PM ET<br>
+    End of Week 5 (Mar 30 – Apr 5)
+  </div>
+
+  <!-- SECTION 1: TOMORROW'S STANDUP -->
+  <section>
+    <h2>1. Tomorrow's Standup</h2>
+    <p><strong>Hero numbers:</strong> ~82 / 166 SC done — 68 / 78 bugs fixed<br>
+    <em>⚠️ All SC numbers are 7 days stale (last reliable: March 30).</em></p>
+
+    <h3>Nadeem — output-backed-screen (48 SC)</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> Last merge was PR #352 (Itinerary tab fixes) Thursday. PR #333 (domain consolidation → jointryps.com) still open with merge conflict — 6 days now. 4 bug buckets stuck in "for testing" with no QA owner. What's the plan — clear backlog, resolve PR #333, or push new SCs?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> Merged PR numbers, "for testing" items moved to done with screen recording, or a specific screen to tap through.</li>
+      <li><strong>[Marty]</strong> No standup answer in over a week. SC count stuck at ~10/48 since March 30. Need: (a) actual SC number, (b) are any "for testing" bug buckets verified?</li>
+    </ol>
+
+    <h3>Asif — imessage-agent (57 SC)</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> 3 bugs in progress + 15+ new iMessage/AI bugs in "to do." Critical sync issues: activities, polls, stays added via iMessage don't show in app. "Don't Care (Auto-vote)" broken. App freezes on Activities. What's the priority?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> Which bugs will have merged PRs? Can Jake test a specific iMessage flow?</li>
+      <li><strong>[Marty]</strong> iMessage-to-app sync gap is the biggest pattern — activities, polls, stays, hotel additions all fail. Is this one root cause (webhook/realtime) or multiple separate bugs?</li>
+    </ol>
+
+    <h3>Rizwan — agent-intelligence (61 SC)</h3>
+    <ol>
+      <li><strong>What are you doing TODAY?</strong> Merged PR #351 (SC-15 agent memory) and #350 (expo-sensors crash fix) Thursday. SC numbers update still pending. Focus: agent-intelligence SCs or backlog of unassigned AI bugs?</li>
+      <li><strong>How will Jake verify at 6PM?</strong> Merged PR with SC numbers, screen recording, or specific iMessage test.</li>
+      <li><strong>[Marty]</strong> 6 unassigned AI agent bugs overlap with your scope (poll voting, trip name updates, emoji handling). Are these yours or Asif's? Need assignment clarity.</li>
+    </ol>
+  </section>
+
+  <!-- SECTION 2: TECH TWITTER -->
+  <section>
+    <h2>2. Tech Twitter</h2>
+    <p><em>⚠️ Exa Search unavailable — AgentCash balance is $0.00. Falling back to Brave Search results.</em></p>
+    <p>No direct tweet data available this cycle. Key conversations surfaced from news:</p>
+    <div class="tweet">
+      <span class="tweet-author">Industry buzz</span><br>
+      <span class="tweet-text"><strong>OpenAI acquires TBPN</strong> — OpenAI bought the Technology Business Programming Network, a founder-led tech talk show. First media acquisition by an AI company. Fidji Simo (OpenAI) framed it as "editorial instincts + audience understanding." The founder/VC world is debating whether this is smart distribution or dystopian vertical integration.</span><br>
+      <a href="https://openai.com/index/openai-acquires-tbpn/">openai.com</a> · <a href="https://techcrunch.com/2026/04/02/openai-acquires-tbpn-the-buzzy-founder-led-business-talk-show/">TechCrunch</a>
+    </div>
+    <div class="tweet">
+      <span class="tweet-author">Industry buzz</span><br>
+      <span class="tweet-text"><strong>Musk asks SpaceX IPO banks to buy Grok subscriptions.</strong> NYT reports Elon is requiring banks underwriting the SpaceX IPO to purchase Grok AI subscriptions. The xAI/SpaceX bundling strategy is raising eyebrows.</span><br>
+      <a href="https://www.reuters.com/business/finance/musk-asks-spacex-ipo-banks-buy-grok-ai-subscriptions-nyt-reports-2026-04-03/">Reuters</a>
+    </div>
+    <div class="tweet">
+      <span class="tweet-author">Industry buzz</span><br>
+      <span class="tweet-text"><strong>DeepSeek V4 running on Huawei chips.</strong> China's DeepSeek confirmed its V4 model will run on Huawei's latest silicon. Alibaba, ByteDance, and Tencent are preparing infrastructure. This is the most significant domestic-chip AI deployment yet — US chip export controls are driving real innovation on the other side.</span><br>
+      <a href="https://www.reuters.com/world/china/deepseeks-v4-model-will-run-huawei-chips-information-reports-2026-04-03/">Reuters</a>
+    </div>
+    <div class="tweet">
+      <span class="tweet-author">Industry buzz</span><br>
+      <span class="tweet-text"><strong>Cursor 3 launched</strong> — "agent-first" IDE with parallel coding agents across repos. Ditches the traditional editor layout for a sidebar of running agents with auto-generated demos/screenshots for verification. The coding agent wars are heating up fast.</span><br>
+      <a href="https://the-decoder.com/new-cursor-3-ditches-the-classic-ide-layout-for-an-agent-first-interface-built-around-parallel-ai-fleets/">the-decoder.com</a>
+    </div>
+    <p style="font-size:10pt; color:#888;">Note: To restore direct tweet tracking, fund AgentCash wallet (~$0.07/cycle for all 7 accounts).</p>
+  </section>
+
+  <!-- SECTION 3: TRENDING REPOS -->
+  <section>
+    <h2>3. Trending GitHub Repos</h2>
+
+    <div class="repo">
+      <span class="repo-name">siddharthvaddem/openscreen</span> — ⭐ 22,508 (+2,749 today)<br>
+      Create stunning screen recordings for free. Open-source alternative to Screen Studio — no subscriptions, no watermarks, commercial-use friendly. TypeScript.<br>
+      <strong>Why it matters:</strong> Free demo recording tool. Perfect for Tryps beta testers to record bug reports or for Sean's launch video content.
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">badlogic/pi-mono</span> — ⭐ 31,915 (+355 today)<br>
+      AI agent toolkit: coding agent CLI, unified LLM API, TUI & web UI libraries, Slack bot, vLLM pods. TypeScript.<br>
+      <strong>Why it matters:</strong> Direct competitor/inspiration for Marty's architecture. Unified LLM API layer + Slack bot pattern is exactly what Tryps is building with the agent layer.
+    </div>
+
+    <div class="repo">
+      <span class="repo-name">google-ai-edge/gallery</span> — trending<br>
+      Gallery showcasing on-device ML/GenAI use cases. Run models locally on mobile.<br>
+      <strong>Why it matters:</strong> On-device ML for travel recommendations could reduce latency and API costs for P3 agent features. Worth watching as Expo adds ML support.
+    </div>
+  </section>
+
+  <!-- SECTION 4: DEEP DIVE -->
+  <section>
+    <h2>4. Deep Dive: QA Without a QA Team</h2>
+    <p><em>Topic from Marty's 3pm suggestion — Jake did not reply.</em></p>
+
+    <h3>What it is</h3>
+    <p>Since Andreas left at the end of March, Tryps has no dedicated QA person. There are 12+ tasks stuck in "for testing," 22 marked "ready for production," and 0 tasks moved to "done" all week. Bugs get fixed but never verified and closed. This is a process bottleneck, not a staffing problem — and there are proven patterns for startups in exactly this position.</p>
+
+    <h3>Why it matters right now</h3>
+    <p>The QA gap is the #1 issue identified in the weekly retro. Asif has an external QA team (Aman, Sarfaraz, Zain) testing iMessage flows, but their output isn't flowing into ClickUp systematically. Meanwhile, Nadeem's bug fixes sit in limbo because nobody is verifying them. Before beta launch, every unverified fix is a liability.</p>
+
+    <h3>Key takeaways</h3>
+    <ul>
+      <li><strong>Dev-verify-own-work:</strong> Each dev is responsible for moving their own "for testing" items to "done" with a screen recording proving the fix. No separate QA gate. This is the fastest unblock for the 12 items in limbo right now.</li>
+      <li><strong>Shake-to-feedback is already shipped:</strong> Nadeem's PR #335 landed April 1. Use it — every beta tester becomes a QA person. Pair it with the agent feedback pipeline (text <code>feedback:</code> to the Tryps agent).</li>
+      <li><strong>AI-assisted QA is the 2026 play:</strong> Tools like Autonoma deploy three AI agents (Planner, Automator, Maintainer) for codebase-first test coverage. Tryps has 1,379 tests but no E2E coverage of the iMessage-to-app flow. One Maestro or Detox E2E test for the core invite→join→collaborate loop would catch the sync bugs earlier.</li>
+      <li><strong>QA team output needs a triage view:</strong> Aman/Sarfaraz/Zain are filing bugs but Jake has no single view of their output. Complete the feedback mechanism mission: all three channels (shake-to-feedback, text keyword, agent proactive ask) should land in one ClickUp list Jake reviews daily.</li>
+      <li><strong>Define "done" concretely:</strong> A bug is done when there's a screen recording of the fix working on a real device AND the original reporter confirms. Not when a dev says "fixed." This prevents the "for testing" purgatory.</li>
+    </ul>
+    <p><strong>Resource:</strong> <a href="https://www.getautonoma.com/blog/qa-for-startups-2026">The 2026 Startup QA Floor — Autonoma</a></p>
+  </section>
+
+  <!-- SECTION 5: STRATEGY CHECK -->
+  <section>
+    <h2>5. Strategy Check</h2>
+    <div class="strategy-box">
+      <h3>Where we are — End of Week 5</h3>
+      <p>13 scopes total: 2 done (iMessage Agent, Voice Calls), 5 in-progress, 1 testing, 3 specced, 1 needs-spec, 1 not-started. Core Trip Experience is in testing (15/16 SC). Output-Backed Screen is 7/48. Agent Intelligence is 29/61. Travel Booking barely started at 5/70.</p>
+      <p>This week's output: 8 PRs merged (Nadeem 4, Rizwan 2, Jake 2). Nadeem was the MVP. QA team filed 16+ new bugs (mostly iMessage/AI agent). PR #333 (domain consolidation) going into the weekend unreviewed — 6 days old.</p>
+
+      <h3>Top 3 Risks</h3>
+      <ol>
+        <li><strong>QA verification gap.</strong> 12 tasks in testing, 22 ready for production, 0 verified this week. Without someone closing the loop, we can't measure real progress or ship with confidence.</li>
+        <li><strong>SC numbers are fiction.</strong> Last reliable data is March 30 — a week ago. Marty is estimating. Every dev needs to update their count before Monday standup or the hero numbers are meaningless.</li>
+        <li><strong>iMessage-to-app sync is broken.</strong> This is the core product loop — add something via iMessage, see it in the app. Activities, polls, stays, hotels all fail. If this doesn't work, the beta demo doesn't work.</li>
+      </ol>
+
+      <h3>Where Jake should focus</h3>
+      <ul>
+        <li><strong>Force SC number updates Monday.</strong> Make it a gate: no standup answer = blocked in ClickUp. The data blackout is making it impossible to prioritize.</li>
+        <li><strong>Decide on QA ownership.</strong> Either devs self-verify, the external QA team gets ClickUp access to close tasks, or Jake picks one dev to own the verification queue. The current state (nobody owns it) guarantees nothing moves.</li>
+        <li><strong>Review PR #333.</strong> Domain consolidation from jointripful.com to jointryps.com has been open 6 days with a merge conflict. It's blocking brand consistency.</li>
+      </ul>
+
+      <h3>Marty's #1 Priority Call</h3>
+      <p><strong>Fix the iMessage-to-app sync.</strong> Everything else is downstream of this. The customer interview pipeline is live, the agent can make calls, the invite flow works — but if a user adds an activity via iMessage and it doesn't show up in the app, the entire product promise collapses. Asif needs to triage whether this is one root cause or five, and Jake needs to verify a working flow by end of next week.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6: CULTURE & CONVERSATION -->
+  <section>
+    <h2>6. Culture & Conversation</h2>
+
+    <h3>Liberation Day, One Year Later</h3>
+    <p>This week marks the one-year anniversary of Trump's "Liberation Day" tariffs (April 2, 2025). The tariffs were ultimately overturned by the Supreme Court, but the economic ripple effects are still being felt — P&G raised prices on 25% of products, Constellation Brands took a $20M hit, and the initial stock sell-off nearly triggered a bear market. The conversation has shifted to: did the tariffs actually accelerate domestic manufacturing, or just create chaos?</p>
+    <p><strong>Conversation angle:</strong> "The tariffs did one thing — they forced every startup to think about supply chain resilience. Even software companies."</p>
+    <p><a href="https://ritholtz.com/2026/04/liberation-day-anniversary/">Ritholtz</a> · <a href="https://www.businessinsider.com/trump-liberation-day-promises-tariff-policy-debt-economy-markets-politics-2026-4">Business Insider</a></p>
+
+    <h3>OpenAI Bought a Talk Show</h3>
+    <p>OpenAI acquired TBPN (Technology Business Programming Network) — a founder-led tech talk show. It's their first media acquisition. Fidji Simo framed it as gaining "editorial instincts and deep audience understanding." The real question: is this OpenAI building its own distribution channel to control the AI narrative, or a genuine media play?</p>
+    <p><strong>Conversation angle:</strong> "If you're an AI company, do you need to own your own media to shape the narrative? OpenAI thinks so."</p>
+    <p><a href="https://techcrunch.com/2026/04/02/openai-acquires-tbpn-the-buzzy-founder-led-business-talk-show/">TechCrunch</a></p>
+
+    <h3>DeepSeek V4 Goes Full Huawei</h3>
+    <p>China's DeepSeek will run its new V4 model entirely on Huawei-designed chips. Alibaba, ByteDance, and Tencent are all prepping infrastructure. This is the most significant test of whether China can build a competitive AI stack without NVIDIA. If V4 benchmarks well, the US chip export strategy may need a rethink.</p>
+    <p><strong>Conversation angle:</strong> "The chip war was supposed to slow China down. Instead it might have created a parallel AI ecosystem."</p>
+    <p><a href="https://www.reuters.com/world/china/deepseeks-v4-model-will-run-huawei-chips-information-reports-2026-04-03/">Reuters</a></p>
+  </section>
+
+  <!-- SECTION 7: AI RELEASES -->
+  <section>
+    <h2>7. AI Releases & Patch Notes</h2>
+
+    <table class="cost-table">
+      <tr><th>Provider</th><th>What</th><th>Relevance</th></tr>
+      <tr>
+        <td>OpenAI</td>
+        <td>Acquired TBPN media company (Apr 2)</td>
+        <td>First AI company → media acquisition. Distribution play.</td>
+      </tr>
+      <tr>
+        <td>DeepSeek</td>
+        <td>V4 model confirmed on Huawei chips (Apr 3)</td>
+        <td>First major model on non-NVIDIA Chinese silicon. Benchmark data pending.</td>
+      </tr>
+      <tr>
+        <td>Cursor</td>
+        <td>Cursor 3 launched — "agent-first" IDE (Apr 3)</td>
+        <td>Parallel coding agents across repos with auto-demos. Direct evolution of the tool our devs use daily.</td>
+      </tr>
+    </table>
+    <p style="margin-top:8px;"><em>No major model releases from Anthropic, Google, or xAI in the last 48 hours.</em></p>
+  </section>
+
+  <!-- SECTION 8: TOOLS HIGHLIGHT -->
+  <section>
+    <h2>8. Tools Highlight</h2>
+    <p><em>Weekend = wildcard category</em></p>
+
+    <h3>OpenScreen</h3>
+    <p><strong>What it is:</strong> Free, open-source screen recording tool — an alternative to Screen Studio with no watermarks, no subscriptions, and commercial-use license.</p>
+    <p><strong>How Jake would use it:</strong> Send this to beta testers as the standard bug-reporting tool. "Shake to report, record with OpenScreen, paste link." Also useful for Sean's launch video content — record app demos without paying for Screen Studio. Devs can use it for "proof of fix" screen recordings when closing QA tasks.</p>
+    <p><strong>Pricing:</strong> Free and open-source (MIT license)</p>
+    <p><strong>Link:</strong> <a href="https://github.com/siddharthvaddem/openscreen">github.com/siddharthvaddem/openscreen</a> (22,508 stars)</p>
+
+    <h3>Cursor 3</h3>
+    <p><strong>What it is:</strong> Major upgrade to the Cursor IDE — now "agent-first" with parallel cloud and local coding agents, multi-repo support, and auto-generated demos for verification.</p>
+    <p><strong>How Jake would use it:</strong> The team already uses Cursor. Cursor 3's parallel agents could let Nadeem run agents on output-backed-screen and bug fixes simultaneously. Cloud agents auto-generate screenshots, which would help with the QA verification gap. Worth evaluating as a team upgrade this week.</p>
+    <p><strong>Pricing:</strong> Pro $20/mo, Business $40/mo (existing plan likely carries over)</p>
+    <p><strong>Link:</strong> <a href="https://www.producthunt.com/products/cursor-3">Product Hunt</a> · <a href="https://the-decoder.com/new-cursor-3-ditches-the-classic-ide-layout-for-an-agent-first-interface-built-around-parallel-ai-fleets/">The Decoder</a></p>
+  </section>
+
+  <!-- SECTION 9: COST SNAPSHOT -->
+  <section>
+    <h2>9. Cost Snapshot</h2>
+    <p><em>Source: <code>~/.openclaw/cron/runs/*.jsonl</code> — April 5, 2026 (UTC)</em></p>
+
+    <table class="cost-table">
+      <tr><th>Category</th><th>Cost</th><th>Tokens</th><th>Notes</th></tr>
+      <tr>
+        <td>standup-generator-001</td>
+        <td>$1.13</td>
+        <td>76,335</td>
+        <td>2 runs, claude-opus-4-6</td>
+      </tr>
+      <tr>
+        <td>nightly-report-001</td>
+        <td>$1.56</td>
+        <td>98,529</td>
+        <td>1 run (this report), claude-opus-4-6</td>
+      </tr>
+      <tr>
+        <td>topic-suggestion-001</td>
+        <td>$0.23</td>
+        <td>25,632</td>
+        <td>1 run, claude-opus-4-6</td>
+      </tr>
+      <tr>
+        <td>cost-report-001</td>
+        <td>$0.00</td>
+        <td>0</td>
+        <td>1 run, no token usage logged</td>
+      </tr>
+      <tr>
+        <td>Other cron (97e8b032)</td>
+        <td>$0.02</td>
+        <td>20,799</td>
+        <td>1 run, claude-sonnet-4-6</td>
+      </tr>
+      <tr style="font-weight:600; border-top:2px solid #3D3530;">
+        <td>Total (cron)</td>
+        <td>$2.94</td>
+        <td>221,295</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>DM sessions</td>
+        <td colspan="3">No log data (gateway logs not parsed)</td>
+      </tr>
+    </table>
+    <p style="color:green;">✅ Daily cost $2.94 — well under $15 threshold.</p>
+  </section>
+
+  <!-- SECTION 10: MISSION PROGRESS -->
+  <section>
+    <h2>10. Mission Progress</h2>
+
+    <h3>Mission 1: Fix iMessage Bugs from QA</h3>
+    <p><strong>Owner:</strong> Asif | <strong>What moved:</strong> No new PRs merged from Asif this week on iMessage bugs. 3 bugs remain in progress. QA team filed 16+ new bugs (good signal — testing is happening). <strong>What didn't:</strong> Bug count went up, not down. No merged fixes since Wednesday.</p>
+    <p><span class="verdict verdict-stalled">STALLED</span></p>
+
+    <h3>Mission 2: App Bug Fixes + Real-Time Data</h3>
+    <p><strong>Owner:</strong> Nadeem | <strong>What moved:</strong> PR #352 (Itinerary tab fixes) merged Thursday — his 5th PR this week. Vibe Tab and Itinerary Tab moved to "for testing." <strong>What didn't:</strong> PR #333 (domain consolidation) still open with merge conflict (6 days). 4 bug buckets stuck in "for testing."</p>
+    <p><span class="verdict verdict-progress">PROGRESS</span></p>
+
+    <h3>Mission 3: Flight Booking + Third-Party Integration</h3>
+    <p><strong>Owner:</strong> Rizwan | <strong>What moved:</strong> PR #351 (agent memory screen SC-15) and PR #350 (expo-sensors crash fix) merged Thursday. Agent intelligence at 29/61 SC. <strong>What didn't:</strong> No travel-booking PRs this week (still 5/70). SC number update promised Thursday, not delivered.</p>
+    <p><span class="verdict verdict-progress">PROGRESS</span> (on agent-intelligence, not travel-booking)</p>
+
+    <h3>Mission 4: Customer Interviews</h3>
+    <p><strong>Owner:</strong> Asif + Jake | <strong>What moved:</strong> Pipeline live at marty.jointryps.com/interview. <strong>What didn't:</strong> No data on interview count this week.</p>
+    <p><span class="verdict verdict-nodata">NO DATA</span></p>
+
+    <h3>Mission 5: Close the Books</h3>
+    <p><strong>Owner:</strong> Jake | No ClickUp or GitHub activity related to this mission.</p>
+    <p><span class="verdict verdict-nodata">NO DATA</span></p>
+
+    <h3>Unmapped work</h3>
+    <p>PR #347 (Rizwan — #feedback work base in iMessage) merged Tuesday. This maps to the <strong>Feedback Mechanism</strong> ongoing mission, not a numbered mission. Good progress on shake-to-feedback pipeline.</p>
+  </section>
+
+  <!-- SECTION 11: CS 101 -->
+  <section>
+    <h2>11. CS 101 — Jake's Daily Lesson</h2>
+    <div class="strategy-box">
+      <h3>What is an API?</h3>
+      <p>An API (Application Programming Interface) is a menu for software. When you walk into a restaurant, you don't go into the kitchen and cook — you look at the menu, order something specific, and the kitchen sends it back. An API works the same way: your app sends a request to another service ("give me flights from JFK to LAX on June 15"), and the service sends back a structured response with the data. The menu is the API — it tells you what you can ask for and how to ask.</p>
+
+      <p><strong>Why it matters for Tryps:</strong> Almost everything Tryps does talks to an API. When Rizwan builds flight search, he's calling the Duffel API. When the iMessage agent adds an activity, it's calling the Supabase API. When Marty generates this report, he's calling the Brave Search API and the GitHub API. Every "integration" is really just two pieces of software reading each other's menus.</p>
+
+      <p><strong>The aha moment:</strong> When Asif's iMessage-to-app sync is broken, it almost always means one of two things: the agent is ordering something that's not on the menu (wrong API call), or the kitchen got the order but didn't send it to the right table (the realtime subscription isn't listening). The "menu" metaphor is how your devs think about every bug.</p>
+    </div>
+  </section>
+
+</body>
+</html>
